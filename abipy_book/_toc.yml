@@ -8,3 +8,16 @@ sections:
   sections:
   - file: markdown
   - file: notebooks
+  - file: abinit_input
+  - file: input_factories
+  - file: structure
+  - file: gsr
+  - file: hist
+  - file: efatbands
+  - file: ddb
+  - file: sigres
+  - file: mdf
+  - file: abiwan
+  - file: lobster
+  - file: flows
+
