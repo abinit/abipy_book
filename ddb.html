@@ -1,0 +1,2339 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post-processing DFPT calculations with the DDB file &#8212; AbiPy_Book</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Postprocessing tools for GW calculations" href="sigres.html" />
+    <link rel="prev" title="FATBANDS.nc file" href="efatbands.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AbiPy_Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="content.html">
+   Content in Jupyter Book
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="markdown.html">
+     Markdown Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="abinit_input.html">
+     Table of Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="input_factories.html">
+     Factory functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="structure.html">
+     Structure object
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gsr.html">
+     Post-processing tools for electron band energies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hist.html">
+     The HIST.nc file
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="efatbands.html">
+     FATBANDS.nc file
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Post-processing DFPT calculations with the DDB file
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sigres.html">
+     Postprocessing tools for GW calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mdf.html">
+     Postprocessing tools for Bethe-Salpeter calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="abiwan.html">
+     Analyzing wannier90 results with AbiPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lobster.html">
+     Analyzing Lobster output files with AbiPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flows.html">
+     Tasks, Workflows and Flow
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/ddb.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/ddb.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/gmatteo/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/gmatteo/abipy_book/issues/new?title=Issue%20on%20page%20%2Fddb.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/gmatteo/abipy_book/edit/main/docs/ddb.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gmatteo/abipy_book/main?urlpath=tree/docs/ddb.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#suggested-references">
+   Suggested references
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integration-with-the-materials-project-database">
+   Integration with the materials project database
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-create-a-ddbfile-object">
+   How to create a DdbFile object
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#invoking-anaddb-from-the-ddbfile-object">
+   Invoking Anaddb from the DdbFile object
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-phonon-bands-and-dos">
+   Plotting phonon bands and DOS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fatbands-and-projected-dos">
+   Fatbands and projected DOS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-atomic-displacements">
+   Visualizing atomic displacements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyzing-the-breaking-of-the-acoustic-sum-rule">
+   Analyzing the breaking of the acoustic sum rule
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-dos-with-different-q-meshes">
+   Computing DOS with different q-meshes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#thermodynamic-properties-in-the-harmonic-approximation">
+   Thermodynamic properties in the harmonic approximation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#macroscopic-dielectric-tensor-and-born-effective-charges">
+   Macroscopic dielectric tensor and Born effective charges
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-ddbrobot-to-perform-convergence-studies">
+   Using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     DdbRobot
+    </span>
+   </code>
+   to perform convergence studies
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-analyze-the-converge-of-epsilon-0-epsilon-infty-and-born-effective-charges">
+     How to analyze the converge of
+     <span class="math notranslate nohighlight">
+      \(\epsilon^0\)
+     </span>
+     ,
+     <span class="math notranslate nohighlight">
+      \(\epsilon^\infty\)
+     </span>
+     and Born effective charges
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a> <a id="top"></a></p>
+<div class="section" id="post-processing-dfpt-calculations-with-the-ddb-file">
+<h1>Post-processing DFPT calculations with the DDB file<a class="headerlink" href="#post-processing-dfpt-calculations-with-the-ddb-file" title="Permalink to this headline">¶</a></h1>
+<p>This notebook explains how to use AbiPy and the DDB file produced by Abinit to analyze:</p>
+<ul class="simple">
+<li><p>Phonon band structures including the LO-TO splitting in heteropolar semiconductors</p></li>
+<li><p>Phonon fatbands, phonon DOS and projected DOS</p></li>
+<li><p>Born effectives charges <span class="math notranslate nohighlight">\(Z^*_{\kappa,\alpha\beta}\)</span> and the dielectric tensors <span class="math notranslate nohighlight">\(\epsilon^{\infty}_{\alpha\beta}\)</span>, <span class="math notranslate nohighlight">\(\epsilon^{0}_{\alpha\beta}\)</span></p></li>
+<li><p>Thermodynamic properties in the harmonic approximation</p></li>
+</ul>
+<p>In the last part, we discuss how to use the <code class="docutils literal notranslate"><span class="pre">DdbRobot</span></code> to analyze multiple DDB
+files and perform typical convergence studies.</p>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#How-to-create-a-DdbFile-object">How to create a Ddbfile object</a></p></li>
+<li><p><a class="reference external" href="#Invoking-Anaddb-from-the-DdbFile-object">Invoking Anaddb from the DdbFile object</a></p></li>
+<li><p><a class="reference external" href="#Plotting-phonon-bands-and-DOS">Plotting Phonon Bands and DOS</a></p></li>
+<li><p><a class="reference external" href="#Fatbands-and-projected-DOS">Fatbands and projected DOS</a></p></li>
+<li><p><a class="reference external" href="#Visualizing-atomic-displacements">Visualizing atomic displacements</a></p></li>
+<li><p><a class="reference external" href="#Analyzing-the-breaking-of-the-acoustic-sum-rule">Analyzing the breaking of the acoustic sum rule</a></p></li>
+<li><p><a class="reference external" href="#Computing-DOS-with-different-q-meshes">Computing DOS with different q-meshes</a></p></li>
+<li><p><a class="reference external" href="#Thermodynamic-properties-in-the-harmonic-approximation">Thermodynamic properties in the harmonic approximation</a></p></li>
+<li><p><a class="reference external" href="#Macroscopic-dielectric-tensor-and-Born-effective-charges">Macroscopic dielectric tensor and Born effective charges</a></p></li>
+<li><p><a class="reference external" href="#Using-DdbRobot-to-perform-convergence-studies">Using DdbRobot to perform convergence studies</a></p></li>
+</ul>
+</div>
+<div class="section" id="suggested-references">
+<h2>Suggested references<a class="headerlink" href="#suggested-references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.55.10355">Dynamical matrices, Born effective charges, dielectric permittivity tensors, and interatomic force constants from density-functional perturbation theory</a></p></li>
+<li><p><a class="reference external" href="https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.73.515">Phonons and related crystal properties from density-functional perturbation theory</a></p></li>
+</ul>
+</div>
+<div class="section" id="integration-with-the-materials-project-database">
+<h2>Integration with the materials project database<a class="headerlink" href="#integration-with-the-materials-project-database" title="Permalink to this headline">¶</a></h2>
+<p>AbiPy, <a class="reference external" href="http://pymatgen.org/">pymatgen</a> and <a class="reference external" href="https://materialsproject.github.io/fireworks/">fireworks</a>
+have been used by <a class="reference external" href="https://www.nature.com/articles/sdata201865">Petretto et al</a>
+to compute the vibrational properties of more than 1500 compounds with Abinit.
+The results are available on the <a class="reference external" href="https://materialsproject.org/">materials project website</a>.
+The results for the rocksalt phase of MgO are available at <a class="reference external" href="https://materialsproject.org/materials/mp-1009129/">https://materialsproject.org/materials/mp-1009129/</a></p>
+<p>To fetch the DDB file from the materials project database and build a <code class="docutils literal notranslate"><span class="pre">DdbFile</span></code> object, use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ddb</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">DdbFile</span><span class="o">.</span><span class="n">from_mpid</span><span class="p">(</span><span class="s2">&quot;mp-1009129&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr>
+<p>Remember to set the <code class="docutils literal notranslate"><span class="pre">PMG_MAPI_KEY</span></code> in your ~/.pmgrc.yaml as described
+<a class="reference external" href="http://pymatgen.org/usage.html#setting-the-pmg-mapi-key-in-the-config-file">here</a>.</p>
+</div>
+<div class="section" id="how-to-create-a-ddbfile-object">
+<h2>How to create a DdbFile object<a class="headerlink" href="#how-to-create-a-ddbfile-object" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>Let us start by importing the basic AbiPy modules we have already used in the other examples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span> 
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>  <span class="c1"># Ignore warnings</span>
+
+<span class="kn">from</span> <span class="nn">abipy</span> <span class="kn">import</span> <span class="n">abilab</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span> <span class="c1"># This line tells AbiPy we are running inside a notebook</span>
+
+<span class="kn">import</span> <span class="nn">abipy.data</span> <span class="k">as</span> <span class="nn">abidata</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># This line configures matplotlib to show figures embedded in the notebook.</span>
+<span class="c1"># Replace `inline` with `notebook` in classic notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline   
+
+<span class="c1"># Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib</span>
+<span class="c1">#%matplotlib widget  </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To open a DDB file, use the high-level interface provided by abiopen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddb_filepath</span> <span class="o">=</span> <span class="n">abidata</span><span class="o">.</span><span class="n">ref_file</span><span class="p">(</span><span class="s2">&quot;mp-1009129-9x9x10q_ebecs_DDB&quot;</span><span class="p">)</span>
+<span class="n">ddb</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="n">ddb_filepath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A DdbFile has a structure object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ddb</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>  <span class="c1"># Lengths in Angstrom.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full Formula (Mg1 O1)
+Reduced Formula: MgO
+abc   :   2.908638   2.908638   2.656848
+angles:  90.000000  90.000000 120.000000
+Sites (2)
+  #  SP           a         b    c
+---  ----  --------  --------  ---
+  0  Mg    0         0         0
+  1  O     0.333333  0.666667  0.5
+
+Abinit Spacegroup: spgid: 0, num_spatial_symmetries: 12, has_timerev: True, symmorphic: False
+</pre></div>
+</div>
+</div>
+</div>
+<p>and a list of q-points associated to the dynamical matrix <span class="math notranslate nohighlight">\(D(q)\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddb</span><span class="o">.</span><span class="n">qpoints</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0) [+0.000, +0.000, +0.000]
+1) [+0.111, +0.000, +0.000]
+2) [+0.222, +0.000, +0.000]
+3) [+0.333, +0.000, +0.000]
+4) [+0.444, +0.000, +0.000]
+5) [+0.111, +0.111, +0.000]
+6) [+0.222, +0.111, +0.000]
+7) [+0.333, +0.111, +0.000]
+8) [+0.444, +0.111, +0.000]
+9) [+0.222, +0.222, +0.000]
+10) [+0.333, +0.222, +0.000]
+11) [+0.333, +0.333, +0.000]
+12) [+0.000, +0.000, +0.100]
+13) [+0.111, +0.000, +0.100]
+14) [+0.222, +0.000, +0.100]
+15) [+0.333, +0.000, +0.100]
+16) [+0.444, +0.000, +0.100]
+17) [+0.111, +0.111, +0.100]
+18) [+0.222, +0.111, +0.100]
+19) [+0.333, +0.111, +0.100]
+20) [+0.444, +0.111, +0.100]
+21) [+0.222, +0.222, +0.100]
+22) [+0.000, +0.000, +0.200]
+23) [+0.333, +0.222, +0.100]
+24) [+0.333, +0.333, +0.100]
+25) [+0.111, +0.000, +0.200]
+26) [+0.222, +0.000, +0.200]
+27) [+0.333, +0.000, +0.200]
+28) [+0.444, +0.000, +0.200]
+29) [+0.111, +0.111, +0.200]
+30) [+0.222, +0.111, +0.200]
+31) [+0.333, +0.111, +0.200]
+32) [+0.444, +0.111, +0.200]
+33) [+0.222, +0.222, +0.200]
+34) [+0.000, +0.000, +0.300]
+35) [+0.333, +0.222, +0.200]
+36) [+0.333, +0.333, +0.200]
+37) [+0.111, +0.000, +0.300]
+38) [+0.222, +0.000, +0.300]
+39) [+0.333, +0.000, +0.300]
+40) [+0.444, +0.000, +0.300]
+41) [+0.111, +0.111, +0.300]
+42) [+0.222, +0.111, +0.300]
+43) [+0.333, +0.111, +0.300]
+44) [+0.444, +0.111, +0.300]
+45) [+0.222, +0.222, +0.300]
+46) [+0.333, +0.222, +0.300]
+47) [+0.000, +0.000, +0.400]
+48) [+0.333, +0.333, +0.300]
+49) [+0.111, +0.000, +0.400]
+50) [+0.222, +0.000, +0.400]
+51) [+0.333, +0.000, +0.400]
+52) [+0.444, +0.000, +0.400]
+53) [+0.111, +0.111, +0.400]
+54) [+0.222, +0.111, +0.400]
+55) [+0.333, +0.111, +0.400]
+56) [+0.444, +0.111, +0.400]
+57) [+0.222, +0.222, +0.400]
+58) [+0.333, +0.222, +0.400]
+59) [+0.000, +0.000, +0.500]
+60) [+0.333, +0.333, +0.400]
+61) [+0.111, +0.000, +0.500]
+62) [+0.222, +0.000, +0.500]
+63) [+0.333, +0.000, +0.500]
+64) [+0.444, +0.000, +0.500]
+65) [+0.111, +0.111, +0.500]
+66) [+0.222, +0.111, +0.500]
+67) [+0.333, +0.111, +0.500]
+68) [+0.444, +0.111, +0.500]
+69) [+0.222, +0.222, +0.500]
+70) [+0.333, +0.222, +0.500]
+71) [+0.333, +0.333, +0.500]
+</pre></div>
+</div>
+</div>
+</div>
+<p>At this point, it is worth mentioning that Abinit takes advantage of symmetries
+to reduce the number of q-points as well as the number of perturbations that
+must be computed explicitly within DFPT.</p>
+<p>The set of q-points  in the DDB file (usually) does not form a homogeneous sampling of the Brillouin zone (BZ).
+Actually they correspond to the sampling of the irreducible wedge (IBZ), and this sampling is obtained
+from an initial q-mesh specified in terms of divisions along the three reduced directions (ngqpt).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddb</span><span class="o">.</span><span class="n">qpoints</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_12_0.png" src="_images/ddb_12_0.png" />
+</div>
+</div>
+<p>Note that the DDB file does not contain any information about the value of ngqpt because
+one can merge an arbitrary list of q-points in the same DDB.
+The algorithms implemented in anaddb, however, need to know the divisions
+to compute integrals in the full BZ
+(this is indeed one of the variables that must be provided by the user in the anaddb input file).</p>
+<p>AbiPy uses a heuristic method to guess the q-mesh from this scattered list of q-points
+so that you do not need to specify this parameter when calling anaddb:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddb</span><span class="o">.</span><span class="n">guessed_ngqpt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 9,  9, 10])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-warning" role="alert">
+If the guess is wrong, you will need to manually set this attribute to the correct value of `ngqpt` before
+invoking anaddb from python.
+This could happen if you have merged DDB files computed with $q$-points that do not belong to same grid. 
+</div><p>To test whether the DDB file contains the entries associated to <span class="math notranslate nohighlight">\(\epsilon^{\infty}_{\alpha\beta}\)</span> and <span class="math notranslate nohighlight">\(Z^*_{\kappa,\alpha\beta}\)</span>, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contains macroscopic dielectric tensor:&quot;</span><span class="p">,</span> <span class="n">ddb</span><span class="o">.</span><span class="n">has_epsinf_terms</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contains Born effective charges:&quot;</span><span class="p">,</span> <span class="n">ddb</span><span class="o">.</span><span class="n">has_bec_terms</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Contains macroscopic dielectric tensor: True
+Contains Born effective charges: True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Metadata are stored in the header of the DDB file.
+AbiPy parses this initial section and stores the values in a dict-like object.
+Let us print a sorted list with all the keys in the header:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="n">pprint</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ddb</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">keys</span><span class="p">())))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;acell&#39;,
+ &#39;amu&#39;,
+ &#39;dfpt_sciss&#39;,
+ &#39;dilatmx&#39;,
+ &#39;ecut&#39;,
+ &#39;ecutsm&#39;,
+ &#39;intxc&#39;,
+ &#39;iscf&#39;,
+ &#39;ixc&#39;,
+ &#39;kpt&#39;,
+ &#39;kptnrm&#39;,
+ &#39;lines&#39;,
+ &#39;natom&#39;,
+ &#39;nband&#39;,
+ &#39;ngfft&#39;,
+ &#39;nkpt&#39;,
+ &#39;nspden&#39;,
+ &#39;nspinor&#39;,
+ &#39;nsppol&#39;,
+ &#39;nsym&#39;,
+ &#39;ntypat&#39;,
+ &#39;occ&#39;,
+ &#39;occopt&#39;,
+ &#39;rprim&#39;,
+ &#39;spinat&#39;,
+ &#39;symafm&#39;,
+ &#39;symrel&#39;,
+ &#39;tnons&#39;,
+ &#39;tolwfr&#39;,
+ &#39;tphysel&#39;,
+ &#39;tsmear&#39;,
+ &#39;typat&#39;,
+ &#39;usepaw&#39;,
+ &#39;version&#39;,
+ &#39;wtk&#39;,
+ &#39;xred&#39;,
+ &#39;zion&#39;,
+ &#39;znucl&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>and use the standard syntax for dictionaries to access the keys:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This DDB has been generated with ecut&quot;</span><span class="p">,</span> <span class="n">ddb</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;ecut&quot;</span><span class="p">],</span> <span class="s2">&quot;Ha and nsym&quot;</span><span class="p">,</span> <span class="n">ddb</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;nsym&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This DDB has been generated with ecut 44.0 Ha and nsym 12
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also print the DDB object to get a summary of the most important parameters and dimensions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ddb</span><span class="p">)</span>   
+
+<span class="c1"># If more info is needed use: </span>
+<span class="c1"># print(ddb.to_string(verbose=1)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================================= File Info =================================
+Name: mp-1009129-9x9x10q_ebecs_DDB
+Directory: /Users/gmatteo/git_repos/abipy/abipy/data
+Size: 218.73 kb
+Access Time: Fri Feb 21 18:04:19 2020
+Modification Time: Wed Mar 20 16:53:35 2019
+Change Time: Wed Mar 20 16:53:35 2019
+
+================================= Structure =================================
+Full Formula (Mg1 O1)
+Reduced Formula: MgO
+abc   :   2.908638   2.908638   2.656848
+angles:  90.000000  90.000000 120.000000
+Sites (2)
+  #  SP           a         b    c
+---  ----  --------  --------  ---
+  0  Mg    0         0         0
+  1  O     0.333333  0.666667  0.5
+
+Abinit Spacegroup: spgid: 0, num_spatial_symmetries: 12, has_timerev: True, symmorphic: False
+
+================================== DDB Info ==================================
+
+Number of q-points in DDB: 72
+guessed_ngqpt: [ 9  9 10] (guess for the q-mesh divisions made by AbiPy)
+ecut = 44.000000, ecutsm = 0.000000, nkpt = 405, nsym = 12, usepaw = 0
+nsppol 1, nspinor 1, nspden 1, ixc = -116133, occopt = 1, tsmear = 0.010000
+
+Has total energy: False, Has forces: False
+Has stress tensor: False
+
+Has (at least one) atomic pertubation: True
+Has (at least one diagonal) electric-field perturbation: True
+Has (at least one) Born effective charge: True
+Has (all) strain terms: False
+Has (all) internal strain terms: False
+Has (all) piezoelectric terms: False
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are a terminal aficionado, remember that one can use the
+<a class="reference external" href="http://abinit.github.io/abipy/scripts/abiopen.html">abiopen.py</a> script
+to open the DDB file directly from the shell and generate a jupyter notebook with the <code class="docutils literal notranslate"><span class="pre">-nb</span></code> option.
+For a quick visualization script use <a class="reference external" href="http://abinit.github.io/abipy/scripts/abiview.html">abiview.py</a>.</p>
+</div>
+<div class="section" id="invoking-anaddb-from-the-ddbfile-object">
+<h2>Invoking Anaddb from the DdbFile object<a class="headerlink" href="#invoking-anaddb-from-the-ddbfile-object" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">DdbFile</span></code> object provides specialized methods to invoke anaddb and
+compute important physical properties such as the phonon band structure, the phonon density of states, etc.
+All these methods have a name that begins with the <code class="docutils literal notranslate"><span class="pre">ana*</span></code> prefix followed by a verb (<code class="docutils literal notranslate"><span class="pre">anaget</span></code>, <code class="docutils literal notranslate"><span class="pre">anacompare</span></code>).
+These specialized methods</p>
+<ul class="simple">
+<li><p>build the anaddb input file</p></li>
+<li><p>run anaddb</p></li>
+<li><p>parse the netcdf files produced by the Fortran code</p></li>
+<li><p>build and return <a class="reference external" href="http://abinit.github.io/abipy/api/dfpt_api.html">AbiPy objects</a> that can be used to plot/analyze the data.</p></li>
+</ul>
+<p>Note that in order to run anaddb from AbiPy, you need a manager.yml with configuration options.
+For further details, please consult the
+<a class="reference external" href="http://abinit.github.io/abipy/workflows/taskmanager.html">TaskManager documentation</a>.</p>
+<p>The python API is flexible and exposes several anaddb input variables.
+The majority of the arguments have default values covering the most common cases
+so that you will need to specify these arguments explicitly only if the default behavior does not suit your needs.
+The most important parameters to remember are:</p>
+<ul class="simple">
+<li><p><strong>ndivsm</strong>: Number of divisions used for the smallest segment of the high-symmetry q-path.</p></li>
+<li><p><strong>nqsmall</strong>: Defines the q-mesh for the phonon DOS in terms of
+the number of divisions used to sample the smallest reciprocal lattice vector. 0 to disable DOS computation.</p></li>
+<li><p><strong>lo_to_splitting</strong>: Activate the computation of the frequencies in the <span class="math notranslate nohighlight">\(q\rightarrow 0\)</span> limit with the inclusion of the non-analytical term (requires <strong>dipdip</strong> 1 and DDB with <span class="math notranslate nohighlight">\(Z^*_{\kappa,\alpha\beta}\)</span> and <span class="math notranslate nohighlight">\(\epsilon^{\infty}_{\alpha\beta}\)</span>).</p></li>
+</ul>
+<p>The high-symmetry q-path is automatically selected assuming the structure
+fulfills the conventions introduced by <a class="reference external" href="https://arxiv.org/abs/1004.2974">Setyawan and Curtarolo</a>
+but you can also specify your own q-path if needed.</p>
+</div>
+<div class="section" id="plotting-phonon-bands-and-dos">
+<h2>Plotting phonon bands and DOS<a class="headerlink" href="#plotting-phonon-bands-and-dos" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>To compute phonon bands and DOS, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Call anaddb to compute phonon bands and DOS. Return PHBST and PHDOS netcdf files.</span>
+<span class="n">phbstnc</span><span class="p">,</span> <span class="n">phdosnc</span> <span class="o">=</span> <span class="n">ddb</span><span class="o">.</span><span class="n">anaget_phbst_and_phdos_files</span><span class="p">(</span>
+    <span class="n">ndivsm</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">nqsmall</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">lo_to_splitting</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">asr</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">chneut</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dipdip</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dos_method</span><span class="o">=</span><span class="s2">&quot;tetra&quot;</span><span class="p">)</span>
+
+<span class="c1"># Extract phbands and phdos from the netcdf object.</span>
+<span class="n">phbands</span> <span class="o">=</span> <span class="n">phbstnc</span><span class="o">.</span><span class="n">phbands</span>
+<span class="n">phdos</span> <span class="o">=</span> <span class="n">phdosnc</span><span class="o">.</span><span class="n">phdos</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us have a look at the high symmetry q-path automatically selected by AbiPy with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbands</span><span class="o">.</span><span class="n">qpoints</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_30_0.png" src="_images/ddb_30_0.png" />
+</div>
+</div>
+<p>and plot the phonon bands along this path with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbands</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_32_0.png" src="_images/ddb_32_0.png" />
+</div>
+</div>
+<p>Note the discontinuity of the optical modes when we cross the <span class="math notranslate nohighlight">\(\Gamma\)</span> point.
+In heteropolar semiconductors, indeed, the dynamical matrix is non-analytical for <span class="math notranslate nohighlight">\(q \rightarrow 0\)</span>.
+Since <code class="docutils literal notranslate"><span class="pre">lo_to_splitting</span> </code> was set to True, AbiPy has activated the calculation of the phonon frequencies
+for all the <span class="math notranslate nohighlight">\(q \rightarrow \Gamma\)</span> directions present in the path.</p>
+<p>There are several band crossings and anti-crossings hence it’s not easy
+to understand how the branches should be connected.
+Fortunately, there is a heuristic method to <strong>estimate</strong> band connection from
+the overlap of the eigenvectors at adjacent q-points.
+To connect the modes and plot the phonon branches with different colors, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbands</span><span class="o">.</span><span class="n">plot_colored_matched</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_35_0.png" src="_images/ddb_35_0.png" />
+</div>
+</div>
+<div class="alert alert-warning" role="alert">
+This heuristic method may fail so the results should be analyzed critically (especially
+when there are non-analytic branches crossing $\Gamma$).
+Besides, the algorithm is sensitive to the k-path resolution
+thus it is recommended to check the results by increasing the number of points per segment.
+</div><p>To plot the DOS, <span class="math notranslate nohighlight">\(g(\omega)\)</span>, and the integrated <span class="math notranslate nohighlight">\(IDOS(\omega) = \int^{\omega}_{-\infty} g(\omega')\,d\omega'\)</span>, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phdos</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_38_0.png" src="_images/ddb_38_0.png" />
+</div>
+</div>
+<p>Note how the phonon DOS integrates to <span class="math notranslate nohighlight">\(3 * N_{atom} = 6\)</span></p>
+<p>To plot the phonon bands and the DOS on the same figure use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbands</span><span class="o">.</span><span class="n">plot_with_phdos</span><span class="p">(</span><span class="n">phdos</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;meV&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_41_0.png" src="_images/ddb_41_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="fatbands-and-projected-dos">
+<h2>Fatbands and projected DOS<a class="headerlink" href="#fatbands-and-projected-dos" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">phbands</span></code> object stores the phonon displacements, <span class="math notranslate nohighlight">\(\vec{d}_{q\nu}\)</span> and
+the eigenvectors, <span class="math notranslate nohighlight">\(\vec{\epsilon}_{q\nu}\)</span>
+obtained by diagonalizing the dynamical matrix <span class="math notranslate nohighlight">\(D(q)\)</span>.</p>
+<p>\begin{equation}
+D(q) \vec{\epsilon}<em>{q\nu} = \omega</em>{q\nu}^2 \vec{\epsilon}_{q\nu}
+\end{equation}</p>
+<p>We can therefore use the eigenvectors (or the displacements) to associate
+a width to the different bands (a.k.a. fatbands).
+This width gives us a qualitative understanding of the vibrational mode: what are the atomic types involved in
+the vibrations at a given energy, their direction of oscillation and the amplitude (related to the displacement).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NB: LO-TO is not available in fatbands</span>
+<span class="n">phbands</span><span class="o">.</span><span class="n">plot_fatbands</span><span class="p">(</span><span class="n">use_eigvec</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;Thz&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_43_0.png" src="_images/ddb_43_0.png" />
+</div>
+</div>
+<p>To plot the fatbands with the type-projected DOS stored in <code class="docutils literal notranslate"><span class="pre">phdocsnc</span></code> use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbands</span><span class="o">.</span><span class="n">plot_fatbands</span><span class="p">(</span><span class="n">phdos_file</span><span class="o">=</span><span class="n">phdosnc</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;rainbow&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;cm-1&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_45_0.png" src="_images/ddb_45_0.png" />
+</div>
+</div>
+<p>We can also plot the PJDOS summed over directions and atomic types without fatbands with the command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phdosnc</span><span class="o">.</span><span class="n">plot_pjdos_type</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_47_0.png" src="_images/ddb_47_0.png" />
+</div>
+</div>
+<p>The netcdf file contains the individual contributions to the total DOS
+for each atomic site and the three cartesian directions.
+So there are several quantities we can plot to understand the vibrational spectrum of our systems.
+For example, we can decide to sum over all atoms of the same type while keeping
+the dependence on the Cartesian direction:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phdosnc</span><span class="o">.</span><span class="n">plot_pjdos_cartdirs_type</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="s2">&quot;Thz&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_49_0.png" src="_images/ddb_49_0.png" />
+</div>
+</div>
+<p>This analysis tells us that the peak at ~16 Thz mainly consists of oxygen vibrations along z.
+We could now extend this analysis by looking at the contributions arising from the different sites with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#phdosnc.plot_pjdos_cartdirs_site(view=&quot;inequivalent&quot;, units=&quot;eV&quot;, stacked=True);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>but we prefer to stop here and discuss other tools that can be used to analyze individual phonon modes.</p>
+</div>
+<div class="section" id="visualizing-atomic-displacements">
+<h2>Visualizing atomic displacements<a class="headerlink" href="#visualizing-atomic-displacements" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>In you need to visualize the lattice vibrations in 3D to gain a better insight
+about the nature of the phonon modes you may want to use the
+<a class="reference external" href="http://henriquemiranda.github.io/phononwebsite/">phononwebsite</a>.
+One can either convert the out_PHBST.nc produced by anaddb into json format
+and upload it to the phononwebsite server or, alternatively, open the terminal and
+execute the AbiPy script:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abiview.py ddb out_DDB --phononwebsite
+</pre></div>
+</div>
+<p>to automate the entire process (replace out_DDB with the name of your DDB file).</p>
+<p>Note that there are other AbiPy methods that are quite handy if we need to investigate the nature of the
+phonon modes at a particular q-point without a 3D visualization tool.
+For example, it is possible to analyze the contribution given by the different types of atoms
+to the phonon displacements at a given q-point with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbands</span><span class="o">.</span><span class="n">plot_phdispl</span><span class="p">(</span><span class="n">qpoint</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_54_0.png" src="_images/ddb_54_0.png" />
+</div>
+</div>
+<p>As expected the first three (acoustic) modes have zero frequency and
+the two atoms oscillate with the same amplitude.
+These modes indeed correspond to a rigid translation of the crystal hence
+the amplitude (and the direction) does not depend on the atomic site.
+The other three optical modes are (almost) degenerate, while LO-TO splitting should be present, but this is due to the fact
+that we are using the frequencies at the <span class="math notranslate nohighlight">\(\Gamma\)</span> point without the inclusion of the non-analytical term.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#phbands.plot_phdispl((0, 0, 0.1), is_non_analytical_direction=True, tight_layout=True);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To project the phonon displacements along the three cartesian directions, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbands</span><span class="o">.</span><span class="n">plot_phdispl_cartdirs</span><span class="p">(</span><span class="n">qpoint</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_58_0.png" src="_images/ddb_58_0.png" />
+</div>
+</div>
+<p>This plot confirms that the first three modes correspond to a rigid translation along x, y and z, respectively.</p>
+</div>
+<div class="section" id="analyzing-the-breaking-of-the-acoustic-sum-rule">
+<h2>Analyzing the breaking of the acoustic sum rule<a class="headerlink" href="#analyzing-the-breaking-of-the-acoustic-sum-rule" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>Due to the invariance of the system under an <em>infinitesimal</em> rigid translation, the frequency of the lowest
+three modes at <span class="math notranslate nohighlight">\(\Gamma\)</span> should be zero.
+Unfortunately, all the terms that are evaluated on the real-space FFT mesh
+(e.g. <span class="math notranslate nohighlight">\(V_{xc}\)</span>, non-linear core-correction) break this kind of translational invariance.
+The error depends on several factors: the density of the FFT mesh,
+pseudopotentials with hard model core charges, XC functional, etc.)
+Note that it is not always possible to reduce the error to zero by just increasing the convergence parameters
+but fortunately it is possible to restore the acoustic sum rule via the <code class="docutils literal notranslate"><span class="pre">asr</span></code> input variable.</p>
+<p>One can easily compare the phonons bands obtained with different values of <code class="docutils literal notranslate"><span class="pre">asr</span></code> with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asr_plotter</span> <span class="o">=</span> <span class="n">ddb</span><span class="o">.</span><span class="n">anacompare_asr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This method invokes anaddb with different values of <code class="docutils literal notranslate"><span class="pre">asr</span></code> and returns a plotter object
+we can call to compare the phonon band structures:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asr_plotter</span><span class="o">.</span><span class="n">combiplot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_63_0.png" src="_images/ddb_63_0.png" />
+</div>
+</div>
+<p>Now we can perform a similar test for the treatment of the non-analytical term in the <span class="math notranslate nohighlight">\(q \rightarrow 0\)</span> limit.
+We compute the phonon band dispersion for dipdip in [0, 1] and compare the results on the same figure with the commands:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dipdip_plotter</span> <span class="o">=</span> <span class="n">ddb</span><span class="o">.</span><span class="n">anacompare_dipdip</span><span class="p">(</span><span class="n">nqsmall</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dipdip_plotter</span><span class="o">.</span><span class="n">combiplot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_66_0.png" src="_images/ddb_66_0.png" />
+</div>
+</div>
+<p>The figure above shows that the (Fourier interpolated) bands obtained with dipdip = 0
+have unphysical oscillations around the <span class="math notranslate nohighlight">\(\Gamma\)</span> point.
+These oscillation are due to the long-range behavior in real space of the interatomic force constants
+in heteropolar semiconductors.
+The correct description of this long-range term without dipdip = 1
+would require using an extremely dense q-point mesh in the DFPT calculation.</p>
+<p>With dipdip = 1, on the other hand, we can model this long-range behavior in terms of a dipole-dipole
+interaction involving the Born effective charges and the macroscopic dielectric tensor.
+This allows us to decompose the full dynamical matrix into:</p>
+<p>\begin{equation}
+D(q) = D^{sr}(q) + D^{dip-dip}(q)
+\end{equation}</p>
+<p>The analytical part of the dynamical matrix, <span class="math notranslate nohighlight">\(D^{sr}(q)\)</span>, is short-ranged and can be Fourier-interpolated
+with a relatively coarse q-mesh.
+Then the model for the non-analytical term, <span class="math notranslate nohighlight">\(D^{dip-dip}(q)\)</span>, is added back to the interpolated matrix to get
+the full dynamical matrix.
+This procedure solves the problem with the unphysical oscillations and is required to describe
+correctly the non-analytical behavior of the optical modes for <span class="math notranslate nohighlight">\(q \rightarrow 0\)</span>.</p>
+</div>
+<div class="section" id="computing-dos-with-different-q-meshes">
+<h2>Computing DOS with different q-meshes<a class="headerlink" href="#computing-dos-with-different-q-meshes" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>Phonon DOS and derived quantites (e.g. thermodynamic properties) are sensitive to the BZ sampling
+and dense meshes may be required to converge the final results.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">anacompare_phdos</span></code> provides a simple interface to
+compare phonon DOS computed with different <span class="math notranslate nohighlight">\(q\)</span>-meshes.
+We only need to provide a list of integers (<code class="docutils literal notranslate"><span class="pre">nqsmalls</span></code>). Each integer defines the number of divisions used to
+sample the smallest reciprocal lattice vector while the other two vectors are sampled such
+that proportions are preserved.</p>
+<p>To calculate three phonon DOS with increasing number of q-points use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">ddb</span><span class="o">.</span><span class="n">anacompare_phdos</span><span class="p">(</span><span class="n">nqsmalls</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The return value is a named tuple with the phonon DOSes in res.phdoses while res.plotter
+is PhononDosPlotter.
+We can easily compare our results with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">plotter</span><span class="o">.</span><span class="n">combiplot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_71_0.png" src="_images/ddb_71_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="thermodynamic-properties-in-the-harmonic-approximation">
+<h2>Thermodynamic properties in the harmonic approximation<a class="headerlink" href="#thermodynamic-properties-in-the-harmonic-approximation" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>The thermodynamic properties of an ensemble of non-interacting phonons can be
+expressed in terms of integrals of the phonon DOS <span class="math notranslate nohighlight">\(g(\omega)\)</span> using:</p>
+<p>\begin{equation} %\label{eq:helmholtz}
+\Delta F = 3nNk_BT\int_{0}^{\omega_L}\text{ln}\left(2\text{sinh}\frac{\hbar\omega}{2k_BT}\right)g(\omega)d\omega
+\end{equation}</p>
+<p>\begin{equation} %\label{eq:free_en}
+\Delta E = 3nN\frac{\hbar}{2}\int_{0}^{\omega_L}\omega\text{coth}\left(\frac{\hbar\omega}{2k_BT}\right)g(\omega)d\omega
+\end{equation}</p>
+<p>\begin{equation} %\label{eq:c_v}
+C_v = 3nNk_B\int_{0}^{\omega_L}\left(\frac{\hbar\omega}{2k_BT}\right)^2\text{csch}^2\left(\frac{\hbar\omega}{2k_BT}\right)g(\omega)d\omega
+\end{equation}</p>
+<p>\begin{equation} %\label{eq:entropy}
+S = 3nNk_B\int_{0}^{\omega_L}\left(\frac{\hbar\omega}{2k_BT}\text{coth}\left(\frac{\hbar\omega}{2k_BT}\right) - \text{ln}\left(2\text{sinh}\frac{\hbar\omega}{2k_BT}\right)\right)g(\omega)d\omega,
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(k_B\)</span> is the Boltzmann constant.
+This should represent a reasonable approximation especially in the low-temperature
+regime in which anharmonic effects can be neglected.</p>
+<p>Let’s plot the vibrational contributions to the thermodynamic properties as function of temperature <span class="math notranslate nohighlight">\(T\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phdos</span><span class="o">.</span><span class="n">plot_harmonic_thermo</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_74_0.png" src="_images/ddb_74_0.png" />
+</div>
+</div>
+<p>and the zero-point energy <span class="math notranslate nohighlight">\(\dfrac{1}{2 N_q} \sum_{q\nu} \omega_{q\nu}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zpe</span> <span class="o">=</span> <span class="n">phdos</span><span class="o">.</span><span class="n">zero_point_energy</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zero-point energy&quot;</span><span class="p">,</span> <span class="n">zpe</span><span class="p">,</span> <span class="n">zpe</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;Ha&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Zero-point energy 0.131735677505966 eV 0.004841196854694931 Ha
+</pre></div>
+</div>
+</div>
+</div>
+<p>To get the free energy for a range of temperatures in Kelvin degrees, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">phdos</span><span class="o">.</span><span class="n">get_free_energy</span><span class="p">(</span><span class="n">tstart</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">tstop</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1">#f.plot();</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="macroscopic-dielectric-tensor-and-born-effective-charges">
+<h2>Macroscopic dielectric tensor and Born effective charges<a class="headerlink" href="#macroscopic-dielectric-tensor-and-born-effective-charges" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>Let us call anaddb to compute the electronic contribution to the macroscopic dielectric tensor,  <span class="math notranslate nohighlight">\(\epsilon^{\infty}_{\alpha\beta}\)</span>, and the Born effective charges <span class="math notranslate nohighlight">\(Z^*_{\kappa,\alpha\beta}\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">emacro</span><span class="p">,</span> <span class="n">becs</span> <span class="o">=</span> <span class="n">ddb</span><span class="o">.</span><span class="n">anaget_epsinf_and_becs</span><span class="p">(</span><span class="n">chneut</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note the use of <code class="docutils literal notranslate"><span class="pre">chneut</span></code> to enforce charge neutrality.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">emacro</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>x</th>
+      <td>3.438497</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td>0.000000</td>
+      <td>3.438497</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>z</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>3.499416</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">becs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>element</th>
+      <th>site_index</th>
+      <th>frac_coords</th>
+      <th>cart_coords</th>
+      <th>wyckoff</th>
+      <th>xx</th>
+      <th>yy</th>
+      <th>zz</th>
+      <th>yz</th>
+      <th>xz</th>
+      <th>xy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mg</td>
+      <td>0</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>1a</td>
+      <td>1.98721</td>
+      <td>1.98721</td>
+      <td>2.10659</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>O</td>
+      <td>1</td>
+      <td>[0.33333, 0.66667, 0.5]</td>
+      <td>[1.45432, 0.83965, 1.32842]</td>
+      <td>1d</td>
+      <td>-1.98721</td>
+      <td>-1.98721</td>
+      <td>-2.10659</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In the computation of the low-frequency (infrared) dielectric tensor, <span class="math notranslate nohighlight">\(\epsilon^{0}_{\alpha\beta}\)</span>,
+one has to include the response of the ions, whose motion will be triggered by the electric field.
+One can show that:</p>
+<p>\begin{equation} %\label{eq:dielectric}
+\epsilon^{0}<em>{\alpha\beta}(\omega) = \epsilon^{\infty}</em>{\alpha\beta} + 4\pi\sum_m\frac{S_{m,\alpha\beta}}{(\omega^{\Gamma}_m - \omega)^2}.
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(\omega^{\Gamma}_m\)</span> are the phonon frequencies at the center of the BZ and <span class="math notranslate nohighlight">\(S_{m,\alpha\beta}\)</span>
+is the so-called mode-oscillator strengh tensor that depends on the phonon displacement
+and the Born effective charges.</p>
+<p>To compute the dielectric tensor using the data stored in the DDB file, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dtgen</span> <span class="o">=</span> <span class="n">ddb</span><span class="o">.</span><span class="n">anaget_dielectric_tensor_generator</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># call print to get useful information</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dtgen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================================= Structure =================================
+Full Formula (Mg1 O1)
+Reduced Formula: MgO
+abc   :   2.908638   2.908638   2.656848
+angles:  90.000000  90.000000 120.000000
+Sites (2)
+  #  SP           a         b    c
+---  ----  --------  --------  ---
+  0  Mg    0         0         0
+  1  O     0.333333  0.666667  0.5
+
+Abinit Spacegroup: spgid: 0, num_spatial_symmetries: 12, has_timerev: True, symmorphic: False
+
+============================ Oscillator strength ============================
+Real part in Cartesian coordinates. a.u. units; 1 a.u. = 253.2638413 m3/s2. Set to zero below 1.00e-06.
+                          xx                      yy                     zz   yz   xz   xy
+mode                                                                                      
+0                        0.0                     0.0                    0.0  0.0  0.0  0.0
+1                        0.0                     0.0                    0.0  0.0  0.0  0.0
+2                        0.0                     0.0                    0.0  0.0  0.0  0.0
+3     0.00022453328281351966                     0.0                    0.0  0.0  0.0  0.0
+4                        0.0  0.00022453328281351966                    0.0  0.0  0.0  0.0
+5                        0.0                     0.0  0.0002523207013218457  0.0  0.0  0.0
+
+============================= Dielectric Tensors =============================
+Electronic dielectric tensor (eps_inf) in Cartesian coordinates. Set to zero below 1.00e-03.
+          x         y         z
+x  3.438497  0.000000  0.000000
+y  0.000000  3.438497  0.000000
+z  0.000000  0.000000  3.499416
+
+Zero-frequency dielectric tensor (eps_zero) in Cartesian coordinates. Set to zero below 1.00e-03.
+           x          y          z
+x  13.101919   0.000000   0.000000
+y   0.000000  13.101919   0.000000
+z   0.000000   0.000000  13.779005
+</pre></div>
+</div>
+</div>
+</div>
+<p>To compute the tensor for a given frequency:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e0</span> <span class="o">=</span> <span class="n">dtgen</span><span class="o">.</span><span class="n">tensor_at_frequency</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.31018620e+01+0.02381961j  2.54893071e-16+0.j
+   1.47502725e-25+0.j        ]
+ [ 0.00000000e+00+0.j          1.31018620e+01+0.02381961j
+  -2.55482215e-25+0.j        ]
+ [-3.68756813e-25+0.j         -1.27741107e-25+0.j
+   1.37789478e+01+0.02465278j]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>To plot the frequency dependence with a damping factor of 1e-4 eV (phonon linewidth):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dtgen</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gamma_ev</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s1">&#39;diag&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;eV&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_91_0.png" src="_images/ddb_91_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="using-ddbrobot-to-perform-convergence-studies">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">DdbRobot</span></code> to perform convergence studies<a class="headerlink" href="#using-ddbrobot-to-perform-convergence-studies" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">DdbRobot</span></code> receives a list of DDB files and provides methods
+to construct <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/10min.html">pandas dataframes</a>
+and analyze the results of multiple calculations.
+DdbRobots, in particular, are extremely useful to study the convergence of the phonon frequencies with respect to some computational parameters e.g. the number of k-points and the electronic smearing in metallic systems.</p>
+<p>In this example, we are interested in the effect of the k-point sampling and the smearing parameter
+on the vibrational properties of magnesium diboride.
+<span class="math notranslate nohighlight">\(MgB_2\)</span> is a metallic system with a critical temperature of 39 K that is the highest among conventional
+(phonon-mediated) superconductors.
+We use precomputed DDB files obtained by running GS+DFPT calculations with different values
+of <code class="docutils literal notranslate"><span class="pre">nkpt</span></code> and <code class="docutils literal notranslate"><span class="pre">tsmear</span></code>.</p>
+<p>Let’s build our <code class="docutils literal notranslate"><span class="pre">DdbRobot</span></code> object with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">paths</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1">#&quot;mgb2_444k_0.01tsmear_DDB&quot;,</span>
+    <span class="c1">#&quot;mgb2_444k_0.02tsmear_DDB&quot;,</span>
+    <span class="c1">#&quot;mgb2_444k_0.04tsmear_DDB&quot;,</span>
+    <span class="s2">&quot;mgb2_888k_0.01tsmear_DDB&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mgb2_888k_0.02tsmear_DDB&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mgb2_888k_0.04tsmear_DDB&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mgb2_121212k_0.01tsmear_DDB&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mgb2_121212k_0.02tsmear_DDB&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mgb2_121212k_0.04tsmear_DDB&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">abidata</span><span class="o">.</span><span class="n">dirpath</span><span class="p">,</span> <span class="s2">&quot;refs&quot;</span><span class="p">,</span> <span class="s2">&quot;mgb2_phonons_nkpt_tsmear&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">]</span>
+
+<span class="n">robot</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">DdbRobot</span><span class="o">.</span><span class="n">from_files</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span>
+<span class="n">robot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol start="0">
+<li>../../abipy/abipy/data/refs/mgb2_phonons_nkpt_tsmear/mgb2_888k_0.01tsmear_DDB</li>
+<li>../../abipy/abipy/data/refs/mgb2_phonons_nkpt_tsmear/mgb2_888k_0.02tsmear_DDB</li>
+<li>../../abipy/abipy/data/refs/mgb2_phonons_nkpt_tsmear/mgb2_888k_0.04tsmear_DDB</li>
+<li>../../abipy/abipy/data/refs/mgb2_phonons_nkpt_tsmear/mgb2_121212k_0.01tsmear_DDB</li>
+<li>../../abipy/abipy/data/refs/mgb2_phonons_nkpt_tsmear/mgb2_121212k_0.02tsmear_DDB</li>
+<li>../../abipy/abipy/data/refs/mgb2_phonons_nkpt_tsmear/mgb2_121212k_0.04tsmear_DDB</li>
+</ol></div></div>
+</div>
+<p>The <a class="reference external" href="http://abinit.github.io/abipy/scripts/abicomp.html">abicomp.py</a>
+script provides a command line interface to build robots from a list of files/directories
+given as arguments</p>
+<p>The DDB files are now stored in the robot with a label constructed from the file path.
+These labels, however, are not very informative. In principle we would like to have a label
+that reflects the value of <code class="docutils literal notranslate"><span class="pre">(nkpt,</span> <span class="pre">tsmear)</span></code> also because these labels
+will be used to generate the labels in our plots.</p>
+<p>Let’s fix it with a function that recomputes the labels from the metadata available in ddb.header:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">ddb</span><span class="p">:</span> <span class="s2">&quot;nkpt: </span><span class="si">%s</span><span class="s2">, tsmear: </span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ddb</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;nkpt&quot;</span><span class="p">],</span> <span class="n">ddb</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;tsmear&quot;</span><span class="p">])</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">remap_labels</span><span class="p">(</span><span class="n">function</span><span class="p">);</span>
+<span class="n">robot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol start="0">
+<li>nkpt: 256, tsmear: 0.01</li>
+<li>nkpt: 256, tsmear: 0.02</li>
+<li>nkpt: 256, tsmear: 0.04</li>
+<li>nkpt: 864, tsmear: 0.01</li>
+<li>nkpt: 864, tsmear: 0.02</li>
+<li>nkpt: 864, tsmear: 0.04</li>
+</ol></div></div>
+</div>
+<p>We are usually interested in the convergence behavior with respect to one
+or two parameters of the calculations.
+Let’s build a pandas dataframe with the most important parameters extracted from the DDB header:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robot</span><span class="o">.</span><span class="n">get_params_dataframe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nkpt</th>
+      <th>nsppol</th>
+      <th>ecut</th>
+      <th>tsmear</th>
+      <th>occopt</th>
+      <th>ixc</th>
+      <th>nband</th>
+      <th>usepaw</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>nkpt: 256, tsmear: 0.01</th>
+      <td>256</td>
+      <td>1</td>
+      <td>35.0</td>
+      <td>0.01</td>
+      <td>4</td>
+      <td>1</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>nkpt: 256, tsmear: 0.02</th>
+      <td>256</td>
+      <td>1</td>
+      <td>35.0</td>
+      <td>0.02</td>
+      <td>4</td>
+      <td>1</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>nkpt: 256, tsmear: 0.04</th>
+      <td>256</td>
+      <td>1</td>
+      <td>35.0</td>
+      <td>0.04</td>
+      <td>4</td>
+      <td>1</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>nkpt: 864, tsmear: 0.01</th>
+      <td>864</td>
+      <td>1</td>
+      <td>35.0</td>
+      <td>0.01</td>
+      <td>4</td>
+      <td>1</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>nkpt: 864, tsmear: 0.02</th>
+      <td>864</td>
+      <td>1</td>
+      <td>35.0</td>
+      <td>0.02</td>
+      <td>4</td>
+      <td>1</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>nkpt: 864, tsmear: 0.04</th>
+      <td>864</td>
+      <td>1</td>
+      <td>35.0</td>
+      <td>0.04</td>
+      <td>4</td>
+      <td>1</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now we tell the robot to invoke anaddb to compute the phonon bands for all DDB files.
+Since we are not interested in the phonon DOS, <code class="docutils literal notranslate"><span class="pre">nqsmall</span></code> is set to 0</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">anaget_phonon_plotters</span><span class="p">(</span><span class="n">nqsmall</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can plot all the phonon band structures on the same figure with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">phbands_plotter</span><span class="o">.</span><span class="n">combiplot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_101_0.png" src="_images/ddb_101_0.png" />
+</div>
+</div>
+<p>The plot is a bit crowded. Still, it is clear
+that there are portions of the vibration spectrum that are quite sensitive to the values of (nkpt, tsmear).</p>
+<p>In metals, it’s common to analyze the convergence of the physical properties by plotting the results
+as function of the k-point sampling for fixed value of tsmear.
+Let’s do something similar for the phonon band structures with the command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">phbands_plotter</span><span class="o">.</span><span class="n">gridplot_with_hue</span><span class="p">(</span><span class="s2">&quot;tsmear&quot;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;Thz&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_103_0.png" src="_images/ddb_103_0.png" />
+</div>
+</div>
+<p>Each panel now shows the phonon dispersion computed with different k-point samplings at fixed tsmear.</p>
+<p>The results obtained with the largest broadening (0.04 Ha) seem to be converged
+but remember that the “converged” result are in principle obtained in the limit <span class="math notranslate nohighlight">\(nkpt \rightarrow +\infty\)</span> and <span class="math notranslate nohighlight">\(tsmear\rightarrow 0\)</span>
+(well it’s not always possible to reach the mathematical limit so we should try to understand what happens
+to our observables when we are <strong>approaching</strong> this limit and if it’s possible to find values of (nkpt, tsmear)
+that are “close enough” to convergence).</p>
+<p>The middle panel reveals that there are two branch (6-7, Python indexing) along <span class="math notranslate nohighlight">\(\Gamma-A\)</span> that are quite sensitive to the sampling of the Fermi surface and this picture is confirmed by the first panel obtained with the lowest value of the electronic broadening.</p>
+<p>This analysis tells us two things:</p>
+<ul class="simple">
+<li><p>We should analyze in more detail the convergence behavior of these specific branches wrt (nkpt, tsmear)
+to make sure our results are really converged</p></li>
+<li><p>The strong variations observed in that particular region of the phonon spectrum could represent the signature
+of an important coupling between these vibrational modes and the electrons on the Fermi surface…</p></li>
+</ul>
+<p>If you now dig a bit into the scientific literature, you will find that this is the famous <span class="math notranslate nohighlight">\(E_{2g}\)</span> branch
+(in-plane oscillations of the two B atoms, twofold degenerate at <span class="math notranslate nohighlight">\(\Gamma\)</span>)
+that plays an important role in explaining the superconducting behavior of <span class="math notranslate nohighlight">\(MgB_2\)</span>.</p>
+<p>Let’s look in more details at the softening at the <span class="math notranslate nohighlight">\(\Gamma\)</span> point.
+We start by calling get_dataframe_at_qpoint to construct a dataframe
+with the phonon frequencies and the parameters of the calculation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">get_dataframe_at_qpoint</span><span class="p">(</span><span class="n">qpoint</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;meV&quot;</span><span class="p">,</span> <span class="n">with_geo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">data</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculation completed.
+Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpuhnpsqm0
+Calculation completed.
+Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpynw1_rkd
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculation completed.
+Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmp8_09m8b8
+Calculation completed.
+Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpuwiep7xg
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculation completed.
+Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmp_f6zsc8u
+Calculation completed.
+Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpmy1_0wax
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mode0</th>
+      <th>mode1</th>
+      <th>mode2</th>
+      <th>mode3</th>
+      <th>mode4</th>
+      <th>mode5</th>
+      <th>mode6</th>
+      <th>mode7</th>
+      <th>mode8</th>
+      <th>nkpt</th>
+      <th>nsppol</th>
+      <th>ecut</th>
+      <th>tsmear</th>
+      <th>occopt</th>
+      <th>ixc</th>
+      <th>nband</th>
+      <th>usepaw</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>nkpt: 256, tsmear: 0.01</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>40.517213</td>
+      <td>40.517213</td>
+      <td>48.996832</td>
+      <td>56.043934</td>
+      <td>56.043934</td>
+      <td>85.573338</td>
+      <td>256</td>
+      <td>1</td>
+      <td>35.0</td>
+      <td>0.01</td>
+      <td>4</td>
+      <td>1</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>nkpt: 256, tsmear: 0.02</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>40.605005</td>
+      <td>40.605005</td>
+      <td>48.898734</td>
+      <td>61.746396</td>
+      <td>61.746396</td>
+      <td>85.580765</td>
+      <td>256</td>
+      <td>1</td>
+      <td>35.0</td>
+      <td>0.02</td>
+      <td>4</td>
+      <td>1</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>nkpt: 256, tsmear: 0.04</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>40.772307</td>
+      <td>40.772307</td>
+      <td>48.802866</td>
+      <td>71.729034</td>
+      <td>71.729034</td>
+      <td>85.854690</td>
+      <td>256</td>
+      <td>1</td>
+      <td>35.0</td>
+      <td>0.04</td>
+      <td>4</td>
+      <td>1</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>nkpt: 864, tsmear: 0.01</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>40.834668</td>
+      <td>40.834668</td>
+      <td>48.789198</td>
+      <td>62.305097</td>
+      <td>62.305097</td>
+      <td>85.876512</td>
+      <td>864</td>
+      <td>1</td>
+      <td>35.0</td>
+      <td>0.01</td>
+      <td>4</td>
+      <td>1</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>nkpt: 864, tsmear: 0.02</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>40.753912</td>
+      <td>40.753912</td>
+      <td>48.961271</td>
+      <td>66.425595</td>
+      <td>66.425595</td>
+      <td>85.642626</td>
+      <td>864</td>
+      <td>1</td>
+      <td>35.0</td>
+      <td>0.02</td>
+      <td>4</td>
+      <td>1</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>nkpt: 864, tsmear: 0.04</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>40.773842</td>
+      <td>40.773842</td>
+      <td>48.835985</td>
+      <td>72.698701</td>
+      <td>72.698701</td>
+      <td>85.812753</td>
+      <td>864</td>
+      <td>1</td>
+      <td>35.0</td>
+      <td>0.04</td>
+      <td>4</td>
+      <td>1</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>and use <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> to produce a scatter plot in which the color of the points depends on tsmear:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robot</span><span class="o">.</span><span class="n">plot_xy_with_hue</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;nkpt&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mode6&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;tsmear&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddb_108_0.png" src="_images/ddb_108_0.png" />
+</div>
+</div>
+<p>A DDbRobot is essential a dictionary of DdbFiles and we can therefore reuse the DdbFile methods to call anaddb.
+For example, we said that the two degenerate <span class="math notranslate nohighlight">\(E_{2g}\)</span> modes at <span class="math notranslate nohighlight">\(\Gamma\)</span>
+involve in-plane oscillations of the two Mg atoms.
+Let’s check this with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;nkpt: 864, tsmear: 0.04&quot;</span>
+<span class="n">gamma_point</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">phbands_gamma</span> <span class="o">=</span> <span class="n">robot</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">anaget_phmodes_at_qpoint</span><span class="p">(</span><span class="n">gamma_point</span><span class="p">,</span> <span class="n">dipdip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lo_to_splitting</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">phbands_gamma</span><span class="o">.</span><span class="n">plot_phdispl_cartdirs</span><span class="p">(</span><span class="n">gamma_point</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculation completed.
+Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpqtegg7gr
+</pre></div>
+</div>
+<img alt="_images/ddb_110_1.png" src="_images/ddb_110_1.png" />
+</div>
+</div>
+<div class="section" id="how-to-analyze-the-converge-of-epsilon-0-epsilon-infty-and-born-effective-charges">
+<h3>How to analyze the converge of <span class="math notranslate nohighlight">\(\epsilon^0\)</span>, <span class="math notranslate nohighlight">\(\epsilon^\infty\)</span> and Born effective charges<a class="headerlink" href="#how-to-analyze-the-converge-of-epsilon-0-epsilon-infty-and-born-effective-charges" title="Permalink to this headline">¶</a></h3>
+<p>Let’s assume we have computed the dielectric properties and the Born effective charges for a given
+system with different k-meshes and we want to analyze the convergence of the results.
+Also in this case, the <code class="docutils literal notranslate"><span class="pre">DdbRobot</span></code> provides methods to automate most of the boring work.</p>
+<p>As usual, we start by creating a robot from a list of paths to DDB files.
+Here we use three different files produced with 2x2x2, 4x4x4 and 8x8x8 k-meshes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">paths</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;out_ngkpt222_DDB&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;out_ngkpt444_DDB&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;out_ngkpt888_DDB&quot;</span><span class="p">]</span>
+
+<span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">abidata</span><span class="o">.</span><span class="n">dirpath</span><span class="p">,</span> <span class="s2">&quot;refs&quot;</span><span class="p">,</span> <span class="s2">&quot;alas_eps_and_becs_vs_ngkpt&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">]</span>
+
+<span class="n">alas_robot</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">DdbRobot</span><span class="o">.</span><span class="n">from_files</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span>
+<span class="n">alas_robot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol start="0">
+<li>../../abipy/abipy/data/refs/alas_eps_and_becs_vs_ngkpt/out_ngkpt222_DDB</li>
+<li>../../abipy/abipy/data/refs/alas_eps_and_becs_vs_ngkpt/out_ngkpt444_DDB</li>
+<li>../../abipy/abipy/data/refs/alas_eps_and_becs_vs_ngkpt/out_ngkpt888_DDB</li>
+</ol></div></div>
+</div>
+<p>Now we call <code class="docutils literal notranslate"><span class="pre">anacompare_epsinf</span></code> to create a pandas <code class="docutils literal notranslate"><span class="pre">Dataframe</span></code> with the upper triangle
+of the <span class="math notranslate nohighlight">\(\epsilon_{ij}^\infty\)</span> dielectric tensor (Voigt notation) and we add the number of k-points
+in the IBZ to the table to facilitate the analysis:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">alas_robot</span><span class="o">.</span><span class="n">anacompare_epsinf</span><span class="p">(</span><span class="n">ddb_header_keys</span><span class="o">=</span><span class="s2">&quot;nkpt&quot;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>xx</th>
+      <th>yy</th>
+      <th>zz</th>
+      <th>yz</th>
+      <th>xz</th>
+      <th>xy</th>
+      <th>formula</th>
+      <th>chneut</th>
+      <th>nkpt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>13.584082</td>
+      <td>13.584082</td>
+      <td>13.584082</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>1</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9.268425</td>
+      <td>9.268425</td>
+      <td>9.268425</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>1</td>
+      <td>128</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>8.873178</td>
+      <td>8.873178</td>
+      <td>8.873178</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>1</td>
+      <td>1024</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>A similar approach can be used to analyze <span class="math notranslate nohighlight">\(\epsilon_{ij}^0\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">alas_robot</span><span class="o">.</span><span class="n">anacompare_eps0</span><span class="p">(</span><span class="n">ddb_header_keys</span><span class="o">=</span><span class="s2">&quot;nkpt&quot;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>xx</th>
+      <th>yy</th>
+      <th>zz</th>
+      <th>yz</th>
+      <th>xz</th>
+      <th>xy</th>
+      <th>formula</th>
+      <th>asr</th>
+      <th>chneut</th>
+      <th>nkpt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>15.884551</td>
+      <td>15.884551</td>
+      <td>15.884551</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.839414</td>
+      <td>10.839414</td>
+      <td>10.839414</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>128</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10.415665</td>
+      <td>10.415665</td>
+      <td>10.415665</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1024</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Analyzing the convergence of the Born effective charges is a bit more complicated
+because now we have a tensor for each atom in the unit cell:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">alas_robot</span><span class="o">.</span><span class="n">anacompare_becs</span><span class="p">(</span><span class="n">ddb_header_keys</span><span class="o">=</span><span class="s2">&quot;nkpt&quot;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>element</th>
+      <th>site_index</th>
+      <th>frac_coords</th>
+      <th>cart_coords</th>
+      <th>wyckoff</th>
+      <th>xx</th>
+      <th>yy</th>
+      <th>zz</th>
+      <th>yz</th>
+      <th>xz</th>
+      <th>xy</th>
+      <th>formula</th>
+      <th>chneut</th>
+      <th>nkpt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Al</td>
+      <td>0</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>1a</td>
+      <td>2.393991</td>
+      <td>2.393991</td>
+      <td>2.393991</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>1</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Al</td>
+      <td>0</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>1a</td>
+      <td>1.998460</td>
+      <td>1.998460</td>
+      <td>1.998460</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>1</td>
+      <td>128</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Al</td>
+      <td>0</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>1a</td>
+      <td>1.972175</td>
+      <td>1.972175</td>
+      <td>1.972175</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>1</td>
+      <td>1024</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>As</td>
+      <td>1</td>
+      <td>[0.25, 0.25, 0.25]</td>
+      <td>[1.40364, 1.40364, 1.40364]</td>
+      <td>1d</td>
+      <td>-2.393991</td>
+      <td>-2.393991</td>
+      <td>-2.393991</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>1</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>As</td>
+      <td>1</td>
+      <td>[0.25, 0.25, 0.25]</td>
+      <td>[1.40364, 1.40364, 1.40364]</td>
+      <td>1d</td>
+      <td>-1.998460</td>
+      <td>-1.998460</td>
+      <td>-1.998460</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>1</td>
+      <td>128</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>As</td>
+      <td>1</td>
+      <td>[0.25, 0.25, 0.25]</td>
+      <td>[1.40364, 1.40364, 1.40364]</td>
+      <td>1d</td>
+      <td>-1.972175</td>
+      <td>-1.972175</td>
+      <td>-1.972175</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>1</td>
+      <td>1024</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>But we can use the pandas API to select a portion of the data.
+The below code, for example, selects the Born effective charges for <em>As</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;site_index&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>element</th>
+      <th>site_index</th>
+      <th>frac_coords</th>
+      <th>cart_coords</th>
+      <th>wyckoff</th>
+      <th>xx</th>
+      <th>yy</th>
+      <th>zz</th>
+      <th>yz</th>
+      <th>xz</th>
+      <th>xy</th>
+      <th>formula</th>
+      <th>chneut</th>
+      <th>nkpt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>As</td>
+      <td>1</td>
+      <td>[0.25, 0.25, 0.25]</td>
+      <td>[1.40364, 1.40364, 1.40364]</td>
+      <td>1d</td>
+      <td>-2.393991</td>
+      <td>-2.393991</td>
+      <td>-2.393991</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>1</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>As</td>
+      <td>1</td>
+      <td>[0.25, 0.25, 0.25]</td>
+      <td>[1.40364, 1.40364, 1.40364]</td>
+      <td>1d</td>
+      <td>-1.998460</td>
+      <td>-1.998460</td>
+      <td>-1.998460</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>1</td>
+      <td>128</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>As</td>
+      <td>1</td>
+      <td>[0.25, 0.25, 0.25]</td>
+      <td>[1.40364, 1.40364, 1.40364]</td>
+      <td>1d</td>
+      <td>-1.972175</td>
+      <td>-1.972175</td>
+      <td>-1.972175</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Al1 As1</td>
+      <td>1</td>
+      <td>1024</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<!--- Click [TODO here]() to visualize the vibrational spectrum of $MgB_2$ with phononwebsite --><p>[<a class="reference external" href="#top">back to top</a>]</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="efatbands.html" title="previous page">FATBANDS.nc file</a>
+    <a class='right-next' id="next-link" href="sigres.html" title="next page">Postprocessing tools for GW calculations</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By M. Giantomassi<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,775 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Postprocessing tools for GW calculations &#8212; AbiPy_Book</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Postprocessing tools for Bethe-Salpeter calculations" href="mdf.html" />
+    <link rel="prev" title="Post-processing DFPT calculations with the DDB file" href="ddb.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AbiPy_Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="content.html">
+   Content in Jupyter Book
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="markdown.html">
+     Markdown Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="abinit_input.html">
+     Table of Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="input_factories.html">
+     Factory functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="structure.html">
+     Structure object
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gsr.html">
+     Post-processing tools for electron band energies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hist.html">
+     The HIST.nc file
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="efatbands.html">
+     FATBANDS.nc file
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddb.html">
+     Post-processing DFPT calculations with the DDB file
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Postprocessing tools for GW calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mdf.html">
+     Postprocessing tools for Bethe-Salpeter calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="abiwan.html">
+     Analyzing wannier90 results with AbiPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lobster.html">
+     Analyzing Lobster output files with AbiPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flows.html">
+     Tasks, Workflows and Flow
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/sigres.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/sigres.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/gmatteo/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/gmatteo/abipy_book/issues/new?title=Issue%20on%20page%20%2Fsigres.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/gmatteo/abipy_book/edit/main/docs/sigres.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gmatteo/abipy_book/main?urlpath=tree/docs/sigres.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-visualize-qp-corrections">
+   How to visualize QP corrections
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-the-spectral-function">
+   Plotting the spectral function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyzing-multiple-sigres-files-with-robots">
+   Analyzing multiple SIGRES files with robots
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a> <a id="top"></a></p>
+<div class="section" id="postprocessing-tools-for-gw-calculations">
+<h1>Postprocessing tools for GW calculations<a class="headerlink" href="#postprocessing-tools-for-gw-calculations" title="Permalink to this headline">¶</a></h1>
+<p>This notebook explains how to use AbiPy and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to visualize the results produced
+by the GW code.
+The self-energy code (<code class="docutils literal notranslate"><span class="pre">optdriver</span></code> 4) saves the final results in the <code class="docutils literal notranslate"><span class="pre">SIGRES.nc</span></code> file
+while the screening code (<code class="docutils literal notranslate"><span class="pre">optdriver</span></code> 3) stores the inverse dielectric matrix in the <code class="docutils literal notranslate"><span class="pre">SCR.nc</span></code> file.</p>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#How-to-visualize-QP-corrections">How to visualize QP corrections</a></p></li>
+<li><p><a class="reference external" href="#Plotting-the-spectral-function">Plotting the spectral function</a></p></li>
+<li><p><a class="reference external" href="#Analyzing-multiple-SIGRES-files-with-robots">Analyzing multiple SIGRES files with robots</a></p></li>
+</ul>
+<p>Let’s start by importing the basic modules we will need for this tutorial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use this at the beginning of your script so that your code will be compatible with python3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span> 
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>  <span class="c1"># Ignore warnings</span>
+
+<span class="kn">from</span> <span class="nn">abipy</span> <span class="kn">import</span> <span class="n">abilab</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span> <span class="c1"># This line tells AbiPy we are running inside a notebook</span>
+<span class="kn">import</span> <span class="nn">abipy.data</span> <span class="k">as</span> <span class="nn">abidata</span>
+
+<span class="c1"># This line configures matplotlib to show figures embedded in the notebook.</span>
+<span class="c1"># Replace `inline` with `notebook` in classic notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline   
+
+<span class="c1"># Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib</span>
+<span class="c1">#%matplotlib widget </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-to-visualize-qp-corrections">
+<h2>How to visualize QP corrections<a class="headerlink" href="#how-to-visualize-qp-corrections" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>As usual, we start by opening the netcdf file with abiopen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="n">abidata</span><span class="o">.</span><span class="n">ref_file</span><span class="p">(</span><span class="s2">&quot;tgw1_9o_DS4_SIGRES.nc&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sigres</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================================= File Info =================================
+Name: tgw1_9o_DS4_SIGRES.nc
+Directory: /Users/gmatteo/git_repos/abipy/abipy/data/refs
+Size: 1005.34 kb
+Access Time: Wed Mar 20 21:31:02 2019
+Modification Time: Wed Mar 20 16:53:35 2019
+Change Time: Wed Mar 20 16:53:35 2019
+
+================================= Structure =================================
+Full Formula (Si2)
+Reduced Formula: Si
+abc   :   3.823046   3.823046   3.823046
+angles:  60.000000  60.000000  60.000000
+Sites (2)
+  #  SP       a     b     c
+---  ----  ----  ----  ----
+  0  Si    0     0     0
+  1  Si    0.25  0.25  0.25
+
+Abinit Spacegroup: spgid: 0, num_spatial_symmetries: 48, has_timerev: True, symmorphic: True
+
+============================== Kohn-Sham bands ==============================
+Number of electrons: 8.0, Fermi level: 5.951 (eV)
+nsppol: 1, nkpt: 6, mband: 100, nspinor: 1, nspden: 1
+smearing scheme:  (occopt 1), tsmear_eV: 1.088
+Direct gap:
+    Energy: 2.513 (eV)
+    Initial state: spin: 0, kpt: [+0.000, +0.000, +0.000], weight: 0.031, band: 3, eig: 5.951, occ: 2.000
+    Final state:   spin: 0, kpt: [+0.000, +0.000, +0.000], weight: 0.031, band: 4, eig: 8.464, occ: 0.000
+Fundamental gap:
+    Energy: 0.570 (eV)
+    Initial state: spin: 0, kpt: [+0.000, +0.000, +0.000], weight: 0.031, band: 3, eig: 5.951, occ: 2.000
+    Final state:   spin: 0, kpt: [+0.500, +0.500, +0.000], weight: 0.094, band: 4, eig: 6.521, occ: 0.000
+Bandwidth: 12.096 (eV)
+Valence maximum located at:
+    spin: 0, kpt: [+0.000, +0.000, +0.000], weight: 0.031, band: 3, eig: 5.951, occ: 2.000
+Conduction minimum located at:
+    spin: 0, kpt: [+0.500, +0.500, +0.000], weight: 0.094, band: 4, eig: 6.521, occ: 0.000
+
+TIP: Call set_fermie_to_vbm() to set the Fermi level to the VBM if this is a non-magnetic semiconductor
+
+
+=============================== QP direct gaps ===============================
+QP_dirgap: 3.537 (eV) for K-point: [-0.250, -0.250, +0.000], spin: 0
+QP_dirgap: 4.357 (eV) for K-point: [-0.250, +0.250, +0.000], spin: 0
+QP_dirgap: 4.117 (eV) for K-point: [+0.500, +0.500, +0.000] X, spin: 0
+QP_dirgap: 8.711 (eV) for K-point: [-0.250, +0.500, +0.250] W, spin: 0
+QP_dirgap: 3.297 (eV) for K-point: [+0.500, +0.000, +0.000] L, spin: 0
+QP_dirgap: 3.126 (eV) for K-point: [+0.000, +0.000, +0.000] $\Gamma$, spin: 0
+
+
+============== QP results for each k-point and spin (all in eV) ==============
+K-point: [-0.250, -0.250, +0.000], spin: 0
+   band      e0     qpe  qpe_diago   vxcme  sigxme  sigcmee0        vUme  \
+0     0  -5.046  -4.760     -4.561 -10.493 -16.549     6.542  1.344e-321   
+1     1   2.411   2.281      2.238 -11.089 -13.671     2.410  1.344e-321   
+2     2   4.008   3.867      3.825 -10.689 -12.566     1.694  1.344e-319   
+3     3   4.008   3.867      3.825 -10.689 -12.566     1.695  1.334e-322   
+4     4   6.963   7.405      7.523  -9.434  -5.330    -3.544  8.053e-322   
+5     5   8.979   9.462      9.594  -9.212  -4.504    -4.093  1.636e-152   
+6     6  11.702  12.132     12.276 -10.569  -5.276    -4.719  1.344e-321   
+7     7  11.702  12.133     12.278 -10.569  -5.276    -4.717  1.344e-321   
+
+     ze0  
+0  0.589  
+1  0.751  
+2  0.768  
+3  0.769  
+4  0.789  
+5  0.786  
+6  0.748  
+7  0.748  
+ 
+K-point: [-0.250, +0.250, +0.000], spin: 0
+   band      e0     qpe  qpe_diago   vxcme  sigxme  sigcmee0        vUme  \
+0     0  -4.064  -3.960     -3.904 -10.617 -16.264     5.808  1.340e-319   
+1     1   0.418   0.303      0.258 -10.811 -14.348     3.376   0.000e+00   
+2     2   2.088   1.979      1.944 -10.067 -12.427     2.216   0.000e+00   
+3     3   4.590   4.437      4.391 -10.912 -12.687     1.576   0.000e+00   
+4     4   8.311   8.793      8.925  -9.604  -5.066    -3.924  5.774e-313   
+5     5  10.711  11.188     11.335 -10.115  -4.841    -4.649  1.334e-322   
+6     6  11.052  11.455     11.573 -10.233  -5.401    -4.310  2.668e-322   
+7     7  11.990  12.395     12.526  -9.894  -4.357    -5.001   0.000e+00   
+
+     ze0  
+0  0.652  
+1  0.723  
+2  0.758  
+3  0.770  
+4  0.786  
+5  0.764  
+6  0.773  
+7  0.756  
+ 
+K-point: [+0.500, +0.500, +0.000] X, spin: 0
+   band      e0     qpe  qpe_diago   vxcme  sigxme  sigcmee0        vUme  \
+0     0  -1.936  -1.940     -1.947 -10.762 -15.448     4.680  1.732e-312   
+1     1  -1.936  -1.944     -1.942 -10.762 -15.448     4.675  6.719e-322   
+2     2   3.030   2.851      2.795 -10.568 -12.966     2.163   0.000e+00   
+3     3   3.030   2.851      2.795 -10.568 -12.966     2.163  5.774e-313   
+4     4   6.521   6.968      7.084  -9.078  -5.038    -3.478  5.774e-313   
+5     5   6.521   6.969      7.084  -9.078  -5.038    -3.477  1.334e-322   
+6     6  15.976  16.184     16.280 -10.528  -3.786    -6.438   0.000e+00   
+7     7  15.976  16.185     16.282 -10.528  -3.786    -6.437  5.385e-322   
+
+     ze0  
+0  0.700  
+1  0.701  
+2  0.762  
+3  0.761  
+4  0.795  
+5  0.795  
+6  0.685  
+7  0.684  
+ 
+K-point: [-0.250, +0.500, +0.250] W, spin: 0
+   band      e0     qpe  qpe_diago   vxcme  sigxme  sigcmee0        vUme  \
+0     0  -1.760  -1.773     -1.808 -10.873 -15.503     4.611  6.722e-320   
+1     1  -1.760  -1.793     -1.778 -10.873 -15.503     4.582  1.334e-322   
+2     2   1.982   1.867      1.830  -9.991 -12.434     2.290   0.000e+00   
+3     3   1.982   1.867      1.830  -9.991 -12.434     2.290   0.000e+00   
+4     4  10.159  10.578     10.696  -9.647  -4.967    -4.142  6.722e-320   
+5     5  10.159  10.577     10.697  -9.647  -4.967    -4.143   0.000e+00   
+6     6  10.902  11.366     11.509 -10.031  -4.701    -4.722   0.000e+00   
+7     7  10.902  11.366     11.509 -10.031  -4.701    -4.722   0.000e+00   
+
+     ze0  
+0  0.691  
+1  0.691  
+2  0.757  
+3  0.757  
+4  0.779  
+5  0.779  
+6  0.764  
+7  0.764  
+ 
+K-point: [+0.500, +0.000, +0.000] L, spin: 0
+   band      e0     qpe  qpe_diago   vxcme  sigxme  sigcmee0        vUme  \
+0     0  -3.760  -3.647     -3.578 -10.759 -16.296     5.719   0.000e+00   
+1     1  -1.137  -1.182     -1.198 -10.178 -14.330     4.091  5.543e-311   
+2     2   4.726   4.559      4.509 -11.006 -12.812     1.588   0.000e+00   
+3     3   4.726   4.559      4.509 -11.006 -12.812     1.588   0.000e+00   
+4     4   7.408   7.856      7.978 -10.054  -5.736    -3.748   0.000e+00   
+5     5   9.251   9.772      9.915  -9.698  -4.959    -4.074   0.000e+00   
+6     6   9.251   9.771      9.916  -9.698  -4.959    -4.075   0.000e+00   
+7     7  13.458  13.754     13.847  -8.011  -2.413    -5.210   0.000e+00   
+
+     ze0  
+0  0.623  
+1  0.737  
+2  0.772  
+3  0.772  
+4  0.785  
+5  0.783  
+6  0.783  
+7  0.760  
+ 
+K-point: [+0.000, +0.000, +0.000] $\Gamma$, spin: 0
+   band     e0    qpe  qpe_diago   vxcme  sigxme  sigcmee0  vUme    ze0
+0     0 -6.145 -5.719     -5.412 -10.388 -16.893     7.239   0.0  0.581
+1     1  5.951  5.806      5.764 -11.253 -12.628     1.188   0.0  0.777
+2     2  5.951  5.806      5.764 -11.253 -12.628     1.188   0.0  0.777
+3     3  5.951  5.806      5.764 -11.253 -12.628     1.187   0.0  0.777
+4     4  8.464  8.931      9.065 -10.042  -5.563    -3.878   0.0  0.777
+5     5  8.464  8.932      9.066 -10.042  -5.563    -3.877   0.0  0.777
+6     6  8.464  8.933      9.067 -10.042  -5.563    -3.876   0.0  0.778
+7     7  9.205  9.664      9.798 -10.748  -5.734    -4.421   0.0  0.773
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a look at the KS energies used to compute the Green’s function <span class="math notranslate nohighlight">\(G_0\)</span>, the RPA screening <span class="math notranslate nohighlight">\(W_0\)</span>
+and the <span class="math notranslate nohighlight">\(G_0W_0\)</span> self-energy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span><span class="o">.</span><span class="n">ebands</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/sigres_6_0.png" src="_images/sigres_6_0.png" />
+</div>
+</div>
+<p>The SIGRES file contains the KS as well as the QP direct gaps for all the k-points
+included in the calculation (kptgw). To plot the differente QP - KS, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span><span class="o">.</span><span class="n">plot_qpgaps</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/sigres_8_0.png" src="_images/sigres_8_0.png" />
+</div>
+</div>
+<p>For the absolute QP gaps:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span><span class="o">.</span><span class="n">plot_qpgaps</span><span class="p">(</span><span class="n">plot_qpmks</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/sigres_10_0.png" src="_images/sigres_10_0.png" />
+</div>
+</div>
+<p>To plot the QP results as a function of the initial KS energy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span><span class="o">.</span><span class="n">plot_qps_vs_e0</span><span class="p">();</span> <span class="c1">#tight_layout=True);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/sigres_12_0.png" src="_images/sigres_12_0.png" />
+</div>
+</div>
+<p>and use <code class="docutils literal notranslate"><span class="pre">with_fields</span></code> to filter the quantity of interest:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span><span class="o">.</span><span class="n">plot_qps_vs_e0</span><span class="p">(</span><span class="n">with_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;vxcme&quot;</span><span class="p">,</span> <span class="s2">&quot;sigxme&quot;</span><span class="p">,</span> <span class="s2">&quot;sigcmee0&quot;</span><span class="p">],</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/sigres_14_0.png" src="_images/sigres_14_0.png" />
+</div>
+</div>
+<p>To plot the QP energies on top of the KS energies used in the SIGMA run:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span><span class="o">.</span><span class="n">plot_qpbands_ibz</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/sigres_16_0.png" src="_images/sigres_16_0.png" />
+</div>
+</div>
+<p>To plot the KS band structure with markers whose size is proportional to the QP correction
+and whose direction gives the sign of the correction:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span><span class="o">.</span><span class="n">plot_ksbands_with_qpmarkers</span><span class="p">(</span><span class="n">fact</span><span class="o">=</span><span class="mi">1000</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/sigres_18_0.png" src="_images/sigres_18_0.png" />
+</div>
+</div>
+<p>We can also plot the <span class="math notranslate nohighlight">\(&lt;\Psi^{KS}_{mk}\,|\,\Psi^{QP}_{nk}&gt;\)</span> coefficients for given spin and k-point:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span><span class="o">.</span><span class="n">plot_eigvec_qp</span><span class="p">(</span><span class="n">spin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">kpoint</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/sigres_20_0.png" src="_images/sigres_20_0.png" />
+</div>
+</div>
+<p>In this case, we have a diagonal matrix because the wavefunctions are not updated (<span class="math notranslate nohighlight">\(G_0W_0\)</span>).
+The scenario is completely different if you start to perform self-consistent calculations with update
+of the QP amplitudes.</p>
+</div>
+<div class="section" id="plotting-the-spectral-function">
+<h2>Plotting the spectral function<a class="headerlink" href="#plotting-the-spectral-function" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>This example shows how to plot the <span class="math notranslate nohighlight">\(G_0W_0\)</span> spectral functions <span class="math notranslate nohighlight">\(A(\omega)\)</span>
+at the <span class="math notranslate nohighlight">\(\Gamma\)</span> point. See also lesson tgw2_4</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="n">abidata</span><span class="o">.</span><span class="n">ref_file</span><span class="p">(</span><span class="s2">&quot;al_g0w0_sigmaw_SIGRES.nc&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">al_sigres</span><span class="p">:</span>
+    <span class="c1"># Plot A(w) for the first spin, the gamma point, and bands in [0,1,2,3]</span>
+    <span class="n">al_sigres</span><span class="o">.</span><span class="n">plot_spectral_functions</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/sigres_23_0.png" src="_images/sigres_23_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="analyzing-multiple-sigres-files-with-robots">
+<h2>Analyzing multiple SIGRES files with robots<a class="headerlink" href="#analyzing-multiple-sigres-files-with-robots" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>To analyze the convergence of the QP results, we can use the SigresRobot.
+Let’s build our robot from a list of SIGRES files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List of SIGRES files computed with different values of nband.</span>
+<span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;si_g0w0ppm_nband10_SIGRES.nc&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;si_g0w0ppm_nband20_SIGRES.nc&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;si_g0w0ppm_nband30_SIGRES.nc&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">filepaths</span> <span class="o">=</span> <span class="p">[</span><span class="n">abidata</span><span class="o">.</span><span class="n">ref_file</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">]</span>
+
+<span class="n">robot</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">SigresRobot</span><span class="o">.</span><span class="n">from_files</span><span class="p">(</span><span class="n">filepaths</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we plot the convergence of the QP direct gap as a function of the number of bands
+in the self-energy for all the k-points available in the netcdf files:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robot</span><span class="o">.</span><span class="n">plot_qpgaps_convergence</span><span class="p">(</span><span class="n">sortby</span><span class="o">=</span><span class="s2">&quot;sigma_nband&quot;</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/sigres_27_0.png" src="_images/sigres_27_0.png" />
+</div>
+</div>
+<p>If we are interested in the convergence of the real/imaginary part of the self-energy
+and of the renormalization factor …</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robot</span><span class="o">.</span><span class="n">plot_qpdata_conv_skb</span><span class="p">(</span><span class="n">spin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">kpoint</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">band</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sortby</span><span class="o">=</span><span class="s2">&quot;sigma_nband&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/sigres_29_0.png" src="_images/sigres_29_0.png" />
+</div>
+</div>
+<p>We can also plot the QP data as a function of the KS energies on the same figure with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robot</span><span class="o">.</span><span class="n">plot_qpfield_vs_e0</span><span class="p">(</span><span class="s2">&quot;qpeme0&quot;</span><span class="p">,</span> <span class="n">sortby</span><span class="o">=</span><span class="s2">&quot;sigma_nband&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/sigres_31_0.png" src="_images/sigres_31_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#robot.get_qpgaps_dataframe(spin=0, kpoint=(0, 0, 0))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-info" role="alert">
+Robots can also be constructed from the command line with: abicomp.py sigres FILES
+</div><p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="ddb.html" title="previous page">Post-processing DFPT calculations with the DDB file</a>
+    <a class='right-next' id="next-link" href="mdf.html" title="next page">Postprocessing tools for Bethe-Salpeter calculations</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By M. Giantomassi<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

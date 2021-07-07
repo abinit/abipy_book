@@ -1,0 +1,652 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FATBANDS.nc file &#8212; AbiPy_Book</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Post-processing DFPT calculations with the DDB file" href="ddb.html" />
+    <link rel="prev" title="The HIST.nc file" href="hist.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AbiPy_Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="content.html">
+   Content in Jupyter Book
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="markdown.html">
+     Markdown Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="abinit_input.html">
+     Table of Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="input_factories.html">
+     Factory functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="structure.html">
+     Structure object
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gsr.html">
+     Post-processing tools for electron band energies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hist.html">
+     The HIST.nc file
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     FATBANDS.nc file
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddb.html">
+     Post-processing DFPT calculations with the DDB file
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sigres.html">
+     Postprocessing tools for GW calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mdf.html">
+     Postprocessing tools for Bethe-Salpeter calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="abiwan.html">
+     Analyzing wannier90 results with AbiPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lobster.html">
+     Analyzing Lobster output files with AbiPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flows.html">
+     Tasks, Workflows and Flow
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/efatbands.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/efatbands.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/gmatteo/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/gmatteo/abipy_book/issues/new?title=Issue%20on%20page%20%2Fefatbands.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/gmatteo/abipy_book/edit/main/docs/efatbands.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gmatteo/abipy_book/main?urlpath=tree/docs/efatbands.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a> <a id="top"></a></p>
+<div class="section" id="fatbands-nc-file">
+<h1><a class="reference external" href="http://FATBANDS.nc">FATBANDS.nc</a> file<a class="headerlink" href="#fatbands-nc-file" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">FATBANDS.nc</span></code> file contains the projection of the KS wavefunctions onto atom-centered
+functions with given angular momentum <span class="math notranslate nohighlight">\(l\)</span>.
+The file is generated by using the <code class="docutils literal notranslate"><span class="pre">prtdos</span></code> variable either in a SCF or NSCF run.
+One can use the <code class="docutils literal notranslate"><span class="pre">abiopen</span></code> function provided by <code class="docutils literal notranslate"><span class="pre">abilab</span></code> to open the file and generate an instance of <code class="docutils literal notranslate"><span class="pre">FatbandsFile</span></code>.
+Alternatively, use the <code class="docutils literal notranslate"><span class="pre">abiopen.py</span></code> script to open the file inside the shell with the syntax:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abiopen.py out_FATBANDS.nc 
+</pre></div>
+</div>
+<p>This command will start the ipython interpreter so that one can interact directly
+with the <code class="docutils literal notranslate"><span class="pre">FatbandFile</span></code> object (named <code class="docutils literal notranslate"><span class="pre">abifile</span></code> inside ipython).
+To generate a jupyter notebook use:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abiopen.py out_FATBANDS.nc -nb
+</pre></div>
+</div>
+<p>For a quick visualization of the data, use:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abiopen.py out_FATBANDS.nc -e
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use this at the beginning of your script so that your code will be compatible with python3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span> 
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>  <span class="c1"># Ignore warnings</span>
+
+<span class="kn">from</span> <span class="nn">abipy</span> <span class="kn">import</span> <span class="n">abilab</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span> <span class="c1"># This line tells AbiPy we are running inside a notebook</span>
+<span class="kn">import</span> <span class="nn">abipy.data</span> <span class="k">as</span> <span class="nn">abidata</span>
+
+<span class="c1"># This line configures matplotlib to show figures embedded in the notebook.</span>
+<span class="c1"># Replace `inline` with `notebook` in classic notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline   
+
+<span class="c1"># Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib</span>
+<span class="c1">#%matplotlib widget </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This fatbands file has been produced on a k-path so it is not suitable for DOS calculations.</span>
+<span class="n">fbnc_kpath</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="n">abidata</span><span class="o">.</span><span class="n">ref_file</span><span class="p">(</span><span class="s2">&quot;mgb2_kpath_FATBANDS.nc&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To print file info i.e., dimensions, variables, etc.
+(note that prtdos = 3, so LM decomposition is not available)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fbnc_kpath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================================= File Info =================================
+Name: mgb2_kpath_FATBANDS.nc
+Directory: /Users/gmatteo/git_repos/abipy/abipy/data/refs/mgb2_fatbands
+Size: 149.01 kb
+Access Time: Thu Feb 27 03:35:00 2020
+Modification Time: Wed Mar 20 16:53:35 2019
+Change Time: Wed Mar 20 16:53:35 2019
+
+================================= Structure =================================
+Full Formula (Mg1 B2)
+Reduced Formula: MgB2
+abc   :   3.086000   3.086000   3.523000
+angles:  90.000000  90.000000 120.000000
+Sites (3)
+  #  SP           a         b    c
+---  ----  --------  --------  ---
+  0  Mg    0         0         0
+  1  B     0.333333  0.666667  0.5
+  2  B     0.666667  0.333333  0.5
+
+Abinit Spacegroup: spgid: 191, num_spatial_symmetries: 24, has_timerev: True, symmorphic: False
+
+============================== Electronic Bands ==============================
+================================= Structure =================================
+Full Formula (Mg1 B2)
+Reduced Formula: MgB2
+abc   :   3.086000   3.086000   3.523000
+angles:  90.000000  90.000000 120.000000
+Sites (3)
+  #  SP           a         b    c
+---  ----  --------  --------  ---
+  0  Mg    0         0         0
+  1  B     0.333333  0.666667  0.5
+  2  B     0.666667  0.333333  0.5
+
+Abinit Spacegroup: spgid: 191, num_spatial_symmetries: 24, has_timerev: True, symmorphic: False
+
+Number of electrons: 8.0, Fermi level: 8.700 (eV)
+nsppol: 1, nkpt: 78, mband: 8, nspinor: 1, nspden: 1
+smearing scheme: none (occopt 1), tsmear_eV: 0.272
+Direct gap:
+    Energy: 0.595 (eV)
+    Initial state: spin: 0, kpt: [+0.350, +0.300, +0.000], weight: 0.000, band: 3, eig: 8.402, occ: 2.000
+    Final state:   spin: 0, kpt: [+0.350, +0.300, +0.000], weight: 0.000, band: 4, eig: 8.997, occ: 0.000
+Fundamental gap:
+    Energy: 0.058 (eV)
+    Initial state: spin: 0, kpt: [+0.333, +0.333, +0.000], name: K, weight: 0.000, band: 4, eig: 8.700, occ: 0.000
+    Final state:   spin: 0, kpt: [+0.147, +0.000, +0.000], weight: 0.000, band: 4, eig: 8.758, occ: 0.000
+Bandwidth: 14.314 (eV)
+Valence maximum located at:
+    spin: 0, kpt: [+0.333, +0.333, +0.000], name: K, weight: 0.000, band: 4, eig: 8.700, occ: 0.000
+Conduction minimum located at:
+    spin: 0, kpt: [+0.147, +0.000, +0.000], weight: 0.000, band: 4, eig: 8.758, occ: 0.000
+
+TIP: Call set_fermie_to_vbm() to set the Fermi level to the VBM if this is a non-magnetic semiconductor
+
+
+=============================== Fatbands Info ===============================
+prtdos: 3, prtdosm: 0, mbesslang: 5, pawprtdos: 0, usepaw: 0
+nsppol: 1, nkpt: 78, mband: 8
+
+  Idx  Symbol    Reduced_Coords             Lmax    Ratsph [Bohr]  Has_Atom
+-----  --------  -----------------------  ------  ---------------  ----------
+    0  Mg        0.00000 0.00000 0.00000       4                2  Yes
+    1  B         0.33333 0.66667 0.50000       4                2  Yes
+    2  B         0.66667 0.33333 0.50000       4                2  Yes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fbnc_kpath</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/efatbands_7_0.png" src="_images/efatbands_7_0.png" />
+</div>
+</div>
+<p>To plot the k-points belonging to the path:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fbnc_kpath</span><span class="o">.</span><span class="n">ebands</span><span class="o">.</span><span class="n">kpoints</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/efatbands_9_0.png" src="_images/efatbands_9_0.png" />
+</div>
+</div>
+<p>To plot the electronic fatbands grouped by atomic type:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fbnc_kpath</span><span class="o">.</span><span class="n">plot_fatbands_typeview</span><span class="p">(</span><span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/efatbands_11_0.png" src="_images/efatbands_11_0.png" />
+</div>
+</div>
+<p>To plot the electronic fatbands grouped by <span class="math notranslate nohighlight">\(l\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fbnc_kpath</span><span class="o">.</span><span class="n">plot_fatbands_lview</span><span class="p">(</span><span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/efatbands_13_0.png" src="_images/efatbands_13_0.png" />
+</div>
+</div>
+<p>Now we read another <a class="reference external" href="http://FATBANDS.nc">FATBANDS.nc</a> file produced on 18x18x18 k-mesh</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fbnc_kmesh</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="n">abidata</span><span class="o">.</span><span class="n">ref_file</span><span class="p">(</span><span class="s2">&quot;mgb2_kmesh181818_FATBANDS.nc&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fbnc_kpath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================================= File Info =================================
+Name: mgb2_kpath_FATBANDS.nc
+Directory: /Users/gmatteo/git_repos/abipy/abipy/data/refs/mgb2_fatbands
+Size: 149.01 kb
+Access Time: Thu Feb 27 03:35:00 2020
+Modification Time: Wed Mar 20 16:53:35 2019
+Change Time: Wed Mar 20 16:53:35 2019
+
+================================= Structure =================================
+Full Formula (Mg1 B2)
+Reduced Formula: MgB2
+abc   :   3.086000   3.086000   3.523000
+angles:  90.000000  90.000000 120.000000
+Sites (3)
+  #  SP           a         b    c
+---  ----  --------  --------  ---
+  0  Mg    0         0         0
+  1  B     0.333333  0.666667  0.5
+  2  B     0.666667  0.333333  0.5
+
+Abinit Spacegroup: spgid: 191, num_spatial_symmetries: 24, has_timerev: True, symmorphic: False
+
+============================== Electronic Bands ==============================
+================================= Structure =================================
+Full Formula (Mg1 B2)
+Reduced Formula: MgB2
+abc   :   3.086000   3.086000   3.523000
+angles:  90.000000  90.000000 120.000000
+Sites (3)
+  #  SP           a         b    c
+---  ----  --------  --------  ---
+  0  Mg    0         0         0
+  1  B     0.333333  0.666667  0.5
+  2  B     0.666667  0.333333  0.5
+
+Abinit Spacegroup: spgid: 191, num_spatial_symmetries: 24, has_timerev: True, symmorphic: False
+
+Number of electrons: 8.0, Fermi level: 8.700 (eV)
+nsppol: 1, nkpt: 78, mband: 8, nspinor: 1, nspden: 1
+smearing scheme: none (occopt 1), tsmear_eV: 0.272
+Direct gap:
+    Energy: 0.595 (eV)
+    Initial state: spin: 0, kpt: [+0.350, +0.300, +0.000], weight: 0.000, band: 3, eig: 8.402, occ: 2.000
+    Final state:   spin: 0, kpt: [+0.350, +0.300, +0.000], weight: 0.000, band: 4, eig: 8.997, occ: 0.000
+Fundamental gap:
+    Energy: 0.058 (eV)
+    Initial state: spin: 0, kpt: [+0.333, +0.333, +0.000], name: K, weight: 0.000, band: 4, eig: 8.700, occ: 0.000
+    Final state:   spin: 0, kpt: [+0.147, +0.000, +0.000], weight: 0.000, band: 4, eig: 8.758, occ: 0.000
+Bandwidth: 14.314 (eV)
+Valence maximum located at:
+    spin: 0, kpt: [+0.333, +0.333, +0.000], name: K, weight: 0.000, band: 4, eig: 8.700, occ: 0.000
+Conduction minimum located at:
+    spin: 0, kpt: [+0.147, +0.000, +0.000], weight: 0.000, band: 4, eig: 8.758, occ: 0.000
+
+TIP: Call set_fermie_to_vbm() to set the Fermi level to the VBM if this is a non-magnetic semiconductor
+
+
+=============================== Fatbands Info ===============================
+prtdos: 3, prtdosm: 0, mbesslang: 5, pawprtdos: 0, usepaw: 0
+nsppol: 1, nkpt: 78, mband: 8
+
+  Idx  Symbol    Reduced_Coords             Lmax    Ratsph [Bohr]  Has_Atom
+-----  --------  -----------------------  ------  ---------------  ----------
+    0  Mg        0.00000 0.00000 0.00000       4                2  Yes
+    1  B         0.33333 0.66667 0.50000       4                2  Yes
+    2  B         0.66667 0.33333 0.50000       4                2  Yes
+</pre></div>
+</div>
+</div>
+</div>
+<p>and plot the <span class="math notranslate nohighlight">\(l\)</span>-PJDOS grouped by atomic type:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fbnc_kmesh</span><span class="o">.</span><span class="n">plot_pjdos_typeview</span><span class="p">(</span><span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/efatbands_17_0.png" src="_images/efatbands_17_0.png" />
+</div>
+</div>
+<p>Plot the L-PJDOS grouped by L:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fbnc_kmesh</span><span class="o">.</span><span class="n">plot_pjdos_lview</span><span class="p">(</span><span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/efatbands_19_0.png" src="_images/efatbands_19_0.png" />
+</div>
+</div>
+<p>Now we use the two netcdf files to produce plots with fatbands + PJDOSEs.
+The data for the DOS is taken from pjdosfile.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fbnc_kpath</span><span class="o">.</span><span class="n">plot_fatbands_with_pjdos</span><span class="p">(</span><span class="n">pjdosfile</span><span class="o">=</span><span class="n">fbnc_kmesh</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/efatbands_21_0.png" src="_images/efatbands_21_0.png" />
+</div>
+</div>
+<p>fatbands + PJDOS grouped by L:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fbnc_kpath</span><span class="o">.</span><span class="n">plot_fatbands_with_pjdos</span><span class="p">(</span><span class="n">pjdosfile</span><span class="o">=</span><span class="n">fbnc_kmesh</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="s2">&quot;lview&quot;</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/efatbands_23_0.png" src="_images/efatbands_23_0.png" />
+</div>
+</div>
+<div class="alert alert-danger" role="alert">
+Remember to close the files
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fbnc_kpath</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">fbnc_kmesh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a></p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="hist.html" title="previous page">The HIST.nc file</a>
+    <a class='right-next' id="next-link" href="ddb.html" title="next page">Post-processing DFPT calculations with the DDB file</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By M. Giantomassi<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

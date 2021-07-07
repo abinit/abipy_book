@@ -1,0 +1,1562 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasks, Workflows and Flow &#8212; AbiPy_Book</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Analyzing Lobster output files with AbiPy" href="lobster.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AbiPy_Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="content.html">
+   Content in Jupyter Book
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="markdown.html">
+     Markdown Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="abinit_input.html">
+     Table of Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="input_factories.html">
+     Factory functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="structure.html">
+     Structure object
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gsr.html">
+     Post-processing tools for electron band energies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hist.html">
+     The HIST.nc file
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="efatbands.html">
+     FATBANDS.nc file
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddb.html">
+     Post-processing DFPT calculations with the DDB file
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sigres.html">
+     Postprocessing tools for GW calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mdf.html">
+     Postprocessing tools for Bethe-Salpeter calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="abiwan.html">
+     Analyzing wannier90 results with AbiPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lobster.html">
+     Analyzing Lobster output files with AbiPy
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tasks, Workflows and Flow
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/flows.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/flows.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/gmatteo/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/gmatteo/abipy_book/issues/new?title=Issue%20on%20page%20%2Fflows.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/gmatteo/abipy_book/edit/main/docs/flows.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gmatteo/abipy_book/main?urlpath=tree/docs/flows.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-a-flow-for-band-structure-calculations">
+   Building a Flow for band structure calculations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-build-and-run-the-flow">
+   How to build and run the Flow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#executing-a-flow">
+   Executing a Flow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-on-works-tasks-and-dependencies">
+   More on Works, Tasks and dependencies
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abirun-py">
+   Abirun.py
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a> <a id="top"></a></p>
+<div class="section" id="tasks-workflows-and-flow">
+<h1>Tasks, Workflows and Flow<a class="headerlink" href="#tasks-workflows-and-flow" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#Building-a-Flow-for-band-structure-calculations">Building a Flow for band structure calculations</a></p></li>
+<li><p><a class="reference external" href="#How-to-build-and-run-the-Flow">How to build and run the Flow</a></p></li>
+<li><p><a class="reference external" href="#Executing-a-Flow">Executing a Flow</a></p></li>
+<li><p><a class="reference external" href="#More-on-Works,-Tasks-and-dependencies">More on Works, Tasks and dependencies</a></p></li>
+<li><p><a class="reference external" href="#Abirun.py">Abirun.py</a></p></li>
+</ul>
+<p>In this notebook we discuss some of the basic concepts used in AbiPy
+to automate ab-initio calculations.
+In particular we will focus on the following three objects:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Task</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Work</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Flow</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">Task</span></code> represent the most <em>elementary step</em> of the automatic workflow.
+Roughly speaking, it corresponds to the execution of a single Abinit calculation <strong>without</strong> multiple datasets.</p>
+<p>From the point of view of AbiPy, a calculation consists of a set of <code class="docutils literal notranslate"><span class="pre">Tasks</span></code> that are connected
+by dependencies.
+Each task has a list of files that are needed to start the calculation,
+and a list of files that are produced at the end of the run.</p>
+<p>Some of the input files needed by a <code class="docutils literal notranslate"><span class="pre">Task</span></code> must be provided by the user in the form of Abinit input variables
+(e.g. the crystalline structure, the pseudopotentials), other inputs may be produced by other tasks.
+When a <code class="docutils literal notranslate"><span class="pre">Task</span></code> <strong>B</strong> requires the output file <code class="docutils literal notranslate"><span class="pre">DEN</span></code> of another task <strong>A</strong>,
+we say that <strong>B</strong> depends on <strong>A</strong> through a <code class="docutils literal notranslate"><span class="pre">DEN</span></code> file, and we express this dependency with the dictionary:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">B_deps</span> <span class="o">=</span> <span class="p">{</span><span class="n">A</span><span class="p">:</span> <span class="s2">&quot;DEN&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>To clarify this point, let’s take a standard KS band structure calculation as an example.
+In this case, we have an initial <code class="docutils literal notranslate"><span class="pre">ScfTask</span></code> that solves the KS equations self-consistently to produce a <code class="docutils literal notranslate"><span class="pre">DEN</span></code> file.
+The density is then used by a second <code class="docutils literal notranslate"><span class="pre">NscfTask</span></code> to compute a band structure on an arbitrary
+set of <span class="math notranslate nohighlight">\(k\)</span>-points.
+The <code class="docutils literal notranslate"><span class="pre">NscfTask</span></code> thus has a dependency on the <code class="docutils literal notranslate"><span class="pre">ScfTask</span></code> in the sense that it cannot be executed
+until the <code class="docutils literal notranslate"><span class="pre">ScfTask</span></code> is completed and the <code class="docutils literal notranslate"><span class="pre">DEN</span></code> file is produced by the <code class="docutils literal notranslate"><span class="pre">ScfTask</span></code>.</p>
+<p>Now that we have clarified the concept of <code class="docutils literal notranslate"><span class="pre">Task</span></code>, we can finally turn to <code class="docutils literal notranslate"><span class="pre">Works</span></code> and <code class="docutils literal notranslate"><span class="pre">Flow</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">Work</span></code> can be seen as a list of <code class="docutils literal notranslate"><span class="pre">Tasks</span></code>, while the <code class="docutils literal notranslate"><span class="pre">Flow</span></code> is essentially a list of <code class="docutils literal notranslate"><span class="pre">Work</span></code> objects.
+Works are usually used to group tasks that are connected to each other.
+Flows are the final objects that are executed. The <code class="docutils literal notranslate"><span class="pre">Flow</span></code> provides an easy-to-use
+interface for performing this execution.
+The <code class="docutils literal notranslate"><span class="pre">Flow</span></code> provides a high-level API to perform common operations like launching the actual jobs, checking the status of the <code class="docutils literal notranslate"><span class="pre">Tasks</span></code>, correcting problems etc.</p>
+<p>AbiPy provides several tools to generate Flows for typical first-principles calculations, so called factory functions.
+This means that you do not need to understand all the technical details of the python implementation.
+In many cases, indeed, we already provide some kind of <code class="docutils literal notranslate"><span class="pre">Work</span></code> or <code class="docutils literal notranslate"><span class="pre">Flow</span></code> that automates
+your calculation, and you only need to provide the correct list of input files.
+This list, obviously, must be consistent with the kind Flow/Work you are using.
+(For instance, you should not pass a list of inputs for performing a band structure calculation to a Work
+that is expected to compute phonons with DFPT!)</p>
+<p>All the <code class="docutils literal notranslate"><span class="pre">Works</span></code> and the <code class="docutils literal notranslate"><span class="pre">Tasks</span></code> of a flow are created and executed inside the working directory (<code class="docutils literal notranslate"><span class="pre">workdir</span></code>).
+This is usually specified by the user during the creation of the <code class="docutils literal notranslate"><span class="pre">Flow</span></code> object.
+AbiPy creates the workdir of the different Works/Tasks when the <code class="docutils literal notranslate"><span class="pre">Flow</span></code> is executed
+for the first time.</p>
+<p>Each <code class="docutils literal notranslate"><span class="pre">Task</span></code> contains a set of input variables that will be used to generate the
+Abinit input file.
+This input <strong>must</strong> be provided by the user during the creation of the <code class="docutils literal notranslate"><span class="pre">Task</span></code>.
+Fortunately, AbiPy provides an object named <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code> to facilitate the creation
+of such input.
+Once you have an <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code>, you can create the corresponding <code class="docutils literal notranslate"><span class="pre">Task</span></code> with the (pseudo) code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_task</span> <span class="o">=</span> <span class="n">Task</span><span class="p">(</span><span class="n">abinit_input_object</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Task</span></code> provides several methods for monitoring the status of the calculation and
+post-processing the results.
+Note that the concept of dependency is not limited to files. All the Tasks in the
+flow are connected and can interact with each other. This allows programmers to implements python
+functions that will be invoked by the framework at run time. For example, one can
+implement a Task that fetches the relaxed structure from a previous Task and
+use this configuration to start a DFPT calculation.</p>
+<p>In the next paragraph, we discuss how to construct a <code class="docutils literal notranslate"><span class="pre">Flow</span></code> for band-structure calculations
+with a high-level interface that only requires the specifications of the input files.
+This example allows us to discuss the most important methods of the <code class="docutils literal notranslate"><span class="pre">Flow</span></code>.</p>
+</div>
+<div class="section" id="building-a-flow-for-band-structure-calculations">
+<h2>Building a Flow for band structure calculations<a class="headerlink" href="#building-a-flow-for-band-structure-calculations" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>Let’s start by creating a function that produces two input files.
+The first input is a standard self-consistent ground-state run.
+The second input uses the density produced in the first run to perform
+a non self-consistent band structure calculation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This line configures matplotlib to show figures embedded in the notebook.</span>
+<span class="c1"># Replace `inline` with `notebook` in classic notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline   
+
+<span class="c1"># Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib</span>
+<span class="c1">#%matplotlib widget  </span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span> <span class="c1"># to get rid of deprecation warnings</span>
+
+<span class="kn">from</span> <span class="nn">abipy</span> <span class="kn">import</span> <span class="n">abilab</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">abipy.flowtk</span> <span class="k">as</span> <span class="nn">flowtk</span>
+<span class="kn">import</span> <span class="nn">abipy.data</span> <span class="k">as</span> <span class="nn">abidata</span>
+
+<span class="k">def</span> <span class="nf">make_scf_nscf_inputs</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Build ands return the input files for the GS-SCF and the GS-NSCF tasks.&quot;&quot;&quot;</span>
+    <span class="n">multi</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">MultiDataset</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">cif_file</span><span class="p">(</span><span class="s2">&quot;si.cif&quot;</span><span class="p">),</span>
+                                <span class="n">pseudos</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">pseudos</span><span class="p">(</span><span class="s2">&quot;14si.pspnc&quot;</span><span class="p">),</span> <span class="n">ndtset</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Set global variables (dataset1 and dataset2)</span>
+    <span class="n">multi</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">ecut</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">nband</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="c1"># Dataset 1 (GS-SCF run)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="n">shiftk</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">tolvrs</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+
+    <span class="c1"># Dataset 2 (GS-NSCF run on a k-path)</span>
+    <span class="n">kptbounds</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="c1"># L point</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="c1"># Gamma point</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="c1"># X point</span>
+    <span class="p">]</span>
+
+    <span class="n">multi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_kpath</span><span class="p">(</span><span class="n">ndivsm</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">kptbounds</span><span class="o">=</span><span class="n">kptbounds</span><span class="p">)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">tolwfr</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+    
+    <span class="c1"># Return two input files for the GS and the NSCF run</span>
+    <span class="n">scf_input</span><span class="p">,</span> <span class="n">nscf_input</span> <span class="o">=</span> <span class="n">multi</span><span class="o">.</span><span class="n">split_datasets</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">scf_input</span><span class="p">,</span> <span class="n">nscf_input</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once we have our two input files, we pass them to the
+factory function <code class="docutils literal notranslate"><span class="pre">bandstructure_flow</span></code> that returns our <code class="docutils literal notranslate"><span class="pre">Flow</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scf_input</span><span class="p">,</span> <span class="n">nscf_input</span> <span class="o">=</span> <span class="n">make_scf_nscf_inputs</span><span class="p">()</span>
+
+<span class="n">workdir</span> <span class="o">=</span> <span class="s2">&quot;/tmp/hello_bands&quot;</span>
+<span class="n">flow</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">bandstructure_flow</span><span class="p">(</span><span class="n">workdir</span><span class="p">,</span> <span class="n">scf_input</span><span class="p">,</span> <span class="n">nscf_input</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">bandstructure_flow</span></code> took care of creating the correct dependency between the two tasks.
+The <code class="docutils literal notranslate"><span class="pre">NscfTask</span></code>, indeed,  depends on the <code class="docutils literal notranslate"><span class="pre">ScfTask</span></code> in w0/t0, whereas the <code class="docutils literal notranslate"><span class="pre">ScfTask</span></code> has no dependency:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/flows_7_0.svg" src="_images/flows_7_0.svg" /></div>
+</div>
+<div class="alert alert-success" role="alert">
+Note that we have not used `getden2 = -1` in the second dataset 
+since AbiPy knows how to connect the two Tasks.
+So no need for `get*` or `ird*` variables with Abipy. 
+Just specify the correct dependency and python will do the rest!
+</div><p>To have useful information on the status of the flow, one uses:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">show_status</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Work #0: &lt;BandStructureWork, node_id=438724, workdir=../../../../../tmp/hello_bands/w0&gt;, Finalized=False
++--------+-------------+---------+--------------+------------+----------+-----------------+--------+-----------+
+| Task   | Status      | Queue   | MPI|Omp|Gb   | Warn|Com   | Class    | Sub|Rest|Corr   | Time   |   Node_ID |
++========+=============+=========+==============+============+==========+=================+========+===========+
+| w0_t0  | Initialized | None    | 1|  1|2.0    | 2|  2      | ScfTask  | (0, 0, 0)       | None   |    438725 |
++--------+-------------+---------+--------------+------------+----------+-----------------+--------+-----------+
+| w0_t1  | Initialized | None    | 1|  1|2.0    | 1|  4      | NscfTask | (0, 0, 0)       | None   |    438726 |
++--------+-------------+---------+--------------+------------+----------+-----------------+--------+-----------+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Meaning of the different columns:</p>
+<ul class="simple">
+<li><p><em>Task</em>: short name of the task (usually <em>w[index_of_work_in_flow]_t[index_of_task_in_work]</em></p></li>
+<li><p><em>Status</em>: Status of the task</p></li>
+<li><p><em>Queue</em>: QueueName&#64;Job identifier returned by the resource manager when the task is submitted</p></li>
+<li><p><em>(MPI|Omp|Gb)</em>: Number of MPI procs, OMP threads, and memory per MPI proc</p></li>
+<li><p><em>(Warn|Com)</em>: Number of Error/Warning/Comment messages found in the ABINIT log</p></li>
+<li><p><em>Class</em>: The class of the <code class="docutils literal notranslate"><span class="pre">Task</span></code></p></li>
+<li><p><em>(Sub|Rest|Corr)</em>: Number of (submissions/restart/AbiPy corrections) performed</p></li>
+<li><p><em>Node_ID</em> : identifier of the task, used to select tasks or works in python code or <code class="docutils literal notranslate"><span class="pre">abirun.py</span></code></p></li>
+</ul>
+<p>Both <code class="docutils literal notranslate"><span class="pre">Flow</span></code> and <code class="docutils literal notranslate"><span class="pre">Work</span></code> are <em>iterable</em>.
+Iterating on a <code class="docutils literal notranslate"><span class="pre">Flow</span></code> gives <code class="docutils literal notranslate"><span class="pre">Work</span></code> objects, whereas
+iterating over a <code class="docutils literal notranslate"><span class="pre">Work</span></code> gives the <code class="docutils literal notranslate"><span class="pre">Tasks</span></code> inside that particular <code class="docutils literal notranslate"><span class="pre">Work</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">work</span> <span class="ow">in</span> <span class="n">flow</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">work</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Flows</span></code> and <code class="docutils literal notranslate"><span class="pre">Works</span></code> are containers and we can select items in these containers
+with the syntax: flow[start:stop] or work[start:stop].
+This means that the previous loop is equivalent to the much more verbose version:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">flow</span><span class="p">)):</span>
+    <span class="n">work</span> <span class="o">=</span> <span class="n">flow</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">work</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">work</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>At this point it should not be so difficult to understand that:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>gives the first task in the first work of the flow while</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>selects the last <code class="docutils literal notranslate"><span class="pre">Task</span></code> in the last <code class="docutils literal notranslate"><span class="pre">Work</span></code>.
+In several cases, we only need to iterate over a flat list of tasks without caring about the works.
+In this case, we can use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">flow</span><span class="o">.</span><span class="n">iflat_tasks</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>to iterate over all Tasks in the Flow.</p>
+</div>
+<div class="section" id="how-to-build-and-run-the-flow">
+<h2>How to build and run the Flow<a class="headerlink" href="#how-to-build-and-run-the-flow" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>The flow is still in memory and no file has been produced.
+In order to build the workflow, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">&quot;/tmp/hello_bands/&quot;</span><span class="p">):</span> 
+    <span class="kn">import</span> <span class="nn">shutil</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="s2">&quot;/tmp/hello_bands&quot;</span><span class="p">)</span>
+
+<span class="n">flow</span><span class="o">.</span><span class="n">build_and_pickle_dump</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p>This function creates the directories of the <code class="docutils literal notranslate"><span class="pre">Flow</span></code>:</p>
+<p>(If you rely on MacOSX, the tree command might not be available. To fix this, see <a class="reference external" href="http://osxdaily.com/2016/09/09/view-folder-tree-terminal-mac-os-tree-equivalent/">http://osxdaily.com/2016/09/09/view-folder-tree-terminal-mac-os-tree-equivalent/</a>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>tree /tmp/hello_bands
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zsh:1: command not found: tree
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a look at the files/directories associated to the first work (flow[0]):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_graphviz_dirtree</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/flows_18_0.svg" src="_images/flows_18_0.svg" /></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">w0</span></code> is the directory containing the input files of the first workflow (well, we have only one workflow in our example).
+<code class="docutils literal notranslate"><span class="pre">t0</span></code> and <code class="docutils literal notranslate"><span class="pre">t1</span></code> contain the input files needed to run the SCF and the NSC run, respectively.</p>
+<p>You might have noticed that each <code class="docutils literal notranslate"><span class="pre">Task</span></code> directory present the same structure:</p>
+<ul class="simple">
+<li><p><em>run.abi</em>: Input file</p></li>
+<li><p><em>run.files</em>: Files file</p></li>
+<li><p><em><a class="reference external" href="http://job.sh">job.sh</a></em>: Submission script</p></li>
+<li><p><em>outdata</em>: Directory containing output data files</p></li>
+<li><p><em>indata</em>: Directory containing input data files</p></li>
+<li><p><em>tmpdata</em>: Directory with temporary files</p></li>
+</ul>
+<div class="alert alert-danger" role="alert">
+`__AbinitFlow__.pickle` is the pickle file used to save the status of `Flow`. **Don't touch it!** 
+</div><p>An Abinit Task <em>has</em> an <a class="reference internal" href="abinit_input.html"><span class="doc std std-doc">AbinitInput</span></a> which in turn has a <a class="reference internal" href="structure.html"><span class="doc std std-doc">Structure</span></a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">input</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="abinit_input">
+##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#ecut" target="_blank">ecut</a> 6<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband</a> 8<br> <a href="https://docs.abinit.org/variables/basic#ngkpt" target="_blank">ngkpt</a> 8 8 8<br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt</a> 1<br> <a href="https://docs.abinit.org/variables/basic#nshiftk" target="_blank">nshiftk</a> 1<br> <a href="https://docs.abinit.org/variables/basic#shiftk" target="_blank">shiftk</a> 0 0 0<br> <a href="https://docs.abinit.org/variables/basic#tolvrs" target="_blank">tolvrs</a> 1e-06<br>##############################################<br>####                  STRUCTURE                  <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#natom" target="_blank">natom</a> 2<br> <a href="https://docs.abinit.org/variables/basic#ntypat" target="_blank">ntypat</a> 1<br> <a href="https://docs.abinit.org/variables/basic#typat" target="_blank">typat</a> 1 1<br> <a href="https://docs.abinit.org/variables/basic#znucl" target="_blank">znucl</a> 14<br> <a href="https://docs.abinit.org/variables/basic#xred" target="_blank">xred</a><br>    0.0000000000    0.0000000000    0.0000000000<br>    0.2500000000    0.2500000000    0.2500000000<br> <a href="https://docs.abinit.org/variables/basic#acell" target="_blank">acell</a>    1.0    1.0    1.0<br> <a href="https://docs.abinit.org/variables/basic#rprim" target="_blank">rprim</a><br>    6.3285005244    0.0000000000    3.6537614813<br>    2.1095001748    5.9665675141    3.6537614813<br>    0.0000000000    0.0000000000    7.3075229627
+<div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">structure</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Structure Summary
+Lattice
+    abc : 3.86697462 3.86697462 3.86697462
+ angles : 59.99999999999999 59.99999999999999 59.99999999999999
+ volume : 40.88829179346891
+      A : 3.3488982567096763 0.0 1.9334873100000005
+      B : 1.1162994189032256 3.1573715557642927 1.9334873100000005
+      C : 0.0 0.0 3.86697462
+PeriodicSite: Si (0.0000, 0.0000, 0.0000) [0.0000, 0.0000, 0.0000]
+PeriodicSite: Si (1.1163, 0.7893, 1.9335) [0.2500, 0.2500, 0.2500]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">pseudos</span><span class="p">:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NcAbinitPseudo: 14si.pspnc&gt;
+  summary: Troullier-Martins psp for element  Si        Thu Oct 27 17:31:21 EDT 1994
+  number of valence electrons: 4.0
+  maximum angular momentum: d
+  angular momentum for local part: d
+  XC correlation: LDA_XC_TETER93
+  supports spin-orbit: False
+  radius for non-linear core correction: 1.80626423934776
+  hint for low accuracy: ecut: 0.0, pawecutdg: 0.0
+  hint for normal accuracy: ecut: 0.0, pawecutdg: 0.0
+  hint for high accuracy: ecut: 0.0, pawecutdg: 0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s print the value of <code class="docutils literal notranslate"><span class="pre">kptopt</span></code> for all tasks in our flow with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="n">task</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;kptopt&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">flow</span><span class="o">.</span><span class="n">iflat_tasks</span><span class="p">()])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, -2]
+</pre></div>
+</div>
+</div>
+</div>
+<p>that, in this particular case, gives the same result as:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="n">task</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;kptopt&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">flow</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, -2]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="executing-a-flow">
+<h2>Executing a Flow<a class="headerlink" href="#executing-a-flow" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Flow</span></code> can be executed with two different approaches: a programmatic interface based
+on <code class="docutils literal notranslate"><span class="pre">flow.make_scheduler</span></code> or the <code class="docutils literal notranslate"><span class="pre">abirun.py</span></code> script.
+In this section, we discuss the first approach because it plays well with the jupyter notebook.
+Note however that <code class="docutils literal notranslate"><span class="pre">abirun.py</span></code> is highly recommended especially when running non-trivial calculations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">make_scheduler</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using scheduler v&gt;=3.0.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">[Thu Jul  8 00:40:36 2021] Number of launches: 1</span>
+
+Work #0: &lt;BandStructureWork, node_id=438724, workdir=../../../../../tmp/hello_bands/w0&gt;, Finalized=False
++--------+-------------+------------+--------------+------------+----------+-----------------+----------+-----------+
+| Task   | Status      | Queue      | MPI|Omp|Gb   | Warn|Com   | Class    | Sub|Rest|Corr   | Time     |   Node_ID |
++========+=============+============+==============+============+==========+=================+==========+===========+
+| w0_t0  | <span class=" -Color -Color-Blue">Submitted</span>   | 24754@gmac | 2|  1|2.0    | 0|  0      | ScfTask  | (1, 0, 0)       | 0:00:00Q |    438725 |
++--------+-------------+------------+--------------+------------+----------+-----------------+----------+-----------+
+| w0_t1  | Initialized | None       | 1|  1|2.0    | NA|NA      | NscfTask | (0, 0, 0)       | None     |    438726 |
++--------+-------------+------------+--------------+------------+----------+-----------------+----------+-----------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">[Thu Jul  8 00:40:44 2021] Number of launches: 1</span>
+
+Work #0: &lt;BandStructureWork, node_id=438724, workdir=../../../../../tmp/hello_bands/w0&gt;, Finalized=False
++--------+-----------+------------+--------------+------------+----------+-----------------+----------+-----------+
+| Task   | Status    | Queue      | MPI|Omp|Gb   | Warn|Com   | Class    | Sub|Rest|Corr   | Time     |   Node_ID |
++========+===========+============+==============+============+==========+=================+==========+===========+
+| w0_t0  | <span class=" -Color -Color-Green">Completed</span> | 24754@gmac | 2|  1|2.0    | 2|  2      | ScfTask  | (1, 0, 0)       | 0:00:02R |    438725 |
++--------+-----------+------------+--------------+------------+----------+-----------------+----------+-----------+
+| w0_t1  | <span class=" -Color -Color-Blue">Submitted</span> | 24763@gmac | 2|  1|2.0    | 0|  0      | NscfTask | (1, 0, 0)       | 0:00:00Q |    438726 |
++--------+-----------+------------+--------------+------------+----------+-----------------+----------+-----------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Work #0: &lt;BandStructureWork, node_id=438724, workdir=../../../../../tmp/hello_bands/w0&gt;, Finalized=<span class=" -Color -Color-Green">True</span>
+  Finalized works are not shown. Use verbose &gt; 0 to force output.
+
+<span class=" -Color -Color-Green">all_ok reached</span>
+
+
+Submitted on: Thu Jul  8 00:40:36 2021
+Completed on: Thu Jul  8 00:40:52 2021
+Elapsed time: 0:00:16.045880
+Flow completed successfully
+
+Calling flow.finalize()...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The flow keeps track of the different actions performed by the python code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">show_history</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Green">============================================================================================================</span>
+<span class=" -Color -Color-Green">============== &lt;BandStructureWork, node_id=438724, workdir=../../../../../tmp/hello_bands/w0&gt; ==============</span>
+<span class=" -Color -Color-Green">============================================================================================================</span>
+[Thu Jul  8 00:40:44 2021] In on_ok with sender &lt;ScfTask, node_id=438725, workdir=../../../../../tmp/hello_bands/w0/t0&gt;
+[Thu Jul  8 00:40:52 2021] In on_ok with sender &lt;NscfTask, node_id=438726, workdir=../../../../../tmp/hello_bands/w0/t1&gt;
+[Thu Jul  8 00:40:52 2021] Finalized set to True
+[Thu Jul  8 00:40:52 2021] Work &lt;BandStructureWork, node_id=438724, workdir=../../../../../tmp/hello_bands/w0&gt; is finalized and broadcasts signal S_OK
+[Thu Jul  8 00:40:52 2021] Node &lt;BandStructureWork, node_id=438724, workdir=../../../../../tmp/hello_bands/w0&gt; broadcasts signal Completed
+
+<span class=" -Color -Color-Green">===========================================================================================================</span>
+<span class=" -Color -Color-Green">================= &lt;ScfTask, node_id=438725, workdir=../../../../../tmp/hello_bands/w0/t0&gt; =================</span>
+<span class=" -Color -Color-Green">===========================================================================================================</span>
+[Thu Jul  8 00:40:36 2021] Status changed to Ready. msg: Status set to Ready
+[Thu Jul  8 00:40:36 2021] Setting input variables: {&#39;autoparal&#39;: 1, &#39;max_ncpus&#39;: 2, &#39;mem_test&#39;: 0}
+[Thu Jul  8 00:40:36 2021] Old values: {&#39;autoparal&#39;: None, &#39;max_ncpus&#39;: None, &#39;mem_test&#39;: None}
+[Thu Jul  8 00:40:36 2021] Setting input variables: {&#39;npimage&#39;: 1, &#39;npkpt&#39;: 2, &#39;npspinor&#39;: 1, &#39;npfft&#39;: 1, &#39;npband&#39;: 1, &#39;bandpp&#39;: 1}
+[Thu Jul  8 00:40:36 2021] Old values: {&#39;npimage&#39;: None, &#39;npkpt&#39;: None, &#39;npspinor&#39;: None, &#39;npfft&#39;: None, &#39;npband&#39;: None, &#39;bandpp&#39;: None}
+[Thu Jul  8 00:40:36 2021] Status changed to Initialized. msg: finished autoparal run
+[Thu Jul  8 00:40:36 2021] Submitted with MPI=2, Omp=1, Memproc=2.0 [Gb] Submitted to queue 
+[Thu Jul  8 00:40:44 2021] Task completed status set to OK based on abiout
+[Thu Jul  8 00:40:44 2021] Finalized set to True
+[Thu Jul  8 00:40:44 2021] Node &lt;ScfTask, node_id=438725, workdir=../../../../../tmp/hello_bands/w0/t0&gt; broadcasts signal Completed
+
+<span class=" -Color -Color-Green">============================================================================================================</span>
+<span class=" -Color -Color-Green">================= &lt;NscfTask, node_id=438726, workdir=../../../../../tmp/hello_bands/w0/t1&gt; =================</span>
+<span class=" -Color -Color-Green">============================================================================================================</span>
+[Thu Jul  8 00:40:44 2021] Status changed to Ready. msg: Status set to Ready
+[Thu Jul  8 00:40:44 2021] Need path /tmp/hello_bands/w0/t0/outdata/out_DEN with ext DEN
+[Thu Jul  8 00:40:44 2021] Linking path /tmp/hello_bands/w0/t0/outdata/out_DEN --&gt; /tmp/hello_bands/w0/t1/indata/in_DEN
+[Thu Jul  8 00:40:44 2021] Setting input variables: {&#39;ngfft&#39;: array([18, 18, 18])}
+[Thu Jul  8 00:40:44 2021] Old values: {&#39;ngfft&#39;: None}
+[Thu Jul  8 00:40:44 2021] Adding connecting vars {&#39;irdden&#39;: 1}
+[Thu Jul  8 00:40:44 2021] Setting input variables: {&#39;irdden&#39;: 1}
+[Thu Jul  8 00:40:44 2021] Old values: {&#39;irdden&#39;: None}
+[Thu Jul  8 00:40:44 2021] Setting input variables: {&#39;autoparal&#39;: 1, &#39;max_ncpus&#39;: 2, &#39;mem_test&#39;: 0}
+[Thu Jul  8 00:40:44 2021] Old values: {&#39;autoparal&#39;: None, &#39;max_ncpus&#39;: None, &#39;mem_test&#39;: None}
+[Thu Jul  8 00:40:44 2021] Setting input variables: {&#39;npimage&#39;: 1, &#39;npkpt&#39;: 2, &#39;npspinor&#39;: 1, &#39;npfft&#39;: 1, &#39;npband&#39;: 1, &#39;bandpp&#39;: 1}
+[Thu Jul  8 00:40:44 2021] Old values: {&#39;npimage&#39;: None, &#39;npkpt&#39;: None, &#39;npspinor&#39;: None, &#39;npfft&#39;: None, &#39;npband&#39;: None, &#39;bandpp&#39;: None}
+[Thu Jul  8 00:40:44 2021] Status changed to Initialized. msg: finished autoparal run
+[Thu Jul  8 00:40:44 2021] Submitted with MPI=2, Omp=1, Memproc=2.0 [Gb] Submitted to queue 
+[Thu Jul  8 00:40:52 2021] Task completed status set to OK based on abiout
+[Thu Jul  8 00:40:52 2021] Finalized set to True
+[Thu Jul  8 00:40:52 2021] Node &lt;NscfTask, node_id=438726, workdir=../../../../../tmp/hello_bands/w0/t1&gt; broadcasts signal Completed
+
+<span class=" -Color -Color-Green">============================================================================================================</span>
+<span class=" -Color -Color-Green">====================== &lt;Flow, node_id=438723, workdir=../../../../../tmp/hello_bands&gt; ======================</span>
+<span class=" -Color -Color-Green">============================================================================================================</span>
+[Thu Jul  8 00:40:52 2021] Calling flow.finalize.
+[Thu Jul  8 00:40:52 2021] Finalized set to True
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you read the logs carefully, you will realize that in the first iteration of the scheduler,
+only the <code class="docutils literal notranslate"><span class="pre">ScfTask</span></code> is executed because the second task depends on it.
+After the initial submission, the scheduler starts to monitor all the tasks in the flow.</p>
+<p>When the ScfTask completes, the dependency of the NscfTask is fullfilled and
+a new submission takes place. Once the second task completes, the scheduler calls <code class="docutils literal notranslate"><span class="pre">flow.finalize</span></code>
+to execute (optional) logic that is supposed to be executed to perform some sort of cleanup or final processing.
+At this point, all the tasks in the flow are completed and the scheduler exits.</p>
+<p>Now we can have a look at the different output files produced by our flow with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_graphviz_dirtree</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/flows_33_0.svg" src="_images/flows_33_0.svg" /></div>
+</div>
+<p>or list only the files with a given extension:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">listext</span><span class="p">(</span><span class="s2">&quot;GSR.nc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 2 files with extension `GSR.nc` produced by the flow
+File                                                       Size [Mb]    Node_ID  Node Class
+-------------------------------------------------------  -----------  ---------  ------------
+../../../../../tmp/hello_bands/w0/t0/outdata/out_GSR.nc         1.99     438725  ScfTask
+../../../../../tmp/hello_bands/w0/t1/outdata/out_GSR.nc         1.99     438726  NscfTask
+</pre></div>
+</div>
+</div>
+</div>
+<p>The nice thing about the flow is that the object knows how to locate and interpret the
+different input/ouput files produced by Abinit.
+As a consequence, it is very easy to expose the AbiPy post-processing tools with a easy-to-use API
+in which only tasks/works/flow plus a very few input arguments are required.</p>
+<p>Let’s call, for instance, the inspect method to plot the self-consistent cycles:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/flows_37_0.png" src="_images/flows_37_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Blue">Task &lt;NscfTask, node_id=438726, workdir=../../../../../tmp/hello_bands/w0/t1&gt; does not provide an inspect method</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the other AbiPy tutorials, we have explained how to use abiopen to create
+python objects from netcdf files.
+Well, the same code can be reused with the flow.
+It is just a matter of replacing</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">abiopen</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span> <span class="k">as</span> <span class="n">gsr</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">task</span><span class="o">.</span><span class="n">open_gsr</span><span class="p">()</span> <span class="k">as</span> <span class="n">gsr</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Note that there is no need to specify the file path when you use the task-based API, because
+the <code class="docutils literal notranslate"><span class="pre">Task</span></code> knows how to locate its <code class="docutils literal notranslate"><span class="pre">GSR.nc</span></code> output.
+Let’s do some practice…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">open_gsr</span><span class="p">()</span> <span class="k">as</span> <span class="n">gsr</span><span class="p">:</span>
+    <span class="n">ebands_kmesh</span> <span class="o">=</span> <span class="n">gsr</span><span class="o">.</span><span class="n">ebands</span>
+    
+<span class="k">with</span> <span class="n">flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">open_gsr</span><span class="p">()</span> <span class="k">as</span> <span class="n">gsr</span><span class="p">:</span>
+    <span class="n">gsr</span><span class="o">.</span><span class="n">ebands</span><span class="o">.</span><span class="n">plot_with_edos</span><span class="p">(</span><span class="n">ebands_kmesh</span><span class="o">.</span><span class="n">get_edos</span><span class="p">(),</span> <span class="n">with_gaps</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/flows_39_0.png" src="_images/flows_39_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="more-on-works-tasks-and-dependencies">
+<h2>More on Works, Tasks and dependencies<a class="headerlink" href="#more-on-works-tasks-and-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>In the previous example, we have constructed a workflow for band structure calculations
+starting from two input files and the magic line</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">bandstructure_flow</span><span class="p">(</span><span class="n">workdir</span><span class="p">,</span> <span class="n">scf_input</span><span class="p">,</span> <span class="n">nscf_input</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now it is the right time to explain in more details the syntax and the API used in AbiPy
+to build a flow with dependencies.
+Let’s try to build a <code class="docutils literal notranslate"><span class="pre">Flow</span></code> from scratch and use graphviz after each step to show what’s happening.
+We start with an empty flow in the <code class="docutils literal notranslate"><span class="pre">hello_flow</span></code> directory:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello_flow</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span><span class="n">workdir</span><span class="o">=</span><span class="s2">&quot;hello_flow&quot;</span><span class="p">)</span>
+<span class="n">hello_flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/flows_41_0.svg" src="_images/flows_41_0.svg" /></div>
+</div>
+<p>Now we add a new <code class="docutils literal notranslate"><span class="pre">Task</span></code> by just passing an <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code> for SCF calculations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello_flow</span><span class="o">.</span><span class="n">register_scf_task</span><span class="p">(</span><span class="n">scf_input</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">hello_flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/flows_43_0.svg" src="_images/flows_43_0.svg" /></div>
+</div>
+<p>Now the tricky part.
+We want to register a NSCF calculation that should depend on the <code class="docutils literal notranslate"><span class="pre">scf_task</span></code> in <code class="docutils literal notranslate"><span class="pre">w0_t0</span></code> via the DEN file.
+We can use the same API but we <strong>must</strong> specify the dependency between the two steps with the
+<code class="docutils literal notranslate"><span class="pre">{scf_task:</span> <span class="pre">&quot;DEN&quot;}</span></code> dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello_flow</span><span class="o">.</span><span class="n">register_nscf_task</span><span class="p">(</span><span class="n">nscf_input</span><span class="p">,</span> <span class="n">deps</span><span class="o">=</span><span class="p">{</span><span class="n">hello_flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span> <span class="s2">&quot;DEN&quot;</span><span class="p">},</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">hello_flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">(</span><span class="n">engine</span><span class="o">=</span><span class="s2">&quot;dot&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/flows_45_0.svg" src="_images/flows_45_0.svg" /></div>
+</div>
+<p>Excellent, we managed to build our first AbiPy flow with inter-dependent tasks in just six lines
+of code (including the three calls to graphviz).
+Now let’s assume we want to add a second Nscf calculation (<code class="docutils literal notranslate"><span class="pre">NscTask</span></code>) in which we change one of the input parameters
+e.g. the number of bands and that, for some reason, we really want to re-use the output WFK file
+produced by <code class="docutils literal notranslate"><span class="pre">w0_t1</span></code> to initialize the eigenvalue solver (obviously we still need a DEN file).
+How can we express this with AbiPy?</p>
+<p>Well, the syntax for the new deps, it’s just:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">deps</span> <span class="o">=</span> <span class="p">{</span><span class="n">hello_flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span> <span class="s2">&quot;DEN&quot;</span><span class="p">,</span> <span class="n">hello_flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span> <span class="s2">&quot;WFK&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>but we should also change the input variable nband in the <code class="docutils literal notranslate"><span class="pre">nscf_input</span></code> before creating
+the new <code class="docutils literal notranslate"><span class="pre">NscTask</span></code> (remember that building a <code class="docutils literal notranslate"><span class="pre">Task</span></code> requires an <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code> object
+and a list of dependencies, if any).</p>
+<p>Now there are two ways to increase nband: the <strong>wrong</strong> way and the <strong>correct</strong> one!
+Let’s start from the <em>wrong</em> way because it’s always useful to learn from our mistakes.
+Let’s print some values just for the record:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span> <span class="o">=</span> <span class="n">flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nband in the first NscfTask:&quot;</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;nband&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nband in the first NscfTask: 8
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s use the “recipe” recommended to us by the FORTRAN guru of our group:</p>
+<img src="https://github.com/abinit/abipy_assets/blob/master/Dont-Try-This-At-Home.jpg?raw=true" alt=""><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Just copy the previous input and change nband, it&#39;s super-easy, the FORTRAN guru said!</span>
+<span class="n">new_input</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">input</span>
+<span class="n">new_input</span><span class="p">[</span><span class="s2">&quot;nband&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nband in the first NscfTask:&quot;</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;nband&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nband in the new input:&quot;</span><span class="p">,</span> <span class="n">new_input</span><span class="p">[</span><span class="s2">&quot;nband&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nband in the first NscfTask: 1000
+nband in the new input: 1000
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tada! Thanks to the trick of our beloved FORTRAN guru, we ended up with <em>two</em> NscfTaks
+with the <strong>same number</strong> of bands (1000!). Why?</p>
+<p>Because <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code> is implemented internally with a dictionary, python dictionaries are <strong>mutable</strong>
+and python variables are essentially references (they do not store data, actually they store the address of the data).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;foo&quot;</span><span class="p">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">}</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> 
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">a</span><span class="p">[</span><span class="s2">&quot;hello&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;world&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a dict:&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b dict:&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c dict:&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a dict: {&#39;foo&#39;: &#39;bar&#39;, &#39;hello&#39;: &#39;world&#39;}
+b dict: {&#39;foo&#39;: &#39;bar&#39;, &#39;hello&#39;: &#39;world&#39;}
+c dict: {&#39;foo&#39;: &#39;bar&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>For a more techical explanation see <a class="reference external" href="http://docs.python-guide.org/en/latest/writing/gotchas/">here</a></p>
+<p>To avoid this mistake, we need to <em>copy</em> the object before changing it</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;nband&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1"># back to the old value</span>
+
+<span class="n">new_input</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">new_with_vars</span><span class="p">(</span><span class="n">nband</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1"># Copy and change nband</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nband in the first NscfTask:&quot;</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;nband&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nband in the new input:&quot;</span><span class="p">,</span> <span class="n">new_input</span><span class="p">[</span><span class="s2">&quot;nband&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nband in the first NscfTask: 8
+nband in the new input: 1000
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can finally add the second <code class="docutils literal notranslate"><span class="pre">NscfTask</span></code> with 1000 bands:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello_flow</span><span class="o">.</span><span class="n">register_nscf_task</span><span class="p">(</span><span class="n">new_input</span><span class="p">,</span> <span class="n">deps</span><span class="o">=</span><span class="p">{</span><span class="n">hello_flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span> <span class="s2">&quot;DEN&quot;</span><span class="p">,</span> <span class="n">hello_flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span> <span class="s2">&quot;WFK&quot;</span><span class="p">},</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">hello_flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">(</span><span class="n">engine</span><span class="o">=</span><span class="s2">&quot;dot&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/flows_55_0.svg" src="_images/flows_55_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="n">task</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;nband&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">hello_flow</span><span class="o">.</span><span class="n">iflat_tasks</span><span class="p">()])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8, 8, 1000]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that AbiPy dependencies can also be fulfilled with external files that are already available
+when the flow is constructed. There is no change in the syntax we’ve used so far.
+It is just a matter of using the absolute path to the DEN file as keyword of the dictionary instead of a <code class="docutils literal notranslate"><span class="pre">Task</span></code>.
+Let’s start with a new <code class="docutils literal notranslate"><span class="pre">Flow</span></code> to avoid confusion and create a <code class="docutils literal notranslate"><span class="pre">NscfTask</span></code> that will start from a pre-computed <code class="docutils literal notranslate"><span class="pre">DEN</span></code> file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow_with_file</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span><span class="n">workdir</span><span class="o">=</span><span class="s2">&quot;flow_with_file&quot;</span><span class="p">)</span>
+
+<span class="n">den_filepath</span> <span class="o">=</span> <span class="n">abidata</span><span class="o">.</span><span class="n">ref_file</span><span class="p">(</span><span class="s2">&quot;si_DEN.nc&quot;</span><span class="p">)</span>
+<span class="n">flow_with_file</span><span class="o">.</span><span class="n">register_nscf_task</span><span class="p">(</span><span class="n">nscf_input</span><span class="p">,</span> <span class="n">deps</span><span class="o">=</span><span class="p">{</span><span class="n">den_filepath</span><span class="p">:</span> <span class="s2">&quot;DEN&quot;</span><span class="p">})</span>
+
+<span class="n">flow_with_file</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">(</span><span class="n">engine</span><span class="o">=</span><span class="s2">&quot;dot&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/flows_58_0.svg" src="_images/flows_58_0.svg" /></div>
+</div>
+<p>A call to <code class="docutils literal notranslate"><span class="pre">new_with_vars</span></code> inside a python <code class="docutils literal notranslate"><span class="pre">for</span></code> loop is all we need to add other two <code class="docutils literal notranslate"><span class="pre">NscfTasks</span></code>
+with different <code class="docutils literal notranslate"><span class="pre">nband</span></code>, all starting from the same DEN file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">nband</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]:</span>
+    <span class="n">flow_with_file</span><span class="o">.</span><span class="n">register_nscf_task</span><span class="p">(</span><span class="n">nscf_input</span><span class="o">.</span><span class="n">new_with_vars</span><span class="p">(</span><span class="n">nband</span><span class="o">=</span><span class="n">nband</span><span class="p">),</span> 
+                                      <span class="n">deps</span><span class="o">=</span><span class="p">{</span><span class="n">den_filepath</span><span class="p">:</span> <span class="s2">&quot;DEN&quot;</span><span class="p">},</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">([</span><span class="n">task</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;nband&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">flow_with_file</span><span class="o">.</span><span class="n">iflat_tasks</span><span class="p">()])</span>
+<span class="n">flow_with_file</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8, 10, 20]
+</pre></div>
+</div>
+<img alt="_images/flows_60_1.svg" src="_images/flows_60_1.svg" /></div>
+</div>
+<p>At this point, you may ask why we need <code class="docutils literal notranslate"><span class="pre">Works</span></code> since all the examples presented so far
+mainly involve the <code class="docutils literal notranslate"><span class="pre">Flow</span></code> object.</p>
+<p>The answer is that <code class="docutils literal notranslate"><span class="pre">Works</span></code> allow us to encapsulate reusable logic in magic boxes
+that can perform lot of useful work.
+These boxes can then be connected together to generate more complicated workflows.
+We have already encountered the <code class="docutils literal notranslate"><span class="pre">BandStructureWork</span></code> at the beginning of this lesson
+and now it is time to introduce another fancy animal of the AbiPy zoo, the <code class="docutils literal notranslate"><span class="pre">PhononWork</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abilab</span><span class="o">.</span><span class="n">print_doc</span><span class="p">(</span><span class="n">flowtk</span><span class="o">.</span><span class="n">PhononWork</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PhononWork</span><span class="p">(</span><span class="n">Work</span><span class="p">,</span> <span class="n">MergeDdb</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This work consists of nirred Phonon tasks where nirred is</span>
+<span class="sd">    the number of irreducible atomic perturbations for a given set of q-points.</span>
+<span class="sd">    It provides the callback method (on_all_ok) that calls mrgddb (mrgdv) to merge</span>
+<span class="sd">    all the partial DDB (POT) files produced.</span>
+<span class="sd">    The two files are available in the output directory of the Work.</span>
+
+<span class="sd">    .. rubric:: Inheritance Diagram</span>
+<span class="sd">    .. inheritance-diagram:: PhononWork</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abilab</span><span class="o">.</span><span class="n">print_doc</span><span class="p">(</span><span class="n">flowtk</span><span class="o">.</span><span class="n">PhononWork</span><span class="o">.</span><span class="n">from_scf_task</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_scf_task</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">scf_task</span><span class="p">,</span> <span class="n">qpoints</span><span class="p">,</span> <span class="n">is_ngqpt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">with_becs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                      <span class="n">with_quad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">with_flexoe</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">with_dvdb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                      <span class="n">tolerance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ddk_tolerance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prtwf</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construct a `PhononWork` from a |ScfTask| object.</span>
+<span class="sd">        The input file for phonons is automatically generated from the input of the ScfTask.</span>
+<span class="sd">        Each phonon task depends on the WFK file produced by the `scf_task`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            scf_task: |ScfTask| object.</span>
+<span class="sd">            qpoints: q-points in reduced coordinates. Accepts single q-point, list of q-points</span>
+<span class="sd">                or three integers defining the q-mesh if `is_ngqpt`.</span>
+<span class="sd">            is_ngqpt: True if `qpoints` should be interpreted as divisions instead of q-points.</span>
+<span class="sd">            with_becs: Activate calculation of Electric field and Born effective charges.</span>
+<span class="sd">            with_quad: Activate calculation of dynamical quadrupoles. Require `with_becs`</span>
+<span class="sd">                Note that only selected features are compatible with dynamical quadrupoles.</span>
+<span class="sd">                Please consult &lt;https://docs.abinit.org/topics/longwave/&gt;</span>
+<span class="sd">            with_flexoe: True to activate computation of flexoelectric tensor. Require `with_becs`</span>
+<span class="sd">            with_dvdb: True to merge POT1 files associated to atomic perturbations in the DVDB file</span>
+<span class="sd">                at the end of the calculation</span>
+<span class="sd">            tolerance: dict {&quot;varname&quot;: value} with the tolerance to be used in the phonon run.</span>
+<span class="sd">                None to use AbiPy default.</span>
+<span class="sd">            ddk_tolerance: dict {&quot;varname&quot;: value} with the tolerance used in the DDK run if with_becs.</span>
+<span class="sd">                None to use AbiPy default.</span>
+<span class="sd">            prtwf: Controls the output of the first-order WFK.</span>
+<span class="sd">                By default we set it to -1 when q != 0 so that AbiPy is still able</span>
+<span class="sd">                to restart the DFPT task if the calculation is not converged (worst case scenario)</span>
+<span class="sd">                but we avoid the output of the 1-st WFK if the calculation converged successfully.</span>
+<span class="sd">                Non-linear DFT applications should not be affected since they assume q == 0.</span>
+<span class="sd">            manager: |TaskManager| object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<p>The docstring seems to suggest that if I have a <code class="docutils literal notranslate"><span class="pre">scf_task</span></code>, I can construct a magic box
+to compute phonons but wait, I already have such a task!
+Actually I already have another magic box to compute the electronic band structure
+and it would be really great if I could compute the electronic and vibrational properties in a single flow.
+Let’s connect the two boxes together with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create new flow.</span>
+<span class="n">ph_flow</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span><span class="n">workdir</span><span class="o">=</span><span class="s2">&quot;phflow&quot;</span><span class="p">)</span>
+
+<span class="c1"># Band structure (SCF + NSCF)</span>
+<span class="n">bands_work</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">BandStructureWork</span><span class="p">(</span><span class="n">scf_input</span><span class="p">,</span> <span class="n">nscf_input</span><span class="p">,</span> <span class="n">dos_inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">ph_flow</span><span class="o">.</span><span class="n">register_work</span><span class="p">(</span><span class="n">bands_work</span><span class="p">)</span>    
+    
+<span class="c1"># Build second work from scf_task.</span>
+<span class="n">scf_task</span> <span class="o">=</span> <span class="n">bands_work</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ph_work</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">PhononWork</span><span class="o">.</span><span class="n">from_scf_task</span><span class="p">(</span><span class="n">scf_task</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">is_ngqpt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">ph_flow</span><span class="o">.</span><span class="n">register_work</span><span class="p">(</span><span class="n">ph_work</span><span class="p">)</span> 
+
+<span class="n">ph_flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/flows_65_0.svg" src="_images/flows_65_0.svg" /></div>
+</div>
+<p>Now it turns out that the <code class="docutils literal notranslate"><span class="pre">PhononWork</span></code> merges all the DDB files produced by its <code class="docutils literal notranslate"><span class="pre">PhononTask</span></code>
+and put this final output file in its outdir.
+So from the AbiPy perspective, a <code class="docutils literal notranslate"><span class="pre">PhononWork</span></code> is not that different from a <code class="docutils literal notranslate"><span class="pre">ScfTask</span></code> that produces e.g. a DEN file.
+This means that we can connect other magic boxes to our <code class="docutils literal notranslate"><span class="pre">PhononWork</span></code> e.g. a set of <code class="docutils literal notranslate"><span class="pre">EPhTasks</span></code> that
+require a DDB file and another input file with the DFPT potentials
+(DVDB, merged by <code class="docutils literal notranslate"><span class="pre">PhononWork</span></code> similarly to what is done for the DDB).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EPH tasks require 3 input files (WFK, DDB, DVDB)</span>
+<span class="n">eph_deps</span> <span class="o">=</span> <span class="p">{</span><span class="n">ph_flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span> <span class="s2">&quot;WFK&quot;</span><span class="p">,</span> <span class="n">ph_work</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;DDB&quot;</span><span class="p">,</span> <span class="s2">&quot;DVDB&quot;</span><span class="p">]}</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ecut</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]):</span>
+    <span class="n">ph_flow</span><span class="o">.</span><span class="n">register_eph_task</span><span class="p">(</span><span class="n">nscf_input</span><span class="o">.</span><span class="n">new_with_vars</span><span class="p">(</span><span class="n">ecut</span><span class="o">=</span><span class="n">ecut</span><span class="p">),</span> <span class="n">deps</span><span class="o">=</span><span class="n">eph_deps</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span>
+                           
+<span class="n">ph_flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/flows_67_0.svg" src="_images/flows_67_0.svg" /></div>
+</div>
+<p>This explains why in AbiPy we have this classification in terms of <code class="docutils literal notranslate"><span class="pre">Tasks/Works/Flows</span></code>.
+As a consequence, we can implement highly specialized <code class="docutils literal notranslate"><span class="pre">Works/Tasks</span></code> to
+solve specific problems and then connect all these nodes together.
+Just 11 lines of code to get electrons + phonons + (electrons + phononons)!</p>
+<p>But wait, did you see the gorilla?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;vJG698U2Mvo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="400"
+    height="300"
+    src="https://www.youtube.com/embed/vJG698U2Mvo"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<p>There’s indeed a bug in the last step. The connections among the nodes are OK but we made
+a mistake while creating the <code class="docutils literal notranslate"><span class="pre">EPhTasks</span></code> with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ph_flow</span><span class="o">.</span><span class="n">register_eph_task</span><span class="p">(</span><span class="n">nscf_input</span><span class="o">.</span><span class="n">new_with_vars</span><span class="p">(</span><span class="n">ecut</span><span class="o">=</span><span class="n">ecut</span><span class="p">),</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>because we passed an input for a standard band structure calculation to something that is supposed
+to deal with E-PH interaction.
+This essentially to stress that the AbiPy <code class="docutils literal notranslate"><span class="pre">Flow</span></code>, <em>by design</em>, does not try to validate your input to make sure
+it is consistent with the workflow logic.
+This is done on purpose for two reasons:</p>
+<ul class="simple">
+<li><p>Expert users should be able to customize/tune their input files and validating all the possible cases in python is not trivial</p></li>
+<li><p>Only Abinit (and God) knows at run-time if your input file makes sense and we can’t reimplement the same logic in python</p></li>
+</ul>
+<p>At this point, you may wonder why we have so many different Abipy Tasks (<code class="docutils literal notranslate"><span class="pre">ScfTask</span></code>, <code class="docutils literal notranslate"><span class="pre">NscfTask</span></code>, <code class="docutils literal notranslate"><span class="pre">RelaxTask</span></code>, <code class="docutils literal notranslate"><span class="pre">PhononTask</span></code>, <code class="docutils literal notranslate"><span class="pre">EPHTask</span></code> …) if there’s no input validation when we create them…</p>
+<p>The answer is that we need all these subclasses to implement extra logic that is specific to that particular calculation. Abipy, indeed, is not just submitting jobs. It also monitors the evolution of the calculation
+and execute pre-defined code to fix run-time problems (and these problems are calculation specific).
+An example will help clarify this point.</p>
+<p>Restarting jobs is one of the typical problem encountered in ab-initio calculations
+and restarting a <code class="docutils literal notranslate"><span class="pre">RelaxTask</span></code> requires a different logic from e.g. restarting a <code class="docutils literal notranslate"><span class="pre">ScfTask</span></code>.
+In the case of a <code class="docutils literal notranslate"><span class="pre">ScfTask</span></code> we only need to use the output WFK (DEN) of the previous execution
+as input of the restarted job while a <code class="docutils literal notranslate"><span class="pre">RelaxTask</span></code> must also re-use the (unconverged) final structure
+of the previous job to be effective and avoid a possibly infinite loop.
+In a nutshell, when you are using a particular <code class="docutils literal notranslate"><span class="pre">Task/Work</span></code> class you are telling AbiPy how to handle possible
+problems at run-time and you are also specifying the actions that should be performed
+at the beginning/end of the execution.</p>
+</div>
+<div class="section" id="abirun-py">
+<h2><a class="reference external" href="http://Abirun.py">Abirun.py</a><a class="headerlink" href="#abirun-py" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>Executing</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">make_scheduler</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>inside a jupyter notebook is handy if you are dealing with small calculations that require few seconds or minutes.
+This approach, however, is unpractical when you have large flows or big calculations requiring hours or days,
+even on massively parallel machines.
+In this case, indeed, one would like to run the scheduler in a separate process in the backgroud
+so that the scheduler is not killed when the jupyter server is closed.</p>
+<p>To start the scheduler in a separate process, use the <code class="docutils literal notranslate"><span class="pre">abirun.py</span></code> script.
+The syntax is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abirun.py flow_workdir COMMAND
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">flow_workdir</span></code> is the directory containing the <code class="docutils literal notranslate"><span class="pre">Flow</span></code>
+(the directory with the pickle file) and <code class="docutils literal notranslate"><span class="pre">command</span></code> selects the operation to be performed.</p>
+<p>Typical examples:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abirun.py /tmp/hello_bands status
+</pre></div>
+</div>
+<p>checks the status of the <code class="docutils literal notranslate"><span class="pre">Flow</span></code> and print the results to screen while</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>nohup abirun.py /tmp/hello_bands scheduler &gt; sched.log 2&gt; sched.err &amp;
+</pre></div>
+</div>
+<p>starts the scheduler in the background redirecting the standard output to file <code class="docutils literal notranslate"><span class="pre">sched.log</span></code></p>
+<div class="alert alert-success">
+`nohup` is a standard Unix tool. The command make the scheduler immune 
+to hangups so that you can close the shell session without killing the scheduler.
+</div>
+<p>This brings us to the last and most crucial question.
+How do we configure AbiPy to run Abinit workflows on different architectures ranging from
+standard laptops to high-performance supercomputers?</p>
+<p>Unfortunately this notebook is already quite long and these details are best covered
+in a technical documentation.
+What should be stressed here is that the behaviour can be customized with two Yaml files.
+All the information related to your environment (Abinit build, modules, resource managers, shell environment)
+are read from the <code class="docutils literal notranslate"><span class="pre">manager.yml</span></code> configuration file, that is usually located in the directory <code class="docutils literal notranslate"><span class="pre">~/.abinit/abipy/</span></code>
+The options for the python scheduler responsible for job submission are given in <code class="docutils literal notranslate"><span class="pre">scheduler.yml</span></code>.</p>
+<p>For a more complete description of these configuration options,
+please consult the <a class="reference external" href="http://abinit.github.io/abipy/workflows/taskmanager.html">TaskManager documentation</a>.
+A list of configuration files for different machines and clusters is available
+<a class="reference external" href="http://abinit.github.io/abipy/workflows/manager_examples.html">here</a>
+while the <a class="reference external" href="http://abinit.github.io/abipy/flows_howto.html">Flows HOWTO</a>
+gathers answers to frequently asked questions.</p>
+<p>Last but not least, check out our
+<a class="reference external" href="http://abinit.github.io/abipy/flow_gallery/index.html">gallery of AbiPy Flows</a> for inspiration.</p>
+<p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="lobster.html" title="previous page">Analyzing Lobster output files with AbiPy</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By M. Giantomassi<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

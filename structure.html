@@ -1,0 +1,1089 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Structure object &#8212; AbiPy_Book</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Post-processing tools for electron band energies" href="gsr.html" />
+    <link rel="prev" title="Factory functions" href="input_factories.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AbiPy_Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="content.html">
+   Content in Jupyter Book
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="markdown.html">
+     Markdown Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="abinit_input.html">
+     Table of Contents
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="input_factories.html">
+     Factory functions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Structure object
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gsr.html">
+     Post-processing tools for electron band energies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hist.html">
+     The HIST.nc file
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="efatbands.html">
+     FATBANDS.nc file
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ddb.html">
+     Post-processing DFPT calculations with the DDB file
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sigres.html">
+     Postprocessing tools for GW calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mdf.html">
+     Postprocessing tools for Bethe-Salpeter calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="abiwan.html">
+     Analyzing wannier90 results with AbiPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lobster.html">
+     Analyzing Lobster output files with AbiPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flows.html">
+     Tasks, Workflows and Flow
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/structure.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/structure.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/gmatteo/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/gmatteo/abipy_book/issues/new?title=Issue%20on%20page%20%2Fstructure.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/gmatteo/abipy_book/edit/main/docs/structure.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gmatteo/abipy_book/main?urlpath=tree/docs/structure.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-a-structure-from-file">
+   Reading a structure from file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#converting-to-other-formats">
+   Converting to other formats
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-information-on-the-structure">
+   Getting information on the structure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abistruct-py">
+   abistruct.py
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a> <a id="top"></a></p>
+<div class="section" id="structure-object">
+<h1>Structure object<a class="headerlink" href="#structure-object" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">AbiPy</span></code> structure inherits from the <code class="docutils literal notranslate"><span class="pre">pymatgen</span></code> structure.
+One has therefore access to all the methods and tools already available in <code class="docutils literal notranslate"><span class="pre">pymatgen</span></code>.
+In this notebook, we mainly focus on the extensions added by <code class="docutils literal notranslate"><span class="pre">AbiPy</span></code>.
+For the features provided by pymatgen, please consult the
+<a class="reference external" href="http://pymatgen.org/usage.html#structures-and-molecules">official pymatgen documentation</a></p>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#Reading-a-structure-from-file">Reading a structure from file</a></p></li>
+<li><p><a class="reference external" href="#Converting-to-other-formats">Converting to other formats</a></p></li>
+<li><p><a class="reference external" href="#Getting-information-on-the-structure">Getting information on the structure</a></p></li>
+<li><p><a class="reference external" href="#abistruct.py">abistruct.py script</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span> <span class="c1"># to get rid of deprecation warnings</span>
+
+<span class="c1"># Import abipy modules</span>
+<span class="kn">from</span> <span class="nn">abipy</span> <span class="kn">import</span> <span class="n">abilab</span>
+<span class="kn">from</span> <span class="nn">abipy.abilab</span> <span class="kn">import</span> <span class="n">Structure</span>
+<span class="kn">import</span> <span class="nn">abipy.data</span> <span class="k">as</span> <span class="nn">abidata</span>
+
+<span class="c1"># Useful tools we&#39;ll need later on.</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># This line configures matplotlib to show figures embedded in the notebook.</span>
+<span class="c1"># Replace `inline` with `notebook` in classic notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline   
+
+<span class="c1"># Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib</span>
+<span class="c1">#%matplotlib widget  </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reading-a-structure-from-file">
+<h2>Reading a structure from file<a class="headerlink" href="#reading-a-structure-from-file" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>It is possible to initialize a crystalline structure from different file formats:</p>
+<ul class="simple">
+<li><p>CIF</p></li>
+<li><p>POSCAR/CONTCAR</p></li>
+<li><p>CHGCAR</p></li>
+<li><p>LOCPOT,</p></li>
+<li><p>vasprun.xml</p></li>
+<li><p>CSSR</p></li>
+<li><p>ABINIT Netcdf files</p></li>
+<li><p>pymatgen’s JSON serialized structures</p></li>
+</ul>
+<p>Note, in particular, that one can initialize the structure from the netcdf files<br />
+produced by Abinit (<code class="docutils literal notranslate"><span class="pre">GSR.nc</span></code>, <code class="docutils literal notranslate"><span class="pre">WFK.nc</span></code>, etc) as well as output files in text format
+such as the Abinit input/output files or even the DDB file.</p>
+<p>To initialize the structure from a CIF file use the <code class="docutils literal notranslate"><span class="pre">from_file</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># abidata.cif_file returns one of the CIF files shipped with AbiPy.</span>
+<span class="n">structure</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">abidata</span><span class="o">.</span><span class="n">cif_file</span><span class="p">(</span><span class="s2">&quot;si.cif&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">structure</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full Formula (Si2)
+Reduced Formula: Si
+abc   :   3.866975   3.866975   3.866975
+angles:  60.000000  60.000000  60.000000
+Sites (2)
+  #  SP       a     b     c
+---  ----  ----  ----  ----
+  0  Si    0     0     0
+  1  Si    0.25  0.25  0.25
+</pre></div>
+</div>
+</div>
+</div>
+<p>To read the structure from a netcdf file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">abidata</span><span class="o">.</span><span class="n">ref_file</span><span class="p">(</span><span class="s2">&quot;si_nscf_GSR.nc&quot;</span><span class="p">))</span>
+
+<span class="c1"># Use to_string with verbose &gt; 0 to get more info </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full Formula (Si2)
+Reduced Formula: Si
+abc   :   3.866975   3.866975   3.866975
+angles:  60.000000  60.000000  60.000000
+
+Spglib space group info (magnetic symmetries not taken into account).
+Spacegroup: Fd-3m (227), Hall: F 4d 2 3 -1d, Abinit spg_number: 227
+Crystal_system: cubic, Lattice_type: cubic, Point_group: m-3m
+
+  Idx  Symbol    Reduced_Coords              Wyckoff      EqIdx
+-----  --------  --------------------------  ---------  -------
+    0  Si        +0.00000 +0.00000 +0.00000  (2a)             0
+    1  Si        +0.25000 +0.25000 +0.25000  (2a)             0
+
+Abinit Spacegroup: spgid: 227, num_spatial_symmetries: 48, has_timerev: True, symmorphic: True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">to_abivars</span></code> to get the list of Abinit variables in a python dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="o">.</span><span class="n">to_abivars</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;natom&#39;: 2,
+ &#39;ntypat&#39;: 1,
+ &#39;typat&#39;: array([1, 1]),
+ &#39;znucl&#39;: [14],
+ &#39;xred&#39;: array([[0.  , 0.  , 0.  ],
+        [0.25, 0.25, 0.25]]),
+ &#39;acell&#39;: [1.0, 1.0, 1.0],
+ &#39;rprim&#39;: array([[6.32850055, 0.        , 3.6537615 ],
+        [2.10950018, 5.96656754, 3.6537615 ],
+        [0.        , 0.        , 7.30752299]])}
+</pre></div>
+</div>
+</div>
+</div>
+<p>and <code class="docutils literal notranslate"><span class="pre">abi_string</span></code> to get a string that can be used directly in the input file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">abi_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> natom 2
+ ntypat 1
+ typat 1 1
+ znucl 14
+ xred
+    0.0000000000    0.0000000000    0.0000000000
+    0.2500000000    0.2500000000    0.2500000000
+ acell    1.0    1.0    1.0
+ rprim
+    6.3285005521    0.0000000000    3.6537614973
+    2.1095001840    5.9665675402    3.6537614973
+    0.0000000000    0.0000000000    7.3075229946
+</pre></div>
+</div>
+</div>
+</div>
+<p>To visualize the structure with matplotlib, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/structure_13_0.png" src="_images/structure_13_0.png" />
+</div>
+</div>
+<p>The matplotlib version is minimalistic but it plays well with jupyter notebooks.
+For a more advanced visualization we suggest using a specialized graphical applications.
+Fortunately, one can invoke (already installed) external applications directly from AbiPy with e.g.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># structure.visualize(&quot;vesta&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To get a structure from the materials project database
+(<a class="reference external" href="https://www.materialsproject.org">https://www.materialsproject.org</a> ), use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You can pass the api_key or set the env variable PMG_MAPI_KEY in your ~/.pmgrc.yaml files.</span>
+<span class="n">si2_mp</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">from_mpid</span><span class="p">(</span><span class="s2">&quot;mp-149&quot;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">si2_mp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full Formula (Si2)
+Reduced Formula: Si
+abc   :   3.866975   3.866975   3.866975
+angles:  60.000000  60.000000  60.000000
+Sites (2)
+  #  SP       a     b     c    magmom
+---  ----  ----  ----  ----  --------
+  0  Si    0.25  0.25  0.25        -0
+  1  Si    0     0     0           -0
+</pre></div>
+</div>
+</div>
+</div>
+<p>In some cases, we have multiple structures and we need to compare the lattice parameters.
+Use <code class="docutils literal notranslate"><span class="pre">dataframes_from_structures</span></code> to build a pandas DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfs</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">dataframes_from_structures</span><span class="p">([</span><span class="n">structure</span><span class="p">,</span> <span class="n">si2_mp</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CIF&quot;</span><span class="p">,</span> <span class="s2">&quot;MP&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>then we can compare the lattice parameters with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfs</span><span class="o">.</span><span class="n">lattice</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>formula</th>
+      <th>natom</th>
+      <th>alpha</th>
+      <th>beta</th>
+      <th>gamma</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>volume</th>
+      <th>abispg_num</th>
+      <th>spglib_symb</th>
+      <th>spglib_num</th>
+      <th>spglib_lattice_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CIF</th>
+      <td>Si2</td>
+      <td>2</td>
+      <td>60.0</td>
+      <td>60.0</td>
+      <td>60.0</td>
+      <td>3.866975</td>
+      <td>3.866975</td>
+      <td>3.866975</td>
+      <td>40.888292</td>
+      <td>227</td>
+      <td>Fd-3m</td>
+      <td>227</td>
+      <td>cubic</td>
+    </tr>
+    <tr>
+      <th>MP</th>
+      <td>Si2</td>
+      <td>2</td>
+      <td>60.0</td>
+      <td>60.0</td>
+      <td>60.0</td>
+      <td>3.866975</td>
+      <td>3.866975</td>
+      <td>3.866975</td>
+      <td>40.888293</td>
+      <td>None</td>
+      <td>Fd-3m</td>
+      <td>227</td>
+      <td>cubic</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note that all AbiPy robots have this feature built-in.
+Sometimes it is much easier to build a robot directly from files
+and then compare the structures with e.g. <code class="docutils literal notranslate"><span class="pre">robot.get_lattice_dataframe()</span></code>.</p>
+</div>
+<div class="section" id="converting-to-other-formats">
+<h2>Converting to other formats<a class="headerlink" href="#converting-to-other-formats" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">structure.convert(format)</span></code> to get the string representation in the new format:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">fmt</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;cif&quot;</span><span class="p">,</span> <span class="s2">&quot;POSCAR&quot;</span><span class="p">,</span> <span class="s2">&quot;qe&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">((</span><span class="s2">&quot; Abinit --&gt; </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="n">fmt</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="n">fmt</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>******************************** Abinit --&gt; cif ********************************
+# generated using pymatgen
+data_Si
+_symmetry_space_group_name_H-M   &#39;P 1&#39;
+_cell_length_a   3.86697464
+_cell_length_b   3.86697464
+_cell_length_c   3.86697464
+_cell_angle_alpha   60.00000000
+_cell_angle_beta   60.00000000
+_cell_angle_gamma   60.00000000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Si
+_chemical_formula_sum   Si2
+_cell_volume   40.88829233
+_cell_formula_units_Z   2
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  &#39;x, y, z&#39;
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Si  Si0  1  0.00000000  0.00000000  0.00000000  1
+  Si  Si1  1  0.25000000  0.25000000  0.25000000  1
+
+****************************** Abinit --&gt; POSCAR *******************************
+Si2
+1.0
+3.348898271358 0.000000000000 1.933487318446
+1.116299423768 3.157371569587 1.933487318446
+0.000000000000 0.000000000000 3.866974636892
+Si
+2
+direct
+0.000000000000 0.000000000000 0.000000000000 Si
+0.250000000000 0.250000000000 0.250000000000 Si
+
+******************************** Abinit --&gt; qe *********************************
+&amp;CONTROL
+  calculation = &#39;scf&#39;,
+/
+&amp;SYSTEM
+  ibrav = 0,
+  nat = 2,
+  ntyp = 1,
+/
+&amp;ELECTRONS
+/
+&amp;IONS
+/
+&amp;CELL
+/
+ATOMIC_SPECIES
+  Si  28.0855 Si.pseudo
+ATOMIC_POSITIONS crystal
+  Si 0.000000 0.000000 0.000000
+  Si 0.250000 0.250000 0.250000
+K_POINTS automatic
+  1 1 1 0 0 0
+CELL_PARAMETERS angstrom
+  3.348898 0.000000 1.933487
+  1.116299 3.157372 1.933487
+  0.000000 0.000000 3.866975
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-information-on-the-structure">
+<h2>Getting information on the structure<a class="headerlink" href="#getting-information-on-the-structure" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">reciprocal_lattice</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.876195 -0.663335 0.000000
+0.000000 1.990005 0.000000
+-0.938097 -0.663335 1.624832
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="o">.</span><span class="n">reciprocal_lattice</span><span class="o">.</span><span class="n">matrix</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">structure</span><span class="o">.</span><span class="n">lattice</span><span class="o">.</span><span class="n">matrix</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.00000000e+00,  0.00000000e+00,  4.88345168e-17],
+       [-4.96958869e-17,  1.00000000e+00,  1.12274184e-16],
+       [ 0.00000000e+00,  0.00000000e+00,  1.00000000e+00]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List of high-symmetry k-points.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">hsym_kpoints</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0) [+0.000, +0.000, +0.000], name: $\Gamma$, weight: 0.000
+1) [+0.500, +0.000, +0.500], name: X, weight: 0.000
+2) [+0.500, +0.250, +0.750], name: W, weight: 0.000
+3) [+0.375, +0.375, +0.750], name: K, weight: 0.000
+4) [+0.000, +0.000, +0.000], name: $\Gamma$, weight: 0.000
+5) [+0.500, +0.500, +0.500], name: L, weight: 0.000
+6) [+0.625, +0.250, +0.625], name: U, weight: 0.000
+7) [+0.500, +0.250, +0.750], name: W, weight: 0.000
+8) [+0.500, +0.500, +0.500], name: L, weight: 0.000
+9) [+0.375, +0.375, +0.750], name: K, weight: 0.000
+10) [+0.625, +0.250, +0.625], name: U, weight: 0.000
+11) [+0.500, +0.000, +0.500], name: X, weight: 0.000
+</pre></div>
+</div>
+</div>
+</div>
+<p>The method <code class="docutils literal notranslate"><span class="pre">calc_ksampling</span></code> allows one to get an efficient sampling of the Brillouin zone
+by just specifying the number of divisions to be used for the smallest lattice vector of the reciprocal lattice:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pprint</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">calc_ksampling</span><span class="p">(</span><span class="n">nksmall</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;ngkpt&#39;: array([10, 10, 10]),
+ &#39;shiftk&#39;: array([[0.5, 0.5, 0.5],
+       [0.5, 0. , 0. ],
+       [0. , 0.5, 0. ],
+       [0. , 0. , 0.5]])}
+</pre></div>
+</div>
+</div>
+</div>
+<p>To get the recommended high symmetry <span class="math notranslate nohighlight">\(k\)</span>-path in reduced coordinates:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="o">.</span><span class="n">calc_kptbounds</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.   , 0.   , 0.   ],
+       [0.5  , 0.   , 0.5  ],
+       [0.5  , 0.25 , 0.75 ],
+       [0.375, 0.375, 0.75 ],
+       [0.   , 0.   , 0.   ],
+       [0.5  , 0.5  , 0.5  ],
+       [0.625, 0.25 , 0.625],
+       [0.5  , 0.25 , 0.75 ],
+       [0.5  , 0.5  , 0.5  ],
+       [0.375, 0.375, 0.75 ],
+       [0.625, 0.25 , 0.625],
+       [0.5  , 0.   , 0.5  ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The high-symmetry q-path is automatically selected assuming
+the structure fulfills the convention described in <a class="reference external" href="https://doi.org/10.1016/j.commatsci.2010.05.010">Setyawan2010</a></p>
+<p>To visualize the Brillouin zone with matplotlib:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="o">.</span><span class="n">plot_bz</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/structure_36_0.png" src="_images/structure_36_0.png" />
+</div>
+</div>
+<p>To get the number of valence electrons for a given set of pseudopotentials:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="o">.</span><span class="n">num_valence_electrons</span><span class="p">(</span><span class="n">pseudos</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">pseudos</span><span class="p">(</span><span class="s2">&quot;14si.pspnc&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+</div>
+</div>
+<p>To visualize the X-ray diffraction plot with pymatgen XRDCalculator</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span><span class="o">.</span><span class="n">plot_xrd</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/structure_40_0.png" src="_images/structure_40_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="abistruct-py">
+<h2><a class="reference external" href="http://abistruct.py">abistruct.py</a><a class="headerlink" href="#abistruct-py" title="Permalink to this headline">¶</a></h2>
+<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<p><code class="docutils literal notranslate"><span class="pre">abistruct.py</span></code> provides a handy command line interface to operate on structure objects
+constructed from external files.
+There are several options available as well an interface to the <a class="reference external" href="http://materialsproject.org/">materials project</a>
+and the <a class="reference external" href="http://www.crystallography.net/cod/">COD</a> database.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>abistruct.py --help
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: abistruct.py [-h] [-V]
+                    {spglib,abispg,convert,print,supercell,abisanitize,primitive,irefine,conventional,proto,wyckoff,tensor_site,neighbors,interpolate,xrd,oxistate,ipython,notebook,panel,kpath,bz,ngkpt,ktables,abikmesh,lgk,kstar,keq,visualize,mp_id,mp_match,mp_search,mp_pd,mp_ebands,cod_search,cod_id,animate}
+                    ...
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -V, --version         show program&#39;s version number and exit
+
+subcommands:
+  Valid subcommands, use command --help for help
+
+  {spglib,abispg,convert,print,supercell,abisanitize,primitive,irefine,conventional,proto,wyckoff,tensor_site,neighbors,interpolate,xrd,oxistate,ipython,notebook,panel,kpath,bz,ngkpt,ktables,abikmesh,lgk,kstar,keq,visualize,mp_id,mp_match,mp_search,mp_pd,mp_ebands,cod_search,cod_id,animate}
+                        sub-command help
+    spglib              Analyze structure with spglib.
+    abispg              Extract/Compute Abinit space group from file with
+                        structure.
+    convert             Convert structure to the specified format.
+    print               Print Structure to terminal.
+    supercell           Generate supercell.
+    abisanitize         Sanitize structure with abi_sanitize, compare
+                        structures and save result to file.
+    primitive           Use spglib to find a smaller unit cell than the input
+    irefine             Refine structure with abi_sanitize iteratively, stop
+                        if target space group is obtained.
+    conventional        Gives a structure with a conventional cell according
+                        to certain standards. The standards are defined in
+                        doi:10.1016/j.commatsci.2010.05.010
+    proto               Find prototype in the AFLOW LIBRARY OF
+                        CRYSTALLOGRAPHIC PROTOTYPES.
+                        http://doi.org/10.1016/j.commatsci.2017.01.017
+    wyckoff             Print wyckoff positions. WARNING: still under
+                        development!
+    tensor_site         Print symmetry properties of tensors due to site-
+                        symmetries. WARNING: still under development!
+    neighbors           Get neighbors for each atom in the unit cell, out to a
+                        distance radius.
+    interpolate         Interpolate between two structures. Useful for the
+                        construction of NEB inputs.
+    xrd                 X-ray diffraction plot.
+    oxistate            Estimate oxidation states with pymatgen bond valence
+                        analysis.
+    ipython             Open IPython shell for advanced operations on
+                        structure object.
+    notebook            Read structure from file and generate jupyter
+                        notebook.
+    panel               Open GUI in web browser, requires panel package.
+    kpath               Read structure from file, generate k-path for band-
+                        structure calculations.
+    bz                  Read structure from file, plot Brillouin zone with
+                        matplotlib.
+    ngkpt               Return the Abinit k-point sampling variables from the
+                        number of divisions used to sample the smallest
+                        lattice vector of the reciprocal lattice.
+    ktables             Read structure from filepath, call spglib to sample
+                        the BZ, print k-points in the IBZ with weights.
+    abikmesh            Read structure from file, call Abinit to sample the BZ
+                        with ngkpt, shiftk, and kptopt. Print k-points in the
+                        IBZ with weights.
+    lgk                 Read structure from file, find little group of
+                        k-point, print Bilbao character table.
+    kstar               Read structure from file, print star of k-point.
+    keq                 Read structure from file, check whether two k-points
+                        are equivalent by symmetry.
+    visualize           Visualize the structure with the specified
+                        application. Requires external app or optional python
+                        modules (mayavi, vtk).
+    mp_id               Get structure from the pymatgen database. Export to
+                        format. Requires internet connection and PMG_MAPI_KEY.
+    mp_match            Get structure from the pymatgen database. Requires
+                        internet connection and PMG_MAPI_KEY.
+    mp_search           Get structure from the pymatgen database. Requires
+                        internet connection and PMG_MAPI_KEY
+    mp_pd               Generate phase diagram with entries from the Materials
+                        Project. Requires internet connection and PMG_MAPI_KEY
+    mp_ebands           Get structure from the pymatgen database. Export to
+                        format. Requires internet connection and PMG_MAPI_KEY.
+    cod_search          Get structure from COD database. Requires internet
+                        connection and mysql
+    cod_id              Get structure from COD database. Requires internet
+                        connection and mysql
+    animate             Read structures from HIST.nc or XDATCAR. Print
+                        structures in Xcrysden AXSF format to stdout.
+
+Usage example:
+
+###################
+# Space group tools
+###################
+
+  abistruct.py spglib FILE                 =&gt; Read structure from FILE and analyze it with spglib.
+  abistruct.py abispg FILE                 =&gt; Read structure from FILE, and compute ABINIT space group.
+  abistruct.py primitive FILE              =&gt; Read structure from FILE, use pymatgen and spglib to find primitive structure.
+  abistruct.py abisanitize FILE            =&gt; Read structure from FILE, call abisanitize, compare structures
+                                              and save &quot;abisanitized&quot; structure to file.
+  abistruct.py conventional FILE           =&gt; Read structure from FILE, generate conventional structure
+                                              following doi:10.1016/j.commatsci.2010.05.010
+  abistruct.py proto FILE                  =&gt; Read structure from FILE, find possible crystallographic prototypes
+                                              in the AFLOW library of crystallographic prototypes.
+                                              See http://doi.org/10.1016/j.commatsci.2017.01.017
+
+##################
+# Conversion tools
+##################
+
+  abistruct.py convert FILE                =&gt; Print the ABINIT variables defining the structure.
+  abistruct.py convert FILE -f cif         =&gt; Read structure from FILE and output CIF file
+                                              (Use convert --help to get list of formats supported)
+  abistruct.py convert out_HIST.nc         =&gt; Read FINAL structure from the HIST file and
+                                              print the corresponding ABINIT variables.
+  abistruct.py supercell FILE -s 2 2 1     =&gt; Read structure from FILE and build [2, 2, 1] supercell,
+                                              print new structure using --format (default abivars).
+################
+# K-points tools
+################
+
+  abistruct.py kpath FILE                  =&gt; Read structure from FILE and print ABINIT variables for k-path.
+  abistruct.py bz FILE                     =&gt; Read structure from FILE, plot BZ with matplotlib.
+  abistruct.py ngkpt FILE -n 4             =&gt; Compute `ngkpt` and `shiftk` from the number of divisions used to sample
+                                              the smallest reciprocal lattice vector.
+  abistruct.py abikmesh FILE --ngkpt 2 2 2 =&gt; Read structure from FILE, call Abinit to sample the BZ
+                                              with a 2, 2, 2 k-mesh, print points in IBZ with weights.
+  abistruct.py ktables FILE -m 2 2 2       =&gt; Read structure from FILE, call spglib to sample the BZ
+                                              with a 2, 2, 2 k-mesh, print points in IBZ with weights.
+  abistruct.py lgk FILE -k 0.25 0 0        =&gt; Read structure from FILE, find little group of k-point,
+                                              print Bilbao character table.
+  abistruct.py kstar FILE -k 0.25 0 0      =&gt; Read structure from FILE, print star of k-point.
+  abistruct.py keq FILE -k 0.5 0 0 0 0.5 0  =&gt; Read structure from FILE, test whether k1 and k2 are
+                                               symmetry-equivalent k-points.
+
+###############
+# Miscelleanous
+###############
+
+  abistruct.py neighbors FILE              =&gt; Get neighbors for each atom in the unit cell, out to a distance radius.
+  abistruct.py interpolate FILE1 FILE2     =&gt; Interpolate between two structures. Useful for the construction of NEB inputs.
+  abistruct.py xrd FILE                    =&gt; X-ray diffraction plot.
+  abistruct.py oxistate FILE               =&gt; Estimate oxidation states with pymatgen bond valence analysis.
+
+###############
+# Visualization
+###############
+
+  abistruct.py visualize FILE -a vesta     =&gt; Visualize the structure with vesta (default if -a is not given)
+                                              Supports also ovito, xcrysden, vtk, mayavi, matplotlib See --help
+  abistruct.py ipython FILE                =&gt; Read structure from FILE and open it in the Ipython terminal.
+  abistruct.py notebook FILE               =&gt; Read structure from FILE and generate jupyter notebook.
+  abistruct.py panel FILE                  =&gt; Generate GUI in web browser to interact with the structure
+                                              Requires panel package.
+
+###########
+# Databases
+###########
+
+  abistruct.py cod_id 1526507              =&gt; Get structure from COD database (http://www.crystallography.net/cod).
+  abistruct.py cod_search MgB2             =&gt; Search for structures in the COD database.
+  abistruct.py mp_id mp-149                =&gt; Get structure from materials project database and print
+                                              JSON representation. Use e.g. `-f abivars` to change format.
+  abistruct.py mp_match FILE               =&gt; Read structure from FILE and find matching structures on the
+                                              Materials Project site. Use e.g. `-f cif` to change output format.
+  abistruct.py mp_search LiF               =&gt; Connect to the materials project database. Get structures corresponding
+                                              to a chemical system or formula e.g. `Fe2O3` or `Li-Fe-O` or
+                                              `Ir-O-*` for wildcard pattern matching.
+                                              Print info and Abinit input files. Use e.g. `-f POSCAR`
+                                              to change output format. `-f None` to disable structure output.
+  abistruct.py mp_pd FILE-or-elements      =&gt; Generate phase diagram with entries from the Materials Project.
+  abistruct.py mp_ebands FILE             =&gt; Fetch electron band structure from MP database. Print gaps.
+                                             Accept FILE with structure if ebands from structure is wanted
+                                             or mp id e.g. &quot;mp-149 or list of elements e.g `Li-Fe-O` or chemical formula.
+
+`FILE` is any file supported by abipy/pymatgen e.g Netcdf files, Abinit input/output, POSCAR, xsf ...
+Use `abistruct.py --help` for help and `abistruct.py COMMAND --help` to get the documentation for `COMMAND`.
+Use `-v` to increase verbosity level (can be supplied multiple times e.g -vv).
+</pre></div>
+</div>
+</div>
+</div>
+<p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="input_factories.html" title="previous page">Factory functions</a>
+    <a class='right-next' id="next-link" href="gsr.html" title="next page">Post-processing tools for electron band energies</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By M. Giantomassi<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
