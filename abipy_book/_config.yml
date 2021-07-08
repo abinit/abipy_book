@@ -9,15 +9,20 @@ title                       : AbiPy Book  # The title of the book. Will be place
 author                      : M. Giantomassi and the AbiPy group  # The author of the book
 copyright                   : "2021"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
+# Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
+exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+# Auto-exclude files not in the toc
+only_build_toc_files: true
+  
+#######################################################################################
+# Execution settings
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: cache
+  #execute_notebooks: cache
   #execute_notebooks: auto
-  #execute_notebooks: force
-
-only_build_toc_files: true
+  execute_notebooks: force
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -34,6 +39,10 @@ repository:
   path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
+
+#######################################################################################
+# HTML-specific settings
+
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
@@ -41,6 +50,8 @@ html:
   use_edit_page_button: true
   use_issues_button: true
 
+#######################################################################################
+# Parse and render settings
 
 parse:
   #myst_substitutions:
@@ -57,13 +68,18 @@ parse:
     - smartquotes
     - substitution
 
+
+#######################################################################################
+# Advanced and power-user settings
+
 sphinx:
   config:
     # By default MathJax version 2 is currently used. 
     # You may want to try using version 3, which claims to improve load speeds by 60 - 80%:
-    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    #mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     html_js_files:
       - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js   # For plotly
+      - https://cdn.plot.ly/plotly-2.2.0.min.js
     bibtex_reference_style: author_year  # or label, super, \supercite
     intersphinx_mapping:
       python: 
