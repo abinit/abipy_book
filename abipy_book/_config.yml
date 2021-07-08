@@ -5,15 +5,19 @@
 
 #######################################################################################
 # Book settings
-title                       : AbiPy_Book  # The title of the book. Will be placed in the left navbar.
-author                      : M. Giantomassi  # The author of the book
+title                       : AbiPy Book  # The title of the book. Will be placed in the left navbar.
+author                      : M. Giantomassi and the AbiPy group  # The author of the book
 copyright                   : "2021"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: cache
+  #execute_notebooks: auto
+  #execute_notebooks: force
+
+only_build_toc_files: true
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -22,7 +26,7 @@ latex:
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
-  - references.bib
+  - abiref.bib
 
 # Information about where the book exists on the web
 repository:
@@ -41,4 +45,90 @@ html:
 sphinx:
   config:
     html_js_files:
-    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js   # For plotly
+    # Use same Macros as the ones used in the Abinit website
+    # See ~abinit/abinit_theme/main.html
+    mathjax_config:
+          TeX:
+           Macros:
+                "*": "{\\dagger}"
+                "ra": "{\\rangle}"
+                "la": "{\\langle}"
+                # // Workaround for bm package. See https://github.com/mathjax/MathJax/issues/1219
+                bm: ["{\\boldsymbol #1}",1]
+                # // Mathcal symbols
+                mcL: "{\\mathcal{L}}"
+                mcG: "{\\mathcal{G}}"
+                mcR: "{\\mathcal{R}}"
+                mcS: "{\\mathcal{S}}"
+                mcC: "{\\mathcal{C}}"
+                mcO: "{\\mathcal{O}}"
+                # // Acronyms
+                KS: "{\\text{KS}}"
+                eph: "{\\text{e-ph}}"
+                ee: "{\\text{e-e}}"
+                phph: "{\\text{ph-ph}}"
+                FM: "{\\text{FM}}"
+                DW: "{\\text{DW}}"
+                QP: "{\\text{QP}}"
+                BZ: "{\\text{BZ}}"
+                sign: "{\\text{sign}}"
+                xc: "{\\text{xc}}"
+                tchi: "{\\tilde\\chi}"
+                # // Symbols commonly used (k-points, eigenvalues ...)
+                rr: "{\\bf r}"
+                RR: "{\\bf R}"
+                tt: "{\\bf t}"
+                GG: "{\\bf G}"
+                kk: "{\\bf k}"
+                qq: "{\\bf q}"
+                kq: "{\\kk + \\qq}"
+                qG: "{\\bf q + G}"
+                kG: "{\\bf k + G}"
+                kmq: "{\\kk - \\qq}"
+                kpq: "{\\kk + \\qq}"
+                kpG: "{\\kk + \\GG}"
+                qpG: "{\\qq + \\GG}"
+                nk: "{n \\kk}"
+                mk: "{, \\kk}"
+                nks: "{n \\kk\\sigma}"
+                mks: "{m \\kk\\sigma}"
+                enk: "{\\varepsilon_\\nk}"
+                emkq: "{\\varepsilon_{m\\kk+\\qq}}"
+                qnu: "{\\qq \\nu}"
+                wqnu: "{\\omega_{\\qnu}}"
+                vnk: "{\\mathbf{v}_{n\\kk}}"
+                vmkq: "{\\mathbf{v}_{m\\kk+\\qq}}"
+                vnka: "{\\mathrm{v}_{n\\kk,\\alpha}}"
+                vnkb: "{\\mathrm{v}_{n\\kk,\\beta}}"
+                ef: "{\\varepsilon_F}"
+                # // EPH quantities
+                gkkp: "{g_{mn\\nu}(\\kk,\\qq)}"
+                gkq: "{g_{mn\\nu}(\\kk,\\qq)}"
+                # //\newcommand{\gkkpL}{g_{mn\nu}^\Lc(\kb,\qb)}
+                # // Many-body theory
+                Go: "{G_0}"
+                Wo: "{W_0}"
+                Ueff: "{U_{\\text{eff}}}"
+                # // Greek symbols + tilde version
+                ee: "{\\epsilon}"
+                tee: "{\\tilde{\\epsilon}}"
+                ww: "{\\omega}"
+                tww: "{\\tilde\\omega}"
+                dd: "{\\,\\text{d}}"
+                vxc: "{v_\\xc}"
+                # // symrel
+                Ri: "{\\mcR^{-1}}"
+                Rit: "{\\mcR^{-1\\tau}}"
+                # // symrec
+                Si: "{\\mcS^{-1}}}"
+                Sit: "{\\Si^\\tau}}"
+                # // partial and functional derivative.
+                PDER: ["{\\dfrac{\\partial #1}{\\partial #2}}", 2]
+                FDER: ["{\\dfrac{\\delta #1}{\\delta #2}}", 2]
+                # // PAW
+                tPsi: "{\\tilde\\Psi}"
+                tpsi: "{\\tilde\\psi}"
+                tPhi: "{\\tilde\\Phi}"
+                tphi: "{\\tilde\\phi}"
+                tprj: "{\\tilde p}"
