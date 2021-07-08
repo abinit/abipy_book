@@ -1,26 +1,7 @@
 # Introduction
 
-Welcome to the AbiPy Jupyter Book
-
-This is a small sample book to give you a feel for how book content is
-structured.
-
-:::{note}
-Here is a note!
-:::
-
-And here is a code block:
-
-```
-e = mc^2
-```
-
-Check out the content pages bundled with this sample book to see more.
-
-
-## AbiPy Notebooks
-
-This directory contains notebook-based documentation for [AbiPy](https://github.com/abinit/abipy).
+Welcome to the AbiPy Jupyter Book!
+This book contains notebook-based documentation for [AbiPy](https://github.com/abinit/abipy).
 This augments our Sphinx-based [documentation](http://pythonhosted.org/abipy/) with jupyter notebooks 
 containing interactive tutorials and examples.
 
@@ -86,5 +67,4 @@ Sometimes there is also a large overlap with some of the previous AbiPy tutorial
 
 ## Miscellaneous
 
-* [Ipython widgets](widgets.ipynb): How to use the widgets provided by abipy.display to analyse pandas DataFrames
 * [Useful links](links.ipynb)

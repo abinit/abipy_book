@@ -30,9 +30,9 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/gmatteo/abipy_book  # Online location of your book
+  url: https://github.com/abinit/abipy_book  # Online location of your book
   path_to_book: docs  # Optional path to your book, relative to the repository root
-  branch: main  # Which branch of the repository should be used when creating links (optional)
+  branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
@@ -44,11 +44,26 @@ html:
 
 sphinx:
   config:
+    nb_custom_formats:
+      .Rmd:
+        - jupytext.reads
+        - fmt: Rmd
     html_js_files:
     - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js   # For plotly
-    # Use same Macros as the ones used in the Abinit website
-    # See ~abinit/abinit_theme/main.html
+    intersphinx_mapping:
+      sphinx:
+        - "https://www.sphinx-doc.org/en/master"
+        - null
+      nbformat:
+        - "https://nbformat.readthedocs.io/en/latest"
+        - null
+    #extra_extensions:
+    #  - sphinx_click.ext
+    #  - sphinx_inline_tabs
+    #  - sphinxext.rediraffe
     mathjax_config:
+          # Use same Macros as the ones used in the Abinit website
+          # See ~abinit/abinit_theme/main.html
           TeX:
            Macros:
                 "*": "{\\dagger}"
