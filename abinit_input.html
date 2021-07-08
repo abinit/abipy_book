@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table of Contents &#8212; AbiPy_Book</title>
+    <title>The AbinitInput object &#8212; AbiPy Book</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -49,13 +49,13 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"*": "{\\dagger}", "ra": "{\\rangle}", "la": "{\\langle}", "bm": ["{\\boldsymbol #1}", 1], "mcL": "{\\mathcal{L}}", "mcG": "{\\mathcal{G}}", "mcR": "{\\mathcal{R}}", "mcS": "{\\mathcal{S}}", "mcC": "{\\mathcal{C}}", "mcO": "{\\mathcal{O}}", "KS": "{\\text{KS}}", "eph": "{\\text{e-ph}}", "ee": "{\\epsilon}", "phph": "{\\text{ph-ph}}", "FM": "{\\text{FM}}", "DW": "{\\text{DW}}", "QP": "{\\text{QP}}", "BZ": "{\\text{BZ}}", "sign": "{\\text{sign}}", "xc": "{\\text{xc}}", "tchi": "{\\tilde\\chi}", "rr": "{\\bf r}", "RR": "{\\bf R}", "tt": "{\\bf t}", "GG": "{\\bf G}", "kk": "{\\bf k}", "qq": "{\\bf q}", "kq": "{\\kk + \\qq}", "qG": "{\\bf q + G}", "kG": "{\\bf k + G}", "kmq": "{\\kk - \\qq}", "kpq": "{\\kk + \\qq}", "kpG": "{\\kk + \\GG}", "qpG": "{\\qq + \\GG}", "nk": "{n \\kk}", "mk": "{, \\kk}", "nks": "{n \\kk\\sigma}", "mks": "{m \\kk\\sigma}", "enk": "{\\varepsilon_\\nk}", "emkq": "{\\varepsilon_{m\\kk+\\qq}}", "qnu": "{\\qq \\nu}", "wqnu": "{\\omega_{\\qnu}}", "vnk": "{\\mathbf{v}_{n\\kk}}", "vmkq": "{\\mathbf{v}_{m\\kk+\\qq}}", "vnka": "{\\mathrm{v}_{n\\kk,\\alpha}}", "vnkb": "{\\mathrm{v}_{n\\kk,\\beta}}", "ef": "{\\varepsilon_F}", "gkkp": "{g_{mn\\nu}(\\kk,\\qq)}", "gkq": "{g_{mn\\nu}(\\kk,\\qq)}", "Go": "{G_0}", "Wo": "{W_0}", "Ueff": "{U_{\\text{eff}}}", "tee": "{\\tilde{\\epsilon}}", "ww": "{\\omega}", "tww": "{\\tilde\\omega}", "dd": "{\\,\\text{d}}", "vxc": "{v_\\xc}", "Ri": "{\\mcR^{-1}}", "Rit": "{\\mcR^{-1\\tau}}", "Si": "{\\mcS^{-1}}}", "Sit": "{\\Si^\\tau}}", "PDER": ["{\\dfrac{\\partial #1}{\\partial #2}}", 2], "FDER": ["{\\dfrac{\\delta #1}{\\delta #2}}", 2], "tPsi": "{\\tilde\\Psi}", "tpsi": "{\\tilde\\psi}", "tPhi": "{\\tilde\\Phi}", "tphi": "{\\tilde\\phi}", "tprj": "{\\tilde p}"}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Factory functions" href="input_factories.html" />
-    <link rel="prev" title="Content with notebooks" href="notebooks.html" />
+    <link rel="prev" title="Structure object" href="structure.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -77,7 +77,7 @@
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">AbiPy_Book</h1>
+      <h1 class="site-logo" id="site-title">AbiPy Book</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -88,92 +88,146 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Welcome to your Jupyter Book
+   Introduction
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Basic AbiPy Objects
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="content.html">
-   Content in Jupyter Book
+ <li class="toctree-l1">
+  <a class="reference internal" href="structure.html">
+   Structure object
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="markdown.html">
-     Markdown Files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="notebooks.html">
-     Content with notebooks
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Table of Contents
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="input_factories.html">
-     Factory functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="structure.html">
-     Structure object
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="gsr.html">
-     Post-processing tools for electron band energies
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="hist.html">
-     The HIST.nc file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="efatbands.html">
-     FATBANDS.nc file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ddb.html">
-     Post-processing DFPT calculations with the DDB file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sigres.html">
-     Postprocessing tools for GW calculations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mdf.html">
-     Postprocessing tools for Bethe-Salpeter calculations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="abiwan.html">
-     Analyzing wannier90 results with AbiPy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lobster.html">
-     Analyzing Lobster output files with AbiPy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="flows.html">
-     Tasks, Workflows and Flow
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The AbinitInput object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="input_factories.html">
+   Factory functions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Output Files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="gsr.html">
+   The GSR file (Ground-State)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hist.html">
+   The HIST.nc file (relaxation/MD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="efatbands.html">
+   The FATBANDS.nc file
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ddb.html">
+   The DDB file (DFPT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sigres.html">
+   The SIGRES file (GW)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mdf.html">
+   The MDF file (Bethe-Salpeter)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="abiwan.html">
+   The ABIWAN file (wannier90)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lobster.html">
+   Lobster output files
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Workflows
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="flows.html">
+   Tasks, Workflows and Flow
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="base1/lesson_base1.html">
+   Base1 lesson (H2 molecule)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="base3/lesson_base3.html">
+   Base3 lesson (silicon)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="base4/lesson_base4.html">
+   Base4 lesson (Aluminium)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dfpt/lesson_dfpt.html">
+   Phonons and Born effective charges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="g0w0/lesson_g0w0.html">
+   <span class="math notranslate nohighlight">
+    \(G_0W_0\)
+   </span>
+   band structure with star-function interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bse/lesson_bse.html">
+   Bethe-Salpeter calculations with AbiPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="eph_al/lesson_eph_al.html">
+   Isotropic superconductivity
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Miscellaneous
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="links.html">
+   Useful links
+  </a>
  </li>
 </ul>
 
@@ -235,14 +289,14 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/gmatteo/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/abinit/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/gmatteo/abipy_book/issues/new?title=Issue%20on%20page%20%2Fabinit_input.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/abinit/abipy_book/issues/new?title=Issue%20on%20page%20%2Fabinit_input.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/gmatteo/abipy_book/edit/main/docs/abinit_input.md"><button
+        <a class="edit-button" href="https://github.com/abinit/abipy_book/edit/master/docs/abinit_input.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -262,7 +316,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/gmatteo/abipy_book/main?urlpath=tree/docs/abinit_input.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/abinit/abipy_book/master?urlpath=tree/docs/abinit_input.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -284,44 +338,34 @@
             </div>
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Table of Contents
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#creating-an-abinitinput-object">
    Creating an AbinitInput object
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defining-the-crystalline-structure">
-   Defining the crystalline structure
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#structure-from-dictionary">
      Structure from dictionary:
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#structure-from-file">
      Structure from file
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#from-the-materials-project-database">
      From the Materials Project database:
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#brillouin-zone-sampling">
    Brillouin zone sampling
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#explicit-k-mesh">
      Explicit
      <span class="math notranslate nohighlight">
@@ -330,7 +374,7 @@
      -mesh
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#automatic-k-mesh">
      Automatic
      <span class="math notranslate nohighlight">
@@ -339,7 +383,7 @@
      -mesh
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#high-symmetry-k-path">
      High-symmetry
      <span class="math notranslate nohighlight">
@@ -350,17 +394,17 @@
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#utilities">
    Utilities
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#invoking-abinit-with-abinitinput">
    Invoking Abinit with AbinitInput
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multiple-datasets">
    Multiple datasets
   </a>
@@ -376,21 +420,8 @@
         
               <div>
                 
-  <p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a> <a id="top"></a></p>
-<div class="section" id="table-of-contents">
-<h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p><a class="reference external" href="#Creating-an-AbinitInput-object">Creating an AbinitInput object</a></p></li>
-<li><p><a class="reference external" href="#Defining-the-crystalline-structure">Defining the crystalline structure</a></p></li>
-<li><p><a class="reference external" href="#Brillouin-zone-sampling">Brillouin zone sampling</a></p></li>
-<li><p><a class="reference external" href="#Utilities">Utilities</a></p></li>
-<li><p><a class="reference external" href="#Invoking-Abinit-with-AbinitInput">Invoking Abinit with AbinitInput</a></p></li>
-<li><p><a class="reference external" href="#Multiple-datasets">Multiple datasets</a></p></li>
-</ul>
-</div>
-<div class="section" id="creating-an-abinitinput-object">
-<h1>Creating an AbinitInput object<a class="headerlink" href="#creating-an-abinitinput-object" title="Permalink to this headline">¶</a></h1>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
+  <div class="section" id="the-abinitinput-object">
+<h1>The AbinitInput object<a class="headerlink" href="#the-abinitinput-object" title="Permalink to this headline">¶</a></h1>
 <p>The creation of the Abinit input file is one of the most repetive and error-prone operations
 we have to perform before running our calculations.
 To facilitate the creation of the input files, AbiPy provides the <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code> object,
@@ -398,14 +429,14 @@ a dict-like object storing the Abinit variables and providing methods to automat
 the specification of multiple parameters.</p>
 <p>This notebook discusses how to create an <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code> and how to define the parameters of the calculation.
 In the last part, we introduce the <code class="docutils literal notranslate"><span class="pre">MultiDataset</span></code> object that is mainly designed for the generation
-of multiple inputs sharing the same structure and the same list of pseudopotentials.</p>
-<p>In another <a class="reference internal" href="input_factories.html"><span class="doc std std-doc">notebook</span></a>, we briefly discuss how to use factory functions
+of multiple inputs sharing the same structure and the same list of pseudopotentials.
+In another <a class="reference internal" href="input_factories.html"><span class="doc std std-doc">notebook</span></a>, we briefly discuss how to use factory functions
 to generate automatically input objects for typical calculations.</p>
+<div class="section" id="creating-an-abinitinput-object">
+<h2>Creating an AbinitInput object<a class="headerlink" href="#creating-an-abinitinput-object" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span> <span class="c1"># to get rid of deprecation warnings</span>
 
@@ -416,10 +447,10 @@ to generate automatically input objects for typical calculations.</p>
 
 <span class="c1"># This line configures matplotlib to show figures embedded in the notebook.</span>
 <span class="c1"># Replace `inline` with `notebook` in classic notebook</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline   
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="c1"># Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib</span>
-<span class="c1">#%matplotlib widget  </span>
+<span class="c1">#%matplotlib widget</span>
 </pre></div>
 </div>
 </div>
@@ -429,7 +460,7 @@ In this case, we have a pseudo named <code class="docutils literal notranslate">
 in the <code class="docutils literal notranslate"><span class="pre">abidata.pseudo_dir</span></code> directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inp</span> <span class="o">=</span> <span class="n">AbinitInput</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">cif_file</span><span class="p">(</span><span class="s2">&quot;si.cif&quot;</span><span class="p">),</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inp</span> <span class="o">=</span> <span class="n">AbinitInput</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">cif_file</span><span class="p">(</span><span class="s2">&quot;si.cif&quot;</span><span class="p">),</span>
                   <span class="n">pseudos</span><span class="o">=</span><span class="s2">&quot;14si.pspnc&quot;</span><span class="p">,</span> <span class="n">pseudo_dir</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">pseudo_dir</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -595,7 +626,7 @@ Sites (2)
 <p>To iterate over keywords and values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">varname</span><span class="p">,</span> <span class="n">varvalue</span> <span class="ow">in</span> <span class="n">inp</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">varname</span><span class="p">,</span> <span class="n">varvalue</span> <span class="ow">in</span> <span class="n">inp</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">varname</span><span class="p">,</span> <span class="s2">&quot;--&gt;&quot;</span><span class="p">,</span> <span class="n">varvalue</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -610,9 +641,9 @@ paral_kgb --&gt; 0
 <p>Use lists, tuples or numpy arrays when Abinit expects arrays</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inp</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">kptopt</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
-             <span class="n">ngkpt</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
-             <span class="n">nshiftk</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inp</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">kptopt</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+             <span class="n">ngkpt</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+             <span class="n">nshiftk</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
              <span class="n">shiftk</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>  <span class="c1"># 2 shifts in one list</span>
             <span class="p">)</span>
 
@@ -650,12 +681,12 @@ with the Abinit version you are using. Please contact the AbiPy developers.
 </div>
 <div class="alert alert-warning" role="alert">
 The AbinitInput is a mutable object so changing it will aftect all the references
-to the object. 
+to the object.
 See http://docs.python-guide.org/en/latest/writing/gotchas/ for further info
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;foo&quot;</span><span class="p">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">}</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> 
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">a</span><span class="p">[</span><span class="s2">&quot;hello&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;world&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a dict:&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
@@ -672,10 +703,6 @@ c dict: {&#39;foo&#39;: &#39;bar&#39;}
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="defining-the-crystalline-structure">
-<h1>Defining the crystalline structure<a class="headerlink" href="#defining-the-crystalline-structure" title="Permalink to this headline">¶</a></h1>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">set_structure</span></code> method sets the value of the ABINIT variables:</p>
 <ul class="simple">
 <li><p>acell</p></li>
@@ -692,16 +719,16 @@ For example, the <code class="docutils literal notranslate"><span class="pre">se
 <div class="alert alert-warning">
 `typat` must be consistent with the list of pseudopotentials passed to `AbinitInput`
 </div><div class="section" id="structure-from-dictionary">
-<h2>Structure from dictionary:<a class="headerlink" href="#structure-from-dictionary" title="Permalink to this headline">¶</a></h2>
+<h3>Structure from dictionary:<a class="headerlink" href="#structure-from-dictionary" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">structure</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">ntypat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>         
+    <span class="n">ntypat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">natom</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="n">typat</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
     <span class="n">znucl</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
     <span class="n">acell</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="p">[</span><span class="mf">10.217</span><span class="p">],</span>
-    <span class="n">rprim</span><span class="o">=</span><span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span>  <span class="mf">0.5</span><span class="p">,</span>  <span class="mf">0.5</span><span class="p">],</span>   
+    <span class="n">rprim</span><span class="o">=</span><span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span>  <span class="mf">0.5</span><span class="p">,</span>  <span class="mf">0.5</span><span class="p">],</span>
            <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span>  <span class="mf">0.0</span><span class="p">,</span>  <span class="mf">0.5</span><span class="p">],</span>
            <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span>  <span class="mf">0.5</span><span class="p">,</span>  <span class="mf">0.0</span><span class="p">]],</span>
     <span class="n">xred</span><span class="o">=</span><span class="p">[[</span><span class="mf">0.0</span> <span class="p">,</span> <span class="mf">0.0</span> <span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
@@ -715,7 +742,7 @@ For example, the <code class="docutils literal notranslate"><span class="pre">se
 </div>
 </div>
 <div class="section" id="structure-from-file">
-<h2>Structure from file<a class="headerlink" href="#structure-from-file" title="Permalink to this headline">¶</a></h2>
+<h3>Structure from file<a class="headerlink" href="#structure-from-file" title="Permalink to this headline">¶</a></h3>
 <p>From a CIF file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -773,7 +800,7 @@ PeriodicSite: Si (1.1163, 0.7893, 1.9335) [0.2500, 0.2500, 0.2500]
 </ul>
 </div>
 <div class="section" id="from-the-materials-project-database">
-<h2>From the Materials Project database:<a class="headerlink" href="#from-the-materials-project-database" title="Permalink to this headline">¶</a></h2>
+<h3>From the Materials Project database:<a class="headerlink" href="#from-the-materials-project-database" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://www.materialsproject.org/materials/mp-149/</span>
@@ -813,8 +840,7 @@ PeriodicSite: Si (0.0000, 0.0000, 0.0000) [0.0000, 0.0000, 0.0000]
 </div>
 </div>
 <div class="section" id="brillouin-zone-sampling">
-<h1>Brillouin zone sampling<a class="headerlink" href="#brillouin-zone-sampling" title="Permalink to this headline">¶</a></h1>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<h2>Brillouin zone sampling<a class="headerlink" href="#brillouin-zone-sampling" title="Permalink to this headline">¶</a></h2>
 <p>There are two different types of sampling of the BZ: homogeneous and high-symmetry k-path.
 The later is mainly used for band structure calculations and requires the specification of:</p>
 <ul class="simple">
@@ -831,12 +857,12 @@ The <span class="math notranslate nohighlight">\(k\)</span>-mesh is usually spec
 <li><p>shiftk</p></li>
 </ul>
 <div class="section" id="explicit-k-mesh">
-<h2>Explicit <span class="math notranslate nohighlight">\(k\)</span>-mesh<a class="headerlink" href="#explicit-k-mesh" title="Permalink to this headline">¶</a></h2>
+<h3>Explicit <span class="math notranslate nohighlight">\(k\)</span>-mesh<a class="headerlink" href="#explicit-k-mesh" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inp</span> <span class="o">=</span> <span class="n">AbinitInput</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">cif_file</span><span class="p">(</span><span class="s2">&quot;si.cif&quot;</span><span class="p">),</span> <span class="n">pseudos</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">pseudos</span><span class="p">(</span><span class="s2">&quot;14si.pspnc&quot;</span><span class="p">))</span>
 
-<span class="c1"># Set ngkpt, shiftk explicitly  </span>
+<span class="c1"># Set ngkpt, shiftk explicitly</span>
 <span class="n">inp</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">shiftk</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -853,10 +879,10 @@ The <span class="math notranslate nohighlight">\(k\)</span>-mesh is usually spec
 </div>
 </div>
 <div class="section" id="automatic-k-mesh">
-<h2>Automatic <span class="math notranslate nohighlight">\(k\)</span>-mesh<a class="headerlink" href="#automatic-k-mesh" title="Permalink to this headline">¶</a></h2>
+<h3>Automatic <span class="math notranslate nohighlight">\(k\)</span>-mesh<a class="headerlink" href="#automatic-k-mesh" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a homogeneous k-mesh. </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a homogeneous k-mesh.</span>
 <span class="c1"># nksmall is the number of divisions to be used to sample the smallest lattice vector,</span>
 <span class="c1"># shiftk is automatically selected from an internal database.</span>
 
@@ -878,11 +904,11 @@ The <span class="math notranslate nohighlight">\(k\)</span>-mesh is usually spec
 </div>
 </div>
 <div class="section" id="high-symmetry-k-path">
-<h2>High-symmetry <span class="math notranslate nohighlight">\(k\)</span>-path<a class="headerlink" href="#high-symmetry-k-path" title="Permalink to this headline">¶</a></h2>
+<h3>High-symmetry <span class="math notranslate nohighlight">\(k\)</span>-path<a class="headerlink" href="#high-symmetry-k-path" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a high-symmetry k-path (taken from an internal database)</span>
-<span class="c1"># Ten points are used to sample the smallest segment, </span>
+<span class="c1"># Ten points are used to sample the smallest segment,</span>
 <span class="c1"># the other segments are sampled so that proportions are preserved.</span>
 <span class="c1"># A warning is issued by pymatgen about the structure not being standard.</span>
 <span class="c1"># Be aware that this might possibly affect the automatic labelling of the boundary k-points on the k-path.</span>
@@ -915,8 +941,7 @@ The <span class="math notranslate nohighlight">\(k\)</span>-mesh is usually spec
 </div>
 </div>
 <div class="section" id="utilities">
-<h1>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h1>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h2>
 <p>Once the structure has been defined, one can compute the number of valence electrons with:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -964,8 +989,7 @@ The <span class="math notranslate nohighlight">\(k\)</span>-mesh is usually spec
 </div>
 </div>
 <div class="section" id="invoking-abinit-with-abinitinput">
-<h1>Invoking Abinit with AbinitInput<a class="headerlink" href="#invoking-abinit-with-abinitinput" title="Permalink to this headline">¶</a></h1>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<h2>Invoking Abinit with AbinitInput<a class="headerlink" href="#invoking-abinit-with-abinitinput" title="Permalink to this headline">¶</a></h2>
 <p>Once you have an <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code>, you can call Abinit to get useful information
 or simply to validate the input file before running the calculation.
 All the method that invoke Abinit starts with the <code class="docutils literal notranslate"><span class="pre">abi</span></code> prefix
@@ -977,8 +1001,8 @@ followed by a verb e.g. <code class="docutils literal notranslate"><span class="
 <span class="n">inp</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">ecut</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">inp</span><span class="o">.</span><span class="n">set_autokmesh</span><span class="p">(</span><span class="n">nksmall</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 
-<span class="n">v</span> <span class="o">=</span> <span class="n">inp</span><span class="o">.</span><span class="n">abivalidate</span><span class="p">()</span> 
-<span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">retcode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span> 
+<span class="n">v</span> <span class="o">=</span> <span class="n">inp</span><span class="o">.</span><span class="n">abivalidate</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">retcode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
     <span class="c1"># If there is a mistake in the input, one can acces the log file of the run with the log_file object</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">log_file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]))</span>
 </pre></div>
@@ -1005,7 +1029,7 @@ message: |
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inp</span><span class="p">[</span><span class="s2">&quot;ecut&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">inp</span><span class="p">[</span><span class="s2">&quot;toldfe&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1e-10</span>
 <span class="n">v</span> <span class="o">=</span> <span class="n">inp</span><span class="o">.</span><span class="n">abivalidate</span><span class="p">()</span>
-<span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">retcode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
+<span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">retcode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All ok&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
@@ -1106,6 +1130,9 @@ best speedup:
           &#39;npspinor&#39;: 1}}
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 <p>To get the list of irreducible phonon perturbations at Gamma (Abinit notation)</p>
@@ -1123,19 +1150,18 @@ best speedup:
 </div>
 </div>
 <div class="section" id="multiple-datasets">
-<h1>Multiple datasets<a class="headerlink" href="#multiple-datasets" title="Permalink to this headline">¶</a></h1>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
+<h2>Multiple datasets<a class="headerlink" href="#multiple-datasets" title="Permalink to this headline">¶</a></h2>
 <p>Multiple datasets are handy when you have to generate several input files sharing several common
 variables e.g. the crystalline structure, the value of ecut etc…
 In this case, one can use the <code class="docutils literal notranslate"><span class="pre">MultiDataset</span></code> object that is essentially
 a list of <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code> objects. Note however that <code class="docutils literal notranslate"><span class="pre">Abipy</span></code> workflows do not support input files with more than one dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A MultiDataset object with two datasets (a.k.a. AbinitInput) </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A MultiDataset object with two datasets (a.k.a. AbinitInput)</span>
 <span class="n">multi</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">MultiDataset</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">cif_file</span><span class="p">(</span><span class="s2">&quot;si.cif&quot;</span><span class="p">),</span>
                             <span class="n">pseudos</span><span class="o">=</span><span class="s2">&quot;14si.pspnc&quot;</span><span class="p">,</span> <span class="n">pseudo_dir</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">pseudo_dir</span><span class="p">,</span> <span class="n">ndtset</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="c1"># A MultiDataset is essentially a list of AbinitInput objects </span>
+<span class="c1"># A MultiDataset is essentially a list of AbinitInput objects</span>
 <span class="c1"># with handy methods to perform global modifications.</span>
 <span class="c1"># i.e. changes that will affect all the inputs in the MultiDataset</span>
 <span class="c1"># For example:</span>
@@ -1147,7 +1173,7 @@ a list of <code class="docutils literal notranslate"><span class="pre">AbinitInp
 <span class="c1">#</span>
 <span class="c1"># and indeed:</span>
 
-<span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">multi</span><span class="p">:</span> 
+<span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">multi</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">inp</span><span class="p">[</span><span class="s2">&quot;ecut&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -1234,7 +1260,7 @@ Remember that in python we start to count from zero hence the first dataset has 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multi</span><span class="o">.</span><span class="n">set_structure</span><span class="p">(</span><span class="n">abidata</span><span class="o">.</span><span class="n">cif_file</span><span class="p">(</span><span class="s2">&quot;si.cif&quot;</span><span class="p">))</span>
 
-<span class="c1"># The structure attribute of a MultiDataset returns a list of structures </span>
+<span class="c1"># The structure attribute of a MultiDataset returns a list of structures</span>
 <span class="c1"># equivalent to [inp.structure for inp in multi]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">multi</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
 </pre></div>
@@ -1278,9 +1304,9 @@ PeriodicSite: Si (1.1163, 0.7893, 1.9335) [0.2500, 0.2500, 0.2500]]
 <div></div></div>
 </div>
 <div class="alert alert">
-You can use `MultiDataset` to build your input files but remember that 
+You can use `MultiDataset` to build your input files but remember that
 `Abipy` workflows will never support input files with more than one dataset.
-As a consequence, you should always pass an `AbinitInput` to the 
+As a consequence, you should always pass an `AbinitInput` to the
 AbiPy functions that are building `Tasks`, `Works` or `Flows`.
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1299,7 +1325,7 @@ AbiPy functions that are building `Tasks`, `Works` or `Flows`.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To create and append a new dataset (initialized from dataset number 1)</span>
 <span class="n">multi</span><span class="o">.</span><span class="n">addnew_from</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">multi</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">ecut</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Now multi has&quot;</span><span class="p">,</span> <span class="n">multi</span><span class="o">.</span><span class="n">ndtset</span><span class="p">,</span> <span class="s2">&quot;datasets and the ecut in the last dataset is:&quot;</span><span class="p">,</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Now multi has&quot;</span><span class="p">,</span> <span class="n">multi</span><span class="o">.</span><span class="n">ndtset</span><span class="p">,</span> <span class="s2">&quot;datasets and the ecut in the last dataset is:&quot;</span><span class="p">,</span>
       <span class="n">multi</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;ecut&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -1310,7 +1336,7 @@ AbiPy functions that are building `Tasks`, `Works` or `Flows`.
 </div>
 </div>
 </div>
-<p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a></p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1338,7 +1364,7 @@ AbiPy functions that are building `Tasks`, `Works` or `Flows`.
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="notebooks.html" title="previous page">Content with notebooks</a>
+    <a class='left-prev' id="prev-link" href="structure.html" title="previous page">Structure object</a>
     <a class='right-next' id="next-link" href="input_factories.html" title="next page">Factory functions</a>
 
         </div>
@@ -1349,7 +1375,7 @@ AbiPy functions that are building `Tasks`, `Works` or `Flows`.
     <div class="container">
       <p>
         
-          By M. Giantomassi<br/>
+          By M. Giantomassi and the AbiPy group<br/>
         
             &copy; Copyright 2021.<br/>
       </p>

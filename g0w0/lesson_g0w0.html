@@ -1,0 +1,1415 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>\(G_0W_0\) band structure with star-function interpolation &#8212; AbiPy Book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"*": "{\\dagger}", "ra": "{\\rangle}", "la": "{\\langle}", "bm": ["{\\boldsymbol #1}", 1], "mcL": "{\\mathcal{L}}", "mcG": "{\\mathcal{G}}", "mcR": "{\\mathcal{R}}", "mcS": "{\\mathcal{S}}", "mcC": "{\\mathcal{C}}", "mcO": "{\\mathcal{O}}", "KS": "{\\text{KS}}", "eph": "{\\text{e-ph}}", "ee": "{\\epsilon}", "phph": "{\\text{ph-ph}}", "FM": "{\\text{FM}}", "DW": "{\\text{DW}}", "QP": "{\\text{QP}}", "BZ": "{\\text{BZ}}", "sign": "{\\text{sign}}", "xc": "{\\text{xc}}", "tchi": "{\\tilde\\chi}", "rr": "{\\bf r}", "RR": "{\\bf R}", "tt": "{\\bf t}", "GG": "{\\bf G}", "kk": "{\\bf k}", "qq": "{\\bf q}", "kq": "{\\kk + \\qq}", "qG": "{\\bf q + G}", "kG": "{\\bf k + G}", "kmq": "{\\kk - \\qq}", "kpq": "{\\kk + \\qq}", "kpG": "{\\kk + \\GG}", "qpG": "{\\qq + \\GG}", "nk": "{n \\kk}", "mk": "{, \\kk}", "nks": "{n \\kk\\sigma}", "mks": "{m \\kk\\sigma}", "enk": "{\\varepsilon_\\nk}", "emkq": "{\\varepsilon_{m\\kk+\\qq}}", "qnu": "{\\qq \\nu}", "wqnu": "{\\omega_{\\qnu}}", "vnk": "{\\mathbf{v}_{n\\kk}}", "vmkq": "{\\mathbf{v}_{m\\kk+\\qq}}", "vnka": "{\\mathrm{v}_{n\\kk,\\alpha}}", "vnkb": "{\\mathrm{v}_{n\\kk,\\beta}}", "ef": "{\\varepsilon_F}", "gkkp": "{g_{mn\\nu}(\\kk,\\qq)}", "gkq": "{g_{mn\\nu}(\\kk,\\qq)}", "Go": "{G_0}", "Wo": "{W_0}", "Ueff": "{U_{\\text{eff}}}", "tee": "{\\tilde{\\epsilon}}", "ww": "{\\omega}", "tww": "{\\tilde\\omega}", "dd": "{\\,\\text{d}}", "vxc": "{v_\\xc}", "Ri": "{\\mcR^{-1}}", "Rit": "{\\mcR^{-1\\tau}}", "Si": "{\\mcS^{-1}}}", "Sit": "{\\Si^\\tau}}", "PDER": ["{\\dfrac{\\partial #1}{\\partial #2}}", 2], "FDER": ["{\\dfrac{\\delta #1}{\\delta #2}}", 2], "tPsi": "{\\tilde\\Psi}", "tpsi": "{\\tilde\\psi}", "tPhi": "{\\tilde\\Phi}", "tphi": "{\\tilde\\phi}", "tprj": "{\\tilde p}"}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bethe-Salpeter calculations with AbiPy" href="../bse/lesson_bse.html" />
+    <link rel="prev" title="Phonons and Born effective charges" href="../dfpt/lesson_dfpt.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AbiPy Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Basic AbiPy Objects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../structure.html">
+   Structure object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../abinit_input.html">
+   The AbinitInput object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../input_factories.html">
+   Factory functions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Output Files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../gsr.html">
+   The GSR file (Ground-State)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../hist.html">
+   The HIST.nc file (relaxation/MD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../efatbands.html">
+   The FATBANDS.nc file
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ddb.html">
+   The DDB file (DFPT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sigres.html">
+   The SIGRES file (GW)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mdf.html">
+   The MDF file (Bethe-Salpeter)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../abiwan.html">
+   The ABIWAN file (wannier90)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lobster.html">
+   Lobster output files
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Workflows
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../flows.html">
+   Tasks, Workflows and Flow
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Lessons
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../base1/lesson_base1.html">
+   Base1 lesson (H2 molecule)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../base3/lesson_base3.html">
+   Base3 lesson (silicon)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../base4/lesson_base4.html">
+   Base4 lesson (Aluminium)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dfpt/lesson_dfpt.html">
+   Phonons and Born effective charges
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   <span class="math notranslate nohighlight">
+    \(G_0W_0\)
+   </span>
+   band structure with star-function interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bse/lesson_bse.html">
+   Bethe-Salpeter calculations with AbiPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eph_al/lesson_eph_al.html">
+   Isotropic superconductivity
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Miscellaneous
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../links.html">
+   Useful links
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/g0w0/lesson_g0w0.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/g0w0/lesson_g0w0.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/abinit/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/abinit/abipy_book/issues/new?title=Issue%20on%20page%20%2Fg0w0/lesson_g0w0.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/abinit/abipy_book/edit/master/docs/g0w0/lesson_g0w0.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/abinit/abipy_book/master?urlpath=tree/docs/g0w0/lesson_g0w0.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#related-abinit-variables">
+   Related ABINIT variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#description-of-the-lesson">
+   Description of the lesson
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#input-for-rpa-screening-calculation">
+     Input for RPA screening calculation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#input-for-self-energy-calculation-with-plasmon-pole-model">
+     Input for self-energy calculation with plasmon-pole model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis-of-the-results">
+   Analysis of the results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpolating-the-qp-corrections">
+   Interpolating the QP corrections
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="g-0w-0-band-structure-with-star-function-interpolation">
+<h1><span class="math notranslate nohighlight">\(G_0W_0\)</span> band structure with star-function interpolation<a class="headerlink" href="#g-0w-0-band-structure-with-star-function-interpolation" title="Permalink to this headline">¶</a></h1>
+<p>Standard functionals (LDA and GGA), systematically underestimate band gaps, giving values
+that are about 30-40% smaller than experimental data.
+The inability of standard Kohn-Sham (KS) theory to give band gaps close to experiment is often referred to as the <strong>band-gap problem</strong>.</p>
+<p>From a theoretical point of view this is not surprising since KS eigenvalues are not supposed to give the correct band energies.
+The band structure of a crystal is rigorously defined as the energies needed to add or subtract electrons from the many-body system
+which, in turn, are related to the difference between total energies of <strong>many-body states</strong> differing by one electron.</p>
+<p>An alternative, more traditional, approach to the study of exchange-correlation effects in
+many-body systems is provided by Many-Body Perturbation Theory (MBPT) which defines a rigorous approach to the description of excited-state properties, based on the Green’s function formalism.
+In this lesson, we discuss how to use the MBPT part of ABINIT to compute the band-structure of silicon
+within the so-called <span class="math notranslate nohighlight">\(G_0W_0\)</span> approximation.
+For a very brief introduction to the many-body formalism, please consult the
+<a class="reference external" href="https://docs.abinit.org/theory/mbt/">MBPT_notes</a></p>
+<div class="section" id="related-abinit-variables">
+<h2>Related ABINIT variables<a class="headerlink" href="#related-abinit-variables" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* optdriver
+* ecuteps
+* ecutsigx
+* nband
+* gwcalctyp
+* gw_qprange
+* all gw** variables
+</pre></div>
+</div>
+</div>
+<div class="section" id="description-of-the-lesson">
+<h2>Description of the lesson<a class="headerlink" href="#description-of-the-lesson" title="Permalink to this headline">¶</a></h2>
+<p>In this lesson, we construct an AbiPy flow made of two works.
+The first work is a standard KS band-structure calculation consisting of
+an initial GS calculation to get the density, followed by two NSCF calculations.
+The first NSCF task computes the KS eigenvalues on a high-symmetry path in the BZ,
+whereas the second NSCF task employs a homogeneous k-mesh so that one can compute
+the DOS from the KS eigenvalues.</p>
+<p>The second work represents the real GW workflow that uses the density computed in the first task of
+the previous work to compute the KS bands for <em>many empty states</em>.
+The WFK file produced in this step is then used to compute the screened interaction <span class="math notranslate nohighlight">\(W\)</span>.
+Finally, we perform a self-energy calculation that uses the <span class="math notranslate nohighlight">\(W\)</span> produced
+in the previous step and the WFK file to compute the matrix elements of the self-energy and
+the <span class="math notranslate nohighlight">\(G_0W_0\)</span> corrections for all the k-points in the IBZ and 8 bands (4 occupied + 4 empty).
+Once the flow is completed, we can interpolate the <span class="math notranslate nohighlight">\(G_0W_0\)</span> corrections.</p>
+<p>Do not worry if there are steps of the entire procedure that are not clear to you.
+<span class="math notranslate nohighlight">\(GW\)</span> calculations are much more complicated than standard KS band structures and
+the main goal of this lesson is to give you an overview of the Abipy capabilities.</p>
+<p>Let’s start with the usual import section:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use this at the beginning of your script so that your code will be compatible with python3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span> <span class="c1"># to get rid of deprecation warnings</span>
+
+<span class="kn">from</span> <span class="nn">abipy</span> <span class="kn">import</span> <span class="n">abilab</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span> <span class="c1"># This line tells AbiPy we are running inside a notebook</span>
+
+<span class="kn">import</span> <span class="nn">abipy.flowtk</span> <span class="k">as</span> <span class="nn">flowtk</span>
+
+<span class="c1"># This line configures matplotlib to show figures embedded in the notebook.</span>
+<span class="c1"># Replace `inline` with `notebook` in classic notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline   
+
+<span class="c1"># Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib</span>
+<span class="c1">#%matplotlib widget </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and now we import the <code class="docutils literal notranslate"><span class="pre">make_inputs</span></code> function that generates the inputs files required by our <code class="docutils literal notranslate"><span class="pre">Flow</span></code>.
+Let’s have a look at the code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_g0w0</span> <span class="kn">import</span> <span class="n">make_inputs</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">make_inputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_inputs</span><span class="p">(</span><span class="n">ngkpt</span><span class="p">,</span> <span class="n">dos_ngkpt</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">paral_kgb</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crystalline silicon: calculation of the G0W0 band structure with the scissors operator.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ngkpt: list of 3 integers. Abinit variable defining the k-point sampling.</span>
+<span class="sd">        dos_ngkpt: list of 3 integers. k-point sampling for DOS.</span>
+<span class="sd">        paral_kgb: Option used to select the eigensolver in the GS part.</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        Six AbinitInput objects:</span>
+
+<span class="sd">        [0]: Ground state run to get the density.</span>
+<span class="sd">        [1]: NSCF run to get the KS band structure on a high-symmetry k-path.</span>
+<span class="sd">        [2]: NSCF run with a homogeneous sampling of the BZ to compute the KS DOS with `dos_ngkpt`.</span>
+<span class="sd">        [3]: NSCF run with empty states to prepare the GW steps.</span>
+<span class="sd">        [4]: Calculation of the screening from the WFK file computed in dataset 4.</span>
+<span class="sd">        [5]: Use the SCR file computed at step 5 and the WFK file computed in dataset 4 to get the GW corrections.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">multi</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">MultiDataset</span><span class="p">(</span><span class="n">abidata</span><span class="o">.</span><span class="n">cif_file</span><span class="p">(</span><span class="s2">&quot;si.cif&quot;</span><span class="p">),</span>
+                                <span class="n">pseudos</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">pseudos</span><span class="p">(</span><span class="s2">&quot;14si.pspnc&quot;</span><span class="p">),</span> <span class="n">ndtset</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+    <span class="c1"># Add mnemonics to input file.</span>
+    <span class="n">multi</span><span class="o">.</span><span class="n">set_mnemonics</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># This grid is the most economical and we will use it for the GS.</span>
+    <span class="c1"># Note that it does not contain Gamma point so we cannot use it to</span>
+    <span class="c1"># compute the QP corrections at the Gamma point.</span>
+    <span class="n">scf_kmesh</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">ngkpt</span><span class="o">=</span><span class="n">ngkpt</span><span class="p">,</span>
+        <span class="n">shiftk</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>
+                <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="c1"># k-point sampling for DOS (gamma-centered)</span>
+    <span class="n">dos_kmesh</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">ngkpt</span><span class="o">=</span><span class="n">dos_ngkpt</span><span class="p">,</span>
+        <span class="n">shiftk</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+
+    <span class="c1"># This grid contains the Gamma point, which is the point at which</span>
+    <span class="c1"># we will compute the (direct) band gap.</span>
+    <span class="n">gw_kmesh</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">ngkpt</span><span class="o">=</span><span class="n">ngkpt</span><span class="p">,</span>
+        <span class="n">shiftk</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>
+                <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>
+                <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Global variables</span>
+    <span class="n">ecut</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">multi</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span>
+        <span class="n">ecut</span><span class="o">=</span><span class="n">ecut</span><span class="p">,</span>
+        <span class="n">istwfk</span><span class="o">=</span><span class="s2">&quot;*1&quot;</span><span class="p">,</span>
+        <span class="n">paral_kgb</span><span class="o">=</span><span class="n">paral_kgb</span><span class="p">,</span>
+        <span class="n">gwpara</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Dataset 1 (GS run to get the density)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="o">**</span><span class="n">scf_kmesh</span><span class="p">)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span>
+        <span class="n">tolvrs</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
+        <span class="n">nband</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="o">**</span><span class="n">scf_kmesh</span><span class="p">)</span>
+
+    <span class="c1"># Dataset 2 (NSCF run with k-path)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">iscf</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span>
+                      <span class="n">tolwfr</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">,</span>
+                      <span class="n">nband</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+                      <span class="p">)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_kpath</span><span class="p">(</span><span class="n">ndivsm</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="c1"># Dataset 3 (DOS NSCF)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">iscf</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span>
+                      <span class="n">tolwfr</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">,</span>
+                      <span class="n">nband</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+                      <span class="p">)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="o">**</span><span class="n">dos_kmesh</span><span class="p">)</span>
+
+    <span class="c1"># Dataset 4 (NSCF run to produce WFK for GW, note the presence of empty states)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">iscf</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span>
+                      <span class="n">tolwfr</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">,</span>
+                      <span class="n">nband</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span>
+                     <span class="p">)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="o">**</span><span class="n">gw_kmesh</span><span class="p">)</span>
+
+    <span class="c1"># Dataset3: Calculation of the screening.</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span>
+        <span class="n">optdriver</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">nband</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+        <span class="n">ecutwfn</span><span class="o">=</span><span class="n">ecut</span><span class="p">,</span>
+        <span class="n">symchi</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">inclvkb</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>    <span class="c1"># Disable [Vnl, r] contribution for q --&gt; 0</span>
+        <span class="n">ecuteps</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="o">**</span><span class="n">gw_kmesh</span><span class="p">)</span>
+
+    <span class="n">multi</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span>
+            <span class="n">optdriver</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">nband</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+            <span class="n">ecutwfn</span><span class="o">=</span><span class="n">ecut</span><span class="p">,</span>
+            <span class="n">ecuteps</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
+            <span class="n">ecutsigx</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span>
+            <span class="n">symsigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">gw_qprange</span><span class="o">=-</span><span class="mi">4</span><span class="p">,</span>  <span class="c1"># Compute GW corrections for all kpts in IBZ,</span>
+                            <span class="c1"># all occupied states and 4 empty states,</span>
+        <span class="p">)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="o">**</span><span class="n">gw_kmesh</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">multi</span><span class="o">.</span><span class="n">split_datasets</span><span class="p">()</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<p>OK, the function is a little bit long but it is normal since we are running different kind of calculations,
+each step has its own set of variables and <span class="math notranslate nohighlight">\(GW\)</span> calculations are much more difficult than standard KS calculations!</p>
+<p>If there are variables whose meaning is not clear to you, please take some time to read the Abinit documentation
+and the standard <span class="math notranslate nohighlight">\(GW\)</span> tutorials before proceeding.
+For your convenience, we report the variables used to compute the screening and the electron self-energy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scf</span><span class="p">,</span> <span class="n">bands_nscf</span><span class="p">,</span> <span class="n">dos_nscf</span><span class="p">,</span> <span class="n">gw_nscf</span><span class="p">,</span> <span class="n">scr</span><span class="p">,</span> <span class="n">sig</span> <span class="o">=</span> <span class="n">make_inputs</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="input-for-rpa-screening-calculation">
+<h3>Input for RPA screening calculation<a class="headerlink" href="#input-for-rpa-screening-calculation" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="abinit_input">
+##############################################<br>####                SECTION: basic               <br>##############################################<br>#### &lt;Energy CUToff&gt;<br> <a href="https://docs.abinit.org/variables/basic#ecut" target="_blank">ecut</a> 6<br>#### &lt;Number of BANDs&gt;<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband</a> 25<br>#### &lt;Number of Grid points for K PoinTs generation&gt;<br> <a href="https://docs.abinit.org/variables/basic#ngkpt" target="_blank">ngkpt</a> 2 2 2<br>#### &lt;KPoinTs OPTion&gt;<br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt</a> 1<br>#### &lt;Number of SHIFTs for K point grids&gt;<br> <a href="https://docs.abinit.org/variables/basic#nshiftk" target="_blank">nshiftk</a> 4<br>#### &lt;SHIFT for K points&gt;<br> <a href="https://docs.abinit.org/variables/basic#shiftk" target="_blank">shiftk</a><br>    0.0    0.0    0.0<br>    0.0    0.5    0.5<br>    0.5    0.0    0.5<br>    0.5    0.5    0.0<br>##############################################<br>####                 SECTION: dev                <br>##############################################<br>#### &lt;Integer for choice of STorage of WaveFunction at each k point&gt;<br> <a href="https://docs.abinit.org/variables/dev#istwfk" target="_blank">istwfk</a> *1<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br>#### &lt;OPTions for the DRIVER&gt;<br> <a href="https://docs.abinit.org/variables/gstate#optdriver" target="_blank">optdriver</a> 3<br>##############################################<br>####                 SECTION: gw                 <br>##############################################<br>#### &lt;Energy CUT-off for WaveFunctioNs&gt;<br> <a href="https://docs.abinit.org/variables/gw#ecutwfn" target="_blank">ecutwfn</a> 6<br>#### &lt;SYMmetryze $\chi_0$&gt;<br> <a href="https://docs.abinit.org/variables/gw#symchi" target="_blank">symchi</a> 1<br>#### &lt;INCLude VKB&gt;<br> <a href="https://docs.abinit.org/variables/gw#inclvkb" target="_blank">inclvkb</a> 0<br>#### &lt;Energy CUT-off for EPSilon (the dielectric matrix)&gt;<br> <a href="https://docs.abinit.org/variables/gw#ecuteps" target="_blank">ecuteps</a> 4.0<br>##############################################<br>####                SECTION: paral               <br>##############################################<br>#### &lt;activate PARALelization over K-point, G-vectors and Bands&gt;<br> <a href="https://docs.abinit.org/variables/paral#paral_kgb" target="_blank">paral_kgb</a> 0<br>#### &lt;GW PARAllelization level&gt;<br> <a href="https://docs.abinit.org/variables/paral#gwpara" target="_blank">gwpara</a> 2<br>##############################################<br>####                  STRUCTURE                  <br>##############################################<br>#### &lt;Number of ATOMs&gt;<br> <a href="https://docs.abinit.org/variables/basic#natom" target="_blank">natom</a> 2<br>#### &lt;Number of TYPes of AToms&gt;<br> <a href="https://docs.abinit.org/variables/basic#ntypat" target="_blank">ntypat</a> 1<br>#### &lt;TYPe of AToms&gt;<br> <a href="https://docs.abinit.org/variables/basic#typat" target="_blank">typat</a> 1 1<br>#### &lt;charge -Z- of the NUCLeus&gt;<br> <a href="https://docs.abinit.org/variables/basic#znucl" target="_blank">znucl</a> 14<br>#### &lt;vectors (X) of atom positions in REDuced coordinates&gt;<br> <a href="https://docs.abinit.org/variables/basic#xred" target="_blank">xred</a><br>    0.0000000000    0.0000000000    0.0000000000<br>    0.2500000000    0.2500000000    0.2500000000<br>#### &lt;CELL lattice vector scaling&gt;<br> <a href="https://docs.abinit.org/variables/basic#acell" target="_blank">acell</a>    1.0    1.0    1.0<br>#### &lt;Real space PRIMitive translations&gt;<br> <a href="https://docs.abinit.org/variables/basic#rprim" target="_blank">rprim</a><br>    6.3285005244    0.0000000000    3.6537614813<br>    2.1095001748    5.9665675141    3.6537614813<br>    0.0000000000    0.0000000000    7.3075229627
+<div></div></div>
+</div>
+</div>
+<div class="section" id="input-for-self-energy-calculation-with-plasmon-pole-model">
+<h3>Input for self-energy calculation with plasmon-pole model<a class="headerlink" href="#input-for-self-energy-calculation-with-plasmon-pole-model" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="abinit_input">
+##############################################<br>####                SECTION: basic               <br>##############################################<br>#### &lt;Energy CUToff&gt;<br> <a href="https://docs.abinit.org/variables/basic#ecut" target="_blank">ecut</a> 6<br>#### &lt;Number of BANDs&gt;<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband</a> 10<br>#### &lt;Number of Grid points for K PoinTs generation&gt;<br> <a href="https://docs.abinit.org/variables/basic#ngkpt" target="_blank">ngkpt</a> 2 2 2<br>#### &lt;KPoinTs OPTion&gt;<br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt</a> 1<br>#### &lt;Number of SHIFTs for K point grids&gt;<br> <a href="https://docs.abinit.org/variables/basic#nshiftk" target="_blank">nshiftk</a> 4<br>#### &lt;SHIFT for K points&gt;<br> <a href="https://docs.abinit.org/variables/basic#shiftk" target="_blank">shiftk</a><br>    0.0    0.0    0.0<br>    0.0    0.5    0.5<br>    0.5    0.0    0.5<br>    0.5    0.5    0.0<br>##############################################<br>####                 SECTION: dev                <br>##############################################<br>#### &lt;Integer for choice of STorage of WaveFunction at each k point&gt;<br> <a href="https://docs.abinit.org/variables/dev#istwfk" target="_blank">istwfk</a> *1<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br>#### &lt;OPTions for the DRIVER&gt;<br> <a href="https://docs.abinit.org/variables/gstate#optdriver" target="_blank">optdriver</a> 4<br>##############################################<br>####                 SECTION: gw                 <br>##############################################<br>#### &lt;Energy CUT-off for WaveFunctioNs&gt;<br> <a href="https://docs.abinit.org/variables/gw#ecutwfn" target="_blank">ecutwfn</a> 6<br>#### &lt;Energy CUT-off for EPSilon (the dielectric matrix)&gt;<br> <a href="https://docs.abinit.org/variables/gw#ecuteps" target="_blank">ecuteps</a> 4.0<br>#### &lt;Energy CUT-off for SIGma eXchange&gt;<br> <a href="https://docs.abinit.org/variables/gw#ecutsigx" target="_blank">ecutsigx</a> 6.0<br>#### &lt;SYMmetrization of SIGMA matrix elements&gt;<br> <a href="https://docs.abinit.org/variables/gw#symsigma" target="_blank">symsigma</a> 1<br>#### &lt;GW QuasiParticle RANGE policy&gt;<br> <a href="https://docs.abinit.org/variables/gw#gw_qprange" target="_blank">gw_qprange</a> -4<br>##############################################<br>####                SECTION: paral               <br>##############################################<br>#### &lt;activate PARALelization over K-point, G-vectors and Bands&gt;<br> <a href="https://docs.abinit.org/variables/paral#paral_kgb" target="_blank">paral_kgb</a> 0<br>#### &lt;GW PARAllelization level&gt;<br> <a href="https://docs.abinit.org/variables/paral#gwpara" target="_blank">gwpara</a> 2<br>##############################################<br>####                  STRUCTURE                  <br>##############################################<br>#### &lt;Number of ATOMs&gt;<br> <a href="https://docs.abinit.org/variables/basic#natom" target="_blank">natom</a> 2<br>#### &lt;Number of TYPes of AToms&gt;<br> <a href="https://docs.abinit.org/variables/basic#ntypat" target="_blank">ntypat</a> 1<br>#### &lt;TYPe of AToms&gt;<br> <a href="https://docs.abinit.org/variables/basic#typat" target="_blank">typat</a> 1 1<br>#### &lt;charge -Z- of the NUCLeus&gt;<br> <a href="https://docs.abinit.org/variables/basic#znucl" target="_blank">znucl</a> 14<br>#### &lt;vectors (X) of atom positions in REDuced coordinates&gt;<br> <a href="https://docs.abinit.org/variables/basic#xred" target="_blank">xred</a><br>    0.0000000000    0.0000000000    0.0000000000<br>    0.2500000000    0.2500000000    0.2500000000<br>#### &lt;CELL lattice vector scaling&gt;<br> <a href="https://docs.abinit.org/variables/basic#acell" target="_blank">acell</a>    1.0    1.0    1.0<br>#### &lt;Real space PRIMitive translations&gt;<br> <a href="https://docs.abinit.org/variables/basic#rprim" target="_blank">rprim</a><br>    6.3285005244    0.0000000000    3.6537614813<br>    2.1095001748    5.9665675141    3.6537614813<br>    0.0000000000    0.0000000000    7.3075229627
+<div></div></div>
+</div>
+<p>Now we can use the 4 inputs file produced by <code class="docutils literal notranslate"><span class="pre">make_inputs</span></code> to generate our <span class="math notranslate nohighlight">\(GW\)</span> flow.
+The tricky part is represented by the connections among the tasks in the <span class="math notranslate nohighlight">\(GW\)</span> part.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_g0w0</span> <span class="kn">import</span> <span class="n">build_g0w0_flow</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">build_g0w0_flow</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_g0w0_flow</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ngkpt</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build and return a flow with two works.</span>
+<span class="sd">    The first work is a standard KS band-structure calculation that consists of</span>
+<span class="sd">    an initial GS calculation to get the density followed by two NSCF calculations.</span>
+
+<span class="sd">    The first NSCF task computes the KS eigenvalues on a high-symmetry path in the BZ,</span>
+<span class="sd">    whereas the second NSCF task employs a homogeneous k-mesh so that one can compute</span>
+<span class="sd">    the DOS from the KS eigenvalues.</span>
+
+<span class="sd">    The second work represents the real GW workflow that uses the density computed in the first task of</span>
+<span class="sd">    the previous work  to compute the KS bands for many empty states.</span>
+<span class="sd">    The WFK file produced in this step is then used to compute the screened interaction $W$.</span>
+<span class="sd">    Finally, we perform a self-energy calculation that uses the $W$ produced</span>
+<span class="sd">    in the previous step and the WFK file to compute the matrix elements of the self-energy and</span>
+<span class="sd">    the $G_0W_0$ corrections for all the k-points in the IBZ and 8 bands (4 occupied + 4 empty)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Call make_input to build our 4 input objects.</span>
+    <span class="n">scf</span><span class="p">,</span> <span class="n">bands_nscf</span><span class="p">,</span> <span class="n">dos_nscf</span><span class="p">,</span> <span class="n">gw_nscf</span><span class="p">,</span> <span class="n">scr</span><span class="p">,</span> <span class="n">sig</span> <span class="o">=</span> <span class="n">make_inputs</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="n">ngkpt</span><span class="p">)</span>
+
+    <span class="n">workdir</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span> <span class="k">if</span> <span class="p">(</span><span class="n">options</span> <span class="ow">and</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;flow_g0w0&quot;</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span><span class="n">workdir</span><span class="o">=</span><span class="n">workdir</span><span class="p">)</span>
+
+    <span class="c1"># Add KS band structure work (SCF-GS followed by two NSCF runs</span>
+    <span class="c1"># (the first one is done on a k-path, the second on the IBZ to compute the DOS</span>
+    <span class="n">work0</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">BandStructureWork</span><span class="p">(</span><span class="n">scf</span><span class="p">,</span> <span class="n">bands_nscf</span><span class="p">,</span> <span class="n">dos_inputs</span><span class="o">=</span><span class="n">dos_nscf</span><span class="p">)</span>
+    <span class="n">flow</span><span class="o">.</span><span class="n">register_work</span><span class="p">(</span><span class="n">work0</span><span class="p">)</span>
+
+    <span class="c1"># Create new Work for GW</span>
+    <span class="n">work1</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">Work</span><span class="p">()</span>
+
+    <span class="c1"># NSCF run with empty states</span>
+    <span class="n">gw_nscf_task</span> <span class="o">=</span> <span class="n">work1</span><span class="o">.</span><span class="n">register_nscf_task</span><span class="p">(</span><span class="n">gw_nscf</span><span class="p">,</span> <span class="n">deps</span><span class="o">=</span><span class="p">{</span><span class="n">work0</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="s2">&quot;DEN&quot;</span><span class="p">})</span>
+
+    <span class="c1"># SCR run with WFK produced by previous task.</span>
+    <span class="n">scr_task</span> <span class="o">=</span> <span class="n">work1</span><span class="o">.</span><span class="n">register_scr_task</span><span class="p">(</span><span class="n">scr</span><span class="p">,</span> <span class="n">deps</span><span class="o">=</span><span class="p">{</span><span class="n">gw_nscf_task</span><span class="p">:</span> <span class="s2">&quot;WFK&quot;</span><span class="p">})</span>
+
+    <span class="c1"># SIGMA task (requires WFK with empty states and SCR file)</span>
+    <span class="n">sigma_task</span> <span class="o">=</span> <span class="n">work1</span><span class="o">.</span><span class="n">register_sigma_task</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">deps</span><span class="o">=</span><span class="p">{</span><span class="n">gw_nscf_task</span><span class="p">:</span> <span class="s2">&quot;WFK&quot;</span><span class="p">,</span> <span class="n">scr_task</span><span class="p">:</span> <span class="s2">&quot;SCR&quot;</span><span class="p">})</span>
+
+    <span class="c1"># Add GW work to flow.</span>
+    <span class="n">flow</span><span class="o">.</span><span class="n">register_work</span><span class="p">(</span><span class="n">work1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">flow</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<p>Let’s build the flow:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span> <span class="o">=</span> <span class="n">build_g0w0_flow</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and visualize the connections with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_g0w0_16_0.svg" src="../_images/lesson_g0w0_16_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#flow.plot_networkx(with_edge_labels=True);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, we have 2 works:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">work</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">flow</span><span class="p">):</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%d</span><span class="s2">] </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">work</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] &lt;BandStructureWork, node_id=442045, workdir=flow_g0w0/w0&gt;
+[1] &lt;Work, node_id=442049, workdir=flow_g0w0/w1&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>As promised, the first work has 3 standard KS tasks:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">flow</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ScfTask, node_id=442046, workdir=flow_g0w0/w0/t0&gt;
+&lt;NscfTask, node_id=442047, workdir=flow_g0w0/w0/t1&gt;
+&lt;NscfTask, node_id=442048, workdir=flow_g0w0/w0/t2&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>while the second work contains the tasks required for <span class="math notranslate nohighlight">\(GW\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">flow</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NscfTask, node_id=442050, workdir=flow_g0w0/w1/t0&gt;
+&lt;ScrTask, node_id=442051, workdir=flow_g0w0/w1/t1&gt;
+&lt;SigmaTask, node_id=442052, workdir=flow_g0w0/w1/t2&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_g0w0_24_0.svg" src="../_images/lesson_g0w0_24_0.svg" /></div>
+</div>
+<p>Now you can execute the lesson_g0w0.py script to generate the flow  and then use:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abirun.py flow_g0w0 scheduler
+</pre></div>
+</div>
+<div class="alert alert-warning">
+Please make sure that AbiPy is properly configured by running abicheck --with flow
+</div>
+<p>Alternatively, one can use the files in the github repository and use AbiPy
+to analyze the data.</p>
+</div>
+</div>
+<div class="section" id="analysis-of-the-results">
+<h2>Analysis of the results<a class="headerlink" href="#analysis-of-the-results" title="Permalink to this headline">¶</a></h2>
+<p>Let’s start with the KS results stored in the <code class="docutils literal notranslate"><span class="pre">GSR.nc</span></code> files:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>find flow_g0w0 -name <span class="s2">&quot;*_GSR.nc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flow_g0w0/w0/t2/outdata/out_GSR.nc
+flow_g0w0/w0/t1/outdata/out_GSR.nc
+flow_g0w0/w0/t0/outdata/out_GSR.nc
+flow_g0w0/w1/t0/outdata/out_GSR.nc
+</pre></div>
+</div>
+</div>
+</div>
+<p>You are already an AbiPy guru so it should be clear that to plot the KS band structure with the KS DOS we just need:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="k">with</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="s2">&quot;flow_g0w0/w0/t1/outdata/out_GSR.nc&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">gsr</span><span class="p">:</span>
+    <span class="n">ks_ebands_kpath</span> <span class="o">=</span> <span class="n">gsr</span><span class="o">.</span><span class="n">ebands</span>
+    
+<span class="k">with</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="s2">&quot;flow_g0w0/w0/t2/outdata/out_GSR.nc&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">gsr</span><span class="p">:</span>
+    <span class="n">ks_ebands_kmesh</span> <span class="o">=</span> <span class="n">gsr</span><span class="o">.</span><span class="n">ebands</span>
+    
+<span class="n">ks_edos</span> <span class="o">=</span> <span class="n">ks_ebands_kmesh</span><span class="o">.</span><span class="n">get_edos</span><span class="p">()</span>
+<span class="n">ks_ebands_kpath</span><span class="o">.</span><span class="n">plot_with_edos</span><span class="p">(</span><span class="n">ks_edos</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_g0w0_29_0.png" src="../_images/lesson_g0w0_29_0.png" />
+</div>
+</div>
+<p>All is going well so far.
+We obtained the KS band structure with the infamous band-gap problem.
+Now let’s turn our attention to the <span class="math notranslate nohighlight">\(GW\)</span> results produced by the <code class="docutils literal notranslate"><span class="pre">SigmaTask</span></code> in the <code class="docutils literal notranslate"><span class="pre">SIGRES.nc</span></code> file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>find flow_g0w0 -name <span class="s2">&quot;*_SIGRES.nc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flow_g0w0/w1/t2/outdata/out_SIGRES.nc
+</pre></div>
+</div>
+</div>
+</div>
+<p>Open the file with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="s2">&quot;flow_g0w0/w1/t2/outdata/out_SIGRES.nc&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>and extract a pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with the QP results at the <span class="math notranslate nohighlight">\(\Gamma\)</span> point with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qpdata_gamma</span> <span class="o">=</span> <span class="n">sigres</span><span class="o">.</span><span class="n">get_dataframe_sk</span><span class="p">(</span><span class="n">spin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">kpoint</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ignore_imag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">qpdata_gamma</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;spin&#39;, &#39;kpoint&#39;, &#39;band&#39;, &#39;e0&#39;, &#39;qpe&#39;, &#39;qpe_diago&#39;, &#39;vxcme&#39;, &#39;sigxme&#39;,
+       &#39;sigcmee0&#39;, &#39;vUme&#39;, &#39;ze0&#39;, &#39;qpeme0&#39;, &#39;nsppol&#39;, &#39;nspinor&#39;, &#39;nspden&#39;,
+       &#39;nband&#39;, &#39;nkpt&#39;, &#39;ecutwfn&#39;, &#39;ecuteps&#39;, &#39;ecutsigx&#39;, &#39;scr_nband&#39;,
+       &#39;sigma_nband&#39;, &#39;gwcalctyp&#39;, &#39;scissor_ene&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> contains <span class="math notranslate nohighlight">\(GW\)</span> results as well as input parameters useful for convergence studies.</p>
+<ul class="simple">
+<li><p><em>spin</em>: spin index (C convention, i.e &gt;= 0)</p></li>
+<li><p><em>band</em>: band index. (C convention, i.e &gt;= 0).</p></li>
+<li><p><em>e0</em>: Initial KS energy.</p></li>
+<li><p><em>qpe</em>: Quasiparticle energy (complex) computed with the perturbative approach.</p></li>
+<li><p><em>qpe_diago</em>: Quasiparticle energy (real) computed by diagonalizing the self-energy.</p></li>
+<li><p><em>vxcme</em>: Matrix element of <span class="math notranslate nohighlight">\(v_{\text{xc}}[n_{\text{val}}]\)</span> with <span class="math notranslate nohighlight">\(n_{\text{val}}\)</span> the valence charge density.</p></li>
+<li><p><em>sigxme</em>: Matrix element of <span class="math notranslate nohighlight">\(\Sigma_x\)</span>.</p></li>
+<li><p><em>sigcmee0</em>: Matrix element of <span class="math notranslate nohighlight">\(\Sigma_c(e_0)\)</span> with <span class="math notranslate nohighlight">\(e_0\)</span> being the KS energy.</p></li>
+<li><p><em>vUme</em>: Matrix element of the vU term of the LDA+U Hamiltonian.</p></li>
+<li><p><em>ze0</em>: Renormalization factor computed at <span class="math notranslate nohighlight">\(e = e_0\)</span>.</p></li>
+<li><p><em>qpeme0</em>: QP correction i.e. <span class="math notranslate nohighlight">\(e_{\text{QP}} - e_{0}\)</span></p></li>
+</ul>
+<p>Note that some quantities are complex but since we are not interested in lifetimes (that by the way are not correctly described by the plasmon-pole approximation), we ignored the imaginary part with <code class="docutils literal notranslate"><span class="pre">ignore_imag</span></code>.</p>
+<p>Let’s print a subset of columns with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qpdata_gamma</span><span class="p">[[</span><span class="s1">&#39;e0&#39;</span><span class="p">,</span> <span class="s1">&#39;qpe&#39;</span><span class="p">,</span> <span class="s1">&#39;vxcme&#39;</span><span class="p">,</span> <span class="s1">&#39;sigxme&#39;</span><span class="p">,</span> <span class="s1">&#39;sigcmee0&#39;</span><span class="p">,</span> <span class="s1">&#39;ze0&#39;</span><span class="p">,</span> <span class="s1">&#39;qpeme0&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>e0</th>
+      <th>qpe</th>
+      <th>vxcme</th>
+      <th>sigxme</th>
+      <th>sigcmee0</th>
+      <th>ze0</th>
+      <th>qpeme0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-6.232</td>
+      <td>-5.693</td>
+      <td>-10.362</td>
+      <td>-17.428</td>
+      <td>7.925</td>
+      <td>0.629</td>
+      <td>0.540</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5.633</td>
+      <td>6.264</td>
+      <td>-11.160</td>
+      <td>-13.117</td>
+      <td>2.755</td>
+      <td>0.790</td>
+      <td>0.631</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5.633</td>
+      <td>6.264</td>
+      <td>-11.160</td>
+      <td>-13.117</td>
+      <td>2.755</td>
+      <td>0.790</td>
+      <td>0.631</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.633</td>
+      <td>6.264</td>
+      <td>-11.160</td>
+      <td>-13.117</td>
+      <td>2.755</td>
+      <td>0.790</td>
+      <td>0.631</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8.148</td>
+      <td>9.444</td>
+      <td>-9.967</td>
+      <td>-5.517</td>
+      <td>-2.817</td>
+      <td>0.793</td>
+      <td>1.296</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>8.148</td>
+      <td>9.444</td>
+      <td>-9.967</td>
+      <td>-5.517</td>
+      <td>-2.817</td>
+      <td>0.793</td>
+      <td>1.296</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>8.148</td>
+      <td>9.444</td>
+      <td>-9.967</td>
+      <td>-5.517</td>
+      <td>-2.817</td>
+      <td>0.793</td>
+      <td>1.296</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8.526</td>
+      <td>9.980</td>
+      <td>-10.766</td>
+      <td>-5.897</td>
+      <td>-3.037</td>
+      <td>0.793</td>
+      <td>1.454</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To plot the QP data as function of the initial KS energy, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span><span class="o">.</span><span class="n">plot_qps_vs_e0</span><span class="p">();</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;KS Fermi energy at:&quot;</span><span class="p">,</span> <span class="n">sigres</span><span class="o">.</span><span class="n">ebands</span><span class="o">.</span><span class="n">fermie</span><span class="p">,</span> <span class="s2">&quot;eV&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_g0w0_39_0.png" src="../_images/lesson_g0w0_39_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KS Fermi energy at: 5.632756892274042 eV eV
+</pre></div>
+</div>
+</div>
+</div>
+<p>This figure gives us the opportunity to discuss several important points.</p>
+<p>First of all the QP correction (<code class="docutils literal notranslate"><span class="pre">qpeme0</span></code>) are rather smooth so one can try to interpolate the data
+with some kind of interpolation algorithm.</p>
+<p>Note how valence and conduction states are affected in a different way by the self-energy.
+As expected, the matrix elements of the exchange part <code class="docutils literal notranslate"><span class="pre">sigxme</span></code>
+(a.k.a Fock operator in Hartree-Fock theory) are always negative but they also show a “jump” across the Fermi level.
+A similar jump is observed in the matrix elements of the correlation part <code class="docutils literal notranslate"><span class="pre">sigcmee0</span></code>.
+These jumps are responsibile for the “opening” of the gap induced by <span class="math notranslate nohighlight">\(GW\)</span>.</p>
+<p>The values of the renormalization factor <code class="docutils literal notranslate"><span class="pre">ze0</span></code> are relatively close to one thus indicating
+that we have well-defined QP excitations.
+Note how <code class="docutils literal notranslate"><span class="pre">ze0</span></code> increases when we approach the Fermi level.</p>
+<p>As we are usually interested in the value of the QP direct gaps, let’s plot them with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span><span class="o">.</span><span class="n">plot_qpgaps</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_g0w0_42_0.png" src="../_images/lesson_g0w0_42_0.png" />
+</div>
+</div>
+<p>We can also visualize the difference between the QP and the KS values with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span><span class="o">.</span><span class="n">plot_qpgaps</span><span class="p">(</span><span class="n">plot_qpmks</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_g0w0_44_0.png" src="../_images/lesson_g0w0_44_0.png" />
+</div>
+</div>
+<p>As expected, <span class="math notranslate nohighlight">\(G_0W_0\)</span> leads to a systematic opening of the KS gaps although
+we should keep in mind that these results are far from being converged.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigres</span><span class="o">.</span><span class="n">plot_ksbands_with_qpmarkers</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_g0w0_46_0.png" src="../_images/lesson_g0w0_46_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="interpolating-the-qp-corrections">
+<h2>Interpolating the QP corrections<a class="headerlink" href="#interpolating-the-qp-corrections" title="Permalink to this headline">¶</a></h2>
+<p>Excellent, we’ve just completed our first <span class="math notranslate nohighlight">\(GW\)</span> calculation with Abinit and Abipy but there’s still
+a problem that must be addressed!</p>
+<p>We can only compute QP energies for k-points belonging to the k-mesh of the input WFK file while
+we usually discuss electronic properties in terms of band energies along a high-symmetry k-path.
+Obviously one could perform several different <span class="math notranslate nohighlight">\(GW\)</span> calculations with “shifted” WFK files to collect
+the QP energies along the k-path but this is not the most efficient approach.
+Can’t we just use some kind of interpolation technique to get nice-looking QP band structures?</p>
+<p>The answer is yes but remember to always <strong>cross-check</strong> the interpolated results.
+Several different approaches to interpolate QP results have been proposed in the literature.
+Here we use the Fourier interpolation scheme proposed by Shankland-Koelling-Wood (SKW) in PRB 38 2721.
+The idea is relatively simple: the QP corrections have the same symmetry of the KS energies, we can thus
+interpolate the QP corrections with SKW and then apply the interpolated corrections to the ab-initio KS energies
+obtained along a path.</p>
+<p>It’s just a matter of passing the KS band structure to the <code class="docutils literal notranslate"><span class="pre">sigres.interpolate</span></code> method to activate this procedure:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">sigres</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">lpratio</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ks_ebands_kpath</span><span class="o">=</span><span class="n">ks_ebands_kpath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">sigres.structure and ks_ebands_kpath.structures differ. Check your files!</span>
+Using: 30 star-functions. nstars/nk: 5.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">FIT vs input data: Mean Absolute Error= 2.990e-13 (meV)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The interpolated QP band structure is available in <code class="docutils literal notranslate"><span class="pre">r.qp_ebands_kpath</span></code> and we can plot the interpolated data with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">qp_ebands_kpath</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_g0w0_50_0.png" src="../_images/lesson_g0w0_50_0.png" />
+</div>
+</div>
+<p>The results make sense but it would be nice if one could compare the (interpolated) QP bands with the KS energies.
+Fortunately, we can use the AbiPy <code class="docutils literal notranslate"><span class="pre">ElectronBandsPlotter</span></code> to compare multiple band structures:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">ElectronBandsPlotter</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_ebands</span><span class="p">(</span><span class="s2">&quot;LDA&quot;</span><span class="p">,</span> <span class="n">ks_ebands_kpath</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_ebands</span><span class="p">(</span><span class="s2">&quot;GW (interpolated)&quot;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">qp_ebands_kpath</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">combiplot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_g0w0_52_0.png" src="../_images/lesson_g0w0_52_0.png" />
+</div>
+</div>
+<p>Do you need to compare the band dispersion given by KS and <span class="math notranslate nohighlight">\(GW\)</span>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># By default, the two band energies are shifted with respect to *their* fermi level.</span>
+<span class="c1"># Use e=0 if you do not want to shift the eigenvalues</span>
+<span class="c1"># so that it is possible to visualize the QP corrections.</span>
+<span class="n">p</span><span class="o">.</span><span class="n">combiboxplot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_g0w0_54_0.png" src="../_images/lesson_g0w0_54_0.png" />
+</div>
+</div>
+<p>The same approach can be used to interpolate QP band structures and QP DOSes.
+We only need to pass an additional KS band structure with energies in the IBZ:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r2</span> <span class="o">=</span> <span class="n">sigres</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">lpratio</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ks_ebands_kpath</span><span class="o">=</span><span class="n">ks_ebands_kpath</span><span class="p">,</span> <span class="n">ks_ebands_kmesh</span><span class="o">=</span><span class="n">ks_ebands_kmesh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">sigres.structure and ks_ebands_kpath.structures differ. Check your files!</span>
+Using: 30 star-functions. nstars/nk: 5.0
+<span class=" -Color -Color-Green">FIT vs input data: Mean Absolute Error= 2.990e-13 (meV)</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">sigres.structure and ks_ebands_kpath.structures differ. Check your files!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and then compute the QP DOS with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qp_edos</span> <span class="o">=</span> <span class="n">r2</span><span class="o">.</span><span class="n">qp_ebands_kmesh</span><span class="o">.</span><span class="n">get_edos</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Did I tell you that <code class="docutils literal notranslate"><span class="pre">ElectronBandsPlotter</span></code> accepts DOSes as well?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p2</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">ElectronBandsPlotter</span><span class="p">()</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">add_ebands</span><span class="p">(</span><span class="s2">&quot;LDA&quot;</span><span class="p">,</span> <span class="n">ks_ebands_kpath</span><span class="p">,</span> <span class="n">edos</span><span class="o">=</span><span class="n">ks_edos</span><span class="p">)</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">add_ebands</span><span class="p">(</span><span class="s2">&quot;GW (interpolated)&quot;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">qp_ebands_kpath</span><span class="p">,</span> <span class="n">edos</span><span class="o">=</span><span class="n">qp_edos</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p2</span><span class="o">.</span><span class="n">combiplot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_g0w0_61_0.png" src="../_images/lesson_g0w0_61_0.png" />
+</div>
+</div>
+<!-- A logical next lesson would be the 
+[Bethe-Salpeter tutorial](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/bse/lesson_bse.ipynb)
+--></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./g0w0"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../dfpt/lesson_dfpt.html" title="previous page">Phonons and Born effective charges</a>
+    <a class='right-next' id="next-link" href="../bse/lesson_bse.html" title="next page">Bethe-Salpeter calculations with AbiPy</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By M. Giantomassi and the AbiPy group<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

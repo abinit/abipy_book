@@ -11,30 +11,15 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](index.ipynb) <a id="top"></a>
-
-+++
-
-# Postprocessing tools for Bethe-Salpeter calculations
-
-+++
+# The MDF file (Bethe-Salpeter)
 
 The Bethe-Salpeter code saves the optical spectra in the `MDF.nc` file.
 This notebook explains how to use the AbiPy API to analyze the results.
 
-## Table of Contents
-[[back to top](#top)]
-
-- [How to analyze a single MDF file](#How-to-analyze-a-single-MDF-file)
-- [Analyzing multiple MDF files with robots](#Analyzing-multiple-MDF-files-with-robots)
-
 Let's start by importing the basic modules we will need for this tutorial.
 
 ```{code-cell} ipython3
-# Use this at the beginning of your script so that your code will be compatible with python3
-from __future__ import print_function, division, unicode_literals
-
-import warnings 
+import warnings
 warnings.filterwarnings("ignore")  # Ignore warnings
 
 from abipy import abilab
@@ -43,14 +28,13 @@ import abipy.data as abidata
 
 # This line configures matplotlib to show figures embedded in the notebook.
 # Replace `inline` with `notebook` in classic notebook
-%matplotlib inline   
+%matplotlib inline
 
 # Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib
-#%matplotlib widget  
+#%matplotlib widget
 ```
 
-## How to analyze a single MDF file  
-[[back to top](#top)]
+## How to analyze a single MDF file
 
 +++
 
@@ -94,7 +78,6 @@ or `abiopen.py FILE_MDF.nc -e -sns` to produce matplotlib plots automatically.
 +++
 
 ## Analyzing multiple MDF files with robots
-[[back to top](#top)]
 
 To analyze the converge of the optical spectra, we can use the MdfRobot.
 Let's build our robot from a list of MDF.nc files:
@@ -126,4 +109,3 @@ Robots can also be constructed from the command line with: `abicomp.py mdf FILES
 Use the `--expose` option to generate plots automatically.
 </div>
 
-Back to the main [Index](index.ipynb)

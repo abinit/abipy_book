@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Analyzing wannier90 results with AbiPy &#8212; AbiPy_Book</title>
+    <title>The ABIWAN file (wannier90) &#8212; AbiPy Book</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,8 +52,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Analyzing Lobster output files with AbiPy" href="lobster.html" />
-    <link rel="prev" title="Postprocessing tools for Bethe-Salpeter calculations" href="mdf.html" />
+    <link rel="next" title="Lobster output files" href="lobster.html" />
+    <link rel="prev" title="The MDF file (Bethe-Salpeter)" href="mdf.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -75,7 +75,7 @@
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">AbiPy_Book</h1>
+      <h1 class="site-logo" id="site-title">AbiPy Book</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -86,92 +86,146 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Welcome to your Jupyter Book
+   Introduction
   </a>
  </li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="content.html">
-   Content in Jupyter Book
+<p class="caption">
+ <span class="caption-text">
+  Basic AbiPy Objects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="structure.html">
+   Structure object
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="markdown.html">
-     Markdown Files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="notebooks.html">
-     Content with notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="abinit_input.html">
-     Table of Contents
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="input_factories.html">
-     Factory functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="structure.html">
-     Structure object
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="gsr.html">
-     Post-processing tools for electron band energies
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="hist.html">
-     The HIST.nc file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="efatbands.html">
-     FATBANDS.nc file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ddb.html">
-     Post-processing DFPT calculations with the DDB file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sigres.html">
-     Postprocessing tools for GW calculations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mdf.html">
-     Postprocessing tools for Bethe-Salpeter calculations
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Analyzing wannier90 results with AbiPy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lobster.html">
-     Analyzing Lobster output files with AbiPy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="flows.html">
-     Tasks, Workflows and Flow
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="abinit_input.html">
+   The AbinitInput object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="input_factories.html">
+   Factory functions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Output Files
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="gsr.html">
+   The GSR file (Ground-State)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hist.html">
+   The HIST.nc file (relaxation/MD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="efatbands.html">
+   The FATBANDS.nc file
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ddb.html">
+   The DDB file (DFPT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sigres.html">
+   The SIGRES file (GW)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mdf.html">
+   The MDF file (Bethe-Salpeter)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The ABIWAN file (wannier90)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lobster.html">
+   Lobster output files
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Workflows
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="flows.html">
+   Tasks, Workflows and Flow
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="base1/lesson_base1.html">
+   Base1 lesson (H2 molecule)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="base3/lesson_base3.html">
+   Base3 lesson (silicon)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="base4/lesson_base4.html">
+   Base4 lesson (Aluminium)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dfpt/lesson_dfpt.html">
+   Phonons and Born effective charges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="g0w0/lesson_g0w0.html">
+   <span class="math notranslate nohighlight">
+    \(G_0W_0\)
+   </span>
+   band structure with star-function interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bse/lesson_bse.html">
+   Bethe-Salpeter calculations with AbiPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="eph_al/lesson_eph_al.html">
+   Isotropic superconductivity
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Miscellaneous
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="links.html">
+   Useful links
+  </a>
  </li>
 </ul>
 
@@ -233,14 +287,14 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/gmatteo/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/abinit/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/gmatteo/abipy_book/issues/new?title=Issue%20on%20page%20%2Fabiwan.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/abinit/abipy_book/issues/new?title=Issue%20on%20page%20%2Fabiwan.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/gmatteo/abipy_book/edit/main/docs/abiwan.md"><button
+        <a class="edit-button" href="https://github.com/abinit/abipy_book/edit/master/docs/abiwan.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -260,7 +314,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/gmatteo/abipy_book/main?urlpath=tree/docs/abiwan.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/abinit/abipy_book/master?urlpath=tree/docs/abiwan.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -308,9 +362,8 @@
         
               <div>
                 
-  <p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a> <a id="top"></a></p>
-<div class="section" id="analyzing-wannier90-results-with-abipy">
-<h1>Analyzing wannier90 results with AbiPy<a class="headerlink" href="#analyzing-wannier90-results-with-abipy" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="the-abiwan-file-wannier90">
+<h1>The ABIWAN file (wannier90)<a class="headerlink" href="#the-abiwan-file-wannier90" title="Permalink to this headline">¶</a></h1>
 <p>This notebook shows how to use AbiPy to analyze the output files
 produced by <a class="reference external" href="http://www.wannier.org/">wannier90</a> and how to use the <code class="docutils literal notranslate"><span class="pre">ABIWAN.nc</span></code> file
 produced by Abinit to interpolate band energies.</p>
@@ -323,7 +376,6 @@ and <code class="docutils literal notranslate"><span class="pre">--notebook</spa
 <p>Note: The code in this notebook requires abinit &gt;= 8.9 and abipy &gt;= 0.6</p>
 <div class="section" id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <ul class="simple">
 <li><p><a class="reference external" href="#How-to-analyze-the-WOUT-file">How to analyze the WOUT file</a></p></li>
 <li><p><a class="reference external" href="#Using-ABIWAN.nc-to-interpolate-band-energies">Using ABIWAN.nc to interpolate band energies</a></p></li>
@@ -331,10 +383,7 @@ and <code class="docutils literal notranslate"><span class="pre">--notebook</spa
 <p>Let’s start by importing the basic modules needed for this tutorial.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use this at the beginning of your script so that your code will be compatible with python3</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">unicode_literals</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">warnings</span> 
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>  <span class="c1"># Ignore warnings</span>
@@ -356,7 +405,6 @@ and <code class="docutils literal notranslate"><span class="pre">--notebook</spa
 </div>
 <div class="section" id="how-to-analyze-the-wout-file">
 <h2>How to analyze the WOUT file<a class="headerlink" href="#how-to-analyze-the-wout-file" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">abiopen</span></code> to open a <code class="docutils literal notranslate"><span class="pre">wout</span></code> file (the main output file produced by wannier90):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -415,7 +463,7 @@ K-grid: [2 2 2]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/abiwan_8_0.png" src="_images/abiwan_8_0.png" />
+<img alt="_images/abiwan_6_0.png" src="_images/abiwan_6_0.png" />
 </div>
 </div>
 <p>To plot the evolution of the Wannier centers and spread, use:</p>
@@ -426,7 +474,7 @@ K-grid: [2 2 2]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/abiwan_10_0.png" src="_images/abiwan_10_0.png" />
+<img alt="_images/abiwan_8_0.png" src="_images/abiwan_8_0.png" />
 </div>
 </div>
 <div class="alert alert-info" role="alert">
@@ -435,7 +483,6 @@ or `abiopen.py FILE_MDF.nc -e -sns` to produce matplotlib plots automatically.
 </div></div>
 <div class="section" id="using-abiwan-nc-to-interpolate-band-energies">
 <h2>Using <a class="reference external" href="http://ABIWAN.nc">ABIWAN.nc</a> to interpolate band energies<a class="headerlink" href="#using-abiwan-nc-to-interpolate-band-energies" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <p><code class="docutils literal notranslate"><span class="pre">ABIWAN.nc</span></code> is a netcdf file produced by Abinit after having called <em>wannier90</em> in library mode.
 The file contains the unitary transformation and other important parameters associated to the calculations.
 This file can be read by AbiPy and can be used to interpolate band energies with the wannier method.</p>
@@ -532,10 +579,10 @@ WF_index  Center                     Spread
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HWanR built in 0.008 (s)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HWanR built in 0.009 (s)
 </pre></div>
 </div>
-<img alt="_images/abiwan_15_1.png" src="_images/abiwan_15_1.png" />
+<img alt="_images/abiwan_13_1.png" src="_images/abiwan_13_1.png" />
 </div>
 </div>
 <p>To interpolate the KS energies along a high-symmetry k-path and construct
@@ -547,7 +594,7 @@ a new <code class="docutils literal notranslate"><span class="pre">ElectronBands
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Interpolation completed in 0.034 [s]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Interpolation completed in 0.040 [s]
 </pre></div>
 </div>
 </div>
@@ -559,7 +606,7 @@ a new <code class="docutils literal notranslate"><span class="pre">ElectronBands
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/abiwan_18_0.png" src="_images/abiwan_18_0.png" />
+<img alt="_images/abiwan_16_0.png" src="_images/abiwan_16_0.png" />
 </div>
 </div>
 <p>If you need an IBZ sampling instead of a k-path, for instance a 36x36x36 k-mesh, use:</p>
@@ -570,7 +617,7 @@ a new <code class="docutils literal notranslate"><span class="pre">ElectronBands
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Interpolation completed in 0.095 [s]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Interpolation completed in 0.214 [s]
 </pre></div>
 </div>
 </div>
@@ -583,7 +630,7 @@ a new <code class="docutils literal notranslate"><span class="pre">ElectronBands
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/abiwan_22_0.png" src="_images/abiwan_22_0.png" />
+<img alt="_images/abiwan_20_0.png" src="_images/abiwan_20_0.png" />
 </div>
 </div>
 <p>We can also compare an ab-initio band structure with the Wannier-interpolated results.
@@ -616,13 +663,12 @@ and returns a plotter object:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/abiwan_26_0.png" src="_images/abiwan_26_0.png" />
+<img alt="_images/abiwan_24_0.png" src="_images/abiwan_24_0.png" />
 </div>
 </div>
 <p>As we can see, the interpolated band structures is not completely on top of the ab-initio
 results. To improve the agreement we should try to reduced the spread and/or increase
 the density of the k-mesh used in the wannierization procedure.</p>
-<p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a></p>
 </div>
 </div>
 
@@ -651,8 +697,8 @@ the density of the k-mesh used in the wannierization procedure.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="mdf.html" title="previous page">Postprocessing tools for Bethe-Salpeter calculations</a>
-    <a class='right-next' id="next-link" href="lobster.html" title="next page">Analyzing Lobster output files with AbiPy</a>
+    <a class='left-prev' id="prev-link" href="mdf.html" title="previous page">The MDF file (Bethe-Salpeter)</a>
+    <a class='right-next' id="next-link" href="lobster.html" title="next page">Lobster output files</a>
 
         </div>
         
@@ -662,7 +708,7 @@ the density of the k-mesh used in the wannierization procedure.</p>
     <div class="container">
       <p>
         
-          By M. Giantomassi<br/>
+          By M. Giantomassi and the AbiPy group<br/>
         
             &copy; Copyright 2021.<br/>
       </p>

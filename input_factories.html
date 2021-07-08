@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Factory functions &#8212; AbiPy_Book</title>
+    <title>Factory functions &#8212; AbiPy Book</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,8 +52,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Structure object" href="structure.html" />
-    <link rel="prev" title="Table of Contents" href="abinit_input.html" />
+    <link rel="next" title="The GSR file (Ground-State)" href="gsr.html" />
+    <link rel="prev" title="The AbinitInput object" href="abinit_input.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -75,7 +75,7 @@
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">AbiPy_Book</h1>
+      <h1 class="site-logo" id="site-title">AbiPy Book</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -86,92 +86,146 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Welcome to your Jupyter Book
+   Introduction
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Basic AbiPy Objects
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="content.html">
-   Content in Jupyter Book
+ <li class="toctree-l1">
+  <a class="reference internal" href="structure.html">
+   Structure object
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="markdown.html">
-     Markdown Files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="notebooks.html">
-     Content with notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="abinit_input.html">
-     Table of Contents
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Factory functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="structure.html">
-     Structure object
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="gsr.html">
-     Post-processing tools for electron band energies
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="hist.html">
-     The HIST.nc file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="efatbands.html">
-     FATBANDS.nc file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ddb.html">
-     Post-processing DFPT calculations with the DDB file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sigres.html">
-     Postprocessing tools for GW calculations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mdf.html">
-     Postprocessing tools for Bethe-Salpeter calculations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="abiwan.html">
-     Analyzing wannier90 results with AbiPy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lobster.html">
-     Analyzing Lobster output files with AbiPy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="flows.html">
-     Tasks, Workflows and Flow
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="abinit_input.html">
+   The AbinitInput object
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Factory functions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Output Files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="gsr.html">
+   The GSR file (Ground-State)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hist.html">
+   The HIST.nc file (relaxation/MD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="efatbands.html">
+   The FATBANDS.nc file
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ddb.html">
+   The DDB file (DFPT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sigres.html">
+   The SIGRES file (GW)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mdf.html">
+   The MDF file (Bethe-Salpeter)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="abiwan.html">
+   The ABIWAN file (wannier90)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lobster.html">
+   Lobster output files
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Workflows
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="flows.html">
+   Tasks, Workflows and Flow
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="base1/lesson_base1.html">
+   Base1 lesson (H2 molecule)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="base3/lesson_base3.html">
+   Base3 lesson (silicon)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="base4/lesson_base4.html">
+   Base4 lesson (Aluminium)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dfpt/lesson_dfpt.html">
+   Phonons and Born effective charges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="g0w0/lesson_g0w0.html">
+   <span class="math notranslate nohighlight">
+    \(G_0W_0\)
+   </span>
+   band structure with star-function interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bse/lesson_bse.html">
+   Bethe-Salpeter calculations with AbiPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="eph_al/lesson_eph_al.html">
+   Isotropic superconductivity
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Miscellaneous
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="links.html">
+   Useful links
+  </a>
  </li>
 </ul>
 
@@ -233,14 +287,14 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/gmatteo/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/abinit/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/gmatteo/abipy_book/issues/new?title=Issue%20on%20page%20%2Finput_factories.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/abinit/abipy_book/issues/new?title=Issue%20on%20page%20%2Finput_factories.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/gmatteo/abipy_book/edit/main/docs/input_factories.md"><button
+        <a class="edit-button" href="https://github.com/abinit/abipy_book/edit/master/docs/input_factories.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -260,7 +314,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/gmatteo/abipy_book/main?urlpath=tree/docs/input_factories.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/abinit/abipy_book/master?urlpath=tree/docs/input_factories.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -308,10 +362,8 @@
         
               <div>
                 
-  <p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a></p>
-<div class="section" id="factory-functions">
+  <div class="section" id="factory-functions">
 <h1>Factory functions<a class="headerlink" href="#factory-functions" title="Permalink to this headline">¶</a></h1>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <p>Abipy provides factory functions to build input files for typical calculations.
 These functions return <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code> or <code class="docutils literal notranslate"><span class="pre">MultiDataset</span></code> objects, depending
 on the number of steps required by the calculation.</p>
@@ -328,9 +380,7 @@ steps. Client code is in charge of connecting the different parts.
 For a command line interface, use the <code class="docutils literal notranslate"><span class="pre">abinp.py</span></code> script.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span> <span class="c1"># to get rid of deprecation warnings</span>
 
@@ -383,7 +433,7 @@ the structure is read from an external CIF file:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">ndtset 3<br>############################################################################################<br>#### Global Variables.<br>############################################################################################<br> <a href="https://docs.abinit.org/variables/basic#ecut" target="_blank">ecut</a> 8<br> <a href="https://docs.abinit.org/variables/gstate#nspden" target="_blank">nspden</a> 1<br> <a href="https://docs.abinit.org/variables/gstate#charge" target="_blank">charge</a> 0.0<br> <a href="https://docs.abinit.org/variables/basic#nsppol" target="_blank">nsppol</a> 1<br> <a href="https://docs.abinit.org/variables/gstate#nspinor" target="_blank">nspinor</a> 1<br><br><br>############################################################################################<br>####                                         STRUCTURE                                         <br>############################################################################################<br> <a href="https://docs.abinit.org/variables/basic#natom" target="_blank">natom</a> 2<br> <a href="https://docs.abinit.org/variables/basic#ntypat" target="_blank">ntypat</a> 1<br> <a href="https://docs.abinit.org/variables/basic#typat" target="_blank">typat</a> 1 1<br> <a href="https://docs.abinit.org/variables/basic#znucl" target="_blank">znucl</a> 14<br> <a href="https://docs.abinit.org/variables/basic#xred" target="_blank">xred</a><br>    0.0000000000    0.0000000000    0.0000000000<br>    0.2500000000    0.2500000000    0.2500000000<br> <a href="https://docs.abinit.org/variables/basic#acell" target="_blank">acell</a>    1.0    1.0    1.0<br> <a href="https://docs.abinit.org/variables/basic#rprim" target="_blank">rprim</a><br>    6.3285005244    0.0000000000    3.6537614813<br>    2.1095001748    5.9665675141    3.6537614813<br>    0.0000000000    0.0000000000    7.3075229627<br><br>#####################<br>##### DATASET 1 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#ngkpt" target="_blank">ngkpt1</a> 8 8 8<br> <a href="https://docs.abinit.org/variables/basic#shiftk" target="_blank">shiftk1</a>    0.5    0.5    0.5<br> <a href="https://docs.abinit.org/variables/basic#nshiftk" target="_blank">nshiftk1</a> 1<br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt1</a> 1<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband1</a> 8<br> <a href="https://docs.abinit.org/variables/basic#tolvrs" target="_blank">tolvrs1</a> 1e-08<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br> <a href="https://docs.abinit.org/variables/gstate#chksymbreak" target="_blank">chksymbreak1</a> 0<br><div><br><br><br>#####################<br>##### DATASET 2 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt2</a> -11<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband2</a> 18<br> <a href="https://docs.abinit.org/variables/basic#iscf" target="_blank">iscf2</a> -2<br> <a href="https://docs.abinit.org/variables/basic#tolwfr" target="_blank">tolwfr2</a> 1e-17<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br> <a href="https://docs.abinit.org/variables/gstate#ndivsm" target="_blank">ndivsm2</a> 15<br> <a href="https://docs.abinit.org/variables/gstate#kptbounds" target="_blank">kptbounds2</a><br>    0.0000000000    0.0000000000    0.0000000000<br>    0.5000000000    0.0000000000    0.5000000000<br>    0.5000000000    0.2500000000    0.7500000000<br>    0.3750000000    0.3750000000    0.7500000000<br>    0.0000000000    0.0000000000    0.0000000000<br>    0.5000000000    0.5000000000    0.5000000000<br>    0.6250000000    0.2500000000    0.6250000000<br>    0.5000000000    0.2500000000    0.7500000000<br>    0.5000000000    0.5000000000    0.5000000000<br>    0.3750000000    0.3750000000    0.7500000000<br>    0.6250000000    0.2500000000    0.6250000000<br>    0.5000000000    0.0000000000    0.5000000000<br><div><br><br><br>#####################<br>##### DATASET 3 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#ngkpt" target="_blank">ngkpt3</a> 14 14 14<br> <a href="https://docs.abinit.org/variables/basic#shiftk" target="_blank">shiftk3</a>    0.5    0.5    0.5<br> <a href="https://docs.abinit.org/variables/basic#nshiftk" target="_blank">nshiftk3</a> 1<br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt3</a> 1<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband3</a> 18<br> <a href="https://docs.abinit.org/variables/basic#iscf" target="_blank">iscf3</a> -2<br> <a href="https://docs.abinit.org/variables/basic#tolwfr" target="_blank">tolwfr3</a> 1e-17<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br> <a href="https://docs.abinit.org/variables/gstate#chksymbreak" target="_blank">chksymbreak3</a> 0<br><br><br>#&lt;JSON&gt;<br>#{<br>#    &quot;pseudos&quot;: [<br>#        {<br>#            &quot;basename&quot;: &quot;14si.pspnc&quot;,<br>#            &quot;type&quot;: &quot;NcAbinitPseudo&quot;,<br>#            &quot;symbol&quot;: &quot;Si&quot;,<br>#            &quot;Z&quot;: 14,<br>#            &quot;Z_val&quot;: 4.0,<br>#            &quot;l_max&quot;: 2,<br>#            &quot;md5&quot;: &quot;3916b143991b1cfa1542b130be320e5e&quot;,<br>#            &quot;filepath&quot;: &quot;/Users/gmatteo/git_repos/abipy/abipy/data/pseudos/14si.pspnc&quot;,<br>#            &quot;@module&quot;: &quot;pymatgen.io.abinit.pseudos&quot;,<br>#            &quot;@class&quot;: &quot;NcAbinitPseudo&quot;<br>#        }<br>#    ]<br>#}<br>#&lt;/JSON&gt;<br><div><br></div></div>
+<div class="output text_html">ndtset 3<br>############################################################################################<br>#### Global Variables.<br>############################################################################################<br><br><br> <a href="https://docs.abinit.org/variables/gstate#charge" target="_blank">charge</a> 0.0<br> <a href="https://docs.abinit.org/variables/gstate#nspinor" target="_blank">nspinor</a> 1<br> <a href="https://docs.abinit.org/variables/gstate#nspden" target="_blank">nspden</a> 1<br> <a href="https://docs.abinit.org/variables/basic#ecut" target="_blank">ecut</a> 8<br> <a href="https://docs.abinit.org/variables/basic#nsppol" target="_blank">nsppol</a> 1<br>############################################################################################<br>####                                         STRUCTURE                                         <br>############################################################################################<br> <a href="https://docs.abinit.org/variables/basic#natom" target="_blank">natom</a> 2<br> <a href="https://docs.abinit.org/variables/basic#ntypat" target="_blank">ntypat</a> 1<br> <a href="https://docs.abinit.org/variables/basic#typat" target="_blank">typat</a> 1 1<br> <a href="https://docs.abinit.org/variables/basic#znucl" target="_blank">znucl</a> 14<br> <a href="https://docs.abinit.org/variables/basic#xred" target="_blank">xred</a><br>    0.0000000000    0.0000000000    0.0000000000<br>    0.2500000000    0.2500000000    0.2500000000<br> <a href="https://docs.abinit.org/variables/basic#acell" target="_blank">acell</a>    1.0    1.0    1.0<br> <a href="https://docs.abinit.org/variables/basic#rprim" target="_blank">rprim</a><br>    6.3285005244    0.0000000000    3.6537614813<br>    2.1095001748    5.9665675141    3.6537614813<br>    0.0000000000    0.0000000000    7.3075229627<br><br>#####################<br>##### DATASET 1 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#ngkpt" target="_blank">ngkpt1</a> 8 8 8<br> <a href="https://docs.abinit.org/variables/basic#shiftk" target="_blank">shiftk1</a>    0.5    0.5    0.5<br> <a href="https://docs.abinit.org/variables/basic#nshiftk" target="_blank">nshiftk1</a> 1<br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt1</a> 1<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband1</a> 8<br> <a href="https://docs.abinit.org/variables/basic#tolvrs" target="_blank">tolvrs1</a> 1e-08<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br> <a href="https://docs.abinit.org/variables/gstate#chksymbreak" target="_blank">chksymbreak1</a> 0<br><div><br><br><br>#####################<br>##### DATASET 2 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt2</a> -11<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband2</a> 18<br> <a href="https://docs.abinit.org/variables/basic#iscf" target="_blank">iscf2</a> -2<br> <a href="https://docs.abinit.org/variables/basic#tolwfr" target="_blank">tolwfr2</a> 1e-17<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br> <a href="https://docs.abinit.org/variables/gstate#ndivsm" target="_blank">ndivsm2</a> 15<br> <a href="https://docs.abinit.org/variables/gstate#kptbounds" target="_blank">kptbounds2</a><br>    0.0000000000    0.0000000000    0.0000000000<br>    0.5000000000    0.0000000000    0.5000000000<br>    0.5000000000    0.2500000000    0.7500000000<br>    0.3750000000    0.3750000000    0.7500000000<br>    0.0000000000    0.0000000000    0.0000000000<br>    0.5000000000    0.5000000000    0.5000000000<br>    0.6250000000    0.2500000000    0.6250000000<br>    0.5000000000    0.2500000000    0.7500000000<br>    0.5000000000    0.5000000000    0.5000000000<br>    0.3750000000    0.3750000000    0.7500000000<br>    0.6250000000    0.2500000000    0.6250000000<br>    0.5000000000    0.0000000000    0.5000000000<br><div><br><br><br>#####################<br>##### DATASET 3 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#ngkpt" target="_blank">ngkpt3</a> 14 14 14<br> <a href="https://docs.abinit.org/variables/basic#shiftk" target="_blank">shiftk3</a>    0.5    0.5    0.5<br> <a href="https://docs.abinit.org/variables/basic#nshiftk" target="_blank">nshiftk3</a> 1<br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt3</a> 1<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband3</a> 18<br> <a href="https://docs.abinit.org/variables/basic#iscf" target="_blank">iscf3</a> -2<br> <a href="https://docs.abinit.org/variables/basic#tolwfr" target="_blank">tolwfr3</a> 1e-17<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br> <a href="https://docs.abinit.org/variables/gstate#chksymbreak" target="_blank">chksymbreak3</a> 0<br><br><br>#&lt;JSON&gt;<br>#{<br>#    &quot;pseudos&quot;: [<br>#        {<br>#            &quot;basename&quot;: &quot;14si.pspnc&quot;,<br>#            &quot;type&quot;: &quot;NcAbinitPseudo&quot;,<br>#            &quot;symbol&quot;: &quot;Si&quot;,<br>#            &quot;Z&quot;: 14,<br>#            &quot;Z_val&quot;: 4.0,<br>#            &quot;l_max&quot;: 2,<br>#            &quot;md5&quot;: &quot;3916b143991b1cfa1542b130be320e5e&quot;,<br>#            &quot;filepath&quot;: &quot;/Users/gmatteo/git_repos/abipy/abipy/data/pseudos/14si.pspnc&quot;,<br>#            &quot;@module&quot;: &quot;pymatgen.io.abinit.pseudos&quot;,<br>#            &quot;@class&quot;: &quot;NcAbinitPseudo&quot;<br>#        }<br>#    ]<br>#}<br>#&lt;/JSON&gt;<br><div><br></div></div>
 </div>
 </div>
 <div class="section" id="factories-for-gw-calculations">
@@ -410,9 +460,8 @@ the structure is read from an external CIF file:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">ndtset 4<br>############################################################################################<br>#### Global Variables.<br>############################################################################################<br> <a href="https://docs.abinit.org/variables/basic#ecut" target="_blank">ecut</a> 8<br> <a href="https://docs.abinit.org/variables/dev#istwfk" target="_blank">istwfk</a> *1<br> <a href="https://docs.abinit.org/variables/basic#ngkpt" target="_blank">ngkpt</a> 8 8 8<br> <a href="https://docs.abinit.org/variables/gstate#nspden" target="_blank">nspden</a> 1<br> <a href="https://docs.abinit.org/variables/basic#nshiftk" target="_blank">nshiftk</a> 1<br> <a href="https://docs.abinit.org/variables/gstate#charge" target="_blank">charge</a> 0.0<br><br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt</a> 1<br> <a href="https://docs.abinit.org/variables/basic#nsppol" target="_blank">nsppol</a> 1<br> <a href="https://docs.abinit.org/variables/gstate#nspinor" target="_blank">nspinor</a> 1<br><br> <a href="https://docs.abinit.org/variables/gstate#chksymbreak" target="_blank">chksymbreak</a> 0<br> <a href="https://docs.abinit.org/variables/basic#shiftk" target="_blank">shiftk</a>    0.0    0.0    0.0<br>############################################################################################<br>####                                         STRUCTURE                                         <br>############################################################################################<br> <a href="https://docs.abinit.org/variables/basic#natom" target="_blank">natom</a> 2<br> <a href="https://docs.abinit.org/variables/basic#ntypat" target="_blank">ntypat</a> 1<br> <a href="https://docs.abinit.org/variables/basic#typat" target="_blank">typat</a> 1 1<br> <a href="https://docs.abinit.org/variables/basic#znucl" target="_blank">znucl</a> 14<br> <a href="https://docs.abinit.org/variables/basic#xred" target="_blank">xred</a><br>    0.0000000000    0.0000000000    0.0000000000<br>    0.2500000000    0.2500000000    0.2500000000<br> <a href="https://docs.abinit.org/variables/basic#acell" target="_blank">acell</a>    1.0    1.0    1.0<br> <a href="https://docs.abinit.org/variables/basic#rprim" target="_blank">rprim</a><br>    6.3285005244    0.0000000000    3.6537614813<br>    2.1095001748    5.9665675141    3.6537614813<br>    0.0000000000    0.0000000000    7.3075229627<br><br>#####################<br>##### DATASET 1 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband1</a> 8<br> <a href="https://docs.abinit.org/variables/basic#tolvrs" target="_blank">tolvrs1</a> 1e-08<br><div><br><br><br>#####################<br>##### DATASET 2 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband2</a> 50<br> <a href="https://docs.abinit.org/variables/basic#iscf" target="_blank">iscf2</a> -2<br> <a href="https://docs.abinit.org/variables/basic#tolwfr" target="_blank">tolwfr2</a> 1e-17<br><div><br><br><br>#####################<br>##### DATASET 3 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband3</a> 50<br> <a href="https://docs.abinit.org/variables/basic#iscf" target="_blank">iscf3</a> -2<br> <a href="https://docs.abinit.org/variables/basic#toldfe" target="_blank">toldfe3</a> 1e-08<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br> <a href="https://docs.abinit.org/variables/gstate#optdriver" target="_blank">optdriver3</a> 3<br>##############################################<br>####                 SECTION: gw                 <br>##############################################<br> <a href="https://docs.abinit.org/variables/gw#ecuteps" target="_blank">ecuteps3</a> 2<br> <a href="https://docs.abinit.org/variables/gw#inclvkb" target="_blank">inclvkb3</a> 2<br> <a href="https://docs.abinit.org/variables/gw#awtr" target="_blank">awtr3</a> 1<br> <a href="https://docs.abinit.org/variables/gw#symchi" target="_blank">symchi3</a> 1<br>##############################################<br>####                SECTION: paral               <br>##############################################<br> <a href="https://docs.abinit.org/variables/paral#gwpara" target="_blank">gwpara3</a> 2<br><div><br><br><br>#####################<br>##### DATASET 4 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband4</a> 50<br> <a href="https://docs.abinit.org/variables/basic#iscf" target="_blank">iscf4</a> -2<br> <a href="https://docs.abinit.org/variables/basic#toldfe" target="_blank">toldfe4</a> 1e-08<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br> <a href="https://docs.abinit.org/variables/gstate#optdriver" target="_blank">optdriver4</a> 4<br>##############################################<br>####                 SECTION: gw                 <br>##############################################<br> <a href="https://docs.abinit.org/variables/gw#gwcalctyp" target="_blank">gwcalctyp4</a> 00<br> <a href="https://docs.abinit.org/variables/gw#ecuteps" target="_blank">ecuteps4</a> 2<br> <a href="https://docs.abinit.org/variables/gw#ecutsigx" target="_blank">ecutsigx4</a> 8<br> <a href="https://docs.abinit.org/variables/gw#symsigma" target="_blank">symsigma4</a> 1<br> <a href="https://docs.abinit.org/variables/gw#gw_qprange" target="_blank">gw_qprange4</a> 1<br> <a href="https://docs.abinit.org/variables/gw#ppmodel" target="_blank">ppmodel4</a> 1<br>##############################################<br>####                SECTION: paral               <br>##############################################<br> <a href="https://docs.abinit.org/variables/paral#gwpara" target="_blank">gwpara4</a> 2<br><br><br>#&lt;JSON&gt;<br>#{<br>#    &quot;pseudos&quot;: [<br>#        {<br>#            &quot;basename&quot;: &quot;14si.pspnc&quot;,<br>#            &quot;type&quot;: &quot;NcAbinitPseudo&quot;,<br>#            &quot;symbol&quot;: &quot;Si&quot;,<br>#            &quot;Z&quot;: 14,<br>#            &quot;Z_val&quot;: 4.0,<br>#            &quot;l_max&quot;: 2,<br>#            &quot;md5&quot;: &quot;3916b143991b1cfa1542b130be320e5e&quot;,<br>#            &quot;filepath&quot;: &quot;/Users/gmatteo/git_repos/abipy/abipy/data/pseudos/14si.pspnc&quot;,<br>#            &quot;@module&quot;: &quot;pymatgen.io.abinit.pseudos&quot;,<br>#            &quot;@class&quot;: &quot;NcAbinitPseudo&quot;<br>#        }<br>#    ]<br>#}<br>#&lt;/JSON&gt;<br><div><br></div></div>
+<div class="output text_html">ndtset 4<br>############################################################################################<br>#### Global Variables.<br>############################################################################################<br> <a href="https://docs.abinit.org/variables/basic#ngkpt" target="_blank">ngkpt</a> 8 8 8<br><br> <a href="https://docs.abinit.org/variables/gstate#chksymbreak" target="_blank">chksymbreak</a> 0<br> <a href="https://docs.abinit.org/variables/basic#shiftk" target="_blank">shiftk</a>    0.0    0.0    0.0<br><br> <a href="https://docs.abinit.org/variables/gstate#charge" target="_blank">charge</a> 0.0<br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt</a> 1<br> <a href="https://docs.abinit.org/variables/gstate#nspinor" target="_blank">nspinor</a> 1<br> <a href="https://docs.abinit.org/variables/gstate#nspden" target="_blank">nspden</a> 1<br> <a href="https://docs.abinit.org/variables/basic#ecut" target="_blank">ecut</a> 8<br> <a href="https://docs.abinit.org/variables/basic#nshiftk" target="_blank">nshiftk</a> 1<br> <a href="https://docs.abinit.org/variables/basic#nsppol" target="_blank">nsppol</a> 1<br> <a href="https://docs.abinit.org/variables/dev#istwfk" target="_blank">istwfk</a> *1<br>############################################################################################<br>####                                         STRUCTURE                                         <br>############################################################################################<br> <a href="https://docs.abinit.org/variables/basic#natom" target="_blank">natom</a> 2<br> <a href="https://docs.abinit.org/variables/basic#ntypat" target="_blank">ntypat</a> 1<br> <a href="https://docs.abinit.org/variables/basic#typat" target="_blank">typat</a> 1 1<br> <a href="https://docs.abinit.org/variables/basic#znucl" target="_blank">znucl</a> 14<br> <a href="https://docs.abinit.org/variables/basic#xred" target="_blank">xred</a><br>    0.0000000000    0.0000000000    0.0000000000<br>    0.2500000000    0.2500000000    0.2500000000<br> <a href="https://docs.abinit.org/variables/basic#acell" target="_blank">acell</a>    1.0    1.0    1.0<br> <a href="https://docs.abinit.org/variables/basic#rprim" target="_blank">rprim</a><br>    6.3285005244    0.0000000000    3.6537614813<br>    2.1095001748    5.9665675141    3.6537614813<br>    0.0000000000    0.0000000000    7.3075229627<br><br>#####################<br>##### DATASET 1 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband1</a> 8<br> <a href="https://docs.abinit.org/variables/basic#tolvrs" target="_blank">tolvrs1</a> 1e-08<br><div><br><br><br>#####################<br>##### DATASET 2 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband2</a> 50<br> <a href="https://docs.abinit.org/variables/basic#iscf" target="_blank">iscf2</a> -2<br> <a href="https://docs.abinit.org/variables/basic#tolwfr" target="_blank">tolwfr2</a> 1e-17<br><div><br><br><br>#####################<br>##### DATASET 3 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband3</a> 50<br> <a href="https://docs.abinit.org/variables/basic#iscf" target="_blank">iscf3</a> -2<br> <a href="https://docs.abinit.org/variables/basic#toldfe" target="_blank">toldfe3</a> 1e-08<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br> <a href="https://docs.abinit.org/variables/gstate#optdriver" target="_blank">optdriver3</a> 3<br>##############################################<br>####                 SECTION: gw                 <br>##############################################<br> <a href="https://docs.abinit.org/variables/gw#ecuteps" target="_blank">ecuteps3</a> 2<br> <a href="https://docs.abinit.org/variables/gw#inclvkb" target="_blank">inclvkb3</a> 2<br> <a href="https://docs.abinit.org/variables/gw#awtr" target="_blank">awtr3</a> 1<br> <a href="https://docs.abinit.org/variables/gw#symchi" target="_blank">symchi3</a> 1<br>##############################################<br>####                SECTION: paral               <br>##############################################<br> <a href="https://docs.abinit.org/variables/paral#gwpara" target="_blank">gwpara3</a> 2<br><div><br><br><br>#####################<br>##### DATASET 4 #####<br>#####################<br><div class="abinit_input"><br>##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband4</a> 50<br> <a href="https://docs.abinit.org/variables/basic#iscf" target="_blank">iscf4</a> -2<br> <a href="https://docs.abinit.org/variables/basic#toldfe" target="_blank">toldfe4</a> 1e-08<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br> <a href="https://docs.abinit.org/variables/gstate#optdriver" target="_blank">optdriver4</a> 4<br>##############################################<br>####                 SECTION: gw                 <br>##############################################<br> <a href="https://docs.abinit.org/variables/gw#gwcalctyp" target="_blank">gwcalctyp4</a> 00<br> <a href="https://docs.abinit.org/variables/gw#ecuteps" target="_blank">ecuteps4</a> 2<br> <a href="https://docs.abinit.org/variables/gw#ecutsigx" target="_blank">ecutsigx4</a> 8<br> <a href="https://docs.abinit.org/variables/gw#symsigma" target="_blank">symsigma4</a> 1<br> <a href="https://docs.abinit.org/variables/gw#gw_qprange" target="_blank">gw_qprange4</a> 1<br> <a href="https://docs.abinit.org/variables/gw#ppmodel" target="_blank">ppmodel4</a> 1<br>##############################################<br>####                SECTION: paral               <br>##############################################<br> <a href="https://docs.abinit.org/variables/paral#gwpara" target="_blank">gwpara4</a> 2<br><br><br>#&lt;JSON&gt;<br>#{<br>#    &quot;pseudos&quot;: [<br>#        {<br>#            &quot;basename&quot;: &quot;14si.pspnc&quot;,<br>#            &quot;type&quot;: &quot;NcAbinitPseudo&quot;,<br>#            &quot;symbol&quot;: &quot;Si&quot;,<br>#            &quot;Z&quot;: 14,<br>#            &quot;Z_val&quot;: 4.0,<br>#            &quot;l_max&quot;: 2,<br>#            &quot;md5&quot;: &quot;3916b143991b1cfa1542b130be320e5e&quot;,<br>#            &quot;filepath&quot;: &quot;/Users/gmatteo/git_repos/abipy/abipy/data/pseudos/14si.pspnc&quot;,<br>#            &quot;@module&quot;: &quot;pymatgen.io.abinit.pseudos&quot;,<br>#            &quot;@class&quot;: &quot;NcAbinitPseudo&quot;<br>#        }<br>#    ]<br>#}<br>#&lt;/JSON&gt;<br><div><br></div></div>
 </div>
-<p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a></p>
 </div>
 </div>
 
@@ -441,8 +490,8 @@ the structure is read from an external CIF file:</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="abinit_input.html" title="previous page">Table of Contents</a>
-    <a class='right-next' id="next-link" href="structure.html" title="next page">Structure object</a>
+    <a class='left-prev' id="prev-link" href="abinit_input.html" title="previous page">The AbinitInput object</a>
+    <a class='right-next' id="next-link" href="gsr.html" title="next page">The GSR file (Ground-State)</a>
 
         </div>
         
@@ -452,7 +501,7 @@ the structure is read from an external CIF file:</p>
     <div class="container">
       <p>
         
-          By M. Giantomassi<br/>
+          By M. Giantomassi and the AbiPy group<br/>
         
             &copy; Copyright 2021.<br/>
       </p>

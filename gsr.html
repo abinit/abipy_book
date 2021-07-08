@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Post-processing tools for electron band energies &#8212; AbiPy_Book</title>
+    <title>The GSR file (Ground-State) &#8212; AbiPy Book</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -49,13 +49,13 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"*": "{\\dagger}", "ra": "{\\rangle}", "la": "{\\langle}", "bm": ["{\\boldsymbol #1}", 1], "mcL": "{\\mathcal{L}}", "mcG": "{\\mathcal{G}}", "mcR": "{\\mathcal{R}}", "mcS": "{\\mathcal{S}}", "mcC": "{\\mathcal{C}}", "mcO": "{\\mathcal{O}}", "KS": "{\\text{KS}}", "eph": "{\\text{e-ph}}", "ee": "{\\epsilon}", "phph": "{\\text{ph-ph}}", "FM": "{\\text{FM}}", "DW": "{\\text{DW}}", "QP": "{\\text{QP}}", "BZ": "{\\text{BZ}}", "sign": "{\\text{sign}}", "xc": "{\\text{xc}}", "tchi": "{\\tilde\\chi}", "rr": "{\\bf r}", "RR": "{\\bf R}", "tt": "{\\bf t}", "GG": "{\\bf G}", "kk": "{\\bf k}", "qq": "{\\bf q}", "kq": "{\\kk + \\qq}", "qG": "{\\bf q + G}", "kG": "{\\bf k + G}", "kmq": "{\\kk - \\qq}", "kpq": "{\\kk + \\qq}", "kpG": "{\\kk + \\GG}", "qpG": "{\\qq + \\GG}", "nk": "{n \\kk}", "mk": "{, \\kk}", "nks": "{n \\kk\\sigma}", "mks": "{m \\kk\\sigma}", "enk": "{\\varepsilon_\\nk}", "emkq": "{\\varepsilon_{m\\kk+\\qq}}", "qnu": "{\\qq \\nu}", "wqnu": "{\\omega_{\\qnu}}", "vnk": "{\\mathbf{v}_{n\\kk}}", "vmkq": "{\\mathbf{v}_{m\\kk+\\qq}}", "vnka": "{\\mathrm{v}_{n\\kk,\\alpha}}", "vnkb": "{\\mathrm{v}_{n\\kk,\\beta}}", "ef": "{\\varepsilon_F}", "gkkp": "{g_{mn\\nu}(\\kk,\\qq)}", "gkq": "{g_{mn\\nu}(\\kk,\\qq)}", "Go": "{G_0}", "Wo": "{W_0}", "Ueff": "{U_{\\text{eff}}}", "tee": "{\\tilde{\\epsilon}}", "ww": "{\\omega}", "tww": "{\\tilde\\omega}", "dd": "{\\,\\text{d}}", "vxc": "{v_\\xc}", "Ri": "{\\mcR^{-1}}", "Rit": "{\\mcR^{-1\\tau}}", "Si": "{\\mcS^{-1}}}", "Sit": "{\\Si^\\tau}}", "PDER": ["{\\dfrac{\\partial #1}{\\partial #2}}", 2], "FDER": ["{\\dfrac{\\delta #1}{\\delta #2}}", 2], "tPsi": "{\\tilde\\Psi}", "tpsi": "{\\tilde\\psi}", "tPhi": "{\\tilde\\Phi}", "tphi": "{\\tilde\\phi}", "tprj": "{\\tilde p}"}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The HIST.nc file" href="hist.html" />
-    <link rel="prev" title="Structure object" href="structure.html" />
+    <link rel="next" title="The HIST.nc file (relaxation/MD)" href="hist.html" />
+    <link rel="prev" title="Factory functions" href="input_factories.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -77,7 +77,7 @@
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">AbiPy_Book</h1>
+      <h1 class="site-logo" id="site-title">AbiPy Book</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -88,92 +88,146 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Welcome to your Jupyter Book
+   Introduction
   </a>
  </li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="content.html">
-   Content in Jupyter Book
+<p class="caption">
+ <span class="caption-text">
+  Basic AbiPy Objects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="structure.html">
+   Structure object
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="markdown.html">
-     Markdown Files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="notebooks.html">
-     Content with notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="abinit_input.html">
-     Table of Contents
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="input_factories.html">
-     Factory functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="structure.html">
-     Structure object
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Post-processing tools for electron band energies
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="hist.html">
-     The HIST.nc file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="efatbands.html">
-     FATBANDS.nc file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ddb.html">
-     Post-processing DFPT calculations with the DDB file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sigres.html">
-     Postprocessing tools for GW calculations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mdf.html">
-     Postprocessing tools for Bethe-Salpeter calculations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="abiwan.html">
-     Analyzing wannier90 results with AbiPy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lobster.html">
-     Analyzing Lobster output files with AbiPy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="flows.html">
-     Tasks, Workflows and Flow
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="abinit_input.html">
+   The AbinitInput object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="input_factories.html">
+   Factory functions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Output Files
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The GSR file (Ground-State)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hist.html">
+   The HIST.nc file (relaxation/MD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="efatbands.html">
+   The FATBANDS.nc file
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ddb.html">
+   The DDB file (DFPT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sigres.html">
+   The SIGRES file (GW)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mdf.html">
+   The MDF file (Bethe-Salpeter)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="abiwan.html">
+   The ABIWAN file (wannier90)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lobster.html">
+   Lobster output files
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Workflows
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="flows.html">
+   Tasks, Workflows and Flow
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="base1/lesson_base1.html">
+   Base1 lesson (H2 molecule)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="base3/lesson_base3.html">
+   Base3 lesson (silicon)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="base4/lesson_base4.html">
+   Base4 lesson (Aluminium)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dfpt/lesson_dfpt.html">
+   Phonons and Born effective charges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="g0w0/lesson_g0w0.html">
+   <span class="math notranslate nohighlight">
+    \(G_0W_0\)
+   </span>
+   band structure with star-function interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bse/lesson_bse.html">
+   Bethe-Salpeter calculations with AbiPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="eph_al/lesson_eph_al.html">
+   Isotropic superconductivity
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Miscellaneous
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="links.html">
+   Useful links
+  </a>
  </li>
 </ul>
 
@@ -235,14 +289,14 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/gmatteo/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/abinit/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/gmatteo/abipy_book/issues/new?title=Issue%20on%20page%20%2Fgsr.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/abinit/abipy_book/issues/new?title=Issue%20on%20page%20%2Fgsr.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/gmatteo/abipy_book/edit/main/docs/gsr.md"><button
+        <a class="edit-button" href="https://github.com/abinit/abipy_book/edit/master/docs/gsr.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -262,7 +316,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/gmatteo/abipy_book/main?urlpath=tree/docs/gsr.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/abinit/abipy_book/master?urlpath=tree/docs/gsr.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -285,11 +339,6 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#table-of-contents">
-   Table of Contents
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-gsr-file">
    The GSR File
   </a>
@@ -297,11 +346,6 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plotting-band-structures">
    Plotting band structures
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#for-the-plotly-version-use">
-   For the plotly version, use:
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -335,17 +379,16 @@
         
               <div>
                 
-  <p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a> <a id="top"></a></p>
-<div class="section" id="post-processing-tools-for-electron-band-energies">
-<h1>Post-processing tools for electron band energies<a class="headerlink" href="#post-processing-tools-for-electron-band-energies" title="Permalink to this headline">¶</a></h1>
-<p>In this notebook we discuss how to plot electron band structures and density of states (DOS)
-using the netcdf files produced by Abinit.</p>
+  <div class="section" id="the-gsr-file-ground-state">
+<h1>The GSR file (Ground-State)<a class="headerlink" href="#the-gsr-file-ground-state" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we discuss how to plot the electron band structures and the density of states (DOS)
+using the GSR netcdf files produced by Abinit.</p>
 <p>For the tutorial, we will use the netcdf files shipped with AbiPy.
 The function <code class="docutils literal notranslate"><span class="pre">abidata.ref_file</span></code> returns the absolute path of the reference file.
 In your scripts, you have to replace <code class="docutils literal notranslate"><span class="pre">data.ref_file(&quot;abipy_filename&quot;)</span></code> with a string giving
 the location of your netcdf file.</p>
 <p>Alteratively, one can use the <code class="docutils literal notranslate"><span class="pre">abiopen.py</span></code> script to open the file inside the shell with the syntax:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abiopen.py out_GSR.nc 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abiopen.py out_GSR.nc
 </pre></div>
 </div>
 <p>This command will start the ipython interpreter so that one can interact directly
@@ -358,23 +401,9 @@ To generate a jupyter notebook use:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abiopen.py out_GSR.nc -e
 </pre></div>
 </div>
-<div class="section" id="table-of-contents">
-<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
-<ul class="simple">
-<li><p><a class="reference external" href="#The-GSR-File">The GSR File</a></p></li>
-<li><p><a class="reference external" href="#Plotting-band-structures">Plotting band structures</a></p></li>
-<li><p><a class="reference external" href="#DOS-with-the-Gaussian-technique">DOS with the Gaussian technique</a></p></li>
-<li><p><a class="reference external" href="#Joint-density-of-states">Joint density of states</a></p></li>
-<li><p><a class="reference external" href="#Plotting-the-Fermi-surface">Plotting the Fermi surface</a></p></li>
-<li><p><a class="reference external" href="#Analyzing-multiple-GSR-files-with-robots">Analyzing multiple GSR files with robots</a></p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use this at the beginning of your script so that your code will be compatible with python3</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
-
-<span class="kn">import</span> <span class="nn">warnings</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>  <span class="c1"># Ignore warnings</span>
 
 <span class="kn">from</span> <span class="nn">abipy</span> <span class="kn">import</span> <span class="n">abilab</span>
@@ -384,18 +413,16 @@ To generate a jupyter notebook use:</p>
 
 <span class="c1"># This line configures matplotlib to show figures embedded in the notebook.</span>
 <span class="c1"># Replace `inline` with `notebook` in classic notebook</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline   
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="c1"># Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib</span>
-<span class="c1">#%matplotlib widget  </span>
+<span class="c1">#%matplotlib widget</span>
 </pre></div>
-</div>
 </div>
 </div>
 </div>
 <div class="section" id="the-gsr-file">
 <h2>The GSR File<a class="headerlink" href="#the-gsr-file" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">GSR</span></code> file (mnemonics: Ground-State Results) is a netcdf file with the
 results produced by SCF or NSCF ground-state calculations
 (band energies, forces, energies, stress tensor).
@@ -473,10 +500,12 @@ TIP: Call set_fermie_to_vbm() to set the Fermi level to the VBM if this is a non
 </div>
 </div>
 </div>
-<div class="alert alert-danger" role="alert">
-In python we start to count from zero, thus the first band has index 0 and the first spin is 0
-AbiPy uses the same convention so be very careful when specifying band, spin or k-point indices. 
-</div><p>A GSR file produced by a <strong>self-consistent run</strong>, contains the values of the total energy, the forces,
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>In python we start to count from zero, thus the first band has index 0 and the first spin is 0
+AbiPy uses the same convention so be very careful when specifying band, spin or k-point indices.</p>
+</div>
+<p>A GSR file produced by a <strong>self-consistent run</strong>, contains the values of the total energy, the forces,
 and the stress tensor at the end of the SCF cycle:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -595,17 +624,18 @@ e_monopole            0.0 eV
 </div>
 </div>
 </div>
-<div class="alert alert-danger" role="alert">
-The gsr maintains a reference to the underlying netcdf file hence one should
-call `gsr.close()` to release the resource when we don't need it anymore.
-Python will do it automatically if you use `abiopen` and the `with` context manager.
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The gsr maintains a reference to the underlying netcdf file hence one should
+call <code class="docutils literal notranslate"><span class="pre">gsr.close()</span></code> to release the resource when we don’t need it anymore.
+Python will do it automatically if you use <code class="docutils literal notranslate"><span class="pre">abiopen</span></code> and the <code class="docutils literal notranslate"><span class="pre">with</span></code> context manager.</p>
 <p>Note that we don’t always follow this rule inside the jupyter notebook to maintain the
 code readable but you should definitively close all your files, especially when
 writing code that may be running for hours or even more.</p>
-</div></div>
+</div>
+</div>
 <div class="section" id="plotting-band-structures">
 <h2>Plotting band structures<a class="headerlink" href="#plotting-band-structures" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <p>Let’s open the GSR file produced by a NSCF calculation done on a high-symmetry k-path
 and extract the electronic band structure.</p>
 <p>A warning is issued by pymatgen about the structure not being standard.
@@ -620,7 +650,7 @@ In the present case, the labelling is correct.</p>
 </div>
 </div>
 </div>
-<p>Now we can plot the band energies with:</p>
+<p>Now we can plot the band energies with <em>matplotlib</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The labels for the k-points are found in an internal database.</span>
@@ -629,10 +659,11 @@ In the present case, the labelling is correct.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/gsr_22_0.png" src="_images/gsr_22_0.png" />
+<img alt="_images/gsr_19_0.png" src="_images/gsr_19_0.png" />
 </div>
 </div>
-<p>Alternatively you can use the optional argument <code class="docutils literal notranslate"><span class="pre">klabels</span></code> to define the mapping <code class="docutils literal notranslate"><span class="pre">reduced_coordinates</span> <span class="pre">--&gt;</span> <span class="pre">name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">k-point</span></code> and pass it to the plot method</p>
+<p>Alternatively, one can use the optional argument <code class="docutils literal notranslate"><span class="pre">klabels</span></code> to define the mapping
+<code class="docutils literal notranslate"><span class="pre">reduced_coordinates</span> <span class="pre">--&gt;</span> <span class="pre">name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">k-point</span></code> and pass it to the plot method</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">klabels</span> <span class="o">=</span> <span class="p">{</span>
@@ -646,9 +677,7 @@ In the present case, the labelling is correct.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="for-the-plotly-version-use">
-<h2>For the plotly version, use:<a class="headerlink" href="#for-the-plotly-version-use" title="Permalink to this headline">¶</a></h2>
+<p>For the plotly version, use:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ebands_kpath</span><span class="o">.</span><span class="n">plotly</span><span class="p">(</span><span class="n">with_gaps</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Silicon band structure with plotly&quot;</span><span class="p">);</span>
@@ -729,9 +758,9 @@ var n,i=t("./lib/build-log"),a=t("./lib/epsilon"),o=t("./lib/intersecter"),s=t("
         });
         }
         </script>
-</div><div class="output text_html"><div>                            <div id="0f9fb9e3-f655-47ac-8922-18a0aa10f333" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("0f9fb9e3-f655-47ac-8922-18a0aa10f333")) {                    Plotly.newPlot(                        "0f9fb9e3-f655-47ac-8922-18a0aa10f333",                        [{"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [-9.535786584476371, -9.876086072577124, -10.50248616041993, -11.072135054815655, -11.49997087419812, -11.762095707628028, -11.855854002139353, -11.762377983295668, -11.50477647913229, -11.070113139712472, -10.472375477678483, -9.711907857213474, -8.80627918610692, -7.770717499465216]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [-6.932268857216583, -6.43466268058439, -5.32246565612085, -3.928375477089248, -2.3943640811461293, -0.8732321955292113, -1.8810997204354862e-10, -0.5570011558894024, -1.6672108194971527, -2.8989034584222813, -4.182931950763718, -5.430649177987346, -6.638177513397373, -7.770717499206782]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [-1.205076152062217, -1.1553086614693786, -1.0090768426644035, -0.7663867705309526, -0.4526779027859842, -0.14266808604246428, -6.019984510885479e-11, -0.3276142442992862, -0.972216601358169, -1.6064227733017695, -2.136764772819509, -2.5278823531194936, -2.7654307093388297, -2.844891372378396]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [-1.2050761518987496, -1.155308661315078, -1.009076842522739, -0.7663867703985989, -0.4526779026646457, -0.14266808591143487, 0.0, -0.3276142442072123, -0.9722166012294071, -1.606422773175796, -2.136764772694111, -2.5278823529902867, -2.7654307092079202, -2.84489137224668]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [1.3454389436664638, 1.396036327425712, 1.5542838024392251, 1.8235759126039426, 2.1779644141648093, 2.49791994104946, 2.5318280023996245, 2.3196096023242694, 1.832801345948508, 1.3142687705394227, 0.8827985310190627, 0.6006801032754359, 0.5243396805984153, 0.6741757513882654]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [3.3661486562320615, 3.4124944120844916, 3.505955981163801, 3.4860954395102723, 3.1805995622616567, 2.7431167271405847, 2.5318280024990933, 2.9732007681489527, 3.924313282358483, 3.566247236456473, 2.5627516495996954, 1.6902771019859726, 1.0556641680571177, 0.6741757521259233]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [3.3661486562843894, 3.4124944121447474, 3.505955981234978, 3.4860954395923525, 3.1805995623550043, 2.7431167272535752, 2.531828002567412, 2.9732007682898125, 3.9243132824601865, 5.078702746089359, 6.285304926098657, 7.570282110475537, 8.869605080905535, 9.764149253744405]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [7.486496748336757, 7.556828944477271, 7.557970384259399, 6.522346635844359, 5.080395136037723, 3.64439068026601, 2.895410090535165, 3.420376450984275, 4.097951464863831, 5.078702748883293, 6.2853060058610595, 7.57028255163697, 8.86960516576719, 9.764201394368893]}, {"marker": {"color": "blue", "line": {"width": 2}, "opacity": 0.9, "size": 12}, "mode": "markers", "name": "", "showlegend": false, "type": "scatter", "x": [6, 12], "y": [0.0, 0.5243396805984153]}, {"hoverinfo": "none", "line": {"width": 2}, "marker": {"color": "gray"}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [6, 12, null, 10.908235801598831, 12, 10.83650190851499, null], "y": [0.0, 0.5243396805984153, null, 0.015371882878898568, 0.5243396805984153, 0.8362202268605036, null]}, {"marker": {"color": "blue", "line": {"width": 2}, "opacity": 0.9, "size": 12}, "mode": "markers", "name": "", "showlegend": false, "type": "scatter", "x": [6, 6], "y": [0.0, 2.5318280023996245]}, {"hoverinfo": "none", "line": {"width": 2}, "marker": {"color": "gray"}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [6, 6, null, 6.173187235251333, 6, 5.826812764748667, null], "y": [0.0, 2.5318280023996245, null, 2.0559999842088135, 2.5318280023996245, 2.0559999842088135, null]}],                        {"annotations": [{"font": {"size": 12}, "showarrow": false, "text": "Si\u2082: direct gap = 2.53, fundamental gap = 0.52 (eV)", "x": 0, "xanchor": "left", "xref": "paper", "y": 1, "yanchor": "bottom", "yref": "paper"}], "hovermode": false, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "autotypenumbers": "strict", "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}, "title": {"text": "Silicon band structure with plotly", "x": 0.5}, "xaxis": {"range": [0, 13], "tickfont": {"size": 16}, "ticktext": ["L", "\u0393", "X"], "tickvals": [0, 6, 13], "title": {"text": "Wave Vector"}}, "yaxis": {"range": [-7.5318280023996245, 7.5318280023996245], "title": {"text": "Energy (eV)"}}},                        {"responsive": true}                    ).then(function(){
+</div><div class="output text_html"><div>                            <div id="b48a74b3-b88c-43bc-8ca2-4838aa558f45" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("b48a74b3-b88c-43bc-8ca2-4838aa558f45")) {                    Plotly.newPlot(                        "b48a74b3-b88c-43bc-8ca2-4838aa558f45",                        [{"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [-9.535786584476371, -9.876086072577124, -10.50248616041993, -11.072135054815655, -11.49997087419812, -11.762095707628028, -11.855854002139353, -11.762377983295668, -11.50477647913229, -11.070113139712472, -10.472375477678483, -9.711907857213474, -8.80627918610692, -7.770717499465216]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [-6.932268857216583, -6.43466268058439, -5.32246565612085, -3.928375477089248, -2.3943640811461293, -0.8732321955292113, -1.8810997204354862e-10, -0.5570011558894024, -1.6672108194971527, -2.8989034584222813, -4.182931950763718, -5.430649177987346, -6.638177513397373, -7.770717499206782]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [-1.205076152062217, -1.1553086614693786, -1.0090768426644035, -0.7663867705309526, -0.4526779027859842, -0.14266808604246428, -6.019984510885479e-11, -0.3276142442992862, -0.972216601358169, -1.6064227733017695, -2.136764772819509, -2.5278823531194936, -2.7654307093388297, -2.844891372378396]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [-1.2050761518987496, -1.155308661315078, -1.009076842522739, -0.7663867703985989, -0.4526779026646457, -0.14266808591143487, 0.0, -0.3276142442072123, -0.9722166012294071, -1.606422773175796, -2.136764772694111, -2.5278823529902867, -2.7654307092079202, -2.84489137224668]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [1.3454389436664638, 1.396036327425712, 1.5542838024392251, 1.8235759126039426, 2.1779644141648093, 2.49791994104946, 2.5318280023996245, 2.3196096023242694, 1.832801345948508, 1.3142687705394227, 0.8827985310190627, 0.6006801032754359, 0.5243396805984153, 0.6741757513882654]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [3.3661486562320615, 3.4124944120844916, 3.505955981163801, 3.4860954395102723, 3.1805995622616567, 2.7431167271405847, 2.5318280024990933, 2.9732007681489527, 3.924313282358483, 3.566247236456473, 2.5627516495996954, 1.6902771019859726, 1.0556641680571177, 0.6741757521259233]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [3.3661486562843894, 3.4124944121447474, 3.505955981234978, 3.4860954395923525, 3.1805995623550043, 2.7431167272535752, 2.531828002567412, 2.9732007682898125, 3.9243132824601865, 5.078702746089359, 6.285304926098657, 7.570282110475537, 8.869605080905535, 9.764149253744405]}, {"line": {"color": "black", "width": 2.0}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "y": [7.486496748336757, 7.556828944477271, 7.557970384259399, 6.522346635844359, 5.080395136037723, 3.64439068026601, 2.895410090535165, 3.420376450984275, 4.097951464863831, 5.078702748883293, 6.2853060058610595, 7.57028255163697, 8.86960516576719, 9.764201394368893]}, {"marker": {"color": "blue", "line": {"width": 2}, "opacity": 0.9, "size": 12}, "mode": "markers", "name": "", "showlegend": false, "type": "scatter", "x": [6, 12], "y": [0.0, 0.5243396805984153]}, {"hoverinfo": "none", "line": {"width": 2}, "marker": {"color": "gray"}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [6, 12, null, 10.908235801598831, 12, 10.83650190851499, null], "y": [0.0, 0.5243396805984153, null, 0.015371882878898568, 0.5243396805984153, 0.8362202268605036, null]}, {"marker": {"color": "blue", "line": {"width": 2}, "opacity": 0.9, "size": 12}, "mode": "markers", "name": "", "showlegend": false, "type": "scatter", "x": [6, 6], "y": [0.0, 2.5318280023996245]}, {"hoverinfo": "none", "line": {"width": 2}, "marker": {"color": "gray"}, "mode": "lines", "name": "", "showlegend": false, "type": "scatter", "x": [6, 6, null, 6.173187235251333, 6, 5.826812764748667, null], "y": [0.0, 2.5318280023996245, null, 2.0559999842088135, 2.5318280023996245, 2.0559999842088135, null]}],                        {"annotations": [{"font": {"size": 12}, "showarrow": false, "text": "Si\u2082: direct gap = 2.53, fundamental gap = 0.52 (eV)", "x": 0, "xanchor": "left", "xref": "paper", "y": 1, "yanchor": "bottom", "yref": "paper"}], "hovermode": false, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "autotypenumbers": "strict", "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}, "title": {"text": "Silicon band structure with plotly", "x": 0.5}, "xaxis": {"range": [0, 13], "tickfont": {"size": 16}, "ticktext": ["L", "\u0393", "X"], "tickvals": [0, 6, 13], "title": {"text": "Wave Vector"}}, "yaxis": {"range": [-7.5318280023996245, 7.5318280023996245], "title": {"text": "Energy (eV)"}}},                        {"responsive": true}                    ).then(function(){
 
-var gd = document.getElementById('0f9fb9e3-f655-47ac-8922-18a0aa10f333');
+var gd = document.getElementById('b48a74b3-b88c-43bc-8ca2-4838aa558f45');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -1175,12 +1204,12 @@ if (window.Jupyter !== undefined) {
 
 
 
-  <div class="bk-root" id="29abe4b5-146a-46fc-bec0-37a696bc991d" data-root-id="1003"></div>
+  <div class="bk-root" id="d2a568ab-c2a5-4b28-ac2c-ca8256eca5e8" data-root-id="1003"></div>
 </div>
 <script type="application/javascript">(function(root) {
   function embed_document(root) {
-    var docs_json = {"c0806226-3fdc-4c29-becb-35e2d2f5410b":{"defs":[],"roots":{"references":[{"attributes":{"editor":{"id":"1110"},"field":"\u212b","formatter":{"id":"1109"},"title":"\u212b","width":0},"id":"1111","type":"TableColumn"},{"attributes":{"format":"0,0.0[00000]"},"id":"1114","type":"NumberFormatter"},{"attributes":{},"id":"1115","type":"NumberEditor"},{"attributes":{"editor":{"id":"1115"},"field":"Bohr","formatter":{"id":"1114"},"title":"Bohr","width":0},"id":"1116","type":"TableColumn"},{"attributes":{"source":{"id":"1101"}},"id":"1121","type":"CDSView"},{"attributes":{"indices":[]},"id":"1155","type":"Selection"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00212","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1123","type":"Div"},{"attributes":{"indices":[]},"id":"1127","type":"Selection"},{"attributes":{},"id":"1135","type":"NumberEditor"},{"attributes":{"format":"0,0.0[00000]"},"id":"1134","type":"NumberFormatter"},{"attributes":{"margin":[5,5,5,5],"name":"Str00226"},"id":"1077","type":"panel.models.markup.HTML"},{"attributes":{},"id":"1130","type":"CellEditor"},{"attributes":{"editor":{"id":"1130"},"field":"Lattice angles","formatter":{"id":"1128"},"title":"Lattice angles","width":0},"id":"1131","type":"TableColumn"},{"attributes":{},"id":"1178","type":"UnionRenderers"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00260","sizing_mode":"stretch_width","text":"Coordinates of Si sites:"},"id":"1152","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1152"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00258","sizing_mode":"stretch_width"},"id":"1151","type":"Row"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1151"},{"id":"1153"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[5,5,0,5],"name":"Card00259","sizing_mode":"stretch_width"},"id":"1150","type":"panel.models.layout.Card"},{"attributes":{"children":[{"id":"1144"},{"id":"1148"}],"margin":[0,0,0,0],"name":"Column00216","sizing_mode":"stretch_both"},"id":"1125","type":"Column"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"MyMarkdown00115","text":"&lt;h3&gt;e-Bands Options&lt;/h3&gt;"},"id":"1008","type":"panel.models.markup.HTML"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"MyMarkdown00208","text":"&lt;h1&gt;Spacegroup:&lt;/h1&gt;"},"id":"1079","type":"panel.models.markup.HTML"},{"attributes":{"data":{"Degrees":{"__ndarray__":"n2cAAAAATkDBUAAAAABOQGPcAAAAAE5A","dtype":"float64","order":"little","shape":[3]},"Lattice angles":["alpha","beta","gamma"],"Radians":{"__ndarray__":"Ra0tOFLB8D9/oC04UsHwP3zuLThSwfA/","dtype":"float64","order":"little","shape":[3]}},"selected":{"id":"1127"},"selection_policy":{"id":"1178"}},"id":"1126","type":"ColumnDataSource"},{"attributes":{},"id":"1176","type":"UnionRenderers"},{"attributes":{"children":[{"id":"1150"}],"margin":[0,0,0,0],"name":"Accordion00220","sizing_mode":"stretch_width"},"id":"1149","type":"Column"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00217","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1148","type":"Div"},{"attributes":{"labels":["With gaps"],"margin":[5,10,5,10]},"id":"1009","type":"CheckboxGroup"},{"attributes":{"source":{"id":"1126"}},"id":"1146","type":"CDSView"},{"attributes":{"labels":["Set fermie to vbm"],"margin":[5,10,5,10]},"id":"1010","type":"CheckboxGroup"},{"attributes":{"format":"0,0.0[00000]"},"id":"1139","type":"NumberFormatter"},{"attributes":{"button_type":"primary","icon":null,"label":"Plot e-bands","margin":[5,10,5,10],"subscribed_events":["button_click"]},"id":"1011","type":"Button"},{"attributes":{"editor":{"id":"1135"},"field":"Degrees","formatter":{"id":"1134"},"title":"Degrees","width":0},"id":"1136","type":"TableColumn"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"MyMarkdown00218","text":"&lt;h1&gt;Lattice angles:&lt;/h1&gt;"},"id":"1124","type":"panel.models.markup.HTML"},{"attributes":{"data":{"frac_coords":[[0.0,0.0,0.0],[0.25,0.25,0.25]],"site_idx":[0,1]},"selected":{"id":"1155"},"selection_policy":{"id":"1180"}},"id":"1154","type":"ColumnDataSource"},{"attributes":{"children":[{"id":"1013"},{"id":"1014"}],"margin":[0,0,0,0],"name":"Column00110"},"id":"1012","type":"Column"},{"attributes":{},"id":"1140","type":"NumberEditor"},{"attributes":{"children":[{"id":"1167"},{"id":"1171"}],"margin":[0,0,0,0],"name":"Column00222","sizing_mode":"stretch_both"},"id":"1153","type":"Column"},{"attributes":{},"id":"1180","type":"UnionRenderers"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00114","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1013","type":"Div"},{"attributes":{"columns":[{"id":"1131"},{"id":"1136"},{"id":"1141"}],"height":150,"index_position":null,"margin":[5,10,5,10],"name":"","row_height":40,"sizing_mode":"scale_width","source":{"id":"1126"},"view":{"id":"1146"}},"id":"1144","type":"DataTable"},{"attributes":{},"id":"1128","type":"StringFormatter"},{"attributes":{"children":[{"id":"1015"},{"id":"1019"}],"margin":[0,0,0,0],"name":"Accordion00113"},"id":"1014","type":"Column"},{"attributes":{"client_comm_id":"c6d7e2676ba54025a616f0ffe77b0273","comm_id":"177b31dcd9454361921efabf7fba564a","plot_id":"1003"},"id":"1197","type":"panel.models.comm_manager.CommManager"},{"attributes":{"editor":{"id":"1140"},"field":"Radians","formatter":{"id":"1139"},"title":"Radians","width":0},"id":"1141","type":"TableColumn"},{"attributes":{"margin":[5,5,5,5],"name":"Str00130"},"id":"1024","type":"panel.models.markup.HTML"},{"attributes":{"margin":[5,5,5,5],"name":"Str00160"},"id":"1046","type":"panel.models.markup.HTML"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00256","sizing_mode":"stretch_width","text":"Warning"},"id":"1073","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1050"},{"id":"1051"},{"id":"1052"},{"id":"1053"},{"id":"1055"}],"margin":[0,0,0,0],"name":"Column00184"},"id":"1049","type":"Column"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"MyMarkdown00213","text":"&lt;h1&gt;Lattice lengths:&lt;/h1&gt;"},"id":"1099","type":"panel.models.markup.HTML"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1072"},{"id":"1074"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[0,5,5,5],"name":"Card00255"},"id":"1071","type":"panel.models.layout.Card"},{"attributes":{"children":[{"id":"1028"},{"id":"1029"},{"id":"1034"}],"margin":[0,0,0,0],"name":"Column00157"},"id":"1027","type":"Column"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1016"},{"id":"1018"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[5,5,0,5],"name":"Card00235"},"id":"1015","type":"panel.models.layout.Card"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00252","sizing_mode":"stretch_width","text":"Help"},"id":"1069","type":"panel.models.markup.HTML"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"MyMarkdown00196","text":"&lt;h3&gt;Visualize structure&lt;/h3&gt;"},"id":"1061","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1077"}],"margin":[0,0,0,0],"name":"Row00228"},"id":"1076","type":"Row"},{"attributes":{"children":[{"id":"1017"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00234","sizing_mode":"stretch_width"},"id":"1016","type":"Row"},{"attributes":{"editor":{"id":"1085"},"field":"index","formatter":{"id":"1083"},"title":"index","width":0},"id":"1086","type":"TableColumn"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1038"},{"id":"1040"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[5,5,0,5],"name":"Card00243"},"id":"1037","type":"panel.models.layout.Card"},{"attributes":{"columns":[{"id":"1086"},{"id":"1091"}],"height":190,"index_position":null,"margin":[5,10,5,10],"name":"","row_height":40,"sizing_mode":"scale_width","source":{"id":"1081"},"view":{"id":"1096"}},"id":"1094","type":"DataTable"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00195","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1065","type":"Div"},{"attributes":{"children":[{"id":"1054"}],"margin":[5,5,5,5],"min_width":300,"name":"GsrFilePanel","width":300},"id":"1053","type":"Column"},{"attributes":{"indices":[]},"id":"1082","type":"Selection"},{"attributes":{"margin":[5,10,5,10]},"id":"1054","type":"FileInput"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00236","sizing_mode":"stretch_width","text":"Help"},"id":"1017","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1027"},{"id":"1045"}],"margin":[0,0,0,0],"name":"Row00163"},"id":"1026","type":"Row"},{"attributes":{"button_type":"primary","icon":null,"label":"Plot SKW interpolant","margin":[5,10,5,10],"subscribed_events":["button_click"]},"id":"1055","type":"Button"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00207","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1098","type":"Div"},{"attributes":{"editor":{"id":"1163"},"field":"frac_coords","formatter":{"id":"1162"},"title":"frac_coords","width":0},"id":"1164","type":"TableColumn"},{"attributes":{"children":[{"id":"1076"},{"id":"1078"}],"margin":[0,0,0,0],"name":"Column00229"},"id":"1075","type":"Column"},{"attributes":{"margin":[5,5,5,5],"name":"Str00187"},"id":"1057","type":"panel.models.markup.HTML"},{"attributes":{"source":{"id":"1154"}},"id":"1169","type":"CDSView"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"Markdown00151","text":"&lt;p&gt;Button triggering edos plot.&lt;/p&gt;"},"id":"1040","type":"panel.models.markup.HTML"},{"attributes":{"reload":false},"id":"1222","type":"panel.models.location.Location"},{"attributes":{"children":[{"id":"1060"},{"id":"1075"}],"margin":[0,0,0,0],"name":"Row00230"},"id":"1059","type":"Row"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"warning","text":"&lt;p&gt;Widgets are &lt;strong&gt;shared by the different tabs&lt;/strong&gt;.\nThis means that if you change the value of one of these variables in the active tab,\nthe same value will &lt;strong&gt;automagically&lt;/strong&gt; appear in the other tabs yet results/figures\nare not automatically recomputed when you change the value.&lt;/p&gt;\n&lt;p&gt;In other words, if you change some variable in the active tab and then you move to another tab,\nthe results/figures (if any) are stil computed with the &lt;strong&gt;old input&lt;/strong&gt; hence you will have to\nrecompute the new results by clicking the button.&lt;/p&gt;"},"id":"1022","type":"panel.models.markup.HTML"},{"attributes":{"child":{"id":"1048"},"name":"Row00190","title":"SKW"},"id":"1058","type":"Panel"},{"attributes":{"low":1e-06,"margin":[5,10,5,10],"placeholder":"0","step":0.1,"title":"Edos step ev","value":0.1,"value_throttled":0.1},"id":"1031","type":"Spinner"},{"attributes":{"children":[{"id":"1073"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00254","sizing_mode":"stretch_width"},"id":"1072","type":"Row"},{"attributes":{"low":1e-06,"margin":[5,10,5,10],"placeholder":"0","step":0.05,"title":"Edos width ev","value":0.2,"value_throttled":0.2},"id":"1032","type":"Spinner"},{"attributes":{"children":[{"id":"1046"}],"margin":[0,0,0,0],"name":"Row00162"},"id":"1045","type":"Row"},{"attributes":{},"id":"1085","type":"CellEditor"},{"attributes":{},"id":"1156","type":"NumberFormatter"},{"attributes":{"child":{"id":"1026"},"name":"Row00163","title":"e-DOS"},"id":"1047","type":"Panel"},{"attributes":{"children":[{"id":"1037"},{"id":"1041"}],"margin":[0,0,0,0],"name":"Accordion00153"},"id":"1036","type":"Column"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00154","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1035","type":"Div"},{"attributes":{"children":[{"id":"1061"},{"id":"1062"},{"id":"1063"},{"id":"1064"}],"margin":[0,0,0,0],"name":"Column00203"},"id":"1060","type":"Column"},{"attributes":{"children":[{"id":"1065"},{"id":"1066"}],"margin":[0,0,0,0],"name":"Column00191"},"id":"1064","type":"Column"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1068"},{"id":"1070"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[5,5,0,5],"name":"Card00251"},"id":"1067","type":"panel.models.layout.Card"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"Markdown00192","text":"&lt;p&gt;Visualize input structure.&lt;/p&gt;"},"id":"1070","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1035"},{"id":"1036"}],"margin":[0,0,0,0],"name":"Column00150"},"id":"1034","type":"Column"},{"attributes":{"source":{"id":"1081"}},"id":"1096","type":"CDSView"},{"attributes":{"columns":[{"id":"1159"},{"id":"1164"}],"height":110,"index_position":null,"margin":[5,10,5,10],"name":"","row_height":40,"sizing_mode":"scale_width","source":{"id":"1154"},"view":{"id":"1169"}},"id":"1167","type":"DataTable"},{"attributes":{"children":[{"id":"1069"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00250","sizing_mode":"stretch_width"},"id":"1068","type":"Row"},{"attributes":{"children":[{"id":"1024"}],"margin":[0,0,0,0],"name":"Row00132"},"id":"1023","type":"Row"},{"attributes":{"button_type":"primary","icon":null,"label":"Plot e-DOS","margin":[5,10,5,10],"subscribed_events":["button_click"]},"id":"1033","type":"Button"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"warning","text":"&lt;p&gt;Widgets are &lt;strong&gt;shared by the different tabs&lt;/strong&gt;.\nThis means that if you change the value of one of these variables in the active tab,\nthe same value will &lt;strong&gt;automagically&lt;/strong&gt; appear in the other tabs yet results/figures\nare not automatically recomputed when you change the value.&lt;/p&gt;\n&lt;p&gt;In other words, if you change some variable in the active tab and then you move to another tab,\nthe results/figures (if any) are stil computed with the &lt;strong&gt;old input&lt;/strong&gt; hence you will have to\nrecompute the new results by clicking the button.&lt;/p&gt;"},"id":"1074","type":"panel.models.markup.HTML"},{"attributes":{"data":{"0":["NaN","Fd-3m",227,"cubic"],"index":["abi_spg_number","spglib_symb","spglib_num","spglib_lattice_type"]},"selected":{"id":"1082"},"selection_policy":{"id":"1174"}},"id":"1081","type":"ColumnDataSource"},{"attributes":{"children":[{"id":"1008"},{"id":"1009"},{"id":"1010"},{"id":"1011"},{"id":"1012"}],"margin":[0,0,0,0],"name":"Column00127"},"id":"1007","type":"Column"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00244","sizing_mode":"stretch_width","text":"Help"},"id":"1039","type":"panel.models.markup.HTML"},{"attributes":{"editor":{"id":"1158"},"field":"site_idx","formatter":{"id":"1156"},"title":"site_idx","width":0},"id":"1159","type":"TableColumn"},{"attributes":{"child":{"id":"1006"},"name":"Row00133","title":"e-Bands"},"id":"1025","type":"Panel"},{"attributes":{},"id":"1090","type":"StringEditor"},{"attributes":{},"id":"1089","type":"StringFormatter"},{"attributes":{"children":[{"id":"1007"},{"id":"1023"}],"margin":[0,0,0,0],"name":"Row00133"},"id":"1006","type":"Row"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00223","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1171","type":"Div"},{"attributes":{"margin":[5,10,5,10],"options":[["jsmol","jsmol"],["vesta","vesta"],["xcrysden","xcrysden"],["vtk","vtk"],["crystalk","crystalk"],["ngl","ngl"],["matplotlib","matplotlib"],["plotly","plotly"],["ase_atoms","ase_atoms"],["mayavi","mayavi"]],"title":"Structure viewer","value":"jsmol"},"id":"1062","type":"Select"},{"attributes":{"child":{"id":"1004"},"name":"Row00109","title":"Summary"},"id":"1005","type":"Panel"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1020"},{"id":"1022"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[0,5,5,5],"name":"Card00239"},"id":"1019","type":"panel.models.layout.Card"},{"attributes":{"children":[{"id":"1002"}],"margin":[0,0,0,0],"name":"Row00109"},"id":"1004","type":"Row"},{"attributes":{"children":[{"id":"1030"},{"id":"1031"},{"id":"1032"},{"id":"1033"}],"margin":[0,0,0,0],"name":"Column00149"},"id":"1029","type":"Column"},{"attributes":{},"id":"1174","type":"UnionRenderers"},{"attributes":{"margin":[0,0,0,0],"sizing_mode":"stretch_width","tabs":[{"id":"1005"},{"id":"1025"},{"id":"1047"},{"id":"1058"},{"id":"1172"}]},"id":"1003","type":"Tabs"},{"attributes":{"children":[{"id":"1119"},{"id":"1123"}],"margin":[0,0,0,0],"name":"Column00211","sizing_mode":"stretch_both"},"id":"1100","type":"Column"},{"attributes":{"children":[{"id":"1021"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00238","sizing_mode":"stretch_width"},"id":"1020","type":"Row"},{"attributes":{"children":[{"id":"1079"},{"id":"1080"},{"id":"1099"},{"id":"1100"},{"id":"1124"},{"id":"1125"},{"id":"1149"}],"margin":[0,0,0,0],"name":"Column00204","sizing_mode":"scale_width"},"id":"1078","type":"Column"},{"attributes":{"margin":[5,10,5,10],"options":[["gaussian","gaussian"],["tetra","tetra"]],"title":"Edos method","value":"gaussian"},"id":"1030","type":"Select"},{"attributes":{"data":{"Bohr":{"__ndarray__":"xOP/ZZDvDkCKDgBmkO8OQL1M/2WQ7w5A","dtype":"float64","order":"little","shape":[3]},"Lattice lenghts":["a","b","c"],"\u212b":{"__ndarray__":"QZj3UOc6HUCrwPdQ5zodQI4J91DnOh1A","dtype":"float64","order":"little","shape":[3]}},"selected":{"id":"1102"},"selection_policy":{"id":"1176"}},"id":"1101","type":"ColumnDataSource"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00240","sizing_mode":"stretch_width","text":"Warning"},"id":"1021","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1094"},{"id":"1098"}],"margin":[0,0,0,0],"name":"Column00206","sizing_mode":"stretch_both"},"id":"1080","type":"Column"},{"attributes":{"indices":[]},"id":"1102","type":"Selection"},{"attributes":{},"id":"1162","type":"StringFormatter"},{"attributes":{},"id":"1083","type":"StringFormatter"},{"attributes":{"columns":[{"id":"1106"},{"id":"1111"},{"id":"1116"}],"height":150,"index_position":null,"margin":[5,10,5,10],"name":"","row_height":40,"sizing_mode":"scale_width","source":{"id":"1101"},"view":{"id":"1121"}},"id":"1119","type":"DataTable"},{"attributes":{"sizing_mode":"scale_both","text":"================================= File Info =================================\nName: si_scf_GSR.nc\nDirectory: /Users/gmatteo/git_repos/abipy/abipy/data/refs/si_ebands\nSize: 14.83 kb\nAccess Time: Tue Oct 29 22:38:54 2019\nModification Time: Wed Mar 20 16:53:35 2019\nChange Time: Wed Mar 20 16:53:35 2019\n\n================================= Structure =================================\nFull Formula (Si2)\nReduced Formula: Si\nabc   :   3.866975   3.866975   3.866975\nangles:  60.000000  60.000000  60.000000\nSites (2)\n  #  SP       a     b     c  cartesian_forces\n---  ----  ----  ----  ----  -----------------------------------------------------------\n  0  Si    0     0     0     [-5.89948306e-27 -1.93366149e-27  2.91016904e-27] eV ang^-1\n  1  Si    0.25  0.25  0.25  [ 5.89948306e-27  1.93366149e-27 -2.91016904e-27] eV ang^-1\n\nAbinit Spacegroup: spgid: 227, num_spatial_symmetries: 48, has_timerev: True, symmorphic: True\n\nStress tensor (Cartesian coordinates in GPa):\n[[5.21161758e+00 7.86452261e-11 0.00000000e+00]\n [7.86452261e-11 5.21161758e+00 0.00000000e+00]\n [0.00000000e+00 0.00000000e+00 5.21161758e+00]]\n\nPressure: -5.212 (GPa)\nEnergy: -241.23647031 (eV)\n\n============================== Electronic Bands ==============================\nNumber of electrons: 8.0, Fermi level: 5.598 (eV)\nnsppol: 1, nkpt: 29, mband: 8, nspinor: 1, nspden: 1\nsmearing scheme: none (occopt 1), tsmear_eV: 0.272\nDirect gap:\n    Energy: 2.532 (eV)\n    Initial state: spin: 0, kpt: [+0.000, +0.000, +0.000], weight: 0.002, band: 3, eig: 5.598, occ: 2.000\n    Final state:   spin: 0, kpt: [+0.000, +0.000, +0.000], weight: 0.002, band: 4, eig: 8.130, occ: 0.000\nFundamental gap:\n    Energy: 0.562 (eV)\n    Initial state: spin: 0, kpt: [+0.000, +0.000, +0.000], weight: 0.002, band: 3, eig: 5.598, occ: 2.000\n    Final state:   spin: 0, kpt: [+0.375, +0.375, +0.000], weight: 0.012, band: 4, eig: 6.161, occ: 0.000\nBandwidth: 11.856 (eV)\nValence maximum located at:\n    spin: 0, kpt: [+0.000, +0.000, +0.000], weight: 0.002, band: 3, eig: 5.598, occ: 2.000\nConduction minimum located at:\n    spin: 0, kpt: [+0.375, +0.375, +0.000], weight: 0.012, band: 4, eig: 6.161, occ: 0.000\n\nTIP: Call set_fermie_to_vbm() to set the Fermi level to the VBM if this is a non-magnetic semiconductor\n"},"id":"1002","type":"PreText"},{"attributes":{},"id":"1103","type":"StringFormatter"},{"attributes":{"low":1,"margin":[5,10,5,10],"mode":"int","placeholder":"0","title":"Skw lpratio","value":5,"value_throttled":5},"id":"1050","type":"Spinner"},{"attributes":{"editor":{"id":"1105"},"field":"Lattice lenghts","formatter":{"id":"1103"},"title":"Lattice lenghts","width":0},"id":"1106","type":"TableColumn"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00248","sizing_mode":"stretch_width","text":"Warning"},"id":"1043","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1067"},{"id":"1071"}],"margin":[0,0,0,0],"name":"Accordion00194"},"id":"1066","type":"Column"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"Markdown00111","text":"&lt;p&gt;Button triggering ebands plot.&lt;/p&gt;"},"id":"1018","type":"panel.models.markup.HTML"},{"attributes":{},"id":"1163","type":"StringEditor"},{"attributes":{"margin":[5,10,5,10],"mode":"int","placeholder":"0","title":"Skw line density","value":20,"value_throttled":20},"id":"1051","type":"Spinner"},{"attributes":{"children":[{"id":"1039"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00242","sizing_mode":"stretch_width"},"id":"1038","type":"Row"},{"attributes":{},"id":"1105","type":"CellEditor"},{"attributes":{"child":{"id":"1059"},"name":"Row00230","title":"Structure"},"id":"1172","type":"Panel"},{"attributes":{"children":[{"id":"1043"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00246","sizing_mode":"stretch_width"},"id":"1042","type":"Row"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1042"},{"id":"1044"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[0,5,5,5],"name":"Card00247"},"id":"1041","type":"panel.models.layout.Card"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"warning","text":"&lt;p&gt;Widgets are &lt;strong&gt;shared by the different tabs&lt;/strong&gt;.\nThis means that if you change the value of one of these variables in the active tab,\nthe same value will &lt;strong&gt;automagically&lt;/strong&gt; appear in the other tabs yet results/figures\nare not automatically recomputed when you change the value.&lt;/p&gt;\n&lt;p&gt;In other words, if you change some variable in the active tab and then you move to another tab,\nthe results/figures (if any) are stil computed with the &lt;strong&gt;old input&lt;/strong&gt; hence you will have to\nrecompute the new results by clicking the button.&lt;/p&gt;"},"id":"1044","type":"panel.models.markup.HTML"},{"attributes":{"editor":{"id":"1090"},"field":"0","formatter":{"id":"1089"},"title":"0","width":0},"id":"1091","type":"TableColumn"},{"attributes":{"children":[{"id":"1049"},{"id":"1056"}],"margin":[0,0,0,0],"name":"Row00190"},"id":"1048","type":"Row"},{"attributes":{"button_type":"primary","icon":null,"label":"View structure","margin":[5,10,5,10],"subscribed_events":["button_click"]},"id":"1063","type":"Button"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"MyMarkdown00155","text":"&lt;h3&gt;Options&lt;/h3&gt;"},"id":"1028","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1057"}],"margin":[0,0,0,0],"name":"Row00189"},"id":"1056","type":"Row"},{"attributes":{"format":"0,0.0[00000]"},"id":"1109","type":"NumberFormatter"},{"attributes":{"labels":["With gaps"],"margin":[5,10,5,10]},"id":"1052","type":"CheckboxGroup"},{"attributes":{},"id":"1158","type":"CellEditor"},{"attributes":{},"id":"1110","type":"NumberEditor"}],"root_ids":["1003","1197","1222"]},"title":"Bokeh Application","version":"2.3.1"}};
-    var render_items = [{"docid":"c0806226-3fdc-4c29-becb-35e2d2f5410b","root_ids":["1003"],"roots":{"1003":"29abe4b5-146a-46fc-bec0-37a696bc991d"}}];
+    var docs_json = {"2da5715c-3ca8-4fc0-85b2-9adf37307595":{"defs":[],"roots":{"references":[{"attributes":{"editor":{"id":"1090"},"field":"0","formatter":{"id":"1089"},"title":"0","width":0},"id":"1091","type":"TableColumn"},{"attributes":{"children":[{"id":"1094"},{"id":"1098"}],"margin":[0,0,0,0],"name":"Column00206","sizing_mode":"stretch_both"},"id":"1080","type":"Column"},{"attributes":{"child":{"id":"1059"},"name":"Row00230","title":"Structure"},"id":"1172","type":"Panel"},{"attributes":{"children":[{"id":"1024"}],"margin":[0,0,0,0],"name":"Row00132"},"id":"1023","type":"Row"},{"attributes":{"children":[{"id":"1008"},{"id":"1009"},{"id":"1010"},{"id":"1011"},{"id":"1012"}],"margin":[0,0,0,0],"name":"Column00127"},"id":"1007","type":"Column"},{"attributes":{"source":{"id":"1081"}},"id":"1096","type":"CDSView"},{"attributes":{"data":{"0":["NaN","Fd-3m",227,"cubic"],"index":["abi_spg_number","spglib_symb","spglib_num","spglib_lattice_type"]},"selected":{"id":"1082"},"selection_policy":{"id":"1174"}},"id":"1081","type":"ColumnDataSource"},{"attributes":{"child":{"id":"1006"},"name":"Row00133","title":"e-Bands"},"id":"1025","type":"Panel"},{"attributes":{},"id":"1158","type":"CellEditor"},{"attributes":{"children":[{"id":"1007"},{"id":"1023"}],"margin":[0,0,0,0],"name":"Row00133"},"id":"1006","type":"Row"},{"attributes":{"children":[{"id":"1144"},{"id":"1148"}],"margin":[0,0,0,0],"name":"Column00216","sizing_mode":"stretch_both"},"id":"1125","type":"Column"},{"attributes":{"child":{"id":"1004"},"name":"Row00109","title":"Summary"},"id":"1005","type":"Panel"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"MyMarkdown00115","text":"&lt;h3&gt;e-Bands Options&lt;/h3&gt;"},"id":"1008","type":"panel.models.markup.HTML"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00207","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1098","type":"Div"},{"attributes":{"data":{"Degrees":{"__ndarray__":"n2cAAAAATkDBUAAAAABOQGPcAAAAAE5A","dtype":"float64","order":"little","shape":[3]},"Lattice angles":["alpha","beta","gamma"],"Radians":{"__ndarray__":"Ra0tOFLB8D9/oC04UsHwP3zuLThSwfA/","dtype":"float64","order":"little","shape":[3]}},"selected":{"id":"1127"},"selection_policy":{"id":"1178"}},"id":"1126","type":"ColumnDataSource"},{"attributes":{"children":[{"id":"1002"}],"margin":[0,0,0,0],"name":"Row00109"},"id":"1004","type":"Row"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1020"},{"id":"1022"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[0,5,5,5],"name":"Card00239"},"id":"1019","type":"panel.models.layout.Card"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"warning","text":"&lt;p&gt;Widgets are &lt;strong&gt;shared by the different tabs&lt;/strong&gt;.\nThis means that if you change the value of one of these variables in the active tab,\nthe same value will &lt;strong&gt;automagically&lt;/strong&gt; appear in the other tabs yet results/figures\nare not automatically recomputed when you change the value.&lt;/p&gt;\n&lt;p&gt;In other words, if you change some variable in the active tab and then you move to another tab,\nthe results/figures (if any) are stil computed with the &lt;strong&gt;old input&lt;/strong&gt; hence you will have to\nrecompute the new results by clicking the button.&lt;/p&gt;"},"id":"1074","type":"panel.models.markup.HTML"},{"attributes":{"sizing_mode":"scale_both","text":"================================= File Info =================================\nName: si_scf_GSR.nc\nDirectory: /Users/gmatteo/git_repos/abipy/abipy/data/refs/si_ebands\nSize: 14.83 kb\nAccess Time: Tue Oct 29 22:38:54 2019\nModification Time: Wed Mar 20 16:53:35 2019\nChange Time: Wed Mar 20 16:53:35 2019\n\n================================= Structure =================================\nFull Formula (Si2)\nReduced Formula: Si\nabc   :   3.866975   3.866975   3.866975\nangles:  60.000000  60.000000  60.000000\nSites (2)\n  #  SP       a     b     c  cartesian_forces\n---  ----  ----  ----  ----  -----------------------------------------------------------\n  0  Si    0     0     0     [-5.89948306e-27 -1.93366149e-27  2.91016904e-27] eV ang^-1\n  1  Si    0.25  0.25  0.25  [ 5.89948306e-27  1.93366149e-27 -2.91016904e-27] eV ang^-1\n\nAbinit Spacegroup: spgid: 227, num_spatial_symmetries: 48, has_timerev: True, symmorphic: True\n\nStress tensor (Cartesian coordinates in GPa):\n[[5.21161758e+00 7.86452261e-11 0.00000000e+00]\n [7.86452261e-11 5.21161758e+00 0.00000000e+00]\n [0.00000000e+00 0.00000000e+00 5.21161758e+00]]\n\nPressure: -5.212 (GPa)\nEnergy: -241.23647031 (eV)\n\n============================== Electronic Bands ==============================\nNumber of electrons: 8.0, Fermi level: 5.598 (eV)\nnsppol: 1, nkpt: 29, mband: 8, nspinor: 1, nspden: 1\nsmearing scheme: none (occopt 1), tsmear_eV: 0.272\nDirect gap:\n    Energy: 2.532 (eV)\n    Initial state: spin: 0, kpt: [+0.000, +0.000, +0.000], weight: 0.002, band: 3, eig: 5.598, occ: 2.000\n    Final state:   spin: 0, kpt: [+0.000, +0.000, +0.000], weight: 0.002, band: 4, eig: 8.130, occ: 0.000\nFundamental gap:\n    Energy: 0.562 (eV)\n    Initial state: spin: 0, kpt: [+0.000, +0.000, +0.000], weight: 0.002, band: 3, eig: 5.598, occ: 2.000\n    Final state:   spin: 0, kpt: [+0.375, +0.375, +0.000], weight: 0.012, band: 4, eig: 6.161, occ: 0.000\nBandwidth: 11.856 (eV)\nValence maximum located at:\n    spin: 0, kpt: [+0.000, +0.000, +0.000], weight: 0.002, band: 3, eig: 5.598, occ: 2.000\nConduction minimum located at:\n    spin: 0, kpt: [+0.375, +0.375, +0.000], weight: 0.012, band: 4, eig: 6.161, occ: 0.000\n\nTIP: Call set_fermie_to_vbm() to set the Fermi level to the VBM if this is a non-magnetic semiconductor\n"},"id":"1002","type":"PreText"},{"attributes":{"margin":[0,0,0,0],"sizing_mode":"stretch_width","tabs":[{"id":"1005"},{"id":"1025"},{"id":"1047"},{"id":"1058"},{"id":"1172"}]},"id":"1003","type":"Tabs"},{"attributes":{"children":[{"id":"1079"},{"id":"1080"},{"id":"1099"},{"id":"1100"},{"id":"1124"},{"id":"1125"},{"id":"1149"}],"margin":[0,0,0,0],"name":"Column00204","sizing_mode":"scale_width"},"id":"1078","type":"Column"},{"attributes":{"children":[{"id":"1021"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00238","sizing_mode":"stretch_width"},"id":"1020","type":"Row"},{"attributes":{"children":[{"id":"1119"},{"id":"1123"}],"margin":[0,0,0,0],"name":"Column00211","sizing_mode":"stretch_both"},"id":"1100","type":"Column"},{"attributes":{"labels":["With gaps"],"margin":[5,10,5,10]},"id":"1009","type":"CheckboxGroup"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00240","sizing_mode":"stretch_width","text":"Warning"},"id":"1021","type":"panel.models.markup.HTML"},{"attributes":{"data":{"Bohr":{"__ndarray__":"xOP/ZZDvDkCKDgBmkO8OQL1M/2WQ7w5A","dtype":"float64","order":"little","shape":[3]},"Lattice lenghts":["a","b","c"],"\u212b":{"__ndarray__":"QZj3UOc6HUCrwPdQ5zodQI4J91DnOh1A","dtype":"float64","order":"little","shape":[3]}},"selected":{"id":"1102"},"selection_policy":{"id":"1176"}},"id":"1101","type":"ColumnDataSource"},{"attributes":{"children":[{"id":"1046"}],"margin":[0,0,0,0],"name":"Row00162"},"id":"1045","type":"Row"},{"attributes":{"margin":[5,5,5,5],"name":"Str00187"},"id":"1057","type":"panel.models.markup.HTML"},{"attributes":{"indices":[]},"id":"1102","type":"Selection"},{"attributes":{"labels":["Set fermie to vbm"],"margin":[5,10,5,10]},"id":"1010","type":"CheckboxGroup"},{"attributes":{"child":{"id":"1026"},"name":"Row00163","title":"e-DOS"},"id":"1047","type":"Panel"},{"attributes":{"columns":[{"id":"1106"},{"id":"1111"},{"id":"1116"}],"height":150,"index_position":null,"margin":[5,10,5,10],"name":"","row_height":40,"sizing_mode":"scale_width","source":{"id":"1101"},"view":{"id":"1121"}},"id":"1119","type":"DataTable"},{"attributes":{"button_type":"primary","icon":null,"label":"Plot e-bands","margin":[5,10,5,10],"subscribed_events":["button_click"]},"id":"1011","type":"Button"},{"attributes":{},"id":"1103","type":"StringFormatter"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"Markdown00111","text":"&lt;p&gt;Button triggering ebands plot.&lt;/p&gt;"},"id":"1018","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1069"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00250","sizing_mode":"stretch_width"},"id":"1068","type":"Row"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"Markdown00192","text":"&lt;p&gt;Visualize input structure.&lt;/p&gt;"},"id":"1070","type":"panel.models.markup.HTML"},{"attributes":{"editor":{"id":"1105"},"field":"Lattice lenghts","formatter":{"id":"1103"},"title":"Lattice lenghts","width":0},"id":"1106","type":"TableColumn"},{"attributes":{"children":[{"id":"1060"},{"id":"1075"}],"margin":[0,0,0,0],"name":"Row00230"},"id":"1059","type":"Row"},{"attributes":{"children":[{"id":"1013"},{"id":"1014"}],"margin":[0,0,0,0],"name":"Column00110"},"id":"1012","type":"Column"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"MyMarkdown00196","text":"&lt;h3&gt;Visualize structure&lt;/h3&gt;"},"id":"1061","type":"panel.models.markup.HTML"},{"attributes":{},"id":"1105","type":"CellEditor"},{"attributes":{"children":[{"id":"1049"},{"id":"1056"}],"margin":[0,0,0,0],"name":"Row00190"},"id":"1048","type":"Row"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00114","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1013","type":"Div"},{"attributes":{"child":{"id":"1048"},"name":"Row00190","title":"SKW"},"id":"1058","type":"Panel"},{"attributes":{"children":[{"id":"1050"},{"id":"1051"},{"id":"1052"},{"id":"1053"},{"id":"1055"}],"margin":[0,0,0,0],"name":"Column00184"},"id":"1049","type":"Column"},{"attributes":{"children":[{"id":"1015"},{"id":"1019"}],"margin":[0,0,0,0],"name":"Accordion00113"},"id":"1014","type":"Column"},{"attributes":{"format":"0,0.0[00000]"},"id":"1109","type":"NumberFormatter"},{"attributes":{"children":[{"id":"1057"}],"margin":[0,0,0,0],"name":"Row00189"},"id":"1056","type":"Row"},{"attributes":{"low":1,"margin":[5,10,5,10],"mode":"int","placeholder":"0","title":"Skw lpratio","value":5,"value_throttled":5},"id":"1050","type":"Spinner"},{"attributes":{"margin":[5,5,5,5],"name":"Str00130"},"id":"1024","type":"panel.models.markup.HTML"},{"attributes":{},"id":"1110","type":"NumberEditor"},{"attributes":{"editor":{"id":"1085"},"field":"index","formatter":{"id":"1083"},"title":"index","width":0},"id":"1086","type":"TableColumn"},{"attributes":{"margin":[5,5,5,5],"name":"Str00160"},"id":"1046","type":"panel.models.markup.HTML"},{"attributes":{"editor":{"id":"1110"},"field":"\u212b","formatter":{"id":"1109"},"title":"\u212b","width":0},"id":"1111","type":"TableColumn"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1068"},{"id":"1070"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[5,5,0,5],"name":"Card00251"},"id":"1067","type":"panel.models.layout.Card"},{"attributes":{"format":"0,0.0[00000]"},"id":"1114","type":"NumberFormatter"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1016"},{"id":"1018"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[5,5,0,5],"name":"Card00235"},"id":"1015","type":"panel.models.layout.Card"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"warning","text":"&lt;p&gt;Widgets are &lt;strong&gt;shared by the different tabs&lt;/strong&gt;.\nThis means that if you change the value of one of these variables in the active tab,\nthe same value will &lt;strong&gt;automagically&lt;/strong&gt; appear in the other tabs yet results/figures\nare not automatically recomputed when you change the value.&lt;/p&gt;\n&lt;p&gt;In other words, if you change some variable in the active tab and then you move to another tab,\nthe results/figures (if any) are stil computed with the &lt;strong&gt;old input&lt;/strong&gt; hence you will have to\nrecompute the new results by clicking the button.&lt;/p&gt;"},"id":"1044","type":"panel.models.markup.HTML"},{"attributes":{"labels":["With gaps"],"margin":[5,10,5,10]},"id":"1052","type":"CheckboxGroup"},{"attributes":{},"id":"1115","type":"NumberEditor"},{"attributes":{"children":[{"id":"1054"}],"margin":[5,5,5,5],"min_width":300,"name":"GsrFilePanel","width":300},"id":"1053","type":"Column"},{"attributes":{"margin":[5,10,5,10]},"id":"1054","type":"FileInput"},{"attributes":{"editor":{"id":"1115"},"field":"Bohr","formatter":{"id":"1114"},"title":"Bohr","width":0},"id":"1116","type":"TableColumn"},{"attributes":{"children":[{"id":"1017"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00234","sizing_mode":"stretch_width"},"id":"1016","type":"Row"},{"attributes":{"source":{"id":"1101"}},"id":"1121","type":"CDSView"},{"attributes":{"button_type":"primary","icon":null,"label":"Plot SKW interpolant","margin":[5,10,5,10],"subscribed_events":["button_click"]},"id":"1055","type":"Button"},{"attributes":{"children":[{"id":"1061"},{"id":"1062"},{"id":"1063"},{"id":"1064"}],"margin":[0,0,0,0],"name":"Column00203"},"id":"1060","type":"Column"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00212","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1123","type":"Div"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00236","sizing_mode":"stretch_width","text":"Help"},"id":"1017","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1077"}],"margin":[0,0,0,0],"name":"Row00228"},"id":"1076","type":"Row"},{"attributes":{"reload":false},"id":"1222","type":"panel.models.location.Location"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00252","sizing_mode":"stretch_width","text":"Help"},"id":"1069","type":"panel.models.markup.HTML"},{"attributes":{},"id":"1089","type":"StringFormatter"},{"attributes":{},"id":"1176","type":"UnionRenderers"},{"attributes":{},"id":"1162","type":"StringFormatter"},{"attributes":{"margin":[5,5,5,5],"name":"Str00226"},"id":"1077","type":"panel.models.markup.HTML"},{"attributes":{"columns":[{"id":"1086"},{"id":"1091"}],"height":190,"index_position":null,"margin":[5,10,5,10],"name":"","row_height":40,"sizing_mode":"scale_width","source":{"id":"1081"},"view":{"id":"1096"}},"id":"1094","type":"DataTable"},{"attributes":{},"id":"1090","type":"StringEditor"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00223","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1171","type":"Div"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"warning","text":"&lt;p&gt;Widgets are &lt;strong&gt;shared by the different tabs&lt;/strong&gt;.\nThis means that if you change the value of one of these variables in the active tab,\nthe same value will &lt;strong&gt;automagically&lt;/strong&gt; appear in the other tabs yet results/figures\nare not automatically recomputed when you change the value.&lt;/p&gt;\n&lt;p&gt;In other words, if you change some variable in the active tab and then you move to another tab,\nthe results/figures (if any) are stil computed with the &lt;strong&gt;old input&lt;/strong&gt; hence you will have to\nrecompute the new results by clicking the button.&lt;/p&gt;"},"id":"1022","type":"panel.models.markup.HTML"},{"attributes":{},"id":"1085","type":"CellEditor"},{"attributes":{"source":{"id":"1154"}},"id":"1169","type":"CDSView"},{"attributes":{"indices":[]},"id":"1082","type":"Selection"},{"attributes":{"margin":[5,10,5,10],"mode":"int","placeholder":"0","title":"Skw line density","value":20,"value_throttled":20},"id":"1051","type":"Spinner"},{"attributes":{"children":[{"id":"1073"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00254","sizing_mode":"stretch_width"},"id":"1072","type":"Row"},{"attributes":{"editor":{"id":"1163"},"field":"frac_coords","formatter":{"id":"1162"},"title":"frac_coords","width":0},"id":"1164","type":"TableColumn"},{"attributes":{"margin":[5,10,5,10],"options":[["jsmol","jsmol"],["vesta","vesta"],["xcrysden","xcrysden"],["vtk","vtk"],["crystalk","crystalk"],["ngl","ngl"],["matplotlib","matplotlib"],["plotly","plotly"],["ase_atoms","ase_atoms"],["mayavi","mayavi"]],"title":"Structure viewer","value":"jsmol"},"id":"1062","type":"Select"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1072"},{"id":"1074"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[0,5,5,5],"name":"Card00255"},"id":"1071","type":"panel.models.layout.Card"},{"attributes":{},"id":"1083","type":"StringFormatter"},{"attributes":{},"id":"1163","type":"StringEditor"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00256","sizing_mode":"stretch_width","text":"Warning"},"id":"1073","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1039"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00242","sizing_mode":"stretch_width"},"id":"1038","type":"Row"},{"attributes":{},"id":"1178","type":"UnionRenderers"},{"attributes":{"indices":[]},"id":"1155","type":"Selection"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1038"},{"id":"1040"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[5,5,0,5],"name":"Card00243"},"id":"1037","type":"panel.models.layout.Card"},{"attributes":{"data":{"frac_coords":[[0.0,0.0,0.0],[0.25,0.25,0.25]],"site_idx":[0,1]},"selected":{"id":"1155"},"selection_policy":{"id":"1180"}},"id":"1154","type":"ColumnDataSource"},{"attributes":{"children":[{"id":"1167"},{"id":"1171"}],"margin":[0,0,0,0],"name":"Column00222","sizing_mode":"stretch_both"},"id":"1153","type":"Column"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00260","sizing_mode":"stretch_width","text":"Coordinates of Si sites:"},"id":"1152","type":"panel.models.markup.HTML"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"MyMarkdown00208","text":"&lt;h1&gt;Spacegroup:&lt;/h1&gt;"},"id":"1079","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1152"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00258","sizing_mode":"stretch_width"},"id":"1151","type":"Row"},{"attributes":{"children":[{"id":"1030"},{"id":"1031"},{"id":"1032"},{"id":"1033"}],"margin":[0,0,0,0],"name":"Column00149"},"id":"1029","type":"Column"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1151"},{"id":"1153"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[5,5,0,5],"name":"Card00259","sizing_mode":"stretch_width"},"id":"1150","type":"panel.models.layout.Card"},{"attributes":{"margin":[5,10,5,10],"options":[["gaussian","gaussian"],["tetra","tetra"]],"title":"Edos method","value":"gaussian"},"id":"1030","type":"Select"},{"attributes":{"format":"0,0.0[00000]"},"id":"1134","type":"NumberFormatter"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00195","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1065","type":"Div"},{"attributes":{"editor":{"id":"1130"},"field":"Lattice angles","formatter":{"id":"1128"},"title":"Lattice angles","width":0},"id":"1131","type":"TableColumn"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"MyMarkdown00218","text":"&lt;h1&gt;Lattice angles:&lt;/h1&gt;"},"id":"1124","type":"panel.models.markup.HTML"},{"attributes":{},"id":"1135","type":"NumberEditor"},{"attributes":{},"id":"1156","type":"NumberFormatter"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"MyMarkdown00155","text":"&lt;h3&gt;Options&lt;/h3&gt;"},"id":"1028","type":"panel.models.markup.HTML"},{"attributes":{},"id":"1128","type":"StringFormatter"},{"attributes":{"client_comm_id":"ba57dd3978474b6ea4871a465842b365","comm_id":"4835f87b51f94deb931cbdb4fe99c16a","plot_id":"1003"},"id":"1197","type":"panel.models.comm_manager.CommManager"},{"attributes":{"children":[{"id":"1150"}],"margin":[0,0,0,0],"name":"Accordion00220","sizing_mode":"stretch_width"},"id":"1149","type":"Column"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00217","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1148","type":"Div"},{"attributes":{"editor":{"id":"1158"},"field":"site_idx","formatter":{"id":"1156"},"title":"site_idx","width":0},"id":"1159","type":"TableColumn"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"MyMarkdown00213","text":"&lt;h1&gt;Lattice lengths:&lt;/h1&gt;"},"id":"1099","type":"panel.models.markup.HTML"},{"attributes":{"columns":[{"id":"1131"},{"id":"1136"},{"id":"1141"}],"height":150,"index_position":null,"margin":[5,10,5,10],"name":"","row_height":40,"sizing_mode":"scale_width","source":{"id":"1126"},"view":{"id":"1146"}},"id":"1144","type":"DataTable"},{"attributes":{"children":[{"id":"1043"}],"css_classes":["card-header-row"],"margin":[0,0,0,0],"name":"Row00246","sizing_mode":"stretch_width"},"id":"1042","type":"Row"},{"attributes":{"indices":[]},"id":"1127","type":"Selection"},{"attributes":{"active_header_background":"#ccc","button_css_classes":["card-button"],"children":[{"id":"1042"},{"id":"1044"}],"css_classes":["accordion"],"header_background":"","header_color":"","header_css_classes":["accordion-header"],"margin":[0,5,5,5],"name":"Card00247"},"id":"1041","type":"panel.models.layout.Card"},{"attributes":{"columns":[{"id":"1159"},{"id":"1164"}],"height":110,"index_position":null,"margin":[5,10,5,10],"name":"","row_height":40,"sizing_mode":"scale_width","source":{"id":"1154"},"view":{"id":"1169"}},"id":"1167","type":"DataTable"},{"attributes":{"button_type":"primary","icon":null,"label":"View structure","margin":[5,10,5,10],"subscribed_events":["button_click"]},"id":"1063","type":"Button"},{"attributes":{},"id":"1130","type":"CellEditor"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"Markdown00151","text":"&lt;p&gt;Button triggering edos plot.&lt;/p&gt;"},"id":"1040","type":"panel.models.markup.HTML"},{"attributes":{"children":[{"id":"1065"},{"id":"1066"}],"margin":[0,0,0,0],"name":"Column00191"},"id":"1064","type":"Column"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00244","sizing_mode":"stretch_width","text":"Help"},"id":"1039","type":"panel.models.markup.HTML"},{"attributes":{"css_classes":["card-title"],"margin":[2,5,2,5],"name":"HTML00248","sizing_mode":"stretch_width","text":"Warning"},"id":"1043","type":"panel.models.markup.HTML"},{"attributes":{"editor":{"id":"1135"},"field":"Degrees","formatter":{"id":"1134"},"title":"Degrees","width":0},"id":"1136","type":"TableColumn"},{"attributes":{"children":[{"id":"1027"},{"id":"1045"}],"margin":[0,0,0,0],"name":"Row00163"},"id":"1026","type":"Row"},{"attributes":{},"id":"1180","type":"UnionRenderers"},{"attributes":{"children":[{"id":"1028"},{"id":"1029"},{"id":"1034"}],"margin":[0,0,0,0],"name":"Column00157"},"id":"1027","type":"Column"},{"attributes":{"children":[{"id":"1067"},{"id":"1071"}],"margin":[0,0,0,0],"name":"Accordion00194"},"id":"1066","type":"Column"},{"attributes":{"source":{"id":"1126"}},"id":"1146","type":"CDSView"},{"attributes":{"editor":{"id":"1140"},"field":"Radians","formatter":{"id":"1139"},"title":"Radians","width":0},"id":"1141","type":"TableColumn"},{"attributes":{"children":[{"id":"1037"},{"id":"1041"}],"margin":[0,0,0,0],"name":"Accordion00153"},"id":"1036","type":"Column"},{"attributes":{},"id":"1140","type":"NumberEditor"},{"attributes":{"low":1e-06,"margin":[5,10,5,10],"placeholder":"0","step":0.1,"title":"Edos step ev","value":0.1,"value_throttled":0.1},"id":"1031","type":"Spinner"},{"attributes":{},"id":"1174","type":"UnionRenderers"},{"attributes":{"low":1e-06,"margin":[5,10,5,10],"placeholder":"0","step":0.05,"title":"Edos width ev","value":0.2,"value_throttled":0.2},"id":"1032","type":"Spinner"},{"attributes":{"format":"0,0.0[00000]"},"id":"1139","type":"NumberFormatter"},{"attributes":{"margin":[5,5,5,5],"name":"Divider00154","style":{"height":"100%","width":"100%"},"text":"<hr style=\"margin: 0px\">","width_policy":"fit"},"id":"1035","type":"Div"},{"attributes":{"children":[{"id":"1076"},{"id":"1078"}],"margin":[0,0,0,0],"name":"Column00229"},"id":"1075","type":"Column"},{"attributes":{"children":[{"id":"1035"},{"id":"1036"}],"margin":[0,0,0,0],"name":"Column00150"},"id":"1034","type":"Column"},{"attributes":{"button_type":"primary","icon":null,"label":"Plot e-DOS","margin":[5,10,5,10],"subscribed_events":["button_click"]},"id":"1033","type":"Button"}],"root_ids":["1003","1197","1222"]},"title":"Bokeh Application","version":"2.3.1"}};
+    var render_items = [{"docid":"2da5715c-3ca8-4fc0-85b2-9adf37307595","root_ids":["1003"],"roots":{"1003":"d2a568ab-c2a5-4b28-ac2c-ca8256eca5e8"}}];
     root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined && root.Bokeh.Panel !== undefined && root['Plotly'] !== undefined  && root['MathJax'] !== undefined ) {
@@ -1210,7 +1239,7 @@ if (window.Jupyter !== undefined) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/gsr_29_0.png" src="_images/gsr_29_0.png" />
+<img alt="_images/gsr_26_0.png" src="_images/gsr_26_0.png" />
 </div>
 </div>
 <p>and the crystalline structure with:</p>
@@ -1221,17 +1250,18 @@ if (window.Jupyter !== undefined) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/gsr_31_0.png" src="_images/gsr_31_0.png" />
+<img alt="_images/gsr_28_0.png" src="_images/gsr_28_0.png" />
 </div>
 </div>
- <div class="alert alert-success">
-The same piece of code works if you replace the `GSR.nc` file with e.g. a `WFK.nc` file in netcdf format
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The same piece of code works if you replace the <code class="docutils literal notranslate"><span class="pre">GSR.nc</span></code> file with e.g. a <code class="docutils literal notranslate"><span class="pre">WFK.nc</span></code> file in netcdf format
 (actually any netcdf file with an ebands object).
-The main advantage of the `GSR` file is that it is lightweight (no wavefunctions).
-</div></div>
+The main advantage of the <code class="docutils literal notranslate"><span class="pre">GSR</span></code> file is that it is lightweight (no wavefunctions).</p>
+</div>
+</div>
 <div class="section" id="dos-with-the-gaussian-technique">
 <h2>DOS with the Gaussian technique<a class="headerlink" href="#dos-with-the-gaussian-technique" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <p>Let’s use the eigenvalues and the k-point weights stored in <code class="docutils literal notranslate"><span class="pre">gs_ebands</span></code> to
 compute the DOS with the Gaussian method.
 The method is called without arguments so we use <strong>default values</strong>
@@ -1260,7 +1290,7 @@ Fermi energy: 5.8399062898824745 (eV) (recomputed from nelect):
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/gsr_35_0.png" src="_images/gsr_35_0.png" />
+<img alt="_images/gsr_31_0.png" src="_images/gsr_31_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1277,10 +1307,12 @@ Fermi energy: 5.8399062898824745 (eV) (recomputed from nelect):
 </div>
 </div>
 </div>
-<div class="alert alert-info" role="alert">
-The DOS requires a homogeneous $k$-sampling of the BZ. Abipy will raise an exception if you try 
-to compute the DOS with a k-path.
-</div><p>To plot bands and DOS on the same figure:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The DOS requires a homogeneous <span class="math notranslate nohighlight">\(k\)</span>-sampling of the BZ. Abipy will raise an exception if you try
+to compute the DOS with a k-path.</p>
+</div>
+<p>To plot bands and DOS on the same figure:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ebands_kpath</span><span class="o">.</span><span class="n">plot_with_edos</span><span class="p">(</span><span class="n">edos</span><span class="p">,</span> <span class="n">with_gaps</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
@@ -1288,7 +1320,7 @@ to compute the DOS with a k-path.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/gsr_39_0.png" src="_images/gsr_39_0.png" />
+<img alt="_images/gsr_34_0.png" src="_images/gsr_34_0.png" />
 </div>
 </div>
 <p>To plot the DOS and the integrated DOS (IDOS), use:</p>
@@ -1299,7 +1331,7 @@ to compute the DOS with a k-path.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/gsr_41_0.png" src="_images/gsr_41_0.png" />
+<img alt="_images/gsr_36_0.png" src="_images/gsr_36_0.png" />
 </div>
 </div>
 <p>The gaussian broadening can significantly change the overall shape of the DOS.
@@ -1325,7 +1357,7 @@ for fixed k-point sampling and plot the results:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/gsr_45_0.png" src="_images/gsr_45_0.png" />
+<img alt="_images/gsr_40_0.png" src="_images/gsr_40_0.png" />
 </div>
 </div>
 <p>while <code class="docutils literal notranslate"><span class="pre">gridplot</span></code> generates a grid of subplots:</p>
@@ -1336,13 +1368,12 @@ for fixed k-point sampling and plot the results:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/gsr_47_0.png" src="_images/gsr_47_0.png" />
+<img alt="_images/gsr_42_0.png" src="_images/gsr_42_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="joint-density-of-states">
 <h2>Joint density of states<a class="headerlink" href="#joint-density-of-states" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <p>This example shows how to plot the different contributions to the electronic joint density of states of Silicon.
 Select the valence and conduction bands to be included in the JDOS. Here we include valence bands from 0 to 3 and the first conduction band (4).</p>
 <div class="cell docutils container">
@@ -1356,7 +1387,7 @@ Select the valence and conduction bands to be included in the JDOS. Here we incl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/gsr_49_0.png" src="_images/gsr_49_0.png" />
+<img alt="_images/gsr_44_0.png" src="_images/gsr_44_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1366,7 +1397,7 @@ Select the valence and conduction bands to be included in the JDOS. Here we incl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/gsr_50_0.png" src="_images/gsr_50_0.png" />
+<img alt="_images/gsr_45_0.png" src="_images/gsr_45_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1376,18 +1407,17 @@ Select the valence and conduction bands to be included in the JDOS. Here we incl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/gsr_51_0.png" src="_images/gsr_51_0.png" />
+<img alt="_images/gsr_46_0.png" src="_images/gsr_46_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="plotting-the-fermi-surface">
 <h2>Plotting the Fermi surface<a class="headerlink" href="#plotting-the-fermi-surface" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="n">abidata</span><span class="o">.</span><span class="n">ref_file</span><span class="p">(</span><span class="s2">&quot;mgb2_kmesh181818_FATBANDS.nc&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">fbnc_kmesh</span><span class="p">:</span>
     <span class="n">mgb2_ebands</span> <span class="o">=</span> <span class="n">fbnc_kmesh</span><span class="o">.</span><span class="n">ebands</span>
-    
+
     <span class="c1"># Build ebands in full BZ.</span>
     <span class="n">mgb2_eb3d</span> <span class="o">=</span> <span class="n">mgb2_ebands</span><span class="o">.</span><span class="n">get_ebands3d</span><span class="p">()</span>
 </pre></div>
@@ -1402,7 +1432,7 @@ Select the valence and conduction bands to be included in the JDOS. Here we incl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/gsr_55_0.png" src="_images/gsr_55_0.png" />
+<img alt="_images/gsr_50_0.png" src="_images/gsr_50_0.png" />
 </div>
 </div>
 <p>Let’s use matplotlib to plot the isosurfaces corresponding to the Fermi level (default):</p>
@@ -1414,7 +1444,7 @@ Select the valence and conduction bands to be included in the JDOS. Here we incl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/gsr_57_0.png" src="_images/gsr_57_0.png" />
+<img alt="_images/gsr_52_0.png" src="_images/gsr_52_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1428,12 +1458,11 @@ Select the valence and conduction bands to be included in the JDOS. Here we incl
 </div>
 <div class="section" id="analyzing-multiple-gsr-files-with-robots">
 <h2>Analyzing multiple GSR files with robots<a class="headerlink" href="#analyzing-multiple-gsr-files-with-robots" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <p>TODO</p>
-<div class="alert alert-info" role="alert">
-Robots can also be constructed from the command line with: abicomp.py gsr FILES
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Robots can also be constructed from the command line with: <a class="reference external" href="http://abicomp.py">abicomp.py</a> gsr FILES</p>
 </div>
-<p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a></p>
 </div>
 </div>
 
@@ -1462,8 +1491,8 @@ Robots can also be constructed from the command line with: abicomp.py gsr FILES
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="structure.html" title="previous page">Structure object</a>
-    <a class='right-next' id="next-link" href="hist.html" title="next page">The HIST.nc file</a>
+    <a class='left-prev' id="prev-link" href="input_factories.html" title="previous page">Factory functions</a>
+    <a class='right-next' id="next-link" href="hist.html" title="next page">The HIST.nc file (relaxation/MD)</a>
 
         </div>
         
@@ -1473,7 +1502,7 @@ Robots can also be constructed from the command line with: abicomp.py gsr FILES
     <div class="container">
       <p>
         
-          By M. Giantomassi<br/>
+          By M. Giantomassi and the AbiPy group<br/>
         
             &copy; Copyright 2021.<br/>
       </p>

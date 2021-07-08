@@ -1,0 +1,2313 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base1 lesson (H2 molecule) &#8212; AbiPy Book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"*": "{\\dagger}", "ra": "{\\rangle}", "la": "{\\langle}", "bm": ["{\\boldsymbol #1}", 1], "mcL": "{\\mathcal{L}}", "mcG": "{\\mathcal{G}}", "mcR": "{\\mathcal{R}}", "mcS": "{\\mathcal{S}}", "mcC": "{\\mathcal{C}}", "mcO": "{\\mathcal{O}}", "KS": "{\\text{KS}}", "eph": "{\\text{e-ph}}", "ee": "{\\epsilon}", "phph": "{\\text{ph-ph}}", "FM": "{\\text{FM}}", "DW": "{\\text{DW}}", "QP": "{\\text{QP}}", "BZ": "{\\text{BZ}}", "sign": "{\\text{sign}}", "xc": "{\\text{xc}}", "tchi": "{\\tilde\\chi}", "rr": "{\\bf r}", "RR": "{\\bf R}", "tt": "{\\bf t}", "GG": "{\\bf G}", "kk": "{\\bf k}", "qq": "{\\bf q}", "kq": "{\\kk + \\qq}", "qG": "{\\bf q + G}", "kG": "{\\bf k + G}", "kmq": "{\\kk - \\qq}", "kpq": "{\\kk + \\qq}", "kpG": "{\\kk + \\GG}", "qpG": "{\\qq + \\GG}", "nk": "{n \\kk}", "mk": "{, \\kk}", "nks": "{n \\kk\\sigma}", "mks": "{m \\kk\\sigma}", "enk": "{\\varepsilon_\\nk}", "emkq": "{\\varepsilon_{m\\kk+\\qq}}", "qnu": "{\\qq \\nu}", "wqnu": "{\\omega_{\\qnu}}", "vnk": "{\\mathbf{v}_{n\\kk}}", "vmkq": "{\\mathbf{v}_{m\\kk+\\qq}}", "vnka": "{\\mathrm{v}_{n\\kk,\\alpha}}", "vnkb": "{\\mathrm{v}_{n\\kk,\\beta}}", "ef": "{\\varepsilon_F}", "gkkp": "{g_{mn\\nu}(\\kk,\\qq)}", "gkq": "{g_{mn\\nu}(\\kk,\\qq)}", "Go": "{G_0}", "Wo": "{W_0}", "Ueff": "{U_{\\text{eff}}}", "tee": "{\\tilde{\\epsilon}}", "ww": "{\\omega}", "tww": "{\\tilde\\omega}", "dd": "{\\,\\text{d}}", "vxc": "{v_\\xc}", "Ri": "{\\mcR^{-1}}", "Rit": "{\\mcR^{-1\\tau}}", "Si": "{\\mcS^{-1}}}", "Sit": "{\\Si^\\tau}}", "PDER": ["{\\dfrac{\\partial #1}{\\partial #2}}", 2], "FDER": ["{\\dfrac{\\delta #1}{\\delta #2}}", 2], "tPsi": "{\\tilde\\Psi}", "tpsi": "{\\tilde\\psi}", "tPhi": "{\\tilde\\Phi}", "tphi": "{\\tilde\\phi}", "tprj": "{\\tilde p}"}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Base3 lesson (silicon)" href="../base3/lesson_base3.html" />
+    <link rel="prev" title="Tasks, Workflows and Flow" href="../flows.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AbiPy Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Basic AbiPy Objects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../structure.html">
+   Structure object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../abinit_input.html">
+   The AbinitInput object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../input_factories.html">
+   Factory functions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Output Files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../gsr.html">
+   The GSR file (Ground-State)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../hist.html">
+   The HIST.nc file (relaxation/MD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../efatbands.html">
+   The FATBANDS.nc file
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ddb.html">
+   The DDB file (DFPT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sigres.html">
+   The SIGRES file (GW)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mdf.html">
+   The MDF file (Bethe-Salpeter)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../abiwan.html">
+   The ABIWAN file (wannier90)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lobster.html">
+   Lobster output files
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Workflows
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../flows.html">
+   Tasks, Workflows and Flow
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Lessons
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Base1 lesson (H2 molecule)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../base3/lesson_base3.html">
+   Base3 lesson (silicon)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../base4/lesson_base4.html">
+   Base4 lesson (Aluminium)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dfpt/lesson_dfpt.html">
+   Phonons and Born effective charges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../g0w0/lesson_g0w0.html">
+   <span class="math notranslate nohighlight">
+    \(G_0W_0\)
+   </span>
+   band structure with star-function interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bse/lesson_bse.html">
+   Bethe-Salpeter calculations with AbiPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eph_al/lesson_eph_al.html">
+   Isotropic superconductivity
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Miscellaneous
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../links.html">
+   Useful links
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/base1/lesson_base1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/base1/lesson_base1.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/abinit/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/abinit/abipy_book/issues/new?title=Issue%20on%20page%20%2Fbase1/lesson_base1.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/abinit/abipy_book/edit/master/docs/base1/lesson_base1.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/abinit/abipy_book/master?urlpath=tree/docs/base1/lesson_base1.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#our-first-abipy-function">
+   Our first AbiPy function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computation-of-the-interatomic-distance">
+   Computation of the interatomic distance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyzing-the-main-output-file">
+   Analyzing the main output file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-results-from-the-gsr-files">
+   Extracting results from the GSR files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis-of-the-charge-density">
+   Analysis of the charge density
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="base1-lesson-h2-molecule">
+<h1>Base1 lesson (H2 molecule)<a class="headerlink" href="#base1-lesson-h2-molecule" title="Permalink to this headline">¶</a></h1>
+<div class="jumbotron">
+  <h1 class="display-3">First (basic) lesson with Abinit and AbiPy</h1>
+  <p class="lead">The H<sub>2</sub> molecule</p> 
+  <hr class="my-4">
+  <p>This lesson aims at showing how to get the following physical properties:</p>
+   <ul>
+    <li>the (pseudo) total energy</li>
+    <li>the bond length</li>
+    <li>the charge density</li>
+    <li>the atomisation energy</li>
+   </ul>
+</div>
+<p>This tutorial is a complement to the standard <a class="reference external" href="https://docs.abinit.org/tutorial/base1">ABINIT tutorial on H<span class="math notranslate nohighlight">\(_2\)</span></a>. Here, powerful flow and visualisation procedures
+will be demonstrated. Still, some basic understanding of the stand-alone working of ABINIT is a prerequisite.
+Also, in order to fully benefit from this Abipy tutorial, other more basic Abipy tutorials should have been followed,
+as suggested in the <a class="reference external" href="https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/index.ipynb">abitutorials index page</a>.</p>
+<p>There are three methodologies to compute the optimal distance between the two Hydrogen atoms. One could:</p>
+<ul class="simple">
+<li><p>compute the <strong>total energy</strong> for different values of the interatomic distance, make a fit through
+the different points, and determine the minimum of the fitting function;</p></li>
+<li><p>compute the <strong>forces</strong> for different values of the interatomic distance, make a fit through
+the different values, and determine the zero of the fitting function;</p></li>
+<li><p>use an automatic algorithm for minimizing the energy (or finding the zero of forces).</p></li>
+</ul>
+<p>In this AbiPy notebook, we will be focusing on the first approach.
+More specifically we will build an AbiPy <code class="docutils literal notranslate"><span class="pre">Flow</span></code> to compute the energy and the forces in the <span class="math notranslate nohighlight">\(H_2\)</span> molecule
+for different values of the interatomic distance.
+This exercise will allow us to learn how to generate multiple input files using AbiPy and
+how to analyze multiple ground-state calculations with the AbiPy robots.</p>
+<div class="section" id="our-first-abipy-function">
+<h2>Our first AbiPy function<a class="headerlink" href="#our-first-abipy-function" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use this at the beginning of your script so that your code will be compatible with python3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+
+<span class="kn">import</span> <span class="nn">warnings</span> 
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>  <span class="c1"># Ignore warnings</span>
+
+<span class="kn">from</span> <span class="nn">abipy</span> <span class="kn">import</span> <span class="n">abilab</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span> <span class="c1"># This line tells AbiPy we are running inside a notebook</span>
+
+<span class="c1"># This line configures matplotlib to show figures embedded in the notebook.</span>
+<span class="c1"># Replace `inline` with `notebook` in classic notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline   
+
+<span class="c1"># Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib</span>
+<span class="c1">#%matplotlib widget </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We need a function that generates an input file for a GS calculations for the <span class="math notranslate nohighlight">\(H_2\)</span> molecule in a big box.
+Ideally a function that receives the distance <code class="docutils literal notranslate"><span class="pre">x</span></code>, the cutoff energy <code class="docutils literal notranslate"><span class="pre">ecut</span></code> and the size of the big box
+in input so that we can customize the output and generate multiple input objects easily.</p>
+<p>Fortunately we already have such a function in the <code class="docutils literal notranslate"><span class="pre">lesson_base1.py</span></code> module.
+Let’s import it and look at the code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_base1</span> <span class="kn">import</span> <span class="n">gs_input</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">gs_input</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gs_input</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">ecut</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">acell</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function builds an AbinitInput object to compute the total energy</span>
+<span class="sd">    of the H2 molecule in a big box.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x: Position of the first Hydrogen along the x-axis in Cartesian coordinates.</span>
+<span class="sd">           The second Hydrogen is located at [-x, 0, 0]</span>
+<span class="sd">        ecut: Cutoff energy in Ha.</span>
+<span class="sd">        acell: Lengths of the primitive vectors (in Bohr)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        AbinitInput object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Build structure from dictionary with input variables.</span>
+    <span class="n">structure</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">Structure</span><span class="o">.</span><span class="n">from_abivars</span><span class="p">(</span>
+        <span class="n">ntypat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                           <span class="c1"># There is only one type of atom.</span>
+        <span class="n">znucl</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                            <span class="c1"># Atomic numbers of the type(s) of atom.</span>
+        <span class="n">natom</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                            <span class="c1"># There are two atoms.</span>
+        <span class="n">typat</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>                       <span class="c1"># They both are of type 1, that is, Hydrogen.</span>
+        <span class="n">xcart</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>                <span class="c1"># Cartesian coordinates of atom 1, in Bohr.</span>
+               <span class="o">+</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>               <span class="c1"># second atom.</span>
+        <span class="n">acell</span><span class="o">=</span><span class="n">acell</span><span class="p">,</span>                        <span class="c1"># Lengths of the primitive vectors (in Bohr).</span>
+        <span class="n">rprim</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>   <span class="c1"># Orthogonal primitive vectors (default).</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Build AbinitInput from structure and pseudo(s) taken from AbiPy package.</span>
+    <span class="n">inp</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">AbinitInput</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">structure</span><span class="p">,</span> <span class="n">pseudos</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">pseudos</span><span class="p">(</span><span class="s2">&quot;01h.pspgth&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Set value of other variables.</span>
+    <span class="n">inp</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span>
+        <span class="n">ecut</span><span class="o">=</span><span class="n">ecut</span><span class="p">,</span>
+        <span class="n">nband</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">diemac</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+        <span class="n">toldfe</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
+        <span class="n">prtwf</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">iomode</span><span class="o">=</span><span class="mi">3</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Define k-point sampling.</span>
+    <span class="n">inp</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">shiftk</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">inp</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<p>If the function is called without arguments, the default values (specified in the prototype) are used.
+Let’s try:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gsinp</span> <span class="o">=</span> <span class="n">gs_input</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The value of ecut is:&quot;</span><span class="p">,</span> <span class="n">gsinp</span><span class="p">[</span><span class="s2">&quot;ecut&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The value of ecut is: 10
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code> is a dict-like object whose usage is documented in this <a class="reference internal" href="../abinit_input.html"><span class="doc std std-doc">notebook</span></a>.
+Inside jupyter, we can get the HTML representation of the input with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gsinp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="abinit_input">
+##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#ecut" target="_blank">ecut</a> 10<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband</a> 1<br> <a href="https://docs.abinit.org/variables/basic#toldfe" target="_blank">toldfe</a> 1e-06<br> <a href="https://docs.abinit.org/variables/basic#ngkpt" target="_blank">ngkpt</a> 1 1 1<br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt</a> 1<br> <a href="https://docs.abinit.org/variables/basic#nshiftk" target="_blank">nshiftk</a> 1<br> <a href="https://docs.abinit.org/variables/basic#shiftk" target="_blank">shiftk</a> 0 0 0<br>##############################################<br>####                 SECTION: dev                <br>##############################################<br> <a href="https://docs.abinit.org/variables/dev#iomode" target="_blank">iomode</a> 3<br>##############################################<br>####                SECTION: files               <br>##############################################<br> <a href="https://docs.abinit.org/variables/files#prtwf" target="_blank">prtwf</a> -1<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br> <a href="https://docs.abinit.org/variables/gstate#diemac" target="_blank">diemac</a> 2.0<br>##############################################<br>####                  STRUCTURE                  <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#natom" target="_blank">natom</a> 2<br> <a href="https://docs.abinit.org/variables/basic#ntypat" target="_blank">ntypat</a> 1<br> <a href="https://docs.abinit.org/variables/basic#typat" target="_blank">typat</a> 1 1<br> <a href="https://docs.abinit.org/variables/basic#znucl" target="_blank">znucl</a> 1<br> <a href="https://docs.abinit.org/variables/basic#xred" target="_blank">xred</a><br>   -0.0700000000    0.0000000000    0.0000000000<br>    0.0700000000    0.0000000000    0.0000000000<br> <a href="https://docs.abinit.org/variables/basic#acell" target="_blank">acell</a>    1.0    1.0    1.0<br> <a href="https://docs.abinit.org/variables/basic#rprim" target="_blank">rprim</a><br>   10.0000000000    0.0000000000    0.0000000000<br>    0.0000000000   10.0000000000    0.0000000000<br>    0.0000000000    0.0000000000   10.0000000000
+<div></div></div>
+</div>
+<p>The input object can be converted into a string.
+More importantly, an <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code> <em>has</em> an AbiPy structure
+(see <a class="reference internal" href="../structure.html"><span class="doc std std-doc">Structure notebook</span></a>),
+a list of pseudopotential objects and provides several methods
+to facilitate the specification of input variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">gsinp</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The big box volume is:&quot;</span><span class="p">,</span> <span class="n">gsinp</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">volume</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full Formula (H2)
+Reduced Formula: H2
+abc   :   5.291772   5.291772   5.291772
+angles:  90.000000  90.000000  90.000000
+Sites (2)
+  #  SP        a    b    c
+---  ----  -----  ---  ---
+  0  H     -0.07    0    0
+  1  H      0.07    0    0
+The big box volume is: 148.18471147216275
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gsinp</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base1_10_0.png" src="../_images/lesson_base1_10_0.png" />
+</div>
+</div>
+<p>Let’s print some info about our pseudopotentials:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">gsinp</span><span class="o">.</span><span class="n">pseudos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NcAbinitPseudo: 01h.pspgth&gt;
+  summary: Goedecker-Teter-Hutter  Wed May  8 14:27:44 EDT 1996
+  number of valence electrons: 1.0
+  maximum angular momentum: s
+  angular momentum for local part: s
+  XC correlation: LDA_XC_TETER93
+  supports spin-orbit: False
+  radius for non-linear core correction: 0.0
+  hint for low accuracy: ecut: 0.0, pawecutdg: 0.0
+  hint for normal accuracy: ecut: 0.0, pawecutdg: 0.0
+  hint for high accuracy: ecut: 0.0, pawecutdg: 0.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="computation-of-the-interatomic-distance">
+<h2>Computation of the interatomic distance<a class="headerlink" href="#computation-of-the-interatomic-distance" title="Permalink to this headline">¶</a></h2>
+<p>At this point, we can use <code class="docutils literal notranslate"><span class="pre">gs_input</span></code> to generate an <a class="reference internal" href="../flows.html"><span class="doc std std-doc">Abinit Flow</span></a>
+to compute the total energy and the forces of H-H with different interatomic distances.
+We have already prepared such a function in <code class="docutils literal notranslate"><span class="pre">build_flow</span></code>, let’s have a look at the code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_base1</span> <span class="kn">import</span> <span class="n">build_flow</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">build_flow</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_flow</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate a flow to compute the total energy and forces for the H2 molecule in a big box</span>
+<span class="sd">    as a function of the interatomic distance.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        options: Command line options.</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        Flow object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">gs_input</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.025</span><span class="p">,</span> <span class="mi">21</span><span class="p">)]</span>
+
+    <span class="n">workdir</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span> <span class="k">if</span> <span class="p">(</span><span class="n">options</span> <span class="ow">and</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;flow_h2&quot;</span>
+
+    <span class="k">return</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">Flow</span><span class="o">.</span><span class="n">from_inputs</span><span class="p">(</span><span class="n">workdir</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<p>Note that we are working at fixed <code class="docutils literal notranslate"><span class="pre">ecut</span></code> and <code class="docutils literal notranslate"><span class="pre">acell</span></code>, only the H-H distance is modified.
+Let’s call the function to build our flow:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span> <span class="o">=</span> <span class="n">build_flow</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base1_17_0.svg" src="../_images/lesson_base1_17_0.svg" /></div>
+</div>
+<p>Ok, so far so sood.
+With just three lines of codes and our <code class="docutils literal notranslate"><span class="pre">gs_input</span></code> function, we managed
+to construct an AbiPy flow for the <span class="math notranslate nohighlight">\(H_2\)</span> molecule.
+Let’s write some python code to check that we really obtained what we had in mind:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">input</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">flow</span><span class="o">.</span><span class="n">iflat_tasks</span><span class="p">()]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ecuts:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">inp</span><span class="p">[</span><span class="s2">&quot;ecut&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;vols:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%.1f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">inp</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">volume</span> <span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">hh_dist</span><span class="p">(</span><span class="n">structure</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">cart_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">structure</span><span class="o">.</span><span class="n">cart_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;h-h [Ang]:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">hh_dist</span><span class="p">(</span><span class="n">inp</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span> <span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ecuts:
+ [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+vols:
+ [&#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;, &#39;148.2&#39;]
+h-h [Ang]:
+ [&#39;0.529&#39;, &#39;0.557&#39;, &#39;0.585&#39;, &#39;0.613&#39;, &#39;0.640&#39;, &#39;0.668&#39;, &#39;0.696&#39;, &#39;0.724&#39;, &#39;0.751&#39;, &#39;0.779&#39;, &#39;0.807&#39;, &#39;0.835&#39;, &#39;0.863&#39;, &#39;0.890&#39;, &#39;0.918&#39;, &#39;0.946&#39;, &#39;0.974&#39;, &#39;1.001&#39;, &#39;1.029&#39;, &#39;1.057&#39;, &#39;1.085&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>At this point, we could run the flow in the notebook by just calling:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>flow.make_scheduler().start()
+</pre></div>
+</div>
+<p>or, alternatively, execute the <code class="docutils literal notranslate"><span class="pre">lesson_base1.py</span></code> script to build
+the directory with the flow and then use:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abirun.py flow_h2 scheduler
+</pre></div>
+</div>
+<p>inside the terminal.</p>
+<!--
+we postpone the discussion of this part because we should first create two YAML configuration files
+with options defining the execution environment and the submission policy.
+(For a detailed explanation of the AbiPy configuration files, please consult the
+[TaskManager documentation](http://abinit.github.io/abipy/workflows/taskmanager.html).
+
+There are only three points that we need to understand before proceeding with the next sections:
+
+* A `Flow` is a list of `Worflows` objects and each `Workflow` is a list of `Tasks`
+* Each `Task` is associated to an `AbinitInput` object
+* Tasks are executed in different directories with a predefined structure.
+* A `Task` can depend on other tasks and this information must be encoded in the `Flow` so that AbiPy can manage the execution. Our first example does not have dependencies. 
+
+Armed with these concepts, we can finally start to use `abiopen` to analyze the output files of our `Flow`.
+-->
+<p>Let’s assume the flow has been already executed and let’s focus on the analysis of the final results.</p>
+</div>
+<div class="section" id="analyzing-the-main-output-file">
+<h2>Analyzing the main output file<a class="headerlink" href="#analyzing-the-main-output-file" title="Permalink to this headline">¶</a></h2>
+<p>First of all, it is always a good idea to check whether the SCF cycle is converged.
+Obviously one could open the main output file, find the SCF iterations and look for warnings but
+there is a much faster (and better) way to do that with AbiPy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abo</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="s2">&quot;flow_h2/w0/t0/run.abo&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">abo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ndtset: 1, completed: True
+Full Formula (H2)
+Reduced Formula: H2
+abc   :   5.291772   5.291772   5.291772
+angles:  90.000000  90.000000  90.000000
+Sites (2)
+  #  SP        a    b    c
+---  ----  -----  ---  ---
+  0  H     -0.05    0    0
+  1  H      0.05    0    0
+
+Abinit Spacegroup: spgid: 123, num_spatial_symmetries: 16, has_timerev: True, symmorphic: False
+
+========================= Dimensions of calculation =========================
+         intxc  ionmov  iscf  lmnmax  lnmax  mgfft  mpssoang  mqgrid  natom  \
+dataset                                                                       
+1            0       0     7       1      1     30         1    3001      2   
+
+         nloc_mem  nspden  nspinor  nsppol  nsym  n1xccc  ntypat  occopt  \
+dataset                                                                    
+1               1       1        1       1    16       0       1       1   
+
+         xclevel  mband  mffmem  mkmem  mpw   nfft  nkpt  mem_per_proc_mb  \
+dataset                                                                     
+1              1      1       1      1  752  27000     1            7.796   
+
+         wfk_size_mb  denpot_size_mb spg_symbol  spg_number  \
+dataset                                                       
+1              0.013           0.208     P4/mmm         123   
+
+                                bravais  
+dataset                                  
+1        Bravais tP (primitive tetrag.)  
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>To get the list of Warnings/Comments/Errors:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">abo</span><span class="o">.</span><span class="n">events</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Events found in /Users/gmatteo/git_repos/abipy_book/abipy_book/base1/flow_h2/w0/t0/run.abo
+
+num_errors: 0, num_warnings: 0, num_comments: 0, completed: False
+</pre></div>
+</div>
+</div>
+</div>
+<p>To plot the SCF cycle, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abo</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading all matplotlib figures before showing them. It may take some time...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All figures in memory, elapsed time: 0.407 s
+</pre></div>
+</div>
+<img alt="../_images/lesson_base1_26_2.png" src="../_images/lesson_base1_26_2.png" />
+</div>
+</div>
+<p>Since this is not a structural relaxation, the initial and final structures must be equal:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abo</span><span class="o">.</span><span class="n">initial_structure</span> <span class="o">==</span> <span class="n">abo</span><span class="o">.</span><span class="n">final_structure</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>The basic dimensions and parameters of the run can be extracted from the output file with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abo</span><span class="o">.</span><span class="n">get_dims_spginfo_dataset</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(OrderedDict([(1,
+               OrderedDict([(&#39;intxc&#39;, 0),
+                            (&#39;ionmov&#39;, 0),
+                            (&#39;iscf&#39;, 7),
+                            (&#39;lmnmax&#39;, 1),
+                            (&#39;lnmax&#39;, 1),
+                            (&#39;mgfft&#39;, 30),
+                            (&#39;mpssoang&#39;, 1),
+                            (&#39;mqgrid&#39;, 3001),
+                            (&#39;natom&#39;, 2),
+                            (&#39;nloc_mem&#39;, 1),
+                            (&#39;nspden&#39;, 1),
+                            (&#39;nspinor&#39;, 1),
+                            (&#39;nsppol&#39;, 1),
+                            (&#39;nsym&#39;, 16),
+                            (&#39;n1xccc&#39;, 0),
+                            (&#39;ntypat&#39;, 1),
+                            (&#39;occopt&#39;, 1),
+                            (&#39;xclevel&#39;, 1),
+                            (&#39;mband&#39;, 1),
+                            (&#39;mffmem&#39;, 1),
+                            (&#39;mkmem&#39;, 1),
+                            (&#39;mpw&#39;, 752),
+                            (&#39;nfft&#39;, 27000),
+                            (&#39;nkpt&#39;, 1),
+                            (&#39;mem_per_proc_mb&#39;, 7.796),
+                            (&#39;wfk_size_mb&#39;, 0.013),
+                            (&#39;denpot_size_mb&#39;, 0.208)]))]),
+ OrderedDict([(1,
+               {&#39;spg_symbol&#39;: &#39;P4/mmm&#39;,
+                &#39;spg_number&#39;: 123,
+                &#39;bravais&#39;: &#39;Bravais tP (primitive tetrag.)&#39;})]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Within the shell, one can use:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abiview.py abo flow_h2/w0/t0/run.abo
+</pre></div>
+</div>
+<p>to plot the SCF cycle or</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abiopen.py flow_h2/w0/t0/run.abo
+</pre></div>
+</div>
+<p>to open the file and start the ipython terminal</p>
+<!--
+Note that the object returned by `abiopen` has an associated file descriptor that should be closed 
+explictly by the user with `abo.close()`. 
+This is the reason why many examples will use the python context manager:
+    
+```python
+    with abiopen("path") as abifile:
+        print(abifile)
+```
+        
+that closes the `abifile` object when we exit the `with` block.
+--></div>
+<div class="section" id="extracting-results-from-the-gsr-files">
+<h2>Extracting results from the GSR files<a class="headerlink" href="#extracting-results-from-the-gsr-files" title="Permalink to this headline">¶</a></h2>
+<p>The ground-state results are saved in the <code class="docutils literal notranslate"><span class="pre">GSR.nc</span></code> files whose API is extensively
+discussed in the <a class="reference internal" href="../gsr.html"><span class="doc std std-doc">GSR notebook</span></a>.</p>
+<p>Let’s have a look at the results produced by the first task:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="s2">&quot;flow_h2/w0/t0/outdata/out_GSR.nc&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">gsr</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">gsr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================================= File Info =================================
+Name: out_GSR.nc
+Directory: /Users/gmatteo/git_repos/abipy_book/abipy_book/base1/flow_h2/w0/t0/outdata
+Size: 8.20 kb
+Access Time: Thu Jul  8 02:48:30 2021
+Modification Time: Thu Jul  8 01:58:39 2021
+Change Time: Thu Jul  8 01:58:39 2021
+
+================================= Structure =================================
+Full Formula (H2)
+Reduced Formula: H2
+abc   :   5.291772   5.291772   5.291772
+angles:  90.000000  90.000000  90.000000
+Sites (2)
+  #  SP        a    b    c  cartesian_forces
+---  ----  -----  ---  ---  --------------------------------------------------
+  0  H     -0.05    0    0  [-19.54779681  -0.          -0.        ] eV ang^-1
+  1  H      0.05    0    0  [19.54779681 -0.         -0.        ] eV ang^-1
+
+Abinit Spacegroup: spgid: 123, num_spatial_symmetries: 16, has_timerev: True, symmorphic: False
+
+Stress tensor (Cartesian coordinates in GPa):
+[[-10.75762969   0.           0.        ]
+ [  0.           1.60903288   0.        ]
+ [  0.           0.           1.60903288]]
+
+Pressure: 2.513 (GPa)
+Energy: -28.21337450 (eV)
+
+============================== Electronic Bands ==============================
+Number of electrons: 2.0, Fermi level: -11.082 (eV)
+nsppol: 1, nkpt: 1, mband: 1, nspinor: 1, nspden: 1
+smearing scheme: none (occopt 1), tsmear_eV: 0.272
+Bandwidth: 0.000 (eV)
+Valence maximum located at:
+    spin: 0, kpt: [+0.000, +0.000, +0.000], name: $\Gamma$, weight: 0.000, band: 0, eig: -11.082, occ: 2.000
+TIP: Call set_fermie_to_vbm() to set the Fermi level to the VBM if this is a non-magnetic semiconductor
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see from the previous output, the <code class="docutils literal notranslate"><span class="pre">GSR</span></code> file contains information about
+the crystalline structure, forces, stresses as well as the KS band structure.
+In the jargon of object-oriented programming, one says that a <code class="docutils literal notranslate"><span class="pre">GSRFile</span></code> <em>has</em> a <code class="docutils literal notranslate"><span class="pre">Structure</span></code> object:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    gsr.structure
+</pre></div>
+</div>
+<p>and <em>has</em> an <code class="docutils literal notranslate"><span class="pre">ElectronBands</span></code> object:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    gsr.ebands
+</pre></div>
+</div>
+<p>This means that if you learn how to use the methods provided by <code class="docutils literal notranslate"><span class="pre">structure</span></code> and <code class="docutils literal notranslate"><span class="pre">ebands</span></code>, then you can
+easily get these objects from the <code class="docutils literal notranslate"><span class="pre">GSR</span></code> file and use this API to post-process the results.
+This is a general philosophy of AbiPy: every netcdf file object returned by <code class="docutils literal notranslate"><span class="pre">abiopen</span></code> contains
+other objects (the structure is always available, while the presence of other objects depend of the particular file).
+Remember this point because we will use it in the other lessons.</p>
+<p>Ok, now we know how to open and extract information from one <code class="docutils literal notranslate"><span class="pre">GSR</span></code> file.
+In this tutorial, however, we need to analyze multiple <code class="docutils literal notranslate"><span class="pre">GSR</span></code> files!
+If you are familiar with python, it should not be difficult to write a <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> that
+iterates over a list of GSR files, extracts the total energy with the corresponding volume and creates two
+lists that can be used to plot <span class="math notranslate nohighlight">\(E(d_{H-H})\)</span>.
+This kind of operations are, however, very common and AbiPy provides a high-level interface (<code class="docutils literal notranslate"><span class="pre">robots</span></code>) to
+operate on multiple files and post-process the data.</p>
+<p>In the simplest case, the <code class="docutils literal notranslate"><span class="pre">Robot</span></code> finds all files of a particular type located within a directory tree,
+stores all the data in memory and exposes methods to extract/post-process the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robot</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">GsrRobot</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;flow_h2&quot;</span><span class="p">)</span>
+<span class="n">robot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol start="0">
+<li>w0/t20/outdata/out_GSR.nc</li>
+<li>w0/t18/outdata/out_GSR.nc</li>
+<li>w0/t11/outdata/out_GSR.nc</li>
+<li>w0/t16/outdata/out_GSR.nc</li>
+<li>w0/t17/outdata/out_GSR.nc</li>
+<li>w0/t10/outdata/out_GSR.nc</li>
+<li>w0/t19/outdata/out_GSR.nc</li>
+<li>w0/t5/outdata/out_GSR.nc</li>
+<li>w0/t2/outdata/out_GSR.nc</li>
+<li>w0/t3/outdata/out_GSR.nc</li>
+<li>w0/t4/outdata/out_GSR.nc</li>
+<li>w0/t15/outdata/out_GSR.nc</li>
+<li>w0/t12/outdata/out_GSR.nc</li>
+<li>w0/t13/outdata/out_GSR.nc</li>
+<li>w0/t14/outdata/out_GSR.nc</li>
+<li>w0/t1/outdata/out_GSR.nc</li>
+<li>w0/t6/outdata/out_GSR.nc</li>
+<li>w0/t8/outdata/out_GSR.nc</li>
+<li>w0/t9/outdata/out_GSR.nc</li>
+<li>w0/t7/outdata/out_GSR.nc</li>
+<li>w0/t0/outdata/out_GSR.nc</li>
+</ol></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The table contains several columns:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;formula&#39;, &#39;natom&#39;, &#39;alpha&#39;, &#39;beta&#39;, &#39;gamma&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;volume&#39;,
+       &#39;abispg_num&#39;, &#39;spglib_symb&#39;, &#39;spglib_num&#39;, &#39;spglib_lattice_type&#39;,
+       &#39;energy&#39;, &#39;pressure&#39;, &#39;max_force&#39;, &#39;ecut&#39;, &#39;pawecutdg&#39;, &#39;tsmear&#39;,
+       &#39;nkpt&#39;, &#39;nsppol&#39;, &#39;nspinor&#39;, &#39;nspden&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Inside the notebook, we can visualize the table with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>formula</th>
+      <th>natom</th>
+      <th>alpha</th>
+      <th>beta</th>
+      <th>gamma</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>volume</th>
+      <th>abispg_num</th>
+      <th>...</th>
+      <th>energy</th>
+      <th>pressure</th>
+      <th>max_force</th>
+      <th>ecut</th>
+      <th>pawecutdg</th>
+      <th>tsmear</th>
+      <th>nkpt</th>
+      <th>nsppol</th>
+      <th>nspinor</th>
+      <th>nspden</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>w0/t20/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-29.482112</td>
+      <td>-2.453928</td>
+      <td>3.520449</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t18/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-29.668361</td>
+      <td>-2.273618</td>
+      <td>3.164346</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t11/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-30.081045</td>
+      <td>-1.306064</td>
+      <td>0.669857</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t16/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-29.831440</td>
+      <td>-2.058169</td>
+      <td>2.682742</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t17/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-29.753241</td>
+      <td>-2.170734</td>
+      <td>2.940714</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t10/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-30.091282</td>
+      <td>-1.106892</td>
+      <td>0.050198</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t19/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-29.577707</td>
+      <td>-2.367714</td>
+      <td>3.356837</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t5/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-29.779514</td>
+      <td>0.249295</td>
+      <td>5.346041</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t2/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-29.079272</td>
+      <td>1.463278</td>
+      <td>12.125932</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t3/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-29.377087</td>
+      <td>1.016114</td>
+      <td>9.404751</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t4/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-29.606393</td>
+      <td>0.612993</td>
+      <td>7.176415</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t15/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-29.901949</td>
+      <td>-1.934773</td>
+      <td>2.386232</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t12/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-30.054898</td>
+      <td>-1.486643</td>
+      <td>1.198657</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t13/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-30.015128</td>
+      <td>-1.650521</td>
+      <td>1.652942</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t14/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-29.963621</td>
+      <td>-1.799429</td>
+      <td>2.045489</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t1/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-28.697681</td>
+      <td>1.960239</td>
+      <td>15.457585</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t6/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-29.906409</td>
+      <td>-0.079134</td>
+      <td>3.837290</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t8/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-30.052174</td>
+      <td>-0.644270</td>
+      <td>1.549818</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t9/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-30.082807</td>
+      <td>-0.887078</td>
+      <td>0.681054</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t7/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-29.995127</td>
+      <td>-0.375908</td>
+      <td>2.588480</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>w0/t0/outdata/out_GSR.nc</th>
+      <td>H2</td>
+      <td>2</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>5.291772</td>
+      <td>148.184711</td>
+      <td>123</td>
+      <td>...</td>
+      <td>-28.213374</td>
+      <td>2.513188</td>
+      <td>19.547797</td>
+      <td>10.0</td>
+      <td>-1.0</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>21 rows × 23 columns</p>
+</div></div></div>
+</div>
+<p>Great! We managed to get a nice table with lot of useful results with just 3 lines of code and the robot!
+There are however two problems:</p>
+<ul class="simple">
+<li><p>The rows of the table are not ordered by increasing H-H distance (files are sorted alphabetically)</p></li>
+<li><p>Our dataframe contains the energy of the different configurations but we would like to plot the energy
+as a function of the H-H distance</p></li>
+</ul>
+<p>Well, robots can do a lot of hard work but they are a little bit stupid so
+we have to tell them what to do with the data.
+More specifically we need a way to tell the robot that, for each <code class="docutils literal notranslate"><span class="pre">GSR</span></code> file, it should get the crystalline
+structure, compute the distance between the first and the second atom and insert the result
+in our table in a given column.
+This kind of tasks are usually executed with <code class="docutils literal notranslate"><span class="pre">callbacks</span></code> i.e. functions that are passed in input
+and <strong>automatically executed</strong> by the framework at runtime.</p>
+<img alt="" src="https://github.com/abinit/abipy_assets/blob/master/caution-machine_has_no_brain.jpg?raw=true" />
+<p>Let’s look at the documentation of <code class="docutils literal notranslate"><span class="pre">robot.get_dataframe</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abilab</span><span class="o">.</span><span class="n">print_doc</span><span class="p">(</span><span class="n">robot</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">get_dataframe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_geo</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">abspath</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">funcs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a |pandas-DataFrame| with the most important GS results.</span>
+<span class="sd">        and the filenames as index.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            with_geo: True if structure info should be added to the dataframe</span>
+<span class="sd">            abspath: True if paths in index should be absolute. Default: Relative to getcwd().</span>
+
+<span class="sd">        kwargs:</span>
+<span class="sd">            attrs:</span>
+<span class="sd">                List of additional attributes of the |GsrFile| to add to the DataFrame.</span>
+<span class="sd">            funcs: Function or list of functions to execute to add more data to the DataFrame.</span>
+<span class="sd">                Each function receives a |GsrFile| object and returns a tuple (key, value)</span>
+<span class="sd">                where key is a string with the name of column and value is the value to be inserted.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<p>It seems complicated but the actual implementation of the callback is just three lines of code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hh_dist</span><span class="p">(</span><span class="n">gsr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This callback receives a GSR file and computes the H-H distance.</span>
+<span class="sd">    The robot will call this function to compute the H-H distance, </span>
+<span class="sd">    and return a (key, value) tuple that will be inserted in the pandas DataFrame.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cart_coords</span> <span class="o">=</span> <span class="n">gsr</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">cart_coords</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">cart_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">cart_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="s2">&quot;hh_dist&quot;</span><span class="p">,</span> <span class="n">d</span>
+
+<span class="k">with</span> <span class="n">abilab</span><span class="o">.</span><span class="n">GsrRobot</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;flow_h2&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">robot</span><span class="p">:</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">(</span><span class="n">funcs</span><span class="o">=</span><span class="n">hh_dist</span><span class="p">)</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;hh_dist&quot;</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<p>As expected, now the table contains a new column with <code class="docutils literal notranslate"><span class="pre">hh_dist</span></code> in Angstrom:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;hh_dist&quot;</span> <span class="ow">in</span> <span class="n">table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s print the two columns with the H-H distance and the total energy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[[</span><span class="s2">&quot;hh_dist&quot;</span><span class="p">,</span> <span class="s2">&quot;energy&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>hh_dist</th>
+      <th>energy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>w0/t0/outdata/out_GSR.nc</th>
+      <td>0.529177</td>
+      <td>-28.213374</td>
+    </tr>
+    <tr>
+      <th>w0/t1/outdata/out_GSR.nc</th>
+      <td>0.556959</td>
+      <td>-28.697681</td>
+    </tr>
+    <tr>
+      <th>w0/t2/outdata/out_GSR.nc</th>
+      <td>0.584741</td>
+      <td>-29.079272</td>
+    </tr>
+    <tr>
+      <th>w0/t3/outdata/out_GSR.nc</th>
+      <td>0.612523</td>
+      <td>-29.377087</td>
+    </tr>
+    <tr>
+      <th>w0/t4/outdata/out_GSR.nc</th>
+      <td>0.640304</td>
+      <td>-29.606393</td>
+    </tr>
+    <tr>
+      <th>w0/t5/outdata/out_GSR.nc</th>
+      <td>0.668086</td>
+      <td>-29.779514</td>
+    </tr>
+    <tr>
+      <th>w0/t6/outdata/out_GSR.nc</th>
+      <td>0.695868</td>
+      <td>-29.906409</td>
+    </tr>
+    <tr>
+      <th>w0/t7/outdata/out_GSR.nc</th>
+      <td>0.723650</td>
+      <td>-29.995127</td>
+    </tr>
+    <tr>
+      <th>w0/t8/outdata/out_GSR.nc</th>
+      <td>0.751432</td>
+      <td>-30.052174</td>
+    </tr>
+    <tr>
+      <th>w0/t9/outdata/out_GSR.nc</th>
+      <td>0.779213</td>
+      <td>-30.082807</td>
+    </tr>
+    <tr>
+      <th>w0/t10/outdata/out_GSR.nc</th>
+      <td>0.806995</td>
+      <td>-30.091282</td>
+    </tr>
+    <tr>
+      <th>w0/t11/outdata/out_GSR.nc</th>
+      <td>0.834777</td>
+      <td>-30.081045</td>
+    </tr>
+    <tr>
+      <th>w0/t12/outdata/out_GSR.nc</th>
+      <td>0.862559</td>
+      <td>-30.054898</td>
+    </tr>
+    <tr>
+      <th>w0/t13/outdata/out_GSR.nc</th>
+      <td>0.890341</td>
+      <td>-30.015128</td>
+    </tr>
+    <tr>
+      <th>w0/t14/outdata/out_GSR.nc</th>
+      <td>0.918122</td>
+      <td>-29.963621</td>
+    </tr>
+    <tr>
+      <th>w0/t15/outdata/out_GSR.nc</th>
+      <td>0.945904</td>
+      <td>-29.901949</td>
+    </tr>
+    <tr>
+      <th>w0/t16/outdata/out_GSR.nc</th>
+      <td>0.973686</td>
+      <td>-29.831440</td>
+    </tr>
+    <tr>
+      <th>w0/t17/outdata/out_GSR.nc</th>
+      <td>1.001468</td>
+      <td>-29.753241</td>
+    </tr>
+    <tr>
+      <th>w0/t18/outdata/out_GSR.nc</th>
+      <td>1.029250</td>
+      <td>-29.668361</td>
+    </tr>
+    <tr>
+      <th>w0/t19/outdata/out_GSR.nc</th>
+      <td>1.057031</td>
+      <td>-29.577707</td>
+    </tr>
+    <tr>
+      <th>w0/t20/outdata/out_GSR.nc</th>
+      <td>1.084813</td>
+      <td>-29.482112</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note that the energy in our <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is given in eV to facilitate the integration
+with <code class="docutils literal notranslate"><span class="pre">pymatgen</span></code> that uses eV for energies and Angstrom for lengths.
+Let’s add another column to our table with energies in Hartree:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;energy_Ha&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">abilab</span><span class="o">.</span><span class="n">units</span><span class="o">.</span><span class="n">eV_to_Ha</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and use the <code class="docutils literal notranslate"><span class="pre">plot</span></code> method of pandas <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> to plot <code class="docutils literal notranslate"><span class="pre">energy_Ha</span></code> vs <code class="docutils literal notranslate"><span class="pre">hh_dist</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;hh_dist&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;energy_Ha&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;-o&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base1_54_0.png" src="../_images/lesson_base1_54_0.png" />
+</div>
+</div>
+<p>At this point, it should be clear that to plot the maximum of the forces as a function of the H-H distance
+we just need:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;hh_dist&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;max_force&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;-o&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base1_56_0.png" src="../_images/lesson_base1_56_0.png" />
+</div>
+</div>
+<p>Want to plot the two quantities on the same figure?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;hh_dist&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;energy_Ha&quot;</span><span class="p">,</span> <span class="s2">&quot;max_force&quot;</span><span class="p">],</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base1_58_0.png" src="../_images/lesson_base1_58_0.png" />
+</div>
+</div>
+<p>Your boss understands the data only if it is formatted inside a <span class="math notranslate nohighlight">\(\LaTeX\)</span> tabular environment?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="p">[[</span><span class="s2">&quot;hh_dist&quot;</span><span class="p">,</span> <span class="s2">&quot;energy&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_latex</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\begin{tabular}{lrr}
+\toprule
+{} &amp;   hh\_dist &amp;     energy \\
+\midrule
+w0/t0/outdata/out\_GSR.nc  &amp;  0.529177 &amp; -28.213374 \\
+w0/t1/outdata/out\_GSR.nc  &amp;  0.556959 &amp; -28.697681 \\
+w0/t2/outdata/out\_GSR.nc  &amp;  0.584741 &amp; -29.079272 \\
+w0/t3/outdata/out\_GSR.nc  &amp;  0.612523 &amp; -29.377087 \\
+w0/t4/outdata/out\_GSR.nc  &amp;  0.640304 &amp; -29.606393 \\
+w0/t5/outdata/out\_GSR.nc  &amp;  0.668086 &amp; -29.779514 \\
+w0/t6/outdata/out\_GSR.nc  &amp;  0.695868 &amp; -29.906409 \\
+w0/t7/outdata/out\_GSR.nc  &amp;  0.723650 &amp; -29.995127 \\
+w0/t8/outdata/out\_GSR.nc  &amp;  0.751432 &amp; -30.052174 \\
+w0/t9/outdata/out\_GSR.nc  &amp;  0.779213 &amp; -30.082807 \\
+w0/t10/outdata/out\_GSR.nc &amp;  0.806995 &amp; -30.091282 \\
+w0/t11/outdata/out\_GSR.nc &amp;  0.834777 &amp; -30.081045 \\
+w0/t12/outdata/out\_GSR.nc &amp;  0.862559 &amp; -30.054898 \\
+w0/t13/outdata/out\_GSR.nc &amp;  0.890341 &amp; -30.015128 \\
+w0/t14/outdata/out\_GSR.nc &amp;  0.918122 &amp; -29.963621 \\
+w0/t15/outdata/out\_GSR.nc &amp;  0.945904 &amp; -29.901949 \\
+w0/t16/outdata/out\_GSR.nc &amp;  0.973686 &amp; -29.831440 \\
+w0/t17/outdata/out\_GSR.nc &amp;  1.001468 &amp; -29.753241 \\
+w0/t18/outdata/out\_GSR.nc &amp;  1.029250 &amp; -29.668361 \\
+w0/t19/outdata/out\_GSR.nc &amp;  1.057031 &amp; -29.577707 \\
+w0/t20/outdata/out\_GSR.nc &amp;  1.084813 &amp; -29.482112 \\
+\bottomrule
+\end{tabular}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Need to send data to Windows users?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#table.to_excel(&quot;&#39;output.xlsx&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Want to copy the dataframe to the system clipboard so that one can easily past the data into an other applications e.g. Excel?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#table.to_clipboard()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="analysis-of-the-charge-density">
+<h2>Analysis of the charge density<a class="headerlink" href="#analysis-of-the-charge-density" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">DEN.nc</span></code> file stores the density in real space on the FFT mesh.
+A <code class="docutils literal notranslate"><span class="pre">DEN.nc</span></code> file <em>has</em> a <code class="docutils literal notranslate"><span class="pre">structure</span></code>, and an <code class="docutils literal notranslate"><span class="pre">ebands</span></code> object with the electronic eigenvalues/occupations
+and a <code class="docutils literal notranslate"><span class="pre">Density</span></code> object with <span class="math notranslate nohighlight">\(n(r)\)</span> (numpy array <code class="docutils literal notranslate"><span class="pre">.datar</span></code>) and <span class="math notranslate nohighlight">\(n(G)\)</span> (<code class="docutils literal notranslate"><span class="pre">.datag</span></code>).</p>
+<p>Let’s open the file with <code class="docutils literal notranslate"><span class="pre">abiopen</span></code> and print it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="s2">&quot;flow_h2/w0/t10/outdata/out_DEN.nc&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">denfile</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">denfile</span><span class="p">)</span>
+    <span class="n">density</span> <span class="o">=</span> <span class="n">denfile</span><span class="o">.</span><span class="n">density</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================================= File Info =================================
+Name: out_DEN.nc
+Directory: /Users/gmatteo/git_repos/abipy_book/abipy_book/base1/flow_h2/w0/t10/outdata
+Size: 217.43 kb
+Access Time: Thu Jul  8 02:48:30 2021
+Modification Time: Thu Jul  8 01:58:39 2021
+Change Time: Thu Jul  8 01:58:39 2021
+
+================================= Structure =================================
+Full Formula (H2)
+Reduced Formula: H2
+abc   :   5.291772   5.291772   5.291772
+angles:  90.000000  90.000000  90.000000
+Sites (2)
+  #  SP           a    b    c
+---  ----  --------  ---  ---
+  0  H     -0.07625    0    0
+  1  H      0.07625    0    0
+
+Abinit Spacegroup: spgid: 123, num_spatial_symmetries: 16, has_timerev: True, symmorphic: False
+
+============================== Electronic Bands ==============================
+Number of electrons: 2.0, Fermi level: -9.658 (eV)
+nsppol: 1, nkpt: 1, mband: 1, nspinor: 1, nspden: 1
+smearing scheme: none (occopt 1), tsmear_eV: 0.272
+Bandwidth: 0.000 (eV)
+Valence maximum located at:
+    spin: 0, kpt: [+0.000, +0.000, +0.000], name: $\Gamma$, weight: 0.000, band: 0, eig: -9.658, occ: 2.000
+TIP: Call set_fermie_to_vbm() to set the Fermi level to the VBM if this is a non-magnetic semiconductor
+
+XC functional: LDA_XC_TETER93
+================================== Density ==================================
+Density: nspinor: 1, nsppol: 1, nspden: 1
+Mesh3D: nx=30, ny=30, nz=30 
+Integrated electronic and magnetization densities in atomic spheres:
+      symbol      ntot  rsph_ang           frac_coords
+iatom                                                 
+0          H  0.134448      0.31  [-0.07625, 0.0, 0.0]
+1          H  0.134448      0.31   [0.07625, 0.0, 0.0]
+Total magnetization from unit cell integration: 0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The simplest thing we can do now is to print <span class="math notranslate nohighlight">\(n(r)\)</span> along a line passing through two points specified
+either in terms of two vectors or two integers defining the site index in our <code class="docutils literal notranslate"><span class="pre">structure</span></code>.
+Let’s plot the density along the H-H bond by passing the index of the two atoms:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">density</span><span class="o">.</span><span class="n">plot_line</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base1_68_0.png" src="../_images/lesson_base1_68_0.png" />
+</div>
+</div>
+<p>Great! If we have a netcdf file and AbiPy, we don’t need to use cut3d to extract the data from the file
+and we can do simple plots with matplotlib.
+Unfortunately, <span class="math notranslate nohighlight">\(n(r)\)</span> is a 3D object and the notebook is not the most suitable tool to visualize this kind of dataset.
+Fortunately there are several graphical applications to visualize 3D fields in crystalline environments
+and AbiPy provides tools to export the data from netcdf to the text format supported by the external graphical tool.</p>
+<p>For example, one can use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#density.visualize(&quot;vesta&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>to visualize density isosurfaces of our system:</p>
+<p><img alt="" src="https://github.com/abinit/abipy_assets/blob/master/h2_density.png?raw=true" /></p>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+<p>To summarize, we learned how to define python functions that can be used to generate many input files easily.
+We briefly discussed how to use these inputs to build a basic AbiPy flow without dependencies.
+More importantly, we showed that AbiPy provides several tools that can be used to inspect and analyze
+the results without having to pass necessarly through the creation and execution of the <code class="docutils literal notranslate"><span class="pre">Flow</span></code>.
+Last but not least, we discussed how to use <code class="docutils literal notranslate"><span class="pre">robots</span></code> to collect results from the output files and store
+them in pandas DataFrames</p>
+<p>AbiPy users are <strong>strongly recommended</strong> to familiarize themself with this kind of interface before
+moving to more advanced features such as the flow execution that requires a good understanding of the python language.
+As a matter of fact, we decided to write AbiPy in python not for efficiency reasons (actually python
+is usually slower that Fortran/C) but because there are tons of libraries for scientific applications
+(numpy, scipy, pandas, matplotlib, jupyter, etc).
+If you learn to use these great libraries for your work you can really boost your productivity and save a lot of time.</p>
+<p>A logical next lesson would be the the tutorial about the
+<a class="reference external" href="https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/base3/lesson_base3.ipynb">ground-state properties of silicon</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./base1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../flows.html" title="previous page">Tasks, Workflows and Flow</a>
+    <a class='right-next' id="next-link" href="../base3/lesson_base3.html" title="next page">Base3 lesson (silicon)</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By M. Giantomassi and the AbiPy group<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

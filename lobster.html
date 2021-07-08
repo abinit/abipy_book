@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Analyzing Lobster output files with AbiPy &#8212; AbiPy_Book</title>
+    <title>Lobster output files &#8212; AbiPy Book</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,7 +53,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Tasks, Workflows and Flow" href="flows.html" />
-    <link rel="prev" title="Analyzing wannier90 results with AbiPy" href="abiwan.html" />
+    <link rel="prev" title="The ABIWAN file (wannier90)" href="abiwan.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -75,7 +75,7 @@
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">AbiPy_Book</h1>
+      <h1 class="site-logo" id="site-title">AbiPy Book</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -86,92 +86,146 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Welcome to your Jupyter Book
+   Introduction
   </a>
  </li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="content.html">
-   Content in Jupyter Book
+<p class="caption">
+ <span class="caption-text">
+  Basic AbiPy Objects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="structure.html">
+   Structure object
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="markdown.html">
-     Markdown Files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="notebooks.html">
-     Content with notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="abinit_input.html">
-     Table of Contents
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="input_factories.html">
-     Factory functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="structure.html">
-     Structure object
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="gsr.html">
-     Post-processing tools for electron band energies
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="hist.html">
-     The HIST.nc file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="efatbands.html">
-     FATBANDS.nc file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ddb.html">
-     Post-processing DFPT calculations with the DDB file
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sigres.html">
-     Postprocessing tools for GW calculations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mdf.html">
-     Postprocessing tools for Bethe-Salpeter calculations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="abiwan.html">
-     Analyzing wannier90 results with AbiPy
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Analyzing Lobster output files with AbiPy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="flows.html">
-     Tasks, Workflows and Flow
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="abinit_input.html">
+   The AbinitInput object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="input_factories.html">
+   Factory functions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Output Files
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="gsr.html">
+   The GSR file (Ground-State)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hist.html">
+   The HIST.nc file (relaxation/MD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="efatbands.html">
+   The FATBANDS.nc file
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ddb.html">
+   The DDB file (DFPT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sigres.html">
+   The SIGRES file (GW)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mdf.html">
+   The MDF file (Bethe-Salpeter)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="abiwan.html">
+   The ABIWAN file (wannier90)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lobster output files
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Workflows
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="flows.html">
+   Tasks, Workflows and Flow
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="base1/lesson_base1.html">
+   Base1 lesson (H2 molecule)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="base3/lesson_base3.html">
+   Base3 lesson (silicon)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="base4/lesson_base4.html">
+   Base4 lesson (Aluminium)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dfpt/lesson_dfpt.html">
+   Phonons and Born effective charges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="g0w0/lesson_g0w0.html">
+   <span class="math notranslate nohighlight">
+    \(G_0W_0\)
+   </span>
+   band structure with star-function interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bse/lesson_bse.html">
+   Bethe-Salpeter calculations with AbiPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="eph_al/lesson_eph_al.html">
+   Isotropic superconductivity
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Miscellaneous
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="links.html">
+   Useful links
+  </a>
  </li>
 </ul>
 
@@ -233,14 +287,14 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/gmatteo/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/abinit/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/gmatteo/abipy_book/issues/new?title=Issue%20on%20page%20%2Flobster.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/abinit/abipy_book/issues/new?title=Issue%20on%20page%20%2Flobster.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/gmatteo/abipy_book/edit/main/docs/lobster.md"><button
+        <a class="edit-button" href="https://github.com/abinit/abipy_book/edit/master/docs/lobster.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -260,7 +314,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/gmatteo/abipy_book/main?urlpath=tree/docs/lobster.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/abinit/abipy_book/master?urlpath=tree/docs/lobster.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -282,11 +336,6 @@
             </div>
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#table-of-contents">
-   Table of Contents
-  </a>
- </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-to-analyze-the-cohpcar-file">
    How to analyze the COHPCAR file
@@ -318,33 +367,21 @@
         
               <div>
                 
-  <p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a> <a id="top"></a></p>
-<div class="section" id="analyzing-lobster-output-files-with-abipy">
-<h1>Analyzing Lobster output files with AbiPy<a class="headerlink" href="#analyzing-lobster-output-files-with-abipy" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="lobster-output-files">
+<h1>Lobster output files<a class="headerlink" href="#lobster-output-files" title="Permalink to this headline">¶</a></h1>
 <p>This example shows how to analyze the output files
 produced by <a class="reference external" href="http://schmeling.ac.rwth-aachen.de/cohp">Lobster</a></p>
 <p>Use</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abiopen.py FILE 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abiopen.py FILE
 </pre></div>
 </div>
 <p>with the <code class="docutils literal notranslate"><span class="pre">--expose</span></code> or <code class="docutils literal notranslate"><span class="pre">--print</span></code> for a command line interface
 and <code class="docutils literal notranslate"><span class="pre">--notebook</span></code> to generate a jupyter notebook from a lobster <code class="docutils literal notranslate"><span class="pre">FILE</span></code>.</p>
 <p>Note: The code in this notebook requires abipy &gt;= 0.6</p>
-<div class="section" id="table-of-contents">
-<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
-<ul class="simple">
-<li><p><a class="reference external" href="#How-to-analyze-the-COHPCAR-file">How to analyze the COHPCAR file</a></p></li>
-<li><p><a class="reference external" href="#How-to-analyze-the-DOSCAR-file">How to analyze the DOSCAR file</a></p></li>
-<li><p><a class="reference external" href="#Analyzing-all-Lobster-output-files-with-LobsterAnalyzer">Analyzing all Lobster output files</a></p></li>
-</ul>
 <p>Let’s start by importing the basic modules needed for this tutorial.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use this at the beginning of your script so that your code will be compatible with python3</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">unicode_literals</span>
-
-<span class="kn">import</span> <span class="nn">warnings</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>  <span class="c1"># Ignore warnings</span>
 
 <span class="kn">from</span> <span class="nn">abipy</span> <span class="kn">import</span> <span class="n">abilab</span>
@@ -353,18 +390,16 @@ and <code class="docutils literal notranslate"><span class="pre">--notebook</spa
 
 <span class="c1"># This line configures matplotlib to show figures embedded in the notebook.</span>
 <span class="c1"># Replace `inline` with `notebook` in classic notebook</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline   
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="c1"># Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib</span>
-<span class="c1">#%matplotlib widget  </span>
+<span class="c1">#%matplotlib widget</span>
 </pre></div>
-</div>
 </div>
 </div>
 </div>
 <div class="section" id="how-to-analyze-the-cohpcar-file">
 <h2>How to analyze the COHPCAR file<a class="headerlink" href="#how-to-analyze-the-cohpcar-file" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to one of the reference file shipped with AbiPy</span>
@@ -379,7 +414,7 @@ and <code class="docutils literal notranslate"><span class="pre">--notebook</spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">Creating temporary file: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpfdbtf7aeGaAs_COHPCAR.lobster</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">Creating temporary file: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpbhwvi27iGaAs_COHPCAR.lobster</span>
 
 COHP: Number of energies: 401, from -14.035 to 6.015 (eV) with E_fermi set 0 (was 2.298)
 has_partial_projections: True, nsppol: 1
@@ -398,7 +433,7 @@ Number of pairs: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/lobster_7_0.png" src="_images/lobster_7_0.png" />
+<img alt="_images/lobster_5_0.png" src="_images/lobster_5_0.png" />
 </div>
 </div>
 <p>To plot the integrated COHP averaged over all atom pairs:</p>
@@ -409,7 +444,7 @@ Number of pairs: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/lobster_9_0.png" src="_images/lobster_9_0.png" />
+<img alt="_images/lobster_7_0.png" src="_images/lobster_7_0.png" />
 </div>
 </div>
 <p>To plot the total overlap for all sites listed in <code class="docutils literal notranslate"><span class="pre">from_site_index</span></code></p>
@@ -420,20 +455,20 @@ Number of pairs: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/lobster_11_0.png" src="_images/lobster_11_0.png" />
+<img alt="_images/lobster_9_0.png" src="_images/lobster_9_0.png" />
 </div>
 </div>
 <p>To plot partial crystal orbital projections for all sites listed in <code class="docutils literal notranslate"><span class="pre">from_site_index</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cohp_file</span><span class="o">.</span><span class="n">plot_site_pairs_partial</span><span class="p">(</span><span class="n">from_site_index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
-                                  <span class="n">title</span><span class="o">=</span><span class="s2">&quot;COHP with orbital projections from site index 0&quot;</span><span class="p">,</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cohp_file</span><span class="o">.</span><span class="n">plot_site_pairs_partial</span><span class="p">(</span><span class="n">from_site_index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                                  <span class="n">title</span><span class="o">=</span><span class="s2">&quot;COHP with orbital projections from site index 0&quot;</span><span class="p">,</span>
                                   <span class="n">fontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/lobster_13_0.png" src="_images/lobster_13_0.png" />
+<img alt="_images/lobster_11_0.png" src="_images/lobster_11_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -447,7 +482,6 @@ Number of pairs: 2
 </div>
 <div class="section" id="how-to-analyze-the-icohplist-file">
 <h2>How to analyze the ICOHPLIST file<a class="headerlink" href="#how-to-analyze-the-icohplist-file" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to one of the AbiPy file</span>
@@ -461,7 +495,7 @@ Number of pairs: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">Creating temporary file: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpigfmpicmGaAs_ICOHPLIST.lobster</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">Creating temporary file: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmp7dkuqq3_GaAs_ICOHPLIST.lobster</span>
 Number of pairs: 2
  index0  index1 type0 type1  spin  average distance n_bonds   pair
       0       1    Ga    As     0 -4.36062  2.49546    None (0, 1)
@@ -473,7 +507,6 @@ Number of pairs: 2
 </div>
 <div class="section" id="how-to-analyze-the-doscar-file">
 <h2>How to analyze the DOSCAR file<a class="headerlink" href="#how-to-analyze-the-doscar-file" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dirpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">abidata</span><span class="o">.</span><span class="n">dirpath</span><span class="p">,</span> <span class="s2">&quot;refs&quot;</span><span class="p">,</span> <span class="s2">&quot;lobster_gaas&quot;</span><span class="p">)</span>
@@ -486,7 +519,7 @@ Number of pairs: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">Creating temporary file: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpj3_rs736GaAs_DOSCAR.lobster</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">Creating temporary file: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpmp47_fhvGaAs_DOSCAR.lobster</span>
 Number of energies: 401, from -14.035 to 6.015 (eV) with E_fermi set to 0 (was 2.298)
 nsppol: 1
 Number of sites in projected DOS: 2
@@ -503,7 +536,7 @@ Number of sites in projected DOS: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/lobster_20_0.png" src="_images/lobster_20_0.png" />
+<img alt="_images/lobster_18_0.png" src="_images/lobster_18_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -513,13 +546,12 @@ Number of sites in projected DOS: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/lobster_21_0.png" src="_images/lobster_21_0.png" />
+<img alt="_images/lobster_19_0.png" src="_images/lobster_19_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="analyzing-all-lobster-output-files-with-lobsteranalyzer">
 <h2>Analyzing all Lobster output files with LobsterAnalyzer<a class="headerlink" href="#analyzing-all-lobster-output-files-with-lobsteranalyzer" title="Permalink to this headline">¶</a></h2>
-<p>[<a class="reference external" href="#top">back to top</a>]</p>
 <p>Let’s assume we have a directory with lobster output files
 for COOP, COHP, DOS and we need to produce plots showing all these results altogether.
 In this case, one can use the <code class="docutils literal notranslate"><span class="pre">LobsterAnalyzer</span></code> object and initialize it from the directory
@@ -588,7 +620,7 @@ Number of sites in projected DOS: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/lobster_25_0.png" src="_images/lobster_25_0.png" />
+<img alt="_images/lobster_23_0.png" src="_images/lobster_23_0.png" />
 </div>
 </div>
 <p>To plot COHP for all sites in from_site_index and Lobster DOS:</p>
@@ -599,7 +631,7 @@ Number of sites in projected DOS: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/lobster_27_0.png" src="_images/lobster_27_0.png" />
+<img alt="_images/lobster_25_0.png" src="_images/lobster_25_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -610,7 +642,7 @@ Number of sites in projected DOS: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/lobster_28_0.png" src="_images/lobster_28_0.png" />
+<img alt="_images/lobster_26_0.png" src="_images/lobster_26_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -623,9 +655,7 @@ Number of sites in projected DOS: 2
 <div class="alert alert-info" role="alert">
 For a command line interface, use: `abiview.py lobster .`.
 Use the `--expose` option to generate plots automatically.
-</div>
-<p>Back to the main <a class="reference internal" href="index.html"><span class="doc std std-doc">Index</span></a></p>
-</div>
+</div></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -653,7 +683,7 @@ Use the `--expose` option to generate plots automatically.
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="abiwan.html" title="previous page">Analyzing wannier90 results with AbiPy</a>
+    <a class='left-prev' id="prev-link" href="abiwan.html" title="previous page">The ABIWAN file (wannier90)</a>
     <a class='right-next' id="next-link" href="flows.html" title="next page">Tasks, Workflows and Flow</a>
 
         </div>
@@ -664,7 +694,7 @@ Use the `--expose` option to generate plots automatically.
     <div class="container">
       <p>
         
-          By M. Giantomassi<br/>
+          By M. Giantomassi and the AbiPy group<br/>
         
             &copy; Copyright 2021.<br/>
       </p>

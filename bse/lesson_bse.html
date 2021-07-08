@@ -1,0 +1,1349 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bethe-Salpeter calculations with AbiPy &#8212; AbiPy Book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"*": "{\\dagger}", "ra": "{\\rangle}", "la": "{\\langle}", "bm": ["{\\boldsymbol #1}", 1], "mcL": "{\\mathcal{L}}", "mcG": "{\\mathcal{G}}", "mcR": "{\\mathcal{R}}", "mcS": "{\\mathcal{S}}", "mcC": "{\\mathcal{C}}", "mcO": "{\\mathcal{O}}", "KS": "{\\text{KS}}", "eph": "{\\text{e-ph}}", "ee": "{\\epsilon}", "phph": "{\\text{ph-ph}}", "FM": "{\\text{FM}}", "DW": "{\\text{DW}}", "QP": "{\\text{QP}}", "BZ": "{\\text{BZ}}", "sign": "{\\text{sign}}", "xc": "{\\text{xc}}", "tchi": "{\\tilde\\chi}", "rr": "{\\bf r}", "RR": "{\\bf R}", "tt": "{\\bf t}", "GG": "{\\bf G}", "kk": "{\\bf k}", "qq": "{\\bf q}", "kq": "{\\kk + \\qq}", "qG": "{\\bf q + G}", "kG": "{\\bf k + G}", "kmq": "{\\kk - \\qq}", "kpq": "{\\kk + \\qq}", "kpG": "{\\kk + \\GG}", "qpG": "{\\qq + \\GG}", "nk": "{n \\kk}", "mk": "{, \\kk}", "nks": "{n \\kk\\sigma}", "mks": "{m \\kk\\sigma}", "enk": "{\\varepsilon_\\nk}", "emkq": "{\\varepsilon_{m\\kk+\\qq}}", "qnu": "{\\qq \\nu}", "wqnu": "{\\omega_{\\qnu}}", "vnk": "{\\mathbf{v}_{n\\kk}}", "vmkq": "{\\mathbf{v}_{m\\kk+\\qq}}", "vnka": "{\\mathrm{v}_{n\\kk,\\alpha}}", "vnkb": "{\\mathrm{v}_{n\\kk,\\beta}}", "ef": "{\\varepsilon_F}", "gkkp": "{g_{mn\\nu}(\\kk,\\qq)}", "gkq": "{g_{mn\\nu}(\\kk,\\qq)}", "Go": "{G_0}", "Wo": "{W_0}", "Ueff": "{U_{\\text{eff}}}", "tee": "{\\tilde{\\epsilon}}", "ww": "{\\omega}", "tww": "{\\tilde\\omega}", "dd": "{\\,\\text{d}}", "vxc": "{v_\\xc}", "Ri": "{\\mcR^{-1}}", "Rit": "{\\mcR^{-1\\tau}}", "Si": "{\\mcS^{-1}}}", "Sit": "{\\Si^\\tau}}", "PDER": ["{\\dfrac{\\partial #1}{\\partial #2}}", 2], "FDER": ["{\\dfrac{\\delta #1}{\\delta #2}}", 2], "tPsi": "{\\tilde\\Psi}", "tpsi": "{\\tilde\\psi}", "tPhi": "{\\tilde\\Phi}", "tphi": "{\\tilde\\phi}", "tprj": "{\\tilde p}"}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Isotropic superconductivity" href="../eph_al/lesson_eph_al.html" />
+    <link rel="prev" title="\(G_0W_0\) band structure with star-function interpolation" href="../g0w0/lesson_g0w0.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AbiPy Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Basic AbiPy Objects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../structure.html">
+   Structure object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../abinit_input.html">
+   The AbinitInput object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../input_factories.html">
+   Factory functions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Output Files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../gsr.html">
+   The GSR file (Ground-State)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../hist.html">
+   The HIST.nc file (relaxation/MD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../efatbands.html">
+   The FATBANDS.nc file
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ddb.html">
+   The DDB file (DFPT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sigres.html">
+   The SIGRES file (GW)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mdf.html">
+   The MDF file (Bethe-Salpeter)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../abiwan.html">
+   The ABIWAN file (wannier90)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lobster.html">
+   Lobster output files
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Workflows
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../flows.html">
+   Tasks, Workflows and Flow
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Lessons
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../base1/lesson_base1.html">
+   Base1 lesson (H2 molecule)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../base3/lesson_base3.html">
+   Base3 lesson (silicon)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../base4/lesson_base4.html">
+   Base4 lesson (Aluminium)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dfpt/lesson_dfpt.html">
+   Phonons and Born effective charges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../g0w0/lesson_g0w0.html">
+   <span class="math notranslate nohighlight">
+    \(G_0W_0\)
+   </span>
+   band structure with star-function interpolation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Bethe-Salpeter calculations with AbiPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eph_al/lesson_eph_al.html">
+   Isotropic superconductivity
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Miscellaneous
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../links.html">
+   Useful links
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/bse/lesson_bse.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/bse/lesson_bse.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/abinit/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/abinit/abipy_book/issues/new?title=Issue%20on%20page%20%2Fbse/lesson_bse.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/abinit/abipy_book/edit/master/docs/bse/lesson_bse.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/abinit/abipy_book/master?urlpath=tree/docs/bse/lesson_bse.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#typical-bse-flowchart">
+   Typical BSE flowchart
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abipy-flow-for-bse-with-the-model-dielectric-function">
+   AbiPy flow for BSE with the model dielectric function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyzing-the-results">
+   Analyzing the results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convergence-study-with-respect-to-the-k-point-sampling">
+   Convergence study with respect to the
+   <span class="math notranslate nohighlight">
+    \(k\)
+   </span>
+   -point sampling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="bethe-salpeter-calculations-with-abipy">
+<h1>Bethe-Salpeter calculations with AbiPy<a class="headerlink" href="#bethe-salpeter-calculations-with-abipy" title="Permalink to this headline">¶</a></h1>
+<p>This lesson discusses how to calculate the macroscopic dielectric function, <span class="math notranslate nohighlight">\(\epsilon_\infty(\omega)\)</span>,
+including excitonic effects within the Bethe-Salpeter equation (BSE).
+Crystalline silicon is used as test case.</p>
+<p>For a more detailed description of the Abinit implementation, see the official Abinit
+<a class="reference external" href="https://docs.abinit.org/tutorial/bse/">BSE tutorial</a>.
+A brief description of the formalism can be found in the <a class="reference external" href="https://docs.abinit.org/theory/bse/">BSE_notes</a>.</p>
+<div class="section" id="typical-bse-flowchart">
+<h2>Typical BSE flowchart<a class="headerlink" href="#typical-bse-flowchart" title="Permalink to this headline">¶</a></h2>
+<p>The flowchart of a typical Bethe-Salpeter run is schematically depicted in the diagram below:</p>
+<img alt="bse_flowchart" src="../_images/bse_flowchart.svg" /><p>The WFK file (KSS file in old versions of Abinit) contains the Kohn-Sham (KS) wavefunctions and energies and is represented with an ellipsis.
+The path on the left indicated with blue arrows represents the RPA calculation (<code class="docutils literal notranslate"><span class="pre">optdriver=3</span></code>) that produces the SCR file (see also the first lesson of the <span class="math notranslate nohighlight">\(GW\)</span> tutorial).
+Once the WFK (KSS) and the SCR file are available, we can finally contruct the BSE Hamiltonian
+and solve the Bethe-Salpeter problem (the green rectangle at the bottom of the flowchart).
+The construction of the Bethe-Salpeter Hamiltonian represents a significant portion of the overall CPU time due to the large number of transitions (bands and in particular <span class="math notranslate nohighlight">\(k\)</span>-points) needed for an accurate description of the frequency-dependence of the polarizability.</p>
+<p>For BSE computations, it is common practice to simulate the self-energy corrections by employing the scissors operator whose value can be obtained either from experiments or from <em>ab-initio</em> calculations. The scissors operator allows one to avoid a costly <span class="math notranslate nohighlight">\(GW\)</span> calculation that should performed for all the <span class="math notranslate nohighlight">\(k\)</span>-points and bands included in the transition space (the optional path on the right indicated with yellow arrows that corresponds to <code class="docutils literal notranslate"><span class="pre">optdriver=4</span></code>).</p>
+<p>For this reason, in this lesson, we will employ two commonly used approximations that will
+reduce considerably the computational cost of the BSE flowchart while giving reasonably accurate results:</p>
+<ul class="simple">
+<li><p>The <em>ab-initio</em> <span class="math notranslate nohighlight">\(W\)</span> is replaced by a model dielectric function
+that is constructed from the GS density <span class="math notranslate nohighlight">\(n(r)\)</span> and the additional variable <code class="docutils literal notranslate"><span class="pre">mdf_epsinf</span></code>
+that gives the value of the static limit <span class="math notranslate nohighlight">\(\epsilon_\infty(\omega=0)\)</span>.
+This approximation allows us to bypass the blue boxes in the diagram above (<code class="docutils literal notranslate"><span class="pre">optdriver=3</span></code>)</p></li>
+<li><p>The modifications introduced by the <span class="math notranslate nohighlight">\(GW\)</span> self-energy on the initial KS band structure
+are approximated with a scissor operator (<code class="docutils literal notranslate"><span class="pre">mbpt_sciss</span></code>).
+This approximation allows us to bypass the yellow boxes in the diagram above (<code class="docutils literal notranslate"><span class="pre">optdriver=4</span></code>).</p></li>
+</ul>
+<p>Under these assumptions, the BSE flowchart reduces to a simple GS-SCF run to get <span class="math notranslate nohighlight">\(n(r)\)</span> plus
+a NSCF calculation of the band structure on a dense <span class="math notranslate nohighlight">\(k\)</span>-mesh and, finally, the solution
+of the BSE problem (the green box).</p>
+</div>
+<div class="section" id="abipy-flow-for-bse-with-the-model-dielectric-function">
+<h2>AbiPy flow for BSE with the model dielectric function<a class="headerlink" href="#abipy-flow-for-bse-with-the-model-dielectric-function" title="Permalink to this headline">¶</a></h2>
+<p>After the standard imports:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span> <span class="c1"># to get rid of deprecation warnings</span>
+
+<span class="kn">import</span> <span class="nn">abipy.abilab</span> <span class="k">as</span> <span class="nn">abilab</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span> <span class="c1"># This line tells AbiPy we are running inside a notebook</span>
+<span class="kn">import</span> <span class="nn">abipy.flowtk</span> <span class="k">as</span> <span class="nn">flowtk</span>
+
+<span class="c1"># This line configures matplotlib to show figures embedded in the notebook.</span>
+<span class="c1"># Replace `inline` with `notebook` in classic notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline   
+
+<span class="c1"># Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib</span>
+<span class="c1">#%matplotlib widget  </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We import from <code class="docutils literal notranslate"><span class="pre">lesson_bse</span></code> the function that builds the 3 input objects we are going to use to build the <code class="docutils literal notranslate"><span class="pre">Flow</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_bse</span> <span class="kn">import</span> <span class="n">make_scf_nscf_bse_inputs</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">make_scf_nscf_bse_inputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_scf_nscf_bse_inputs</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">ecut</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ecuteps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                             <span class="n">mdf_epsinf</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span> <span class="n">mbpt_sciss</span><span class="o">=</span><span class="s2">&quot;0.8 eV&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build and returns three `AbinitInput` objects to perform a</span>
+<span class="sd">    GS-SCF + GS-NSCF + BSE calculation with model dielectric function.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ngkpt: Three integers giving the number of divisions for the k-mesh.</span>
+<span class="sd">        ecut: Cutoff energy for the wavefunctions.</span>
+<span class="sd">        ecuteps: Cutoff energy for the screened interation W_{GG&#39;}.</span>
+<span class="sd">        mdf_epsinf: Static limit of the macroscopic dielectric functions.</span>
+<span class="sd">            Used to build the model dielectric function.</span>
+<span class="sd">        mbpt_sciss: Scissors operator energy (used to open the initial KS gap).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">multi</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">MultiDataset</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">structure_from_ucell</span><span class="p">(</span><span class="s2">&quot;Si&quot;</span><span class="p">),</span>
+                                <span class="n">pseudos</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">pseudos</span><span class="p">(</span><span class="s2">&quot;14si.pspnc&quot;</span><span class="p">),</span> <span class="n">ndtset</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">multi</span><span class="o">.</span><span class="n">set_mnemonics</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Variables common to the three datasets.</span>
+    <span class="n">multi</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span>
+        <span class="n">ecut</span><span class="o">=</span><span class="n">ecut</span><span class="p">,</span>
+        <span class="n">nband</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+        <span class="n">istwfk</span><span class="o">=</span><span class="s2">&quot;*1&quot;</span><span class="p">,</span>
+        <span class="n">diemac</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span>
+        <span class="c1">#iomode=3,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># SCF run to get the density.</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">tolvrs</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="n">ngkpt</span><span class="p">,</span> <span class="n">shiftk</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+    <span class="c1"># NSCF run on a randomly shifted k-mesh (improve the convergence of optical properties)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span>
+        <span class="n">iscf</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">nband</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+        <span class="n">tolwfr</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span>
+        <span class="n">chksymbreak</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="c1"># Skip the check on the k-mesh.</span>
+    <span class="p">)</span>
+
+    <span class="c1"># This shift breaks the symmetry of the k-mesh.</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="n">ngkpt</span><span class="p">,</span> <span class="n">shiftk</span><span class="o">=</span><span class="p">(</span><span class="mf">0.11</span><span class="p">,</span> <span class="mf">0.21</span><span class="p">,</span> <span class="mf">0.31</span><span class="p">))</span>
+
+    <span class="c1"># BSE run with Haydock iterative method (only resonant + W + v)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span>
+        <span class="n">optdriver</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span>                 <span class="c1"># BS calculation</span>
+        <span class="n">chksymbreak</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                <span class="c1"># To skip the check on the k-mesh.</span>
+        <span class="n">bs_calctype</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                <span class="c1"># L0 is constructed with KS orbitals and energies.</span>
+        <span class="n">mbpt_sciss</span><span class="o">=</span><span class="n">mbpt_sciss</span><span class="p">,</span>        <span class="c1"># Scissors operator used to correct the KS band structure.</span>
+        <span class="n">bs_exchange_term</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>           <span class="c1"># Exchange term included.</span>
+        <span class="n">bs_coulomb_term</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>           <span class="c1"># Coulomb term with model dielectric function.</span>
+        <span class="n">mdf_epsinf</span><span class="o">=</span><span class="n">mdf_epsinf</span><span class="p">,</span>        <span class="c1"># Parameter for the model dielectric function.</span>
+        <span class="n">bs_coupling</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                <span class="c1"># Tamm-Dancoff approximation.</span>
+        <span class="n">bs_loband</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                  <span class="c1"># Lowest band included in the calculation</span>
+        <span class="n">nband</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>                      <span class="c1"># Highest band included in the calculation</span>
+        <span class="n">bs_freq_mesh</span><span class="o">=</span><span class="s2">&quot;0 6 0.02 eV&quot;</span><span class="p">,</span>   <span class="c1"># Frequency mesh for the dielectric function</span>
+        <span class="n">bs_algorithm</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>               <span class="c1"># Use Haydock method.</span>
+        <span class="n">zcut</span><span class="o">=</span><span class="s2">&quot;0.15 eV&quot;</span><span class="p">,</span>               <span class="c1"># Complex shift to avoid divergences in the continued fraction.</span>
+        <span class="n">ecutwfn</span><span class="o">=</span><span class="n">ecut</span><span class="p">,</span>                 <span class="c1"># Cutoff for the wavefunction.</span>
+        <span class="n">ecuteps</span><span class="o">=</span><span class="n">ecuteps</span><span class="p">,</span>              <span class="c1"># Cutoff for W and /bare v.</span>
+        <span class="n">inclvkb</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                    <span class="c1"># The commutator for the optical limit is correctly evaluated.</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Same shift as the one used in the previous dataset.</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="n">ngkpt</span><span class="p">,</span> <span class="n">shiftk</span><span class="o">=</span><span class="p">(</span><span class="mf">0.11</span><span class="p">,</span> <span class="mf">0.21</span><span class="p">,</span> <span class="mf">0.31</span><span class="p">))</span>
+
+    <span class="n">scf_input</span><span class="p">,</span> <span class="n">nscf_input</span><span class="p">,</span> <span class="n">bse_input</span> <span class="o">=</span> <span class="n">multi</span><span class="o">.</span><span class="n">split_datasets</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">scf_input</span><span class="p">,</span> <span class="n">nscf_input</span><span class="p">,</span> <span class="n">bse_input</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scf_inp</span><span class="p">,</span> <span class="n">nscf_inp</span><span class="p">,</span> <span class="n">bse_inp</span> <span class="o">=</span> <span class="n">make_scf_nscf_bse_inputs</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ecut</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ecuteps</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">make_scf_nscf_bse_inputs</span></code> returns three <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code> objects:</p>
+<ul class="simple">
+<li><p>The first input (<code class="docutils literal notranslate"><span class="pre">scf_inp</span></code>) solves the KS equations on a Monkhorst-Pack mesh
+to obtain the groud-state density <span class="math notranslate nohighlight">\(n(r)\)</span>.</p></li>
+<li><p>The second input (<code class="docutils literal notranslate"><span class="pre">nscf_inp</span></code>) uses the density produced by <code class="docutils literal notranslate"><span class="pre">scf_inp</span></code> to compute
+the KS band structure on a <strong>randomly-shifted</strong> <span class="math notranslate nohighlight">\(k\)</span>-mesh in order to accelerate
+the convergence of the optical properties with respect to the <span class="math notranslate nohighlight">\(k\)</span>-sampling.</p></li>
+<li><p>Finally, the third input (<code class="docutils literal notranslate"><span class="pre">bse_inp</span></code>) uses the <code class="docutils literal notranslate"><span class="pre">WFK</span></code> file produced in the previous step
+to solve an approximated BSE equation in which the ab-initio
+screened interation <span class="math notranslate nohighlight">\(W\)</span> is approximated
+by a model dielectric function that depends only on <span class="math notranslate nohighlight">\(n(r)\)</span> and the input variable <code class="docutils literal notranslate"><span class="pre">mdf_epsinf</span></code>
+that gives the value of <span class="math notranslate nohighlight">\(\epsilon_\infty(0)\)</span></p></li>
+</ul>
+<p>The variables governing the BSE run are those in the <code class="docutils literal notranslate"><span class="pre">vargw</span></code> section of <code class="docutils literal notranslate"><span class="pre">bse_inp</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bse_inp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="abinit_input">
+##############################################<br>####                SECTION: basic               <br>##############################################<br>#### &lt;Energy CUToff&gt;<br> <a href="https://docs.abinit.org/variables/basic#ecut" target="_blank">ecut</a> 6<br>#### &lt;Number of BANDs&gt;<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband</a> 6<br>#### &lt;Number of Grid points for K PoinTs generation&gt;<br> <a href="https://docs.abinit.org/variables/basic#ngkpt" target="_blank">ngkpt</a> 4 4 4<br>#### &lt;KPoinTs OPTion&gt;<br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt</a> 1<br>#### &lt;Number of SHIFTs for K point grids&gt;<br> <a href="https://docs.abinit.org/variables/basic#nshiftk" target="_blank">nshiftk</a> 1<br>#### &lt;SHIFT for K points&gt;<br> <a href="https://docs.abinit.org/variables/basic#shiftk" target="_blank">shiftk</a>    0.11    0.21    0.31<br>##############################################<br>####                 SECTION: bse                <br>##############################################<br>#### &lt;Bethe-Salpeter CALCulation TYPE&gt;<br> <a href="https://docs.abinit.org/variables/bse#bs_calctype" target="_blank">bs_calctype</a> 1<br>#### &lt;Bethe-Salpeter EXCHANGE TERM&gt;<br> <a href="https://docs.abinit.org/variables/bse#bs_exchange_term" target="_blank">bs_exchange_term</a> 1<br>#### &lt;Bethe-Salpeter COULOMB TERM&gt;<br> <a href="https://docs.abinit.org/variables/bse#bs_coulomb_term" target="_blank">bs_coulomb_term</a> 21<br>#### &lt;Bethe-Salpeter COUPLING&gt;<br> <a href="https://docs.abinit.org/variables/bse#bs_coupling" target="_blank">bs_coupling</a> 0<br>#### &lt;Bethe-Salpeter Lowest Occupied BAND&gt;<br> <a href="https://docs.abinit.org/variables/bse#bs_loband" target="_blank">bs_loband</a> 2<br>#### &lt;Bethe-Salpeter FREQuency MESH&gt;<br> <a href="https://docs.abinit.org/variables/bse#bs_freq_mesh" target="_blank">bs_freq_mesh</a> 0 6 0.02 eV<br>#### &lt;Bethe-Salpeter ALGORITHM&gt;<br> <a href="https://docs.abinit.org/variables/bse#bs_algorithm" target="_blank">bs_algorithm</a> 2<br>##############################################<br>####                 SECTION: dev                <br>##############################################<br>#### &lt;Integer for choice of STorage of WaveFunction at each k point&gt;<br> <a href="https://docs.abinit.org/variables/dev#istwfk" target="_blank">istwfk</a> *1<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br>#### &lt;model DIElectric MACroscopic constant&gt;<br> <a href="https://docs.abinit.org/variables/gstate#diemac" target="_blank">diemac</a> 12.0<br>#### &lt;OPTions for the DRIVER&gt;<br> <a href="https://docs.abinit.org/variables/gstate#optdriver" target="_blank">optdriver</a> 99<br>#### &lt;CHecK SYMmetry BREAKing&gt;<br> <a href="https://docs.abinit.org/variables/gstate#chksymbreak" target="_blank">chksymbreak</a> 0<br>##############################################<br>####                 SECTION: gw                 <br>##############################################<br>#### &lt;Many Body Perturbation Theory SCISSor operator&gt;<br> <a href="https://docs.abinit.org/variables/gw#mbpt_sciss" target="_blank">mbpt_sciss</a> 0.8 eV<br>#### &lt;Model Dielectric Function, EPSilon INFinity&gt;<br> <a href="https://docs.abinit.org/variables/gw#mdf_epsinf" target="_blank">mdf_epsinf</a> 12.0<br>#### &lt;Z-CUT&gt;<br> <a href="https://docs.abinit.org/variables/gw#zcut" target="_blank">zcut</a> 0.15 eV<br>#### &lt;Energy CUT-off for WaveFunctioNs&gt;<br> <a href="https://docs.abinit.org/variables/gw#ecutwfn" target="_blank">ecutwfn</a> 6<br>#### &lt;Energy CUT-off for EPSilon (the dielectric matrix)&gt;<br> <a href="https://docs.abinit.org/variables/gw#ecuteps" target="_blank">ecuteps</a> 3<br>#### &lt;INCLude VKB&gt;<br> <a href="https://docs.abinit.org/variables/gw#inclvkb" target="_blank">inclvkb</a> 2<br>##############################################<br>####                  STRUCTURE                  <br>##############################################<br>#### &lt;Number of ATOMs&gt;<br> <a href="https://docs.abinit.org/variables/basic#natom" target="_blank">natom</a> 2<br>#### &lt;Number of TYPes of AToms&gt;<br> <a href="https://docs.abinit.org/variables/basic#ntypat" target="_blank">ntypat</a> 1<br>#### &lt;TYPe of AToms&gt;<br> <a href="https://docs.abinit.org/variables/basic#typat" target="_blank">typat</a> 1 1<br>#### &lt;charge -Z- of the NUCLeus&gt;<br> <a href="https://docs.abinit.org/variables/basic#znucl" target="_blank">znucl</a> 14<br>#### &lt;vectors (X) of atom positions in REDuced coordinates&gt;<br> <a href="https://docs.abinit.org/variables/basic#xred" target="_blank">xred</a><br>    0.0000000000    0.0000000000    0.0000000000<br>    0.2500000000    0.2500000000    0.2500000000<br>#### &lt;CELL lattice vector scaling&gt;<br> <a href="https://docs.abinit.org/variables/basic#acell" target="_blank">acell</a>    1.0    1.0    1.0<br>#### &lt;Real space PRIMitive translations&gt;<br> <a href="https://docs.abinit.org/variables/basic#rprim" target="_blank">rprim</a><br>    0.0000000000    5.1085000000    5.1085000000<br>    5.1085000000    0.0000000000    5.1085000000<br>    5.1085000000    5.1085000000    0.0000000000
+<div></div></div>
+</div>
+<p>Once we have our three input objects, we can create a flow to automate the calculation.
+Note that AbiPy already provides the <code class="docutils literal notranslate"><span class="pre">BseMdfWork</span></code> class that is explicitly designed for this kind of calculation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_bse</span> <span class="kn">import</span> <span class="n">build_bse_flow</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">build_bse_flow</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_bse_flow</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build a flow to solve the BSE with default parameters.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        options: Command line options.</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        Flow object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">workdir</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span> <span class="k">if</span> <span class="p">(</span><span class="n">options</span> <span class="ow">and</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;flow_bse&quot;</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span><span class="n">workdir</span><span class="o">=</span><span class="n">workdir</span><span class="p">)</span>
+
+    <span class="c1"># Build a Work for BSE calculation with the model dielectric function ...</span>
+    <span class="n">scf_inp</span><span class="p">,</span> <span class="n">nscf_inp</span><span class="p">,</span> <span class="n">bse_inp</span> <span class="o">=</span> <span class="n">make_scf_nscf_bse_inputs</span><span class="p">()</span>
+
+    <span class="n">work</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">BseMdfWork</span><span class="p">(</span><span class="n">scf_inp</span><span class="p">,</span> <span class="n">nscf_inp</span><span class="p">,</span> <span class="n">bse_inp</span><span class="p">)</span>
+
+    <span class="c1"># and add it to the flow</span>
+    <span class="n">flow</span><span class="o">.</span><span class="n">register_work</span><span class="p">(</span><span class="n">work</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">flow</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<p>Let’s build the flow:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span> <span class="o">=</span> <span class="n">build_bse_flow</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The graphical representation of the flow reveals that the <code class="docutils literal notranslate"><span class="pre">BseTask</span></code> depends on the <code class="docutils literal notranslate"><span class="pre">NscfTask</span></code> that
+in turns depends on the initial <code class="docutils literal notranslate"><span class="pre">ScfTask</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_bse_16_0.svg" src="../_images/lesson_bse_16_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#flow.plot_networkx(with_edge_labels=True);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are working with python, you can build the directories of the Flow with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>flow.build_and_pickle_dump()
+</pre></div>
+</div>
+<p>Now you can execute the lesson_bse.py script to generate the flow  and then use:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abirun.py flow_bse scheduler
+</pre></div>
+</div>
+<div class="alert alert-warning">
+Please make sure that AbiPy is properly configured by running abicheck --with flow
+</div>
+<p>Alternatively, one can use the files in the github repository and use AbiPy
+to analyze the data.</p>
+</div>
+<div class="section" id="analyzing-the-results">
+<h2>Analyzing the results<a class="headerlink" href="#analyzing-the-results" title="Permalink to this headline">¶</a></h2>
+<p>Now we can finally analyze the results. In this case, we are mainly interested in the
+frequency-dependent macroscopic dielectric function, <span class="math notranslate nohighlight">\(\epsilon_\infty(\omega)\)</span>, produced
+by the <code class="docutils literal notranslate"><span class="pre">BseTask</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The BseTask is the last task in the first work </span>
+<span class="c1"># i.e. flow[0][2] or, much better, flow[0][-1]</span>
+<span class="n">bse_task</span> <span class="o">=</span> <span class="n">flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">bse_task</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BseTask, node_id=442025, workdir=flow_bse/w0/t2&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">BseTask</span></code> has produced a netcdf file (<code class="docutils literal notranslate"><span class="pre">MDF.nc</span></code>) containing the most important results of the run. Let’s open the file with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mdf_file</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="s2">&quot;flow_bse/w0/t2/outdata/out_MDF.nc&quot;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">mdf_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================================= File Info =================================
+Name: out_MDF.nc
+Directory: /Users/gmatteo/git_repos/abipy_book/abipy_book/bse/flow_bse/w0/t2/outdata
+Size: 122.77 kb
+Access Time: Thu Jul  8 02:48:30 2021
+Modification Time: Thu Jul  8 02:04:51 2021
+Change Time: Thu Jul  8 02:04:51 2021
+
+================================= Structure =================================
+Full Formula (Si2)
+Reduced Formula: Si
+abc   :   3.823046   3.823046   3.823046
+angles:  60.000000  60.000000  60.000000
+Sites (2)
+  #  SP       a     b     c
+---  ----  ----  ----  ----
+  0  Si    0     0     0
+  1  Si    0.25  0.25  0.25
+
+Abinit Spacegroup: spgid: 0, num_spatial_symmetries: 48, has_timerev: True, symmorphic: True
+================================== Q-points ==================================
+0) [+0.939, +0.000, +0.000], weight: 0.000
+1) [+0.000, +0.939, +0.000], weight: 0.000
+2) [+0.000, +0.000, +0.939], weight: 0.000
+3) [+0.000, +0.813, +0.813], weight: 0.000
+4) [+0.813, +0.000, +0.813], weight: 0.000
+5) [+0.813, +0.813, +0.000], weight: 0.000
+</pre></div>
+</div>
+</div>
+</div>
+<p>and use <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to plot the imaginary part of <span class="math notranslate nohighlight">\(\epsilon_\infty(\omega)\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mdf_file</span><span class="o">.</span><span class="n">plot_mdfs</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_bse_25_0.png" src="../_images/lesson_bse_25_0.png" />
+</div>
+</div>
+<p>Meaning of the three curves:</p>
+<ul class="simple">
+<li><p>EXC is <span class="math notranslate nohighlight">\(\epsilon_\infty(\omega)\)</span> computed from the BSE with excitonic effects included</p></li>
+<li><p>KS-RPA is the analogous quantity computed within the RPA and the KS band structure</p></li>
+<li><p>GW-RPA corresponds to the RPA expression but computed with modified band energies obtained
+by “opening” the KS eigenvalues with a constant scissor operator that tries to mimic
+the <span class="math notranslate nohighlight">\(GW\)</span> corrections (<code class="docutils literal notranslate"><span class="pre">soenergy</span></code> variable)</p></li>
+</ul>
+<p>It is worth stressing that:</p>
+<ol class="simple">
+<li><p>The RPA-KS spectrum underestimates the experimental optical threshold due to the well-know band-gap problem of DFT. Most importantly, the amplitude of the first peak is underestimated.</p></li>
+<li><p>The RPA-GW results with QP corrections simulated with <code class="docutils literal notranslate"><span class="pre">soenergy</span></code> does not show any significant improvement over RPA-KS: the RPA-GW spectrum is just shifted towards higher frequencies due to opening of the gap, but the shape of the two spectra is very similar, in particular the amplitude of the first peak is still underestimated.</p></li>
+<li><p>On the contrary, the inclusion of the BSE kernel leads to important changes both in the optical threshold as well as in the amplitude of the first peak. This simple analysis tells us that the first peak in the absorption spectrum of silicon has a strong excitonic character that is not correctly described within the RPA. Our first BS spectrum is not converged at all and it barely resembles the experimental result, nevertheless this unconverged calculation is already able to capture the most important physics.</p></li>
+</ol>
+<p>The difference among the three approaches is schematically depicted in the figure below:</p>
+<img alt="schematic dft gw bse" src="../_images/schematic_dft_gw_bse.svg" /><p>To plot the real part of <span class="math notranslate nohighlight">\(\epsilon_\infty(\omega)\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mdf_file</span><span class="o">.</span><span class="n">plot_mdfs</span><span class="p">(</span><span class="n">cplx_mode</span><span class="o">=</span><span class="s2">&quot;re&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_bse_29_0.png" src="../_images/lesson_bse_29_0.png" />
+</div>
+</div>
+<p>It should be stressed that the screened interaction <span class="math notranslate nohighlight">\(W\)</span> is the fundamental ingredient that leads
+to the attractive interaction between electrons and holes (excitonic effects).
+In a metallic system, the dielectric function is large, <span class="math notranslate nohighlight">\(W\)</span> is small and excitonic effects are strongly damped.</p>
+<p>To understand this point, we can do a test calculation with a very large value of <code class="docutils literal notranslate"><span class="pre">mdf_epsinf</span></code>
+so that our BSE Hamiltonian will be constructed with a metallic <span class="math notranslate nohighlight">\(W\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_bse</span> <span class="kn">import</span> <span class="n">build_bse_metallicW_flow</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">build_bse_metallicW_flow</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_bse_metallicW_flow</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build a flow to solve the BSE with metallic screening.</span>
+<span class="sd">    Note the value of `mdf_epsinf`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        options: Command line options.</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        Flow object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">workdir</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span> <span class="k">if</span> <span class="p">(</span><span class="n">options</span> <span class="ow">and</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;flow_bse_metallicW&quot;</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span><span class="n">workdir</span><span class="o">=</span><span class="n">workdir</span><span class="p">)</span>
+
+    <span class="c1"># Model dielectric function with metallic screening</span>
+    <span class="n">scf_inp</span><span class="p">,</span> <span class="n">nscf_inp</span><span class="p">,</span> <span class="n">bse_inp</span> <span class="o">=</span> <span class="n">make_scf_nscf_bse_inputs</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ecut</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ecuteps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                                                          <span class="n">mdf_epsinf</span><span class="o">=</span><span class="mf">1.0e+12</span><span class="p">)</span>
+
+    <span class="n">flow</span><span class="o">.</span><span class="n">register_work</span><span class="p">(</span><span class="n">flowtk</span><span class="o">.</span><span class="n">BseMdfWork</span><span class="p">(</span><span class="n">scf_inp</span><span class="p">,</span> <span class="n">nscf_inp</span><span class="p">,</span> <span class="n">bse_inp</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">flow</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metalW_flow</span> <span class="o">=</span> <span class="n">build_bse_metallicW_flow</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s assume we have already executed the flow and let’s have a look at the results:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="s2">&quot;flow_bse_metallicW/w0/t2/outdata/out_MDF.nc&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mdf_file</span><span class="p">:</span>
+    <span class="n">mdf_file</span><span class="o">.</span><span class="n">plot_mdfs</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_bse_34_0.png" src="../_images/lesson_bse_34_0.png" />
+</div>
+</div>
+<p>As you can see, the EXC curve computed with a metallic <span class="math notranslate nohighlight">\(W\)</span>
+is similar to the results obtained in GW-RPA.
+In particular the first peak is now shifted towards higher frequencies and its amplitude
+is decreased when compared to the previous results.</p>
+<p>This behaviour can be easily understood if we consider that
+the BSE formalism reduces to the RPA if <span class="math notranslate nohighlight">\(W\)</span> tends to 0.
+The EXC curve is still shifted towards higher frequencies when compared with KS-RPA
+but this effect is mainly due to the scissor operator that opens the KS gap.
+A similar calculation done with <code class="docutils literal notranslate"><span class="pre">soenergy=0</span></code> would give an EXC curve similar to KS-RPA.
+This test is left as an optional exercise.</p>
+</div>
+<div class="section" id="convergence-study-with-respect-to-the-k-point-sampling">
+<h2>Convergence study with respect to the <span class="math notranslate nohighlight">\(k\)</span>-point sampling<a class="headerlink" href="#convergence-study-with-respect-to-the-k-point-sampling" title="Permalink to this headline">¶</a></h2>
+<p>The most important parameter that should be checked for convergence is the number of <span class="math notranslate nohighlight">\(k\)</span>-points.
+This convergence study represents the most tedious and difficult part since it requires the generation of new WFK files for each k-mesh
+(the list of <span class="math notranslate nohighlight">\(k\)</span>-points for the wavefunctions and the set of <span class="math notranslate nohighlight">\(q\)</span>-points in the screening must be consistent with each other).</p>
+<p>In the previous section, we have shown how to build a flow for BSE calculation with a fixed
+<span class="math notranslate nohighlight">\(k\)</span>-points sampling.
+We can thus reuse the same logic to construct a <code class="docutils literal notranslate"><span class="pre">Flow</span></code> made of multiple <code class="docutils literal notranslate"><span class="pre">BseMdfWorks</span></code>,
+each <code class="docutils literal notranslate"><span class="pre">Work</span></code> will have a different <span class="math notranslate nohighlight">\(k\)</span>-point sampling.</p>
+<p>Let’s create, for example, a <code class="docutils literal notranslate"><span class="pre">Flow</span></code> that solves that BSE equation on
+a <code class="docutils literal notranslate"><span class="pre">4x4x4</span></code>, <code class="docutils literal notranslate"><span class="pre">6x6x6</span></code> and a <code class="docutils literal notranslate"><span class="pre">8x8x8</span></code> <span class="math notranslate nohighlight">\(k\)</span>-mesh:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_bse</span> <span class="kn">import</span> <span class="n">build_bse_kconv_flow</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">build_bse_kconv_flow</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_bse_kconv_flow</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build a flow to analyze the convergence of the BSE spectrum wrt k-point sampling.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        options: Command line options.</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        Flow object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">workdir</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span> <span class="k">if</span> <span class="p">(</span><span class="n">options</span> <span class="ow">and</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;flow_bse_kconv&quot;</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span><span class="n">workdir</span><span class="o">=</span><span class="n">workdir</span><span class="p">)</span>
+
+    <span class="c1"># 3 works with differet ngkpt.</span>
+    <span class="k">for</span> <span class="n">nk</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]:</span>
+        <span class="n">scf_inp</span><span class="p">,</span> <span class="n">nscf_inp</span><span class="p">,</span> <span class="n">bse_inp</span> <span class="o">=</span> <span class="n">make_scf_nscf_bse_inputs</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="mi">3</span> <span class="o">*</span> <span class="p">[</span><span class="n">nk</span><span class="p">],</span> <span class="n">ecut</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ecuteps</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">work</span> <span class="o">=</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">BseMdfWork</span><span class="p">(</span><span class="n">scf_inp</span><span class="p">,</span> <span class="n">nscf_inp</span><span class="p">,</span> <span class="n">bse_inp</span><span class="p">)</span>
+        <span class="n">flow</span><span class="o">.</span><span class="n">register_work</span><span class="p">(</span><span class="n">work</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">flow</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow_kconv</span> <span class="o">=</span> <span class="n">build_bse_kconv_flow</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow_kconv</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_bse_39_0.svg" src="../_images/lesson_bse_39_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#flow_kconv.plot_networkx();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Change the lesson_bse.py script so that build_bse_kconv_flow is called in main instead of build_bse_flow.
+Run the script and submit the calculation with <a class="reference external" href="http://abirun.py">abirun.py</a> FLOWDIR scheduler as usual.</p>
+<p>Our <code class="docutils literal notranslate"><span class="pre">Flow</span></code> has three <code class="docutils literal notranslate"><span class="pre">BseTasks</span></code> and therefore three different <code class="docutils literal notranslate"><span class="pre">MDF.nc</span></code> files containing <span class="math notranslate nohighlight">\(\epsilon_\infty(\omega)\)</span>.
+The MDF files are available in the github repository.</p>
+<p>In order to plot the three <span class="math notranslate nohighlight">\(\epsilon_\infty(\omega)\)</span> on the same graph, we have use the <code class="docutils literal notranslate"><span class="pre">MdfRobot</span></code>
+that will gather the results for us:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robot</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">MdfRobot</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;flow_bse_kconv&quot;</span><span class="p">)</span>
+<span class="n">robot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol start="0">
+<li>w2/t2/outdata/out_MDF.nc</li>
+<li>w0/t2/outdata/out_MDF.nc</li>
+<li>w1/t2/outdata/out_MDF.nc</li>
+</ol></div></div>
+</div>
+<p>We can now finally compare the imaginary and the real part of <span class="math notranslate nohighlight">\(\epsilon_\infty(\omega)\)</span> with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotter</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">get_multimdf_plotter</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotter</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_bse_46_0.png" src="../_images/lesson_bse_46_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">make_scf_nscf_bse_inputs</span></code> and <code class="docutils literal notranslate"><span class="pre">BseMdfWork</span></code> to perform the following convergence studies:</p>
+<ul class="simple">
+<li><p>Convergence with respect to the number of planewaves in the screening (<code class="docutils literal notranslate"><span class="pre">ecuteps</span></code>)</p></li>
+<li><p>Convergence with respect to the number of <span class="math notranslate nohighlight">\(k\)</span>-points</p></li>
+</ul>
+<p>See also the discussion reported in the official <a class="reference external" href="https://docs.abinit.org/tutorial/bse/">BSE tutorial</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./bse"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../g0w0/lesson_g0w0.html" title="previous page"><span class="math notranslate nohighlight">\(G_0W_0\)</span> band structure with star-function interpolation</a>
+    <a class='right-next' id="next-link" href="../eph_al/lesson_eph_al.html" title="next page">Isotropic superconductivity</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By M. Giantomassi and the AbiPy group<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

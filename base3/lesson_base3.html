@@ -1,0 +1,1745 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base3 lesson (silicon) &#8212; AbiPy Book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"*": "{\\dagger}", "ra": "{\\rangle}", "la": "{\\langle}", "bm": ["{\\boldsymbol #1}", 1], "mcL": "{\\mathcal{L}}", "mcG": "{\\mathcal{G}}", "mcR": "{\\mathcal{R}}", "mcS": "{\\mathcal{S}}", "mcC": "{\\mathcal{C}}", "mcO": "{\\mathcal{O}}", "KS": "{\\text{KS}}", "eph": "{\\text{e-ph}}", "ee": "{\\epsilon}", "phph": "{\\text{ph-ph}}", "FM": "{\\text{FM}}", "DW": "{\\text{DW}}", "QP": "{\\text{QP}}", "BZ": "{\\text{BZ}}", "sign": "{\\text{sign}}", "xc": "{\\text{xc}}", "tchi": "{\\tilde\\chi}", "rr": "{\\bf r}", "RR": "{\\bf R}", "tt": "{\\bf t}", "GG": "{\\bf G}", "kk": "{\\bf k}", "qq": "{\\bf q}", "kq": "{\\kk + \\qq}", "qG": "{\\bf q + G}", "kG": "{\\bf k + G}", "kmq": "{\\kk - \\qq}", "kpq": "{\\kk + \\qq}", "kpG": "{\\kk + \\GG}", "qpG": "{\\qq + \\GG}", "nk": "{n \\kk}", "mk": "{, \\kk}", "nks": "{n \\kk\\sigma}", "mks": "{m \\kk\\sigma}", "enk": "{\\varepsilon_\\nk}", "emkq": "{\\varepsilon_{m\\kk+\\qq}}", "qnu": "{\\qq \\nu}", "wqnu": "{\\omega_{\\qnu}}", "vnk": "{\\mathbf{v}_{n\\kk}}", "vmkq": "{\\mathbf{v}_{m\\kk+\\qq}}", "vnka": "{\\mathrm{v}_{n\\kk,\\alpha}}", "vnkb": "{\\mathrm{v}_{n\\kk,\\beta}}", "ef": "{\\varepsilon_F}", "gkkp": "{g_{mn\\nu}(\\kk,\\qq)}", "gkq": "{g_{mn\\nu}(\\kk,\\qq)}", "Go": "{G_0}", "Wo": "{W_0}", "Ueff": "{U_{\\text{eff}}}", "tee": "{\\tilde{\\epsilon}}", "ww": "{\\omega}", "tww": "{\\tilde\\omega}", "dd": "{\\,\\text{d}}", "vxc": "{v_\\xc}", "Ri": "{\\mcR^{-1}}", "Rit": "{\\mcR^{-1\\tau}}", "Si": "{\\mcS^{-1}}}", "Sit": "{\\Si^\\tau}}", "PDER": ["{\\dfrac{\\partial #1}{\\partial #2}}", 2], "FDER": ["{\\dfrac{\\delta #1}{\\delta #2}}", 2], "tPsi": "{\\tilde\\Psi}", "tpsi": "{\\tilde\\psi}", "tPhi": "{\\tilde\\Phi}", "tphi": "{\\tilde\\phi}", "tprj": "{\\tilde p}"}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Base4 lesson (Aluminium)" href="../base4/lesson_base4.html" />
+    <link rel="prev" title="Base1 lesson (H2 molecule)" href="../base1/lesson_base1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AbiPy Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Basic AbiPy Objects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../structure.html">
+   Structure object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../abinit_input.html">
+   The AbinitInput object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../input_factories.html">
+   Factory functions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Output Files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../gsr.html">
+   The GSR file (Ground-State)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../hist.html">
+   The HIST.nc file (relaxation/MD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../efatbands.html">
+   The FATBANDS.nc file
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ddb.html">
+   The DDB file (DFPT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sigres.html">
+   The SIGRES file (GW)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mdf.html">
+   The MDF file (Bethe-Salpeter)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../abiwan.html">
+   The ABIWAN file (wannier90)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lobster.html">
+   Lobster output files
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Workflows
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../flows.html">
+   Tasks, Workflows and Flow
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Lessons
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../base1/lesson_base1.html">
+   Base1 lesson (H2 molecule)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Base3 lesson (silicon)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../base4/lesson_base4.html">
+   Base4 lesson (Aluminium)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dfpt/lesson_dfpt.html">
+   Phonons and Born effective charges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../g0w0/lesson_g0w0.html">
+   <span class="math notranslate nohighlight">
+    \(G_0W_0\)
+   </span>
+   band structure with star-function interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bse/lesson_bse.html">
+   Bethe-Salpeter calculations with AbiPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eph_al/lesson_eph_al.html">
+   Isotropic superconductivity
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Miscellaneous
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../links.html">
+   Useful links
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/base3/lesson_base3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/base3/lesson_base3.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/abinit/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/abinit/abipy_book/issues/new?title=Issue%20on%20page%20%2Fbase3/lesson_base3.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/abinit/abipy_book/edit/master/docs/base3/lesson_base3.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/abinit/abipy_book/master?urlpath=tree/docs/base3/lesson_base3.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-the-total-energy-of-silicon-at-fixed-number-of-k-points">
+   Computing the total energy of silicon at fixed number of k-points
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis-of-the-results">
+   Analysis of the results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#determination-of-the-lattice-parameters">
+   Determination of the lattice parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-the-band-structure">
+   Computing the band structure
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="base3-lesson-silicon">
+<h1>Base3 lesson (silicon)<a class="headerlink" href="#base3-lesson-silicon" title="Permalink to this headline">¶</a></h1>
+<div class="jumbotron">
+  <h1 class="display-3">Third (basic) lesson with Abinit and AbiPy</h1>
+  <p class="lead">Crystalline silicon.</p> 
+  <hr class="my-4">
+  <p>This lesson aims at showing you how to get the following physical properties, for an insulator:</p>
+  <ul>
+    <li>the total energy</li>
+    <li>the lattice parameter</li>
+    <li>the Kohn-Sham band structure</li>
+  </ul>
+  <p>
+  You will learn about the use of k-points, as well as the smearing of the plane-wave kinetic energy cut-off.
+  </p>
+</div>
+<p>This tutorial is a complement to the standard <a class="reference external" href="https://docs.abinit.org/tutorial/base3">ABINIT tutorial on silicon</a>.
+Here, powerful flow and visualisation procedures
+will be demonstrated. Still, some basic understanding of the stand-alone working of ABINIT is a prerequisite.
+Also, in order to fully benefit from this Abipy tutorial, other more basic Abipy tutorials should have been followed,
+as suggested in the <span class="xref myst">abitutorials index page</span>.</p>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#Computing-the-total-energy-of-silicon-at-fixed-number-of-k-points">Computing the total energy of silicon at fixed number of k-points</a></p></li>
+<li><p><a class="reference external" href="#Analysis-of-the-results">Analysis of the results</a></p></li>
+<li><p><a class="reference external" href="#Determination-of-the-lattice-parameters">Determination of the lattice parameters</a></p></li>
+<li><p><a class="reference external" href="#Computing-the-band-structure">Computing the band-structure</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use this at the beginning of your script so that your code will be compatible with python3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span> 
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>  <span class="c1"># Ignore warnings</span>
+
+<span class="kn">from</span> <span class="nn">abipy</span> <span class="kn">import</span> <span class="n">abilab</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span> <span class="c1"># This line tells AbiPy we are running inside a notebook</span>
+
+<span class="c1"># This line configures matplotlib to show figures embedded in the notebook.</span>
+<span class="c1"># Replace `inline` with `notebook` in classic notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="c1"># Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib</span>
+<span class="c1">#%matplotlib widget  </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="computing-the-total-energy-of-silicon-at-fixed-number-of-k-points">
+<h2>Computing the total energy of silicon at fixed number of k-points<a class="headerlink" href="#computing-the-total-energy-of-silicon-at-fixed-number-of-k-points" title="Permalink to this headline">¶</a></h2>
+<p>Our goal is to study the convergence of the total energy of silicon versus the number of k-points.
+So we start by defining a function that generates a <code class="docutils literal notranslate"><span class="pre">Flow</span></code> of SCF calculations
+by looping over a predefined list of <code class="docutils literal notranslate"><span class="pre">ngkpt</span></code> values.
+The crystalline structure is initialized from a CIF file while  other parameters
+such as the cutoff energy are fixed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_base3</span> <span class="kn">import</span> <span class="n">build_ngkpt_flow</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">build_ngkpt_flow</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_ngkpt_flow</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crystalline silicon: computation of the total energy</span>
+<span class="sd">    Convergence with respect to the number of k points. Similar to tbase3_3.in</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        options: Command line options.</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        Abinit Flow object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Definition of the different grids</span>
+    <span class="n">ngkpt_list</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)]</span>
+
+    <span class="c1"># These shifts will be the same for all grids</span>
+    <span class="n">shiftk</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="s2">&quot;0.5 0.5 0.5 0.5 0.0 0.0 0.0 0.5 0.0 0.0 0.0 0.5&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+
+    <span class="c1"># Build MultiDataset object (container of `ndtset` inputs).</span>
+    <span class="c1"># Structure is initialized from CIF file.</span>
+    <span class="n">multi</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">MultiDataset</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">cif_file</span><span class="p">(</span><span class="s2">&quot;si.cif&quot;</span><span class="p">),</span>
+                                <span class="n">pseudos</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">pseudos</span><span class="p">(</span><span class="s2">&quot;14si.pspnc&quot;</span><span class="p">),</span> <span class="n">ndtset</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">ngkpt_list</span><span class="p">))</span>
+
+    <span class="c1"># These variables are the same in each input.</span>
+    <span class="n">multi</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">ecut</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">toldfe</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">diemac</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span> <span class="n">iomode</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># Each input has its own value of `ngkpt`. shiftk is constant.</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ngkpt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ngkpt_list</span><span class="p">):</span>
+        <span class="n">multi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="n">ngkpt</span><span class="p">,</span> <span class="n">shiftk</span><span class="o">=</span><span class="n">shiftk</span><span class="p">)</span>
+
+    <span class="n">workdir</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span> <span class="k">if</span> <span class="p">(</span><span class="n">options</span> <span class="ow">and</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;flow_base3_ngkpt&quot;</span>
+
+    <span class="c1"># Split the inputs by calling multi.datasets() and pass the list of inputs to Flow.from_inputs.</span>
+    <span class="k">return</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">Flow</span><span class="o">.</span><span class="n">from_inputs</span><span class="p">(</span><span class="n">workdir</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">multi</span><span class="o">.</span><span class="n">split_datasets</span><span class="p">())</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<p>Let’s call the function to build the flow:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span> <span class="o">=</span> <span class="n">build_ngkpt_flow</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In total, we have four <code class="docutils literal notranslate"><span class="pre">ScfTasks</span></code> that will be executed in the <code class="docutils literal notranslate"><span class="pre">flow_base3_ngkpt</span></code> directory:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_7_0.svg" src="../_images/lesson_base3_7_0.svg" /></div>
+</div>
+<p>This is the input of the first task <code class="docutils literal notranslate"><span class="pre">w0_t0</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">input</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="abinit_input">
+##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#ecut" target="_blank">ecut</a> 8<br> <a href="https://docs.abinit.org/variables/basic#toldfe" target="_blank">toldfe</a> 1e-06<br> <a href="https://docs.abinit.org/variables/basic#ngkpt" target="_blank">ngkpt</a> 2 2 2<br> <a href="https://docs.abinit.org/variables/basic#kptopt" target="_blank">kptopt</a> 1<br> <a href="https://docs.abinit.org/variables/basic#nshiftk" target="_blank">nshiftk</a> 4<br> <a href="https://docs.abinit.org/variables/basic#shiftk" target="_blank">shiftk</a><br>    0.5    0.5    0.5<br>    0.5    0.0    0.0<br>    0.0    0.5    0.0<br>    0.0    0.0    0.5<br>##############################################<br>####                 SECTION: dev                <br>##############################################<br> <a href="https://docs.abinit.org/variables/dev#iomode" target="_blank">iomode</a> 3<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br> <a href="https://docs.abinit.org/variables/gstate#diemac" target="_blank">diemac</a> 12.0<br>##############################################<br>####                  STRUCTURE                  <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#natom" target="_blank">natom</a> 2<br> <a href="https://docs.abinit.org/variables/basic#ntypat" target="_blank">ntypat</a> 1<br> <a href="https://docs.abinit.org/variables/basic#typat" target="_blank">typat</a> 1 1<br> <a href="https://docs.abinit.org/variables/basic#znucl" target="_blank">znucl</a> 14<br> <a href="https://docs.abinit.org/variables/basic#xred" target="_blank">xred</a><br>    0.0000000000    0.0000000000    0.0000000000<br>    0.2500000000    0.2500000000    0.2500000000<br> <a href="https://docs.abinit.org/variables/basic#acell" target="_blank">acell</a>    1.0    1.0    1.0<br> <a href="https://docs.abinit.org/variables/basic#rprim" target="_blank">rprim</a><br>    6.3285005244    0.0000000000    3.6537614813<br>    2.1095001748    5.9665675141    3.6537614813<br>    0.0000000000    0.0000000000    7.3075229627
+<div></div></div>
+</div>
+<p>and these are the divisions of the k-mesh for the four different calculations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">flow</span><span class="o">.</span><span class="n">iflat_tasks</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">pos_str</span><span class="p">,</span> <span class="s2">&quot;uses ngkpt:&quot;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;ngkpt&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w0_t0 uses ngkpt: (2, 2, 2)
+w0_t1 uses ngkpt: (4, 4, 4)
+w0_t2 uses ngkpt: (6, 6, 6)
+w0_t3 uses ngkpt: (8, 8, 8)
+</pre></div>
+</div>
+</div>
+</div>
+<p>but we can achieve the same goal with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">get_vars_dataframe</span><span class="p">(</span><span class="s2">&quot;ngkpt&quot;</span><span class="p">,</span> <span class="s2">&quot;ecut&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ngkpt</th>
+      <th>ecut</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>w0_t0</th>
+      <td>(2, 2, 2)</td>
+      <td>8</td>
+      <td>ScfTask</td>
+    </tr>
+    <tr>
+      <th>w0_t1</th>
+      <td>(4, 4, 4)</td>
+      <td>8</td>
+      <td>ScfTask</td>
+    </tr>
+    <tr>
+      <th>w0_t2</th>
+      <td>(6, 6, 6)</td>
+      <td>8</td>
+      <td>ScfTask</td>
+    </tr>
+    <tr>
+      <th>w0_t3</th>
+      <td>(8, 8, 8)</td>
+      <td>8</td>
+      <td>ScfTask</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>At this point, we could run the flow in the notebook by just calling:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>flow.make_scheduler().start()
+</pre></div>
+</div>
+<p>or, alternatively, execute the <code class="docutils literal notranslate"><span class="pre">lesson_base3.py</span></code> script to build
+the directory with the flow and then use:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abirun.py flow_base3_ngkpt scheduler
+</pre></div>
+</div>
+<p>inside the terminal.</p>
+</div>
+<div class="section" id="analysis-of-the-results">
+<h2>Analysis of the results<a class="headerlink" href="#analysis-of-the-results" title="Permalink to this headline">¶</a></h2>
+<p>We could use the API provided by the flow to extract the total energies from
+the GSR files. Something like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nkpt_list</span><span class="p">,</span> <span class="n">ene_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">flow</span><span class="o">.</span><span class="n">iflat_tasks</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">task</span><span class="o">.</span><span class="n">open_gsr</span><span class="p">()</span> <span class="k">as</span> <span class="n">gsr</span><span class="p">:</span>
+        <span class="n">nkpt_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gsr</span><span class="o">.</span><span class="n">nkpt</span><span class="p">)</span>
+        <span class="n">ene_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gsr</span><span class="o">.</span><span class="n">energy</span><span class="p">)</span>
+        
+<span class="c1"># Assuming values are already sorted wrt nkpt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nkpt_list</span><span class="p">,</span> <span class="n">ene_list</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>but it is much easier to create a <code class="docutils literal notranslate"><span class="pre">GsrRobot</span></code> that will do the work for us:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robot_enekpt</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">GsrRobot</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;flow_base3_ngkpt&quot;</span><span class="p">)</span>
+<span class="n">robot_enekpt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol start="0">
+<li>w0/t2/outdata/out_GSR.nc</li>
+<li>w0/t3/outdata/out_GSR.nc</li>
+<li>w0/t1/outdata/out_GSR.nc</li>
+<li>w0/t0/outdata/out_GSR.nc</li>
+</ol></div></div>
+</div>
+<p>In the next lines, we are going to generate a pandas <code class="docutils literal notranslate"><span class="pre">Dataframe</span></code> with
+the most important results so that we can show how to use the pandas API to analyze the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ene_table</span> <span class="o">=</span> <span class="n">robot_enekpt</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">()</span>
+<span class="n">ene_table</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;formula&#39;, &#39;natom&#39;, &#39;alpha&#39;, &#39;beta&#39;, &#39;gamma&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;volume&#39;,
+       &#39;abispg_num&#39;, &#39;spglib_symb&#39;, &#39;spglib_num&#39;, &#39;spglib_lattice_type&#39;,
+       &#39;energy&#39;, &#39;pressure&#39;, &#39;max_force&#39;, &#39;ecut&#39;, &#39;pawecutdg&#39;, &#39;tsmear&#39;,
+       &#39;nkpt&#39;, &#39;nsppol&#39;, &#39;nspinor&#39;, &#39;nspden&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The dataframe contains several columns but
+we are mainly interested in the number of k-points <code class="docutils literal notranslate"><span class="pre">nkpt</span></code> and in the <code class="docutils literal notranslate"><span class="pre">energy</span></code> (given in eV).
+Let’s massage a bit the data to facilitate the post-processing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We are gonna plot f(nkpt) so let&#39;s sort the rows first.</span>
+<span class="n">ene_table</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;nkpt&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="c1"># Add a column with energies in Ha and another column with the difference wrt to the last point.</span>
+<span class="n">ene_table</span><span class="p">[</span><span class="s2">&quot;energy_Ha&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ene_table</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">abilab</span><span class="o">.</span><span class="n">units</span><span class="o">.</span><span class="n">eV_to_Ha</span>
+<span class="n">ene_table</span><span class="p">[</span><span class="s2">&quot;ediff_Ha&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ene_table</span><span class="p">[</span><span class="s2">&quot;energy_Ha&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">ene_table</span><span class="p">[</span><span class="s2">&quot;energy_Ha&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>before printing a subset of the columns with the syntax:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ene_table</span><span class="p">[[</span><span class="s2">&quot;nkpt&quot;</span><span class="p">,</span> <span class="s2">&quot;energy&quot;</span><span class="p">,</span> <span class="s2">&quot;energy_Ha&quot;</span><span class="p">,</span> <span class="s2">&quot;ediff_Ha&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nkpt</th>
+      <th>energy</th>
+      <th>energy_Ha</th>
+      <th>ediff_Ha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>w0/t0/outdata/out_GSR.nc</th>
+      <td>2</td>
+      <td>-241.251548</td>
+      <td>-8.865831</td>
+      <td>0.006242</td>
+    </tr>
+    <tr>
+      <th>w0/t1/outdata/out_GSR.nc</th>
+      <td>10</td>
+      <td>-241.417961</td>
+      <td>-8.871946</td>
+      <td>0.000126</td>
+    </tr>
+    <tr>
+      <th>w0/t2/outdata/out_GSR.nc</th>
+      <td>28</td>
+      <td>-241.421160</td>
+      <td>-8.872064</td>
+      <td>0.000009</td>
+    </tr>
+    <tr>
+      <th>w0/t3/outdata/out_GSR.nc</th>
+      <td>60</td>
+      <td>-241.421393</td>
+      <td>-8.872073</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If you do not like tables and prefer figures, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ene_table</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;nkpt&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;energy_Ha&quot;</span><span class="p">,</span> <span class="s2">&quot;ediff_Ha&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure&quot;</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_25_0.png" src="../_images/lesson_base3_25_0.png" />
+</div>
+</div>
+<p>The difference between dataset 3 and dataset 4 is rather small. Even the dataset 2 gives an accuracy of about 0.0001 Ha.
+So, our converged value for the total energy (at fixed <code class="docutils literal notranslate"><span class="pre">acell</span></code> and <code class="docutils literal notranslate"><span class="pre">ecut</span></code>) is -8.8726 Ha.</p>
+<p>Now that we have learned a bit how to use pandas <code class="docutils literal notranslate"><span class="pre">Dataframes</span></code>, we can finally reveal
+that the AbiPy robots <em>already</em> provide methods to perform this kind of convergence studies
+so that we do not need to manipulate pandas dataframes explicitly.
+For example, we can perform the same analysis with a single line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robot_enekpt</span><span class="o">.</span><span class="n">plot_gsr_convergence</span><span class="p">(</span><span class="n">sortby</span><span class="o">=</span><span class="s2">&quot;nkpt&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_28_0.png" src="../_images/lesson_base3_28_0.png" />
+</div>
+</div>
+<p>We can also pass a function that will be called by the robot to compute the values along the x-axis
+and sort the results.
+The docstring of the function is used as label of the x-axis:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inv_nkpt</span><span class="p">(</span><span class="n">abifile</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;$\dfrac{1}{nkpt}$&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">abifile</span><span class="o">.</span><span class="n">nkpt</span>
+    
+<span class="n">robot_enekpt</span><span class="o">.</span><span class="n">plot_gsr_convergence</span><span class="p">(</span><span class="n">sortby</span><span class="o">=</span><span class="n">inv_nkpt</span><span class="p">);</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_30_0.png" src="../_images/lesson_base3_30_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#robot_enekpt.plot_lattice_convergence(sortby=&quot;nkpt&quot;);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="determination-of-the-lattice-parameters">
+<h2>Determination of the lattice parameters<a class="headerlink" href="#determination-of-the-lattice-parameters" title="Permalink to this headline">¶</a></h2>
+<p>At this point, the original Abinit tutorial proceeds with a convergence study for the optimized
+lattice parameters as function of the k-point sampling.
+In AbiPy, we only need to build different relaxation tasks with a slightly different input
+in which only <code class="docutils literal notranslate"><span class="pre">ngkpt</span></code> is changed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_base3</span> <span class="kn">import</span> <span class="n">build_relax_flow</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">build_relax_flow</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_relax_flow</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crystalline silicon: computation of the optimal lattice parameter.</span>
+<span class="sd">    Convergence with respect to the number of k points. Similar to tbase3_4.in</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Structural relaxation for different k-point samplings.</span>
+    <span class="n">ngkpt_list</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+
+    <span class="n">shiftk</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="s2">&quot;0.5 0.5 0.5 0.5 0.0 0.0 0.0 0.5 0.0 0.0 0.0 0.5&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+
+    <span class="n">multi</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">MultiDataset</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">cif_file</span><span class="p">(</span><span class="s2">&quot;si.cif&quot;</span><span class="p">),</span>
+                                <span class="n">pseudos</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">pseudos</span><span class="p">(</span><span class="s2">&quot;14si.pspnc&quot;</span><span class="p">),</span> <span class="n">ndtset</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">ngkpt_list</span><span class="p">))</span>
+
+    <span class="c1"># Global variables</span>
+    <span class="n">multi</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span>
+        <span class="n">ecut</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+        <span class="n">tolvrs</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span>
+        <span class="n">optcell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">ionmov</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">ntime</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">dilatmx</span><span class="o">=</span><span class="mf">1.05</span><span class="p">,</span>
+        <span class="n">ecutsm</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">diemac</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+        <span class="n">iomode</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ngkpt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ngkpt_list</span><span class="p">):</span>
+        <span class="n">multi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="n">ngkpt</span><span class="p">,</span> <span class="n">shiftk</span><span class="o">=</span><span class="n">shiftk</span><span class="p">)</span>
+
+    <span class="n">workdir</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span> <span class="k">if</span> <span class="p">(</span><span class="n">options</span> <span class="ow">and</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;flow_base3_relax&quot;</span>
+
+    <span class="k">return</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">Flow</span><span class="o">.</span><span class="n">from_inputs</span><span class="p">(</span><span class="n">workdir</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">multi</span><span class="o">.</span><span class="n">split_datasets</span><span class="p">(),</span> <span class="n">task_class</span><span class="o">=</span><span class="n">flowtk</span><span class="o">.</span><span class="n">RelaxTask</span><span class="p">)</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relax_flow</span> <span class="o">=</span> <span class="n">build_relax_flow</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">relax_flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_35_0.svg" src="../_images/lesson_base3_35_0.svg" /></div>
+</div>
+<div class="alert alert-info">
+If you want to run the flow from the shell, open lesson_base3.py and change the main function
+so that it calls build_relax_flow instead of build_ngkpt_flow.
+</div><p>This is our first structural relaxation with AbiPy and this gives us the opportunity to introduce the <code class="docutils literal notranslate"><span class="pre">HIST.nc</span></code> file.
+This file stores the history of the relaxation
+(energies, forces, stresses, lattice parameters and atomic positions at the different relaxation steps).</p>
+<p>As usual, we use <code class="docutils literal notranslate"><span class="pre">abiopen</span></code> to generate an AbiPy object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hist</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="s2">&quot;flow_base3_relax/w0/t1/outdata/out_HIST.nc&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================================= File Info =================================
+Name: out_HIST.nc
+Directory: /Users/gmatteo/git_repos/abipy_book/abipy_book/base3/flow_base3_relax/w0/t1/outdata
+Size: 4.24 kb
+Access Time: Thu Jul  8 02:48:30 2021
+Modification Time: Thu Jul  8 01:23:26 2021
+Change Time: Thu Jul  8 01:23:26 2021
+
+============================= Initial Structure =============================
+Full Formula (Si2)
+Reduced Formula: Si
+abc   :   3.866975   3.866975   3.866975
+angles:  60.000000  60.000000  60.000000
+Sites (2)
+  #  SP       a     b     c  cartesian_forces
+---  ----  ----  ----  ----  -----------------------------------------------------------
+  0  Si    0     0     0     [ 4.10231609e-27 -5.80155106e-27 -3.31586262e-27] eV ang^-1
+  1  Si    0.25  0.25  0.25  [-4.10231609e-27  5.80155106e-27  3.31586262e-27] eV ang^-1
+
+Number of relaxation steps performed: 4
+============================== Final structure ==============================
+Full Formula (Si2)
+Reduced Formula: Si
+abc   :   3.822962   3.822962   3.822962
+angles:  60.000000  60.000000  60.000000
+Sites (2)
+  #  SP       a      b     c  cartesian_forces
+---  ----  ----  -----  ----  -----------------------------------------------------------
+  0  Si    0     -0     0     [5.53272690e-28 6.25956593e-27 9.58296409e-28] eV ang^-1
+  1  Si    0.25   0.25  0.25  [-5.53272690e-28 -6.25956593e-27 -9.58296409e-28] eV ang^-1
+
+Volume change in percentage: -3.38%
+Percentage lattice parameter changes:
+	a: -1.14%, b: -1.14%, c: -1%
+
+Stress tensor (Cartesian coordinates in GPa):
+[[8.75674654e-03 5.30998779e-11 7.50894518e-11]
+ [5.30998779e-11 8.75674654e-03 5.30995448e-11]
+ [7.50894518e-11 5.30995448e-11 8.75674652e-03]]
+Pressure: -0.009 [GPa]
+</pre></div>
+</div>
+</div>
+</div>
+<p>To plot the evolution of the most important physical quantities, use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hist</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_40_0.png" src="../_images/lesson_base3_40_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hist_robot</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">HistRobot</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;flow_base3_relax&quot;</span><span class="p">)</span>
+    
+<span class="n">hist_table</span> <span class="o">=</span> <span class="n">hist_robot</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are several entries in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hist_table</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;formula&#39;, &#39;natom&#39;, &#39;alpha&#39;, &#39;beta&#39;, &#39;gamma&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;volume&#39;,
+       &#39;abispg_num&#39;, &#39;spglib_symb&#39;, &#39;spglib_num&#39;, &#39;spglib_lattice_type&#39;,
+       &#39;num_steps&#39;, &#39;final_energy&#39;, &#39;final_pressure&#39;, &#39;final_fmin&#39;,
+       &#39;final_fmax&#39;, &#39;final_fmean&#39;, &#39;final_fstd&#39;, &#39;final_drift&#39;,
+       &#39;initial_fmin&#39;, &#39;initial_fmax&#39;, &#39;initial_fmean&#39;, &#39;initial_fstd&#39;,
+       &#39;initial_drift&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s select some of them with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hist_table</span><span class="p">[[</span><span class="s2">&quot;alpha&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;final_energy&quot;</span><span class="p">,</span> <span class="s2">&quot;final_pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;num_steps&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>alpha</th>
+      <th>a</th>
+      <th>final_energy</th>
+      <th>final_pressure</th>
+      <th>num_steps</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>w0/t1/outdata/out_HIST.nc</th>
+      <td>60.0</td>
+      <td>3.822962</td>
+      <td>-241.425217</td>
+      <td>-0.008757</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>w0/t0/outdata/out_HIST.nc</th>
+      <td>60.0</td>
+      <td>3.829282</td>
+      <td>-241.255630</td>
+      <td>-0.013259</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>and print the evolution of important physical properties extracted from the two files:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hist_robot</span><span class="o">.</span><span class="n">gridplot</span><span class="p">(</span><span class="n">what_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">,</span> <span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;forces&quot;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_47_0.png" src="../_images/lesson_base3_47_0.png" />
+</div>
+</div>
+<p>We can also compare the two structural relaxations with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hist_robot</span><span class="o">.</span><span class="n">combiplot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_49_0.png" src="../_images/lesson_base3_49_0.png" />
+</div>
+</div>
+<p>Unfortunately the <code class="docutils literal notranslate"><span class="pre">HIST.nc</span></code> file does not have enough metadata.
+In particular we would like to have information about the k-point sampling
+so that we can analyze the convergence of the optimized lattice parameters wrt <code class="docutils literal notranslate"><span class="pre">nkpt</span></code>.
+Fortunately the <code class="docutils literal notranslate"><span class="pre">GSR.nc</span></code> has all the information we need and it is just a matter
+of replacing the <code class="docutils literal notranslate"><span class="pre">HistRobot</span></code> with a <code class="docutils literal notranslate"><span class="pre">GsrRobot</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">abilab</span><span class="o">.</span><span class="n">GsrRobot</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;flow_base3_relax&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">relkpt_robot</span><span class="p">:</span>
+    <span class="n">relax_table</span> <span class="o">=</span> <span class="n">relkpt_robot</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;nkpt&quot;</span><span class="p">)</span>
+    <span class="n">dfs</span> <span class="o">=</span> <span class="n">relkpt_robot</span><span class="o">.</span><span class="n">get_structure_dataframes</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relax_table</span><span class="p">[[</span><span class="s2">&quot;energy&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;max_force&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>energy</th>
+      <th>a</th>
+      <th>pressure</th>
+      <th>max_force</th>
+      <th>pressure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>w0/t0/outdata/out_GSR.nc</th>
+      <td>-241.255630</td>
+      <td>3.829282</td>
+      <td>-0.013259</td>
+      <td>1.913429e-27</td>
+      <td>-0.013259</td>
+    </tr>
+    <tr>
+      <th>w0/t1/outdata/out_GSR.nc</th>
+      <td>-241.425217</td>
+      <td>3.822962</td>
+      <td>-0.008757</td>
+      <td>6.356619e-27</td>
+      <td>-0.008757</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Plotting the energy, the lattice parameter <code class="docutils literal notranslate"><span class="pre">a</span></code> in Bohr and the pressure in <code class="docutils literal notranslate"><span class="pre">GPa</span></code> vs <code class="docutils literal notranslate"><span class="pre">nkpt</span></code> is really a piece of cake!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relax_table</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;nkpt&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure&quot;</span><span class="p">],</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_54_0.png" src="../_images/lesson_base3_54_0.png" />
+</div>
+</div>
+<p>Alternatively, one can use the <code class="docutils literal notranslate"><span class="pre">GsrRobot</span></code> API:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relkpt_robot</span><span class="o">.</span><span class="n">plot_gsr_convergence</span><span class="p">(</span><span class="n">sortby</span><span class="o">=</span><span class="s2">&quot;nkpt&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_56_0.png" src="../_images/lesson_base3_56_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relkpt_robot</span><span class="o">.</span><span class="n">plot_lattice_convergence</span><span class="p">(</span><span class="n">what_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="n">sortby</span><span class="o">=</span><span class="s2">&quot;nkpt&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_57_0.png" src="../_images/lesson_base3_57_0.png" />
+</div>
+</div>
+<p>We fix the parameters <code class="docutils literal notranslate"><span class="pre">acell</span></code> to the theoretical value of 3*10.216,
+and we fix also the grid of k points
+(the 4x4x4 FCC grid, equivalent to a 8x8x8 Monkhorst-pack grid).
+We will ask for 8 bands (4 valence and 4 conduction).</p>
+</div>
+<div class="section" id="computing-the-band-structure">
+<h2>Computing the band structure<a class="headerlink" href="#computing-the-band-structure" title="Permalink to this headline">¶</a></h2>
+<p>A band structure can be computed by solving the Kohn-Sham equation for many different k points, along different lines of the Brillouin zone.
+The potential that enters the Kohn-Sham equation must be derived from a previous self-consistent calculation,
+and will not vary during the scan of different k-point lines.</p>
+<p>This is our first Flow with dependencies in the sense that the band structure calculation must be
+connected to a previous SCF run.
+Fortunately AbiPy provides a factory function to generate this kind of workflow.
+We only need to focus on the definition of the two inputs:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_base3</span> <span class="kn">import</span> <span class="n">build_ebands_flow</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">build_ebands_flow</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_ebands_flow</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Band structure calculation.</span>
+<span class="sd">    First, a SCF density computation, then a non-SCF band structure calculation.</span>
+<span class="sd">    Similar to tbase3_5.in</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">multi</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">MultiDataset</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">cif_file</span><span class="p">(</span><span class="s2">&quot;si.cif&quot;</span><span class="p">),</span>
+                                <span class="n">pseudos</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">pseudos</span><span class="p">(</span><span class="s2">&quot;14si.pspnc&quot;</span><span class="p">),</span> <span class="n">ndtset</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># Global variables</span>
+    <span class="n">shiftk</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="s2">&quot;0.5 0.5 0.5 0.5 0.0 0.0 0.0 0.5 0.0 0.0 0.0 0.5&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+    <span class="n">multi</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">ecut</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">diemac</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">iomode</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># Dataset 1</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">tolvrs</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_kmesh</span><span class="p">(</span><span class="n">ngkpt</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">shiftk</span><span class="o">=</span><span class="n">shiftk</span><span class="p">)</span>
+
+    <span class="c1"># Dataset 2</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">tolwfr</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">)</span>
+    <span class="n">multi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_kpath</span><span class="p">(</span><span class="n">ndivsm</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="n">scf_input</span><span class="p">,</span> <span class="n">nscf_input</span> <span class="o">=</span> <span class="n">multi</span><span class="o">.</span><span class="n">split_datasets</span><span class="p">()</span>
+
+    <span class="n">workdir</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span> <span class="k">if</span> <span class="p">(</span><span class="n">options</span> <span class="ow">and</span> <span class="n">options</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;flow_base3_ebands&quot;</span>
+
+    <span class="k">return</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">bandstructure_flow</span><span class="p">(</span><span class="n">workdir</span><span class="p">,</span> <span class="n">scf_input</span><span class="o">=</span><span class="n">scf_input</span><span class="p">,</span> <span class="n">nscf_input</span><span class="o">=</span><span class="n">nscf_input</span><span class="p">)</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Flow</span></code> consists of a single <code class="docutils literal notranslate"><span class="pre">Work</span></code> with two <code class="docutils literal notranslate"><span class="pre">Tasks</span></code>
+(<code class="docutils literal notranslate"><span class="pre">ScfTask</span></code> with a k-mesh and a <code class="docutils literal notranslate"><span class="pre">NscfTask</span></code> performed on the k-path).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ebands_flow</span> <span class="o">=</span> <span class="n">build_ebands_flow</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">ebands_flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_62_0.svg" src="../_images/lesson_base3_62_0.svg" /></div>
+</div>
+<div class="alert alert-info">
+If you want to run the flow from the shell, open lesson_base3.py and change the main function
+so that it calls build_ebands_flow.
+</div><p>Let’s extract the band structure from the <code class="docutils literal notranslate"><span class="pre">GSR.nc</span></code> file produced by the <code class="docutils literal notranslate"><span class="pre">NscfTask</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="s2">&quot;flow_base3_ebands/w0/t1/outdata/out_GSR.nc&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">gsr</span><span class="p">:</span>
+    <span class="n">ebands_kpath</span> <span class="o">=</span> <span class="n">gsr</span><span class="o">.</span><span class="n">ebands</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and plot it with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ebands_kpath</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_67_0.png" src="../_images/lesson_base3_67_0.png" />
+</div>
+</div>
+<p>Visual inspection reveals that the width of the valence band is ~11.8 eV,
+the lowest unoccupied state at X is ~0.5 eV higher than the top of the valence band at <span class="math notranslate nohighlight">\(\Gamma\)</span>.
+Bulk silicon is described as an indirect band gap material (this is correct), with a band-gap
+of about 0.5 eV (this is quantitatively quite wrong:
+the experimental value is 1.17 eV at 25 degree Celsius, the famous <strong>DFT band-gap problem</strong>).
+The minimum of the conduction band is even slightly displaced with respect to X.</p>
+<p>Unfortunately, it seems that AbiPy does not agree with us:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ebands_kpath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================================= Structure =================================
+Full Formula (Si2)
+Reduced Formula: Si
+abc   :   3.866975   3.866975   3.866975
+angles:  60.000000  60.000000  60.000000
+Sites (2)
+  #  SP       a     b     c  cartesian_forces
+---  ----  ----  ----  ----  -----------------------------------------------------------
+  0  Si    0     0     0     [5.14220675e+101 5.14220675e+101 5.14220675e+101] eV ang^-1
+  1  Si    0.25  0.25  0.25  [5.14220675e+101 5.14220675e+101 5.14220675e+101] eV ang^-1
+
+Abinit Spacegroup: spgid: 227, num_spatial_symmetries: 48, has_timerev: True, symmorphic: True
+
+Number of electrons: 8.0, Fermi level: 5.567 (eV)
+nsppol: 1, nkpt: 101, mband: 5, nspinor: 1, nspden: 1
+smearing scheme: none (occopt 1), tsmear_eV: 0.272
+Direct gap:
+    Energy: 2.512 (eV)
+    Initial state: spin: 0, kpt: [+0.000, +0.000, +0.000], name: $\Gamma$, weight: 0.000, band: 3, eig: 5.567, occ: 2.000
+    Final state:   spin: 0, kpt: [+0.000, +0.000, +0.000], name: $\Gamma$, weight: 0.000, band: 4, eig: 8.080, occ: 0.000
+Fundamental gap:
+    Energy: 0.517 (eV)
+    Initial state: spin: 0, kpt: [+0.000, +0.000, +0.000], name: $\Gamma$, weight: 0.000, band: 3, eig: 5.567, occ: 2.000
+    Final state:   spin: 0, kpt: [+0.429, +0.000, +0.429], weight: 0.000, band: 4, eig: 6.084, occ: 0.000
+Bandwidth: 11.852 (eV)
+Valence maximum located at:
+    spin: 0, kpt: [+0.000, +0.000, +0.000], name: $\Gamma$, weight: 0.000, band: 3, eig: 5.567, occ: 2.000
+Conduction minimum located at:
+    spin: 0, kpt: [+0.429, +0.000, +0.429], weight: 0.000, band: 4, eig: 6.084, occ: 0.000
+
+TIP: Call set_fermie_to_vbm() to set the Fermi level to the VBM if this is a non-magnetic semiconductor
+</pre></div>
+</div>
+</div>
+</div>
+<p>The reason is that ther Fermi energy in <code class="docutils literal notranslate"><span class="pre">ebands_kpath</span></code> is not completely consistent with the band structure.
+The Fermi energy, indeed, has been taken from the previous GS-SCF calculation performed
+on a shifted k-mesh, the <span class="math notranslate nohighlight">\(\Gamma\)</span> point was not included and therefore the Fermi energy is underestimated.</p>
+<p>To fix this problem we have to change manually the Fermi energy and set it to the maximum of the valence bands:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ebands_kpath</span><span class="o">.</span><span class="n">set_fermie_to_vbm</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ebands_kpath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================================= Structure =================================
+Full Formula (Si2)
+Reduced Formula: Si
+abc   :   3.866975   3.866975   3.866975
+angles:  60.000000  60.000000  60.000000
+Sites (2)
+  #  SP       a     b     c  cartesian_forces
+---  ----  ----  ----  ----  -----------------------------------------------------------
+  0  Si    0     0     0     [5.14220675e+101 5.14220675e+101 5.14220675e+101] eV ang^-1
+  1  Si    0.25  0.25  0.25  [5.14220675e+101 5.14220675e+101 5.14220675e+101] eV ang^-1
+
+Abinit Spacegroup: spgid: 227, num_spatial_symmetries: 48, has_timerev: True, symmorphic: True
+
+Number of electrons: 8.0, Fermi level: 5.567 (eV)
+nsppol: 1, nkpt: 101, mband: 5, nspinor: 1, nspden: 1
+smearing scheme: none (occopt 1), tsmear_eV: 0.272
+Direct gap:
+    Energy: 2.512 (eV)
+    Initial state: spin: 0, kpt: [+0.000, +0.000, +0.000], name: $\Gamma$, weight: 0.000, band: 3, eig: 5.567, occ: 2.000
+    Final state:   spin: 0, kpt: [+0.000, +0.000, +0.000], name: $\Gamma$, weight: 0.000, band: 4, eig: 8.080, occ: 0.000
+Fundamental gap:
+    Energy: 0.517 (eV)
+    Initial state: spin: 0, kpt: [+0.000, +0.000, +0.000], name: $\Gamma$, weight: 0.000, band: 3, eig: 5.567, occ: 2.000
+    Final state:   spin: 0, kpt: [+0.429, +0.000, +0.429], weight: 0.000, band: 4, eig: 6.084, occ: 0.000
+Bandwidth: 11.852 (eV)
+Valence maximum located at:
+    spin: 0, kpt: [+0.000, +0.000, +0.000], name: $\Gamma$, weight: 0.000, band: 3, eig: 5.567, occ: 2.000
+Conduction minimum located at:
+    spin: 0, kpt: [+0.429, +0.000, +0.429], weight: 0.000, band: 4, eig: 6.084, occ: 0.000
+
+TIP: Call set_fermie_to_vbm() to set the Fermi level to the VBM if this is a non-magnetic semiconductor
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now the AbiPy results are consistent with our initial analysis:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ebands_kpath</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">with_gaps</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_73_0.png" src="../_images/lesson_base3_73_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can also plot the k-path in the Brillouin zone with:</span>
+<span class="c1">#ebands_kpath.kpoints.plot();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">GSR</span></code> file produced by the first task contains energies on a homogeneous k-mesh.
+We can therefore compute the DOS by invoking the <code class="docutils literal notranslate"><span class="pre">get_edos</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="s2">&quot;flow_base3_ebands/w0/t0/outdata/out_GSR.nc&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">gsr</span><span class="p">:</span>
+    <span class="n">ebands_kmesh</span> <span class="o">=</span> <span class="n">gsr</span><span class="o">.</span><span class="n">ebands</span>
+    
+<span class="n">edos</span> <span class="o">=</span> <span class="n">ebands_kmesh</span><span class="o">.</span><span class="n">get_edos</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and plot the DOS with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edos</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_78_0.png" src="../_images/lesson_base3_78_0.png" />
+</div>
+</div>
+<p>where the zero of the energy axis is set to the Fermi level <span class="math notranslate nohighlight">\(\epsilon_F\)</span> obtained by solving:</p>
+<div class="math notranslate nohighlight">
+\[\int_{-\infty}^{\epsilon_F} g(\epsilon)\,d\epsilon = N\]</div>
+<p>for <span class="math notranslate nohighlight">\(\epsilon_F\)</span> with <span class="math notranslate nohighlight">\(N\)</span> the number of electrons per unit cell.
+Note that the DOS is highly sensitive to the sampling of the IBZ and to the value of the broadening,
+especially in metallic systems.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edos</span><span class="o">.</span><span class="n">plot_dos_idos</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_80_0.png" src="../_images/lesson_base3_80_0.png" />
+</div>
+</div>
+<p>Want to make  a nice picture of the band dispersion with a second panel for the DOS?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ebands_kpath</span><span class="o">.</span><span class="n">plot_with_edos</span><span class="p">(</span><span class="n">edos</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_82_0.png" src="../_images/lesson_base3_82_0.png" />
+</div>
+</div>
+<p>It is important to stress that each panel in the above figure is aligned with respect to its own Fermi energy
+and these values are not necessarly equal:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ebands_kpath</span><span class="o">.</span><span class="n">fermie</span><span class="p">,</span> <span class="n">edos</span><span class="o">.</span><span class="n">fermie</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.567493594319245 eV 5.838293314475842
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can always plot the bands and the DOS without setting their Fermi energy to zero by using:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ebands_kpath</span><span class="o">.</span><span class="n">plot_with_edos</span><span class="p">(</span><span class="n">edos</span><span class="p">,</span> <span class="n">e0</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_base3_86_0.png" src="../_images/lesson_base3_86_0.png" />
+</div>
+</div>
+<p>This figure shows that the bands and the DOS are not perfectly aligned.
+More specifically we would expect the DOS to be zero at the bottom/top of the conduction.
+This problems is essentially due to the use of a relatively large gaussian broadening.
+One should therefore compute the DOS with a much denser IBZ mesh and a much smaller broadening
+to solve this <em>alignment issue</em></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./base3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../base1/lesson_base1.html" title="previous page">Base1 lesson (H2 molecule)</a>
+    <a class='right-next' id="next-link" href="../base4/lesson_base4.html" title="next page">Base4 lesson (Aluminium)</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By M. Giantomassi and the AbiPy group<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

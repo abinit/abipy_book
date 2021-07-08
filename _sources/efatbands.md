@@ -11,13 +11,7 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](index.ipynb) <a id="top"></a>
-
-+++
-
-## FATBANDS.nc file
-
-+++
+## The FATBANDS.nc file
 
 The `FATBANDS.nc` file contains the projection of the KS wavefunctions onto atom-centered
 functions with given angular momentum $l$. 
@@ -38,9 +32,6 @@ For a quick visualization of the data, use:
     abiopen.py out_FATBANDS.nc -e
 
 ```{code-cell} ipython3
-# Use this at the beginning of your script so that your code will be compatible with python3
-from __future__ import print_function, division, unicode_literals
-
 import warnings 
 warnings.filterwarnings("ignore")  # Ignore warnings
 
@@ -130,5 +121,3 @@ Remember to close the files
 fbnc_kpath.close()
 fbnc_kmesh.close()
 ```
-
-Back to the main [Index](index.ipynb)

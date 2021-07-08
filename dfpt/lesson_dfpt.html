@@ -1,0 +1,2225 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phonons and Born effective charges &#8212; AbiPy Book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"*": "{\\dagger}", "ra": "{\\rangle}", "la": "{\\langle}", "bm": ["{\\boldsymbol #1}", 1], "mcL": "{\\mathcal{L}}", "mcG": "{\\mathcal{G}}", "mcR": "{\\mathcal{R}}", "mcS": "{\\mathcal{S}}", "mcC": "{\\mathcal{C}}", "mcO": "{\\mathcal{O}}", "KS": "{\\text{KS}}", "eph": "{\\text{e-ph}}", "ee": "{\\epsilon}", "phph": "{\\text{ph-ph}}", "FM": "{\\text{FM}}", "DW": "{\\text{DW}}", "QP": "{\\text{QP}}", "BZ": "{\\text{BZ}}", "sign": "{\\text{sign}}", "xc": "{\\text{xc}}", "tchi": "{\\tilde\\chi}", "rr": "{\\bf r}", "RR": "{\\bf R}", "tt": "{\\bf t}", "GG": "{\\bf G}", "kk": "{\\bf k}", "qq": "{\\bf q}", "kq": "{\\kk + \\qq}", "qG": "{\\bf q + G}", "kG": "{\\bf k + G}", "kmq": "{\\kk - \\qq}", "kpq": "{\\kk + \\qq}", "kpG": "{\\kk + \\GG}", "qpG": "{\\qq + \\GG}", "nk": "{n \\kk}", "mk": "{, \\kk}", "nks": "{n \\kk\\sigma}", "mks": "{m \\kk\\sigma}", "enk": "{\\varepsilon_\\nk}", "emkq": "{\\varepsilon_{m\\kk+\\qq}}", "qnu": "{\\qq \\nu}", "wqnu": "{\\omega_{\\qnu}}", "vnk": "{\\mathbf{v}_{n\\kk}}", "vmkq": "{\\mathbf{v}_{m\\kk+\\qq}}", "vnka": "{\\mathrm{v}_{n\\kk,\\alpha}}", "vnkb": "{\\mathrm{v}_{n\\kk,\\beta}}", "ef": "{\\varepsilon_F}", "gkkp": "{g_{mn\\nu}(\\kk,\\qq)}", "gkq": "{g_{mn\\nu}(\\kk,\\qq)}", "Go": "{G_0}", "Wo": "{W_0}", "Ueff": "{U_{\\text{eff}}}", "tee": "{\\tilde{\\epsilon}}", "ww": "{\\omega}", "tww": "{\\tilde\\omega}", "dd": "{\\,\\text{d}}", "vxc": "{v_\\xc}", "Ri": "{\\mcR^{-1}}", "Rit": "{\\mcR^{-1\\tau}}", "Si": "{\\mcS^{-1}}}", "Sit": "{\\Si^\\tau}}", "PDER": ["{\\dfrac{\\partial #1}{\\partial #2}}", 2], "FDER": ["{\\dfrac{\\delta #1}{\\delta #2}}", 2], "tPsi": "{\\tilde\\Psi}", "tpsi": "{\\tilde\\psi}", "tPhi": "{\\tilde\\Phi}", "tphi": "{\\tilde\\phi}", "tprj": "{\\tilde p}"}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="\(G_0W_0\) band structure with star-function interpolation" href="../g0w0/lesson_g0w0.html" />
+    <link rel="prev" title="Base4 lesson (Aluminium)" href="../base4/lesson_base4.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AbiPy Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Basic AbiPy Objects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../structure.html">
+   Structure object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../abinit_input.html">
+   The AbinitInput object
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../input_factories.html">
+   Factory functions
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Output Files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../gsr.html">
+   The GSR file (Ground-State)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../hist.html">
+   The HIST.nc file (relaxation/MD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../efatbands.html">
+   The FATBANDS.nc file
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ddb.html">
+   The DDB file (DFPT)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sigres.html">
+   The SIGRES file (GW)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mdf.html">
+   The MDF file (Bethe-Salpeter)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../abiwan.html">
+   The ABIWAN file (wannier90)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lobster.html">
+   Lobster output files
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Workflows
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../flows.html">
+   Tasks, Workflows and Flow
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AbiPy Lessons
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../base1/lesson_base1.html">
+   Base1 lesson (H2 molecule)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../base3/lesson_base3.html">
+   Base3 lesson (silicon)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../base4/lesson_base4.html">
+   Base4 lesson (Aluminium)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Phonons and Born effective charges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../g0w0/lesson_g0w0.html">
+   <span class="math notranslate nohighlight">
+    \(G_0W_0\)
+   </span>
+   band structure with star-function interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bse/lesson_bse.html">
+   Bethe-Salpeter calculations with AbiPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eph_al/lesson_eph_al.html">
+   Isotropic superconductivity
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Miscellaneous
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../links.html">
+   Useful links
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/dfpt/lesson_dfpt.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/dfpt/lesson_dfpt.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/abinit/abipy_book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/abinit/abipy_book/issues/new?title=Issue%20on%20page%20%2Fdfpt/lesson_dfpt.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/abinit/abipy_book/edit/master/docs/dfpt/lesson_dfpt.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/abinit/abipy_book/master?urlpath=tree/docs/dfpt/lesson_dfpt.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#phonon-frequencies-at-gamma-as-function-of-ecut">
+   Phonon frequencies at
+   <span class="math notranslate nohighlight">
+    \(\Gamma\)
+   </span>
+   as function of ecut
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convergence-study-at-gamma">
+   Convergence study at
+   <span class="math notranslate nohighlight">
+    \(\Gamma\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#phonon-band-structure-of-alas">
+   Phonon band structure of AlAs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#post-processing-the-results">
+   Post-processing the results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#macroscopic-dielectric-tensor-and-born-effective-charges">
+   Macroscopic dielectric tensor and Born effective charges
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#thermodynamic-properties-within-the-harmonic-approximation">
+   Thermodynamic properties within the harmonic approximation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="phonons-and-born-effective-charges">
+<h1>Phonons and Born effective charges<a class="headerlink" href="#phonons-and-born-effective-charges" title="Permalink to this headline">¶</a></h1>
+<p>This lesson discusses how to compute phonon band structures, DOS
+and Born effective charges with Abinit and AbiPy.
+The discussion closely follows the <a class="reference external" href="https://docs.abinit.org/tutorial/rf2/index.html">second lesson</a>
+on DFPT available on the Abinit web site.
+More specifically, we will discuss how to</p>
+<ul class="simple">
+<li><p>Perform a convergence study for the phonon frequencies at <span class="math notranslate nohighlight">\(\Gamma\)</span> as function of <code class="docutils literal notranslate"><span class="pre">ecut</span></code></p></li>
+<li><p>Compute the full phonon band structure of <code class="docutils literal notranslate"><span class="pre">AlAs</span></code> with the inclusion of LO-TO splitting</p></li>
+<li><p>Obtain thermodynamic properties within the harmonic approximation</p></li>
+</ul>
+<p>We assume that you have read the references mentioned in the <a class="reference external" href="https://docs.abinit.org/tutorial/rf1/index.html">first Abinit lesson</a>
+on DFPT.
+You might find additional material, related to the present section, in the following references:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.55.10355">Dynamical matrices, Born effective charges, dielectric permittivity tensors, and interatomic force constants from density-functional perturbation theory</a></p></li>
+<li><p><a class="reference external" href="https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.73.515">Phonons and related crystal properties from density-functional perturbation theory</a></p></li>
+</ul>
+<p>If you are already familiar with python and AbiPy-Abinit are already installed and configured,
+you may want to use directly the command line interface.
+See the <a class="reference external" href="http://README.md">README.md</a> file in the directory of this lesson explaining how to analyze the data from the shell
+using ipython and matplotlib.</p>
+<div class="section" id="phonon-frequencies-at-gamma-as-function-of-ecut">
+<h2>Phonon frequencies at <span class="math notranslate nohighlight">\(\Gamma\)</span> as function of ecut<a class="headerlink" href="#phonon-frequencies-at-gamma-as-function-of-ecut" title="Permalink to this headline">¶</a></h2>
+<p>Before starting, we need to import the python modules and the functions we will need in the notebook:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use this at the beginning of your script so that your code will be compatible with python3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span> <span class="c1"># to get rid of deprecation warnings</span>
+
+<span class="kn">from</span> <span class="nn">abipy</span> <span class="kn">import</span> <span class="n">abilab</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span> <span class="c1"># This line tells AbiPy we are running inside a notebook</span>
+<span class="kn">import</span> <span class="nn">abipy.flowtk</span> <span class="k">as</span> <span class="nn">flowtk</span>
+
+<span class="c1"># This line configures matplotlib to show figures embedded in the notebook.</span>
+<span class="c1"># Replace `inline` with `notebook` in classic notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline   
+
+<span class="c1"># Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib</span>
+<span class="c1">#%matplotlib widget </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and an useful function from the <code class="docutils literal notranslate"><span class="pre">lesson_dfpt</span></code> module that will be used to generate our DFPT flows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_dfpt</span> <span class="kn">import</span> <span class="n">make_scf_input</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">make_scf_input</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_scf_input</span><span class="p">(</span><span class="n">ecut</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ngkpt</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function constructs an `AbinitInput` to perform a GS-SCF calculation in crystalline AlAs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ecut: cutoff energy in Ha.</span>
+<span class="sd">        ngkpt: 3 integers specifying the k-mesh for the electrons.</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        `AbinitInput` object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Initialize the AlAs structure from an internal database. Use the pseudos shipped with AbiPy.</span>
+    <span class="n">gs_inp</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">AbinitInput</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">structure_from_ucell</span><span class="p">(</span><span class="s2">&quot;AlAs&quot;</span><span class="p">),</span>
+                                <span class="n">pseudos</span><span class="o">=</span><span class="n">abidata</span><span class="o">.</span><span class="n">pseudos</span><span class="p">(</span><span class="s2">&quot;13al.981214.fhi&quot;</span><span class="p">,</span> <span class="s2">&quot;33as.pspnc&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Set the value of the Abinit variables needed for GS runs.</span>
+    <span class="n">gs_inp</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span>
+        <span class="n">nband</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">ecut</span><span class="o">=</span><span class="n">ecut</span><span class="p">,</span>
+        <span class="n">ngkpt</span><span class="o">=</span><span class="n">ngkpt</span><span class="p">,</span>
+        <span class="n">nshiftk</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">shiftk</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>   <span class="c1"># This gives the usual fcc Monkhorst-Pack grid</span>
+                <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+        <span class="n">ixc</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">nstep</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+        <span class="n">diemac</span><span class="o">=</span><span class="mf">9.0</span><span class="p">,</span>
+        <span class="n">tolvrs</span><span class="o">=</span><span class="mf">1.0e-10</span><span class="p">,</span>
+        <span class="c1">#iomode=3,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">gs_inp</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<p>The function makes some assumptions for important parameters such as
+the crystalline structure and the pseudos.
+This is done on purpose to keep the code as simple as possible.
+It should not be so difficult to generalize the implementation to take into account other cases.
+Let’s start to play with our new function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scf_input</span> <span class="o">=</span> <span class="n">make_scf_input</span><span class="p">()</span>
+<span class="n">scf_input</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="abinit_input">
+##############################################<br>####                SECTION: basic               <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#nband" target="_blank">nband</a> 4<br> <a href="https://docs.abinit.org/variables/basic#ecut" target="_blank">ecut</a> 2<br> <a href="https://docs.abinit.org/variables/basic#ngkpt" target="_blank">ngkpt</a> 4 4 4<br> <a href="https://docs.abinit.org/variables/basic#nshiftk" target="_blank">nshiftk</a> 4<br> <a href="https://docs.abinit.org/variables/basic#shiftk" target="_blank">shiftk</a><br>    0.0    0.0    0.5<br>    0.0    0.5    0.0<br>    0.5    0.0    0.0<br>    0.5    0.5    0.5<br> <a href="https://docs.abinit.org/variables/basic#ixc" target="_blank">ixc</a> 1<br> <a href="https://docs.abinit.org/variables/basic#nstep" target="_blank">nstep</a> 25<br> <a href="https://docs.abinit.org/variables/basic#tolvrs" target="_blank">tolvrs</a> 1e-10<br>##############################################<br>####               SECTION: gstate               <br>##############################################<br> <a href="https://docs.abinit.org/variables/gstate#diemac" target="_blank">diemac</a> 9.0<br>##############################################<br>####                  STRUCTURE                  <br>##############################################<br> <a href="https://docs.abinit.org/variables/basic#natom" target="_blank">natom</a> 2<br> <a href="https://docs.abinit.org/variables/basic#ntypat" target="_blank">ntypat</a> 2<br> <a href="https://docs.abinit.org/variables/basic#typat" target="_blank">typat</a> 1 2<br> <a href="https://docs.abinit.org/variables/basic#znucl" target="_blank">znucl</a> 13 33<br> <a href="https://docs.abinit.org/variables/basic#xred" target="_blank">xred</a><br>    0.0000000000    0.0000000000    0.0000000000<br>    0.2500000000    0.2500000000    0.2500000000<br> <a href="https://docs.abinit.org/variables/basic#acell" target="_blank">acell</a>    1.0    1.0    1.0<br> <a href="https://docs.abinit.org/variables/basic#rprim" target="_blank">rprim</a><br>    0.0000000000    5.3050000000    5.3050000000<br>    5.3050000000    0.0000000000    5.3050000000<br>    5.3050000000    5.3050000000    0.0000000000
+<div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">scf_input</span><span class="o">.</span><span class="n">structure</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full Formula (Al1 As1)
+Reduced Formula: AlAs
+abc   :   3.970101   3.970101   3.970101
+angles:  60.000000  60.000000  60.000000
+Sites (2)
+  #  SP       a     b     c
+---  ----  ----  ----  ----
+  0  Al    0     0     0
+  1  As    0.25  0.25  0.25
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scf_input</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_dfpt_7_0.png" src="../_images/lesson_dfpt_7_0.png" />
+</div>
+</div>
+<p>We are using the same pseudopotentials than the official tutorial.
+Note that the xc functional is LDA in both pseudos but with a different
+parametrization. This is the reason why we are using <code class="docutils literal notranslate"><span class="pre">ixc</span></code> in the input file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pseudo</span> <span class="ow">in</span> <span class="n">scf_input</span><span class="o">.</span><span class="n">pseudos</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pseudo</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NcAbinitPseudo: 13al.981214.fhi&gt;
+  summary: Aluminum, fhi98PP : Hamann-type, LDA CA PerdewWang, l=2 local
+  number of valence electrons: 3.0
+  maximum angular momentum: d
+  angular momentum for local part: d
+  XC correlation: PW
+  supports spin-orbit: False
+  radius for non-linear core correction: 0.0
+  hint for low accuracy: ecut: 0.0, pawecutdg: 0.0
+  hint for normal accuracy: ecut: 0.0, pawecutdg: 0.0
+  hint for high accuracy: ecut: 0.0, pawecutdg: 0.0 
+
+&lt;NcAbinitPseudo: 33as.pspnc&gt;
+  summary: Troullier-Martins psp for element  As        Thu Oct 27 17:37:14 EDT 1994
+  number of valence electrons: 5.0
+  maximum angular momentum: p
+  angular momentum for local part: p
+  XC correlation: LDA_XC_TETER93
+  supports spin-orbit: False
+  radius for non-linear core correction: 2.0573171556401
+  hint for low accuracy: ecut: 0.0, pawecutdg: 0.0
+  hint for normal accuracy: ecut: 0.0, pawecutdg: 0.0
+  hint for high accuracy: ecut: 0.0, pawecutdg: 0.0 
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, we essentialy have a standard input to perform a GS calculation. This object will represent
+the <strong>building block</strong> for our DFPT calculation with AbiPy.</p>
+<p>It this is not your first time you use the DFPT part of Abinit, you already know that phonon calculations
+require an initial GS run to produce the <code class="docutils literal notranslate"><span class="pre">WFK</span></code> file
+followed by a DFPT run that reads the <code class="docutils literal notranslate"><span class="pre">WFK</span></code> file and solves the Sternheimer equations for <span class="math notranslate nohighlight">\(N_{\text{irred}}(q)\)</span>
+atomic perturbations where <span class="math notranslate nohighlight">\(N_{\text{irred}}\)</span> is the number of independent atomic displacements (assuming <span class="math notranslate nohighlight">\(q\)</span> belongs to the k-mesh).</p>
+<p>If you try to do a convergence study wrt <code class="docutils literal notranslate"><span class="pre">ecut</span></code> <strong>without multi-datasets</strong>, you will likely start from an initial GS input file with a given value of <code class="docutils literal notranslate"><span class="pre">ecut</span></code>, use it as a template to generate the DFPT input files, create symbolic
+links to the <code class="docutils literal notranslate"><span class="pre">WFK</span></code> file produced in the first GS step and then instruct Abinit to read this file with <code class="docutils literal notranslate"><span class="pre">irdwfk</span></code>.
+Once you have a set of input files that work for a particular <code class="docutils literal notranslate"><span class="pre">ecut</span></code>, one can simply replicate the set of
+directories and files and use a script to change the value of <code class="docutils literal notranslate"><span class="pre">ecut</span></code> in the input files.
+Then, of course, one has to run the calculations manually, collect the results and produce nice plots to understand
+what is happening.</p>
+<p>This approach is obviously boring and error-prone if you are a human being but it is easy to implement in an algorithm
+and machines do not complain if they have a lot of repetive work to do!
+There are also several <strong>technical advantages</strong> in using this <strong>task-based approach vs multi-datasets</strong> but we discuss this point in more details afterwards.</p>
+<p>If the machine could speak, it will tell you: give me an object that represents an input for GS calculations,
+give me the list of q-points you want to compute as well as the parameters that must be changed in the initial input
+and I will generate a <code class="docutils literal notranslate"><span class="pre">Flow</span></code> for DFPT calculations.
+This logic appears so frequenty that we decided to encapsulate it in the <code class="docutils literal notranslate"><span class="pre">flowtk.phonon_conv_flow</span></code> factory function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_dfpt</span> <span class="kn">import</span> <span class="n">build_flow_alas_ecut_conv</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">build_flow_alas_ecut_conv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_flow_alas_ecut_conv</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build and return Flow for convergence study of phonon frequencies at Gamma as function of ecut.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">scf_input</span> <span class="o">=</span> <span class="n">make_scf_input</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">phonon_conv_flow</span><span class="p">(</span><span class="s2">&quot;flow_alas_ecut_conv&quot;</span><span class="p">,</span> <span class="n">scf_input</span><span class="p">,</span> <span class="n">qpoints</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                                   <span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ecut&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<p>Let’s call the function to build our flow:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span> <span class="o">=</span> <span class="n">build_flow_alas_ecut_conv</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">flow</span><span class="o">.</span><span class="n">show_info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Flow, node_id=441934, workdir=flow_alas_ecut_conv&gt;
+Number of works: 6, total number of tasks: 9
+Number of tasks with a given class:
+
+Task Class      Number
+------------  --------
+ScfTask              3
+PhononTask           6
+</pre></div>
+</div>
+</div>
+</div>
+<p>and call the <code class="docutils literal notranslate"><span class="pre">get_graphviz</span></code> method to visualize the connection among the <code class="docutils literal notranslate"><span class="pre">Tasks</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_dfpt_15_0.svg" src="../_images/lesson_dfpt_15_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># matplotlib version based on networkx</span>
+<span class="c1">#flow.plot_networkx(with_edge_labels=True);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The flow contains three independent groups of tasks, one group per each value of <code class="docutils literal notranslate"><span class="pre">ecut</span></code> specified in <code class="docutils literal notranslate"><span class="pre">params</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">work</span> <span class="ow">in</span> <span class="n">flow</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">work</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">pos_str</span><span class="p">,</span> <span class="s2">&quot;uses ecut:&quot;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s2">&quot;ecut&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w0_t0 uses ecut: 4
+w1_t0 uses ecut: 4
+w1_t1 uses ecut: 4
+w2_t0 uses ecut: 6
+w3_t0 uses ecut: 6
+w3_t1 uses ecut: 6
+w4_t0 uses ecut: 8
+w5_t0 uses ecut: 8
+w5_t1 uses ecut: 8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">get_vars_dataframe</span><span class="p">(</span><span class="s2">&quot;ecut&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ecut</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>w0_t0</th>
+      <td>4</td>
+      <td>ScfTask</td>
+    </tr>
+    <tr>
+      <th>w1_t0</th>
+      <td>4</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w1_t1</th>
+      <td>4</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w2_t0</th>
+      <td>6</td>
+      <td>ScfTask</td>
+    </tr>
+    <tr>
+      <th>w3_t0</th>
+      <td>6</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w3_t1</th>
+      <td>6</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w4_t0</th>
+      <td>8</td>
+      <td>ScfTask</td>
+    </tr>
+    <tr>
+      <th>w5_t0</th>
+      <td>8</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w5_t1</th>
+      <td>8</td>
+      <td>PhononTask</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Each group represents a <code class="docutils literal notranslate"><span class="pre">Workflow</span></code> and consists of one <code class="docutils literal notranslate"><span class="pre">ScfTask</span></code>(red circle) that solves the <code class="docutils literal notranslate"><span class="pre">KS</span></code> equations self-consistently producing a <code class="docutils literal notranslate"><span class="pre">WFK</span></code> file that will be used by the two children (<code class="docutils literal notranslate"><span class="pre">PhononTasks</span></code> - blue circles)
+to compute the first-order change of the wavefunctions due to one of the <em>irreducible</em> atomic pertubations.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">phonon_conv_flow</span></code> invokes Abinit under the hood to get the list of irreducible perturbations
+and uses this information to build the flow.
+This explains why we have two <code class="docutils literal notranslate"><span class="pre">PhononTasks</span></code> per <span class="math notranslate nohighlight">\(q\)</span>-point instead of the total number of phonon modes that
+equals <span class="math notranslate nohighlight">\(3*N_{atom}=6\)</span>.</p>
+<p>Perhaps a table with the values of the input variables associated to the DFPT perturbation will help.
+<code class="docutils literal notranslate"><span class="pre">None</span></code> means that the variable is not defined in that particular input.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">get_vars_dataframe</span><span class="p">(</span><span class="s2">&quot;rfphon&quot;</span><span class="p">,</span> <span class="s2">&quot;rfatpol&quot;</span><span class="p">,</span> <span class="s2">&quot;rfdir&quot;</span><span class="p">,</span> <span class="s2">&quot;qpt&quot;</span><span class="p">,</span> <span class="s2">&quot;kptopt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rfphon</th>
+      <th>rfatpol</th>
+      <th>rfdir</th>
+      <th>qpt</th>
+      <th>kptopt</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>w0_t0</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>ScfTask</td>
+    </tr>
+    <tr>
+      <th>w1_t0</th>
+      <td>1</td>
+      <td>[1, 1]</td>
+      <td>[1, 0, 0]</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>2</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w1_t1</th>
+      <td>1</td>
+      <td>[2, 2]</td>
+      <td>[1, 0, 0]</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>2</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w2_t0</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>ScfTask</td>
+    </tr>
+    <tr>
+      <th>w3_t0</th>
+      <td>1</td>
+      <td>[1, 1]</td>
+      <td>[1, 0, 0]</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>2</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w3_t1</th>
+      <td>1</td>
+      <td>[2, 2]</td>
+      <td>[1, 0, 0]</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>2</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w4_t0</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>ScfTask</td>
+    </tr>
+    <tr>
+      <th>w5_t0</th>
+      <td>1</td>
+      <td>[1, 1]</td>
+      <td>[1, 0, 0]</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>2</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w5_t1</th>
+      <td>1</td>
+      <td>[2, 2]</td>
+      <td>[1, 0, 0]</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>2</td>
+      <td>PhononTask</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If the meaning of these variables is not clear, you can consult the <a class="reference external" href="https://docs.abinit.org">Abinit documentation</a>
+e.g. <a class="reference external" href="https://docs.abinit.org/variables/dfpt/#rfatpol">the documentation of the rfatpol input variable</a>
+or access the documentation directly from python with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abilab</span><span class="o">.</span><span class="n">docvar</span><span class="p">(</span><span class="s2">&quot;rfatpol&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h2>Default value:</h2>
+<p>[1, 1]</p>
+<h2>Description:</h2>
+<p>Control the range of atoms for which displacements will be considered in
+phonon calculations (atomic polarizations).
+These values are only relevant to phonon response function calculations.
+May take values from 1 to <b>natom</b>, with <b>rfatpol</b>(1)&lt;=<b>rfatpol</b>(2).
+The atoms to be moved will be defined by the do-loop variable iatpol:</p>
+<ul>
+<li>do iatpol=<b>rfatpol</b>(1),<b>rfatpol</b>(2)</li>
+</ul>
+<p>For the calculation of a full dynamical matrix, use <b>rfatpol</b>(1)=1 and
+<b>rfatpol</b>(2)=<b>natom</b>, together with <b>rfdir</b> 1 1 1. For selected
+elements of the dynamical matrix, use different values of <b>rfatpol</b> and/or
+<b>rfdir</b>. The name 'iatpol' is used for the part of the internal variable
+ipert when it runs from 1 to <b>natom</b>. The internal variable ipert can also
+assume values larger than <b>natom</b>, denoting perturbations of electric field
+or stress type (see <a href="/guide/respfn">the DFPT help file</a>).</p></div></div>
+</div>
+<p>Now we can generate the <code class="docutils literal notranslate"><span class="pre">flow_alas_ecut</span></code> directory with the input files by executing
+the <code class="docutils literal notranslate"><span class="pre">lesson_dfpt.py</span></code> script.
+Then use the <code class="docutils literal notranslate"><span class="pre">abirun.py</span></code> script to launch the entire calculation with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abirun.py flow_alas_ecut_conv scheduler
+</pre></div>
+</div>
+<p>You will see that all <code class="docutils literal notranslate"><span class="pre">PhononTasks</span></code> will be executed in parallel on your machine.</p>
+<div class="alert alert-warning">
+Please make sure that AbiPy is properly configured by running abicheck --with flow
+</div>
+<p>If you prefer to skip this part, you may want to jump to the next section, that presents the post-processing of the results.
+Note that the output files are already available in the repository so it is also possible to try
+the AbiPy post-processing tools without having to run the flow.</p>
+</div>
+<div class="section" id="convergence-study-at-gamma">
+<h2>Convergence study at <span class="math notranslate nohighlight">\(\Gamma\)</span><a class="headerlink" href="#convergence-study-at-gamma" title="Permalink to this headline">¶</a></h2>
+<p>There are several output files located inside the <code class="docutils literal notranslate"><span class="pre">outdata</span></code> directories:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>find flow_alas_ecut_conv/ -name <span class="s2">&quot;*_DDB&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flow_alas_ecut_conv//w4/t0/outdata/out_DDB
+flow_alas_ecut_conv//w3/outdata/out_DDB
+flow_alas_ecut_conv//w2/t0/outdata/out_DDB
+flow_alas_ecut_conv//w5/outdata/out_DDB
+flow_alas_ecut_conv//w0/t0/outdata/out_DDB
+flow_alas_ecut_conv//w1/outdata/out_DDB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remember that our goal is to analyze the convergence of the phonon frequencies at <span class="math notranslate nohighlight">\(\Gamma\)</span>
+as function of <code class="docutils literal notranslate"><span class="pre">ecut</span></code>.
+So we are mainly interested in the DDB files located in the <code class="docutils literal notranslate"><span class="pre">outdata</span></code> directories
+of the <code class="docutils literal notranslate"><span class="pre">PhononWorks</span></code> (<code class="docutils literal notranslate"><span class="pre">w0/outdata</span></code>, <code class="docutils literal notranslate"><span class="pre">w1/outdata</span></code>, <code class="docutils literal notranslate"><span class="pre">w2/outdata</span></code>).
+These are indeed the DDB files with all the information needed to reconstruct the
+dynamical matrix at <span class="math notranslate nohighlight">\(\Gamma\)</span> and to compute the phonon frequencies (AbiPy calls <code class="docutils literal notranslate"><span class="pre">mrgddb</span></code>
+to merge the DDB files when all the perturbations in the <code class="docutils literal notranslate"><span class="pre">PhononWork</span></code> have been computed).</p>
+<p>The code below tells our robot that we would like to analyze all the DDB files
+located in the output directories of the works:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robot</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">DdbRobot</span><span class="o">.</span><span class="n">from_dir_glob</span><span class="p">(</span><span class="s2">&quot;./flow_alas_ecut_conv/w*/outdata/&quot;</span><span class="p">)</span>
+<span class="n">robot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol start="0">
+<li>flow_alas_ecut_conv/w3/outdata/out_DDB</li>
+<li>flow_alas_ecut_conv/w5/outdata/out_DDB</li>
+<li>flow_alas_ecut_conv/w1/outdata/out_DDB</li>
+</ol></div></div>
+</div>
+<p>For more examples on the use of DDB and robots, see the
+<a class="reference external" href="https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/ddb.ipynb">DDB notebook</a>.
+Now we ask the robot to call <code class="docutils literal notranslate"><span class="pre">anaddb</span></code> to compute the phonon frequencies at <span class="math notranslate nohighlight">\(\Gamma\)</span> for all DDBs
+and return a pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_gamma</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">get_dataframe_at_qpoint</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculation completed.
+Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpf4e309og
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculation completed.
+Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmps6zujl12
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculation completed.
+Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpe3j3ha53
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a dict-like object whose keys are the name of the colums in the table</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data_gamma</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;mode0&#39;, &#39;mode1&#39;, &#39;mode2&#39;, &#39;mode3&#39;, &#39;mode4&#39;, &#39;mode5&#39;, &#39;nkpt&#39;, &#39;nsppol&#39;,
+       &#39;ecut&#39;, &#39;tsmear&#39;, &#39;occopt&#39;, &#39;ixc&#39;, &#39;nband&#39;, &#39;usepaw&#39;, &#39;formula&#39;,
+       &#39;natom&#39;, &#39;alpha&#39;, &#39;beta&#39;, &#39;gamma&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;volume&#39;,
+       &#39;abispg_num&#39;, &#39;spglib_symb&#39;, &#39;spglib_num&#39;, &#39;spglib_lattice_type&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">mode-i</span></code> is the frequency in eV of the i-th phonon mode.</p>
+<p>We are mainly interested in the convergence of the phonon frequencies versus <code class="docutils literal notranslate"><span class="pre">ecut</span></code> so we filter these columns with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_gamma</span> <span class="o">=</span> <span class="n">data_gamma</span><span class="p">[[</span><span class="s2">&quot;ecut&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">data_gamma</span> <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">)]]</span>
+<span class="n">data_gamma</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ecut</th>
+      <th>mode0</th>
+      <th>mode1</th>
+      <th>mode2</th>
+      <th>mode3</th>
+      <th>mode4</th>
+      <th>mode5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>flow_alas_ecut_conv/w3/outdata/out_DDB</th>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.044485</td>
+      <td>0.044485</td>
+      <td>0.044485</td>
+    </tr>
+    <tr>
+      <th>flow_alas_ecut_conv/w5/outdata/out_DDB</th>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.044625</td>
+      <td>0.044625</td>
+      <td>0.044625</td>
+    </tr>
+    <tr>
+      <th>flow_alas_ecut_conv/w1/outdata/out_DDB</th>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.043641</td>
+      <td>0.043641</td>
+      <td>0.043641</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>and we get some statistics about our data with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_gamma</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ecut</th>
+      <th>mode0</th>
+      <th>mode1</th>
+      <th>mode2</th>
+      <th>mode3</th>
+      <th>mode4</th>
+      <th>mode5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.044250</td>
+      <td>0.044250</td>
+      <td>0.044250</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000533</td>
+      <td>0.000533</td>
+      <td>0.000533</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.043641</td>
+      <td>0.043641</td>
+      <td>0.043641</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.044063</td>
+      <td>0.044063</td>
+      <td>0.044063</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.044485</td>
+      <td>0.044485</td>
+      <td>0.044485</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>7.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.044555</td>
+      <td>0.044555</td>
+      <td>0.044555</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.044625</td>
+      <td>0.044625</td>
+      <td>0.044625</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Pandas tables are extremly powerful and the <code class="docutils literal notranslate"><span class="pre">describe</span></code> method already gives some useful info
+about the convergence of the phonon modes.
+Sometimes, however, we would like to visualize the data to have a better understanding of what’s happening:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_gamma</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;ecut&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mode3&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;-o&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_dfpt_38_0.png" src="../_images/lesson_dfpt_38_0.png" />
+</div>
+</div>
+<p>Let’s plot all the modes in different subplots with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_gamma</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;ecut&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">data_gamma</span> <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">)],</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;-o&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_dfpt_40_0.png" src="../_images/lesson_dfpt_40_0.png" />
+</div>
+</div>
+<p>This convergence study at <span class="math notranslate nohighlight">\(\Gamma\)</span> thus reveals that our pseudos require
+an <code class="docutils literal notranslate"><span class="pre">ecut</span></code> &gt;= 6 Ha to get reasonably converged phonon frequencies at <span class="math notranslate nohighlight">\(\Gamma\)</span>.
+In what follows, we assume that also the modes at the other <span class="math notranslate nohighlight">\(q\)</span>-points present a similar
+convergence behaviour and we use <code class="docutils literal notranslate"><span class="pre">ecut</span></code> = 6 Ha to keep the computational cost low.</p>
+<p>For a quick introduction to Pandas, see:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jvns/pandas-cookbook">Pandas cookbook</a></p></li>
+<li><p><a class="reference external" href="http://nbviewer.jupyter.org/github/jvns/pandas-cookbook/blob/master/cookbook/Chapter%201%20-%20Reading%20from%20a%20CSV.ipynb">Pandas cookbook Chapter 1 Reading data from a csv file</a></p></li>
+</ul>
+</div>
+<div class="section" id="phonon-band-structure-of-alas">
+<h2>Phonon band structure of AlAs<a class="headerlink" href="#phonon-band-structure-of-alas" title="Permalink to this headline">¶</a></h2>
+<p>Now we are finally ready for the calculation of the vibrational spectrum of <span class="math notranslate nohighlight">\(AlAs\)</span>.
+We already managed to run DFPT calculations at <span class="math notranslate nohighlight">\(\Gamma\)</span> with different values of <code class="docutils literal notranslate"><span class="pre">ecut</span></code> and the
+steps required to get a full band structure are not that different, provided that
+the following differences are taken into account:</p>
+<ul class="simple">
+<li><p>we need the dynamical matrix <span class="math notranslate nohighlight">\(D(q)\)</span> on a homogeneous mesh so that it is possible to calculate <span class="math notranslate nohighlight">\(D(R)\)</span>
+in anaddb via Fourier transform and then phonon frequencies for arbitrary q-points via Fourier interpolation</p></li>
+<li><p><span class="math notranslate nohighlight">\(AlAs\)</span> is a polar semiconductor so we need to include the LO-TO splitting for <span class="math notranslate nohighlight">\(q \rightarrow 0\)</span> that, in turns,
+requires the DFPT computation of the Born effective charges and of the dielectric constant.</p></li>
+</ul>
+<p>In AbiPy, these concepts are translated in an easy-to-use API in which you pass an initial <code class="docutils literal notranslate"><span class="pre">AbinitInput</span></code> object,
+you specify the q-mesh for phonons in terms of <code class="docutils literal notranslate"><span class="pre">ph_nqpt</span></code> and activate the computation of the
+Born effective charges with the boolean flag <code class="docutils literal notranslate"><span class="pre">with_becs</span></code>.</p>
+<p>Let’s have a look at the code (as usual there are more comments than lines of code):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lesson_dfpt</span> <span class="kn">import</span> <span class="n">build_flow_alas_phonons</span>
+<span class="n">abilab</span><span class="o">.</span><span class="n">print_source</span><span class="p">(</span><span class="n">build_flow_alas_phonons</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sa { color: #BA2121 } /* Literal.String.Affix */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .dl { color: #BA2121 } /* Literal.String.Delimiter */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .fm { color: #0000FF } /* Name.Function.Magic */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .vm { color: #19177C } /* Name.Variable.Magic */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_flow_alas_phonons</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build and return a Flow to compute the dynamical matrix on a (2, 2, 2) qmesh</span>
+<span class="sd">    as well as DDK and Born effective charges.</span>
+<span class="sd">    The final DDB with all perturbations will be merged automatically and placed</span>
+<span class="sd">    in the Flow `outdir` directory.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">scf_input</span> <span class="o">=</span> <span class="n">make_scf_input</span><span class="p">(</span><span class="n">ecut</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ngkpt</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">flowtk</span><span class="o">.</span><span class="n">PhononFlow</span><span class="o">.</span><span class="n">from_scf_input</span><span class="p">(</span><span class="s2">&quot;flow_alas_phonons&quot;</span><span class="p">,</span> <span class="n">scf_input</span><span class="p">,</span>
+                                            <span class="n">ph_ngqpt</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">with_becs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</body>
+</html>
+</div></div>
+</div>
+<p>We can finally construct the flow with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow_phbands</span> <span class="o">=</span> <span class="n">build_flow_alas_phonons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and visualize the connections with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow_phbands</span><span class="o">.</span><span class="n">get_graphviz</span><span class="p">()</span>
+<span class="c1">#flow_phbands.plot_networkx();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_dfpt_48_0.svg" src="../_images/lesson_dfpt_48_0.svg" /></div>
+</div>
+<p>Note that there are a lot of things happening under the hood here.</p>
+<p>First of all, AbiPy generates <code class="docutils literal notranslate"><span class="pre">PhononTasks</span></code> only for the <span class="math notranslate nohighlight">\(q\)</span>-points in the
+irreducible wedge of the Brillouin zone corresponding to <code class="docutils literal notranslate"><span class="pre">ph_ngqpt</span></code>.
+Moreover, for a given <span class="math notranslate nohighlight">\(q\)</span>-point, only the irreducible atomic perturbations are explicitly computed
+since the other atomic perturbations can be reconstructed by symmetry.
+Fortunately you do not have to care about all these technical details as AbiPy and Abinit
+will automate the whole procedure.</p>
+<p>Remember that the <span class="math notranslate nohighlight">\(q\)</span>-point mesh cannot be chosen arbitrarily
+since all <span class="math notranslate nohighlight">\(q\)</span> wavevectors should connect two <span class="math notranslate nohighlight">\(k\)</span> points of the grid used for the electrons.</p>
+<p>It is also worth stressing that the computational cost of the DFPT run depends on the q-point
+since only those symmetries that preserve the q-point as well as the direction of the perturbation
+can be employed (calculations at <span class="math notranslate nohighlight">\(\Gamma\)</span> are therefore much faster than other q-points).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow_phbands</span><span class="o">.</span><span class="n">get_vars_dataframe</span><span class="p">(</span><span class="s2">&quot;rfphon&quot;</span><span class="p">,</span> <span class="s2">&quot;rfatpol&quot;</span><span class="p">,</span> <span class="s2">&quot;rfdir&quot;</span><span class="p">,</span> <span class="s2">&quot;qpt&quot;</span><span class="p">,</span> <span class="s2">&quot;kptopt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rfphon</th>
+      <th>rfatpol</th>
+      <th>rfdir</th>
+      <th>qpt</th>
+      <th>kptopt</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>w0_t0</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>ScfTask</td>
+    </tr>
+    <tr>
+      <th>w1_t0</th>
+      <td>None</td>
+      <td>None</td>
+      <td>(1, 0, 0)</td>
+      <td>(0, 0, 0)</td>
+      <td>2</td>
+      <td>DdkTask</td>
+    </tr>
+    <tr>
+      <th>w1_t1</th>
+      <td>None</td>
+      <td>None</td>
+      <td>(0, 1, 0)</td>
+      <td>(0, 0, 0)</td>
+      <td>2</td>
+      <td>DdkTask</td>
+    </tr>
+    <tr>
+      <th>w1_t2</th>
+      <td>None</td>
+      <td>None</td>
+      <td>(0, 0, 1)</td>
+      <td>(0, 0, 0)</td>
+      <td>2</td>
+      <td>DdkTask</td>
+    </tr>
+    <tr>
+      <th>w1_t3</th>
+      <td>1</td>
+      <td>[1, 1]</td>
+      <td>[1, 0, 0]</td>
+      <td>(0, 0, 0)</td>
+      <td>2</td>
+      <td>BecTask</td>
+    </tr>
+    <tr>
+      <th>w1_t4</th>
+      <td>1</td>
+      <td>[2, 2]</td>
+      <td>[1, 0, 0]</td>
+      <td>(0, 0, 0)</td>
+      <td>2</td>
+      <td>BecTask</td>
+    </tr>
+    <tr>
+      <th>w2_t0</th>
+      <td>1</td>
+      <td>[1, 1]</td>
+      <td>[1, 0, 0]</td>
+      <td>[0.5, 0.0, 0.0]</td>
+      <td>3</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w2_t1</th>
+      <td>1</td>
+      <td>[1, 1]</td>
+      <td>[0, 1, 0]</td>
+      <td>[0.5, 0.0, 0.0]</td>
+      <td>3</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w2_t2</th>
+      <td>1</td>
+      <td>[2, 2]</td>
+      <td>[1, 0, 0]</td>
+      <td>[0.5, 0.0, 0.0]</td>
+      <td>3</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w2_t3</th>
+      <td>1</td>
+      <td>[2, 2]</td>
+      <td>[0, 1, 0]</td>
+      <td>[0.5, 0.0, 0.0]</td>
+      <td>3</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w3_t0</th>
+      <td>1</td>
+      <td>[1, 1]</td>
+      <td>[1, 0, 0]</td>
+      <td>[0.5, 0.5, 0.0]</td>
+      <td>3</td>
+      <td>PhononTask</td>
+    </tr>
+    <tr>
+      <th>w3_t1</th>
+      <td>1</td>
+      <td>[2, 2]</td>
+      <td>[1, 0, 0]</td>
+      <td>[0.5, 0.5, 0.0]</td>
+      <td>3</td>
+      <td>PhononTask</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now we can generate the directories and the input files of the <code class="docutils literal notranslate"><span class="pre">Flow</span></code>.
+Change lesson_dfpt.py so that the build_flow_alas_phonons function is called in main
+instead of build_flow_alas_ecut_conv.
+Run the script to generate the directory with the flow.
+Finally, use</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abirun.py flow_alas_phonons scheduler
+</pre></div>
+</div>
+<p>to launch the entire calculation.</p>
+</div>
+<div class="section" id="post-processing-the-results">
+<h2>Post-processing the results<a class="headerlink" href="#post-processing-the-results" title="Permalink to this headline">¶</a></h2>
+<p>Our flow is completed and we have the final DDB file with all the <span class="math notranslate nohighlight">\(q\)</span>-points and all the independent atomic perturbations.
+Let’s open this DDB file with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddb</span> <span class="o">=</span> <span class="n">abilab</span><span class="o">.</span><span class="n">abiopen</span><span class="p">(</span><span class="s2">&quot;flow_alas_phonons/outdata/out_DDB&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ddb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================================= File Info =================================
+Name: out_DDB
+Directory: /Users/gmatteo/git_repos/abipy_book/abipy_book/dfpt/flow_alas_phonons/outdata
+Size: 28.11 kb
+Access Time: Thu Jul  8 02:48:30 2021
+Modification Time: Thu Jul  8 02:04:58 2021
+Change Time: Thu Jul  8 02:04:58 2021
+
+================================= Structure =================================
+Full Formula (Al1 As1)
+Reduced Formula: AlAs
+abc   :   3.970101   3.970101   3.970101
+angles:  60.000000  60.000000  60.000000
+Sites (2)
+  #  SP       a     b     c
+---  ----  ----  ----  ----
+  0  Al    0     0     0
+  1  As    0.25  0.25  0.25
+
+Abinit Spacegroup: spgid: 0, num_spatial_symmetries: 24, has_timerev: True, symmorphic: False
+
+================================== DDB Info ==================================
+
+Number of q-points in DDB: 3
+guessed_ngqpt: [2 2 2] (guess for the q-mesh divisions made by AbiPy)
+ecut = 6.000000, ecutsm = 0.000000, nkpt = 128, nsym = 24, usepaw = 0
+nsppol 1, nspinor 1, nspden 1, ixc = 1, occopt = 1, tsmear = 0.010000
+
+Has total energy: False, Has forces: False
+Has stress tensor: False
+
+Has (at least one) atomic pertubation: True
+Has (at least one diagonal) electric-field perturbation: True
+Has (at least one) Born effective charge: True
+Has (all) strain terms: False
+Has (all) internal strain terms: False
+Has (all) piezoelectric terms: False
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">DdbFile</span></code> object provides an easy-to-use interface that invokes <code class="docutils literal notranslate"><span class="pre">anaddb</span></code> to post-process
+the data stored in the DDB file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">anacompare_phdos</span></code>, for example, computes the phonon DOS with different <span class="math notranslate nohighlight">\(q\)</span>-meshes.
+Each mesh is defined by a single integer, <code class="docutils literal notranslate"><span class="pre">nqsmall</span></code>, that gives the number of
+divisions used to sample the smallest reciprocal lattice vector.
+The number of divisions along the other directions are chosen so that proportions are preserved:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">ddb</span><span class="o">.</span><span class="n">anacompare_phdos</span><span class="p">(</span><span class="n">nqsmalls</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">plotter</span><span class="o">.</span><span class="n">combiplot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_dfpt_56_0.png" src="../_images/lesson_dfpt_56_0.png" />
+</div>
+</div>
+<p>A 16x16x16 <span class="math notranslate nohighlight">\(q\)</span>-mesh with the tethraedron method gives a well converged phonon DOS.</p>
+<p>To function <code class="docutils literal notranslate"><span class="pre">anaget_phbst_and_phdos_files</span></code> allows one to compute the phonon band structure on an automatically defined <span class="math notranslate nohighlight">\(q\)</span>-path as well as the the phonon DOS:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbst_file</span><span class="p">,</span> <span class="n">phdos_file</span> <span class="o">=</span> <span class="n">ddb</span><span class="o">.</span><span class="n">anaget_phbst_and_phdos_files</span><span class="p">(</span><span class="n">ndivsm</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">nqsmall</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">lo_to_splitting</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Extract the phonon bands and the phonon DOS from phbst_file and phdos_file</span>
+<span class="n">phbands</span> <span class="o">=</span> <span class="n">phbst_file</span><span class="o">.</span><span class="n">phbands</span> 
+<span class="n">phdos</span> <span class="o">=</span> <span class="n">phdos_file</span><span class="o">.</span><span class="n">phdos</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s plot the bands with matplotlib:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbands</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_dfpt_61_0.png" src="../_images/lesson_dfpt_61_0.png" />
+</div>
+</div>
+<p>and the high-symmetry q-path:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbands</span><span class="o">.</span><span class="n">qpoints</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_dfpt_63_0.png" src="../_images/lesson_dfpt_63_0.png" />
+</div>
+</div>
+<p>Do you see the two strange dips for the highest phonon band, at the <span class="math notranslate nohighlight">\(\Gamma\)</span> point?
+They are due to the lack of LO-TO splitting for the ANADDB treatment of the first list of vector.
+See also the discussion in the <a class="reference external" href="https://docs.abinit.org/tutorial/rf2/index.html">second DFPT lesson</a>.</p>
+<p>For years, Abinit users had to patch manually the output frequencies to include the LO-TO splitting.
+These days are finally gone and we can plot the LO-TO splitting with AbiPy by just setting
+lo_to_splitting=True`:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbst_file</span><span class="p">,</span> <span class="n">phdos_file</span> <span class="o">=</span> <span class="n">ddb</span><span class="o">.</span><span class="n">anaget_phbst_and_phdos_files</span><span class="p">(</span><span class="n">ndivsm</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">nqsmall</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">lo_to_splitting</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Extract the phonon bands and the phonon DOS from phbst_file and phdos_file</span>
+<span class="n">phbands</span> <span class="o">=</span> <span class="n">phbst_file</span><span class="o">.</span><span class="n">phbands</span> 
+<span class="n">phdos</span> <span class="o">=</span> <span class="n">phdos_file</span><span class="o">.</span><span class="n">phdos</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#phbst_file.phbands.qpoints.plot(); </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The band structure plot now correctly shows the non-analytical behaviour around <span class="math notranslate nohighlight">\(\Gamma\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbands</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_dfpt_69_0.png" src="../_images/lesson_dfpt_69_0.png" />
+</div>
+</div>
+<div class="alert alert-warning">
+`lo_to_splitting=True` works only when the DDB contains the Born effective charges and the dielectric constant,
+that must be computed in the Abinit run.
+</div><p>To plot bands and DOS on the same figure:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbands</span><span class="o">.</span><span class="n">plot_with_phdos</span><span class="p">(</span><span class="n">phdos</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_dfpt_72_0.png" src="../_images/lesson_dfpt_72_0.png" />
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">PhdosFile</span></code> contains the phonon frequencies, the displacement vectors
+as well as the decomposition of the total DOS in terms of the contributions due to
+the different types of atom in the unit cell.
+This means that one can plot the type-projected phonon DOS with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phdos_file</span><span class="o">.</span><span class="n">plot_pjdos_type</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;AlAs type-projected phonon DOS&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_dfpt_74_0.png" src="../_images/lesson_dfpt_74_0.png" />
+</div>
+</div>
+<p>and it is even possible to plot fatbands and type-projected DOSes on the same figure with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phbands</span><span class="o">.</span><span class="n">plot_fatbands</span><span class="p">(</span><span class="n">phdos_file</span><span class="o">=</span><span class="n">phdos_file</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_dfpt_76_0.png" src="../_images/lesson_dfpt_76_0.png" />
+</div>
+</div>
+<p>The highest frequency modes have a strong Al-character while the low frequency modes originate from As.
+This behaviour is somehow expected. Could you explain it in terms of a simple physical model?</p>
+</div>
+<div class="section" id="macroscopic-dielectric-tensor-and-born-effective-charges">
+<h2>Macroscopic dielectric tensor and Born effective charges<a class="headerlink" href="#macroscopic-dielectric-tensor-and-born-effective-charges" title="Permalink to this headline">¶</a></h2>
+<p>Our calculations includes the response of the system to an external electric field.
+The code below extracts the macroscopic dielectric tensor (<code class="docutils literal notranslate"><span class="pre">emacro</span></code>)
+and the Born effective charges (<code class="docutils literal notranslate"><span class="pre">becs</span></code>) from the DDB file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">emacro</span><span class="p">,</span> <span class="n">becs</span> <span class="o">=</span> <span class="n">ddb</span><span class="o">.</span><span class="n">anaget_emacro_and_becs</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">emacro</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>x</th>
+      <td>10.396165</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td>0.000000</td>
+      <td>10.396165</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>z</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>10.396165</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">becs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>element</th>
+      <th>site_index</th>
+      <th>frac_coords</th>
+      <th>cart_coords</th>
+      <th>wyckoff</th>
+      <th>xx</th>
+      <th>yy</th>
+      <th>zz</th>
+      <th>yz</th>
+      <th>xz</th>
+      <th>xy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Al</td>
+      <td>0</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>[0.0, 0.0, 0.0]</td>
+      <td>1a</td>
+      <td>2.168053</td>
+      <td>2.168053</td>
+      <td>2.168053</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>As</td>
+      <td>1</td>
+      <td>[0.25, 0.25, 0.25]</td>
+      <td>[1.40364, 1.40364, 1.40364]</td>
+      <td>1d</td>
+      <td>-2.168053</td>
+      <td>-2.168053</td>
+      <td>-2.168053</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As explained in the references, the Born effective charges must fulfill
+the charge neutrality sum-rule.
+This rule is usually broken due to the discretization introduced by the FFT mesh, and <code class="docutils literal notranslate"><span class="pre">anaddb</span></code> will enforce it if <code class="docutils literal notranslate"><span class="pre">chneut</span></code> is set to 1 (default behaviour). Let’s check it out!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">becs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Born effective charges in Cartesian coordinates (Voigt notation)
+  element  site_index         frac_coords                  cart_coords wyckoff        xx        yy        zz   yz   xz   xy
+0      Al           0     [0.0, 0.0, 0.0]              [0.0, 0.0, 0.0]      1a  2.168053  2.168053  2.168053  0.0  0.0  0.0
+1      As           1  [0.25, 0.25, 0.25]  [1.40364, 1.40364, 1.40364]      1d -2.168053 -2.168053 -2.168053  0.0  0.0  0.0
+
+Born effective charge neutrality sum-rule with chneut: 1
+
+[[0.00000000e+00 0.00000000e+00 0.00000000e+00]
+ [0.00000000e+00 0.00000000e+00 0.00000000e+00]
+ [2.40741243e-35 2.40741243e-35 0.00000000e+00]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s repeat the same calculation but without enforcing the sum-rule:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">emacro</span><span class="p">,</span> <span class="n">becs_chneut0</span> <span class="o">=</span> <span class="n">ddb</span><span class="o">.</span><span class="n">anaget_emacro_and_becs</span><span class="p">(</span><span class="n">chneut</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">becs_chneut0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Born effective charges in Cartesian coordinates (Voigt notation)
+  element  site_index         frac_coords                  cart_coords wyckoff        xx        yy        zz   yz   xz   xy
+0      Al           0     [0.0, 0.0, 0.0]              [0.0, 0.0, 0.0]      1a  2.127295  2.127295  2.127295  0.0  0.0  0.0
+1      As           1  [0.25, 0.25, 0.25]  [1.40364, 1.40364, 1.40364]      1d -2.208811 -2.208811 -2.208811  0.0  0.0  0.0
+
+Born effective charge neutrality sum-rule with chneut: 0
+
+[[-8.15163891e-02  0.00000000e+00  0.00000000e+00]
+ [ 0.00000000e+00 -8.15163891e-02  0.00000000e+00]
+ [ 5.81483171e-19  5.81483171e-19 -8.15163891e-02]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="thermodynamic-properties-within-the-harmonic-approximation">
+<h2>Thermodynamic properties within the harmonic approximation<a class="headerlink" href="#thermodynamic-properties-within-the-harmonic-approximation" title="Permalink to this headline">¶</a></h2>
+<p>The thermodynamic properties of an ensemble of non-interacting phonons can be
+expresses in terms of integrals of the DOS.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3d897de4-08a1-4663-8a85-5adb6818cef3">
+<span class="eqno">(8)<a class="headerlink" href="#equation-3d897de4-08a1-4663-8a85-5adb6818cef3" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:helmholtz}
+\Delta F = 3nNk_BT\int_{0}^{\omega_L}\text{ln}\left(2\text{sinh}\frac{\hbar\omega}{2k_BT}\right)g(\omega)d\omega
+\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-2910bd2d-752c-4083-89b9-fb8a5906b17a">
+<span class="eqno">(9)<a class="headerlink" href="#equation-2910bd2d-752c-4083-89b9-fb8a5906b17a" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:free_en}
+\Delta E = 3nN\frac{\hbar}{2}\int_{0}^{\omega_L}\omega\text{coth}\left(\frac{\hbar\omega}{2k_BT}\right)g(\omega)d\omega
+\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-1037e503-96a6-469c-8698-425bfedb522f">
+<span class="eqno">(10)<a class="headerlink" href="#equation-1037e503-96a6-469c-8698-425bfedb522f" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:c_v}
+C_v = 3nNk_B\int_{0}^{\omega_L}\left(\frac{\hbar\omega}{2k_BT}\right)^2\text{csch}^2\left(\frac{\hbar\omega}{2k_BT}\right)g(\omega)d\omega
+\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-e6367e55-04ba-4a16-a017-3e8e481590a6">
+<span class="eqno">(11)<a class="headerlink" href="#equation-e6367e55-04ba-4a16-a017-3e8e481590a6" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:entropy}
+S = 3nNk_B\int_{0}^{\omega_L}\left(\frac{\hbar\omega}{2k_BT}\text{coth}\left(\frac{\hbar\omega}{2k_BT}\right) - \text{ln}\left(2\text{sinh}\frac{\hbar\omega}{2k_BT}\right)\right)g(\omega)d\omega,
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k_B\)</span> is the Boltzmann constant.</p>
+<p>This should represent a reasonable approximation especially in the low temperature
+regime in which anharmonic effects can be neglected.</p>
+<p>Let’s plot the vibrational contributions thermodynamic properties as function of <span class="math notranslate nohighlight">\(T\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phdos</span><span class="o">.</span><span class="n">plot_harmonic_thermo</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson_dfpt_87_0.png" src="../_images/lesson_dfpt_87_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Our first phonon band structure has been computed with a (4, 4, 4) <span class="math notranslate nohighlight">\(k\)</span>-mesh
+for the electrons and a (2, 2, 2) <span class="math notranslate nohighlight">\(q\)</span>-mesh for phonons.
+You may try to increase the density of <span class="math notranslate nohighlight">\(k\)</span>-points/<span class="math notranslate nohighlight">\(q\)</span>-points
+to see if this change affects the final results.</p></li>
+<li><p>Why do you get an error from AbiPy if you try <code class="docutils literal notranslate"><span class="pre">ngkpt</span></code> = (4, 4, 4,) and <code class="docutils literal notranslate"><span class="pre">ngqpt</span></code> = (3, 3, 3)?</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./dfpt"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../base4/lesson_base4.html" title="previous page">Base4 lesson (Aluminium)</a>
+    <a class='right-next' id="next-link" href="../g0w0/lesson_g0w0.html" title="next page"><span class="math notranslate nohighlight">\(G_0W_0\)</span> band structure with star-function interpolation</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By M. Giantomassi and the AbiPy group<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
