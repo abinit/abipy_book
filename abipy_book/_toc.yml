@@ -6,22 +6,22 @@ root: intro
 parts:
 - caption: Basic AbiPy Objects
   chapters:
-  - file: structure
-  - file: abinit_input
-  - file: input_factories
+  - file: structure.md
+  - file: abinit_input.md
+  - file: input_factories.md
 - caption: Output Files
   chapters:
-  - file: gsr
-  - file: hist
-  - file: efatbands
-  - file: ddb
-  - file: sigres
-  - file: mdf
-  - file: abiwan
-  - file: lobster
+  - file: gsr.md
+  - file: hist.md
+  - file: efatbands.md
+  - file: ddb.md
+  - file: sigres.md
+  - file: mdf.md
+  - file: abiwan.md
+  - file: lobster.md
 - caption: AbiPy Workflows
   chapters:
-  - file: flows
+  - file: flows.md
 - caption: AbiPy Lessons
   chapters:
   - file: base1/lesson_base1.md
@@ -31,3 +31,6 @@ parts:
   - file: g0w0/lesson_g0w0.md
   - file: bse/lesson_bse.md
   - file: eph_al/lesson_eph_al.md
+- caption: Miscellaneous
+  chapters:
+  - file: links.md

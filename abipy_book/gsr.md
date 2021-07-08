@@ -13,8 +13,8 @@ kernelspec:
 
 # The GSR file (Ground-State)
 
-In this notebook we discuss how to plot electron band structures and density of states (DOS)
-using the netcdf files produced by Abinit.
+In this notebook we discuss how to plot the electron band structures and the density of states (DOS)
+using the GSR netcdf files produced by Abinit.
 
 For the tutorial, we will use the netcdf files shipped with AbiPy.
 The function `abidata.ref_file` returns the absolute path of the reference file.
@@ -76,12 +76,10 @@ and an `ElectronBands` object with the band energies, the occupation factors, th
 print(gsr.ebands)
 ```
 
-<div class="alert alert-danger" role="alert">
+```{important}
 In python we start to count from zero, thus the first band has index 0 and the first spin is 0
 AbiPy uses the same convention so be very careful when specifying band, spin or k-point indices.
-</div>
-
-+++
+```
 
 A GSR file produced by a **self-consistent run**, contains the values of the total energy, the forces,
 and the stress tensor at the end of the SCF cycle:
@@ -108,7 +106,7 @@ At this point, we don't need this file anymore so we close it with:
 gsr.close()
 ```
 
-<div class="alert alert-danger" role="alert">
+```{warning}
 The gsr maintains a reference to the underlying netcdf file hence one should
 call `gsr.close()` to release the resource when we don't need it anymore.
 Python will do it automatically if you use `abiopen` and the `with` context manager.
@@ -116,9 +114,7 @@ Python will do it automatically if you use `abiopen` and the `with` context mana
 Note that we don't always follow this rule inside the jupyter notebook to maintain the
 code readable but you should definitively close all your files, especially when
 writing code that may be running for hours or even more.
-</div>
-
-+++
+```
 
 ## Plotting band structures
 
@@ -135,14 +131,15 @@ with abilab.abiopen(abidata.ref_file("si_nscf_GSR.nc")) as nscf_gsr:
     ebands_kpath = nscf_gsr.ebands
 ```
 
-Now we can plot the band energies with:
+Now we can plot the band energies with *matplotlib*:
 
 ```{code-cell} ipython3
 # The labels for the k-points are found in an internal database.
 ebands_kpath.plot(with_gaps=True, title="Silicon band structure");
 ```
 
-Alternatively you can use the optional argument `klabels` to define the mapping `reduced_coordinates --> name of the k-point` and pass it to the plot method
+Alternatively, one can use the optional argument `klabels` to define the mapping
+`reduced_coordinates --> name of the k-point` and pass it to the plot method
 
 ```{code-cell} ipython3
 klabels = {
@@ -154,7 +151,7 @@ klabels = {
 # ebands_kpath.plot(title="User-defined k-labels", band_range=(0, 5), klabels=klabels);
 ```
 
-## For the plotly version, use:
+For the plotly version, use:
 
 ```{code-cell} ipython3
 ebands_kpath.plotly(with_gaps=True, title="Silicon band structure with plotly");
@@ -177,13 +174,11 @@ and the crystalline structure with:
 ebands_kpath.structure.plot();
 ```
 
- <div class="alert alert-success">
+```{note}
 The same piece of code works if you replace the `GSR.nc` file with e.g. a `WFK.nc` file in netcdf format
 (actually any netcdf file with an ebands object).
 The main advantage of the `GSR` file is that it is lightweight (no wavefunctions).
-</div>
-
-+++
+```
 
 ## DOS with the Gaussian technique
 
@@ -209,12 +204,10 @@ print("[ebands_kmesh] is_ibz:", ebands_kmesh.kpoints.is_ibz, "is_kpath:", ebands
 print("[ebands_kpath] is_ibz:", ebands_kpath.kpoints.is_ibz, "is_kpath:", ebands_kpath.kpoints.is_path)
 ```
 
-<div class="alert alert-info" role="alert">
+```{warning}
 The DOS requires a homogeneous $k$-sampling of the BZ. Abipy will raise an exception if you try
 to compute the DOS with a k-path.
-</div>
-
-+++
+```
 
 To plot bands and DOS on the same figure:
 
@@ -306,9 +299,7 @@ mgb2_eb3d.plot_isosurfaces();
 
 TODO
 
-+++
-
-<div class="alert alert-info" role="alert">
+```{note}
 Robots can also be constructed from the command line with: abicomp.py gsr FILES
-</div>
+```
 

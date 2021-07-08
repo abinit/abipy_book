@@ -42,14 +42,29 @@ html:
   use_issues_button: true
 
 
+parse:
+  #myst_substitutions:
+  #    sub3: My _global_ value!
+  myst_enable_extensions:  # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
+
 sphinx:
   config:
-    nb_custom_formats:
-      .Rmd:
-        - jupytext.reads
-        - fmt: Rmd
+    # By default MathJax version 2 is currently used. 
+    # You may want to try using version 3, which claims to improve load speeds by 60 - 80%:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     html_js_files:
       - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js   # For plotly
+    bibtex_reference_style: author_year  # or label, super, \supercite
     intersphinx_mapping:
       python: 
         - "https://docs.python.org/3.9"
