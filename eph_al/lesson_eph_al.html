@@ -49,7 +49,7 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"*": "{\\dagger}", "ra": "{\\rangle}", "la": "{\\langle}", "bm": ["{\\boldsymbol #1}", 1], "mcL": "{\\mathcal{L}}", "mcG": "{\\mathcal{G}}", "mcR": "{\\mathcal{R}}", "mcS": "{\\mathcal{S}}", "mcC": "{\\mathcal{C}}", "mcO": "{\\mathcal{O}}", "KS": "{\\text{KS}}", "eph": "{\\text{e-ph}}", "ee": "{\\epsilon}", "phph": "{\\text{ph-ph}}", "FM": "{\\text{FM}}", "DW": "{\\text{DW}}", "QP": "{\\text{QP}}", "BZ": "{\\text{BZ}}", "sign": "{\\text{sign}}", "xc": "{\\text{xc}}", "tchi": "{\\tilde\\chi}", "rr": "{\\bf r}", "RR": "{\\bf R}", "tt": "{\\bf t}", "GG": "{\\bf G}", "kk": "{\\bf k}", "qq": "{\\bf q}", "kq": "{\\kk + \\qq}", "qG": "{\\bf q + G}", "kG": "{\\bf k + G}", "kmq": "{\\kk - \\qq}", "kpq": "{\\kk + \\qq}", "kpG": "{\\kk + \\GG}", "qpG": "{\\qq + \\GG}", "nk": "{n \\kk}", "mk": "{, \\kk}", "nks": "{n \\kk\\sigma}", "mks": "{m \\kk\\sigma}", "enk": "{\\varepsilon_\\nk}", "emkq": "{\\varepsilon_{m\\kk+\\qq}}", "qnu": "{\\qq \\nu}", "wqnu": "{\\omega_{\\qnu}}", "vnk": "{\\mathbf{v}_{n\\kk}}", "vmkq": "{\\mathbf{v}_{m\\kk+\\qq}}", "vnka": "{\\mathrm{v}_{n\\kk,\\alpha}}", "vnkb": "{\\mathrm{v}_{n\\kk,\\beta}}", "ef": "{\\varepsilon_F}", "gkkp": "{g_{mn\\nu}(\\kk,\\qq)}", "gkq": "{g_{mn\\nu}(\\kk,\\qq)}", "Go": "{G_0}", "Wo": "{W_0}", "Ueff": "{U_{\\text{eff}}}", "tee": "{\\tilde{\\epsilon}}", "ww": "{\\omega}", "tww": "{\\tilde\\omega}", "dd": "{\\,\\text{d}}", "vxc": "{v_\\xc}", "Ri": "{\\mcR^{-1}}", "Rit": "{\\mcR^{-1\\tau}}", "Si": "{\\mcS^{-1}}}", "Sit": "{\\Si^\\tau}}", "PDER": ["{\\dfrac{\\partial #1}{\\partial #2}}", 2], "FDER": ["{\\dfrac{\\delta #1}{\\delta #2}}", 2], "tPsi": "{\\tilde\\Psi}", "tpsi": "{\\tilde\\psi}", "tPhi": "{\\tilde\\Phi}", "tphi": "{\\tilde\\phi}", "tprj": "{\\tilde p}"}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -425,14 +425,14 @@ In the second part, we use the AbiPy objects to analyze the results. We start fr
 <span class="math notranslate nohighlight">\(\newcommand{\dd}{{\,\text{d}}}\)</span></p>
 <p>The phonon linewidths are proportional to the electron phonon coupling, and depend on the phonon wavevector <span class="math notranslate nohighlight">\(q\)</span>
 and the branch index <span class="math notranslate nohighlight">\(\nu\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-01546779-1f79-46e4-bf3a-7fb26f8757b3">
-<span class="eqno">(12)<a class="headerlink" href="#equation-01546779-1f79-46e4-bf3a-7fb26f8757b3" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d0c966ac-2ddd-47ff-99bc-8dcf56f15c96">
+<span class="eqno">(12)<a class="headerlink" href="#equation-d0c966ac-2ddd-47ff-99bc-8dcf56f15c96" title="Permalink to this equation">¶</a></span>\[\begin{equation}
     \gamma_{\qq\nu} = 2\pi \omega_{\qq\nu} \sum_{mn\kk} |g_{mn\nu}(\kk, \qq)|^2 \delta(\ee_{\kpq m}) \delta(\ee_{\kk n})
 \end{equation}\]</div>
 <p>Throughout these notes we shall use Hartree atomic units (<span class="math notranslate nohighlight">\(e = \hbar = m_e = 1\)</span>), the Fermi level is set to zero.</p>
 <p>The electron-phonon matrix elements are defined by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-27d1b5b8-bb24-44f2-ae37-9f66851b39c2">
-<span class="eqno">(13)<a class="headerlink" href="#equation-27d1b5b8-bb24-44f2-ae37-9f66851b39c2" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:eph_matrix_elements}
+<div class="amsmath math notranslate nohighlight" id="equation-dffb9e6f-133e-4c85-8665-103fa0a4548a">
+<span class="eqno">(13)<a class="headerlink" href="#equation-dffb9e6f-133e-4c85-8665-103fa0a4548a" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:eph_matrix_elements}
     g_{mn}^{\nu}(\kk,\qq) = \dfrac{1}{\sqrt{2\omega_{\qq\nu}}} \&lt;\psi_{m \kpq} | \Delta_{\qq\nu} V^\KS |\psi_{n\kk}\&gt; 
 \end{equation}\]</div>
 <p>For further details about <span class="math notranslate nohighlight">\(\Delta_{\qq\nu} V^\KS\)</span> and their Fourier interpolation
@@ -440,8 +440,8 @@ see the <a class="reference external" href="https://nbviewer.jupyter.org/github/
 on the EPH self-energy and <a class="reference external" href="http://dx.doi.org/10.1103/PhysRevB.78.045124">Phys. Rev. B 78, 045124</a>.</p>
 <p>The Eliashberg function, <span class="math notranslate nohighlight">\(\alpha^2F(\omega)\)</span>, is similar to the density of states of the phonons, <span class="math notranslate nohighlight">\(F(\omega)\)</span>,
 but is weighted according to the coupling of the phonons to the electrons:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-aecf2fa6-3aa6-4570-8b38-3b6e917d5a9f">
-<span class="eqno">(14)<a class="headerlink" href="#equation-aecf2fa6-3aa6-4570-8b38-3b6e917d5a9f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-70157e8c-7e0a-4939-a842-d29f68246af2">
+<span class="eqno">(14)<a class="headerlink" href="#equation-70157e8c-7e0a-4939-a842-d29f68246af2" title="Permalink to this equation">¶</a></span>\[\begin{equation}
     \alpha^2F(\omega) = -\dfrac{1}{N_F} \sum_{\qq\nu} \dfrac{\gamma_{\qq\nu}}{\omega_{\qq\nu}} \delta(\ww - \ww_{\qq \nu})
 \end{equation}\]</div>
 <!--
@@ -451,26 +451,26 @@ For spin unpolarized systems:
 -->
 <p>The first inverse moment of <span class="math notranslate nohighlight">\(\alpha^2F(\omega)\)</span> gives the total coupling strength,
 or mass renormalization factor, <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4ad81020-f958-466c-88b3-a9f2ee719ab9">
-<span class="eqno">(15)<a class="headerlink" href="#equation-4ad81020-f958-466c-88b3-a9f2ee719ab9" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-38c61e20-c791-4b38-bf13-9bbdd2399628">
+<span class="eqno">(15)<a class="headerlink" href="#equation-38c61e20-c791-4b38-bf13-9bbdd2399628" title="Permalink to this equation">¶</a></span>\[\begin{equation}
     \lambda = \int \dfrac{\alpha^2F(\omega)}{\omega}\dd\omega = \sum_{\qq\nu} \lambda_{\qq\nu}
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-f5e6096e-5992-47d0-a260-7e772624a149">
-<span class="eqno">(16)<a class="headerlink" href="#equation-f5e6096e-5992-47d0-a260-7e772624a149" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b0db482c-a214-4d56-9213-a2c5b70490be">
+<span class="eqno">(16)<a class="headerlink" href="#equation-b0db482c-a214-4d56-9213-a2c5b70490be" title="Permalink to this equation">¶</a></span>\[\begin{equation}
     \lambda_{\qq\nu} = \dfrac{\gamma_{\qq\nu}}{\pi N_F \ww_{\qq\nu}^2}
 \end{equation}\]</div>
 <p>From <span class="math notranslate nohighlight">\(\lambda\)</span>, using the <a class="reference external" href="https://doi.org/10.1103/PhysRev.167.331">McMillan formula</a>
 as modified by Allen and Dynes in <a class="reference external" href="https://dx.doi.org/10.1103/PhysRevB.12.905">Phys. Rev. B 12 905</a>,
 one can estimate the superconducting critical temperature <span class="math notranslate nohighlight">\(T_c\)</span> in the <strong>isotropic</strong> case.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1660eae3-7691-4f95-aa1e-5c342be7e725">
-<span class="eqno">(17)<a class="headerlink" href="#equation-1660eae3-7691-4f95-aa1e-5c342be7e725" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-091148a4-c94e-4dbb-b7d5-e0768d88af32">
+<span class="eqno">(17)<a class="headerlink" href="#equation-091148a4-c94e-4dbb-b7d5-e0768d88af32" title="Permalink to this equation">¶</a></span>\[\begin{equation}
     T_c = \dfrac{\omega_{log}}{1.2} \exp \Biggl [ 
         \dfrac{-1.04 (1 + \lambda)}{\lambda ( 1 - 0.62 \mu^*) - \mu^*} 
     \Biggr ]
 \end{equation}\]</div>
 <p>where the logarithmic moment, <span class="math notranslate nohighlight">\(\omega_{log}\)</span>, is defined by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-052cb3d1-b928-4b4f-918d-a94d0fdb678f">
-<span class="eqno">(18)<a class="headerlink" href="#equation-052cb3d1-b928-4b4f-918d-a94d0fdb678f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0b2b85ae-3009-4331-9a0b-0e1ac9bc87ce">
+<span class="eqno">(18)<a class="headerlink" href="#equation-0b2b85ae-3009-4331-9a0b-0e1ac9bc87ce" title="Permalink to this equation">¶</a></span>\[\begin{equation}
     \omega_{log} = \exp \Biggl [ 
     \dfrac{2}{\lambda} \int \dfrac{\alpha^2F(\omega)}{\omega}\log(\omega)\dd\omega \Biggr 
     ]
@@ -480,8 +480,8 @@ It is common to treat <span class="math notranslate nohighlight">\(\mu^*\)</span
 from the ab-initio computed <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <p>It is worth noting that, if we assume constant e-ph matrix elements in the BZ, the phonon linewidths
 become proportional to the so-called <em>nesting</em> function defined by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b5a3cb5f-e164-464a-9f9f-834e24031886">
-<span class="eqno">(19)<a class="headerlink" href="#equation-b5a3cb5f-e164-464a-9f9f-834e24031886" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f6000e5f-fd40-4616-86b6-82099304bda3">
+<span class="eqno">(19)<a class="headerlink" href="#equation-f6000e5f-fd40-4616-86b6-82099304bda3" title="Permalink to this equation">¶</a></span>\[\begin{equation}
     N(\qq) = \sum_{mn\kk} \delta(\ee_{\kpq m}) \delta(\ee_{\kk n})
 \end{equation}\]</div>
 <p>Roughly speaking, there are two factors entering into play in the equation for the phonon linewidths:
@@ -490,23 +490,23 @@ to the shape of the Fermi surface (described by the nesting term).</p>
 <div class="section" id="implementation-details">
 <h3>Implementation details:<a class="headerlink" href="#implementation-details" title="Permalink to this headline">¶</a></h3>
 <p>The input variables <em>optdriver = 7</em> and <em>eph_task = 1</em> activate the computation of:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-afdfc91c-0467-485e-bd6c-a71f857b8da4">
-<span class="eqno">(20)<a class="headerlink" href="#equation-afdfc91c-0467-485e-bd6c-a71f857b8da4" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-66fbd0a5-e3c8-429e-bc4e-50468c04b98b">
+<span class="eqno">(20)<a class="headerlink" href="#equation-66fbd0a5-e3c8-429e-bc4e-50468c04b98b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
     \gamma_{\qq\nu} = 2\pi \omega_{\qq\nu} \sum_{pp'} d_{\qq p}^* \tilde\gamma_{p p'}(\qq) d_{\qq p'}^*
 \end{equation}\]</div>
 <p>for all q-points in the IBZ as determined by the <code class="docutils literal notranslate"><span class="pre">ddb_ngqpt</span></code> input variable.
 In the above equation, <span class="math notranslate nohighlight">\(p\)</span> is a short-hand notation for atom index and direction,
 <span class="math notranslate nohighlight">\(\vec d\)</span> is the phonon displacement and <span class="math notranslate nohighlight">\(\tilde\gamma_{p p'}(\qq)\)</span> is given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-929eccf7-ff4c-44f4-976a-a1fc538c7834">
-<span class="eqno">(21)<a class="headerlink" href="#equation-929eccf7-ff4c-44f4-976a-a1fc538c7834" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f6789cb6-a10d-47f3-8a0a-148e1ceed83b">
+<span class="eqno">(21)<a class="headerlink" href="#equation-f6789cb6-a10d-47f3-8a0a-148e1ceed83b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
     \tilde\gamma_{p p'}(\qq) = 
     \sum_{mn\kk} g_{mn,p}(\kk, \qq)^*  g_{mn,p'}(\kk, \qq)  \delta(\ee_{\kpq m}) \delta(\ee_{\kk n}).
 \end{equation}\]</div>
 <p>The <span class="math notranslate nohighlight">\(\tilde\gamma_{p p'}(\qq)\)</span> matrix has the same symmetries as the dynamical matrix
 and the elements in the <em>full</em> BZ can be obtained by <em>rotating</em> the initial set of q-points in the IBZ.</p>
 <p>Once <span class="math notranslate nohighlight">\(\tilde\gamma(\qq)\)</span> is known in the <em>full</em> BZ, one can Fourier transform to real space with:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d3266cd5-fe78-4c89-bc00-815d15460fb9">
-<span class="eqno">(22)<a class="headerlink" href="#equation-d3266cd5-fe78-4c89-bc00-815d15460fb9" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ca6e41a3-b8f3-4a45-9f75-5252295320c3">
+<span class="eqno">(22)<a class="headerlink" href="#equation-ca6e41a3-b8f3-4a45-9f75-5252295320c3" title="Permalink to this equation">¶</a></span>\[\begin{equation}
     \tilde\gamma_{p p'}(\RR) = \sum_\qq e^{i\qq\cdot\RR} \tilde\gamma_{p p'}(\qq)
 \end{equation}\]</div>
 <p>and use Fourier interpolation to obtain <span class="math notranslate nohighlight">\(\gamma_{\qq\nu}\)</span> everywhere in the BZ at low cost
@@ -854,7 +854,7 @@ For your convenience, we have grouped the variables used in the <code class="doc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Flow, node_id=442067, workdir=flow_eph_al&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Flow, node_id=442368, workdir=flow_eph_al&gt;
 Number of works: 3, total number of tasks: 22
 Number of tasks with a given class:
 
@@ -883,7 +883,7 @@ for the computation of the phonon linewidths around the Fermi surface.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;EphTask, node_id=442101, workdir=flow_eph_al/w2/t2&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;EphTask, node_id=442402, workdir=flow_eph_al/w2/t2&gt;
 </pre></div>
 </div>
 <div class="output text_html"><div class="abinit_input">
@@ -1166,8 +1166,8 @@ This is something that should be checked explicitly by looking at the behaviour 
 as a function of the input parameters.
 </div><p>In the introduction, we mentioned that there are two factors governing the strengh of the E-PH coupling in metals:
 the behaviour in (k, q)-space of the matrix elements and the <em>geometrical</em> contribution due to the Fermi surface.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-57b5489d-ab20-4c5f-aa01-78745f015c6d">
-<span class="eqno">(23)<a class="headerlink" href="#equation-57b5489d-ab20-4c5f-aa01-78745f015c6d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-844625cb-f199-4902-81cf-47acf7c93358">
+<span class="eqno">(23)<a class="headerlink" href="#equation-844625cb-f199-4902-81cf-47acf7c93358" title="Permalink to this equation">¶</a></span>\[\begin{equation}
     N(\qq) = \sum_{mn\kk} \delta(\ee_{\kpq m}) \delta(\ee_{\kk n})
 \end{equation}\]</div>
 <p>To understand the <em>geometrical</em> contribution, it is useful to visualize the Fermi surface.
