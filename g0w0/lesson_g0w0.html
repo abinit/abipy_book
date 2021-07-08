@@ -52,6 +52,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"*": "{\\dagger}", "ra": "{\\rangle}", "la": "{\\langle}", "bm": ["{\\boldsymbol #1}", 1], "mcL": "{\\mathcal{L}}", "mcG": "{\\mathcal{G}}", "mcR": "{\\mathcal{R}}", "mcS": "{\\mathcal{S}}", "mcC": "{\\mathcal{C}}", "mcO": "{\\mathcal{O}}", "KS": "{\\text{KS}}", "eph": "{\\text{e-ph}}", "ee": "{\\epsilon}", "phph": "{\\text{ph-ph}}", "FM": "{\\text{FM}}", "DW": "{\\text{DW}}", "QP": "{\\text{QP}}", "BZ": "{\\text{BZ}}", "sign": "{\\text{sign}}", "xc": "{\\text{xc}}", "tchi": "{\\tilde\\chi}", "rr": "{\\bf r}", "RR": "{\\bf R}", "tt": "{\\bf t}", "GG": "{\\bf G}", "kk": "{\\bf k}", "qq": "{\\bf q}", "kq": "{\\kk + \\qq}", "qG": "{\\bf q + G}", "kG": "{\\bf k + G}", "kmq": "{\\kk - \\qq}", "kpq": "{\\kk + \\qq}", "kpG": "{\\kk + \\GG}", "qpG": "{\\qq + \\GG}", "nk": "{n \\kk}", "mk": "{, \\kk}", "nks": "{n \\kk\\sigma}", "mks": "{m \\kk\\sigma}", "enk": "{\\varepsilon_\\nk}", "emkq": "{\\varepsilon_{m\\kk+\\qq}}", "qnu": "{\\qq \\nu}", "wqnu": "{\\omega_{\\qnu}}", "vnk": "{\\mathbf{v}_{n\\kk}}", "vmkq": "{\\mathbf{v}_{m\\kk+\\qq}}", "vnka": "{\\mathrm{v}_{n\\kk,\\alpha}}", "vnkb": "{\\mathrm{v}_{n\\kk,\\beta}}", "ef": "{\\varepsilon_F}", "gkkp": "{g_{mn\\nu}(\\kk,\\qq)}", "gkq": "{g_{mn\\nu}(\\kk,\\qq)}", "Go": "{G_0}", "Wo": "{W_0}", "Ueff": "{U_{\\text{eff}}}", "tee": "{\\tilde{\\epsilon}}", "ww": "{\\omega}", "tww": "{\\tilde\\omega}", "dd": "{\\,\\text{d}}", "vxc": "{v_\\xc}", "Ri": "{\\mcR^{-1}}", "Rit": "{\\mcR^{-1\\tau}}", "Si": "{\\mcS^{-1}}}", "Sit": "{\\Si^\\tau}}", "PDER": ["{\\dfrac{\\partial #1}{\\partial #2}}", 2], "FDER": ["{\\dfrac{\\delta #1}{\\delta #2}}", 2], "tPsi": "{\\tilde\\Psi}", "tpsi": "{\\tilde\\psi}", "tPhi": "{\\tilde\\Phi}", "tphi": "{\\tilde\\phi}", "tprj": "{\\tilde p}"}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.2.0.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Bethe-Salpeter calculations with AbiPy" href="../bse/lesson_bse.html" />
@@ -905,8 +906,8 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] &lt;BandStructureWork, node_id=442359, workdir=flow_g0w0/w0&gt;
-[1] &lt;Work, node_id=442363, workdir=flow_g0w0/w1&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] &lt;BandStructureWork, node_id=443386, workdir=flow_g0w0/w0&gt;
+[1] &lt;Work, node_id=443390, workdir=flow_g0w0/w1&gt;
 </pre></div>
 </div>
 </div>
@@ -920,9 +921,9 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ScfTask, node_id=442360, workdir=flow_g0w0/w0/t0&gt;
-&lt;NscfTask, node_id=442361, workdir=flow_g0w0/w0/t1&gt;
-&lt;NscfTask, node_id=442362, workdir=flow_g0w0/w0/t2&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ScfTask, node_id=443387, workdir=flow_g0w0/w0/t0&gt;
+&lt;NscfTask, node_id=443388, workdir=flow_g0w0/w0/t1&gt;
+&lt;NscfTask, node_id=443389, workdir=flow_g0w0/w0/t2&gt;
 </pre></div>
 </div>
 </div>
@@ -936,9 +937,9 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NscfTask, node_id=442364, workdir=flow_g0w0/w1/t0&gt;
-&lt;ScrTask, node_id=442365, workdir=flow_g0w0/w1/t1&gt;
-&lt;SigmaTask, node_id=442366, workdir=flow_g0w0/w1/t2&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NscfTask, node_id=443391, workdir=flow_g0w0/w1/t0&gt;
+&lt;ScrTask, node_id=443392, workdir=flow_g0w0/w1/t1&gt;
+&lt;SigmaTask, node_id=443393, workdir=flow_g0w0/w1/t2&gt;
 </pre></div>
 </div>
 </div>
@@ -1260,7 +1261,9 @@ obtained along a path.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">sigres.structure and ks_ebands_kpath.structures differ. Check your files!</span>
-Using: 30 star-functions. nstars/nk: 5.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using: 30 star-functions. nstars/nk: 5.0
 <span class=" -Color -Color-Green">FIT vs input data: Mean Absolute Error= 2.990e-13 (meV)</span>
 </pre></div>
 </div>

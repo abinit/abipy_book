@@ -52,6 +52,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"*": "{\\dagger}", "ra": "{\\rangle}", "la": "{\\langle}", "bm": ["{\\boldsymbol #1}", 1], "mcL": "{\\mathcal{L}}", "mcG": "{\\mathcal{G}}", "mcR": "{\\mathcal{R}}", "mcS": "{\\mathcal{S}}", "mcC": "{\\mathcal{C}}", "mcO": "{\\mathcal{O}}", "KS": "{\\text{KS}}", "eph": "{\\text{e-ph}}", "ee": "{\\epsilon}", "phph": "{\\text{ph-ph}}", "FM": "{\\text{FM}}", "DW": "{\\text{DW}}", "QP": "{\\text{QP}}", "BZ": "{\\text{BZ}}", "sign": "{\\text{sign}}", "xc": "{\\text{xc}}", "tchi": "{\\tilde\\chi}", "rr": "{\\bf r}", "RR": "{\\bf R}", "tt": "{\\bf t}", "GG": "{\\bf G}", "kk": "{\\bf k}", "qq": "{\\bf q}", "kq": "{\\kk + \\qq}", "qG": "{\\bf q + G}", "kG": "{\\bf k + G}", "kmq": "{\\kk - \\qq}", "kpq": "{\\kk + \\qq}", "kpG": "{\\kk + \\GG}", "qpG": "{\\qq + \\GG}", "nk": "{n \\kk}", "mk": "{, \\kk}", "nks": "{n \\kk\\sigma}", "mks": "{m \\kk\\sigma}", "enk": "{\\varepsilon_\\nk}", "emkq": "{\\varepsilon_{m\\kk+\\qq}}", "qnu": "{\\qq \\nu}", "wqnu": "{\\omega_{\\qnu}}", "vnk": "{\\mathbf{v}_{n\\kk}}", "vmkq": "{\\mathbf{v}_{m\\kk+\\qq}}", "vnka": "{\\mathrm{v}_{n\\kk,\\alpha}}", "vnkb": "{\\mathrm{v}_{n\\kk,\\beta}}", "ef": "{\\varepsilon_F}", "gkkp": "{g_{mn\\nu}(\\kk,\\qq)}", "gkq": "{g_{mn\\nu}(\\kk,\\qq)}", "Go": "{G_0}", "Wo": "{W_0}", "Ueff": "{U_{\\text{eff}}}", "tee": "{\\tilde{\\epsilon}}", "ww": "{\\omega}", "tww": "{\\tilde\\omega}", "dd": "{\\,\\text{d}}", "vxc": "{v_\\xc}", "Ri": "{\\mcR^{-1}}", "Rit": "{\\mcR^{-1\\tau}}", "Si": "{\\mcS^{-1}}}", "Sit": "{\\Si^\\tau}}", "PDER": ["{\\dfrac{\\partial #1}{\\partial #2}}", 2], "FDER": ["{\\dfrac{\\delta #1}{\\delta #2}}", 2], "tPsi": "{\\tilde\\Psi}", "tpsi": "{\\tilde\\psi}", "tPhi": "{\\tilde\\Phi}", "tphi": "{\\tilde\\phi}", "tprj": "{\\tilde p}"}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.2.0.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="\(G_0W_0\) band structure with star-function interpolation" href="../g0w0/lesson_g0w0.html" />
@@ -815,7 +816,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Flow, node_id=442257, workdir=flow_alas_ecut_conv&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Flow, node_id=443244, workdir=flow_alas_ecut_conv&gt;
 Number of works: 6, total number of tasks: 9
 Number of tasks with a given class:
 
@@ -1172,15 +1173,15 @@ and return a pandas <code class="docutils literal notranslate"><span class="pre"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculation completed.
-Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpu9cv6eb6
+Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmptio42upr
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculation completed.
-Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpfp2h5358
+Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpbqdevytv
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculation completed.
-Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpaf4m3y9e
+Anaddb results available in dir: /var/folders/nc/k69spyd12qv2tk3stk2xrxg40000gr/T/tmpq4913qdy
 </pre></div>
 </div>
 </div>
@@ -2127,20 +2128,20 @@ Born effective charge neutrality sum-rule with chneut: 0
 <h2>Thermodynamic properties within the harmonic approximation<a class="headerlink" href="#thermodynamic-properties-within-the-harmonic-approximation" title="Permalink to this headline">¶</a></h2>
 <p>The thermodynamic properties of an ensemble of non-interacting phonons can be
 expresses in terms of integrals of the DOS.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2c473f49-71f6-40dc-b074-8ec3989ab791">
-<span class="eqno">(8)<a class="headerlink" href="#equation-2c473f49-71f6-40dc-b074-8ec3989ab791" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:helmholtz}
+<div class="amsmath math notranslate nohighlight" id="equation-5bc27f2b-6587-40b0-a4f9-4ebbb70701a6">
+<span class="eqno">(8)<a class="headerlink" href="#equation-5bc27f2b-6587-40b0-a4f9-4ebbb70701a6" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:helmholtz}
 \Delta F = 3nNk_BT\int_{0}^{\omega_L}\text{ln}\left(2\text{sinh}\frac{\hbar\omega}{2k_BT}\right)g(\omega)d\omega
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-0cfc4f9a-d55e-413d-a2f6-647cedef2887">
-<span class="eqno">(9)<a class="headerlink" href="#equation-0cfc4f9a-d55e-413d-a2f6-647cedef2887" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:free_en}
+<div class="amsmath math notranslate nohighlight" id="equation-15aa828d-6e32-4629-970d-e4c8473b1ce7">
+<span class="eqno">(9)<a class="headerlink" href="#equation-15aa828d-6e32-4629-970d-e4c8473b1ce7" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:free_en}
 \Delta E = 3nN\frac{\hbar}{2}\int_{0}^{\omega_L}\omega\text{coth}\left(\frac{\hbar\omega}{2k_BT}\right)g(\omega)d\omega
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-d085c6b2-06b9-4f10-a10f-a6c5827cc810">
-<span class="eqno">(10)<a class="headerlink" href="#equation-d085c6b2-06b9-4f10-a10f-a6c5827cc810" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:c_v}
+<div class="amsmath math notranslate nohighlight" id="equation-789ecda9-a642-4054-a3b5-e8c6fc855969">
+<span class="eqno">(10)<a class="headerlink" href="#equation-789ecda9-a642-4054-a3b5-e8c6fc855969" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:c_v}
 C_v = 3nNk_B\int_{0}^{\omega_L}\left(\frac{\hbar\omega}{2k_BT}\right)^2\text{csch}^2\left(\frac{\hbar\omega}{2k_BT}\right)g(\omega)d\omega
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-8e375d9b-3b6b-435d-82a4-ba90883d288b">
-<span class="eqno">(11)<a class="headerlink" href="#equation-8e375d9b-3b6b-435d-82a4-ba90883d288b" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:entropy}
+<div class="amsmath math notranslate nohighlight" id="equation-3d5d40f8-f1ac-4660-922b-69312bf3c157">
+<span class="eqno">(11)<a class="headerlink" href="#equation-3d5d40f8-f1ac-4660-922b-69312bf3c157" title="Permalink to this equation">¶</a></span>\[\begin{equation} %\label{eq:entropy}
 S = 3nNk_B\int_{0}^{\omega_L}\left(\frac{\hbar\omega}{2k_BT}\text{coth}\left(\frac{\hbar\omega}{2k_BT}\right) - \text{ln}\left(2\text{sinh}\frac{\hbar\omega}{2k_BT}\right)\right)g(\omega)d\omega,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(k_B\)</span> is the Boltzmann constant.</p>

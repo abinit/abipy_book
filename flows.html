@@ -52,6 +52,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"*": "{\\dagger}", "ra": "{\\rangle}", "la": "{\\langle}", "bm": ["{\\boldsymbol #1}", 1], "mcL": "{\\mathcal{L}}", "mcG": "{\\mathcal{G}}", "mcR": "{\\mathcal{R}}", "mcS": "{\\mathcal{S}}", "mcC": "{\\mathcal{C}}", "mcO": "{\\mathcal{O}}", "KS": "{\\text{KS}}", "eph": "{\\text{e-ph}}", "ee": "{\\epsilon}", "phph": "{\\text{ph-ph}}", "FM": "{\\text{FM}}", "DW": "{\\text{DW}}", "QP": "{\\text{QP}}", "BZ": "{\\text{BZ}}", "sign": "{\\text{sign}}", "xc": "{\\text{xc}}", "tchi": "{\\tilde\\chi}", "rr": "{\\bf r}", "RR": "{\\bf R}", "tt": "{\\bf t}", "GG": "{\\bf G}", "kk": "{\\bf k}", "qq": "{\\bf q}", "kq": "{\\kk + \\qq}", "qG": "{\\bf q + G}", "kG": "{\\bf k + G}", "kmq": "{\\kk - \\qq}", "kpq": "{\\kk + \\qq}", "kpG": "{\\kk + \\GG}", "qpG": "{\\qq + \\GG}", "nk": "{n \\kk}", "mk": "{, \\kk}", "nks": "{n \\kk\\sigma}", "mks": "{m \\kk\\sigma}", "enk": "{\\varepsilon_\\nk}", "emkq": "{\\varepsilon_{m\\kk+\\qq}}", "qnu": "{\\qq \\nu}", "wqnu": "{\\omega_{\\qnu}}", "vnk": "{\\mathbf{v}_{n\\kk}}", "vmkq": "{\\mathbf{v}_{m\\kk+\\qq}}", "vnka": "{\\mathrm{v}_{n\\kk,\\alpha}}", "vnkb": "{\\mathrm{v}_{n\\kk,\\beta}}", "ef": "{\\varepsilon_F}", "gkkp": "{g_{mn\\nu}(\\kk,\\qq)}", "gkq": "{g_{mn\\nu}(\\kk,\\qq)}", "Go": "{G_0}", "Wo": "{W_0}", "Ueff": "{U_{\\text{eff}}}", "tee": "{\\tilde{\\epsilon}}", "ww": "{\\omega}", "tww": "{\\tilde\\omega}", "dd": "{\\,\\text{d}}", "vxc": "{v_\\xc}", "Ri": "{\\mcR^{-1}}", "Rit": "{\\mcR^{-1\\tau}}", "Si": "{\\mcS^{-1}}}", "Sit": "{\\Si^\\tau}}", "PDER": ["{\\dfrac{\\partial #1}{\\partial #2}}", 2], "FDER": ["{\\dfrac{\\delta #1}{\\delta #2}}", 2], "tPsi": "{\\tilde\\Psi}", "tpsi": "{\\tilde\\psi}", "tPhi": "{\\tilde\\Phi}", "tphi": "{\\tilde\\phi}", "tprj": "{\\tilde p}"}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.2.0.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Base1 lesson (H2 molecule)" href="base1/lesson_base1.html" />
@@ -527,13 +528,13 @@ Just specify the correct dependency and python will do the rest!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Work #0: &lt;BandStructureWork, node_id=442474, workdir=../../../../../tmp/hello_bands/w0&gt;, Finalized=False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Work #0: &lt;BandStructureWork, node_id=443350, workdir=../../../../../tmp/hello_bands/w0&gt;, Finalized=False
 +--------+-------------+---------+--------------+------------+----------+-----------------+--------+-----------+
 | Task   | Status      | Queue   | MPI|Omp|Gb   | Warn|Com   | Class    | Sub|Rest|Corr   | Time   |   Node_ID |
 +========+=============+=========+==============+============+==========+=================+========+===========+
-| w0_t0  | Initialized | None    | 1|  1|2.0    | 2|  2      | ScfTask  | (0, 0, 0)       | None   |    442475 |
+| w0_t0  | Initialized | None    | 1|  1|2.0    | 2|  2      | ScfTask  | (0, 0, 0)       | None   |    443351 |
 +--------+-------------+---------+--------------+------------+----------+-----------------+--------+-----------+
-| w0_t1  | Initialized | None    | 1|  1|2.0    | 1|  4      | NscfTask | (0, 0, 0)       | None   |    442476 |
+| w0_t1  | Initialized | None    | 1|  1|2.0    | 1|  4      | NscfTask | (0, 0, 0)       | None   |    443352 |
 +--------+-------------+---------+--------------+------------+----------+-----------------+--------+-----------+
 </pre></div>
 </div>
@@ -740,39 +741,39 @@ Note however that <code class="docutils literal notranslate"><span class="pre">a
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using scheduler v&gt;=3.0.0
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">[Thu Jul  8 17:03:22 2021] Number of launches: 1</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">[Thu Jul  8 17:37:14 2021] Number of launches: 1</span>
 
-Work #0: &lt;BandStructureWork, node_id=442474, workdir=../../../../../tmp/hello_bands/w0&gt;, Finalized=False
+Work #0: &lt;BandStructureWork, node_id=443350, workdir=../../../../../tmp/hello_bands/w0&gt;, Finalized=False
 +--------+-------------+------------+--------------+------------+----------+-----------------+----------+-----------+
 | Task   | Status      | Queue      | MPI|Omp|Gb   | Warn|Com   | Class    | Sub|Rest|Corr   | Time     |   Node_ID |
 +========+=============+============+==============+============+==========+=================+==========+===========+
-| w0_t0  | <span class=" -Color -Color-Blue">Submitted</span>   | 44101@gmac | 2|  1|2.0    | 0|  0      | ScfTask  | (1, 0, 0)       | 0:00:00Q |    442475 |
+| w0_t0  | <span class=" -Color -Color-Blue">Submitted</span>   | 46006@gmac | 2|  1|2.0    | 0|  0      | ScfTask  | (1, 0, 0)       | 0:00:00Q |    443351 |
 +--------+-------------+------------+--------------+------------+----------+-----------------+----------+-----------+
-| w0_t1  | Initialized | None       | 1|  1|2.0    | NA|NA      | NscfTask | (0, 0, 0)       | None     |    442476 |
+| w0_t1  | Initialized | None       | 1|  1|2.0    | NA|NA      | NscfTask | (0, 0, 0)       | None     |    443352 |
 +--------+-------------+------------+--------------+------------+----------+-----------------+----------+-----------+
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">[Thu Jul  8 17:03:30 2021] Number of launches: 1</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">[Thu Jul  8 17:37:22 2021] Number of launches: 1</span>
 
-Work #0: &lt;BandStructureWork, node_id=442474, workdir=../../../../../tmp/hello_bands/w0&gt;, Finalized=False
+Work #0: &lt;BandStructureWork, node_id=443350, workdir=../../../../../tmp/hello_bands/w0&gt;, Finalized=False
 +--------+-----------+------------+--------------+------------+----------+-----------------+----------+-----------+
 | Task   | Status    | Queue      | MPI|Omp|Gb   | Warn|Com   | Class    | Sub|Rest|Corr   | Time     |   Node_ID |
 +========+===========+============+==============+============+==========+=================+==========+===========+
-| w0_t0  | <span class=" -Color -Color-Green">Completed</span> | 44101@gmac | 2|  1|2.0    | 2|  2      | ScfTask  | (1, 0, 0)       | 0:00:02R |    442475 |
+| w0_t0  | <span class=" -Color -Color-Green">Completed</span> | 46006@gmac | 2|  1|2.0    | 2|  2      | ScfTask  | (1, 0, 0)       | 0:00:02R |    443351 |
 +--------+-----------+------------+--------------+------------+----------+-----------------+----------+-----------+
-| w0_t1  | <span class=" -Color -Color-Blue">Submitted</span> | 44110@gmac | 2|  1|2.0    | 0|  0      | NscfTask | (1, 0, 0)       | 0:00:00Q |    442476 |
+| w0_t1  | <span class=" -Color -Color-Blue">Submitted</span> | 46016@gmac | 2|  1|2.0    | 0|  0      | NscfTask | (1, 0, 0)       | 0:00:00Q |    443352 |
 +--------+-----------+------------+--------------+------------+----------+-----------------+----------+-----------+
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Work #0: &lt;BandStructureWork, node_id=442474, workdir=../../../../../tmp/hello_bands/w0&gt;, Finalized=<span class=" -Color -Color-Green">True</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Work #0: &lt;BandStructureWork, node_id=443350, workdir=../../../../../tmp/hello_bands/w0&gt;, Finalized=<span class=" -Color -Color-Green">True</span>
   Finalized works are not shown. Use verbose &gt; 0 to force output.
 
 <span class=" -Color -Color-Green">all_ok reached</span>
 
 
-Submitted on: Thu Jul  8 17:03:22 2021
-Completed on: Thu Jul  8 17:03:38 2021
-Elapsed time: 0:00:16.045775
+Submitted on: Thu Jul  8 17:37:14 2021
+Completed on: Thu Jul  8 17:37:30 2021
+Elapsed time: 0:00:16.046165
 Flow completed successfully
 
 Calling flow.finalize()...
@@ -793,54 +794,54 @@ Calling flow.finalize()...
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 <span class=" -Color -Color-Green">============================================================================================================</span>
-<span class=" -Color -Color-Green">============== &lt;BandStructureWork, node_id=442474, workdir=../../../../../tmp/hello_bands/w0&gt; ==============</span>
+<span class=" -Color -Color-Green">============== &lt;BandStructureWork, node_id=443350, workdir=../../../../../tmp/hello_bands/w0&gt; ==============</span>
 <span class=" -Color -Color-Green">============================================================================================================</span>
-[Thu Jul  8 17:03:30 2021] In on_ok with sender &lt;ScfTask, node_id=442475, workdir=../../../../../tmp/hello_bands/w0/t0&gt;
-[Thu Jul  8 17:03:38 2021] In on_ok with sender &lt;NscfTask, node_id=442476, workdir=../../../../../tmp/hello_bands/w0/t1&gt;
-[Thu Jul  8 17:03:38 2021] Finalized set to True
-[Thu Jul  8 17:03:38 2021] Work &lt;BandStructureWork, node_id=442474, workdir=../../../../../tmp/hello_bands/w0&gt; is finalized and broadcasts signal S_OK
-[Thu Jul  8 17:03:38 2021] Node &lt;BandStructureWork, node_id=442474, workdir=../../../../../tmp/hello_bands/w0&gt; broadcasts signal Completed
+[Thu Jul  8 17:37:22 2021] In on_ok with sender &lt;ScfTask, node_id=443351, workdir=../../../../../tmp/hello_bands/w0/t0&gt;
+[Thu Jul  8 17:37:30 2021] In on_ok with sender &lt;NscfTask, node_id=443352, workdir=../../../../../tmp/hello_bands/w0/t1&gt;
+[Thu Jul  8 17:37:30 2021] Finalized set to True
+[Thu Jul  8 17:37:30 2021] Work &lt;BandStructureWork, node_id=443350, workdir=../../../../../tmp/hello_bands/w0&gt; is finalized and broadcasts signal S_OK
+[Thu Jul  8 17:37:30 2021] Node &lt;BandStructureWork, node_id=443350, workdir=../../../../../tmp/hello_bands/w0&gt; broadcasts signal Completed
 
 <span class=" -Color -Color-Green">===========================================================================================================</span>
-<span class=" -Color -Color-Green">================= &lt;ScfTask, node_id=442475, workdir=../../../../../tmp/hello_bands/w0/t0&gt; =================</span>
+<span class=" -Color -Color-Green">================= &lt;ScfTask, node_id=443351, workdir=../../../../../tmp/hello_bands/w0/t0&gt; =================</span>
 <span class=" -Color -Color-Green">===========================================================================================================</span>
-[Thu Jul  8 17:03:22 2021] Status changed to Ready. msg: Status set to Ready
-[Thu Jul  8 17:03:22 2021] Setting input variables: {&#39;autoparal&#39;: 1, &#39;max_ncpus&#39;: 2, &#39;mem_test&#39;: 0}
-[Thu Jul  8 17:03:22 2021] Old values: {&#39;autoparal&#39;: None, &#39;max_ncpus&#39;: None, &#39;mem_test&#39;: None}
-[Thu Jul  8 17:03:22 2021] Setting input variables: {&#39;npimage&#39;: 1, &#39;npkpt&#39;: 2, &#39;npspinor&#39;: 1, &#39;npfft&#39;: 1, &#39;npband&#39;: 1, &#39;bandpp&#39;: 1}
-[Thu Jul  8 17:03:22 2021] Old values: {&#39;npimage&#39;: None, &#39;npkpt&#39;: None, &#39;npspinor&#39;: None, &#39;npfft&#39;: None, &#39;npband&#39;: None, &#39;bandpp&#39;: None}
-[Thu Jul  8 17:03:22 2021] Status changed to Initialized. msg: finished autoparal run
-[Thu Jul  8 17:03:22 2021] Submitted with MPI=2, Omp=1, Memproc=2.0 [Gb] Submitted to queue 
-[Thu Jul  8 17:03:30 2021] Task completed status set to OK based on abiout
-[Thu Jul  8 17:03:30 2021] Finalized set to True
-[Thu Jul  8 17:03:30 2021] Node &lt;ScfTask, node_id=442475, workdir=../../../../../tmp/hello_bands/w0/t0&gt; broadcasts signal Completed
+[Thu Jul  8 17:37:14 2021] Status changed to Ready. msg: Status set to Ready
+[Thu Jul  8 17:37:14 2021] Setting input variables: {&#39;autoparal&#39;: 1, &#39;max_ncpus&#39;: 2, &#39;mem_test&#39;: 0}
+[Thu Jul  8 17:37:14 2021] Old values: {&#39;autoparal&#39;: None, &#39;max_ncpus&#39;: None, &#39;mem_test&#39;: None}
+[Thu Jul  8 17:37:14 2021] Setting input variables: {&#39;npimage&#39;: 1, &#39;npkpt&#39;: 2, &#39;npspinor&#39;: 1, &#39;npfft&#39;: 1, &#39;npband&#39;: 1, &#39;bandpp&#39;: 1}
+[Thu Jul  8 17:37:14 2021] Old values: {&#39;npimage&#39;: None, &#39;npkpt&#39;: None, &#39;npspinor&#39;: None, &#39;npfft&#39;: None, &#39;npband&#39;: None, &#39;bandpp&#39;: None}
+[Thu Jul  8 17:37:14 2021] Status changed to Initialized. msg: finished autoparal run
+[Thu Jul  8 17:37:14 2021] Submitted with MPI=2, Omp=1, Memproc=2.0 [Gb] Submitted to queue 
+[Thu Jul  8 17:37:22 2021] Task completed status set to OK based on abiout
+[Thu Jul  8 17:37:22 2021] Finalized set to True
+[Thu Jul  8 17:37:22 2021] Node &lt;ScfTask, node_id=443351, workdir=../../../../../tmp/hello_bands/w0/t0&gt; broadcasts signal Completed
 
 <span class=" -Color -Color-Green">============================================================================================================</span>
-<span class=" -Color -Color-Green">================= &lt;NscfTask, node_id=442476, workdir=../../../../../tmp/hello_bands/w0/t1&gt; =================</span>
+<span class=" -Color -Color-Green">================= &lt;NscfTask, node_id=443352, workdir=../../../../../tmp/hello_bands/w0/t1&gt; =================</span>
 <span class=" -Color -Color-Green">============================================================================================================</span>
-[Thu Jul  8 17:03:30 2021] Status changed to Ready. msg: Status set to Ready
-[Thu Jul  8 17:03:30 2021] Need path /tmp/hello_bands/w0/t0/outdata/out_DEN with ext DEN
-[Thu Jul  8 17:03:30 2021] Linking path /tmp/hello_bands/w0/t0/outdata/out_DEN --&gt; /tmp/hello_bands/w0/t1/indata/in_DEN
-[Thu Jul  8 17:03:30 2021] Setting input variables: {&#39;ngfft&#39;: array([18, 18, 18])}
-[Thu Jul  8 17:03:30 2021] Old values: {&#39;ngfft&#39;: None}
-[Thu Jul  8 17:03:30 2021] Adding connecting vars {&#39;irdden&#39;: 1}
-[Thu Jul  8 17:03:30 2021] Setting input variables: {&#39;irdden&#39;: 1}
-[Thu Jul  8 17:03:30 2021] Old values: {&#39;irdden&#39;: None}
-[Thu Jul  8 17:03:30 2021] Setting input variables: {&#39;autoparal&#39;: 1, &#39;max_ncpus&#39;: 2, &#39;mem_test&#39;: 0}
-[Thu Jul  8 17:03:30 2021] Old values: {&#39;autoparal&#39;: None, &#39;max_ncpus&#39;: None, &#39;mem_test&#39;: None}
-[Thu Jul  8 17:03:30 2021] Setting input variables: {&#39;npimage&#39;: 1, &#39;npkpt&#39;: 2, &#39;npspinor&#39;: 1, &#39;npfft&#39;: 1, &#39;npband&#39;: 1, &#39;bandpp&#39;: 1}
-[Thu Jul  8 17:03:30 2021] Old values: {&#39;npimage&#39;: None, &#39;npkpt&#39;: None, &#39;npspinor&#39;: None, &#39;npfft&#39;: None, &#39;npband&#39;: None, &#39;bandpp&#39;: None}
-[Thu Jul  8 17:03:30 2021] Status changed to Initialized. msg: finished autoparal run
-[Thu Jul  8 17:03:30 2021] Submitted with MPI=2, Omp=1, Memproc=2.0 [Gb] Submitted to queue 
-[Thu Jul  8 17:03:38 2021] Task completed status set to OK based on abiout
-[Thu Jul  8 17:03:38 2021] Finalized set to True
-[Thu Jul  8 17:03:38 2021] Node &lt;NscfTask, node_id=442476, workdir=../../../../../tmp/hello_bands/w0/t1&gt; broadcasts signal Completed
+[Thu Jul  8 17:37:22 2021] Status changed to Ready. msg: Status set to Ready
+[Thu Jul  8 17:37:22 2021] Need path /tmp/hello_bands/w0/t0/outdata/out_DEN with ext DEN
+[Thu Jul  8 17:37:22 2021] Linking path /tmp/hello_bands/w0/t0/outdata/out_DEN --&gt; /tmp/hello_bands/w0/t1/indata/in_DEN
+[Thu Jul  8 17:37:22 2021] Setting input variables: {&#39;ngfft&#39;: array([18, 18, 18])}
+[Thu Jul  8 17:37:22 2021] Old values: {&#39;ngfft&#39;: None}
+[Thu Jul  8 17:37:22 2021] Adding connecting vars {&#39;irdden&#39;: 1}
+[Thu Jul  8 17:37:22 2021] Setting input variables: {&#39;irdden&#39;: 1}
+[Thu Jul  8 17:37:22 2021] Old values: {&#39;irdden&#39;: None}
+[Thu Jul  8 17:37:22 2021] Setting input variables: {&#39;autoparal&#39;: 1, &#39;max_ncpus&#39;: 2, &#39;mem_test&#39;: 0}
+[Thu Jul  8 17:37:22 2021] Old values: {&#39;autoparal&#39;: None, &#39;max_ncpus&#39;: None, &#39;mem_test&#39;: None}
+[Thu Jul  8 17:37:22 2021] Setting input variables: {&#39;npimage&#39;: 1, &#39;npkpt&#39;: 2, &#39;npspinor&#39;: 1, &#39;npfft&#39;: 1, &#39;npband&#39;: 1, &#39;bandpp&#39;: 1}
+[Thu Jul  8 17:37:22 2021] Old values: {&#39;npimage&#39;: None, &#39;npkpt&#39;: None, &#39;npspinor&#39;: None, &#39;npfft&#39;: None, &#39;npband&#39;: None, &#39;bandpp&#39;: None}
+[Thu Jul  8 17:37:22 2021] Status changed to Initialized. msg: finished autoparal run
+[Thu Jul  8 17:37:22 2021] Submitted with MPI=2, Omp=1, Memproc=2.0 [Gb] Submitted to queue 
+[Thu Jul  8 17:37:30 2021] Task completed status set to OK based on abiout
+[Thu Jul  8 17:37:30 2021] Finalized set to True
+[Thu Jul  8 17:37:30 2021] Node &lt;NscfTask, node_id=443352, workdir=../../../../../tmp/hello_bands/w0/t1&gt; broadcasts signal Completed
 
 <span class=" -Color -Color-Green">============================================================================================================</span>
-<span class=" -Color -Color-Green">====================== &lt;Flow, node_id=442473, workdir=../../../../../tmp/hello_bands&gt; ======================</span>
+<span class=" -Color -Color-Green">====================== &lt;Flow, node_id=443349, workdir=../../../../../tmp/hello_bands&gt; ======================</span>
 <span class=" -Color -Color-Green">============================================================================================================</span>
-[Thu Jul  8 17:03:38 2021] Calling flow.finalize.
-[Thu Jul  8 17:03:38 2021] Finalized set to True
+[Thu Jul  8 17:37:30 2021] Calling flow.finalize.
+[Thu Jul  8 17:37:30 2021] Finalized set to True
 </pre></div>
 </div>
 </div>
@@ -873,8 +874,8 @@ At this point, all the tasks in the flow are completed and the scheduler exits.<
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 2 files with extension `GSR.nc` produced by the flow
 File                                                       Size [Mb]    Node_ID  Node Class
 -------------------------------------------------------  -----------  ---------  ------------
-../../../../../tmp/hello_bands/w0/t0/outdata/out_GSR.nc         1.99     442475  ScfTask
-../../../../../tmp/hello_bands/w0/t1/outdata/out_GSR.nc         1.99     442476  NscfTask
+../../../../../tmp/hello_bands/w0/t0/outdata/out_GSR.nc         1.99     443351  ScfTask
+../../../../../tmp/hello_bands/w0/t1/outdata/out_GSR.nc         1.99     443352  NscfTask
 </pre></div>
 </div>
 </div>
@@ -892,7 +893,7 @@ in which only tasks/works/flow plus a very few input arguments are required.</p>
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/flows_36_0.png" src="_images/flows_36_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Blue">Task &lt;NscfTask, node_id=442476, workdir=../../../../../tmp/hello_bands/w0/t1&gt; does not provide an inspect method</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Blue">Task &lt;NscfTask, node_id=443352, workdir=../../../../../tmp/hello_bands/w0/t1&gt; does not provide an inspect method</span>
 </pre></div>
 </div>
 </div>

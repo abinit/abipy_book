@@ -9,7 +9,7 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 116)">
 <title>flow</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-116 430.76,-116 430.76,4 -4,4"/>
-<text text-anchor="start" x="77.99" y="-6.8" font-family="Times,serif" font-size="14.00">Flow, node_id=442482, workdir=flow_with_file</text>
+<text text-anchor="start" x="77.99" y="-6.8" font-family="Times,serif" font-size="14.00">Flow, node_id=443358, workdir=flow_with_file</text>
 <g id="clust1" class="cluster">
 <title>clusterw0</title>
 <path fill="#e0eeee" stroke="black" d="M352.91,-30C352.91,-30 406.76,-30 406.76,-30 412.76,-30 418.76,-36 418.76,-42 418.76,-42 418.76,-92 418.76,-92 418.76,-98 412.76,-104 406.76,-104 406.76,-104 352.91,-104 352.91,-104 346.91,-104 340.91,-98 340.91,-92 340.91,-92 340.91,-42 340.91,-42 340.91,-36 346.91,-30 352.91,-30"/>
@@ -26,7 +26,7 @@
 <g id="node2" class="node">
 <title>/Users/gmatteo/git_repos/abipy/abipy/data/refs/si_ebands/si_DEN.nc</title>
 <ellipse fill="#6633ff" stroke="#6633ff" cx="156.46" cy="-56" rx="156.41" ry="18"/>
-<text text-anchor="start" x="24.3" y="-53.6" font-family="Times,serif" font-size="8.00">FileNode, node_id=442485, rpath=../../abipy/abipy/data/refs/si_ebands/si_DEN.nc</text>
+<text text-anchor="start" x="24.3" y="-53.6" font-family="Times,serif" font-size="8.00">FileNode, node_id=443361, rpath=../../abipy/abipy/data/refs/si_ebands/si_DEN.nc</text>
 </g>
 <!-- /Users/gmatteo/git_repos/abipy/abipy/data/refs/si_ebands/si_DEN.nc&#45;&gt;w0_t0 -->
 <g id="edge1" class="edge">
