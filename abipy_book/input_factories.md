@@ -11,12 +11,7 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](index.ipynb)
-
-+++
-
-## Factory functions
-[[back to top](#top)]
+# Factory functions
 
 Abipy provides factory functions to build input files for typical calculations.
 These functions return `AbinitInput` or `MultiDataset` objects, depending
@@ -36,8 +31,6 @@ steps. Client code is in charge of connecting the different parts.
 For a command line interface, use the `abinp.py` script.
 
 ```{code-cell} ipython3
-from __future__ import division, print_function, unicode_literals
-
 import os
 import warnings
 warnings.filterwarnings("ignore") # to get rid of deprecation warnings
@@ -105,5 +98,3 @@ multi = abilab.g0w0_with_ppmodel_inputs(
 
 multi
 ```
-
-Back to the main [Index](index.ipynb)

@@ -11,40 +11,23 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](index.ipynb) <a id="top"></a>
+# The AbinitInput object
 
-+++
-
-## Table of Contents
-
-
-- [Creating an AbinitInput object](#Creating-an-AbinitInput-object)
-- [Defining the crystalline structure](#Defining-the-crystalline-structure)
-- [Brillouin zone sampling](#Brillouin-zone-sampling)
-- [Utilities](#Utilities)
-- [Invoking Abinit with AbinitInput](#Invoking-Abinit-with-AbinitInput)
-- [Multiple datasets](#Multiple-datasets)
-
-+++
-
-## Creating an AbinitInput object
-[[back to top](#top)]
-
-The creation of the Abinit input file is one of the most repetive and error-prone operations 
+The creation of the Abinit input file is one of the most repetive and error-prone operations
 we have to perform before running our calculations.
-To facilitate the creation of the input files, AbiPy provides the `AbinitInput` object, 
-a dict-like object storing the Abinit variables and providing methods to automate 
+To facilitate the creation of the input files, AbiPy provides the `AbinitInput` object,
+a dict-like object storing the Abinit variables and providing methods to automate
 the specification of multiple parameters.
 
 This notebook discusses how to create an `AbinitInput` and how to define the parameters of the calculation.
-In the last part, we introduce the `MultiDataset` object that is mainly designed for the generation 
+In the last part, we introduce the `MultiDataset` object that is mainly designed for the generation
 of multiple inputs sharing the same structure and the same list of pseudopotentials.
-
-In another [notebook](./input_factories.ipynb), we briefly discuss how to use factory functions 
+In another [notebook](./input_factories.ipynb), we briefly discuss how to use factory functions
 to generate automatically input objects for typical calculations.
 
+## Creating an AbinitInput object
+
 ```{code-cell} ipython3
-from __future__ import division, print_function, unicode_literals
 
 import os
 import warnings
@@ -57,22 +40,22 @@ from abipy.abilab import AbinitInput
 
 # This line configures matplotlib to show figures embedded in the notebook.
 # Replace `inline` with `notebook` in classic notebook
-%matplotlib inline   
+%matplotlib inline
 
 # Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib
-#%matplotlib widget  
+#%matplotlib widget
 ```
 
 To create an Abinit input, we must specify the paths of the pseudopotential files.
-In this case, we have a pseudo named `14si.pspnc` located 
+In this case, we have a pseudo named `14si.pspnc` located
 in the `abidata.pseudo_dir` directory.
 
 ```{code-cell} ipython3
-inp = AbinitInput(structure=abidata.cif_file("si.cif"), 
+inp = AbinitInput(structure=abidata.cif_file("si.cif"),
                   pseudos="14si.pspnc", pseudo_dir=abidata.pseudo_dir)
 ```
 
-`print(inp)` returns a string with our input. 
+`print(inp)` returns a string with our input.
 In this case, the input is almost empty since only the structure and the pseudos have been specified.
 
 ```{code-cell} ipython3
@@ -125,16 +108,16 @@ inp["ecut"]
 To iterate over keywords and values:
 
 ```{code-cell} ipython3
-for varname, varvalue in inp.items(): 
+for varname, varvalue in inp.items():
     print(varname, "-->", varvalue)
 ```
 
 Use lists, tuples or numpy arrays when Abinit expects arrays
 
 ```{code-cell} ipython3
-inp.set_vars(kptopt=1, 
-             ngkpt=[2, 2, 2], 
-             nshiftk=2, 
+inp.set_vars(kptopt=1,
+             ngkpt=[2, 2, 2],
+             nshiftk=2,
              shiftk=[0.0, 0.0, 0.0, 0.5, 0.5, 0.5]  # 2 shifts in one list
             )
 
@@ -154,35 +137,31 @@ except Exception as exc:
 
 <div class="alert alert-warning" role="alert">
 The AbinitInput is a mutable object so changing it will aftect all the references
-to the object. 
+to the object.
 See http://docs.python-guide.org/en/latest/writing/gotchas/ for further info
 </div>
 
 ```{code-cell} ipython3
 a = {"foo": "bar"}
-b = a 
+b = a
 c = a.copy()
 a["hello"] = "world"
 print("a dict:", a)
 print("b dict:", b)
 print("c dict:", c)
 ```
-
-## Defining the crystalline structure
-[[back to top](#top)]
-
 +++
 
 The `set_structure` method sets the value of the ABINIT variables:
-    
+
    * acell
    * rprim
    * ntypat
-   * natom 
+   * natom
    * typat
    * znucl
    * xred
-    
+
 It is always a good idea to set the structure immediately after the creation of `AbinitInput`
 because several methods use this information to facilitate the specification of other variables.
 For example, the `set_kpath` method uses the structure to generate the high-symmetry $k$-path for band structure calculations.
@@ -197,12 +176,12 @@ For example, the `set_kpath` method uses the structure to generate the high-symm
 
 ```{code-cell} ipython3
 structure = dict(
-    ntypat=1,         
+    ntypat=1,
     natom=2,
     typat=[1, 1],
     znucl=14,
     acell=3*[10.217],
-    rprim=[[0.0,  0.5,  0.5],   
+    rprim=[[0.0,  0.5,  0.5],
            [0.5,  0.0,  0.5],
            [0.5,  0.5,  0.0]],
     xred=[[0.0 , 0.0 , 0.0],
@@ -232,11 +211,11 @@ Supported formats include:
 
    * *CIF*
    * *POSCAR/CONTCAR*
-   * *CHGCAR* 
+   * *CHGCAR*
    * *LOCPOT*
    * *vasprun.xml*
-   * *CSSR* 
-   * *ABINIT netcdf files* 
+   * *CSSR*
+   * *ABINIT netcdf files*
    * *pymatgen's JSON serialized structures*
 
 +++
@@ -248,7 +227,7 @@ Supported formats include:
 inp.set_structure(abilab.Structure.from_mpid("mp-149"))
 ```
 
-Remember to set the `PMG_MAPI_KEY` in ~/.pmgrc.yaml as described 
+Remember to set the `PMG_MAPI_KEY` in ~/.pmgrc.yaml as described
 [here](http://pymatgen.org/usage.html#setting-the-pmg-mapi-key-in-the-config-file).
 
 +++
@@ -262,16 +241,15 @@ AbinitInput(structure=abidata.cif_file("si.cif"), pseudos=abidata.pseudos("14si.
 +++ {"toc-hr-collapsed": true}
 
 ## Brillouin zone sampling
-[[back to top](#top)]
 
 There are two different types of sampling of the BZ: homogeneous and high-symmetry k-path.
-The later is mainly used for band structure calculations and requires the specification of: 
+The later is mainly used for band structure calculations and requires the specification of:
 
    * kptopt
    * kptbounds
    * ndivsm
-    
-whereas the homogeneous sampling is needed for all the calculations in which 
+
+whereas the homogeneous sampling is needed for all the calculations in which
 we have to compute integrals in the Brillouin zone e.g. total energy calculations, DOS, etc.
 The $k$-mesh is usually specified via:
 
@@ -286,14 +264,14 @@ The $k$-mesh is usually specified via:
 ```{code-cell} ipython3
 inp = AbinitInput(structure=abidata.cif_file("si.cif"), pseudos=abidata.pseudos("14si.pspnc"))
 
-# Set ngkpt, shiftk explicitly  
+# Set ngkpt, shiftk explicitly
 inp.set_kmesh(ngkpt=(1, 2, 3), shiftk=[0.0, 0.0, 0.0, 0.5, 0.5, 0.5])
 ```
 
-### Automatic $k$-mesh 
+### Automatic $k$-mesh
 
 ```{code-cell} ipython3
-# Define a homogeneous k-mesh. 
+# Define a homogeneous k-mesh.
 # nksmall is the number of divisions to be used to sample the smallest lattice vector,
 # shiftk is automatically selected from an internal database.
 
@@ -304,7 +282,7 @@ inp.set_autokmesh(nksmall=4)
 
 ```{code-cell} ipython3
 # Generate a high-symmetry k-path (taken from an internal database)
-# Ten points are used to sample the smallest segment, 
+# Ten points are used to sample the smallest segment,
 # the other segments are sampled so that proportions are preserved.
 # A warning is issued by pymatgen about the structure not being standard.
 # Be aware that this might possibly affect the automatic labelling of the boundary k-points on the k-path.
@@ -314,7 +292,6 @@ inp.set_kpath(ndivsm=10)
 ```
 
 ## Utilities
-[[back to top](#top)]
 
 Once the structure has been defined, one can compute the number of valence electrons with:
 
@@ -340,11 +317,10 @@ print([i["tsmear"] for i in tsmear_inps])
 ```
 
 ## Invoking Abinit with AbinitInput
-[[back to top](#top)]
 
-Once you have an `AbinitInput`, you can call Abinit to get useful information 
+Once you have an `AbinitInput`, you can call Abinit to get useful information
 or simply to validate the input file before running the calculation.
-All the method that invoke Abinit starts with the `abi` prefix 
+All the method that invoke Abinit starts with the `abi` prefix
 followed by a verb e.g. `abiget` or `abivalidate`.
 
 ```{code-cell} ipython3
@@ -353,8 +329,8 @@ inp = AbinitInput(structure=abidata.cif_file("si.cif"), pseudos=abidata.pseudos(
 inp.set_vars(ecut=-2)
 inp.set_autokmesh(nksmall=4)
 
-v = inp.abivalidate() 
-if v.retcode != 0: 
+v = inp.abivalidate()
+if v.retcode != 0:
     # If there is a mistake in the input, one can acces the log file of the run with the log_file object
     print("".join(v.log_file.readlines()[-10:]))
 ```
@@ -365,7 +341,7 @@ Let's fix the problem with the negative ecut and rerun abivalidate!
 inp["ecut"] = 2
 inp["toldfe"] = 1e-10
 v = inp.abivalidate()
-if v.retcode == 0: 
+if v.retcode == 0:
     print("All ok")
 else:
     print(v)
@@ -407,19 +383,18 @@ inp.abiget_irred_phperts(qpt=(0, 0, 0))
 ```
 
 ## Multiple datasets
-[[back to top](#top)]
 
 Multiple datasets are handy when you have to generate several input files sharing several common
 variables e.g. the crystalline structure, the value of ecut etc...
-In this case, one can use the `MultiDataset` object that is essentially 
+In this case, one can use the `MultiDataset` object that is essentially
 a list of `AbinitInput` objects. Note however that `Abipy` workflows do not support input files with more than one dataset.
 
 ```{code-cell} ipython3
-# A MultiDataset object with two datasets (a.k.a. AbinitInput) 
+# A MultiDataset object with two datasets (a.k.a. AbinitInput)
 multi = abilab.MultiDataset(structure=abidata.cif_file("si.cif"),
                             pseudos="14si.pspnc", pseudo_dir=abidata.pseudo_dir, ndtset=2)
 
-# A MultiDataset is essentially a list of AbinitInput objects 
+# A MultiDataset is essentially a list of AbinitInput objects
 # with handy methods to perform global modifications.
 # i.e. changes that will affect all the inputs in the MultiDataset
 # For example:
@@ -431,7 +406,7 @@ multi.set_vars(ecut=4)
 #
 # and indeed:
 
-for inp in multi: 
+for inp in multi:
     print(inp["ecut"])
 ```
 
@@ -462,7 +437,7 @@ Calling set_structure on `MultiDataset` will set the structure of the inputs:
 ```{code-cell} ipython3
 multi.set_structure(abidata.cif_file("si.cif"))
 
-# The structure attribute of a MultiDataset returns a list of structures 
+# The structure attribute of a MultiDataset returns a list of structures
 # equivalent to [inp.structure for inp in multi]
 print(multi.structure)
 ```
@@ -475,9 +450,9 @@ inp0
 ```
 
 <div class="alert alert">
-You can use `MultiDataset` to build your input files but remember that 
+You can use `MultiDataset` to build your input files but remember that
 `Abipy` workflows will never support input files with more than one dataset.
-As a consequence, you should always pass an `AbinitInput` to the 
+As a consequence, you should always pass an `AbinitInput` to the
 AbiPy functions that are building `Tasks`, `Works` or `Flows`.
 </div>
 
@@ -489,12 +464,6 @@ print("Number of datasets:", multi.ndtset)
 # To create and append a new dataset (initialized from dataset number 1)
 multi.addnew_from(1)
 multi[-1].set_vars(ecut=42)
-print("Now multi has", multi.ndtset, "datasets and the ecut in the last dataset is:", 
+print("Now multi has", multi.ndtset, "datasets and the ecut in the last dataset is:",
       multi[-1]["ecut"])
-```
-
-Back to the main [Index](index.ipynb)
-
-```{code-cell} ipython3
-
 ```

@@ -11,40 +11,24 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](index.ipynb) <a id="top"></a>
-
-+++
-
-# Analyzing Lobster output files with AbiPy
-
-+++
+# Lobster output files
 
 This example shows how to analyze the output files
 produced by [Lobster](http://schmeling.ac.rwth-aachen.de/cohp)
 
-Use 
+Use
 
-    abiopen.py FILE 
-    
+    abiopen.py FILE
+
 with the `--expose` or `--print` for a command line interface
 and `--notebook` to generate a jupyter notebook from a lobster `FILE`.
 
 Note: The code in this notebook requires abipy >= 0.6
 
-## Table of Contents
-[[back to top](#top)]
-
-- [How to analyze the COHPCAR file](#How-to-analyze-the-COHPCAR-file)
-- [How to analyze the DOSCAR file](#How-to-analyze-the-DOSCAR-file)
-- [Analyzing all Lobster output files](#Analyzing-all-Lobster-output-files-with-LobsterAnalyzer)
-
 Let's start by importing the basic modules needed for this tutorial.
 
 ```{code-cell} ipython3
-# Use this at the beginning of your script so that your code will be compatible with python3
-from __future__ import print_function, division, unicode_literals
-
-import warnings 
+import warnings
 warnings.filterwarnings("ignore")  # Ignore warnings
 
 from abipy import abilab
@@ -53,14 +37,13 @@ import abipy.data as abidata
 
 # This line configures matplotlib to show figures embedded in the notebook.
 # Replace `inline` with `notebook` in classic notebook
-%matplotlib inline   
+%matplotlib inline
 
 # Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib
-#%matplotlib widget  
+#%matplotlib widget
 ```
 
-## How to analyze the COHPCAR file  
-[[back to top](#top)]
+## How to analyze the COHPCAR file
 
 ```{code-cell} ipython3
 # Path to one of the reference file shipped with AbiPy
@@ -94,8 +77,8 @@ cohp_file.plot_site_pairs_total(from_site_index=[0, 1], title="COHP total overla
 To plot partial crystal orbital projections for all sites listed in `from_site_index`:
 
 ```{code-cell} ipython3
-cohp_file.plot_site_pairs_partial(from_site_index=[0, 1], 
-                                  title="COHP with orbital projections from site index 0", 
+cohp_file.plot_site_pairs_partial(from_site_index=[0, 1],
+                                  title="COHP with orbital projections from site index 0",
                                   fontsize=6, tight_layout=True);
 ```
 
@@ -107,8 +90,7 @@ Use `abiopen` to open the MDF:
 
 +++
 
-## How to analyze the ICOHPLIST file  
-[[back to top](#top)]
+## How to analyze the ICOHPLIST file
 
 ```{code-cell} ipython3
 # Path to one of the AbiPy file
@@ -120,8 +102,7 @@ icohp_file = abilab.abiopen(filename)
 print(icohp_file)
 ```
 
-## How to analyze the DOSCAR file  
-[[back to top](#top)]
+## How to analyze the DOSCAR file
 
 ```{code-cell} ipython3
 dirpath = os.path.join(abidata.dirpath, "refs", "lobster_gaas")
@@ -141,9 +122,8 @@ doscar.plot_pdos_site(site_index=[0, 1]);
 ```
 
 ## Analyzing all Lobster output files with LobsterAnalyzer
-[[back to top](#top)]
 
-Let's assume we have a directory with lobster output files 
+Let's assume we have a directory with lobster output files
 for COOP, COHP, DOS and we need to produce plots showing all these results altogether.
 In this case, one can use the `LobsterAnalyzer` object and initialize it from the directory
 containing the output files.
@@ -182,9 +162,3 @@ lobana.plot_coxp_with_dos(from_site_index=[0], with_orbitals=True);
 For a command line interface, use: `abiview.py lobster .`.
 Use the `--expose` option to generate plots automatically.
 </div>
-
-Back to the main [Index](index.ipynb)
-
-```{code-cell} ipython3
-
-```

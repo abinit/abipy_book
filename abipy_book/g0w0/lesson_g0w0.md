@@ -11,12 +11,8 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](../index.ipynb) <a id="top"></a>
-
-+++
 
 # $G_0W_0$ band structure with star-function interpolation
-[[back to top](#top)]
 
 Standard functionals (LDA and GGA), systematically underestimate band gaps, giving values
 that are about 30-40% smaller than experimental data.
@@ -43,17 +39,7 @@ For a very brief introduction to the many-body formalism, please consult the
     * gw_qprange
     * all gw** variables
     
-## Table of Contents
-[[back to top](#top)]
-
-- [Description of the lesson](#Description-of-the-lesson)
-- [Analysis of the results](#Analysis-of-the-results)
-- [Interpolating the QP corrections](#Interpolating-the-QP-corrections)
-
-+++
-
 ## Description of the lesson
-[[back to top](#top)]
 
 In this lesson, we construct an AbiPy flow made of two works.
 The first work is a standard KS band-structure calculation consisting of
@@ -193,7 +179,6 @@ to analyze the data.
 +++
 
 ## Analysis of the results
-[[back to top](#top)]
 
 Let's start with the KS results stored in the `GSR.nc` files:
 
@@ -301,7 +286,6 @@ sigres.plot_ksbands_with_qpmarkers();
 ```
 
 ## Interpolating the QP corrections
-[[back to top](#top)]
 
 Excellent, we've just completed our first $GW$ calculation with Abinit and Abipy but there's still 
 a problem that must be addressed!
@@ -381,8 +365,3 @@ p2.combiplot();
 
 +++
 
-Back to the main [Index](../index.ipynb)
-
-```{code-cell} ipython3
-
-```

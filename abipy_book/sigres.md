@@ -11,31 +11,17 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](index.ipynb) <a id="top"></a>
+# The SIGRES file (GW)
 
-+++
-
-# Postprocessing tools for GW calculations
-
-This notebook explains how to use AbiPy and `matplotlib` to visualize the results produced 
-by the GW code. 
-The self-energy code (`optdriver` 4) saves the final results in the `SIGRES.nc` file 
+This notebook explains how to use AbiPy and `matplotlib` to visualize the results produced
+by the GW code.
+The self-energy code (`optdriver` 4) saves the final results in the `SIGRES.nc` file
 while the screening code (`optdriver` 3) stores the inverse dielectric matrix in the `SCR.nc` file.
-
-## Table of Contents
-[[back to top](#top)]
-
-- [How to visualize QP corrections](#How-to-visualize-QP-corrections)
-- [Plotting the spectral function](#Plotting-the-spectral-function)
-- [Analyzing multiple SIGRES files with robots](#Analyzing-multiple-SIGRES-files-with-robots)
 
 Let's start by importing the basic modules we will need for this tutorial.
 
 ```{code-cell} ipython3
-# Use this at the beginning of your script so that your code will be compatible with python3
-from __future__ import print_function, division, unicode_literals
-
-import warnings 
+import warnings
 warnings.filterwarnings("ignore")  # Ignore warnings
 
 from abipy import abilab
@@ -44,14 +30,13 @@ import abipy.data as abidata
 
 # This line configures matplotlib to show figures embedded in the notebook.
 # Replace `inline` with `notebook` in classic notebook
-%matplotlib inline   
+%matplotlib inline
 
 # Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib
-#%matplotlib widget 
+#%matplotlib widget
 ```
 
-## How to visualize QP corrections  
-[[back to top](#top)]
+## How to visualize QP corrections
 
 As usual, we start by opening the netcdf file with abiopen:
 
@@ -60,14 +45,14 @@ sigres = abilab.abiopen(abidata.ref_file("tgw1_9o_DS4_SIGRES.nc"))
 print(sigres)
 ```
 
-Let's have a look at the KS energies used to compute the Green's function $G_0$, the RPA screening $W_0$ 
-and the $G_0W_0$ self-energy: 
+Let's have a look at the KS energies used to compute the Green's function $G_0$, the RPA screening $W_0$
+and the $G_0W_0$ self-energy:
 
 ```{code-cell} ipython3
 sigres.ebands.plot();
 ```
 
-The SIGRES file contains the KS as well as the QP direct gaps for all the k-points 
+The SIGRES file contains the KS as well as the QP direct gaps for all the k-points
 included in the calculation (kptgw). To plot the differente QP - KS, use:
 
 ```{code-cell} ipython3
@@ -112,13 +97,12 @@ sigres.plot_eigvec_qp(spin=0, kpoint=0);
 ```
 
 In this case, we have a diagonal matrix because the wavefunctions are not updated ($G_0W_0$).
-The scenario is completely different if you start to perform self-consistent calculations with update 
+The scenario is completely different if you start to perform self-consistent calculations with update
 of the QP amplitudes.
 
 +++
 
 ## Plotting the spectral function
-[[back to top](#top)]
 
 This example shows how to plot the $G_0W_0$ spectral functions $A(\omega)$
 at the $\Gamma$ point. See also lesson tgw2_4
@@ -130,7 +114,6 @@ with abilab.abiopen(abidata.ref_file("al_g0w0_sigmaw_SIGRES.nc")) as al_sigres:
 ```
 
 ## Analyzing multiple SIGRES files with robots
-[[back to top](#top)]
 
 To analyze the convergence of the QP results, we can use the SigresRobot.
 Let's build our robot from a list of SIGRES files.
@@ -148,14 +131,14 @@ filepaths = [abidata.ref_file(fname) for fname in filenames]
 robot = abilab.SigresRobot.from_files(filepaths)
 ```
 
-Then we plot the convergence of the QP direct gap as a function of the number of bands 
+Then we plot the convergence of the QP direct gap as a function of the number of bands
 in the self-energy for all the k-points available in the netcdf files:
 
 ```{code-cell} ipython3
 robot.plot_qpgaps_convergence(sortby="sigma_nband", sharey=False);
 ```
 
-If we are interested in the convergence of the real/imaginary part of the self-energy 
+If we are interested in the convergence of the real/imaginary part of the self-energy
 and of the renormalization factor ...
 
 ```{code-cell} ipython3
@@ -175,7 +158,3 @@ robot.plot_qpfield_vs_e0("qpeme0", sortby="sigma_nband");
 <div class="alert alert-info" role="alert">
 Robots can also be constructed from the command line with: abicomp.py sigres FILES
 </div>
-
-+++
-
-Back to the main [Index](index.ipynb)

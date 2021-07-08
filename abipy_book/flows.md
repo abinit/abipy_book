@@ -11,21 +11,7 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](index.ipynb) <a id="top"></a>
-
-+++
-
 # Tasks, Workflows and Flow
-
-
-## Table of Contents
-[[back to top](#top)]
-
-- [Building a Flow for band structure calculations](#Building-a-Flow-for-band-structure-calculations)
-- [How to build and run the Flow](#How-to-build-and-run-the-Flow)
-- [Executing a Flow](#Executing-a-Flow)
-- [More on Works, Tasks and dependencies](#More-on-Works,-Tasks-and-dependencies)
-- [Abirun.py](#Abirun.py)
 
 In this notebook we discuss some of the basic concepts used in AbiPy 
 to automate ab-initio calculations. 
@@ -105,7 +91,6 @@ This example allows us to discuss the most important methods of the `Flow`.
 +++
 
 ## Building a Flow for band structure calculations
-[[back to top](#top)]
 
 Let's start by creating a function that produces two input files. 
 The first input is a standard self-consistent ground-state run.
@@ -247,7 +232,6 @@ to iterate over all Tasks in the Flow.
 +++
 
 ## How to build and run the Flow
-[[back to top](#top)]
 
 The flow is still in memory and no file has been produced. 
 In order to build the workflow, use: 
@@ -320,7 +304,6 @@ print([task.input["kptopt"] for task in flow[0]])
 ```
 
 ## Executing a Flow
-[[back to top](#top)]
 
 The `Flow` can be executed with two different approaches: a programmatic interface based 
 on `flow.make_scheduler` or the `abirun.py` script. 
@@ -397,7 +380,6 @@ with flow[0][1].open_gsr() as gsr:
 ```
 
 ## More on Works, Tasks and dependencies 
-[[back to top](#top)]
 
 In the previous example, we have constructed a workflow for band structure calculations
 starting from two input files and the magic line
@@ -640,7 +622,6 @@ at the beginning/end of the execution.
 +++
 
 ## Abirun.py
-[[back to top](#top)]
 
 Executing 
 
@@ -699,5 +680,3 @@ Last but not least, check out our
 [gallery of AbiPy Flows](http://abinit.github.io/abipy/flow_gallery/index.html) for inspiration.
 
 +++
-
-Back to the main [Index](index.ipynb)

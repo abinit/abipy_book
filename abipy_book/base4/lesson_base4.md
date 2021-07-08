@@ -11,9 +11,7 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](../index.ipynb) <a id="top"></a>
-
-+++
+# Base4 lesson (Aluminium)
 
 <div class="jumbotron">
   <h1 class="display-3">Fourth (basic) lesson with Abinit and AbiPy</h1>
@@ -53,7 +51,6 @@ abilab.enable_notebook() # This line tells AbiPy we are running inside a noteboo
 ```
 
 ## The convergence study with respect to k points and broadening
-[[back to top](#top)]
 
 Note that there is usually a STRONG cross-convergence effect between the number 
 of k points and the value of the broadening, tsmear.
@@ -213,9 +210,3 @@ A logical next lesson would be the the tutorial on
 [phonon calculations with DFPT](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/dfpt/lesson_dfpt.ipynb)
 
 +++
-
-Back to the main [Index](../index.ipynb)
-
-```{code-cell} ipython3
-
-```

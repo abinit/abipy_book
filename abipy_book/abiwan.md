@@ -11,13 +11,7 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](index.ipynb) <a id="top"></a>
-
-+++
-
-# Analyzing wannier90 results with AbiPy
-
-+++
+# The ABIWAN file (wannier90)
 
 This notebook shows how to use AbiPy to analyze the output files
 produced by [wannier90](http://www.wannier.org/) and how to use the `ABIWAN.nc` file
@@ -34,7 +28,6 @@ Note: The code in this notebook requires abinit >= 8.9 and abipy >= 0.6
 
 
 ## Table of Contents
-[[back to top](#top)]
 
 - [How to analyze the WOUT file](#How-to-analyze-the-WOUT-file)
 - [Using ABIWAN.nc to interpolate band energies](#Using-ABIWAN.nc-to-interpolate-band-energies)
@@ -42,9 +35,6 @@ Note: The code in this notebook requires abinit >= 8.9 and abipy >= 0.6
 Let's start by importing the basic modules needed for this tutorial.
 
 ```{code-cell} ipython3
-# Use this at the beginning of your script so that your code will be compatible with python3
-from __future__ import print_function, division, unicode_literals
-
 import os
 
 import warnings 
@@ -63,7 +53,6 @@ import abipy.data as abidata
 ```
 
 ## How to analyze the WOUT file  
-[[back to top](#top)]
 
 +++
 
@@ -96,7 +85,6 @@ or `abiopen.py FILE_MDF.nc -e -sns` to produce matplotlib plots automatically.
 +++
 
 ## Using ABIWAN.nc to interpolate band energies
-[[back to top](#top)]
 
 
 `ABIWAN.nc` is a netcdf file produced by Abinit after having called *wannier90* in library mode.
@@ -167,9 +155,3 @@ results. To improve the agreement we should try to reduced the spread and/or inc
 the density of the k-mesh used in the wannierization procedure.
 
 +++
-
-Back to the main [Index](index.ipynb)
-
-```{code-cell} ipython3
-
-```

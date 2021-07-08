@@ -11,9 +11,7 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](../index.ipynb) <a id="top"></a>
-
-+++
+# Base3 lesson (silicon)
 
 <div class="jumbotron">
   <h1 class="display-3">Third (basic) lesson with Abinit and AbiPy</h1>
@@ -30,13 +28,13 @@ Back to the main [Index](../index.ipynb) <a id="top"></a>
   </p>
 </div>
 
-This tutorial is a complement to the standard [ABINIT tutorial on silicon](https://docs.abinit.org/tutorial/base3). Here, powerful flow and visualisation procedures
+This tutorial is a complement to the standard [ABINIT tutorial on silicon](https://docs.abinit.org/tutorial/base3). 
+Here, powerful flow and visualisation procedures
 will be demonstrated. Still, some basic understanding of the stand-alone working of ABINIT is a prerequisite.
 Also, in order to fully benefit from this Abipy tutorial, other more basic Abipy tutorials should have been followed,
 as suggested in the [abitutorials index page](../index.ipynb).
   
 ## Table of Contents
-[[back to top](#top)]
 
 - [Computing the total energy of silicon at fixed number of k-points](#Computing-the-total-energy-of-silicon-at-fixed-number-of-k-points)
 - [Analysis of the results](#Analysis-of-the-results)
@@ -66,7 +64,6 @@ abilab.enable_notebook() # This line tells AbiPy we are running inside a noteboo
 ```
 
 ## Computing the total energy of silicon at fixed number of k-points
-[[back to top](#top)]
 
 Our goal is to study the convergence of the total energy of silicon versus the number of k-points. 
 So we start by defining a function that generates a `Flow` of SCF calculations 
@@ -124,7 +121,6 @@ inside the terminal.
 +++
 
 ## Analysis of the results
-[[back to top](#top)]
 
 We could use the API provided by the flow to extract the total energies from
 the GSR files. Something like:
@@ -221,7 +217,6 @@ robot_enekpt.plot_gsr_convergence(sortby=inv_nkpt);
 ```
 
 ## Determination of the lattice parameters
-[[back to top](#top)]
 
 +++
 
@@ -334,7 +329,6 @@ We will ask for 8 bands (4 valence and 4 conduction).
 +++
 
 ## Computing the band structure
-[[back to top](#top)]
 
 A band structure can be computed by solving the Kohn-Sham equation for many different k points, along different lines of the Brillouin zone.
 The potential that enters the Kohn-Sham equation must be derived from a previous self-consistent calculation, 
@@ -467,9 +461,3 @@ One should therefore compute the DOS with a much denser IBZ mesh and a much smal
 to solve this *alignment issue*
 
 +++
-
-Back to the main [Index](../index.ipynb)
-
-```{code-cell} ipython3
-
-```

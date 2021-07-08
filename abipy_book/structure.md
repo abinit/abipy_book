@@ -11,10 +11,6 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](index.ipynb) <a id="top"></a>
-
-+++
-
 # Structure object
 
 The `AbiPy` structure inherits from the `pymatgen` structure. 
@@ -23,17 +19,7 @@ In this notebook, we mainly focus on the extensions added by `AbiPy`.
 For the features provided by pymatgen, please consult the 
 [official pymatgen documentation](http://pymatgen.org/usage.html#structures-and-molecules)
 
-## Table of Contents
-[[back to top](#top)]
-
-- [Reading a structure from file](#Reading-a-structure-from-file)
-- [Converting to other formats](#Converting-to-other-formats)
-- [Getting information on the structure](#Getting-information-on-the-structure)
-- [abistruct.py script](#abistruct.py)
-
 ```{code-cell} ipython3
-from __future__ import division, print_function, unicode_literals
-
 import warnings
 warnings.filterwarnings("ignore") # to get rid of deprecation warnings
 
@@ -55,7 +41,6 @@ import numpy as np
 ```
 
 ## Reading a structure from file
-[[back to top](#top)]
 
 +++
 
@@ -146,7 +131,6 @@ and then compare the structures with e.g. `robot.get_lattice_dataframe()`.
 +++
 
 ## Converting to other formats
-[[back to top](#top)]
 
 +++
 
@@ -159,7 +143,6 @@ for fmt in ["cif", "POSCAR", "qe"]:
 ```
 
 ## Getting information on the structure
-[[back to top](#top)]
 
 ```{code-cell} ipython3
 print(structure.reciprocal_lattice)
@@ -211,7 +194,6 @@ structure.plot_xrd();
 ```
 
 ## abistruct.py 
-[[back to top](#top)]
 
 `abistruct.py` provides a handy command line interface to operate on structure objects 
 constructed from external files. 
@@ -221,5 +203,3 @@ and the [COD](http://www.crystallography.net/cod/) database.
 ```{code-cell} ipython3
 !abistruct.py --help
 ```
-
-Back to the main [Index](index.ipynb)

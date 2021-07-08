@@ -11,9 +11,7 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](../index.ipynb)  <a id="top"></a>
-
-+++
+# Isotropic superconductivity
 
 <div class="jumbotron">
   <h1 class="display-3">Phonon linewidths and Eliashberg function in metals</h1>
@@ -31,20 +29,8 @@ In the second part, we use the AbiPy objects to analyze the results. We start fr
 
 +++
 
-## Table of Contents
-[[back to top](#top)]
-
-* [A bit of theory](#A-bit-of-theory-and-some-details-about-the-implementation)
-* [Technical details](#Technical-details)
-* [Building the Flow](#Building-the-Flow)
-* [Electronic properties](#Electronic-properties)
-* [Vibrational properties](#Vibrational-properties)
-* [Linewidths and Eliashberg function](#Phonon-linewidths-and-Eliashberg-function)
-* [Convergence studies with A2FRobot](#Using-the-A2FRobot-for-convergence-studies)
-
-
 ## A bit of theory and some details about the implementation
-[[back to top](#top)]
+
 $\newcommand{\kk}{{\mathbf k}}$
 $\newcommand{\qq}{{\mathbf q}}$
 $\newcommand{\kpq}{{\kk+\qq}}$
@@ -183,7 +169,6 @@ The resolution in q-space can be improved by interpolating the DFPT potentials v
 
 
 ## Suggested references
-[[back to top](#top)]
 
 The general theory of electron-phonon coupling and Eliashberg superconductivity is reviewed 
 by P.B. Allen and B. Mitrovic
@@ -230,7 +215,6 @@ This is the approach we are going to implement with AbiPy to converge the phonon
 +++
 
 ## Building the Flow
-[[back to top](#top)]
 
 Before starting, we need to import the python modules used in this notebook:
 
@@ -402,7 +386,6 @@ to compare multiple `A2F.nc` files with the robot and ipython.
 +++
 
 ## Electronic properties
-[[back to top](#top)]
 
 Let's focus on the electronic properties first.
 
@@ -527,7 +510,6 @@ This is the image you should get with xcrysden:
 +++
 
 ## Vibrational properties
-[[back to top](#top)]
 
 Now we turn our attention to the vibrational properties.
 AbiPy has already merged all the independent atomic perturbations in `flow_eph_al/w1/outdata/out_DDB`:
@@ -595,7 +577,6 @@ We can now finally turn our attention to the phonon linewidths and the Eliashber
 +++
 
 ## Phonon linewidths and Eliashberg function
-[[back to top](#top)]
 
 We have generated a pair of `DDB`-`DVDB` files on a 4x4x4 q-mesh
 and **three** `WFK` files with a much denser k-sampling (x16, x24, x32).
@@ -701,7 +682,6 @@ AbiPy to compare multiple calculations.
 +++
 
 ## Using the A2FRobot for convergence studies
-[[back to top](#top)]
 
 
 In this section, we use the `A2fRobot` to analyze the convergence behaviour of our results
@@ -805,10 +785,4 @@ Other post-processing tools:
 
 ```{code-cell} ipython3
 #robot.plot_a2fdata_convergence(sortby="nkpt", hue=None);
-```
-
-Back to the main [Index](../index.ipynb)
-
-```{code-cell} ipython3
-
 ```

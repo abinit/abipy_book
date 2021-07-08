@@ -11,13 +11,7 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](index.ipynb) <a id="top"></a>
-
-+++
-
-# Post-processing DFPT calculations with the DDB file
-
-+++
+# The DDB file (DFPT)
 
 This notebook explains how to use AbiPy and the DDB file produced by Abinit to analyze:
 
@@ -28,23 +22,6 @@ This notebook explains how to use AbiPy and the DDB file produced by Abinit to a
 
 In the last part, we discuss how to use the `DdbRobot` to analyze multiple DDB
 files and perform typical convergence studies.
-
-
-
-
-
-## Table of Contents
-
-* [How to create a Ddbfile object](#How-to-create-a-DdbFile-object)
-* [Invoking Anaddb from the DdbFile object](#Invoking-Anaddb-from-the-DdbFile-object)
-* [Plotting Phonon Bands and DOS](#Plotting-phonon-bands-and-DOS)
-* [Fatbands and projected DOS](#Fatbands-and-projected-DOS)
-* [Visualizing atomic displacements](#Visualizing-atomic-displacements)
-* [Analyzing the breaking of the acoustic sum rule](#Analyzing-the-breaking-of-the-acoustic-sum-rule)
-* [Computing DOS with different q-meshes](#Computing-DOS-with-different-q-meshes)
-* [Thermodynamic properties in the harmonic approximation](#Thermodynamic-properties-in-the-harmonic-approximation)
-* [Macroscopic dielectric tensor and Born effective charges](#Macroscopic-dielectric-tensor-and-Born-effective-charges)
-* [Using DdbRobot to perform convergence studies](#Using-DdbRobot-to-perform-convergence-studies)
 
 ## Suggested references
 
@@ -73,13 +50,10 @@ Remember to set the `PMG_MAPI_KEY` in your ~/.pmgrc.yaml as described
 +++
 
 ## How to create a DdbFile object 
-[[back to top](#top)]
 
 Let us start by importing the basic AbiPy modules we have already used in the other examples:
 
 ```{code-cell} ipython3
-from __future__ import division, print_function, unicode_literals
-
 import warnings 
 warnings.filterwarnings("ignore")  # Ignore warnings
 
@@ -188,7 +162,6 @@ For a quick visualization script use [abiview.py](http://abinit.github.io/abipy/
 +++
 
 ## Invoking Anaddb from the DdbFile object 
-[[back to top](#top)]
 
 +++
 
@@ -223,7 +196,6 @@ but you can also specify your own q-path if needed.
 +++
 
 ## Plotting phonon bands and DOS
-[[back to top](#top)]
 
 To compute phonon bands and DOS, use:
 
@@ -292,7 +264,6 @@ phbands.plot_with_phdos(phdos, units="meV");
 ```
 
 ## Fatbands and projected DOS
-[[back to top](#top)]
 
 The `phbands` object stores the phonon displacements, $\vec{d}_{q\nu}$ and 
 the eigenvectors, $\vec{\epsilon}_{q\nu}$ 
@@ -346,7 +317,6 @@ but we prefer to stop here and discuss other tools that can be used to analyze i
 +++
 
 ## Visualizing atomic displacements
-[[back to top](#top)]
 
 In you need to visualize the lattice vibrations in 3D to gain a better insight 
 about the nature of the phonon modes you may want to use the
@@ -390,7 +360,6 @@ This plot confirms that the first three modes correspond to a rigid translation 
 +++
 
 ## Analyzing the breaking of the acoustic sum rule
-[[back to top](#top)]
     
 Due to the invariance of the system under an *infinitesimal* rigid translation, the frequency of the lowest 
 three modes at $\Gamma$ should be zero.
@@ -450,7 +419,6 @@ correctly the non-analytical behavior of the optical modes for $q \rightarrow 0$
 +++
 
 ## Computing DOS with different q-meshes
-[[back to top](#top)]
 
 Phonon DOS and derived quantites (e.g. thermodynamic properties) are sensitive to the BZ sampling
 and dense meshes may be required to converge the final results.
@@ -476,7 +444,6 @@ res.plotter.combiplot();
 ```
 
 ## Thermodynamic properties in the harmonic approximation
-[[back to top](#top)]
 
 +++
 
@@ -525,7 +492,6 @@ f = phdos.get_free_energy(tstart=10, tstop=100)
 ```
 
 ## Macroscopic dielectric tensor and Born effective charges
-[[back to top](#top)]
 
 +++
 
@@ -582,7 +548,6 @@ dtgen.plot(w_max=None, gamma_ev=1e-4, component='diag', units='eV');
 ```
 
 ## Using `DdbRobot` to perform convergence studies
-[[back to top](#top)]
 
 A `DdbRobot` receives a list of DDB files and provides methods 
 to construct [pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/10min.html)
@@ -777,4 +742,3 @@ r.df[r.df["site_index"] == 1]
 
 +++
 
-[[back to top](#top)]

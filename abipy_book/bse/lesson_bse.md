@@ -11,34 +11,17 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](../index.ipynb) <a id="top"></a>
+# Bethe-Salpeter calculations with AbiPy
 
-+++
-
-# Bethe-Salpeter calculations with AbiPy and Abinit
-
-+++
-
-This lesson discusses how to calculate the macroscopic dielectric function, $\epsilon_\infty(\omega)$, including excitonic effects within the Bethe-Salpeter equation (BSE). 
+This lesson discusses how to calculate the macroscopic dielectric function, $\epsilon_\infty(\omega)$, 
+including excitonic effects within the Bethe-Salpeter equation (BSE). 
 Crystalline silicon is used as test case. 
 
 For a more detailed description of the Abinit implementation, see the official Abinit 
 [BSE tutorial](https://docs.abinit.org/tutorial/bse/).
 A brief description of the formalism can be found in the [BSE_notes](https://docs.abinit.org/theory/bse/).
 
-## Table of Contents
-[[back to top](#top)]
-
-- [Typical BSE flowchart](#Typical-BSE-flowchart)
-- [AbiPy flow for BSE with the model dielectric function](#AbiPy-flow-for-BSE-with-the-model-dielectric-function)
-- [Analyzing the results](#Analyzing-the-results)
-- [Converge study with respect to the $k$ point sampling](#Converge-study-with-respect-to-the-$k$-point-sampling)
-- [Exercises](#Exercises)
-
-+++
-
 ## Typical BSE flowchart 
-[[back to top](#top)]
 
 The flowchart of a typical Bethe-Salpeter run is schematically depicted in the diagram below: 
 
@@ -75,7 +58,6 @@ of the BSE problem (the green box).
 +++
 
 ## AbiPy flow for BSE with the model dielectric function
-[[back to top](#top)]
 
 After the standard imports:
 
@@ -174,7 +156,6 @@ to analyze the data.
 +++
 
 ## Analyzing the results
-[[back to top](#top)]
 
 Now we can finally analyze the results. In this case, we are mainly interested in the 
 frequency-dependent macroscopic dielectric function, $\epsilon_\infty(\omega)$, produced
@@ -272,7 +253,6 @@ This test is left as an optional exercise.
 +++
 
 ## Convergence study with respect to the $k$-point sampling
-[[back to top](#top)]
 
 The most important parameter that should be checked for convergence is the number of $k$-points. 
 This convergence study represents the most tedious and difficult part since it requires the generation of new WFK files for each k-mesh 
@@ -330,7 +310,6 @@ plotter.plot();
 ```
 
 ## Exercises
-[[back to top](#top)]
 
 Use `make_scf_nscf_bse_inputs` and `BseMdfWork` to perform the following convergence studies:
     
@@ -338,11 +317,3 @@ Use `make_scf_nscf_bse_inputs` and `BseMdfWork` to perform the following converg
    * Convergence with respect to the number of $k$-points 
    
 See also the discussion reported in the official [BSE tutorial](https://docs.abinit.org/tutorial/bse/)
-
-+++
-
-Back to the main [Index](../index.ipynb)
-
-```{code-cell} ipython3
-
-```

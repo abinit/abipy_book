@@ -11,13 +11,7 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](../index.ipynb) <a id="top"></a>
-
-+++
-
-# Phonons and Born effective charges with Abinit and AbiPy
-
-+++
+# Phonons and Born effective charges
 
 This lesson discusses how to compute phonon band structures, DOS 
 and Born effective charges with Abinit and AbiPy.
@@ -41,23 +35,7 @@ you may want to use directly the command line interface.
 See the README.md file in the directory of this lesson explaining how to analyze the data from the shell
 using ipython and matplotlib.
 
-## Table of Contents
-[[back to top](#top)]
-
-- [Phonon frequencies at $\Gamma$ as function of ecut](#Phonon-frequencies-at-$\Gamma$-as-function-of-ecut)
-- [Convergence study at $\Gamma$](#Convergence-study-at-$\Gamma$)
-- [Phonon band structure of AlAs](#Phonon-band-structure-of-AlAs)
-- [Post-processing the results](#Post-processing-the-results)
-- [Macroscopic dielectric tensor and Born effective-charges](#Macroscopic-dielectric-tensor-and-Born-effective-charges)
-- [Thermodynamic properties within the harmonic approximation](#Thermodynamic-properties-within-the-harmonic-approximation)
-- [Exercises](#Exercises)
-
-+++
-
 ## Phonon frequencies at $\Gamma$ as function of ecut
-[[back to top](#top)]
-
-+++
 
 Before starting, we need to import the python modules and the functions we will need in the notebook:
 
@@ -218,7 +196,6 @@ the AbiPy post-processing tools without having to run the flow.
 +++
 
 ## Convergence study at $\Gamma$
-[[back to top](#top)]
 
 There are several output files located inside the `outdata` directories:
 
@@ -301,7 +278,6 @@ For a quick introduction to Pandas, see:
 +++
 
 ## Phonon band structure of AlAs
-[[back to top](#top)]
 
 Now we are finally ready for the calculation of the vibrational spectrum of $AlAs$.
 We already managed to run DFPT calculations at $\Gamma$ with different values of `ecut` and the
@@ -372,7 +348,6 @@ to launch the entire calculation.
 +++
 
 ## Post-processing the results
-[[back to top](#top)]
 
 Our flow is completed and we have the final DDB file with all the $q$-points and all the independent atomic perturbations. 
 Let's open this DDB file with:
@@ -486,7 +461,6 @@ This behaviour is somehow expected. Could you explain it in terms of a simple ph
 +++
 
 ## Macroscopic dielectric tensor and Born effective charges
-[[back to top](#top)]
 
 Our calculations includes the response of the system to an external electric field.
 The code below extracts the macroscopic dielectric tensor (`emacro`)
@@ -520,7 +494,6 @@ print(becs_chneut0)
 ```
 
 ## Thermodynamic properties within the harmonic approximation
-[[back to top](#top)]
 
 The thermodynamic properties of an ensemble of non-interacting phonons can be 
 expresses in terms of integrals of the DOS.
@@ -554,7 +527,6 @@ phdos.plot_harmonic_thermo();
 ```
 
 ## Exercises
-[[back to top](#top)]
 
 * Our first phonon band structure has been computed with a (4, 4, 4) $k$-mesh 
   for the electrons and a (2, 2, 2) $q$-mesh for phonons. 
@@ -564,9 +536,3 @@ phdos.plot_harmonic_thermo();
 * Why do you get an error from AbiPy if you try `ngkpt` = (4, 4, 4,) and `ngqpt` = (3, 3, 3)?
 
 +++
-
-Back to the main [Index](../index.ipynb)
-
-```{code-cell} ipython3
-
-```

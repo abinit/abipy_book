@@ -37,9 +37,9 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  use_issues_button: true
   use_repository_button: true
   use_edit_page_button: true
+  use_issues_button: true
 
 
 sphinx:
@@ -49,13 +49,31 @@ sphinx:
         - jupytext.reads
         - fmt: Rmd
     html_js_files:
-    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js   # For plotly
+      - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js   # For plotly
     intersphinx_mapping:
-      sphinx:
-        - "https://www.sphinx-doc.org/en/master"
+      python: 
+        - "https://docs.python.org/3.9"
         - null
-      nbformat:
-        - "https://nbformat.readthedocs.io/en/latest"
+      numpy:
+        - 'https://docs.scipy.org/doc/numpy/' 
+        - null
+      scipy: 
+        - "https://docs.scipy.org/doc/scipy/reference/"
+        - null
+      pandas: 
+        - "http://pandas-docs.github.io/pandas-docs-travis/"
+        - null
+      matplotlib: 
+        - "https://matplotlib.org/"
+        - null
+      monty: 
+        - "https://pythonhosted.org/monty/"
+        - null
+      pymatgen: 
+        - "https://pymatgen.org/"
+        - null
+      abipy: 
+        - "https://abinit.github.io/abipy/"
         - null
     #extra_extensions:
     #  - sphinx_click.ext

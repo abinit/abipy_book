@@ -11,9 +11,7 @@ kernelspec:
   name: python3
 ---
 
-Back to the main [Index](../index.ipynb) <a id="top"></a>
-
-+++
+# Base1 lesson (H2 molecule)
 
 <div class="jumbotron">
   <h1 class="display-3">First (basic) lesson with Abinit and AbiPy</h1>
@@ -49,20 +47,7 @@ This exercise will allow us to learn how to generate multiple input files using 
 how to analyze multiple ground-state calculations with the AbiPy robots.
 
 
-## Table of Contents
-[[back to top](#top)]
-
-* [Our first AbiPy function](#Our-first-AbiPy-function)
-* [Computation of the interatomic distance](#Computation-of-the-interatomic-distance)
-* [Analyzing the main output file](#Analyzing-the-main-output-file)
-* [Extracting results from the GSR files](#Extracting-results-from-the-GSR-files)
-* [Analysis of the charge density](#Analysis-of-the-charge-density)
-* [Conclusions](#Conclusions)
-
-+++
-
 ## Our first AbiPy function
-[[back to top](#top)]
 
 ```{code-cell} ipython3
 :code_folding: []
@@ -135,7 +120,6 @@ print(gsinp.pseudos[0])
 ```
 
 ## Computation of the interatomic distance
-[[back to top](#top)]
 
 +++
 
@@ -207,7 +191,6 @@ Let's assume the flow has been already executed and let's focus on the analysis 
 +++
 
 ## Analyzing the main output file
-[[back to top](#top)]
 
 First of all, it is always a good idea to check whether the SCF cycle is converged.
 Obviously one could open the main output file, find the SCF iterations and look for warnings but
@@ -270,7 +253,6 @@ that closes the `abifile` object when we exit the `with` block.
 +++
 
 ## Extracting results from the GSR files
-[[back to top](#top)]
 
 The ground-state results are saved in the `GSR.nc` files whose API is extensively
 discussed in the [GSR notebook](../gsr.ipynb).
@@ -439,7 +421,6 @@ Want to copy the dataframe to the system clipboard so that one can easily past t
 ```
 
 ## Analysis of the charge density 
-[[back to top](#top)]
 
 The `DEN.nc` file stores the density in real space on the FFT mesh.
 A `DEN.nc` file *has* a `structure`, and an `ebands` object with the electronic eigenvalues/occupations 
@@ -480,7 +461,6 @@ to visualize density isosurfaces of our system:
 +++
 
 ## Conclusions
-[[back to top](#top)]
 
 To summarize, we learned how to define python functions that can be used to generate many input files easily.
 We briefly discussed how to use these inputs to build a basic AbiPy flow without dependencies.
@@ -500,11 +480,3 @@ If you learn to use these great libraries for your work you can really boost you
 
 A logical next lesson would be the the tutorial about the 
 [ground-state properties of silicon](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/base3/lesson_base3.ipynb)
-
-+++
-
-Back to the main [Index](../index.ipynb)
-
-```{code-cell} ipython3
-
-```

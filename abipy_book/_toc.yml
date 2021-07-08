@@ -6,10 +6,10 @@ root: intro
 parts:
 - caption: Basic AbiPy Objects
   chapters:
+  - file: structure
   - file: abinit_input
   - file: input_factories
-  - file: structure
-- caption: Output Files supported by AbiPy
+- caption: Output Files
   chapters:
   - file: gsr
   - file: hist
@@ -17,12 +17,12 @@ parts:
   - file: ddb
   - file: sigres
   - file: mdf
-  - file: lobster
   - file: abiwan
+  - file: lobster
 - caption: AbiPy Workflows
   chapters:
   - file: flows
-- caption: Abinit + AbiPy Lessons
+- caption: AbiPy Lessons
   chapters:
   - file: base1/lesson_base1.md
   - file: base3/lesson_base3.md
