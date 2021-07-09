@@ -61,7 +61,7 @@ The electron-phonon matrix elements are defined by:
 
 For further details about $\Delta_{\qq\nu} V^\KS$ and their Fourier interpolation
 see the [previous lesson](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/sigeph/lesson_sigeph.ipynb)
-on the EPH self-energy and [Phys. Rev. B 78, 045124](http://dx.doi.org/10.1103/PhysRevB.78.045124).
+on the EPH self-energy and [Phys. Rev. B 78, 045124](https://dx.doi.org/10.1103/PhysRevB.78.045124).
 
 The Eliashberg function, $\alpha^2F(\omega)$, is similar to the density of states of the phonons, $F(\omega)$, 
 but is weighted according to the coupling of the phonons to the electrons:
@@ -165,7 +165,8 @@ by the slow convergence of the double-delta integral over the Fermi surface.
 It is therefore convenient to use a coarse k-mesh to calculate phonons with DFPT on a suitable q-grid
 and then use a denser k-mesh to perform the integration over the Fermi surface.
 The resolution in q-space can be improved by interpolating the DFPT potentials via the
-`eph_ngqpt_fine` input variable as discussed in the [previous EPH lesson](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/sigeph/lesson_sigeph.ipynb).
+`eph_ngqpt_fine` input variable as discussed in the 
+[previous EPH lesson](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/sigeph/lesson_sigeph.ipynb).
 
 
 ## Suggested references
@@ -219,9 +220,6 @@ This is the approach we are going to implement with AbiPy to converge the phonon
 Before starting, we need to import the python modules used in this notebook:
 
 ```{code-cell} ipython3
-# Use this at the beginning of your script so that your code will be compatible with python3
-from __future__ import print_function, division, unicode_literals
-
 import numpy as np
 import warnings
 warnings.filterwarnings("ignore") # to get rid of deprecation warnings
@@ -238,17 +236,17 @@ import abipy.flowtk as flowtk
 #%matplotlib widget 
 ```
 
-and a function from the `lesson_eph_al` module to build our AbiPy flow.
+and a function from the `lesson_eph_isotc` module to build our AbiPy flow.
 
 ```{code-cell} ipython3
-from lesson_eph_al import build_flow
+from lesson_eph_isotc import build_flow
 ```
 
-<div class="alert alert-info" role="alert">
+```{note}
 Please read the code carefully, in particular the comments.
 Don't worry if the meaning of some input variables is not immediately clear
 as we will try to clarify the most technical parts in the rest of this notebook.
-</div>
+```
 
 ```{code-cell} ipython3
 abilab.print_source(build_flow)
@@ -292,10 +290,10 @@ print(flow[-1][-1])
 flow[-1][-1].input
 ```
 
-<div class="alert alert-info" role="alert">
+```{note}
 The input does not contain any `irdwfk` or `getwfk` variable. AbiPy will add the required `ird*` 
 variables at runtime and create symbolic links to connect this task to its parents.
-</div>
+```
 
 +++
 
@@ -327,7 +325,7 @@ For completeness, we show the entire flow with the different connections:
 flow.get_graphviz()
 ```
 
-<div class="alert alert-info" role="alert">
+```{note}
 You may wonder why we have so many tasks especially if you are used to the multi-dataset philosophy of Abinit.
 Indeed if you are a `ndtset` master, it should not be so difficult for you
 to write a *single input file* that performs the same kind of convergence study.
@@ -336,7 +334,7 @@ this kind of calculation has several independent steps
 that could be executed in parallel whereas abinit datasets are executed sequentially. 
 This makes a huge difference when running on clusters with hundreds or thousands of CPUs because 
 the *time to solution* can be considerably reduced with this kind of parallelism.
-</div>
+```
 
 <!-- Note that the q-mesh for the self-energy is denser than the *ab-initio* one used for the DFPT run.
 This means that the code will activate the Fourier interpolation of the DFPT potentials.
@@ -360,7 +358,7 @@ Now we can generate the directories and the input files of the `Flow` with:
 
 and then use the `abirun.py` script to launch the entire calculation:
 
-    abirun.py flow_eph_al scheduler
+    abirun.py flow_eph_isotc scheduler
     
 You may want to run this example in the terminal if you've already installed and configured AbiPy and Abinit on your machine. The calculation requires ~12 minutes on a poor 1.7 GHz Intel Core i5 (50% of the time 
 is spent in the last task to compute the phonon linewidths with the 32x32x32 k-mesh)
@@ -390,14 +388,14 @@ to compare multiple `A2F.nc` files with the robot and ipython.
 Let's focus on the electronic properties first.
 
 ```{code-cell} ipython3
-!find flow_eph_al/ -name "out_GSR.nc"
+!find flow_eph_isotc/ -name "out_GSR.nc"
 ```
 
 The task `w0/t0` computed the electronic band structure on a high-symmetry k-path.
 Let's plot the bands with:
 
 ```{code-cell} ipython3
-with abilab.abiopen("flow_eph_al/w0/t1/outdata/out_GSR.nc") as gsr:
+with abilab.abiopen("flow_eph_isotc/w0/t1/outdata/out_GSR.nc") as gsr:
     ebands_kpath = gsr.ebands
     
 # NB: Fermi level set to zero
@@ -422,7 +420,7 @@ in particular the behavior in the region around $\ee_F$.
 Let's use the `GsrRobot` to load all the `GSR` files produced by the `w0` work:
 
 ```{code-cell} ipython3
-gsr_robot = abilab.GsrRobot.from_dir_glob("flow_eph_al/w0/t*/")
+gsr_robot = abilab.GsrRobot.from_dir_glob("flow_eph_isotc/w0/t*/")
 gsr_robot
 ```
 
@@ -431,7 +429,7 @@ DOS **requires** a homogeneous sampling.
 Let's remove the file for which this is not the case from the robot with:
 
 ```{code-cell} ipython3
-gsr_robot.pop_label("flow_eph_al/w0/t1/outdata/out_GSR.nc")
+gsr_robot.pop_label("flow_eph_isotc/w0/t1/outdata/out_GSR.nc")
 gsr_robot
 ```
 
@@ -461,11 +459,11 @@ that different from the ideal free-electron model provided that BZ folding is ta
 
 Visual inspection suggests that the k-sampling becomes *acceptable* at and beyond 24x24x24 (413 nkpt).
 
-<div class="alert alert-info" role="alert">
+```{note}
 The convergence of the DOS at the Fermi level does not necessarly imply convergence in the final EPH results. 
 This is something that should be checked explicitly by looking at the behaviour of the final observables
 as a function of the input parameters.
-</div>
+```
 
 +++ {"run_control": {"marked": true}}
 
@@ -512,30 +510,30 @@ This is the image you should get with xcrysden:
 ## Vibrational properties
 
 Now we turn our attention to the vibrational properties.
-AbiPy has already merged all the independent atomic perturbations in `flow_eph_al/w1/outdata/out_DDB`:
+AbiPy has already merged all the independent atomic perturbations in `flow_eph_isotc/w1/outdata/out_DDB`:
 
 ```{code-cell} ipython3
-!find flow_eph_al/ -name "out_DDB"
+!find flow_eph_isotc/ -name "out_DDB"
 ```
 
 ```{code-cell} ipython3
-!cat flow_eph_al/w1/outdata/mrgddb.stdin
+!cat flow_eph_isotc/w1/outdata/mrgddb.stdin
 ```
 
 In the same directory, we have the `DVDB` file containing the independent DFPT potentials
 
 ```{code-cell} ipython3
-!find flow_eph_al/ -name "out_DVDB"
+!find flow_eph_isotc/ -name "out_DVDB"
 ```
 
 ```{code-cell} ipython3
-#!cat flow_eph_al//w1/outdata/mrgdvdb.stdin
+#!cat flow_eph_isotc//w1/outdata/mrgdvdb.stdin
 ```
 
 Let's open the `DDB` file computed on the 4x4x4 q-mesh with:
 
 ```{code-cell} ipython3
-ddb = abilab.abiopen("flow_eph_al/w1/outdata/out_DDB")
+ddb = abilab.abiopen("flow_eph_isotc/w1/outdata/out_DDB")
 print(ddb)
 ```
 
@@ -563,14 +561,14 @@ ph_plotter = ddb.anacompare_asr()
 ph_plotter.combiplot(units="cm-1");
 ```
 
-<div class="alert alert-warning" role="alert">
+```{warning}
 Not so good! The breaking of the ASR is quite large.
 This is mainly due to the use of a too small value for `ecut`.
 In real life, we should increase `ecut` and rerun the DFPT part but since this is a tutorial
 aiming at showing how to perform EPH calculations, we ignore this convergence issue 
 keeping in mind that we should redo all our calculations with larger ecut before submitting the final
 version of the paper!
-</div>
+```
 
 We can now finally turn our attention to the phonon linewidths and the Eliashberg function. 
 
@@ -585,7 +583,7 @@ In total we have three EPH calculations done with different k-meshes to analyze.
 Let's focus on the output files produced with the 16x16x16 k-mesh by the first `EphTask` in `w2/t0`:
 
 ```{code-cell} ipython3
-!ls flow_eph_al/w2/t0/outdata
+!ls flow_eph_isotc/w2/t0/outdata
 ```
 
 The most important results are stored in:
@@ -594,16 +592,16 @@ The most important results are stored in:
 * *out_PHDOS.nc*: phonon DOS and projections over atoms and directions
 * *out_PBSTS.nc*: phonon band structure along the q-path
 
-<div class="alert alert-info" role="alert">
+```{note}
 There is also a bunch of text files with the same results in text format if you are a gnuplot/xmgrace aficionado...
-</div>
+```
 
 +++
 
 Let's get a quick summary of the most important results with:
 
 ```{code-cell} ipython3
-a2fnc = abilab.abiopen("flow_eph_al/w2/t0/outdata/out_A2F.nc")
+a2fnc = abilab.abiopen("flow_eph_isotc/w2/t0/outdata/out_A2F.nc")
 print(a2fnc)
 ```
 
@@ -687,10 +685,10 @@ AbiPy to compare multiple calculations.
 In this section, we use the `A2fRobot` to analyze the convergence behaviour of our results
 with respect to the k-point sampling in the double-delta integral.
 
-Let's ask our robot to open all the `A2F` files  located within the `flow_eph_al/` directory.
+Let's ask our robot to open all the `A2F` files  located within the `flow_eph_isotc/` directory.
 
 ```{code-cell} ipython3
-robot = abilab.A2fRobot.from_dir("flow_eph_al/")
+robot = abilab.A2fRobot.from_dir("flow_eph_isotc/")
 robot
 ```
 

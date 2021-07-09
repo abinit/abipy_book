@@ -174,7 +174,7 @@ inside the terminal.
 we postpone the discussion of this part because we should first create two YAML configuration files
 with options defining the execution environment and the submission policy.
 (For a detailed explanation of the AbiPy configuration files, please consult the
-[TaskManager documentation](http://abinit.github.io/abipy/workflows/taskmanager.html).
+[TaskManager documentation](https://abinit.github.io/abipy/workflows/taskmanager.html).
 
 There are only three points that we need to understand before proceeding with the next sections:
 

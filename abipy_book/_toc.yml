@@ -26,11 +26,13 @@ parts:
   chapters:
   - file: base1/lesson_base1.md
   - file: base3/lesson_base3.md
-  - file: base4/lesson_base4.md
+    #- file: base4/lesson_base4.md
   - file: dfpt/lesson_dfpt.md
+  - file: elastic/lesson_elastic.md
   - file: g0w0/lesson_g0w0.md
   - file: bse/lesson_bse.md
-  - file: eph_al/lesson_eph_al.md
+  - file: eph_isotc/lesson_eph_isotc.md
+    #- file: eph_zpr/lesson_eph_zpr.md
 - caption: Miscellaneous
   chapters:
   - file: links.md

@@ -70,14 +70,6 @@ def build_all(ctx):
 #
 # You can also use -v or -vvv to increase verbosity.
 
-
-
-
-
-
-
-
-
 #@task
 #def build_no_cache(ctx):
 #    """
@@ -114,3 +106,10 @@ def du(ctx):
     """
     with cd(HERE):
         ctx.run("du -msh -I _build abipy_book/", pty=True)
+
+@task
+def md2nb(ctx, md_filename):
+    """
+    """
+    ctx.run("jupytext {md_filename} --to ipynb" ,pty=True)
+

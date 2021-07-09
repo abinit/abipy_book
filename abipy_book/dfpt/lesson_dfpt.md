@@ -273,7 +273,7 @@ convergence behaviour and we use `ecut` = 6 Ha to keep the computational cost lo
 For a quick introduction to Pandas, see:
 
 * [Pandas cookbook](https://github.com/jvns/pandas-cookbook)
-* [Pandas cookbook Chapter 1 Reading data from a csv file](http://nbviewer.jupyter.org/github/jvns/pandas-cookbook/blob/master/cookbook/Chapter%201%20-%20Reading%20from%20a%20CSV.ipynb)
+* [Pandas cookbook Chapter 1 Reading data from a csv file](https://nbviewer.jupyter.org/github/jvns/pandas-cookbook/blob/master/cookbook/Chapter%201%20-%20Reading%20from%20a%20CSV.ipynb)
 
 +++
 

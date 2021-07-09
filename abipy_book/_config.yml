@@ -20,8 +20,8 @@ only_build_toc_files: true
 # Force re-execution of notebooks on each build. See https://jupyterbook.org/content/execute.html
 execute:
   #execute_notebooks: cache
-  #execute_notebooks: auto
-  execute_notebooks: force
+  execute_notebooks: auto
+  #execute_notebooks: force
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -55,6 +55,8 @@ html:
 parse:
   myst_substitutions: 
       # Usage in md file: {{ key }}
+      #
+      AbinitInput: ":class:`abipy.abio.inputs.AbinitInput`"
       # 
       # Links to doc pages (AbiPy scripts)
       abistruct: "[abistruct.py](http://abinit.github.io/abipy/scripts/abistruct.html)"
@@ -105,21 +107,33 @@ parse:
     # default extensions to enable in the myst parser. 
     # See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
     - amsmath
-    - colon_fence
+    #- colon_fence
     - deflist
     - dollarmath
     - html_admonition
     - html_image
-    - linkify
+    #- linkify
     - replacements
     - smartquotes
     - substitution
+
+
+launch_buttons:
+  #notebook_interface: "jupyterlab"  # or "classic"
+  notebook_interface: "classic"
+  binderhub_url: "https://mybinder.org"  # The URL for your BinderHub (e.g., https://mybinder.org)
 
 
 #######################################################################################
 # Advanced and power-user settings
 
 sphinx:
+  extra_extensions:
+      - sphinx.ext.intersphinx
+      #- sphinx_click.ext
+      #- sphinx_inline_tabs
+      #- sphinxext.rediraffe
+
   config:
     # By default MathJax version 2 is currently used. 
     # You may want to try using version 3, which claims to improve load speeds by 60 - 80%:
@@ -153,10 +167,7 @@ sphinx:
         abipy: 
           - "https://abinit.github.io/abipy/"
           - null
-    #extra_extensions:
-    #  - sphinx_click.ext
-    #  - sphinx_inline_tabs
-    #  - sphinxext.rediraffe
+    
     mathjax_config:
           # Use same Macros as the ones used in the Abinit website. See ~abinit/abinit_theme/main.html
           TeX:

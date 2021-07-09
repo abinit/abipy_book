@@ -25,6 +25,8 @@ of multiple inputs sharing the same structure and the same list of pseudopotenti
 In another [notebook](./input_factories), we briefly discuss how to use factory functions
 to generate automatically input objects for typical calculations.
 
+See e.g {{ AbinitInput }}
+
 ## Creating an AbinitInput object
 
 ```{code-cell}

@@ -61,8 +61,8 @@ Sometimes there is also a large overlap with some of the previous AbiPy tutorial
 * [Phonons, dielectric tensor and Born effective charges from DFPT](dfpt/lesson_dfpt)
 * [$G_0W_0$ band structure](g0w0/lesson_g0w0)
 * [Bethe-Salpeter equation and excitonic effects](bse/lesson_bse)
-* [E-PH self-energy and T-dependent band structures](sigeph/lesson_sigeph)
-* [Phonon linewidths and Eliashberg function of Al](eph_al/lesson_eph)
+% * [E-PH self-energy and T-dependent band structures](eph_zpr/lesson_eph_zpr)
+% * [Phonon linewidths and Eliashberg function of Al](eph_isotc/lesson_eph_isotc)
 * [Elastic and piezoelectric properties](elastic/lesson_elastic)
 
 +++
