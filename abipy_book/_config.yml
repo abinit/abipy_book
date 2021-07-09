@@ -17,8 +17,7 @@ only_build_toc_files: true
 #######################################################################################
 # Execution settings
 
-# Force re-execution of notebooks on each build.
-# See https://jupyterbook.org/content/execute.html
+# Force re-execution of notebooks on each build. See https://jupyterbook.org/content/execute.html
 execute:
   #execute_notebooks: cache
   #execute_notebooks: auto
@@ -37,7 +36,7 @@ bibtex_bibfiles:
 repository:
   url: https://github.com/abinit/abipy_book  # Online location of your book
   path_to_book: docs  # Optional path to your book, relative to the repository root
-  branch: master  # Which branch of the repository should be used when creating links (optional)
+  branch: master      # Which branch of the repository should be used when creating links (optional)
 
 
 #######################################################################################
@@ -54,9 +53,57 @@ html:
 # Parse and render settings
 
 parse:
-  #myst_substitutions:
-  #    sub3: My _global_ value!
-  myst_enable_extensions:  # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
+  myst_substitutions: 
+      # Usage in md file: {{ key }}
+      # 
+      # Links to doc pages (AbiPy scripts)
+      abistruct: "[abistruct.py](http://abinit.github.io/abipy/scripts/abistruct.html)"
+      abiopen: "[abiopen.py](http://abinit.github.io/abipy/scripts/abiopen.html)"
+      abicomp: "[abicomp.py](http://abinit.github.io/abipy/scripts/abicomp.html)"
+      abiview: "[abiview.py](http://abinit.github.io/abipy/scripts/abiview.html)"
+      abiruny: "[abirun.py](http://abinit.github.io/abipy/scripts/abirun.html)"
+      abidoc: "[abidoc.py](http://abinit.github.io/abipy/scripts/abidoc.html)"
+      # Links to websites
+      abiconfig: "[abiconfig](https://github.com/abinit/abiconfig)"
+      abiflows: "[abiflows](https://github.com/abinit/abiflows)"
+      abitutorials: "[abitutorials](https://github.com/abinit/abitutorials)"
+      abipygui: "[AbiPy GUI](https://panel.many2.abinit.org/)"
+      #abinit-channel: https://anaconda.org/abinit
+      pseudodojo: "[pseudo-dojo](http://www.pseudo-dojo.org/)"
+      pymatgen: "[pymatgen](http://www.pymatgen.org)"
+      #fireworks: https://materialsproject.github.io/fireworks/
+      materials_project: "[materials project](https://materialsproject.org/)"
+      panel: "[panel](https://panel.holoviz.org/)"
+      #conda: https://conda.io/docs/
+      #Anaconda: https://continuum.io/downloads
+      #spack: https://github.com/LLNL/spack
+      #pip: https://pypi.python.org/pypi/pip
+      ipython: "[ipython](https://ipython.org/index.html)"
+      jupyter: "[jupyter](http://jupyter.org/)"
+      Python: "[Python](http://www.python.org/)"
+      #spglib: https://atztogo.github.io/spglib/
+      #bader: http://theory.cm.utexas.edu/henkelman/code/bader/
+      ase: "[ase](https://wiki.fysik.dtu.dk/ase/)"
+      COD: "[COD](http://www.crystallography.net/cod/)"
+      CIF: "[CIF](http://www.iucr.org/resources/cif)"
+      vesta: "[vesta](http://jp-minerals.org/vesta/en/)"
+      xcrysden: "[XCrysDen](http://www.xcrysden.org/)"
+      xmgrace: "[xmgrace](http://plasma-gate.weizmann.ac.il/Grace/)"
+      gnuplot: "[gnuplot](http://www.gnuplot.info/)"
+      ovito: "[ovito](https://ovito.org/)"
+      v_sim: "[v_sim](http://inac.cea.fr/L_Sim/V_Sim/)"
+      avogadro: "[avogadro](https://avogadro.cc/)"
+      phononwebsite: "[phononwebsite](http://henriquemiranda.github.io/phononwebsite/)"
+      phonopy: "[phonopy](https://atztogo.github.io/phonopy/)"
+      pyprocar: "[pyprocar](https://romerogroup.github.io/pyprocar/)"
+      fermisurfer: "[fermisurfer](http://fermisurfer.osdn.jp/)"
+      #netcdf: https://www.unidata.ucar.edu/software/netcdf/docs/faq.html#whatisit
+      YAML: "[Yaml](https://en.wikipedia.org/wiki/YAML)"
+      JSON: "[JSON](https://en.wikipedia.org/wiki/JSON)"
+
+  myst_enable_extensions:
+    # default extensions to enable in the myst parser. 
+    # See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
     - amsmath
     - colon_fence
     - deflist
@@ -82,37 +129,36 @@ sphinx:
       - https://cdn.plot.ly/plotly-2.2.0.min.js
     bibtex_reference_style: author_year  # or label, super, \supercite
     intersphinx_mapping:
-      python: 
-        - "https://docs.python.org/3.9"
-        - null
-      numpy:
-        - 'https://docs.scipy.org/doc/numpy/' 
-        - null
-      scipy: 
-        - "https://docs.scipy.org/doc/scipy/reference/"
-        - null
-      pandas: 
-        - "http://pandas-docs.github.io/pandas-docs-travis/"
-        - null
-      matplotlib: 
-        - "https://matplotlib.org/"
-        - null
-      monty: 
-        - "https://pythonhosted.org/monty/"
-        - null
-      pymatgen: 
-        - "https://pymatgen.org/"
-        - null
-      abipy: 
-        - "https://abinit.github.io/abipy/"
-        - null
+        python: 
+          - "https://docs.python.org/3.9"
+          - null
+        numpy:
+          - 'https://docs.scipy.org/doc/numpy/' 
+          - null
+        scipy: 
+          - "https://docs.scipy.org/doc/scipy/reference/"
+          - null
+        pandas: 
+          - "http://pandas-docs.github.io/pandas-docs-travis/"
+          - null
+        matplotlib: 
+          - "https://matplotlib.org/"
+          - null
+        monty: 
+          - "https://pythonhosted.org/monty/"
+          - null
+        pymatgen: 
+          - "https://pymatgen.org/"
+          - null
+        abipy: 
+          - "https://abinit.github.io/abipy/"
+          - null
     #extra_extensions:
     #  - sphinx_click.ext
     #  - sphinx_inline_tabs
     #  - sphinxext.rediraffe
     mathjax_config:
-          # Use same Macros as the ones used in the Abinit website
-          # See ~abinit/abinit_theme/main.html
+          # Use same Macros as the ones used in the Abinit website. See ~abinit/abinit_theme/main.html
           TeX:
            Macros:
                 "*": "{\\dagger}"

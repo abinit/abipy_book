@@ -20,17 +20,17 @@ on the number of steps required by the calculation.
 One can use the factories to generate automatically input files or
 call these functions inside python code to build workflows for high-throughput applications.
 Note that the default values do not always correspond to the default behaviour of Abinit.
-In particular, the majority of the factory functions construct input files 
-for **spin-polarized calculations** (`nsppol=2`) with a **Fermi-Dirac** occupation scheme and 
-a physical temperature of **0.1 eV**. 
+In particular, the majority of the factory functions construct input files
+for **spin-polarized calculations** (`nsppol=2`) with a **Fermi-Dirac** occupation scheme and
+a physical temperature of **0.1 eV**.
 It is always possible to change the default behaviour either
 by passing these options to the factory function or by changing the objects returned by the factory.
 
-Also note that the factory functions do not use `get*` or `ird*` variables to connect the different 
+Also note that the factory functions do not use `get*` or `ird*` variables to connect the different
 steps. Client code is in charge of connecting the different parts.
 For a command line interface, use the `abinp.py` script.
 
-```{code-cell} ipython3
+```{code-cell}
 import os
 import warnings
 warnings.filterwarnings("ignore") # to get rid of deprecation warnings
@@ -41,16 +41,16 @@ abilab.enable_notebook() # This line tells AbiPy we are running inside a noteboo
 from abipy.abilab import AbinitInput
 ```
 
-### Ground-state calculation
+## Ground-state calculation
 
-Let us generate an input file for a standard GS calculation for silicon in which 
+Let us generate an input file for a standard GS calculation for silicon in which
 the structure is read from an external CIF file:
 
-```{code-cell} ipython3
+```{code-cell}
 si_cif = abidata.cif_file("si.cif")
 pseudos = os.path.join(abidata.pseudo_dir, "14si.pspnc")
 
-# Build input for GS calculation (unpolarized, no smearing, 1000 k-points per reciprocal atom) 
+# Build input for GS calculation (unpolarized, no smearing, 1000 k-points per reciprocal atom)
 # ecut must be specified because this pseudopotential does not provide hints for ecut.
 # kppa stands for k-point per reciprocal atom.
 gs_inp = abilab.gs_input(
@@ -61,11 +61,11 @@ gs_inp.set_mnemonics(True)
 gs_inp
 ```
 
-### Input variables for band structure calculation + DOS
+## Input variables for band structure calculation + DOS
 
 A slightly more complicated example:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
 code_folding: []
 run_control:
@@ -78,11 +78,11 @@ multi = abilab.ebands_input(si_cif, pseudos,
 multi
 ```
 
-### Factories for GW calculations
+## Factories for GW calculations
 
-```{code-cell} ipython3
+```{code-cell}
 # Generate an input file for GW calculations with the plasmon-pole model.
-# The calculations consists of a GS run to get the density followed by a 
+# The calculations consists of a GS run to get the density followed by a
 # nscf-run to compute the WFK file with `nscf_nband` states.
 # The cutoff for the screening is given by `ecuteps` while the cutoff for
 # the exchange part of the self-energy is equal to ecut.

@@ -26,10 +26,9 @@ An alternative, more traditional, approach to the study of exchange-correlation 
 many-body systems is provided by Many-Body Perturbation Theory (MBPT) which defines a rigorous approach to the description of excited-state properties, based on the Green's function formalism.
 In this lesson, we discuss how to use the MBPT part of ABINIT to compute the band-structure of silicon
 within the so-called $G_0W_0$ approximation.
-For a very brief introduction to the many-body formalism, please consult the 
-[MBPT_notes](https://docs.abinit.org/theory/mbt/)
+For a very brief introduction to the many-body formalism, please consult the  [MBPT_notes](https://docs.abinit.org/theory/mbt/)
 
-### Related ABINIT variables
+## Related ABINIT variables
 
     * optdriver
     * ecuteps
@@ -104,13 +103,13 @@ For your convenience, we report the variables used to compute the screening and 
 scf, bands_nscf, dos_nscf, gw_nscf, scr, sig = make_inputs(ngkpt=(2, 2, 2))
 ```
 
-#### Input for RPA screening calculation
+### Input for RPA screening calculation
 
 ```{code-cell} ipython3
 scr
 ```
 
-#### Input for self-energy calculation with plasmon-pole model
+### Input for self-energy calculation with plasmon-pole model
 
 ```{code-cell} ipython3
 sig
@@ -362,6 +361,3 @@ p2.combiplot();
 <!-- A logical next lesson would be the 
 [Bethe-Salpeter tutorial](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/bse/lesson_bse.ipynb)
 -->
-
-+++
-

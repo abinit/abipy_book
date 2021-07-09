@@ -32,21 +32,10 @@ This tutorial is a complement to the standard [ABINIT tutorial on silicon](https
 Here, powerful flow and visualisation procedures
 will be demonstrated. Still, some basic understanding of the stand-alone working of ABINIT is a prerequisite.
 Also, in order to fully benefit from this Abipy tutorial, other more basic Abipy tutorials should have been followed,
-as suggested in the [abitutorials index page](../index.ipynb).
+as suggested in the [abitutorials index page](../intro).
   
-## Table of Contents
-
-- [Computing the total energy of silicon at fixed number of k-points](#Computing-the-total-energy-of-silicon-at-fixed-number-of-k-points)
-- [Analysis of the results](#Analysis-of-the-results)
-- [Determination of the lattice parameters](#Determination-of-the-lattice-parameters)
-- [Computing the band-structure](#Computing-the-band-structure)
-
-```{code-cell} ipython3
-:code_folding: []
-
+```{code-cell} 
 # Use this at the beginning of your script so that your code will be compatible with python3
-from __future__ import print_function, division, unicode_literals
-
 import numpy as np
 
 import warnings 
@@ -71,39 +60,39 @@ by looping over a predefined list of `ngkpt` values.
 The crystalline structure is initialized from a CIF file while  other parameters 
 such as the cutoff energy are fixed:
 
-```{code-cell} ipython3
+```{code-cell} 
 from lesson_base3 import build_ngkpt_flow
 abilab.print_source(build_ngkpt_flow)
 ```
 
 Let's call the function to build the flow:
 
-```{code-cell} ipython3
+```{code-cell} 
 flow = build_ngkpt_flow(options=None)
 ```
 
 In total, we have four `ScfTasks` that will be executed in the `flow_base3_ngkpt` directory:
 
-```{code-cell} ipython3
+```{code-cell} 
 flow.get_graphviz()
 ```
 
 This is the input of the first task `w0_t0`:
 
-```{code-cell} ipython3
+```{code-cell} 
 flow[0][0].input
 ```
 
 and these are the divisions of the k-mesh for the four different calculations:
 
-```{code-cell} ipython3
+```{code-cell} 
 for task in flow.iflat_tasks():
     print(task.pos_str, "uses ngkpt:", task.input["ngkpt"])
 ```
 
 but we can achieve the same goal with:
 
-```{code-cell} ipython3
+```{code-cell} 
 flow.get_vars_dataframe("ngkpt", "ecut")
 ```
 
@@ -141,7 +130,7 @@ plt.plot(nkpt_list, ene_list, marker="o");
 
 but it is much easier to create a `GsrRobot` that will do the work for us:
 
-```{code-cell} ipython3
+```{code-cell} 
 ---
 code_folding: []
 run_control:
@@ -156,7 +145,7 @@ robot_enekpt
 In the next lines, we are going to generate a pandas `Dataframe` with
 the most important results so that we can show how to use the pandas API to analyze the data:
 
-```{code-cell} ipython3
+```{code-cell} 
 ene_table = robot_enekpt.get_dataframe()
 ene_table.keys()
 ```
@@ -165,7 +154,7 @@ The dataframe contains several columns but
 we are mainly interested in the number of k-points `nkpt` and in the `energy` (given in eV).
 Let's massage a bit the data to facilitate the post-processing:
 
-```{code-cell} ipython3
+```{code-cell} 
 # We are gonna plot f(nkpt) so let's sort the rows first.
 ene_table.sort_values(by="nkpt", inplace=True) 
 
@@ -176,13 +165,13 @@ ene_table["ediff_Ha"] = ene_table["energy_Ha"] - ene_table["energy_Ha"][-1]
 
 before printing a subset of the columns with the syntax:
 
-```{code-cell} ipython3
+```{code-cell} 
 ene_table[["nkpt", "energy", "energy_Ha", "ediff_Ha"]]
 ```
 
 If you do not like tables and prefer figures, use:
 
-```{code-cell} ipython3
+```{code-cell} 
 ene_table.plot(x="nkpt", y=["energy_Ha", "ediff_Ha", "pressure"], style="-o", subplots=True);
 ```
 
@@ -196,7 +185,7 @@ that the AbiPy robots *already* provide methods to perform this kind of converge
 so that we do not need to manipulate pandas dataframes explicitly.
 For example, we can perform the same analysis with a single line:
 
-```{code-cell} ipython3
+```{code-cell} 
 robot_enekpt.plot_gsr_convergence(sortby="nkpt");
 ```
 
@@ -204,7 +193,7 @@ We can also pass a function that will be called by the robot to compute the valu
 and sort the results.
 The docstring of the function is used as label of the x-axis:
 
-```{code-cell} ipython3
+```{code-cell} 
 def inv_nkpt(abifile):
     r"""$\dfrac{1}{nkpt}$"""
     return 1 / abifile.nkpt
@@ -212,7 +201,7 @@ def inv_nkpt(abifile):
 robot_enekpt.plot_gsr_convergence(sortby=inv_nkpt);    
 ```
 
-```{code-cell} ipython3
+```{code-cell} 
 #robot_enekpt.plot_lattice_convergence(sortby="nkpt");
 ```
 
@@ -225,20 +214,20 @@ lattice parameters as function of the k-point sampling.
 In AbiPy, we only need to build different relaxation tasks with a slightly different input
 in which only `ngkpt` is changed.
 
-```{code-cell} ipython3
+```{code-cell} 
 from lesson_base3 import build_relax_flow
 abilab.print_source(build_relax_flow)
 ```
 
-```{code-cell} ipython3
+```{code-cell} 
 relax_flow = build_relax_flow(options=None)
 relax_flow.get_graphviz()
 ```
 
-<div class="alert alert-info">
+```{important}
 If you want to run the flow from the shell, open lesson_base3.py and change the main function
 so that it calls build_relax_flow instead of build_ngkpt_flow.
-</div>
+```
 
 +++
 
@@ -248,18 +237,18 @@ This file stores the history of the relaxation
 
 As usual, we use `abiopen` to generate an AbiPy object:
 
-```{code-cell} ipython3
+```{code-cell} 
 hist = abilab.abiopen("flow_base3_relax/w0/t1/outdata/out_HIST.nc")
 print(hist)
 ```
 
 To plot the evolution of the most important physical quantities, use:
 
-```{code-cell} ipython3
+```{code-cell} 
 hist.plot();
 ```
 
-```{code-cell} ipython3
+```{code-cell} 
 hist_robot = abilab.HistRobot.from_dir("flow_base3_relax")
     
 hist_table = hist_robot.get_dataframe()
@@ -267,25 +256,25 @@ hist_table = hist_robot.get_dataframe()
 
 There are several entries in the `DataFrame`:
 
-```{code-cell} ipython3
+```{code-cell} 
 hist_table.keys()
 ```
 
 Let's select some of them with:
 
-```{code-cell} ipython3
+```{code-cell} 
 hist_table[["alpha", "a", "final_energy", "final_pressure", "num_steps"]]
 ```
 
 and print the evolution of important physical properties extracted from the two files: 
 
-```{code-cell} ipython3
+```{code-cell} 
 hist_robot.gridplot(what_list=["energy", "abc", "pressure", "forces"]);
 ```
 
 We can also compare the two structural relaxations with:
 
-```{code-cell} ipython3
+```{code-cell} 
 hist_robot.combiplot();
 ```
 
@@ -295,29 +284,29 @@ so that we can analyze the convergence of the optimized lattice parameters wrt `
 Fortunately the `GSR.nc` has all the information we need and it is just a matter
 of replacing the `HistRobot` with a `GsrRobot`:
 
-```{code-cell} ipython3
+```{code-cell} 
 with abilab.GsrRobot.from_dir("flow_base3_relax") as relkpt_robot:
     relax_table = relkpt_robot.get_dataframe().sort_values(by="nkpt")
     dfs = relkpt_robot.get_structure_dataframes()
 ```
 
-```{code-cell} ipython3
+```{code-cell} 
 relax_table[["energy", "a", "pressure", "max_force", "pressure"]]
 ```
 
 Plotting the energy, the lattice parameter `a` in Bohr and the pressure in `GPa` vs `nkpt` is really a piece of cake!
 
-```{code-cell} ipython3
+```{code-cell} 
 relax_table.plot(x="nkpt", y=["energy", "a", "pressure"], subplots=True);
 ```
 
 Alternatively, one can use the `GsrRobot` API:
 
-```{code-cell} ipython3
+```{code-cell} 
 relkpt_robot.plot_gsr_convergence(sortby="nkpt");
 ```
 
-```{code-cell} ipython3
+```{code-cell} 
 relkpt_robot.plot_lattice_convergence(what_list=["a"], sortby="nkpt");
 ```
 
@@ -339,7 +328,7 @@ connected to a previous SCF run.
 Fortunately AbiPy provides a factory function to generate this kind of workflow.
 We only need to focus on the definition of the two inputs:
 
-```{code-cell} ipython3
+```{code-cell} 
 from lesson_base3 import build_ebands_flow
 abilab.print_source(build_ebands_flow)
 ```
@@ -347,7 +336,7 @@ abilab.print_source(build_ebands_flow)
 The `Flow` consists of a single `Work` with two `Tasks` 
 (`ScfTask` with a k-mesh and a `NscfTask` performed on the k-path).
 
-```{code-cell} ipython3
+```{code-cell} 
 ebands_flow = build_ebands_flow(options=None)
 ebands_flow.get_graphviz()
 ```
@@ -361,14 +350,14 @@ so that it calls build_ebands_flow.
 
 Let's extract the band structure from the `GSR.nc` file produced by the `NscfTask`:
 
-```{code-cell} ipython3
+```{code-cell} 
 with abilab.abiopen("flow_base3_ebands/w0/t1/outdata/out_GSR.nc") as gsr:
     ebands_kpath = gsr.ebands
 ```
 
 and plot it with:
 
-```{code-cell} ipython3
+```{code-cell} 
 ebands_kpath.plot();
 ```
 
@@ -381,7 +370,7 @@ The minimum of the conduction band is even slightly displaced with respect to X.
 
 Unfortunately, it seems that AbiPy does not agree with us:
 
-```{code-cell} ipython3
+```{code-cell} 
 print(ebands_kpath)
 ```
 
@@ -391,18 +380,18 @@ on a shifted k-mesh, the $\Gamma$ point was not included and therefore the Fermi
 
 To fix this problem we have to change manually the Fermi energy and set it to the maximum of the valence bands:
 
-```{code-cell} ipython3
+```{code-cell} 
 ebands_kpath.set_fermie_to_vbm()
 print(ebands_kpath)
 ```
 
 Now the AbiPy results are consistent with our initial analysis:
 
-```{code-cell} ipython3
+```{code-cell} 
 ebands_kpath.plot(with_gaps=True);
 ```
 
-```{code-cell} ipython3
+```{code-cell} 
 # We can also plot the k-path in the Brillouin zone with:
 #ebands_kpath.kpoints.plot();
 ```
@@ -410,7 +399,7 @@ ebands_kpath.plot(with_gaps=True);
 The `GSR` file produced by the first task contains energies on a homogeneous k-mesh.
 We can therefore compute the DOS by invoking the `get_edos` method:
 
-```{code-cell} ipython3
+```{code-cell} 
 with abilab.abiopen("flow_base3_ebands/w0/t0/outdata/out_GSR.nc") as gsr:
     ebands_kmesh = gsr.ebands
     
@@ -419,7 +408,7 @@ edos = ebands_kmesh.get_edos()
 
 and plot the DOS with:
 
-```{code-cell} ipython3
+```{code-cell} 
 edos.plot();
 ```
 
@@ -431,26 +420,26 @@ for $\epsilon_F$ with $N$ the number of electrons per unit cell.
 Note that the DOS is highly sensitive to the sampling of the IBZ and to the value of the broadening,
 especially in metallic systems.
 
-```{code-cell} ipython3
+```{code-cell} 
 edos.plot_dos_idos();
 ```
 
 Want to make  a nice picture of the band dispersion with a second panel for the DOS?
 
-```{code-cell} ipython3
+```{code-cell} 
 ebands_kpath.plot_with_edos(edos);
 ```
 
 It is important to stress that each panel in the above figure is aligned with respect to its own Fermi energy
 and these values are not necessarly equal:
 
-```{code-cell} ipython3
+```{code-cell} 
 print(ebands_kpath.fermie, edos.fermie)
 ```
 
 We can always plot the bands and the DOS without setting their Fermi energy to zero by using:
 
-```{code-cell} ipython3
+```{code-cell} 
 ebands_kpath.plot_with_edos(edos, e0=0);
 ```
 

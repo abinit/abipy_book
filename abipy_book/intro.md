@@ -43,7 +43,9 @@ and then examine the flows notebook.
 
 * [Flows](flows.ipynb): How to automate calculations with `Flows`, `Works` and `Tasks`
 
-This notebook is complemented with the documentation on the [TaskManager Configuration](http://abinit.github.io/abipy/workflows/taskmanager.html): How to specify options in `manager.yml` and `scheduler.yml`  
+This notebook is complemented with the documentation on the 
+[TaskManager Configuration](http://abinit.github.io/abipy/workflows/taskmanager.html):
+How to specify options in `manager.yml` and `scheduler.yml`  
 
 +++
 
@@ -54,14 +56,14 @@ as some standard ABINIT tutorials.
 Usually, the corresponding ABINIT tutorial has to be followed first. 
 Sometimes there is also a large overlap with some of the previous AbiPy tutorials.
 
-* [The H<sub>2</sub> molecule](base1/lesson_base1.ipynb)
-* [Crystalline silicon](base3/lesson_base3.ipynb)
-* [Phonons, dielectric tensor and Born effective charges from DFPT](dfpt/lesson_dfpt.ipynb)
-* [$G_0W_0$ band structure](g0w0/lesson_g0w0.ipynb)
-* [Bethe-Salpeter equation and excitonic effects](bse/lesson_bse.ipynb)
-* [E-PH self-energy and T-dependent band structures](sigeph/lesson_sigeph.ipynb)
-* [Phonon linewidths and Eliashberg function of Al](eph_al/lesson_eph.ipynb)
-* [Elastic and piezoelectric properties](elastic/lesson_elastic.ipynb)
+* [The H<sub>2</sub> molecule](base1/lesson_base1)
+* [Crystalline silicon](base3/lesson_base3)
+* [Phonons, dielectric tensor and Born effective charges from DFPT](dfpt/lesson_dfpt)
+* [$G_0W_0$ band structure](g0w0/lesson_g0w0)
+* [Bethe-Salpeter equation and excitonic effects](bse/lesson_bse)
+* [E-PH self-energy and T-dependent band structures](sigeph/lesson_sigeph)
+* [Phonon linewidths and Eliashberg function of Al](eph_al/lesson_eph)
+* [Elastic and piezoelectric properties](elastic/lesson_elastic)
 
 +++
 

@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-## The FATBANDS.nc file
+# The FATBANDS.nc file
 
 The `FATBANDS.nc` file contains the projection of the KS wavefunctions onto atom-centered
 functions with given angular momentum $l$. 
@@ -31,7 +31,7 @@ For a quick visualization of the data, use:
 
     abiopen.py out_FATBANDS.nc -e
 
-```{code-cell} ipython3
+```{code-cell} 
 import warnings 
 warnings.filterwarnings("ignore")  # Ignore warnings
 
@@ -47,7 +47,7 @@ import abipy.data as abidata
 #%matplotlib widget 
 ```
 
-```{code-cell} ipython3
+```{code-cell} 
 # This fatbands file has been produced on a k-path so it is not suitable for DOS calculations.
 fbnc_kpath = abilab.abiopen(abidata.ref_file("mgb2_kpath_FATBANDS.nc"))
 ```
@@ -55,69 +55,69 @@ fbnc_kpath = abilab.abiopen(abidata.ref_file("mgb2_kpath_FATBANDS.nc"))
 To print file info i.e., dimensions, variables, etc.
 (note that prtdos = 3, so LM decomposition is not available)
 
-```{code-cell} ipython3
+```{code-cell} 
 print(fbnc_kpath)
 ```
 
-```{code-cell} ipython3
+```{code-cell} 
 fbnc_kpath.structure.plot();
 ```
 
 To plot the k-points belonging to the path:
 
-```{code-cell} ipython3
+```{code-cell} 
 fbnc_kpath.ebands.kpoints.plot();
 ```
 
 To plot the electronic fatbands grouped by atomic type:
 
-```{code-cell} ipython3
+```{code-cell} 
 fbnc_kpath.plot_fatbands_typeview(tight_layout=True);
 ```
 
 To plot the electronic fatbands grouped by $l$:
 
-```{code-cell} ipython3
+```{code-cell} 
 fbnc_kpath.plot_fatbands_lview(tight_layout=True);
 ```
 
 Now we read another FATBANDS.nc file produced on 18x18x18 k-mesh
 
-```{code-cell} ipython3
+```{code-cell} 
 fbnc_kmesh = abilab.abiopen(abidata.ref_file("mgb2_kmesh181818_FATBANDS.nc"))
 print(fbnc_kpath)
 ```
 
 and plot the $l$-PJDOS grouped by atomic type:
 
-```{code-cell} ipython3
+```{code-cell} 
 fbnc_kmesh.plot_pjdos_typeview(tight_layout=True);
 ```
 
 Plot the L-PJDOS grouped by L:
 
-```{code-cell} ipython3
+```{code-cell} 
 fbnc_kmesh.plot_pjdos_lview(tight_layout=True);
 ```
 
 Now we use the two netcdf files to produce plots with fatbands + PJDOSEs.
 The data for the DOS is taken from pjdosfile.
 
-```{code-cell} ipython3
+```{code-cell} 
 fbnc_kpath.plot_fatbands_with_pjdos(pjdosfile=fbnc_kmesh, view="type", tight_layout=True);
 ```
 
 fatbands + PJDOS grouped by L:
 
-```{code-cell} ipython3
+```{code-cell} 
 fbnc_kpath.plot_fatbands_with_pjdos(pjdosfile=fbnc_kmesh, view="lview", tight_layout=True);
 ```
 
-<div class="alert alert-danger" role="alert">
+```{warning}
 Remember to close the files
-</div>
+```
 
-```{code-cell} ipython3
+```{code-cell} 
 fbnc_kpath.close()
 fbnc_kmesh.close()
 ```
