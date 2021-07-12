@@ -70,10 +70,18 @@ To plot the evolution of the structural parameters with `matplotlib`:
 hist.plot(tight_layout=True);
 ```
 
+```{code-cell} 
+hist.plotly();
+```
+
 To plot the total energies at the different iterations steps:
 
 ```{code-cell} 
 hist.plot_energies();
+```
+
+```{code-cell} 
+hist.plotly_energies();
 ```
 
 ## Converting to other formats

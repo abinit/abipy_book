@@ -15,23 +15,16 @@ kernelspec:
 
 This notebook explains how to use AbiPy and the DDB file produced by Abinit to analyze:
 
-* Phonon band structures including the LO-TO splitting in heteropolar semiconductors
-* Phonon fatbands, phonon DOS and projected DOS
-* Born effectives charges $Z^*_{\kappa,\alpha\beta}$ and the dielectric tensors $\epsilon^{\infty}_{\alpha\beta}$, $\epsilon^{0}_{\alpha\beta}$
+* Phonon band structures including the LO-TO splitting in polar semiconductors
+* Phonon fatbands, phonon DOS and projected phonon DOS
+* Born effectives charges $Z^*_{\kappa,\alpha\beta}$ and the dielectric tensors 
+  $\epsilon^{\infty}_{\alpha\beta}$, $\epsilon^{0}_{\alpha\beta}$
 * Thermodynamic properties in the harmonic approximation
 
 In the last part, we discuss how to use the `DdbRobot` to analyze multiple DDB
 files and perform typical convergence studies.
 
-```{note}
-AbiPy provides two different APIs to produce figures either with matplotlib or with plotly.
-In this tutorial, we will use the plotly API as much as possible although it should be noted
-that not all the plotting methods have been yet ported to plotly.
-AbiPy uses a relatively simple rule to differentiate between the two plotting libraries:
-if an object provides an `obj.plot` method producing a matplotlib plot, the corresponding
-plotly version (if any) is named `obj.plotly`.
-Note that plotly requires a web browser hence the matplotlib version is still valuable if you need to
-visualize results on machines in which only the X-server is available.
+```{include} snippets/plotly_matplotlib_note.md
 ```
 
 ## Suggested references
@@ -105,7 +98,7 @@ must be computed explicitly within DFPT.
 
 The set of q-points in the DDB file (usually) does not form a homogeneous sampling of the Brillouin zone (BZ).
 Actually they correspond to the sampling of the irreducible wedge (IBZ), and this sampling is obtained
-from an initial q-mesh specified in terms of divisions along the three reduced directions (ngqpt).
+from an initial **q**-mesh specified in terms of divisions along the three reduced directions (ngqpt).
 
 ```{code-cell}
 ddb.qpoints.plotly();
@@ -113,8 +106,7 @@ ddb.qpoints.plotly();
 
 Note that the DDB file does not contain any information about the value of ngqpt because
 one can merge an arbitrary list of q-points in the same DDB.
-The algorithms implemented in anaddb, however, need to know the divisions
-to compute integrals in the full BZ
+The algorithms implemented in anaddb, however, need to know the divisions to compute integrals in the full BZ
 (this is indeed one of the variables that must be provided by the user in the anaddb input file).
 
 AbiPy uses a heuristic method to guess the q-mesh from this scattered list of q-points
@@ -191,11 +183,13 @@ The most important parameters to remember are:
 * **ndivsm**: Number of divisions used for the smallest segment of the high-symmetry q-path.
 * **nqsmall**: Defines the q-mesh for the phonon DOS in terms of
      the number of divisions used to sample the smallest reciprocal lattice vector. 0 to disable DOS computation.
-* **lo_to_splitting**: Activate the computation of the frequencies in the $q\rightarrow 0$ limit with the inclusion of the non-analytical term (requires **dipdip** 1 and DDB with $Z^*_{\kappa,\alpha\beta}$ and $\epsilon^{\infty}_{\alpha\beta}$).
+* **lo_to_splitting**: Activate the computation of the frequencies in the $q\rightarrow 0$ limit with the 
+  inclusion of the non-analytical term (requires {{dipdip@anaddb} 1 and DDB with 
+  $Z^*_{\kappa,\alpha\beta}$ and $\epsilon^{\infty}_{\alpha\beta}$).
 
 The high-symmetry q-path is automatically selected assuming the structure
 fulfills the conventions introduced by [Setyawan and Curtarolo](https://arxiv.org/abs/1004.2974)
-but you can also specify your own q-path if needed.
+but you can also specify your own **q**-path if needed.
 
 ## Plotting phonon bands and DOS
 
@@ -228,7 +222,7 @@ phbands.plotly();
 ```
 
 Note the discontinuity of the optical modes when we cross the $\Gamma$ point.
-In heteropolar semiconductors, indeed, the dynamical matrix is non-analytical for $q \rightarrow 0$.
+In polar semiconductors, indeed, the dynamical matrix is non-analytical for $q \rightarrow 0$.
 Since `lo_to_splitting ` was set to True, AbiPy has activated the calculation of the phonon frequencies
 for all the $q \rightarrow \Gamma$ directions present in the path.
 
@@ -270,8 +264,7 @@ phbands.plotly_with_phdos(phdos, units="meV");
 
 ## Fatbands and projected DOS
 
-The `phbands` object stores the phonon displacements, $\vec{d}_{q\nu}$ and
-the eigenvectors, $\vec{\epsilon}_{q\nu}$
+The `phbands` object stores the phonon displacements, $\vec{d}_{q\nu}$ and the eigenvectors, $\vec{\epsilon}_{q\nu}$
 obtained by diagonalizing the dynamical matrix $D(q)$.
 
 \begin{equation}
@@ -369,15 +362,15 @@ Unfortunately, all the terms that are evaluated on the real-space FFT mesh
 The error depends on several factors: the density of the FFT mesh,
 pseudopotentials with hard model core charges, XC functional, etc.)
 Note that it is not always possible to reduce the error to zero by just increasing the convergence parameters
-but fortunately it is possible to restore the acoustic sum rule via the `asr` input variable.
+but fortunately it is possible to restore the acoustic sum rule via the {{asr_anaddb}} input variable.
 
-One can easily compare the phonons bands obtained with different values of ``asr`` with:
+One can easily compare the phonons bands obtained with different values of {{asr_anaddb}} with:
 
 ```{code-cell}
 asr_plotter = ddb.anacompare_asr()
 ```
 
-This method invokes anaddb with different values of `asr` and returns a plotter object
+This method invokes anaddb with different values of {{asr_anaddb}} and returns a plotter object
 we can call to compare the phonon band structures:
 
 ```{code-cell}
@@ -389,7 +382,8 @@ asr_plotter.combiplotly();
 ```
 
 Now we can perform a similar test for the treatment of the non-analytical term in the $q \rightarrow 0$ limit.
-We compute the phonon band dispersion for dipdip in [0, 1] and the compare the results on the same figure with the commands:
+We compute the phonon band dispersion for {{dipdip_anaddb} in [0, 1] and the compare the 
+results on the same figure with the commands:
 
 ```{code-cell}
 dipdip_plotter = ddb.anacompare_dipdip(nqsmall=0)
@@ -406,11 +400,11 @@ dipdip_plotter.combiplotly();
 The figure above shows that the (Fourier interpolated) bands obtained with dipdip = 0
 have unphysical oscillations around the $\Gamma$ point.
 These oscillation are due to the long-range behavior in real space of the interatomic force constants
-in heteropolar semiconductors.
+in polar semiconductors.
 The correct description of this long-range term without dipdip = 1
 would require using an extremely dense q-point mesh in the DFPT calculation.
 
-With dipdip = 1, on the other hand, we can model this long-range behavior in terms of a dipole-dipole
+With {{dipdip_anaddb} = 1, on the other hand, we can model this long-range behavior in terms of a dipole-dipole
 interaction involving the Born effective charges and the macroscopic dielectric tensor.
 This allows us to decompose the full dynamical matrix into:
 
@@ -427,7 +421,7 @@ correctly the non-analytical behavior of the optical modes for $q \rightarrow 0$
 
 ## Computing DOS with different q-meshes
 
-Phonon DOS and derived quantites (e.g. thermodynamic properties) are sensitive to the BZ sampling
+Phonon DOS and derived quantities (e.g. thermodynamic properties) are sensitive to the BZ sampling
 and dense meshes may be required to converge the final results.
 
 The method `anacompare_phdos` provides a simple interface to
@@ -498,7 +492,8 @@ f = phdos.get_free_energy(tstart=10, tstop=100)
 
 ## Macroscopic dielectric tensor and Born effective charges
 
- Let us call anaddb to compute the electronic contribution to the macroscopic dielectric tensor,  $\epsilon^{\infty}_{\alpha\beta}$, and the Born effective charges $Z^*_{\kappa,\alpha\beta}$:
+Let us call anaddb to compute the electronic contribution to the macroscopic dielectric tensor,  
+$\epsilon^{\infty}_{\alpha\beta}$, and the Born effective charges $Z^*_{\kappa,\alpha\beta}$:
 
 ```{code-cell}
 emacro, becs = ddb.anaget_epsinf_and_becs(chneut=1)
@@ -523,7 +518,7 @@ One can show that:
 \end{equation}
 
 where $\omega^{\Gamma}_m$ are the phonon frequencies at the center of the BZ and $S_{m,\alpha\beta}$
-is the so-called mode-oscillator strengh tensor that depends on the phonon displacement
+is the so-called mode-oscillator strength tensor that depends on the phonon displacement
 and the Born effective charges.
 
 To compute the dielectric tensor using the data stored in the DDB file, use:
@@ -593,7 +588,7 @@ given as arguments
 
 The DDB files are now stored in the robot with a label constructed from the file path.
 These labels, however, are not very informative. In principle we would like to have a label
-that reflects the value of `(nkpt, tsmear)` also because these labels
+that reflects the value of ({{nkpt}}, {{tsmear}}) also because these labels
 will be used to generate the labels in our plots.
 
 Let's fix it with a function that recomputes the labels from the metadata available in ddb.header:
@@ -626,29 +621,32 @@ r.phbands_plotter.combiplot();
 ```
 
 The plot is a bit crowded. Still, it is clear
-that there are portions of the vibration spectrum that are quite sensitive to the values of (nkpt, tsmear).
+that there are portions of the vibration spectrum that are quite sensitive to the values of ({{nkpt}}, {{tsmear}}).
 
 In metals, it's common to analyze the convergence of the physical properties by plotting the results
-as function of the k-point sampling for fixed value of tsmear.
+as function of the k-point sampling for fixed value of {{tsmear}}.
 Let's do something similar for the phonon band structures with the command:
 
 ```{code-cell}
 r.phbands_plotter.gridplot_with_hue("tsmear", units="Thz");
 ```
 
-Each panel now shows the phonon dispersion computed with different k-point samplings at fixed tsmear.
+Each panel now shows the phonon dispersion computed with different k-point samplings at fixed {{tsmear}}.
 
 The results obtained with the largest broadening (0.04 Ha) seem to be converged
-but remember that the "converged" result are in principle obtained in the limit $nkpt \rightarrow +\infty$ and $tsmear\rightarrow 0$
+but remember that the "converged" result are in principle obtained in the limit 
+$nkpt \rightarrow +\infty$ and $tsmear\rightarrow 0$
 (well it's not always possible to reach the mathematical limit so we should try to understand what happens
-to our observables when we are **approaching** this limit and if it's possible to find values of (nkpt, tsmear)
+to our observables when we are **approaching** this limit and if it's possible to find values of ({{nkpt}}, {{tsmear}})
 that are "close enough" to convergence).
 
-The middle panel reveals that there are two branch (6-7, Python indexing) along $\Gamma-A$ that are quite sensitive to the sampling of the Fermi surface and this picture is confirmed by the first panel obtained with the lowest value of the electronic broadening.
+The middle panel reveals that there are two branch (6-7, Python indexing) along $\Gamma-A$ that are quite sensitive 
+to the sampling of the Fermi surface and this picture is confirmed by the first panel obtained with the lowest value 
+of the electronic broadening.
 
 This analysis tells us two things:
 
-* We should analyze in more detail the convergence behavior of these specific branches wrt (nkpt, tsmear)
+* We should analyze in more detail the convergence behavior of these specific branches wrt ({{nkpt}}, {{tsmear}})
   to make sure our results are really converged
 * The strong variations observed in that particular region of the phonon spectrum could represent the signature
   of an important coupling between these vibrational modes and the electrons on the Fermi surface...
@@ -738,4 +736,3 @@ r.df[r.df["site_index"] == 1]
 ```
 
 <!--- Click [TODO here]() to visualize the vibrational spectrum of $MgB_2$ with phononwebsite -->
-

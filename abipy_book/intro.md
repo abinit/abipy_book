@@ -2,7 +2,7 @@
 
 Welcome to the AbiPy Jupyter Book!
 This book contains notebook-based documentation for [AbiPy](https://github.com/abinit/abipy).
-This augments our Sphinx-based [documentation](http://pythonhosted.org/abipy/) with jupyter notebooks 
+This augments our Sphinx-based [documentation](http://abinit.github.io/abipy>) with jupyter notebooks 
 containing interactive tutorials and examples.
 
 Additional examples are available on the:
@@ -14,7 +14,6 @@ Additional examples are available on the:
 Beginners should typically start with the three notebooks on Abipy objects,
 continue with the notebook on the GSR.nc output file (and possibly some of those focusing on other output files),
 and then examine the flows notebook.
-
 
 +++
 

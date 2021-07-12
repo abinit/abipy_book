@@ -31,6 +31,9 @@ For a quick visualization of the data, use:
 
     abiopen.py out_FATBANDS.nc -e
 
+```{include} snippets/plotly_matplotlib_note.md
+```
+
 ```{code-cell} 
 import warnings 
 warnings.filterwarnings("ignore")  # Ignore warnings
@@ -66,7 +69,7 @@ fbnc_kpath.structure.plot();
 To plot the k-points belonging to the path:
 
 ```{code-cell} 
-fbnc_kpath.ebands.kpoints.plot();
+fbnc_kpath.ebands.kpoints.plotly();
 ```
 
 To plot the electronic fatbands grouped by atomic type:
@@ -75,10 +78,18 @@ To plot the electronic fatbands grouped by atomic type:
 fbnc_kpath.plot_fatbands_typeview(tight_layout=True);
 ```
 
+```{code-cell} 
+fbnc_kpath.plotly_fatbands_typeview();
+```
+
 To plot the electronic fatbands grouped by $l$:
 
 ```{code-cell} 
 fbnc_kpath.plot_fatbands_lview(tight_layout=True);
+```
+
+```{code-cell} 
+fbnc_kpath.plotly_fatbands_lview();
 ```
 
 Now we read another FATBANDS.nc file produced on 18x18x18 k-mesh
@@ -94,10 +105,18 @@ and plot the $l$-PJDOS grouped by atomic type:
 fbnc_kmesh.plot_pjdos_typeview(tight_layout=True);
 ```
 
+```{code-cell} 
+fbnc_kmesh.plotly_pjdos_typeview();
+```
+
 Plot the L-PJDOS grouped by L:
 
 ```{code-cell} 
 fbnc_kmesh.plot_pjdos_lview(tight_layout=True);
+```
+
+```{code-cell} 
+fbnc_kmesh.plotly_pjdos_lview();
 ```
 
 Now we use the two netcdf files to produce plots with fatbands + PJDOSEs.
@@ -107,14 +126,22 @@ The data for the DOS is taken from pjdosfile.
 fbnc_kpath.plot_fatbands_with_pjdos(pjdosfile=fbnc_kmesh, view="type", tight_layout=True);
 ```
 
+```{code-cell} 
+fbnc_kpath.plotly_fatbands_with_pjdos(pjdosfile=fbnc_kmesh, view="type");
+```
+
 fatbands + PJDOS grouped by L:
 
 ```{code-cell} 
 fbnc_kpath.plot_fatbands_with_pjdos(pjdosfile=fbnc_kmesh, view="lview", tight_layout=True);
 ```
 
+```{code-cell} 
+fbnc_kpath.plotly_fatbands_with_pjdos(pjdosfile=fbnc_kmesh, view="lview");
+```
+
 ```{warning}
-Remember to close the files
+Remember to close the files with:
 ```
 
 ```{code-cell} 

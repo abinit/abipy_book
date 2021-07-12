@@ -48,17 +48,15 @@ you may want to use directly the command line interface.
 There is a README.md file in the directory of this lesson explaining how to analyze the data from the shell
 using ipython and matplotlib.
 
-Note: The code in this notebook requires abinit >= 8.9 and abipy >= 0.6
-
+```{note}
+The code in this notebook requires abinit >= 8.9 and abipy >= 0.6
+```
 
 ## DFPT calculation of elastic and piezolectric tensors
 
 Before starting, we need to import the python modules and the functions needed in the notebook:
 
 ```{code-cell}
-# Use this at the beginning of your script so that your code will be compatible with python3
-from __future__ import print_function, division, unicode_literals
-
 import numpy as np
 import warnings
 warnings.filterwarnings("ignore") # to get rid of deprecation warnings
@@ -86,8 +84,8 @@ The function makes some assumptions for important parameters such as
 the crystalline structure and the pseudos.
 This is done on purpose to keep the code as simple as possible.
 It should not be so difficult to generalize the implementation to take into account other cases.
-Note how the function accepts an optional argument `ngkpt` defining the k-mesh so that we can easily
-change the sampling e.g. for convergence studies.
+Note how the function accepts an optional argument {{ngkpt}} defining the **k**-mesh so that we can easily
+change the sampling *e.g.* for convergence studies.
 
 Let's start to play with our new function:
 
@@ -108,7 +106,7 @@ We are using the same norm-conserving pseudopotentials of the official tutorial 
 this does not mean you should use them for production calculations (there must be a reason
 why the directory is called **Psps_for_tests**).
 
-There are 16 valence electrons per unit cell hence `nband` has been set to 8
+There are 16 valence electrons per unit cell hence {{nband}} has been set to 8
 (yes, we are dealing with a non-magnetic semiconductor):
 
 ```{code-cell}
@@ -150,11 +148,14 @@ flow.get_graphviz()
 In a nutshell:
 
    * we compute the `WFK` file in the `ScfTask` (red circle)
-   * the ground-state wavefunctions are used by the three `DdkTasks` to compute $\dfrac{\partial u}{\partial{\bf k}}$ for the three different directions.
-   * The `ElasticTasks` needs the `WFK` file to compute the six strain perturbations (3 for uniaxial and 3 for shear strain) while the `DDK` files are required to compute the mixed 2nd-order derivatives with respect to strain and electric field needed for the piezoelectric tensor.
+   * the ground-state wavefunctions are used by the three `DdkTasks` to compute 
+     $\dfrac{\partial u}{\partial{\bf k}}$ for the three different directions.
+   * The `ElasticTasks` needs the `WFK` file to compute the six strain perturbations 
+     (3 for uniaxial and 3 for shear strain) while the `DDK` files are required 
+     to compute the mixed 2nd-order derivatives with respect to strain and electric field 
+     needed for the piezoelectric tensor.
 
-Note that, **contrarily to the approach used in the standard tutorial**,
-the AbiPy `Work` does not use datasets.
+Note that, **contrarily to the approach used in the standard tutorial**, the AbiPy `Work` does not use datasets.
 The perturbations of interest (strain, atomic-perturbation, ddk, electric field)
 are obtained with different `Tasks` that can be executed in parallel.
 
@@ -173,18 +174,28 @@ or access the documentation directly from python with *e.g.*:
 abilab.docvar("rfstrs")
 ```
 
-Now we can generate the `flow_elastic` directory with the input files by executing
-the `lesson_elastic.py` script.
-Then use the `abirun.py` script to launch the entire calculation with:
+```{note}
+For your convenience the links to the doc of the different variables are listed below:
+
+- {{qpt}}
+- {{rfphon}}
+- {{rfatpol}}
+- {{rfdir}}
+- {{rfelfd}} 
+- {{rfstrs}}
+- {{kptopt}}
+```
+
+Now we can generate the `flow_elastic` directory with the input files by executing the `lesson_elastic.py` script.
+Then use the {{abirun}} script to launch the entire calculation with:
 
     abirun.py flow_elastic scheduler
 
 You will see that all `PhononTasks` and `ElasticTasks` are executed in parallel on your machine
 once the three `DdkTasks` are completed.
 
-<div class="alert alert-warning">
-Please make sure that AbiPy is properly configured by running abicheck --with flow
-</div>
+```{include} ../snippets/abicheck_warning.md
+```
 
 If you prefer to skip this part, you may want to jump to next section about the post-processing of the results.
 Note that the output files are already available in the repository so it is also possible to try
@@ -227,7 +238,7 @@ Let's print the object to get a summary of the most important results:
 print(edata)
 ```
 
-Since the DDB file contains `internal strain terms` and piezoeletric terms,
+Since the DDB file contains `internal strain terms` and piezoelectric terms,
 AbiPy set `elaflag` to 3, `instrflag` to 1 and `piezoflag` to 3 so that anaddb
 will compute both `relaxed` and `clamped-ion` tensors.
 
@@ -345,7 +356,7 @@ There are several output files located inside the `outdata` directories:
 !find flow_elastic_ngkpt_conv/ -name "*_DDB"
 ```
 
-Remember that our goal is to analyze the convergence of the elastic and piezoeletric properties
+Remember that our goal is to analyze the convergence of the elastic and piezoelectric properties
 as function of `nkpt`.
 So we are mainly interested in the final DDB files located in the `outdata` directories
 of the works (`w0/outdata`, `w1/outdata`, `w2/outdata`).
@@ -367,7 +378,7 @@ To get the keywords in the header, use:
 robot.abifiles[0].header.keys()
 ```
 
-We will be using these metavariables to construct our pandas Dataframe so that we can analyze
+We will be using these meta variables to construct our pandas Dataframe so that we can analyze
 the convergence of our physical quantities with e.g. `nkpt`.
 
 Let's call `anacompare_elastic` to construct a DataFrame (`data`) with the elastic properties obtained

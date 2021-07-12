@@ -157,12 +157,12 @@ The `NscfTask`, indeed,  depends on the `ScfTask` in w0/t0, whereas the `ScfTask
 flow.get_graphviz()
 ```
 
-<div class="alert alert-success" role="alert">
+```{note}
 Note that we have not used `getden2 = -1` in the second dataset 
 since AbiPy knows how to connect the two Tasks.
 So no need for `get*` or `ird*` variables with Abipy. 
 Just specify the correct dependency and python will do the rest!
-</div>
+```
 
 +++
 
@@ -270,9 +270,9 @@ You might have noticed that each `Task` directory present the same structure:
    * *indata*: Directory containing input data files 
    * *tmpdata*: Directory with temporary files
    
-<div class="alert alert-danger" role="alert">
-`__AbinitFlow__.pickle` is the pickle file used to save the status of `Flow`. **Don't touch it!** 
-</div>
+```{danger}
+*__AbinitFlow__.pickle* is the pickle file used to save the status of `Flow`. **Don't touch it!** 
+```
 
 +++
 
@@ -376,7 +376,7 @@ with flow[0][0].open_gsr() as gsr:
     ebands_kmesh = gsr.ebands
     
 with flow[0][1].open_gsr() as gsr:
-    gsr.ebands.plot_with_edos(ebands_kmesh.get_edos(), with_gaps=True);
+    gsr.ebands.plotly_with_edos(ebands_kmesh.get_edos(), with_gaps=True);
 ```
 
 ## More on Works, Tasks and dependencies 
@@ -653,10 +653,10 @@ checks the status of the `Flow` and print the results to screen while
     
 starts the scheduler in the background redirecting the standard output to file `sched.log`
 
-<div class="alert alert-success">
+```{important}
 `nohup` is a standard Unix tool. The command make the scheduler immune 
 to hangups so that you can close the shell session without killing the scheduler.
-</div>
+```
 
 This brings us to the last and most crucial question. 
 How do we configure AbiPy to run Abinit workflows on different architectures ranging from 

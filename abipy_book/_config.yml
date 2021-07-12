@@ -1,6 +1,6 @@
 #######################################################################################
 # A default configuration that will be loaded for all jupyter books
-# See the documentation for help and more options: 
+# See the documentation for help and more options:
 # https://jupyterbook.org/customize/config.html
 
 #######################################################################################
@@ -8,19 +8,19 @@
 title                       : AbiPy Book  # The title of the book. Will be placed in the left navbar.
 author                      : M. Giantomassi and the AbiPy group  # The author of the book
 copyright                   : "2021"  # Copyright year to be placed in the footer
-logo                        : logo.png  # A path to the book logo
+logo                        : "images/abipy_logo.png"  # A path to the book logo
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
 # Auto-exclude files not in the toc
 only_build_toc_files: true
-  
+
 #######################################################################################
 # Execution settings
 
 # Force re-execution of notebooks on each build. See https://jupyterbook.org/content/execute.html
 execute:
-  #execute_notebooks: cache
-  execute_notebooks: auto
+  execute_notebooks: cache
+  #execute_notebooks: auto
   #execute_notebooks: force
 
 # Define the name of the latex output file for PDF builds
@@ -42,86 +42,32 @@ repository:
 #######################################################################################
 # HTML-specific settings
 
-# Add GitHub buttons to your book
-# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  use_repository_button: true
-  use_edit_page_button: true
-  use_issues_button: true
+  favicon                   : "images/favicon.ico"  # A path to a favicon image
+  use_edit_page_button      : true  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
+  use_repository_button     : true  # Whether to add a link to your repository button
+  use_issues_button         : true  # Whether to add an "open an issue" button
+  use_multitoc_numbering    : true   # Continuous numbering across parts/chapters
+  #extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  # Will be displayed underneath the left navbar.
+  #extra_footer              : ""  # Will be displayed underneath the footer.
+  #google_analytics_id       : ""  # A GA id that can be used to track book views.
+  #home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
+  #baseurl                   : ""  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+  #comments:
+  #  hypothesis              : false
+  #  utterances              : false
 
 #######################################################################################
-# Parse and render settings
 
-parse:
-  myst_substitutions: 
-      # Usage in md file: {{ key }}
-      #
-      AbinitInput: ":class:`abipy.abio.inputs.AbinitInput`"
-      # 
-      # Links to doc pages (AbiPy scripts)
-      abistruct: "[abistruct.py](http://abinit.github.io/abipy/scripts/abistruct.html)"
-      abiopen: "[abiopen.py](http://abinit.github.io/abipy/scripts/abiopen.html)"
-      abicomp: "[abicomp.py](http://abinit.github.io/abipy/scripts/abicomp.html)"
-      abiview: "[abiview.py](http://abinit.github.io/abipy/scripts/abiview.html)"
-      abiruny: "[abirun.py](http://abinit.github.io/abipy/scripts/abirun.html)"
-      abidoc: "[abidoc.py](http://abinit.github.io/abipy/scripts/abidoc.html)"
-      # Links to websites
-      abiconfig: "[abiconfig](https://github.com/abinit/abiconfig)"
-      abiflows: "[abiflows](https://github.com/abinit/abiflows)"
-      abitutorials: "[abitutorials](https://github.com/abinit/abitutorials)"
-      abipygui: "[AbiPy GUI](https://panel.many2.abinit.org/)"
-      #abinit-channel: https://anaconda.org/abinit
-      pseudodojo: "[pseudo-dojo](http://www.pseudo-dojo.org/)"
-      pymatgen: "[pymatgen](http://www.pymatgen.org)"
-      #fireworks: https://materialsproject.github.io/fireworks/
-      materials_project: "[materials project](https://materialsproject.org/)"
-      panel: "[panel](https://panel.holoviz.org/)"
-      #conda: https://conda.io/docs/
-      #Anaconda: https://continuum.io/downloads
-      #spack: https://github.com/LLNL/spack
-      #pip: https://pypi.python.org/pypi/pip
-      ipython: "[ipython](https://ipython.org/index.html)"
-      jupyter: "[jupyter](http://jupyter.org/)"
-      Python: "[Python](http://www.python.org/)"
-      #spglib: https://atztogo.github.io/spglib/
-      #bader: http://theory.cm.utexas.edu/henkelman/code/bader/
-      ase: "[ase](https://wiki.fysik.dtu.dk/ase/)"
-      COD: "[COD](http://www.crystallography.net/cod/)"
-      CIF: "[CIF](http://www.iucr.org/resources/cif)"
-      vesta: "[vesta](http://jp-minerals.org/vesta/en/)"
-      xcrysden: "[XCrysDen](http://www.xcrysden.org/)"
-      xmgrace: "[xmgrace](http://plasma-gate.weizmann.ac.il/Grace/)"
-      gnuplot: "[gnuplot](http://www.gnuplot.info/)"
-      ovito: "[ovito](https://ovito.org/)"
-      v_sim: "[v_sim](http://inac.cea.fr/L_Sim/V_Sim/)"
-      avogadro: "[avogadro](https://avogadro.cc/)"
-      phononwebsite: "[phononwebsite](http://henriquemiranda.github.io/phononwebsite/)"
-      phonopy: "[phonopy](https://atztogo.github.io/phonopy/)"
-      pyprocar: "[pyprocar](https://romerogroup.github.io/pyprocar/)"
-      fermisurfer: "[fermisurfer](http://fermisurfer.osdn.jp/)"
-      #netcdf: https://www.unidata.ucar.edu/software/netcdf/docs/faq.html#whatisit
-      YAML: "[Yaml](https://en.wikipedia.org/wiki/YAML)"
-      JSON: "[JSON](https://en.wikipedia.org/wiki/JSON)"
-
-  myst_enable_extensions:
-    # default extensions to enable in the myst parser. 
-    # See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
-    - amsmath
-    #- colon_fence
-    - deflist
-    - dollarmath
-    - html_admonition
-    - html_image
-    #- linkify
-    - replacements
-    - smartquotes
-    - substitution
-
-
+#######################################################################################
+# Launch button settings
 launch_buttons:
-  #notebook_interface: "jupyterlab"  # or "classic"
-  notebook_interface: "classic"
-  binderhub_url: "https://mybinder.org"  # The URL for your BinderHub (e.g., https://mybinder.org)
+  notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
+  binderhub_url             : https://mybinder.org  # The URL of the BinderHub (e.g., https://mybinder.org)
+  #jupyterhub_url            : ""  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
+  #thebe                     : false  # Add a thebe button to pages (requires the repository to run on Binder)
+  #colab_url                 : "" # The URL of Google Colab (https://colab.research.google.com)
+
 
 
 #######################################################################################
@@ -135,39 +81,41 @@ sphinx:
       #- sphinxext.rediraffe
 
   config:
-    # By default MathJax version 2 is currently used. 
+    # key-value pairs to directly over-ride the Sphinx configuration
+
+    # By default MathJax version 2 is currently used.
     # You may want to try using version 3, which claims to improve load speeds by 60 - 80%:
-    #mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    #mathjax_path: https://cdn.jsdelivr.net/npm/mathjax_3/es5/tex-mml-chtml.js
     html_js_files:
       - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js   # For plotly
       - https://cdn.plot.ly/plotly-2.2.0.min.js
     bibtex_reference_style: author_year  # or label, super, \supercite
     intersphinx_mapping:
-        python: 
+        python:
           - "https://docs.python.org/3.9"
           - null
         numpy:
-          - 'https://docs.scipy.org/doc/numpy/' 
+          - 'https://docs.scipy.org/doc/numpy/'
           - null
-        scipy: 
+        scipy:
           - "https://docs.scipy.org/doc/scipy/reference/"
           - null
-        pandas: 
+        pandas:
           - "http://pandas-docs.github.io/pandas-docs-travis/"
           - null
-        matplotlib: 
+        matplotlib:
           - "https://matplotlib.org/"
           - null
-        monty: 
+        monty:
           - "https://pythonhosted.org/monty/"
           - null
-        pymatgen: 
+        pymatgen:
           - "https://pymatgen.org/"
           - null
-        abipy: 
+        abipy:
           - "https://abinit.github.io/abipy/"
           - null
-    
+
     mathjax_config:
           # Use same Macros as the ones used in the Abinit website. See ~abinit/abinit_theme/main.html
           TeX:
@@ -253,3 +201,1251 @@ sphinx:
                 tPhi: "{\\tilde\\Phi}"
                 tphi: "{\\tilde\\phi}"
                 tprj: "{\\tilde p}"
+
+
+# Parse and render settings
+parse:
+
+  myst_enable_extensions:
+    # default extensions to enable in the myst parser.
+    # See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
+    - amsmath
+    #- colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    #- linkify
+    - replacements
+    - smartquotes
+    - substitution
+
+  myst_substitutions:
+      # Usage in md file: {{ key }}
+      #
+      #.. Important Abipy objects. See also ~abipy/docs/links.rst
+      AbinitInput: "{py:class}`abipy.abio.inputs.AbinitInput`"
+      AttrDict: "{py:class}`monty.collections.AttrDict`"
+      Function1D: "{py:class}`abipy.core.func1d.Function1D`"
+      Mesh3d: "{py:class}`abipy.core.mesh3d.Mesh3d`"
+      GSphere: "{py:class}`abipy.core.gsphere.GSphere`"
+      Kpoint: "{py:class}`abipy.core.kpoints.Kpoint`"
+      KpointList: "{py:class}`abipy.core.kpoints.KpointList`"
+      Kpath: "{py:class}`abipy.core.kpoints.Kpath`"
+      IrredZone: "{py:class}`abipy.core.kpoints.IrredZone`"
+      KpointStar: "{py:class}`abipy.core.kpoints.KpointStar`"
+      Structure: "{py:class}`abipy.core.structure.Structure`"
+      pymatgen_Structure: "{py:class}`pymatgen.core.structure.Structure`"
+      Lattice: "{py:class}`pymatgen.core.lattice.Lattice`"
+      AbinitInput: "{py:class}`abipy.abio.inputs.AbinitInput`"
+      AnaddbInput: "{py:class}`abipy.abio.inputs.AnaddbInput`"
+      MultiDataset: "{py:class}`abipy.abio.inputs.MultiDataset`"
+      ElectronBands: "{py:class}`abipy.electrons.ebands.ElectronBands`"
+      ElectronBandsPlotter: "{py:class}`abipy.electrons.ebands.ElectronBandsPlotter`"
+      SkwInterpolator: "{py:class}`abipy.core.skw.SkwInterpolator`"
+      ElectronDos: "{py:class}`abipy.electrons.ebands.ElectronDos`"
+      ElectronDosPlotter: "{py:class}`abipy.electrons.ebands.ElectronDosPlotter`"
+      PhononBands: "{py:class}`abipy.dfpt.phonons.PhononBands`"
+      Node: "{py:class}`abipy.flowtk.nodes.Node`"
+      Task: "{py:class}`abipy.flowtk.tasks.Task`"
+      AbinitTask: "{py:class}`abipy.flowtk.tasks.AbinitTask`"
+      ScfTask: "{py:class}`abipy.flowtk.tasks.ScfTask`"
+      NscfTask: "{py:class}`abipy.flowtk.tasks.NscfTask`"
+      AnaddbTask: "{py:class}`abipy.flowtk.tasks.AnaddbTask`"
+      Flow: "{py:class}`abipy.flowtk.flows.Flow`"
+      Work: "{py:class}`abipy.flowtk.works.Work`"
+      TaskManager: "{py:class}`abipy.flowtk.tasks.TaskManager`"
+      GsrFile: "{py:class}`abipy.electrons.gsr.GsrFile`"
+      GsrRobot: "{py:class}`abipy.electrons.gsr.GsrRobot`"
+      MdfFile: "{py:class}`abipy.electrons.bse.MdfFile`"
+      DdbFile: "{py:class}`abipy.dfpt.ddb.DdbFile`"
+      HistFile: "{py:class}`abipy.dynamics.hist.HistFile`"
+      FatBandsFile: "{py:class}`abipy.electrons.fatbands.FatBandsFile`"
+      DielectricTensorGenerator: "{py:class}`abipy.dfpt.ddb.DielectricTensorGenerator`"
+      DdbRobot: "{py:class}`abipy.dfpt.ddb.DdbRobot`"
+      AnaddbNcFile: "{py:class}`abipy.dfpt.anaddb.AnaddbNcFile`"
+      AbinitNcFile: "{py:class}`abipy.core.mixins.AbinitNcFile`"
+      SigEPhFile: "{py:class}`abipy.eph.sigeph.SigEPhFile`"
+      pmg_Tensor: "{py:class}`pymatgen.core.tensors.Tensor`"
+      Stress: "{py:class}`abipy.tools.tensors.Stress`"
+      DielectricTensor: "{py:class}`abipy.tools.tensors.DielectricTensor`"
+      ElasticData: "{py:class}`abipy.dfpt.elastic.ElasticData`"
+      PhbstFile: "{py:class}`abipy.dfpt.phonons.PhbstFile`"
+      PhdosFile: "{py:class}`abipy.dfpt.phonons.PhdosFile`"
+      PhononDos: "{py:class}`abipy.dfpt.phonons.PhononDos`"
+      PhononBandsPlotter: "{py:class}`abipy.dfpt.phonons.PhononBandsPlotter`"
+      PhononDosPlotter: "{py:class}`abipy.dfpt.phonons.PhononDosPlotter`"
+      PhononWork: "{py:class}`abipy.flowtk.works.PhononWork`"
+      MsqDos: "{py:class}`abipy.dfpt.msqdos.MsqDos`"
+      Pseudo: "{py:class}`pymatgen.io.abinit.pseudos.Pseudo`"
+      PseudoTable: "{py:class}`pymatgen.io.abinit.pseudos.PseudoTable`"
+      Visualizer: "{py:class}`abipy.iotools.visualizer.Visualizer`"
+      SigresFile: "{py:class}`abipy.electrons.gw.SigresFile`"
+      SigephFile: "{py:class}`abipy.electrons.eph.SigephFile`"
+      SigephRobot: "{py:class}`abipy.electrons.eph.SigephRobot`"
+
+      # .. Important objects provided by libraries.
+      matplotlib-Figure: "{py:class}`matplotlib.figure.Figure`"
+      matplotlib-Axes: "{py:class}`matplotlib.axes.Axes`"
+      pandas-DataFrame: "{py:class}`pandas.DataFrame`"
+      pandas-DataFrames: "{py:class}`pandas.DataFrame`"
+      numpy-array: "{py:class}`numpy.ndarray`"
+      plotly.graph_objects.Figure: "{py:class}`plotly.graph_objects.Figure`"
+
+      # Links to doc pages (AbiPy scripts)
+      abistruct: "[abistruct.py](http://abinit.github.io/abipy/scripts/abistruct.html)"
+      abiopen: "[abiopen.py](http://abinit.github.io/abipy/scripts/abiopen.html)"
+      abicomp: "[abicomp.py](http://abinit.github.io/abipy/scripts/abicomp.html)"
+      abiview: "[abiview.py](http://abinit.github.io/abipy/scripts/abiview.html)"
+      abirun: "[abirun.py](http://abinit.github.io/abipy/scripts/abirun.html)"
+      abidoc: "[abidoc.py](http://abinit.github.io/abipy/scripts/abidoc.html)"
+      # Links to websites
+      abiconfig: "[abiconfig](https://github.com/abinit/abiconfig)"
+      abiflows: "[abiflows](https://github.com/abinit/abiflows)"
+      abitutorials: "[abitutorials](https://github.com/abinit/abitutorials)"
+      abipygui: "[AbiPy GUI](https://panel.many2.abinit.org/)"
+      #abinit-channel: https://anaconda.org/abinit
+      pseudodojo: "[pseudo-dojo](http://www.pseudo-dojo.org/)"
+      pymatgen: "[pymatgen](http://www.pymatgen.org)"
+      #fireworks: https://materialsproject.github.io/fireworks/
+      materials_project: "[materials project](https://materialsproject.org/)"
+      panel: "[panel](https://panel.holoviz.org/)"
+      #conda: https://conda.io/docs/
+      #Anaconda: https://continuum.io/downloads
+      #spack: https://github.com/LLNL/spack
+      #pip: https://pypi.python.org/pypi/pip
+      ipython: "[ipython](https://ipython.org/index.html)"
+      jupyter: "[jupyter](http://jupyter.org/)"
+      Python: "[Python](http://www.python.org/)"
+      #spglib: https://atztogo.github.io/spglib/
+      #bader: http://theory.cm.utexas.edu/henkelman/code/bader/
+      ase: "[ase](https://wiki.fysik.dtu.dk/ase/)"
+      COD: "[COD](http://www.crystallography.net/cod/)"
+      CIF: "[CIF](http://www.iucr.org/resources/cif)"
+      vesta: "[vesta](http://jp-minerals.org/vesta/en/)"
+      xcrysden: "[XCrysDen](http://www.xcrysden.org/)"
+      xmgrace: "[xmgrace](http://plasma-gate.weizmann.ac.il/Grace/)"
+      gnuplot: "[gnuplot](http://www.gnuplot.info/)"
+      ovito: "[ovito](https://ovito.org/)"
+      v_sim: "[v_sim](http://inac.cea.fr/L_Sim/V_Sim/)"
+      avogadro: "[avogadro](https://avogadro.cc/)"
+      phononwebsite: "[phononwebsite](http://henriquemiranda.github.io/phononwebsite/)"
+      phonopy: "[phonopy](https://atztogo.github.io/phonopy/)"
+      pyprocar: "[pyprocar](https://romerogroup.github.io/pyprocar/)"
+      fermisurfer: "[fermisurfer](http://fermisurfer.osdn.jp/)"
+      #netcdf: https://www.unidata.ucar.edu/software/netcdf/docs/faq.html#whatisit
+      YAML: "[Yaml](https://en.wikipedia.org/wiki/YAML)"
+      JSON: "[JSON](https://en.wikipedia.org/wiki/JSON)"
+
+      # Abinit variables:
+      # For the time being, one has to use `abidoc.py urls` and then paste
+      # the output here.
+      # TODO: It would be nice if one can read substions from an external file
+      # Something like:
+      #_files_: [foo.yml, bar.json]
+      accuracy: '[accuracy](https://docs.abinit.org/variables/basic#accuracy)'
+      acell: '[acell](https://docs.abinit.org/variables/basic#acell)'
+      adpimd: '[adpimd](https://docs.abinit.org/variables/rlx#adpimd)'
+      adpimd_gamma: '[adpimd_gamma](https://docs.abinit.org/variables/rlx#adpimd_gamma)'
+      algalch: '[algalch](https://docs.abinit.org/variables/gstate#algalch)'
+      amu: '[amu](https://docs.abinit.org/variables/rlx#amu)'
+      angdeg: '[angdeg](https://docs.abinit.org/variables/basic#angdeg)'
+      asr: '[asr](https://docs.abinit.org/variables/eph#asr)'
+      atvshift: '[atvshift](https://docs.abinit.org/variables/ffield#atvshift)'
+      autoparal: '[autoparal](https://docs.abinit.org/variables/paral#autoparal)'
+      auxc_ixc: '[auxc_ixc](https://docs.abinit.org/variables/gstate#auxc_ixc)'
+      auxc_scal: '[auxc_scal](https://docs.abinit.org/variables/gstate#auxc_scal)'
+      awtr: '[awtr](https://docs.abinit.org/variables/gw#awtr)'
+      bandpp: '[bandpp](https://docs.abinit.org/variables/paral#bandpp)'
+      bdberry: '[bdberry](https://docs.abinit.org/variables/ffield#bdberry)'
+      bdeigrf: '[bdeigrf](https://docs.abinit.org/variables/dfpt#bdeigrf)'
+      bdgw: '[bdgw](https://docs.abinit.org/variables/gw#bdgw)'
+      berryopt: '[berryopt](https://docs.abinit.org/variables/ffield#berryopt)'
+      berrysav: '[berrysav](https://docs.abinit.org/variables/ffield#berrysav)'
+      berrystep: '[berrystep](https://docs.abinit.org/variables/ffield#berrystep)'
+      bfield: '[bfield](https://docs.abinit.org/variables/ffield#bfield)'
+      bmass: '[bmass](https://docs.abinit.org/variables/rlx#bmass)'
+      boxcenter: '[boxcenter](https://docs.abinit.org/variables/gstate#boxcenter)'
+      boxcutmin: '[boxcutmin](https://docs.abinit.org/variables/gstate#boxcutmin)'
+      brav: '[brav](https://docs.abinit.org/variables/eph#brav)'
+      brvltt: '[brvltt](https://docs.abinit.org/variables/geo#brvltt)'
+      bs_algorithm: '[bs_algorithm](https://docs.abinit.org/variables/bse#bs_algorithm)'
+      bs_calctype: '[bs_calctype](https://docs.abinit.org/variables/bse#bs_calctype)'
+      bs_coulomb_term: '[bs_coulomb_term](https://docs.abinit.org/variables/bse#bs_coulomb_term)'
+      bs_coupling: '[bs_coupling](https://docs.abinit.org/variables/bse#bs_coupling)'
+      bs_eh_cutoff: '[bs_eh_cutoff](https://docs.abinit.org/variables/bse#bs_eh_cutoff)'
+      bs_exchange_term: '[bs_exchange_term](https://docs.abinit.org/variables/bse#bs_exchange_term)'
+      bs_freq_mesh: '[bs_freq_mesh](https://docs.abinit.org/variables/bse#bs_freq_mesh)'
+      bs_hayd_term: '[bs_hayd_term](https://docs.abinit.org/variables/bse#bs_hayd_term)'
+      bs_haydock_niter: '[bs_haydock_niter](https://docs.abinit.org/variables/bse#bs_haydock_niter)'
+      bs_haydock_tol: '[bs_haydock_tol](https://docs.abinit.org/variables/bse#bs_haydock_tol)'
+      bs_interp_kmult: '[bs_interp_kmult](https://docs.abinit.org/variables/bse#bs_interp_kmult)'
+      bs_interp_m3_width: '[bs_interp_m3_width](https://docs.abinit.org/variables/bse#bs_interp_m3_width)'
+      bs_interp_method: '[bs_interp_method](https://docs.abinit.org/variables/bse#bs_interp_method)'
+      bs_interp_mode: '[bs_interp_mode](https://docs.abinit.org/variables/bse#bs_interp_mode)'
+      bs_interp_prep: '[bs_interp_prep](https://docs.abinit.org/variables/bse#bs_interp_prep)'
+      bs_interp_rl_nb: '[bs_interp_rl_nb](https://docs.abinit.org/variables/bse#bs_interp_rl_nb)'
+      bs_loband: '[bs_loband](https://docs.abinit.org/variables/bse#bs_loband)'
+      bs_nstates: '[bs_nstates](https://docs.abinit.org/variables/bse#bs_nstates)'
+      builtintest: '[builtintest](https://docs.abinit.org/variables/dev#builtintest)'
+      bxctmindg: '[bxctmindg](https://docs.abinit.org/variables/paw#bxctmindg)'
+      cd_customnimfrqs: '[cd_customnimfrqs](https://docs.abinit.org/variables/gw#cd_customnimfrqs)'
+      cd_frqim_method: '[cd_frqim_method](https://docs.abinit.org/variables/gw#cd_frqim_method)'
+      cd_full_grid: '[cd_full_grid](https://docs.abinit.org/variables/gw#cd_full_grid)'
+      cd_halfway_freq: '[cd_halfway_freq](https://docs.abinit.org/variables/gw#cd_halfway_freq)'
+      cd_imfrqs: '[cd_imfrqs](https://docs.abinit.org/variables/gw#cd_imfrqs)'
+      cd_max_freq: '[cd_max_freq](https://docs.abinit.org/variables/gw#cd_max_freq)'
+      cd_subset_freq: '[cd_subset_freq](https://docs.abinit.org/variables/gw#cd_subset_freq)'
+      cellcharge: '[cellcharge](https://docs.abinit.org/variables/gstate#cellcharge)'
+      charge: '[charge](https://docs.abinit.org/variables/gstate#charge)'
+      chempot: '[chempot](https://docs.abinit.org/variables/geo#chempot)'
+      chkdilatmx: '[chkdilatmx](https://docs.abinit.org/variables/rlx#chkdilatmx)'
+      chkexit: '[chkexit](https://docs.abinit.org/variables/gstate#chkexit)'
+      chkprim: '[chkprim](https://docs.abinit.org/variables/gstate#chkprim)'
+      chksymbreak: '[chksymbreak](https://docs.abinit.org/variables/gstate#chksymbreak)'
+      chksymtnons: '[chksymtnons](https://docs.abinit.org/variables/gstate#chksymtnons)'
+      chneut: '[chneut](https://docs.abinit.org/variables/eph#chneut)'
+      chrgat: '[chrgat](https://docs.abinit.org/variables/gstate#chrgat)'
+      cineb_start: '[cineb_start](https://docs.abinit.org/variables/rlx#cineb_start)'
+      constraint_kind: '[constraint_kind](https://docs.abinit.org/variables/gstate#constraint_kind)'
+      cprj_in_memory: '[cprj_in_memory](https://docs.abinit.org/variables/internal#cprj_in_memory)'
+      cprj_update_lvl: '[cprj_update_lvl](https://docs.abinit.org/variables/dev#cprj_update_lvl)'
+      cpuh: '[cpuh](https://docs.abinit.org/variables/gstate#cpuh)'
+      cpum: '[cpum](https://docs.abinit.org/variables/gstate#cpum)'
+      cpus: '[cpus](https://docs.abinit.org/variables/gstate#cpus)'
+      d3e_pert1_atpol: '[d3e_pert1_atpol](https://docs.abinit.org/variables/dfpt#d3e_pert1_atpol)'
+      d3e_pert1_dir: '[d3e_pert1_dir](https://docs.abinit.org/variables/dfpt#d3e_pert1_dir)'
+      d3e_pert1_elfd: '[d3e_pert1_elfd](https://docs.abinit.org/variables/dfpt#d3e_pert1_elfd)'
+      d3e_pert1_phon: '[d3e_pert1_phon](https://docs.abinit.org/variables/dfpt#d3e_pert1_phon)'
+      d3e_pert2_atpol: '[d3e_pert2_atpol](https://docs.abinit.org/variables/dfpt#d3e_pert2_atpol)'
+      d3e_pert2_dir: '[d3e_pert2_dir](https://docs.abinit.org/variables/dfpt#d3e_pert2_dir)'
+      d3e_pert2_elfd: '[d3e_pert2_elfd](https://docs.abinit.org/variables/dfpt#d3e_pert2_elfd)'
+      d3e_pert2_phon: '[d3e_pert2_phon](https://docs.abinit.org/variables/dfpt#d3e_pert2_phon)'
+      d3e_pert3_atpol: '[d3e_pert3_atpol](https://docs.abinit.org/variables/dfpt#d3e_pert3_atpol)'
+      d3e_pert3_dir: '[d3e_pert3_dir](https://docs.abinit.org/variables/dfpt#d3e_pert3_dir)'
+      d3e_pert3_elfd: '[d3e_pert3_elfd](https://docs.abinit.org/variables/dfpt#d3e_pert3_elfd)'
+      d3e_pert3_phon: '[d3e_pert3_phon](https://docs.abinit.org/variables/dfpt#d3e_pert3_phon)'
+      ddamp: '[ddamp](https://docs.abinit.org/variables/ffield#ddamp)'
+      ddb_ngqpt: '[ddb_ngqpt](https://docs.abinit.org/variables/eph#ddb_ngqpt)'
+      ddb_shiftq: '[ddb_shiftq](https://docs.abinit.org/variables/eph#ddb_shiftq)'
+      delayperm: '[delayperm](https://docs.abinit.org/variables/rlx#delayperm)'
+      densfor_pred: '[densfor_pred](https://docs.abinit.org/variables/dev#densfor_pred)'
+      densty: '[densty](https://docs.abinit.org/variables/dev#densty)'
+      dfield: '[dfield](https://docs.abinit.org/variables/ffield#dfield)'
+      dfpt_sciss: '[dfpt_sciss](https://docs.abinit.org/variables/dfpt#dfpt_sciss)'
+      diecut: '[diecut](https://docs.abinit.org/variables/gstate#diecut)'
+      diegap: '[diegap](https://docs.abinit.org/variables/gstate#diegap)'
+      dielam: '[dielam](https://docs.abinit.org/variables/gstate#dielam)'
+      dielng: '[dielng](https://docs.abinit.org/variables/gstate#dielng)'
+      diemac: '[diemac](https://docs.abinit.org/variables/gstate#diemac)'
+      diemix: '[diemix](https://docs.abinit.org/variables/gstate#diemix)'
+      diemixmag: '[diemixmag](https://docs.abinit.org/variables/gstate#diemixmag)'
+      diismemory: '[diismemory](https://docs.abinit.org/variables/rlx#diismemory)'
+      dilatmx: '[dilatmx](https://docs.abinit.org/variables/rlx#dilatmx)'
+      dipdip: '[dipdip](https://docs.abinit.org/variables/eph#dipdip)'
+      dipquad: '[dipquad](https://docs.abinit.org/variables/eph#dipquad)'
+      dmatpawu: '[dmatpawu](https://docs.abinit.org/variables/paw#dmatpawu)'
+      dmatpuopt: '[dmatpuopt](https://docs.abinit.org/variables/paw#dmatpuopt)'
+      dmatudiag: '[dmatudiag](https://docs.abinit.org/variables/paw#dmatudiag)'
+      dmft_charge_prec: '[dmft_charge_prec](https://docs.abinit.org/variables/dmft#dmft_charge_prec)'
+      dmft_dc: '[dmft_dc](https://docs.abinit.org/variables/dmft#dmft_dc)'
+      dmft_entropy: '[dmft_entropy](https://docs.abinit.org/variables/dmft#dmft_entropy)'
+      dmft_iter: '[dmft_iter](https://docs.abinit.org/variables/dmft#dmft_iter)'
+      dmft_kspectral_func: '[dmft_kspectral_func](https://docs.abinit.org/variables/dmft#dmft_kspectral_func)'
+      dmft_mxsf: '[dmft_mxsf](https://docs.abinit.org/variables/dmft#dmft_mxsf)'
+      dmft_nlambda: '[dmft_nlambda](https://docs.abinit.org/variables/dmft#dmft_nlambda)'
+      dmft_nwli: '[dmft_nwli](https://docs.abinit.org/variables/dmft#dmft_nwli)'
+      dmft_nwlo: '[dmft_nwlo](https://docs.abinit.org/variables/dmft#dmft_nwlo)'
+      dmft_occnd_imag: '[dmft_occnd_imag](https://docs.abinit.org/variables/dmft#dmft_occnd_imag)'
+      dmft_read_occnd: '[dmft_read_occnd](https://docs.abinit.org/variables/dev#dmft_read_occnd)'
+      dmft_rslf: '[dmft_rslf](https://docs.abinit.org/variables/dmft#dmft_rslf)'
+      dmft_solv: '[dmft_solv](https://docs.abinit.org/variables/dmft#dmft_solv)'
+      dmft_t2g: '[dmft_t2g](https://docs.abinit.org/variables/dmft#dmft_t2g)'
+      dmft_tolfreq: '[dmft_tolfreq](https://docs.abinit.org/variables/dmft#dmft_tolfreq)'
+      dmft_tollc: '[dmft_tollc](https://docs.abinit.org/variables/dmft#dmft_tollc)'
+      dmftbandf: '[dmftbandf](https://docs.abinit.org/variables/dmft#dmftbandf)'
+      dmftbandi: '[dmftbandi](https://docs.abinit.org/variables/dmft#dmftbandi)'
+      dmftcheck: '[dmftcheck](https://docs.abinit.org/variables/dmft#dmftcheck)'
+      dmftctqmc_basis: '[dmftctqmc_basis](https://docs.abinit.org/variables/dev#dmftctqmc_basis)'
+      dmftctqmc_check: '[dmftctqmc_check](https://docs.abinit.org/variables/dmft#dmftctqmc_check)'
+      dmftctqmc_correl: '[dmftctqmc_correl](https://docs.abinit.org/variables/dmft#dmftctqmc_correl)'
+      dmftctqmc_gmove: '[dmftctqmc_gmove](https://docs.abinit.org/variables/dmft#dmftctqmc_gmove)'
+      dmftctqmc_grnns: '[dmftctqmc_grnns](https://docs.abinit.org/variables/dmft#dmftctqmc_grnns)'
+      dmftctqmc_meas: '[dmftctqmc_meas](https://docs.abinit.org/variables/dmft#dmftctqmc_meas)'
+      dmftctqmc_mov: '[dmftctqmc_mov](https://docs.abinit.org/variables/dmft#dmftctqmc_mov)'
+      dmftctqmc_mrka: '[dmftctqmc_mrka](https://docs.abinit.org/variables/dmft#dmftctqmc_mrka)'
+      dmftctqmc_order: '[dmftctqmc_order](https://docs.abinit.org/variables/dmft#dmftctqmc_order)'
+      dmftctqmc_triqs_nleg: '[dmftctqmc_triqs_nleg](https://docs.abinit.org/variables/dmft#dmftctqmc_triqs_nleg)'
+      dmftqmc_l: '[dmftqmc_l](https://docs.abinit.org/variables/dmft#dmftqmc_l)'
+      dmftqmc_n: '[dmftqmc_n](https://docs.abinit.org/variables/dmft#dmftqmc_n)'
+      dmftqmc_seed: '[dmftqmc_seed](https://docs.abinit.org/variables/dmft#dmftqmc_seed)'
+      dmftqmc_therm: '[dmftqmc_therm](https://docs.abinit.org/variables/dmft#dmftqmc_therm)'
+      dosdeltae: '[dosdeltae](https://docs.abinit.org/variables/gstate#dosdeltae)'
+      dtion: '[dtion](https://docs.abinit.org/variables/rlx#dtion)'
+      dvdb_add_lr: '[dvdb_add_lr](https://docs.abinit.org/variables/eph#dvdb_add_lr)'
+      dvdb_qcache_mb: '[dvdb_qcache_mb](https://docs.abinit.org/variables/eph#dvdb_qcache_mb)'
+      dvdb_qdamp: '[dvdb_qdamp](https://docs.abinit.org/variables/eph#dvdb_qdamp)'
+      dvdb_rspace_cell: '[dvdb_rspace_cell](https://docs.abinit.org/variables/eph#dvdb_rspace_cell)'
+      dynimage: '[dynimage](https://docs.abinit.org/variables/rlx#dynimage)'
+      ecut: '[ecut](https://docs.abinit.org/variables/basic#ecut)'
+      ecuteps: '[ecuteps](https://docs.abinit.org/variables/gw#ecuteps)'
+      ecutsigx: '[ecutsigx](https://docs.abinit.org/variables/gw#ecutsigx)'
+      ecutsm: '[ecutsm](https://docs.abinit.org/variables/rlx#ecutsm)'
+      ecutwfn: '[ecutwfn](https://docs.abinit.org/variables/gw#ecutwfn)'
+      effmass_free: '[effmass_free](https://docs.abinit.org/variables/dev#effmass_free)'
+      efield: '[efield](https://docs.abinit.org/variables/ffield#efield)'
+      efmas: '[efmas](https://docs.abinit.org/variables/dfpt#efmas)'
+      efmas_bands: '[efmas_bands](https://docs.abinit.org/variables/dfpt#efmas_bands)'
+      efmas_calc_dirs: '[efmas_calc_dirs](https://docs.abinit.org/variables/dfpt#efmas_calc_dirs)'
+      efmas_deg: '[efmas_deg](https://docs.abinit.org/variables/dfpt#efmas_deg)'
+      efmas_deg_tol: '[efmas_deg_tol](https://docs.abinit.org/variables/dfpt#efmas_deg_tol)'
+      efmas_dim: '[efmas_dim](https://docs.abinit.org/variables/dfpt#efmas_dim)'
+      efmas_dirs: '[efmas_dirs](https://docs.abinit.org/variables/dfpt#efmas_dirs)'
+      efmas_n_dirs: '[efmas_n_dirs](https://docs.abinit.org/variables/dfpt#efmas_n_dirs)'
+      efmas_ntheta: '[efmas_ntheta](https://docs.abinit.org/variables/dfpt#efmas_ntheta)'
+      einterp: '[einterp](https://docs.abinit.org/variables/basic#einterp)'
+      elph2_imagden: '[elph2_imagden](https://docs.abinit.org/variables/dfpt#elph2_imagden)'
+      enunit: '[enunit](https://docs.abinit.org/variables/gstate#enunit)'
+      eph_doping: '[eph_doping](https://docs.abinit.org/variables/eph#eph_doping)'
+      eph_ecutosc: '[eph_ecutosc](https://docs.abinit.org/variables/eph#eph_ecutosc)'
+      eph_extrael: '[eph_extrael](https://docs.abinit.org/variables/eph#eph_extrael)'
+      eph_fermie: '[eph_fermie](https://docs.abinit.org/variables/eph#eph_fermie)'
+      eph_frohlichm: '[eph_frohlichm](https://docs.abinit.org/variables/eph#eph_frohlichm)'
+      eph_fsewin: '[eph_fsewin](https://docs.abinit.org/variables/eph#eph_fsewin)'
+      eph_fsmear: '[eph_fsmear](https://docs.abinit.org/variables/eph#eph_fsmear)'
+      eph_intmeth: '[eph_intmeth](https://docs.abinit.org/variables/eph#eph_intmeth)'
+      eph_mustar: '[eph_mustar](https://docs.abinit.org/variables/eph#eph_mustar)'
+      eph_ngqpt_fine: '[eph_ngqpt_fine](https://docs.abinit.org/variables/eph#eph_ngqpt_fine)'
+      eph_np_pqbks: '[eph_np_pqbks](https://docs.abinit.org/variables/eph#eph_np_pqbks)'
+      eph_phrange: '[eph_phrange](https://docs.abinit.org/variables/eph#eph_phrange)'
+      eph_phwinfact: '[eph_phwinfact](https://docs.abinit.org/variables/eph#eph_phwinfact)'
+      eph_restart: '[eph_restart](https://docs.abinit.org/variables/eph#eph_restart)'
+      eph_stern: '[eph_stern](https://docs.abinit.org/variables/eph#eph_stern)'
+      eph_task: '[eph_task](https://docs.abinit.org/variables/eph#eph_task)'
+      eph_tols_idelta: '[eph_tols_idelta](https://docs.abinit.org/variables/eph#eph_tols_idelta)'
+      eph_transport: '[eph_transport](https://docs.abinit.org/variables/eph#eph_transport)'
+      eph_use_ftinterp: '[eph_use_ftinterp](https://docs.abinit.org/variables/eph#eph_use_ftinterp)'
+      eshift: '[eshift](https://docs.abinit.org/variables/dev#eshift)'
+      esmear: '[esmear](https://docs.abinit.org/variables/dfpt#esmear)'
+      exchmix: '[exchmix](https://docs.abinit.org/variables/dev#exchmix)'
+      exchn2n3d: '[exchn2n3d](https://docs.abinit.org/variables/dev#exchn2n3d)'
+      expert_user: '[expert_user](https://docs.abinit.org/variables/gstate#expert_user)'
+      extfpmd_nbcut: '[extfpmd_nbcut](https://docs.abinit.org/variables/gstate#extfpmd_nbcut)'
+      extrapwf: '[extrapwf](https://docs.abinit.org/variables/dev#extrapwf)'
+      f4of2_sla: '[f4of2_sla](https://docs.abinit.org/variables/paw#f4of2_sla)'
+      f6of2_sla: '[f6of2_sla](https://docs.abinit.org/variables/paw#f6of2_sla)'
+      fband: '[fband](https://docs.abinit.org/variables/gstate#fband)'
+      fermie_nest: '[fermie_nest](https://docs.abinit.org/variables/dev#fermie_nest)'
+      fft_count: '[fft_count](https://docs.abinit.org/variables/dev#fft_count)'
+      fftalg: '[fftalg](https://docs.abinit.org/variables/dev#fftalg)'
+      fftcache: '[fftcache](https://docs.abinit.org/variables/dev#fftcache)'
+      fftgw: '[fftgw](https://docs.abinit.org/variables/gw#fftgw)'
+      fock_icutcoul: '[fock_icutcoul](https://docs.abinit.org/variables/gstate#fock_icutcoul)'
+      fockdownsampling: '[fockdownsampling](https://docs.abinit.org/variables/gstate#fockdownsampling)'
+      fockoptmix: '[fockoptmix](https://docs.abinit.org/variables/gstate#fockoptmix)'
+      freqim_alpha: '[freqim_alpha](https://docs.abinit.org/variables/gw#freqim_alpha)'
+      freqremax: '[freqremax](https://docs.abinit.org/variables/gw#freqremax)'
+      freqremin: '[freqremin](https://docs.abinit.org/variables/gw#freqremin)'
+      freqspmax: '[freqspmax](https://docs.abinit.org/variables/gw#freqspmax)'
+      freqspmin: '[freqspmin](https://docs.abinit.org/variables/gw#freqspmin)'
+      friction: '[friction](https://docs.abinit.org/variables/rlx#friction)'
+      frzfermi: '[frzfermi](https://docs.abinit.org/variables/dfpt#frzfermi)'
+      fxcartfactor: '[fxcartfactor](https://docs.abinit.org/variables/rlx#fxcartfactor)'
+      ga_algor: '[ga_algor](https://docs.abinit.org/variables/rlx#ga_algor)'
+      ga_fitness: '[ga_fitness](https://docs.abinit.org/variables/rlx#ga_fitness)'
+      ga_n_rules: '[ga_n_rules](https://docs.abinit.org/variables/rlx#ga_n_rules)'
+      ga_opt_percent: '[ga_opt_percent](https://docs.abinit.org/variables/rlx#ga_opt_percent)'
+      ga_rules: '[ga_rules](https://docs.abinit.org/variables/rlx#ga_rules)'
+      genafm: '[genafm](https://docs.abinit.org/variables/geo#genafm)'
+      get1den: '[get1den](https://docs.abinit.org/variables/files#get1den)'
+      get1wf: '[get1wf](https://docs.abinit.org/variables/files#get1wf)'
+      getbscoup: '[getbscoup](https://docs.abinit.org/variables/files#getbscoup)'
+      getbseig: '[getbseig](https://docs.abinit.org/variables/files#getbseig)'
+      getbsreso: '[getbsreso](https://docs.abinit.org/variables/files#getbsreso)'
+      getcell: '[getcell](https://docs.abinit.org/variables/rlx#getcell)'
+      getddb: '[getddb](https://docs.abinit.org/variables/files#getddb)'
+      getddb_filepath: '[getddb_filepath](https://docs.abinit.org/variables/files#getddb_filepath)'
+      getddk: '[getddk](https://docs.abinit.org/variables/files#getddk)'
+      getdelfd: '[getdelfd](https://docs.abinit.org/variables/files#getdelfd)'
+      getden: '[getden](https://docs.abinit.org/variables/files#getden)'
+      getden_filepath: '[getden_filepath](https://docs.abinit.org/variables/files#getden_filepath)'
+      getdkde: '[getdkde](https://docs.abinit.org/variables/files#getdkde)'
+      getdkdk: '[getdkdk](https://docs.abinit.org/variables/files#getdkdk)'
+      getdvdb: '[getdvdb](https://docs.abinit.org/variables/files#getdvdb)'
+      getdvdb_filepath: '[getdvdb_filepath](https://docs.abinit.org/variables/files#getdvdb_filepath)'
+      getefmas: '[getefmas](https://docs.abinit.org/variables/files#getefmas)'
+      getgam_eig2nkq: '[getgam_eig2nkq](https://docs.abinit.org/variables/dev#getgam_eig2nkq)'
+      gethaydock: '[gethaydock](https://docs.abinit.org/variables/files#gethaydock)'
+      getkerange_filepath: '[getkerange_filepath](https://docs.abinit.org/variables/eph#getkerange_filepath)'
+      getocc: '[getocc](https://docs.abinit.org/variables/files#getocc)'
+      getpot_filepath: '[getpot_filepath](https://docs.abinit.org/variables/files#getpot_filepath)'
+      getqps: '[getqps](https://docs.abinit.org/variables/files#getqps)'
+      getscr: '[getscr](https://docs.abinit.org/variables/files#getscr)'
+      getscr_filepath: '[getscr_filepath](https://docs.abinit.org/variables/files#getscr_filepath)'
+      getsigeph_filepath: '[getsigeph_filepath](https://docs.abinit.org/variables/files#getsigeph_filepath)'
+      getsuscep: '[getsuscep](https://docs.abinit.org/variables/files#getsuscep)'
+      getvel: '[getvel](https://docs.abinit.org/variables/rlx#getvel)'
+      getwfk: '[getwfk](https://docs.abinit.org/variables/files#getwfk)'
+      getwfk_filepath: '[getwfk_filepath](https://docs.abinit.org/variables/files#getwfk_filepath)'
+      getwfkfine: '[getwfkfine](https://docs.abinit.org/variables/dev#getwfkfine)'
+      getwfkfine_filepath: '[getwfkfine_filepath](https://docs.abinit.org/variables/files#getwfkfine_filepath)'
+      getwfq: '[getwfq](https://docs.abinit.org/variables/files#getwfq)'
+      getwfq_filepath: '[getwfq_filepath](https://docs.abinit.org/variables/files#getwfq_filepath)'
+      getxcart: '[getxcart](https://docs.abinit.org/variables/rlx#getxcart)'
+      getxred: '[getxred](https://docs.abinit.org/variables/rlx#getxred)'
+      goprecon: '[goprecon](https://docs.abinit.org/variables/rlx#goprecon)'
+      goprecprm: '[goprecprm](https://docs.abinit.org/variables/rlx#goprecprm)'
+      gpu_devices: '[gpu_devices](https://docs.abinit.org/variables/paral#gpu_devices)'
+      gpu_linalg_limit: '[gpu_linalg_limit](https://docs.abinit.org/variables/paral#gpu_linalg_limit)'
+      gw1rdm: '[gw1rdm](https://docs.abinit.org/variables/gw#gw1rdm)'
+      gw_customnfreqsp: '[gw_customnfreqsp](https://docs.abinit.org/variables/gw#gw_customnfreqsp)'
+      gw_freqsp: '[gw_freqsp](https://docs.abinit.org/variables/gw#gw_freqsp)'
+      gw_frqim_inzgrid: '[gw_frqim_inzgrid](https://docs.abinit.org/variables/gw#gw_frqim_inzgrid)'
+      gw_frqre_inzgrid: '[gw_frqre_inzgrid](https://docs.abinit.org/variables/gw#gw_frqre_inzgrid)'
+      gw_frqre_tangrid: '[gw_frqre_tangrid](https://docs.abinit.org/variables/gw#gw_frqre_tangrid)'
+      gw_icutcoul: '[gw_icutcoul](https://docs.abinit.org/variables/gw#gw_icutcoul)'
+      gw_invalid_freq: '[gw_invalid_freq](https://docs.abinit.org/variables/gw#gw_invalid_freq)'
+      gw_nqlwl: '[gw_nqlwl](https://docs.abinit.org/variables/gw#gw_nqlwl)'
+      gw_nstep: '[gw_nstep](https://docs.abinit.org/variables/gw#gw_nstep)'
+      gw_qlwl: '[gw_qlwl](https://docs.abinit.org/variables/gw#gw_qlwl)'
+      gw_qprange: '[gw_qprange](https://docs.abinit.org/variables/gw#gw_qprange)'
+      gw_sctype: '[gw_sctype](https://docs.abinit.org/variables/gw#gw_sctype)'
+      gw_sigxcore: '[gw_sigxcore](https://docs.abinit.org/variables/gw#gw_sigxcore)'
+      gw_toldfeig: '[gw_toldfeig](https://docs.abinit.org/variables/gw#gw_toldfeig)'
+      gwaclowrank: '[gwaclowrank](https://docs.abinit.org/variables/gw#gwaclowrank)'
+      gwcalctyp: '[gwcalctyp](https://docs.abinit.org/variables/gw#gwcalctyp)'
+      gwcomp: '[gwcomp](https://docs.abinit.org/variables/gw#gwcomp)'
+      gwencomp: '[gwencomp](https://docs.abinit.org/variables/gw#gwencomp)'
+      gwgamma: '[gwgamma](https://docs.abinit.org/variables/gw#gwgamma)'
+      gwgmcorr: '[gwgmcorr](https://docs.abinit.org/variables/gw#gwgmcorr)'
+      gwls_band_index: '[gwls_band_index](https://docs.abinit.org/variables/gw#gwls_band_index)'
+      gwls_correlation: '[gwls_correlation](https://docs.abinit.org/variables/gw#gwls_correlation)'
+      gwls_diel_model: '[gwls_diel_model](https://docs.abinit.org/variables/gw#gwls_diel_model)'
+      gwls_exchange: '[gwls_exchange](https://docs.abinit.org/variables/gw#gwls_exchange)'
+      gwls_first_seed: '[gwls_first_seed](https://docs.abinit.org/variables/gw#gwls_first_seed)'
+      gwls_kmax_analytic: '[gwls_kmax_analytic](https://docs.abinit.org/variables/gw#gwls_kmax_analytic)'
+      gwls_kmax_complement: '[gwls_kmax_complement](https://docs.abinit.org/variables/gw#gwls_kmax_complement)'
+      gwls_kmax_numeric: '[gwls_kmax_numeric](https://docs.abinit.org/variables/gw#gwls_kmax_numeric)'
+      gwls_kmax_poles: '[gwls_kmax_poles](https://docs.abinit.org/variables/gw#gwls_kmax_poles)'
+      gwls_list_proj_freq: '[gwls_list_proj_freq](https://docs.abinit.org/variables/gw#gwls_list_proj_freq)'
+      gwls_model_parameter: '[gwls_model_parameter](https://docs.abinit.org/variables/gw#gwls_model_parameter)'
+      gwls_n_proj_freq: '[gwls_n_proj_freq](https://docs.abinit.org/variables/gw#gwls_n_proj_freq)'
+      gwls_npt_gauss_quad: '[gwls_npt_gauss_quad](https://docs.abinit.org/variables/gw#gwls_npt_gauss_quad)'
+      gwls_nseeds: '[gwls_nseeds](https://docs.abinit.org/variables/gw#gwls_nseeds)'
+      gwls_print_debug: '[gwls_print_debug](https://docs.abinit.org/variables/gw#gwls_print_debug)'
+      gwls_recycle: '[gwls_recycle](https://docs.abinit.org/variables/gw#gwls_recycle)'
+      gwls_stern_kmax: '[gwls_stern_kmax](https://docs.abinit.org/variables/gw#gwls_stern_kmax)'
+      gwmem: '[gwmem](https://docs.abinit.org/variables/gw#gwmem)'
+      gwpara: '[gwpara](https://docs.abinit.org/variables/paral#gwpara)'
+      gwrpacorr: '[gwrpacorr](https://docs.abinit.org/variables/gw#gwrpacorr)'
+      hmcsst: '[hmcsst](https://docs.abinit.org/variables/rlx#hmcsst)'
+      hmctt: '[hmctt](https://docs.abinit.org/variables/rlx#hmctt)'
+      hyb_mixing: '[hyb_mixing](https://docs.abinit.org/variables/gstate#hyb_mixing)'
+      hyb_mixing_sr: '[hyb_mixing_sr](https://docs.abinit.org/variables/gstate#hyb_mixing_sr)'
+      hyb_range_dft: '[hyb_range_dft](https://docs.abinit.org/variables/gstate#hyb_range_dft)'
+      hyb_range_fock: '[hyb_range_fock](https://docs.abinit.org/variables/gstate#hyb_range_fock)'
+      iatcon: '[iatcon](https://docs.abinit.org/variables/rlx#iatcon)'
+      iatfix: '[iatfix](https://docs.abinit.org/variables/rlx#iatfix)'
+      iatfixx: '[iatfixx](https://docs.abinit.org/variables/rlx#iatfixx)'
+      iatfixy: '[iatfixy](https://docs.abinit.org/variables/rlx#iatfixy)'
+      iatfixz: '[iatfixz](https://docs.abinit.org/variables/rlx#iatfixz)'
+      iatsph: '[iatsph](https://docs.abinit.org/variables/gstate#iatsph)'
+      iboxcut: '[iboxcut](https://docs.abinit.org/variables/paw#iboxcut)'
+      ibte_abs_tol: '[ibte_abs_tol](https://docs.abinit.org/variables/eph#ibte_abs_tol)'
+      ibte_alpha_mix: '[ibte_alpha_mix](https://docs.abinit.org/variables/eph#ibte_alpha_mix)'
+      ibte_niter: '[ibte_niter](https://docs.abinit.org/variables/eph#ibte_niter)'
+      ibte_prep: '[ibte_prep](https://docs.abinit.org/variables/eph#ibte_prep)'
+      icoulomb: '[icoulomb](https://docs.abinit.org/variables/gstate#icoulomb)'
+      icutcoul: '[icutcoul](https://docs.abinit.org/variables/gstate#icutcoul)'
+      ieig2rf: '[ieig2rf](https://docs.abinit.org/variables/dfpt#ieig2rf)'
+      imgmov: '[imgmov](https://docs.abinit.org/variables/rlx#imgmov)'
+      imgwfstor: '[imgwfstor](https://docs.abinit.org/variables/rlx#imgwfstor)'
+      inclvkb: '[inclvkb](https://docs.abinit.org/variables/gw#inclvkb)'
+      indata_prefix: '[indata_prefix](https://docs.abinit.org/variables/files#indata_prefix)'
+      intxc: '[intxc](https://docs.abinit.org/variables/dev#intxc)'
+      iomode: '[iomode](https://docs.abinit.org/variables/dev#iomode)'
+      ionmov: '[ionmov](https://docs.abinit.org/variables/rlx#ionmov)'
+      iprcel: '[iprcel](https://docs.abinit.org/variables/gstate#iprcel)'
+      iprcfc: '[iprcfc](https://docs.abinit.org/variables/dev#iprcfc)'
+      iqpt: '[iqpt](https://docs.abinit.org/variables/gstate#iqpt)'
+      irandom: '[irandom](https://docs.abinit.org/variables/dev#irandom)'
+      ird1den: '[ird1den](https://docs.abinit.org/variables/files#ird1den)'
+      ird1wf: '[ird1wf](https://docs.abinit.org/variables/files#ird1wf)'
+      irdbscoup: '[irdbscoup](https://docs.abinit.org/variables/files#irdbscoup)'
+      irdbseig: '[irdbseig](https://docs.abinit.org/variables/files#irdbseig)'
+      irdbsreso: '[irdbsreso](https://docs.abinit.org/variables/files#irdbsreso)'
+      irdchkprdm: '[irdchkprdm](https://docs.abinit.org/variables/files#irdchkprdm)'
+      irdddb: '[irdddb](https://docs.abinit.org/variables/files#irdddb)'
+      irdddk: '[irdddk](https://docs.abinit.org/variables/files#irdddk)'
+      irdden: '[irdden](https://docs.abinit.org/variables/files#irdden)'
+      irddvdb: '[irddvdb](https://docs.abinit.org/variables/files#irddvdb)'
+      irdefmas: '[irdefmas](https://docs.abinit.org/variables/files#irdefmas)'
+      irdhaydock: '[irdhaydock](https://docs.abinit.org/variables/files#irdhaydock)'
+      irdqps: '[irdqps](https://docs.abinit.org/variables/files#irdqps)'
+      irdscr: '[irdscr](https://docs.abinit.org/variables/files#irdscr)'
+      irdsuscep: '[irdsuscep](https://docs.abinit.org/variables/files#irdsuscep)'
+      irdvdw: '[irdvdw](https://docs.abinit.org/variables/vdw#irdvdw)'
+      irdwfk: '[irdwfk](https://docs.abinit.org/variables/files#irdwfk)'
+      irdwfkfine: '[irdwfkfine](https://docs.abinit.org/variables/dev#irdwfkfine)'
+      irdwfq: '[irdwfq](https://docs.abinit.org/variables/files#irdwfq)'
+      iscf: '[iscf](https://docs.abinit.org/variables/basic#iscf)'
+      isecur: '[isecur](https://docs.abinit.org/variables/dev#isecur)'
+      istatimg: '[istatimg](https://docs.abinit.org/variables/rlx#istatimg)'
+      istatr: '[istatr](https://docs.abinit.org/variables/dev#istatr)'
+      istatshft: '[istatshft](https://docs.abinit.org/variables/dev#istatshft)'
+      istwfk: '[istwfk](https://docs.abinit.org/variables/dev#istwfk)'
+      ivalence: '[ivalence](https://docs.abinit.org/variables/gstate#ivalence)'
+      ixc: '[ixc](https://docs.abinit.org/variables/basic#ixc)'
+      ixc_sigma: '[ixc_sigma](https://docs.abinit.org/variables/gw#ixc_sigma)'
+      ixcpositron: '[ixcpositron](https://docs.abinit.org/variables/gstate#ixcpositron)'
+      ixcrot: '[ixcrot](https://docs.abinit.org/variables/dfpt#ixcrot)'
+      jdtset: '[jdtset](https://docs.abinit.org/variables/basic#jdtset)'
+      jellslab: '[jellslab](https://docs.abinit.org/variables/gstate#jellslab)'
+      jfielddir: '[jfielddir](https://docs.abinit.org/variables/ffield#jfielddir)'
+      jpawu: '[jpawu](https://docs.abinit.org/variables/paw#jpawu)'
+      kberry: '[kberry](https://docs.abinit.org/variables/ffield#kberry)'
+      kpt: '[kpt](https://docs.abinit.org/variables/basic#kpt)'
+      kptbounds: '[kptbounds](https://docs.abinit.org/variables/gstate#kptbounds)'
+      kptgw: '[kptgw](https://docs.abinit.org/variables/gw#kptgw)'
+      kptnrm: '[kptnrm](https://docs.abinit.org/variables/basic#kptnrm)'
+      kptns: '[kptns](https://docs.abinit.org/variables/internal#kptns)'
+      kptns_hf: '[kptns_hf](https://docs.abinit.org/variables/internal#kptns_hf)'
+      kptopt: '[kptopt](https://docs.abinit.org/variables/basic#kptopt)'
+      kptrlatt: '[kptrlatt](https://docs.abinit.org/variables/gstate#kptrlatt)'
+      kptrlen: '[kptrlen](https://docs.abinit.org/variables/gstate#kptrlen)'
+      kssform: '[kssform](https://docs.abinit.org/variables/files#kssform)'
+      ldaminushalf: '[ldaminushalf](https://docs.abinit.org/variables/paw#ldaminushalf)'
+      lexexch: '[lexexch](https://docs.abinit.org/variables/paw#lexexch)'
+      localrdwf: '[localrdwf](https://docs.abinit.org/variables/paral#localrdwf)'
+      lotf_classic: '[lotf_classic](https://docs.abinit.org/variables/dev#lotf_classic)'
+      lotf_nitex: '[lotf_nitex](https://docs.abinit.org/variables/dev#lotf_nitex)'
+      lotf_nneigx: '[lotf_nneigx](https://docs.abinit.org/variables/dev#lotf_nneigx)'
+      lotf_version: '[lotf_version](https://docs.abinit.org/variables/dev#lotf_version)'
+      lpawu: '[lpawu](https://docs.abinit.org/variables/paw#lpawu)'
+      lw_flexo: '[lw_flexo](https://docs.abinit.org/variables/dfpt#lw_flexo)'
+      lw_qdrpl: '[lw_qdrpl](https://docs.abinit.org/variables/dfpt#lw_qdrpl)'
+      macro_uj: '[macro_uj](https://docs.abinit.org/variables/dev#macro_uj)'
+      magcon_lambda: '[magcon_lambda](https://docs.abinit.org/variables/gstate#magcon_lambda)'
+      magconon: '[magconon](https://docs.abinit.org/variables/gstate#magconon)'
+      max_ncpus: '[max_ncpus](https://docs.abinit.org/variables/paral#max_ncpus)'
+      maxestep: '[maxestep](https://docs.abinit.org/variables/ffield#maxestep)'
+      maxnsym: '[maxnsym](https://docs.abinit.org/variables/dev#maxnsym)'
+      mband: '[mband](https://docs.abinit.org/variables/internal#mband)'
+      mbpt_sciss: '[mbpt_sciss](https://docs.abinit.org/variables/gw#mbpt_sciss)'
+      mdf_epsinf: '[mdf_epsinf](https://docs.abinit.org/variables/gw#mdf_epsinf)'
+      mdtemp: '[mdtemp](https://docs.abinit.org/variables/rlx#mdtemp)'
+      mdwall: '[mdwall](https://docs.abinit.org/variables/rlx#mdwall)'
+      mem_test: '[mem_test](https://docs.abinit.org/variables/dev#mem_test)'
+      mep_mxstep: '[mep_mxstep](https://docs.abinit.org/variables/rlx#mep_mxstep)'
+      mep_solver: '[mep_solver](https://docs.abinit.org/variables/rlx#mep_solver)'
+      mgfft: '[mgfft](https://docs.abinit.org/variables/internal#mgfft)'
+      mgfftdg: '[mgfftdg](https://docs.abinit.org/variables/internal#mgfftdg)'
+      mixalch: '[mixalch](https://docs.abinit.org/variables/gstate#mixalch)'
+      mixesimgf: '[mixesimgf](https://docs.abinit.org/variables/rlx#mixesimgf)'
+      mixprec: '[mixprec](https://docs.abinit.org/variables/dev#mixprec)'
+      mpw: '[mpw](https://docs.abinit.org/variables/internal#mpw)'
+      mqgrid: '[mqgrid](https://docs.abinit.org/variables/dev#mqgrid)'
+      mqgriddg: '[mqgriddg](https://docs.abinit.org/variables/paw#mqgriddg)'
+      natcon: '[natcon](https://docs.abinit.org/variables/rlx#natcon)'
+      natfix: '[natfix](https://docs.abinit.org/variables/rlx#natfix)'
+      natfixx: '[natfixx](https://docs.abinit.org/variables/rlx#natfixx)'
+      natfixy: '[natfixy](https://docs.abinit.org/variables/rlx#natfixy)'
+      natfixz: '[natfixz](https://docs.abinit.org/variables/rlx#natfixz)'
+      natom: '[natom](https://docs.abinit.org/variables/basic#natom)'
+      natpawu: '[natpawu](https://docs.abinit.org/variables/internal#natpawu)'
+      natrd: '[natrd](https://docs.abinit.org/variables/geo#natrd)'
+      natsph: '[natsph](https://docs.abinit.org/variables/gstate#natsph)'
+      natsph_extra: '[natsph_extra](https://docs.abinit.org/variables/gstate#natsph_extra)'
+      natvshift: '[natvshift](https://docs.abinit.org/variables/ffield#natvshift)'
+      nband: '[nband](https://docs.abinit.org/variables/basic#nband)'
+      nbandhf: '[nbandhf](https://docs.abinit.org/variables/basic#nbandhf)'
+      nbandkss: '[nbandkss](https://docs.abinit.org/variables/gw#nbandkss)'
+      nbdblock: '[nbdblock](https://docs.abinit.org/variables/dev#nbdblock)'
+      nbdbuf: '[nbdbuf](https://docs.abinit.org/variables/gstate#nbdbuf)'
+      nberry: '[nberry](https://docs.abinit.org/variables/ffield#nberry)'
+      nc_xccc_gspace: '[nc_xccc_gspace](https://docs.abinit.org/variables/dev#nc_xccc_gspace)'
+      nconeq: '[nconeq](https://docs.abinit.org/variables/rlx#nconeq)'
+      nctime: '[nctime](https://docs.abinit.org/variables/dev#nctime)'
+      ndivk: '[ndivk](https://docs.abinit.org/variables/gstate#ndivk)'
+      ndivsm: '[ndivsm](https://docs.abinit.org/variables/gstate#ndivsm)'
+      ndtset: '[ndtset](https://docs.abinit.org/variables/basic#ndtset)'
+      ndynimage: '[ndynimage](https://docs.abinit.org/variables/internal#ndynimage)'
+      neb_algo: '[neb_algo](https://docs.abinit.org/variables/rlx#neb_algo)'
+      neb_spring: '[neb_spring](https://docs.abinit.org/variables/rlx#neb_spring)'
+      nelect: '[nelect](https://docs.abinit.org/variables/internal#nelect)'
+      nfft: '[nfft](https://docs.abinit.org/variables/internal#nfft)'
+      nfftdg: '[nfftdg](https://docs.abinit.org/variables/internal#nfftdg)'
+      nfreqim: '[nfreqim](https://docs.abinit.org/variables/gw#nfreqim)'
+      nfreqmidm: '[nfreqmidm](https://docs.abinit.org/variables/gw#nfreqmidm)'
+      nfreqre: '[nfreqre](https://docs.abinit.org/variables/gw#nfreqre)'
+      nfreqsp: '[nfreqsp](https://docs.abinit.org/variables/gw#nfreqsp)'
+      ngfft: '[ngfft](https://docs.abinit.org/variables/gstate#ngfft)'
+      ngfftdg: '[ngfftdg](https://docs.abinit.org/variables/paw#ngfftdg)'
+      ngkpt: '[ngkpt](https://docs.abinit.org/variables/basic#ngkpt)'
+      ngqpt: '[ngqpt](https://docs.abinit.org/variables/gstate#ngqpt)'
+      nimage: '[nimage](https://docs.abinit.org/variables/rlx#nimage)'
+      nkpath: '[nkpath](https://docs.abinit.org/variables/basic#nkpath)'
+      nkpt: '[nkpt](https://docs.abinit.org/variables/basic#nkpt)'
+      nkptgw: '[nkptgw](https://docs.abinit.org/variables/gw#nkptgw)'
+      nkpthf: '[nkpthf](https://docs.abinit.org/variables/basic#nkpthf)'
+      nline: '[nline](https://docs.abinit.org/variables/gstate#nline)'
+      nloc_alg: '[nloc_alg](https://docs.abinit.org/variables/dev#nloc_alg)'
+      nloc_mem: '[nloc_mem](https://docs.abinit.org/variables/dev#nloc_mem)'
+      nnos: '[nnos](https://docs.abinit.org/variables/rlx#nnos)'
+      nnsclo: '[nnsclo](https://docs.abinit.org/variables/dev#nnsclo)'
+      nnsclohf: '[nnsclohf](https://docs.abinit.org/variables/dev#nnsclohf)'
+      nobj: '[nobj](https://docs.abinit.org/variables/geo#nobj)'
+      nomegasf: '[nomegasf](https://docs.abinit.org/variables/gw#nomegasf)'
+      nomegasi: '[nomegasi](https://docs.abinit.org/variables/gw#nomegasi)'
+      nomegasrd: '[nomegasrd](https://docs.abinit.org/variables/gw#nomegasrd)'
+      nonlinear_info: '[nonlinear_info](https://docs.abinit.org/variables/dfpt#nonlinear_info)'
+      nonlop_ylm_count: '[nonlop_ylm_count](https://docs.abinit.org/variables/dev#nonlop_ylm_count)'
+      normpawu: '[normpawu](https://docs.abinit.org/variables/dev#normpawu)'
+      noseinert: '[noseinert](https://docs.abinit.org/variables/rlx#noseinert)'
+      np_slk: '[np_slk](https://docs.abinit.org/variables/paral#np_slk)'
+      npband: '[npband](https://docs.abinit.org/variables/paral#npband)'
+      npfft: '[npfft](https://docs.abinit.org/variables/paral#npfft)'
+      nphf: '[nphf](https://docs.abinit.org/variables/paral#nphf)'
+      npimage: '[npimage](https://docs.abinit.org/variables/paral#npimage)'
+      npkpt: '[npkpt](https://docs.abinit.org/variables/paral#npkpt)'
+      nppert: '[nppert](https://docs.abinit.org/variables/paral#nppert)'
+      npsp: '[npsp](https://docs.abinit.org/variables/gstate#npsp)'
+      npspalch: '[npspalch](https://docs.abinit.org/variables/gstate#npspalch)'
+      npspinor: '[npspinor](https://docs.abinit.org/variables/paral#npspinor)'
+      npulayit: '[npulayit](https://docs.abinit.org/variables/dev#npulayit)'
+      npvel: '[npvel](https://docs.abinit.org/variables/gw#npvel)'
+      npweps: '[npweps](https://docs.abinit.org/variables/internal#npweps)'
+      npwkss: '[npwkss](https://docs.abinit.org/variables/gw#npwkss)'
+      npwsigx: '[npwsigx](https://docs.abinit.org/variables/internal#npwsigx)'
+      npwwfn: '[npwwfn](https://docs.abinit.org/variables/internal#npwwfn)'
+      nqfd: '[nqfd](https://docs.abinit.org/variables/gstate#nqfd)'
+      nqpt: '[nqpt](https://docs.abinit.org/variables/gstate#nqpt)'
+      nqptdm: '[nqptdm](https://docs.abinit.org/variables/gw#nqptdm)'
+      nscforder: '[nscforder](https://docs.abinit.org/variables/dev#nscforder)'
+      nshiftk: '[nshiftk](https://docs.abinit.org/variables/basic#nshiftk)'
+      nshiftq: '[nshiftq](https://docs.abinit.org/variables/gstate#nshiftq)'
+      nspden: '[nspden](https://docs.abinit.org/variables/gstate#nspden)'
+      nspinor: '[nspinor](https://docs.abinit.org/variables/gstate#nspinor)'
+      nsppol: '[nsppol](https://docs.abinit.org/variables/basic#nsppol)'
+      nstep: '[nstep](https://docs.abinit.org/variables/basic#nstep)'
+      nsym: '[nsym](https://docs.abinit.org/variables/basic#nsym)'
+      ntime: '[ntime](https://docs.abinit.org/variables/rlx#ntime)'
+      ntimimage: '[ntimimage](https://docs.abinit.org/variables/rlx#ntimimage)'
+      ntypalch: '[ntypalch](https://docs.abinit.org/variables/gstate#ntypalch)'
+      ntypat: '[ntypat](https://docs.abinit.org/variables/basic#ntypat)'
+      ntyppure: '[ntyppure](https://docs.abinit.org/variables/gstate#ntyppure)'
+      nucdipmom: '[nucdipmom](https://docs.abinit.org/variables/gstate#nucdipmom)'
+      nwfshist: '[nwfshist](https://docs.abinit.org/variables/gstate#nwfshist)'
+      nzchempot: '[nzchempot](https://docs.abinit.org/variables/geo#nzchempot)'
+      objaat: '[objaat](https://docs.abinit.org/variables/geo#objaat)'
+      objaax: '[objaax](https://docs.abinit.org/variables/geo#objaax)'
+      objan: '[objan](https://docs.abinit.org/variables/geo#objan)'
+      objarf: '[objarf](https://docs.abinit.org/variables/geo#objarf)'
+      objaro: '[objaro](https://docs.abinit.org/variables/geo#objaro)'
+      objatr: '[objatr](https://docs.abinit.org/variables/geo#objatr)'
+      objbat: '[objbat](https://docs.abinit.org/variables/geo#objbat)'
+      objbax: '[objbax](https://docs.abinit.org/variables/geo#objbax)'
+      objbn: '[objbn](https://docs.abinit.org/variables/geo#objbn)'
+      objbrf: '[objbrf](https://docs.abinit.org/variables/geo#objbrf)'
+      objbro: '[objbro](https://docs.abinit.org/variables/geo#objbro)'
+      objbtr: '[objbtr](https://docs.abinit.org/variables/geo#objbtr)'
+      occ: '[occ](https://docs.abinit.org/variables/gstate#occ)'
+      occopt: '[occopt](https://docs.abinit.org/variables/basic#occopt)'
+      omegasimax: '[omegasimax](https://docs.abinit.org/variables/gw#omegasimax)'
+      omegasrdmax: '[omegasrdmax](https://docs.abinit.org/variables/gw#omegasrdmax)'
+      optcell: '[optcell](https://docs.abinit.org/variables/rlx#optcell)'
+      optdriver: '[optdriver](https://docs.abinit.org/variables/gstate#optdriver)'
+      optforces: '[optforces](https://docs.abinit.org/variables/dev#optforces)'
+      optnlxccc: '[optnlxccc](https://docs.abinit.org/variables/dev#optnlxccc)'
+      optstress: '[optstress](https://docs.abinit.org/variables/gstate#optstress)'
+      orbmag: '[orbmag](https://docs.abinit.org/variables/gstate#orbmag)'
+      ortalg: '[ortalg](https://docs.abinit.org/variables/dev#ortalg)'
+      outdata_prefix: '[outdata_prefix](https://docs.abinit.org/variables/files#outdata_prefix)'
+      output_file: '[output_file](https://docs.abinit.org/variables/files#output_file)'
+      papiopt: '[papiopt](https://docs.abinit.org/variables/dev#papiopt)'
+      paral_atom: '[paral_atom](https://docs.abinit.org/variables/paral#paral_atom)'
+      paral_kgb: '[paral_kgb](https://docs.abinit.org/variables/paral#paral_kgb)'
+      paral_rf: '[paral_rf](https://docs.abinit.org/variables/paral#paral_rf)'
+      pawcpxocc: '[pawcpxocc](https://docs.abinit.org/variables/paw#pawcpxocc)'
+      pawcross: '[pawcross](https://docs.abinit.org/variables/paw#pawcross)'
+      pawecutdg: '[pawecutdg](https://docs.abinit.org/variables/paw#pawecutdg)'
+      pawfatbnd: '[pawfatbnd](https://docs.abinit.org/variables/paw#pawfatbnd)'
+      pawlcutd: '[pawlcutd](https://docs.abinit.org/variables/paw#pawlcutd)'
+      pawlmix: '[pawlmix](https://docs.abinit.org/variables/paw#pawlmix)'
+      pawmixdg: '[pawmixdg](https://docs.abinit.org/variables/paw#pawmixdg)'
+      pawnhatxc: '[pawnhatxc](https://docs.abinit.org/variables/paw#pawnhatxc)'
+      pawnphi: '[pawnphi](https://docs.abinit.org/variables/paw#pawnphi)'
+      pawntheta: '[pawntheta](https://docs.abinit.org/variables/paw#pawntheta)'
+      pawnzlm: '[pawnzlm](https://docs.abinit.org/variables/paw#pawnzlm)'
+      pawoptmix: '[pawoptmix](https://docs.abinit.org/variables/paw#pawoptmix)'
+      pawoptosc: '[pawoptosc](https://docs.abinit.org/variables/paw#pawoptosc)'
+      pawovlp: '[pawovlp](https://docs.abinit.org/variables/paw#pawovlp)'
+      pawprt_b: '[pawprt_b](https://docs.abinit.org/variables/dev#pawprt_b)'
+      pawprt_k: '[pawprt_k](https://docs.abinit.org/variables/dev#pawprt_k)'
+      pawprtden: '[pawprtden](https://docs.abinit.org/variables/paw#pawprtden)'
+      pawprtdos: '[pawprtdos](https://docs.abinit.org/variables/paw#pawprtdos)'
+      pawprtvol: '[pawprtvol](https://docs.abinit.org/variables/paw#pawprtvol)'
+      pawprtwf: '[pawprtwf](https://docs.abinit.org/variables/paw#pawprtwf)'
+      pawspnorb: '[pawspnorb](https://docs.abinit.org/variables/paw#pawspnorb)'
+      pawstgylm: '[pawstgylm](https://docs.abinit.org/variables/paw#pawstgylm)'
+      pawsushat: '[pawsushat](https://docs.abinit.org/variables/paw#pawsushat)'
+      pawujat: '[pawujat](https://docs.abinit.org/variables/dev#pawujat)'
+      pawujrad: '[pawujrad](https://docs.abinit.org/variables/dev#pawujrad)'
+      pawujv: '[pawujv](https://docs.abinit.org/variables/dev#pawujv)'
+      pawusecp: '[pawusecp](https://docs.abinit.org/variables/paw#pawusecp)'
+      pawxcdev: '[pawxcdev](https://docs.abinit.org/variables/paw#pawxcdev)'
+      ph_intmeth: '[ph_intmeth](https://docs.abinit.org/variables/eph#ph_intmeth)'
+      ph_ndivsm: '[ph_ndivsm](https://docs.abinit.org/variables/eph#ph_ndivsm)'
+      ph_ngqpt: '[ph_ngqpt](https://docs.abinit.org/variables/eph#ph_ngqpt)'
+      ph_nqpath: '[ph_nqpath](https://docs.abinit.org/variables/eph#ph_nqpath)'
+      ph_nqshift: '[ph_nqshift](https://docs.abinit.org/variables/eph#ph_nqshift)'
+      ph_qpath: '[ph_qpath](https://docs.abinit.org/variables/eph#ph_qpath)'
+      ph_qshift: '[ph_qshift](https://docs.abinit.org/variables/eph#ph_qshift)'
+      ph_smear: '[ph_smear](https://docs.abinit.org/variables/eph#ph_smear)'
+      ph_wstep: '[ph_wstep](https://docs.abinit.org/variables/eph#ph_wstep)'
+      pimass: '[pimass](https://docs.abinit.org/variables/rlx#pimass)'
+      pimd_constraint: '[pimd_constraint](https://docs.abinit.org/variables/rlx#pimd_constraint)'
+      pitransform: '[pitransform](https://docs.abinit.org/variables/rlx#pitransform)'
+      plowan_bandf: '[plowan_bandf](https://docs.abinit.org/variables/dev#plowan_bandf)'
+      plowan_bandi: '[plowan_bandi](https://docs.abinit.org/variables/dev#plowan_bandi)'
+      plowan_compute: '[plowan_compute](https://docs.abinit.org/variables/dev#plowan_compute)'
+      plowan_iatom: '[plowan_iatom](https://docs.abinit.org/variables/dev#plowan_iatom)'
+      plowan_it: '[plowan_it](https://docs.abinit.org/variables/dev#plowan_it)'
+      plowan_lcalc: '[plowan_lcalc](https://docs.abinit.org/variables/dev#plowan_lcalc)'
+      plowan_natom: '[plowan_natom](https://docs.abinit.org/variables/dev#plowan_natom)'
+      plowan_nbl: '[plowan_nbl](https://docs.abinit.org/variables/dev#plowan_nbl)'
+      plowan_nt: '[plowan_nt](https://docs.abinit.org/variables/dev#plowan_nt)'
+      plowan_projcalc: '[plowan_projcalc](https://docs.abinit.org/variables/dev#plowan_projcalc)'
+      plowan_realspace: '[plowan_realspace](https://docs.abinit.org/variables/dev#plowan_realspace)'
+      polcen: '[polcen](https://docs.abinit.org/variables/ffield#polcen)'
+      posdoppler: '[posdoppler](https://docs.abinit.org/variables/gstate#posdoppler)'
+      positron: '[positron](https://docs.abinit.org/variables/gstate#positron)'
+      posnstep: '[posnstep](https://docs.abinit.org/variables/gstate#posnstep)'
+      posocc: '[posocc](https://docs.abinit.org/variables/gstate#posocc)'
+      postoldfe: '[postoldfe](https://docs.abinit.org/variables/gstate#postoldfe)'
+      postoldff: '[postoldff](https://docs.abinit.org/variables/gstate#postoldff)'
+      pp_dirpath: '[pp_dirpath](https://docs.abinit.org/variables/files#pp_dirpath)'
+      ppmfrq: '[ppmfrq](https://docs.abinit.org/variables/gw#ppmfrq)'
+      ppmodel: '[ppmodel](https://docs.abinit.org/variables/gw#ppmodel)'
+      prepalw: '[prepalw](https://docs.abinit.org/variables/dfpt#prepalw)'
+      prepanl: '[prepanl](https://docs.abinit.org/variables/dfpt#prepanl)'
+      prepgkk: '[prepgkk](https://docs.abinit.org/variables/dfpt#prepgkk)'
+      prepscphon: '[prepscphon](https://docs.abinit.org/variables/dev#prepscphon)'
+      prt1dm: '[prt1dm](https://docs.abinit.org/variables/files#prt1dm)'
+      prtatlist: '[prtatlist](https://docs.abinit.org/variables/rlx#prtatlist)'
+      prtbbb: '[prtbbb](https://docs.abinit.org/variables/dfpt#prtbbb)'
+      prtbltztrp: '[prtbltztrp](https://docs.abinit.org/variables/dev#prtbltztrp)'
+      prtchkprdm: '[prtchkprdm](https://docs.abinit.org/variables/files#prtchkprdm)'
+      prtcif: '[prtcif](https://docs.abinit.org/variables/dev#prtcif)'
+      prtden: '[prtden](https://docs.abinit.org/variables/files#prtden)'
+      prtdensph: '[prtdensph](https://docs.abinit.org/variables/gstate#prtdensph)'
+      prtdipole: '[prtdipole](https://docs.abinit.org/variables/dev#prtdipole)'
+      prtdos: '[prtdos](https://docs.abinit.org/variables/files#prtdos)'
+      prtdosm: '[prtdosm](https://docs.abinit.org/variables/files#prtdosm)'
+      prtebands: '[prtebands](https://docs.abinit.org/variables/gstate#prtebands)'
+      prtefg: '[prtefg](https://docs.abinit.org/variables/paw#prtefg)'
+      prtefmas: '[prtefmas](https://docs.abinit.org/variables/dfpt#prtefmas)'
+      prteig: '[prteig](https://docs.abinit.org/variables/files#prteig)'
+      prtelf: '[prtelf](https://docs.abinit.org/variables/files#prtelf)'
+      prteliash: '[prteliash](https://docs.abinit.org/variables/eph#prteliash)'
+      prtfc: '[prtfc](https://docs.abinit.org/variables/paw#prtfc)'
+      prtfsurf: '[prtfsurf](https://docs.abinit.org/variables/files#prtfsurf)'
+      prtfull1wf: '[prtfull1wf](https://docs.abinit.org/variables/dfpt#prtfull1wf)'
+      prtgden: '[prtgden](https://docs.abinit.org/variables/files#prtgden)'
+      prtgeo: '[prtgeo](https://docs.abinit.org/variables/files#prtgeo)'
+      prtgkk: '[prtgkk](https://docs.abinit.org/variables/files#prtgkk)'
+      prtgsr: '[prtgsr](https://docs.abinit.org/variables/files#prtgsr)'
+      prtkbff: '[prtkbff](https://docs.abinit.org/variables/files#prtkbff)'
+      prtkden: '[prtkden](https://docs.abinit.org/variables/files#prtkden)'
+      prtkpt: '[prtkpt](https://docs.abinit.org/variables/files#prtkpt)'
+      prtlden: '[prtlden](https://docs.abinit.org/variables/files#prtlden)'
+      prtnabla: '[prtnabla](https://docs.abinit.org/variables/paw#prtnabla)'
+      prtnest: '[prtnest](https://docs.abinit.org/variables/dev#prtnest)'
+      prtphbands: '[prtphbands](https://docs.abinit.org/variables/eph#prtphbands)'
+      prtphdos: '[prtphdos](https://docs.abinit.org/variables/eph#prtphdos)'
+      prtphsurf: '[prtphsurf](https://docs.abinit.org/variables/eph#prtphsurf)'
+      prtposcar: '[prtposcar](https://docs.abinit.org/variables/dev#prtposcar)'
+      prtpot: '[prtpot](https://docs.abinit.org/variables/files#prtpot)'
+      prtprocar: '[prtprocar](https://docs.abinit.org/variables/dev#prtprocar)'
+      prtpsps: '[prtpsps](https://docs.abinit.org/variables/files#prtpsps)'
+      prtspcur: '[prtspcur](https://docs.abinit.org/variables/files#prtspcur)'
+      prtstm: '[prtstm](https://docs.abinit.org/variables/files#prtstm)'
+      prtsuscep: '[prtsuscep](https://docs.abinit.org/variables/files#prtsuscep)'
+      prtvclmb: '[prtvclmb](https://docs.abinit.org/variables/files#prtvclmb)'
+      prtvdw: '[prtvdw](https://docs.abinit.org/variables/vdw#prtvdw)'
+      prtvha: '[prtvha](https://docs.abinit.org/variables/files#prtvha)'
+      prtvhxc: '[prtvhxc](https://docs.abinit.org/variables/files#prtvhxc)'
+      prtvol: '[prtvol](https://docs.abinit.org/variables/files#prtvol)'
+      prtvolimg: '[prtvolimg](https://docs.abinit.org/variables/files#prtvolimg)'
+      prtvpsp: '[prtvpsp](https://docs.abinit.org/variables/files#prtvpsp)'
+      prtvxc: '[prtvxc](https://docs.abinit.org/variables/files#prtvxc)'
+      prtwant: '[prtwant](https://docs.abinit.org/variables/files#prtwant)'
+      prtwf: '[prtwf](https://docs.abinit.org/variables/files#prtwf)'
+      prtwf_full: '[prtwf_full](https://docs.abinit.org/variables/files#prtwf_full)'
+      prtxml: '[prtxml](https://docs.abinit.org/variables/files#prtxml)'
+      pseudos: '[pseudos](https://docs.abinit.org/variables/files#pseudos)'
+      ptcharge: '[ptcharge](https://docs.abinit.org/variables/paw#ptcharge)'
+      ptgroupma: '[ptgroupma](https://docs.abinit.org/variables/geo#ptgroupma)'
+      pvelmax: '[pvelmax](https://docs.abinit.org/variables/gw#pvelmax)'
+      pw_unbal_thresh: '[pw_unbal_thresh](https://docs.abinit.org/variables/paral#pw_unbal_thresh)'
+      qmass: '[qmass](https://docs.abinit.org/variables/rlx#qmass)'
+      qprtrb: '[qprtrb](https://docs.abinit.org/variables/ffield#qprtrb)'
+      qpt: '[qpt](https://docs.abinit.org/variables/gstate#qpt)'
+      qptdm: '[qptdm](https://docs.abinit.org/variables/gw#qptdm)'
+      qptn: '[qptn](https://docs.abinit.org/variables/internal#qptn)'
+      qptnrm: '[qptnrm](https://docs.abinit.org/variables/gstate#qptnrm)'
+      qptopt: '[qptopt](https://docs.abinit.org/variables/gstate#qptopt)'
+      qptrlatt: '[qptrlatt](https://docs.abinit.org/variables/gstate#qptrlatt)'
+      quadmom: '[quadmom](https://docs.abinit.org/variables/paw#quadmom)'
+      quadquad: '[quadquad](https://docs.abinit.org/variables/eph#quadquad)'
+      random_atpos: '[random_atpos](https://docs.abinit.org/variables/rlx#random_atpos)'
+      ratsm: '[ratsm](https://docs.abinit.org/variables/gstate#ratsm)'
+      ratsph: '[ratsph](https://docs.abinit.org/variables/gstate#ratsph)'
+      ratsph_extra: '[ratsph_extra](https://docs.abinit.org/variables/gstate#ratsph_extra)'
+      rcut: '[rcut](https://docs.abinit.org/variables/gw#rcut)'
+      recefermi: '[recefermi](https://docs.abinit.org/variables/dev#recefermi)'
+      recgratio: '[recgratio](https://docs.abinit.org/variables/dev#recgratio)'
+      recnpath: '[recnpath](https://docs.abinit.org/variables/dev#recnpath)'
+      recnrec: '[recnrec](https://docs.abinit.org/variables/dev#recnrec)'
+      recptrott: '[recptrott](https://docs.abinit.org/variables/dev#recptrott)'
+      recrcut: '[recrcut](https://docs.abinit.org/variables/dev#recrcut)'
+      rectesteg: '[rectesteg](https://docs.abinit.org/variables/dev#rectesteg)'
+      rectolden: '[rectolden](https://docs.abinit.org/variables/dev#rectolden)'
+      red_dfield: '[red_dfield](https://docs.abinit.org/variables/ffield#red_dfield)'
+      red_efield: '[red_efield](https://docs.abinit.org/variables/ffield#red_efield)'
+      red_efieldbar: '[red_efieldbar](https://docs.abinit.org/variables/ffield#red_efieldbar)'
+      restartxf: '[restartxf](https://docs.abinit.org/variables/rlx#restartxf)'
+      rf2_dkde: '[rf2_dkde](https://docs.abinit.org/variables/dfpt#rf2_dkde)'
+      rf2_dkdk: '[rf2_dkdk](https://docs.abinit.org/variables/dfpt#rf2_dkdk)'
+      rf2_pert1_dir: '[rf2_pert1_dir](https://docs.abinit.org/variables/dfpt#rf2_pert1_dir)'
+      rf2_pert2_dir: '[rf2_pert2_dir](https://docs.abinit.org/variables/dfpt#rf2_pert2_dir)'
+      rfasr: '[rfasr](https://docs.abinit.org/variables/dfpt#rfasr)'
+      rfatpol: '[rfatpol](https://docs.abinit.org/variables/dfpt#rfatpol)'
+      rfddk: '[rfddk](https://docs.abinit.org/variables/dfpt#rfddk)'
+      rfdir: '[rfdir](https://docs.abinit.org/variables/dfpt#rfdir)'
+      rfelfd: '[rfelfd](https://docs.abinit.org/variables/dfpt#rfelfd)'
+      rfmagn: '[rfmagn](https://docs.abinit.org/variables/dfpt#rfmagn)'
+      rfmeth: '[rfmeth](https://docs.abinit.org/variables/dfpt#rfmeth)'
+      rfphon: '[rfphon](https://docs.abinit.org/variables/dfpt#rfphon)'
+      rfstrs: '[rfstrs](https://docs.abinit.org/variables/dfpt#rfstrs)'
+      rfuser: '[rfuser](https://docs.abinit.org/variables/dfpt#rfuser)'
+      rhoqpmix: '[rhoqpmix](https://docs.abinit.org/variables/gw#rhoqpmix)'
+      rifcsph: '[rifcsph](https://docs.abinit.org/variables/eph#rifcsph)'
+      rmm_diis: '[rmm_diis](https://docs.abinit.org/variables/gstate#rmm_diis)'
+      rmm_diis_savemem: '[rmm_diis_savemem](https://docs.abinit.org/variables/gstate#rmm_diis_savemem)'
+      rprim: '[rprim](https://docs.abinit.org/variables/basic#rprim)'
+      rprimd: '[rprimd](https://docs.abinit.org/variables/basic#rprimd)'
+      scalecart: '[scalecart](https://docs.abinit.org/variables/basic#scalecart)'
+      scphon_supercell: '[scphon_supercell](https://docs.abinit.org/variables/gstate#scphon_supercell)'
+      scphon_temp: '[scphon_temp](https://docs.abinit.org/variables/gstate#scphon_temp)'
+      shiftk: '[shiftk](https://docs.abinit.org/variables/basic#shiftk)'
+      shiftq: '[shiftq](https://docs.abinit.org/variables/gstate#shiftq)'
+      sigma_bsum_range: '[sigma_bsum_range](https://docs.abinit.org/variables/gw#sigma_bsum_range)'
+      sigma_erange: '[sigma_erange](https://docs.abinit.org/variables/eph#sigma_erange)'
+      sigma_ngkpt: '[sigma_ngkpt](https://docs.abinit.org/variables/gw#sigma_ngkpt)'
+      sigma_nshiftk: '[sigma_nshiftk](https://docs.abinit.org/variables/gw#sigma_nshiftk)'
+      sigma_shiftk: '[sigma_shiftk](https://docs.abinit.org/variables/gw#sigma_shiftk)'
+      signperm: '[signperm](https://docs.abinit.org/variables/rlx#signperm)'
+      slabwsrad: '[slabwsrad](https://docs.abinit.org/variables/gstate#slabwsrad)'
+      slabzbeg: '[slabzbeg](https://docs.abinit.org/variables/gstate#slabzbeg)'
+      slabzend: '[slabzend](https://docs.abinit.org/variables/gstate#slabzend)'
+      slk_rankpp: '[slk_rankpp](https://docs.abinit.org/variables/gstate#slk_rankpp)'
+      smdelta: '[smdelta](https://docs.abinit.org/variables/dfpt#smdelta)'
+      so_psp: '[so_psp](https://docs.abinit.org/variables/gstate#so_psp)'
+      spbroad: '[spbroad](https://docs.abinit.org/variables/gw#spbroad)'
+      spgaxor: '[spgaxor](https://docs.abinit.org/variables/geo#spgaxor)'
+      spgorig: '[spgorig](https://docs.abinit.org/variables/geo#spgorig)'
+      spgroup: '[spgroup](https://docs.abinit.org/variables/geo#spgroup)'
+      spgroupma: '[spgroupma](https://docs.abinit.org/variables/geo#spgroupma)'
+      spinat: '[spinat](https://docs.abinit.org/variables/gstate#spinat)'
+      spinmagntarget: '[spinmagntarget](https://docs.abinit.org/variables/ffield#spinmagntarget)'
+      spmeth: '[spmeth](https://docs.abinit.org/variables/gw#spmeth)'
+      spnorbscl: '[spnorbscl](https://docs.abinit.org/variables/paw#spnorbscl)'
+      stmbias: '[stmbias](https://docs.abinit.org/variables/gstate#stmbias)'
+      strfact: '[strfact](https://docs.abinit.org/variables/rlx#strfact)'
+      string_algo: '[string_algo](https://docs.abinit.org/variables/rlx#string_algo)'
+      strprecon: '[strprecon](https://docs.abinit.org/variables/rlx#strprecon)'
+      strtarget: '[strtarget](https://docs.abinit.org/variables/rlx#strtarget)'
+      structure: '[structure](https://docs.abinit.org/variables/basic#structure)'
+      supercell_latt: '[supercell_latt](https://docs.abinit.org/variables/gstate#supercell_latt)'
+      symafm: '[symafm](https://docs.abinit.org/variables/gstate#symafm)'
+      symchi: '[symchi](https://docs.abinit.org/variables/gw#symchi)'
+      symdynmat: '[symdynmat](https://docs.abinit.org/variables/eph#symdynmat)'
+      symmorphi: '[symmorphi](https://docs.abinit.org/variables/dev#symmorphi)'
+      symrel: '[symrel](https://docs.abinit.org/variables/basic#symrel)'
+      symsigma: '[symsigma](https://docs.abinit.org/variables/gw#symsigma)'
+      symv1scf: '[symv1scf](https://docs.abinit.org/variables/eph#symv1scf)'
+      td_maxene: '[td_maxene](https://docs.abinit.org/variables/dfpt#td_maxene)'
+      td_mexcit: '[td_mexcit](https://docs.abinit.org/variables/dfpt#td_mexcit)'
+      tfkinfunc: '[tfkinfunc](https://docs.abinit.org/variables/dev#tfkinfunc)'
+      tfw_toldfe: '[tfw_toldfe](https://docs.abinit.org/variables/dev#tfw_toldfe)'
+      tim1rev: '[tim1rev](https://docs.abinit.org/variables/dfpt#tim1rev)'
+      timopt: '[timopt](https://docs.abinit.org/variables/gstate#timopt)'
+      tl_nprccg: '[tl_nprccg](https://docs.abinit.org/variables/gstate#tl_nprccg)'
+      tl_radius: '[tl_radius](https://docs.abinit.org/variables/gstate#tl_radius)'
+      tmesh: '[tmesh](https://docs.abinit.org/variables/eph#tmesh)'
+      tmpdata_prefix: '[tmpdata_prefix](https://docs.abinit.org/variables/files#tmpdata_prefix)'
+      tnons: '[tnons](https://docs.abinit.org/variables/basic#tnons)'
+      tolcum: '[tolcum](https://docs.abinit.org/variables/gw#tolcum)'
+      toldfe: '[toldfe](https://docs.abinit.org/variables/basic#toldfe)'
+      toldff: '[toldff](https://docs.abinit.org/variables/basic#toldff)'
+      tolimg: '[tolimg](https://docs.abinit.org/variables/rlx#tolimg)'
+      tolmxde: '[tolmxde](https://docs.abinit.org/variables/rlx#tolmxde)'
+      tolmxf: '[tolmxf](https://docs.abinit.org/variables/rlx#tolmxf)'
+      tolrde: '[tolrde](https://docs.abinit.org/variables/dev#tolrde)'
+      tolrff: '[tolrff](https://docs.abinit.org/variables/basic#tolrff)'
+      tolsym: '[tolsym](https://docs.abinit.org/variables/geo#tolsym)'
+      tolvrs: '[tolvrs](https://docs.abinit.org/variables/basic#tolvrs)'
+      tolwfr: '[tolwfr](https://docs.abinit.org/variables/basic#tolwfr)'
+      tphysel: '[tphysel](https://docs.abinit.org/variables/gstate#tphysel)'
+      transport_ngkpt: '[transport_ngkpt](https://docs.abinit.org/variables/eph#transport_ngkpt)'
+      tsmear: '[tsmear](https://docs.abinit.org/variables/gstate#tsmear)'
+      typat: '[typat](https://docs.abinit.org/variables/basic#typat)'
+      ucrpa: '[ucrpa](https://docs.abinit.org/variables/gw#ucrpa)'
+      ucrpa_bands: '[ucrpa_bands](https://docs.abinit.org/variables/gw#ucrpa_bands)'
+      ucrpa_window: '[ucrpa_window](https://docs.abinit.org/variables/gw#ucrpa_window)'
+      udtset: '[udtset](https://docs.abinit.org/variables/basic#udtset)'
+      upawu: '[upawu](https://docs.abinit.org/variables/paw#upawu)'
+      use_gemm_nonlop: '[use_gemm_nonlop](https://docs.abinit.org/variables/dev#use_gemm_nonlop)'
+      use_gpu_cuda: '[use_gpu_cuda](https://docs.abinit.org/variables/paral#use_gpu_cuda)'
+      use_nonscf_gkk: '[use_nonscf_gkk](https://docs.abinit.org/variables/dev#use_nonscf_gkk)'
+      use_slk: '[use_slk](https://docs.abinit.org/variables/paral#use_slk)'
+      usedmatpu: '[usedmatpu](https://docs.abinit.org/variables/paw#usedmatpu)'
+      usedmft: '[usedmft](https://docs.abinit.org/variables/dev#usedmft)'
+      useexexch: '[useexexch](https://docs.abinit.org/variables/paw#useexexch)'
+      useextfpmd: '[useextfpmd](https://docs.abinit.org/variables/gstate#useextfpmd)'
+      usefock: '[usefock](https://docs.abinit.org/variables/internal#usefock)'
+      usekden: '[usekden](https://docs.abinit.org/variables/gstate#usekden)'
+      usepaw: '[usepaw](https://docs.abinit.org/variables/internal#usepaw)'
+      usepawu: '[usepawu](https://docs.abinit.org/variables/paw#usepawu)'
+      usepead: '[usepead](https://docs.abinit.org/variables/dfpt#usepead)'
+      usepotzero: '[usepotzero](https://docs.abinit.org/variables/dev#usepotzero)'
+      userec: '[userec](https://docs.abinit.org/variables/internal#userec)'
+      useria: '[useria](https://docs.abinit.org/variables/dev#useria)'
+      userib: '[userib](https://docs.abinit.org/variables/dev#userib)'
+      useric: '[useric](https://docs.abinit.org/variables/dev#useric)'
+      userid: '[userid](https://docs.abinit.org/variables/dev#userid)'
+      userie: '[userie](https://docs.abinit.org/variables/dev#userie)'
+      userra: '[userra](https://docs.abinit.org/variables/dev#userra)'
+      userrb: '[userrb](https://docs.abinit.org/variables/dev#userrb)'
+      userrc: '[userrc](https://docs.abinit.org/variables/dev#userrc)'
+      userrd: '[userrd](https://docs.abinit.org/variables/dev#userrd)'
+      userre: '[userre](https://docs.abinit.org/variables/dev#userre)'
+      usewvl: '[usewvl](https://docs.abinit.org/variables/basic#usewvl)'
+      usexcnhat: '[usexcnhat](https://docs.abinit.org/variables/paw#usexcnhat)'
+      useylm: '[useylm](https://docs.abinit.org/variables/dev#useylm)'
+      vaclst: '[vaclst](https://docs.abinit.org/variables/geo#vaclst)'
+      vacnum: '[vacnum](https://docs.abinit.org/variables/geo#vacnum)'
+      vacuum: '[vacuum](https://docs.abinit.org/variables/gstate#vacuum)'
+      vacwidth: '[vacwidth](https://docs.abinit.org/variables/gstate#vacwidth)'
+      vcutgeo: '[vcutgeo](https://docs.abinit.org/variables/gw#vcutgeo)'
+      vdw_df_acutmin: '[vdw_df_acutmin](https://docs.abinit.org/variables/vdw#vdw_df_acutmin)'
+      vdw_df_aratio: '[vdw_df_aratio](https://docs.abinit.org/variables/vdw#vdw_df_aratio)'
+      vdw_df_damax: '[vdw_df_damax](https://docs.abinit.org/variables/vdw#vdw_df_damax)'
+      vdw_df_damin: '[vdw_df_damin](https://docs.abinit.org/variables/vdw#vdw_df_damin)'
+      vdw_df_dcut: '[vdw_df_dcut](https://docs.abinit.org/variables/vdw#vdw_df_dcut)'
+      vdw_df_dratio: '[vdw_df_dratio](https://docs.abinit.org/variables/vdw#vdw_df_dratio)'
+      vdw_df_dsoft: '[vdw_df_dsoft](https://docs.abinit.org/variables/vdw#vdw_df_dsoft)'
+      vdw_df_gcut: '[vdw_df_gcut](https://docs.abinit.org/variables/vdw#vdw_df_gcut)'
+      vdw_df_ndpts: '[vdw_df_ndpts](https://docs.abinit.org/variables/vdw#vdw_df_ndpts)'
+      vdw_df_ngpts: '[vdw_df_ngpts](https://docs.abinit.org/variables/vdw#vdw_df_ngpts)'
+      vdw_df_nqpts: '[vdw_df_nqpts](https://docs.abinit.org/variables/vdw#vdw_df_nqpts)'
+      vdw_df_nrpts: '[vdw_df_nrpts](https://docs.abinit.org/variables/vdw#vdw_df_nrpts)'
+      vdw_df_nsmooth: '[vdw_df_nsmooth](https://docs.abinit.org/variables/vdw#vdw_df_nsmooth)'
+      vdw_df_phisoft: '[vdw_df_phisoft](https://docs.abinit.org/variables/vdw#vdw_df_phisoft)'
+      vdw_df_qcut: '[vdw_df_qcut](https://docs.abinit.org/variables/vdw#vdw_df_qcut)'
+      vdw_df_qratio: '[vdw_df_qratio](https://docs.abinit.org/variables/vdw#vdw_df_qratio)'
+      vdw_df_rcut: '[vdw_df_rcut](https://docs.abinit.org/variables/vdw#vdw_df_rcut)'
+      vdw_df_rsoft: '[vdw_df_rsoft](https://docs.abinit.org/variables/vdw#vdw_df_rsoft)'
+      vdw_df_threshold: '[vdw_df_threshold](https://docs.abinit.org/variables/vdw#vdw_df_threshold)'
+      vdw_df_tolerance: '[vdw_df_tolerance](https://docs.abinit.org/variables/vdw#vdw_df_tolerance)'
+      vdw_df_tweaks: '[vdw_df_tweaks](https://docs.abinit.org/variables/vdw#vdw_df_tweaks)'
+      vdw_df_zab: '[vdw_df_zab](https://docs.abinit.org/variables/vdw#vdw_df_zab)'
+      vdw_nfrag: '[vdw_nfrag](https://docs.abinit.org/variables/vdw#vdw_nfrag)'
+      vdw_supercell: '[vdw_supercell](https://docs.abinit.org/variables/vdw#vdw_supercell)'
+      vdw_tol: '[vdw_tol](https://docs.abinit.org/variables/vdw#vdw_tol)'
+      vdw_tol_3bt: '[vdw_tol_3bt](https://docs.abinit.org/variables/vdw#vdw_tol_3bt)'
+      vdw_typfrag: '[vdw_typfrag](https://docs.abinit.org/variables/vdw#vdw_typfrag)'
+      vdw_xc: '[vdw_xc](https://docs.abinit.org/variables/vdw#vdw_xc)'
+      vel: '[vel](https://docs.abinit.org/variables/rlx#vel)'
+      vel_cell: '[vel_cell](https://docs.abinit.org/variables/rlx#vel_cell)'
+      vis: '[vis](https://docs.abinit.org/variables/rlx#vis)'
+      vprtrb: '[vprtrb](https://docs.abinit.org/variables/ffield#vprtrb)'
+      w90iniprj: '[w90iniprj](https://docs.abinit.org/variables/w90#w90iniprj)'
+      w90prtunk: '[w90prtunk](https://docs.abinit.org/variables/w90#w90prtunk)'
+      wfk_task: '[wfk_task](https://docs.abinit.org/variables/gstate#wfk_task)'
+      wfmix: '[wfmix](https://docs.abinit.org/variables/gstate#wfmix)'
+      wfoptalg: '[wfoptalg](https://docs.abinit.org/variables/dev#wfoptalg)'
+      wtatcon: '[wtatcon](https://docs.abinit.org/variables/rlx#wtatcon)'
+      wtk: '[wtk](https://docs.abinit.org/variables/basic#wtk)'
+      wtq: '[wtq](https://docs.abinit.org/variables/gstate#wtq)'
+      wvl_bigdft_comp: '[wvl_bigdft_comp](https://docs.abinit.org/variables/gstate#wvl_bigdft_comp)'
+      wvl_crmult: '[wvl_crmult](https://docs.abinit.org/variables/gstate#wvl_crmult)'
+      wvl_frmult: '[wvl_frmult](https://docs.abinit.org/variables/gstate#wvl_frmult)'
+      wvl_hgrid: '[wvl_hgrid](https://docs.abinit.org/variables/basic#wvl_hgrid)'
+      wvl_ngauss: '[wvl_ngauss](https://docs.abinit.org/variables/gstate#wvl_ngauss)'
+      wvl_nprccg: '[wvl_nprccg](https://docs.abinit.org/variables/gstate#wvl_nprccg)'
+      x1rdm: '[x1rdm](https://docs.abinit.org/variables/gw#x1rdm)'
+      xc_denpos: '[xc_denpos](https://docs.abinit.org/variables/dev#xc_denpos)'
+      xc_tb09_c: '[xc_tb09_c](https://docs.abinit.org/variables/dev#xc_tb09_c)'
+      xcart: '[xcart](https://docs.abinit.org/variables/basic#xcart)'
+      xclevel: '[xclevel](https://docs.abinit.org/variables/internal#xclevel)'
+      xred: '[xred](https://docs.abinit.org/variables/basic#xred)'
+      xredsph_extra: '[xredsph_extra](https://docs.abinit.org/variables/gstate#xredsph_extra)'
+      xyzfile: '[xyzfile](https://docs.abinit.org/variables/geo#xyzfile)'
+      zcut: '[zcut](https://docs.abinit.org/variables/gw#zcut)'
+      zeemanfield: '[zeemanfield](https://docs.abinit.org/variables/ffield#zeemanfield)'
+      ziontypat: '[ziontypat](https://docs.abinit.org/variables/internal#ziontypat)'
+      znucl: '[znucl](https://docs.abinit.org/variables/basic#znucl)'
+      atom_aim: '[atom](https://docs.abinit.org/variables/aim#atom)'
+      atrad_aim: '[atrad](https://docs.abinit.org/variables/aim#atrad)'
+      coff1_aim: '[coff1](https://docs.abinit.org/variables/aim#coff1)'
+      coff2_aim: '[coff2](https://docs.abinit.org/variables/aim#coff2)'
+      crit_aim: '[crit](https://docs.abinit.org/variables/aim#crit)'
+      denout_aim: '[denout](https://docs.abinit.org/variables/aim#denout)'
+      dltyp_aim: '[dltyp](https://docs.abinit.org/variables/aim#dltyp)'
+      dpclim_aim: '[dpclim](https://docs.abinit.org/variables/aim#dpclim)'
+      foldep_aim: '[foldep](https://docs.abinit.org/variables/aim#foldep)'
+      follow_aim: '[follow](https://docs.abinit.org/variables/aim#follow)'
+      folstp_aim: '[folstp](https://docs.abinit.org/variables/aim#folstp)'
+      gpsurf_aim: '[gpsurf](https://docs.abinit.org/variables/aim#gpsurf)'
+      inpt_aim: '[inpt](https://docs.abinit.org/variables/aim#inpt)'
+      irho_aim: '[irho](https://docs.abinit.org/variables/aim#irho)'
+      ivol_aim: '[ivol](https://docs.abinit.org/variables/aim#ivol)'
+      lapout_aim: '[lapout](https://docs.abinit.org/variables/aim#lapout)'
+      lgrad_aim: '[lgrad](https://docs.abinit.org/variables/aim#lgrad)'
+      lgrad2_aim: '[lgrad2](https://docs.abinit.org/variables/aim#lgrad2)'
+      lstep_aim: '[lstep](https://docs.abinit.org/variables/aim#lstep)'
+      lstep2_aim: '[lstep2](https://docs.abinit.org/variables/aim#lstep2)'
+      maxatd_aim: '[maxatd](https://docs.abinit.org/variables/aim#maxatd)'
+      maxcpd_aim: '[maxcpd](https://docs.abinit.org/variables/aim#maxcpd)'
+      ngrid_aim: '[ngrid](https://docs.abinit.org/variables/aim#ngrid)'
+      nphi_aim: '[nphi](https://docs.abinit.org/variables/aim#nphi)'
+      nsa_aim: '[nsa](https://docs.abinit.org/variables/aim#nsa)'
+      nsb_aim: '[nsb](https://docs.abinit.org/variables/aim#nsb)'
+      nsc_aim: '[nsc](https://docs.abinit.org/variables/aim#nsc)'
+      ntheta_aim: '[ntheta](https://docs.abinit.org/variables/aim#ntheta)'
+      phimax_aim: '[phimax](https://docs.abinit.org/variables/aim#phimax)'
+      phimin_aim: '[phimin](https://docs.abinit.org/variables/aim#phimin)'
+      radstp_aim: '[radstp](https://docs.abinit.org/variables/aim#radstp)'
+      ratmin_aim: '[ratmin](https://docs.abinit.org/variables/aim#ratmin)'
+      rsurdir_aim: '[rsurdir](https://docs.abinit.org/variables/aim#rsurdir)'
+      rsurf_aim: '[rsurf](https://docs.abinit.org/variables/aim#rsurf)'
+      scal_aim: '[scal](https://docs.abinit.org/variables/aim#scal)'
+      surf_aim: '[surf](https://docs.abinit.org/variables/aim#surf)'
+      thetamax_aim: '[thetamax](https://docs.abinit.org/variables/aim#thetamax)'
+      thetamin_aim: '[thetamin](https://docs.abinit.org/variables/aim#thetamin)'
+      vpts_aim: '[vpts](https://docs.abinit.org/variables/aim#vpts)'
+      a2fsmear_anaddb: '[a2fsmear](https://docs.abinit.org/variables/anaddb#a2fsmear)'
+      alphon_anaddb: '[alphon](https://docs.abinit.org/variables/anaddb#alphon)'
+      asr_anaddb: '[asr](https://docs.abinit.org/variables/anaddb#asr)'
+      atifc_anaddb: '[atifc](https://docs.abinit.org/variables/anaddb#atifc)'
+      band_gap_anaddb: '[band_gap](https://docs.abinit.org/variables/anaddb#band_gap)'
+      brav_anaddb: '[brav](https://docs.abinit.org/variables/anaddb#brav)'
+      chneut_anaddb: '[chneut](https://docs.abinit.org/variables/anaddb#chneut)'
+      ddb_filepath_anaddb: '[ddb_filepath](https://docs.abinit.org/variables/anaddb#ddb_filepath)'
+      ddk_filepath_anaddb: '[ddk_filepath](https://docs.abinit.org/variables/anaddb#ddk_filepath)'
+      dieflag_anaddb: '[dieflag](https://docs.abinit.org/variables/anaddb#dieflag)'
+      dipdip_anaddb: '[dipdip](https://docs.abinit.org/variables/anaddb#dipdip)'
+      dipquad_anaddb: '[dipquad](https://docs.abinit.org/variables/anaddb#dipquad)'
+      dos_maxmode_anaddb: '[dos_maxmode](https://docs.abinit.org/variables/anaddb#dos_maxmode)'
+      dosdeltae_anaddb: '[dosdeltae](https://docs.abinit.org/variables/anaddb#dosdeltae)'
+      dossmear_anaddb: '[dossmear](https://docs.abinit.org/variables/anaddb#dossmear)'
+      dossum_anaddb: '[dossum](https://docs.abinit.org/variables/anaddb#dossum)'
+      dostol_anaddb: '[dostol](https://docs.abinit.org/variables/anaddb#dostol)'
+      eivec_anaddb: '[eivec](https://docs.abinit.org/variables/anaddb#eivec)'
+      elaflag_anaddb: '[elaflag](https://docs.abinit.org/variables/anaddb#elaflag)'
+      elph_fermie_anaddb: '[elph_fermie](https://docs.abinit.org/variables/anaddb#elph_fermie)'
+      elphflag_anaddb: '[elphflag](https://docs.abinit.org/variables/anaddb#elphflag)'
+      elphsmear_anaddb: '[elphsmear](https://docs.abinit.org/variables/anaddb#elphsmear)'
+      enunit_anaddb: '[enunit](https://docs.abinit.org/variables/anaddb#enunit)'
+      ep_b_max_anaddb: '[ep_b_max](https://docs.abinit.org/variables/anaddb#ep_b_max)'
+      ep_b_min_anaddb: '[ep_b_min](https://docs.abinit.org/variables/anaddb#ep_b_min)'
+      ep_extrael_anaddb: '[ep_extrael](https://docs.abinit.org/variables/anaddb#ep_extrael)'
+      ep_int_gkk_anaddb: '[ep_int_gkk](https://docs.abinit.org/variables/anaddb#ep_int_gkk)'
+      ep_keepbands_anaddb: '[ep_keepbands](https://docs.abinit.org/variables/anaddb#ep_keepbands)'
+      ep_nqpt_anaddb: '[ep_nqpt](https://docs.abinit.org/variables/anaddb#ep_nqpt)'
+      ep_nspline_anaddb: '[ep_nspline](https://docs.abinit.org/variables/anaddb#ep_nspline)'
+      ep_prt_yambo_anaddb: '[ep_prt_yambo](https://docs.abinit.org/variables/anaddb#ep_prt_yambo)'
+      ep_qptlist_anaddb: '[ep_qptlist](https://docs.abinit.org/variables/anaddb#ep_qptlist)'
+      ep_scalprod_anaddb: '[ep_scalprod](https://docs.abinit.org/variables/anaddb#ep_scalprod)'
+      eph_prefix_anaddb: '[eph_prefix](https://docs.abinit.org/variables/anaddb#eph_prefix)'
+      flexoflag_anaddb: '[flexoflag](https://docs.abinit.org/variables/anaddb#flexoflag)'
+      freeze_displ_anaddb: '[freeze_displ](https://docs.abinit.org/variables/anaddb#freeze_displ)'
+      frmax_anaddb: '[frmax](https://docs.abinit.org/variables/anaddb#frmax)'
+      frmin_anaddb: '[frmin](https://docs.abinit.org/variables/anaddb#frmin)'
+      gkk_filepath_anaddb: '[gkk_filepath](https://docs.abinit.org/variables/anaddb#gkk_filepath)'
+      gkqwrite_anaddb: '[gkqwrite](https://docs.abinit.org/variables/anaddb#gkqwrite)'
+      gruns_ddbs_anaddb: '[gruns_ddbs](https://docs.abinit.org/variables/anaddb#gruns_ddbs)'
+      gruns_nddbs_anaddb: '[gruns_nddbs](https://docs.abinit.org/variables/anaddb#gruns_nddbs)'
+      iatfix_anaddb: '[iatfix](https://docs.abinit.org/variables/anaddb#iatfix)'
+      iatprj_bs_anaddb: '[iatprj_bs](https://docs.abinit.org/variables/anaddb#iatprj_bs)'
+      ifcana_anaddb: '[ifcana](https://docs.abinit.org/variables/anaddb#ifcana)'
+      ifcflag_anaddb: '[ifcflag](https://docs.abinit.org/variables/anaddb#ifcflag)'
+      ifcout_anaddb: '[ifcout](https://docs.abinit.org/variables/anaddb#ifcout)'
+      ifltransport_anaddb: '[ifltransport](https://docs.abinit.org/variables/anaddb#ifltransport)'
+      instrflag_anaddb: '[instrflag](https://docs.abinit.org/variables/anaddb#instrflag)'
+      istrfix_anaddb: '[istrfix](https://docs.abinit.org/variables/anaddb#istrfix)'
+      kptrlatt_anaddb: '[kptrlatt](https://docs.abinit.org/variables/anaddb#kptrlatt)'
+      kptrlatt_fine_anaddb: '[kptrlatt_fine](https://docs.abinit.org/variables/anaddb#kptrlatt_fine)'
+      mustar_anaddb: '[mustar](https://docs.abinit.org/variables/anaddb#mustar)'
+      natfix_anaddb: '[natfix](https://docs.abinit.org/variables/anaddb#natfix)'
+      natifc_anaddb: '[natifc](https://docs.abinit.org/variables/anaddb#natifc)'
+      natprj_bs_anaddb: '[natprj_bs](https://docs.abinit.org/variables/anaddb#natprj_bs)'
+      nchan_anaddb: '[nchan](https://docs.abinit.org/variables/anaddb#nchan)'
+      ndivsm_anaddb: '[ndivsm](https://docs.abinit.org/variables/anaddb#ndivsm)'
+      nfreq_anaddb: '[nfreq](https://docs.abinit.org/variables/anaddb#nfreq)'
+      ng2qpt_anaddb: '[ng2qpt](https://docs.abinit.org/variables/anaddb#ng2qpt)'
+      ngqpt_anaddb: '[ngqpt](https://docs.abinit.org/variables/anaddb#ngqpt)'
+      ngrids_anaddb: '[ngrids](https://docs.abinit.org/variables/anaddb#ngrids)'
+      nlflag_anaddb: '[nlflag](https://docs.abinit.org/variables/anaddb#nlflag)'
+      nph1l_anaddb: '[nph1l](https://docs.abinit.org/variables/anaddb#nph1l)'
+      nph2l_anaddb: '[nph2l](https://docs.abinit.org/variables/anaddb#nph2l)'
+      nqpath_anaddb: '[nqpath](https://docs.abinit.org/variables/anaddb#nqpath)'
+      nqshft_anaddb: '[nqshft](https://docs.abinit.org/variables/anaddb#nqshft)'
+      nsphere_anaddb: '[nsphere](https://docs.abinit.org/variables/anaddb#nsphere)'
+      nstrfix_anaddb: '[nstrfix](https://docs.abinit.org/variables/anaddb#nstrfix)'
+      ntemper_anaddb: '[ntemper](https://docs.abinit.org/variables/anaddb#ntemper)'
+      nwchan_anaddb: '[nwchan](https://docs.abinit.org/variables/anaddb#nwchan)'
+      outboltztrap_anaddb: '[outboltztrap](https://docs.abinit.org/variables/anaddb#outboltztrap)'
+      outdata_prefix_anaddb: '[outdata_prefix](https://docs.abinit.org/variables/anaddb#outdata_prefix)'
+      output_file_anaddb: '[output_file](https://docs.abinit.org/variables/anaddb#output_file)'
+      outscphon_anaddb: '[outscphon](https://docs.abinit.org/variables/anaddb#outscphon)'
+      piezoflag_anaddb: '[piezoflag](https://docs.abinit.org/variables/anaddb#piezoflag)'
+      polflag_anaddb: '[polflag](https://docs.abinit.org/variables/anaddb#polflag)'
+      prt_ifc_anaddb: '[prt_ifc](https://docs.abinit.org/variables/anaddb#prt_ifc)'
+      prtbltztrp_anaddb: '[prtbltztrp](https://docs.abinit.org/variables/anaddb#prtbltztrp)'
+      prtddb_anaddb: '[prtddb](https://docs.abinit.org/variables/anaddb#prtddb)'
+      prtdos_anaddb: '[prtdos](https://docs.abinit.org/variables/anaddb#prtdos)'
+      prtfsurf_anaddb: '[prtfsurf](https://docs.abinit.org/variables/anaddb#prtfsurf)'
+      prtmbm_anaddb: '[prtmbm](https://docs.abinit.org/variables/anaddb#prtmbm)'
+      prtnest_anaddb: '[prtnest](https://docs.abinit.org/variables/anaddb#prtnest)'
+      prtphbands_anaddb: '[prtphbands](https://docs.abinit.org/variables/anaddb#prtphbands)'
+      prtsrlr_anaddb: '[prtsrlr](https://docs.abinit.org/variables/anaddb#prtsrlr)'
+      prtvol_anaddb: '[prtvol](https://docs.abinit.org/variables/anaddb#prtvol)'
+      q1shft_anaddb: '[q1shft](https://docs.abinit.org/variables/anaddb#q1shft)'
+      q2shft_anaddb: '[q2shft](https://docs.abinit.org/variables/anaddb#q2shft)'
+      qgrid_type_anaddb: '[qgrid_type](https://docs.abinit.org/variables/anaddb#qgrid_type)'
+      qpath_anaddb: '[qpath](https://docs.abinit.org/variables/anaddb#qpath)'
+      qph1l_anaddb: '[qph1l](https://docs.abinit.org/variables/anaddb#qph1l)'
+      qph2l_anaddb: '[qph2l](https://docs.abinit.org/variables/anaddb#qph2l)'
+      qrefine_anaddb: '[qrefine](https://docs.abinit.org/variables/anaddb#qrefine)'
+      quadquad_anaddb: '[quadquad](https://docs.abinit.org/variables/anaddb#quadquad)'
+      ramansr_anaddb: '[ramansr](https://docs.abinit.org/variables/anaddb#ramansr)'
+      relaxat_anaddb: '[relaxat](https://docs.abinit.org/variables/anaddb#relaxat)'
+      relaxstr_anaddb: '[relaxstr](https://docs.abinit.org/variables/anaddb#relaxstr)'
+      rfmeth_anaddb: '[rfmeth](https://docs.abinit.org/variables/anaddb#rfmeth)'
+      rifcsph_anaddb: '[rifcsph](https://docs.abinit.org/variables/anaddb#rifcsph)'
+      selectz_anaddb: '[selectz](https://docs.abinit.org/variables/anaddb#selectz)'
+      symdynmat_anaddb: '[symdynmat](https://docs.abinit.org/variables/anaddb#symdynmat)'
+      symgkq_anaddb: '[symgkq](https://docs.abinit.org/variables/anaddb#symgkq)'
+      targetpol_anaddb: '[targetpol](https://docs.abinit.org/variables/anaddb#targetpol)'
+      telphint_anaddb: '[telphint](https://docs.abinit.org/variables/anaddb#telphint)'
+      temperinc_anaddb: '[temperinc](https://docs.abinit.org/variables/anaddb#temperinc)'
+      tempermin_anaddb: '[tempermin](https://docs.abinit.org/variables/anaddb#tempermin)'
+      thermal_supercell_anaddb: '[thermal_supercell](https://docs.abinit.org/variables/anaddb#thermal_supercell)'
+      thmflag_anaddb: '[thmflag](https://docs.abinit.org/variables/anaddb#thmflag)'
+      thmtol_anaddb: '[thmtol](https://docs.abinit.org/variables/anaddb#thmtol)'
+      use_k_fine_anaddb: '[use_k_fine](https://docs.abinit.org/variables/anaddb#use_k_fine)'
+      vs_qrad_tolkms_anaddb: '[vs_qrad_tolkms](https://docs.abinit.org/variables/anaddb#vs_qrad_tolkms)'
+      analyze_anh_pot_multibinit: '[analyze_anh_pot](https://docs.abinit.org/variables/multibinit#analyze_anh_pot)'
+      bmass_multibinit: '[bmass](https://docs.abinit.org/variables/multibinit#bmass)'
+      bound_SPCoupling_multibinit: '[bound_SPCoupling](https://docs.abinit.org/variables/multibinit#bound_SPCoupling)'
+      bound_anhaStrain_multibinit: '[bound_anhaStrain](https://docs.abinit.org/variables/multibinit#bound_anhaStrain)'
+      bound_cell_multibinit: '[bound_cell](https://docs.abinit.org/variables/multibinit#bound_cell)'
+      bound_cutoff_multibinit: '[bound_cutoff](https://docs.abinit.org/variables/multibinit#bound_cutoff)'
+      bound_maxCoeff_multibinit: '[bound_maxCoeff](https://docs.abinit.org/variables/multibinit#bound_maxCoeff)'
+      bound_model_multibinit: '[bound_model](https://docs.abinit.org/variables/multibinit#bound_model)'
+      bound_rangePower_multibinit: '[bound_rangePower](https://docs.abinit.org/variables/multibinit#bound_rangePower)'
+      bound_step_multibinit: '[bound_step](https://docs.abinit.org/variables/multibinit#bound_step)'
+      bound_temp_multibinit: '[bound_temp](https://docs.abinit.org/variables/multibinit#bound_temp)'
+      coefficients_multibinit: '[coefficients](https://docs.abinit.org/variables/multibinit#coefficients)'
+      dipdip_multibinit: '[dipdip](https://docs.abinit.org/variables/multibinit#dipdip)'
+      dipdip_prt_multibinit: '[dipdip_prt](https://docs.abinit.org/variables/multibinit#dipdip_prt)'
+      dipdip_range_multibinit: '[dipdip_range](https://docs.abinit.org/variables/multibinit#dipdip_range)'
+      dtion_multibinit: '[dtion](https://docs.abinit.org/variables/multibinit#dtion)'
+      dyn_chksym_multibinit: '[dyn_chksym](https://docs.abinit.org/variables/multibinit#dyn_chksym)'
+      dyn_tolsym_multibinit: '[dyn_tolsym](https://docs.abinit.org/variables/multibinit#dyn_tolsym)'
+      dynamics_multibinit: '[dynamics](https://docs.abinit.org/variables/multibinit#dynamics)'
+      energy_reference_multibinit: '[energy_reference](https://docs.abinit.org/variables/multibinit#energy_reference)'
+      fit_EFS_multibinit: '[fit_EFS](https://docs.abinit.org/variables/multibinit#fit_EFS)'
+      fit_SPC_maxS_multibinit: '[fit_SPC_maxS](https://docs.abinit.org/variables/multibinit#fit_SPC_maxS)'
+      fit_SPCoupling_multibinit: '[fit_SPCoupling](https://docs.abinit.org/variables/multibinit#fit_SPCoupling)'
+      fit_anhaStrain_multibinit: '[fit_anhaStrain](https://docs.abinit.org/variables/multibinit#fit_anhaStrain)'
+      fit_bancoeff_multibinit: '[fit_bancoeff](https://docs.abinit.org/variables/multibinit#fit_bancoeff)'
+      fit_coeff_multibinit: '[fit_coeff](https://docs.abinit.org/variables/multibinit#fit_coeff)'
+      fit_cutoff_multibinit: '[fit_cutoff](https://docs.abinit.org/variables/multibinit#fit_cutoff)'
+      fit_fixcoeff_multibinit: '[fit_fixcoeff](https://docs.abinit.org/variables/multibinit#fit_fixcoeff)'
+      fit_generateCoeff_multibinit: '[fit_generateCoeff](https://docs.abinit.org/variables/multibinit#fit_generateCoeff)'
+      fit_iatom_multibinit: '[fit_iatom](https://docs.abinit.org/variables/multibinit#fit_iatom)'
+      fit_initializeData_multibinit: '[fit_initializeData](https://docs.abinit.org/variables/multibinit#fit_initializeData)'
+      fit_nbancoeff_multibinit: '[fit_nbancoeff](https://docs.abinit.org/variables/multibinit#fit_nbancoeff)'
+      fit_ncoeff_multibinit: '[fit_ncoeff](https://docs.abinit.org/variables/multibinit#fit_ncoeff)'
+      fit_nfixcoeff_multibinit: '[fit_nfixcoeff](https://docs.abinit.org/variables/multibinit#fit_nfixcoeff)'
+      fit_rangePower_multibinit: '[fit_rangePower](https://docs.abinit.org/variables/multibinit#fit_rangePower)'
+      fit_tolMSDE_multibinit: '[fit_tolMSDE](https://docs.abinit.org/variables/multibinit#fit_tolMSDE)'
+      fit_tolMSDF_multibinit: '[fit_tolMSDF](https://docs.abinit.org/variables/multibinit#fit_tolMSDF)'
+      fit_tolMSDFS_multibinit: '[fit_tolMSDFS](https://docs.abinit.org/variables/multibinit#fit_tolMSDFS)'
+      fit_tolMSDS_multibinit: '[fit_tolMSDS](https://docs.abinit.org/variables/multibinit#fit_tolMSDS)'
+      latt_friction_multibinit: '[latt_friction](https://docs.abinit.org/variables/multibinit#latt_friction)'
+      latt_taup_multibinit: '[latt_taup](https://docs.abinit.org/variables/multibinit#latt_taup)'
+      latt_taut_multibinit: '[latt_taut](https://docs.abinit.org/variables/multibinit#latt_taut)'
+      ncell_multibinit: '[ncell](https://docs.abinit.org/variables/multibinit#ncell)'
+      ncoeff_multibinit: '[ncoeff](https://docs.abinit.org/variables/multibinit#ncoeff)'
+      nctime_multibinit: '[nctime](https://docs.abinit.org/variables/multibinit#nctime)'
+      ngqpt_multibinit: '[ngqpt](https://docs.abinit.org/variables/multibinit#ngqpt)'
+      nnos_multibinit: '[nnos](https://docs.abinit.org/variables/multibinit#nnos)'
+      nqshft_multibinit: '[nqshft](https://docs.abinit.org/variables/multibinit#nqshft)'
+      ntime_multibinit: '[ntime](https://docs.abinit.org/variables/multibinit#ntime)'
+      opt_coeff_multibinit: '[opt_coeff](https://docs.abinit.org/variables/multibinit#opt_coeff)'
+      opt_effpot_multibinit: '[opt_effpot](https://docs.abinit.org/variables/multibinit#opt_effpot)'
+      opt_ncoeff_multibinit: '[opt_ncoeff](https://docs.abinit.org/variables/multibinit#opt_ncoeff)'
+      optcell_multibinit: '[optcell](https://docs.abinit.org/variables/multibinit#optcell)'
+      prt_model_multibinit: '[prt_model](https://docs.abinit.org/variables/multibinit#prt_model)'
+      qmass_multibinit: '[qmass](https://docs.abinit.org/variables/multibinit#qmass)'
+      restartxf_multibinit: '[restartxf](https://docs.abinit.org/variables/multibinit#restartxf)'
+      sel_EFS_multibinit: '[sel_EFS](https://docs.abinit.org/variables/multibinit#sel_EFS)'
+      slc_coupling_multibinit: '[slc_coupling](https://docs.abinit.org/variables/multibinit#slc_coupling)'
+      spin_calc_thermo_obs_multibinit: '[spin_calc_thermo_obs](https://docs.abinit.org/variables/multibinit#spin_calc_thermo_obs)'
+      spin_damping_multibinit: '[spin_damping](https://docs.abinit.org/variables/multibinit#spin_damping)'
+      spin_dt_multibinit: '[spin_dt](https://docs.abinit.org/variables/multibinit#spin_dt)'
+      spin_dynamics_multibinit: '[spin_dynamics](https://docs.abinit.org/variables/multibinit#spin_dynamics)'
+      spin_init_orientation_multibinit: '[spin_init_orientation](https://docs.abinit.org/variables/multibinit#spin_init_orientation)'
+      spin_init_qpoint_multibinit: '[spin_init_qpoint](https://docs.abinit.org/variables/multibinit#spin_init_qpoint)'
+      spin_init_rotate_axis_multibinit: '[spin_init_rotate_axis](https://docs.abinit.org/variables/multibinit#spin_init_rotate_axis)'
+      spin_init_state_multibinit: '[spin_init_state](https://docs.abinit.org/variables/multibinit#spin_init_state)'
+      spin_mag_field_multibinit: '[spin_mag_field](https://docs.abinit.org/variables/multibinit#spin_mag_field)'
+      spin_nctime_multibinit: '[spin_nctime](https://docs.abinit.org/variables/multibinit#spin_nctime)'
+      spin_ntime_multibinit: '[spin_ntime](https://docs.abinit.org/variables/multibinit#spin_ntime)'
+      spin_ntime_pre_multibinit: '[spin_ntime_pre](https://docs.abinit.org/variables/multibinit#spin_ntime_pre)'
+      spin_projection_qpoint_multibinit: '[spin_projection_qpoint](https://docs.abinit.org/variables/multibinit#spin_projection_qpoint)'
+      spin_sia_add_multibinit: '[spin_sia_add](https://docs.abinit.org/variables/multibinit#spin_sia_add)'
+      spin_sia_k1amp_multibinit: '[spin_sia_k1amp](https://docs.abinit.org/variables/multibinit#spin_sia_k1amp)'
+      spin_sia_k1dir_multibinit: '[spin_sia_k1dir](https://docs.abinit.org/variables/multibinit#spin_sia_k1dir)'
+      spin_temperature_multibinit: '[spin_temperature](https://docs.abinit.org/variables/multibinit#spin_temperature)'
+      spin_temperature_end_multibinit: '[spin_temperature_end](https://docs.abinit.org/variables/multibinit#spin_temperature_end)'
+      spin_temperature_nstep_multibinit: '[spin_temperature_nstep](https://docs.abinit.org/variables/multibinit#spin_temperature_nstep)'
+      spin_temperature_start_multibinit: '[spin_temperature_start](https://docs.abinit.org/variables/multibinit#spin_temperature_start)'
+      spin_var_temperature_multibinit: '[spin_var_temperature](https://docs.abinit.org/variables/multibinit#spin_var_temperature)'
+      spin_write_traj_multibinit: '[spin_write_traj](https://docs.abinit.org/variables/multibinit#spin_write_traj)'
+      strfact_multibinit: '[strfact](https://docs.abinit.org/variables/multibinit#strfact)'
+      strtarget_multibinit: '[strtarget](https://docs.abinit.org/variables/multibinit#strtarget)'
+      temperature_multibinit: '[temperature](https://docs.abinit.org/variables/multibinit#temperature)'
+      test_effpot_multibinit: '[test_effpot](https://docs.abinit.org/variables/multibinit#test_effpot)'
+      test_prt_ph_multibinit: '[test_prt_ph](https://docs.abinit.org/variables/multibinit#test_prt_ph)'
+      tolmxf_multibinit: '[tolmxf](https://docs.abinit.org/variables/multibinit#tolmxf)'
+      ts_option_multibinit: '[ts_option](https://docs.abinit.org/variables/multibinit#ts_option)'
+      broadening_optic: '[broadening](https://docs.abinit.org/variables/optic#broadening)'
+      ddkfile_optic: '[ddkfile](https://docs.abinit.org/variables/optic#ddkfile)'
+      domega_optic: '[domega](https://docs.abinit.org/variables/optic#domega)'
+      lin_comp_optic: '[lin_comp](https://docs.abinit.org/variables/optic#lin_comp)'
+      linel_comp_optic: '[linel_comp](https://docs.abinit.org/variables/optic#linel_comp)'
+      maxomega_optic: '[maxomega](https://docs.abinit.org/variables/optic#maxomega)'
+      nonlin_comp_optic: '[nonlin_comp](https://docs.abinit.org/variables/optic#nonlin_comp)'
+      num_lin_comp_optic: '[num_lin_comp](https://docs.abinit.org/variables/optic#num_lin_comp)'
+      num_linel_comp_optic: '[num_linel_comp](https://docs.abinit.org/variables/optic#num_linel_comp)'
+      num_nonlin_comp_optic: '[num_nonlin_comp](https://docs.abinit.org/variables/optic#num_nonlin_comp)'
+      prtlincompmatrixelements_optic: '[prtlincompmatrixelements](https://docs.abinit.org/variables/optic#prtlincompmatrixelements)'
+      scissor_optic: '[scissor](https://docs.abinit.org/variables/optic#scissor)'
+      tolerance_optic: '[tolerance](https://docs.abinit.org/variables/optic#tolerance)'
+      wfkfile_optic: '[wfkfile](https://docs.abinit.org/variables/optic#wfkfile)'

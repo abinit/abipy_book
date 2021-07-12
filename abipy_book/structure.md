@@ -19,6 +19,8 @@ In this notebook, we mainly focus on the extensions added by `AbiPy`.
 For the features provided by pymatgen, please consult the
 [official pymatgen documentation](http://pymatgen.org/usage.html#structures-and-molecules).
 
+{{ Structure }} and {{ pymatgen_Structure}}
+
 ```{code-cell}
 import warnings
 warnings.filterwarnings("ignore") # to get rid of deprecation warnings
@@ -42,7 +44,7 @@ import numpy as np
 
 ## Reading a structure from file
 
-It is possible to initialize a structure from different file formats:
+It is possible to initialize a structure object from different file formats:
 
    * CIF
    * POSCAR/CONTCAR
@@ -65,11 +67,7 @@ structure = Structure.from_file(abidata.cif_file("si.cif"))
 print(structure)
 ```
 
-```{important}
-`abidata.cif_file` is a small helper function returning the absolute path
-of one of the CIF files shipped with the AbiPy package.
-In your case, you can directly pass a string with the path to your CIF file.
-Similar considerations hold for `abidata.ref_file` and `abidata.pseudos`.
+```{include} abidata_note.md
 ```
 
 To read the structure from an Abinit netcdf file, use:
@@ -86,7 +84,7 @@ Use `to_abivars` to get a python dictionary with the list of Abinit variables.
 structure.to_abivars()
 ```
 
-and `abi_string` to get a string that can be used directly in the input file:
+and the `abi_string` property to get a string that can be used directly in the input file:
 
 ```{code-cell}
 print(structure.abi_string)
@@ -172,7 +170,7 @@ To get the recommended high symmetry $k$-path in reduced coordinates:
 structure.calc_kptbounds()
 ```
 
-The high-symmetry q-path is automatically selected assuming
+The high-symmetry **q**-path is automatically selected assuming
 the structure fulfills the convention described in [Setyawan2010](https://doi.org/10.1016/j.commatsci.2010.05.010)
 
 +++
@@ -222,7 +220,7 @@ To obtain the list of available commands, use:
 
 ## Creating a GUI inside a notebook
 
-Several AbiPy objects provide a `get_panel` method that allows one to create a {{panel}} GUI
+Several AbiPy objects provide a `get_panel` method that allows one to create a {{ panel }} GUI
 exposing some of the underlying AbiPy methods.
 Similar capabilities are also available via the {{ abipygui }} web app.
 

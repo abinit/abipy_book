@@ -25,7 +25,7 @@ of multiple inputs sharing the same structure and the same list of pseudopotenti
 In another [notebook](./input_factories), we briefly discuss how to use factory functions
 to generate automatically input objects for typical calculations.
 
-See e.g {{ AbinitInput }}
+See e.g the {{ AbinitInput }}
 
 ## Creating an AbinitInput object
 
@@ -162,13 +162,13 @@ print("c dict:", c)
 
 The `set_structure` method sets the value of the ABINIT variables:
 
-   * acell
-   * rprim
-   * ntypat
-   * natom
-   * typat
-   * znucl
-   * xred
+* {{ acell }}
+* {{ rprim }}
+* {{ ntypat }}
+* {{ natom }}
+* {{ typat }}
+* {{ znucl }}
+* {{ xred }}
 
 It is always a good idea to set the structure immediately after the creation of an `AbinitInput`
 because several methods use this information to facilitate the specification of other variables.
@@ -176,7 +176,7 @@ For instance, the `set_kpath` method uses the structure to generate the high-sym
 for band structure calculations.
 
 ```{warning}
-`typat` must be consistent with the list of pseudopotentials passed to `AbinitInput`
+{{ typat }} must be consistent with the list of pseudopotentials passed to `AbinitInput`
 ```
 
 +++
@@ -227,10 +227,10 @@ xred       0.0000000000    0.0000000000    0.0000000000
 print(lif_struct)
 ```
 
-This approach requires less input yet we still need to specify *ntypat*, *znucl* and *typat*.
+This approach requires less input yet we still need to specify {{ntypat}}, {{znucl}}and {[typat}}.
 Fortunately, *from_abistring* supports another Abinit-specific format in which the 
 fractional coordinates and the element symbol are specified via the *xred_symbols* variable.
-In this case *ntypat*, *znucl* and *typat* do not need to be specified as they are automatically 
+In this case {{ntypat}}, {{znucl}} and {{typat}} do not need to be specified as they are automatically 
 computed from *xred_symbols*:
 
 
@@ -270,14 +270,14 @@ inp.set_structure(abidata.ref_file("si_scf_GSR.nc"))
 
 Supported formats include:
 
-   * *CIF*
-   * *POSCAR/CONTCAR*
-   * *CHGCAR*
-   * *LOCPOT*
-   * *vasprun.xml*
-   * *CSSR*
-   * *ABINIT netcdf files*
-   * *pymatgen's JSON serialized structures*
+* *CIF*
+* *POSCAR/CONTCAR*
+* *CHGCAR*
+* *LOCPOT*
+* *vasprun.xml*
+* *CSSR*
+* *ABINIT netcdf files*
+* *pymatgen's JSON serialized structures*
 
 +++
 
@@ -314,9 +314,9 @@ whereas the homogeneous sampling is needed for all the calculations in which
 we have to compute integrals in the Brillouin zone e.g. total energy calculations, DOS, etc.
 The $k$-mesh is usually specified via:
 
-   * ngkpt
-   * nshiftk
-   * shiftk
+* {{ngkpt}}
+* {{nshiftk}}
+* {{shiftk}}
 
 +++
 
@@ -396,7 +396,7 @@ if v.retcode != 0:
     print("".join(v.log_file.readlines()[-10:]))
 ```
 
-Let's fix the problem with the negative ecut and rerun abivalidate!
+Let's fix the problem with the negative {{ecut}} and rerun abivalidate!
 
 ```{code-cell}
 inp["ecut"] = 2
@@ -427,7 +427,7 @@ abistruct = inp.abiget_spacegroup()
 print("spacegroup found by Abinit:", abistruct.abi_spacegroup)
 ```
 
-To get the list of possible parallel configurations for this input up to 5 max_ncpus
+To get the list of possible parallel configurations for this input up to 5 {{max_ncpus}}
 
 ```{code-cell}
 inp["paral_kgb"] = 1
@@ -448,7 +448,7 @@ inp.abiget_irred_phperts(qpt=(0, 0, 0))
 ## Multiple datasets
 
 Multiple datasets are handy when you have to generate several input files sharing several common
-variables e.g. the crystalline structure, the value of ecut etc...
+variables e.g. the crystalline structure, the value of {{ecut}} etc...
 In this case, one can use the `MultiDataset` object that is essentially
 a list of `AbinitInput` objects. Note however that `Abipy` workflows do not support input files with more than one dataset.
 
@@ -475,11 +475,11 @@ for inp in multi:
 
 ```{code-cell}
 # To change the values in a particular dataset use:
-multi[0].set_vars(ngkpt=[2,2,2], tsmear=0.004)
-multi[1].set_vars(ngkpt=[4,4,4], tsmear=0.008)
+multi[0].set_vars(ngkpt=[2, 2, 2], tsmear=0.004)
+multi[1].set_vars(ngkpt=[4, 4, 4], tsmear=0.008)
 ```
 
-To build a table with the values of "ngkpt" and "tsmear":
+To build a table with the values of {{ngkpt}} and {{tsmear}}:
 
 ```{code-cell}
 multi.get_vars_dataframe("ngkpt", "tsmear")
@@ -495,7 +495,7 @@ Remember that in python we start to count from zero hence the first dataset has 
 
 +++
 
-Calling set_structure on `MultiDataset` will set the structure of the inputs:
+Calling *set_structure* on `MultiDataset` will set the structure of the inputs:
 
 ```{code-cell}
 multi.set_structure(abidata.cif_file("si.cif"))
