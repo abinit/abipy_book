@@ -57,9 +57,10 @@ def build(ctx):
 @task
 def build_all(ctx):
     """
-    Build the book.
+    Build the boo from scratch.
     """
     with cd(HERE):
+        ctx.run("jb clean abipy_book", pty=True)
         ctx.run("jb build abipy_book --all", pty=True)
 
 
@@ -89,6 +90,7 @@ def build_all(ctx):
 #        #ctx.run("git submodule update --remote", pty=True)
 #        ctx.run("git submodule update --recursive --remote", pty=True)
 
+
 @task
 def linkcheck(ctx):
     """
@@ -103,13 +105,16 @@ def linkcheck(ctx):
 @task
 def du(ctx):
     """
+    Compute disk usage.
     """
     with cd(HERE):
         ctx.run("du -msh -I _build abipy_book/", pty=True)
 
+
 @task
 def md2nb(ctx, md_filename):
     """
+    Convert markdown file to notebook.
     """
     ctx.run("jupytext {md_filename} --to ipynb" ,pty=True)
 

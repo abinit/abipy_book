@@ -1,4 +1,4 @@
-# AbiPy_Book
+# AbiPy Book
 
 This cookiecutter creates a simple boilerplate for a Jupyter Book.
 
@@ -6,11 +6,11 @@ This cookiecutter creates a simple boilerplate for a Jupyter Book.
 
 ### Building the book
 
-If you'd like to develop and/or build the AbiPy_Book book, you should:
+If you'd like to develop and/or build the AbiPy Book book, you should:
 
 1. Clone this repository
 2. Run `pip install -r requirements.txt` (it is recommended you do this within a virtual environment)
-3. (Optional) Edit the books source files located in the `abipy_book/` directory
+3. (Optional) Edit the books source files located in the `abipy book/` directory
 4. Run `jupyter-book clean abipy_book/` to remove any existing builds
 5. Run `jupyter-book build abipy_book/`
 
@@ -24,7 +24,7 @@ For GitHub and GitLab deployment specifically, the [cookiecutter-jupyter-book](h
 
 ## Contributors
 
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/gmatteo/abipy_book/graphs/contributors).
+We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/abinit/abipy_book/graphs/contributors).
 
 ## Credits
 

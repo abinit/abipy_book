@@ -484,7 +484,7 @@ The code below extracts the macroscopic dielectric tensor (`emacro`)
 and the Born effective charges (`becs`) from the DDB file:
 
 ```{code-cell} 
-emacro, becs = ddb.anaget_emacro_and_becs()
+emacro, becs = ddb.anaget_epsinf_and_becs()
 ```
 
 ```{code-cell} 
@@ -508,7 +508,7 @@ print(becs)
 Let's repeat the same calculation but without enforcing the sum-rule:
 
 ```{code-cell} 
-emacro, becs_chneut0 = ddb.anaget_emacro_and_becs(chneut=0)
+emacro, becs_chneut0 = ddb.anaget_epsinf_and_becs(chneut=0)
 print(becs_chneut0)
 ```
 
