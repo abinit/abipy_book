@@ -173,10 +173,9 @@ The resolution in q-space can be improved by interpolating the DFPT potentials v
 
 The general theory of electron-phonon coupling and Eliashberg superconductivity is reviewed
 by P.B. Allen and B. Mitrovic
-in [Theory of Superconducting Tc](https://www.sciencedirect.com/science/article/pii/S0081194708606657).
+in [Theory of Superconducting Tc](https://doi.org/10.1016/S0081-1947(08)60665-7).
 The first implementations similar to that in Abinit are those in
-[Savrasov](https://doi.org/10.1103/PhysRevB.54.16487) and
-[Liu](https://doi.org/10.1103/PhysRevB.53.R7575).
+[Savrasov](https://doi.org/10.1103/PhysRevB.54.16487) and [Liu](https://doi.org/10.1103/PhysRevB.53.R7575).
 
 +++
 
@@ -257,8 +256,7 @@ in a single workflow the *electronic* properties, the *vibrational* spectrum
 and the *phonon linewidths* with different k-point samplings.
 
 Note that we have already encountered similar flows in the previous AbiPy lessons.
-The calculation of electronic band structures is
-discussed in
+The calculation of electronic band structures is discussed in
 [lesson_base3](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/base3/lesson_base3.ipynb)
 while an example of `Flow` for phonon calculations is given in
 [lesson_dfpt](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/dfpt/lesson_dfpt.ipynb).

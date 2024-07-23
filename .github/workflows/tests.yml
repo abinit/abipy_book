@@ -16,7 +16,7 @@ on:
 
 jobs:
   # This job tests that the CC works
-  test-cc-and-jb-build:
+  test-and-jb-build:
     # prevent this action from running on forks
     #if: github.repository == 'abinit/abipy'
     defaults:
@@ -68,7 +68,7 @@ jobs:
       - name: Upload the book's HTML as an artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: "abipy_book/abipy_book/_build/html"
+          path: abipy_book/abipy_book/_build/html
 
       # Deploy the book's HTML to GitHub Pages
       #- name: Deploy to GitHub Pages

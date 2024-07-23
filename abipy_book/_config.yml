@@ -101,7 +101,7 @@ sphinx:
           - "https://docs.scipy.org/doc/scipy/reference/"
           - null
         pandas:
-          - "http://pandas-docs.github.io/pandas-docs-travis/"
+          - "https://pandas.pydata.org/pandas-docs/stable/"
           - null
         matplotlib:
           - "https://matplotlib.org/"

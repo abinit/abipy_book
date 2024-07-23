@@ -2,13 +2,13 @@
 
 Welcome to the AbiPy Jupyter Book!
 This book contains notebook-based documentation for [AbiPy](https://github.com/abinit/abipy).
-This augments our Sphinx-based [documentation](http://abinit.github.io/abipy>) with jupyter notebooks
+This augments our Sphinx-based [documentation](https://abinit.github.io/abipy>) with jupyter notebooks
 containing interactive tutorials and examples.
 
 Additional examples are available on the:
 
-* [AbiPy plot gallery](http://abinit.github.io/abipy/gallery/index.html)
-* [AbiPy flow gallery](http://abinit.github.io/abipy/flow_gallery/index.html)
+* [AbiPy plot gallery](https://abinit.github.io/abipy/gallery/index.html)
+* [AbiPy flow gallery](https://abinit.github.io/abipy/flow_gallery/index.html)
 * [Matgenb website](https://matgenb.materialsvirtuallab.org)
 
 Beginners should typically start with the three notebooks on Abipy objects,
@@ -19,31 +19,31 @@ and then examine the flows notebook.
 
 ## AbiPy Objects
 
-* [Structure](structure.html): The crystalline structure
-* [Abinit Input](abinit_input.html): How to create an `AbinitInput`
-* [Input Factories](input_factories.html): Generating input files for high-throughput calculations
+* [Structure](structure): The crystalline structure
+* [Abinit Input](abinit_input): How to create an `AbinitInput`
+* [Input Factories](input_factories): Generating input files for high-throughput calculations
 
 +++
 
 ## Output files supported by AbiPy
 
-* [GSR.nc](gsr.html): File with ground-state results produced by SCF/NSCF runs.
-* [HIST.nc](hist.html): File produced by structural relaxations and MD runs
-* [FATBANDS.nc](efatbands.html): Plot electronic fatbands and L-projected DOS
-* [DDB](ddb.html): Tools to analyze phonons
-* [SIGRES.nc](sigres.html): How to analyze the results of $GW$ calculations
-* [MDF.nc](mdf.html): How to analyze the results of Bethe-Salpeter calculations
-* [Lobster](lobster.html): How to analyze the output files produced by Lobster
-* [ABIWAN.nc](abiwan.html): How to analyze the Wannier90 wout file and the netcdf file produced by Abinit
+* [GSR.nc](gsr): File with ground-state results produced by SCF/NSCF runs.
+* [HIST.nc](hist): File produced by structural relaxations and MD runs
+* [FATBANDS.nc](efatbands): Plot electronic fatbands and L-projected DOS
+* [DDB](ddb): Tools to analyze phonons
+* [SIGRES.nc](sigres): How to analyze the results of $GW$ calculations
+* [MDF.nc](mdf): How to analyze the results of Bethe-Salpeter calculations
+* [Lobster](lobster): How to analyze the output files produced by Lobster
+* [ABIWAN.nc](abiwan): How to analyze the Wannier90 wout file and the netcdf file produced by Abinit
 
 +++
 
 ## AbiPy Workflows
 
-* [Flows](flows.html): How to automate calculations with `Flows`, `Works` and `Tasks`
+* [Flows](/flows.html): How to automate calculations with `Flows`, `Works` and `Tasks`
 
 This notebook is complemented with the documentation on the
-[TaskManager Configuration](http://abinit.github.io/abipy/workflows/taskmanager.html):
+[TaskManager Configuration](https://abinit.github.io/abipy/workflows/taskmanager.html):
 How to specify options in `manager.yml` and `scheduler.yml`
 
 +++
