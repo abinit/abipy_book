@@ -9,10 +9,10 @@ on:
   pull_request:
     branches:
       - main
-  schedule:
-    # Run cron job every month, https://crontab.guru/every-month
-    - cron: '0 0 1 * *'
-  workflow_dispatch:
+  #schedule:
+  #  # Run cron job every month, https://crontab.guru/every-month
+  #  - cron: '0 0 1 * *'
+  #workflow_dispatch:
 
 jobs:
   # This job tests that the CC works
