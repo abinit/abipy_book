@@ -5,10 +5,10 @@ on:
   # Trigger the workflow on push or pull request on main branch
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
   #schedule:
   #  # Run cron job every month, https://crontab.guru/every-month
   #  - cron: '0 0 1 * *'
