@@ -2,7 +2,7 @@
 
 Welcome to the AbiPy Jupyter Book!
 This book contains notebook-based documentation for [AbiPy](https://github.com/abinit/abipy).
-This augments our Sphinx-based [documentation](http://abinit.github.io/abipy>) with jupyter notebooks 
+This augments our Sphinx-based [documentation](http://abinit.github.io/abipy>) with jupyter notebooks
 containing interactive tutorials and examples.
 
 Additional examples are available on the:
@@ -19,40 +19,40 @@ and then examine the flows notebook.
 
 ## AbiPy Objects
 
-* [Structure](structure.ipynb): The crystalline structure
-* [Abinit Input](abinit_input.ipynb): How to create an `AbinitInput`
-* [Input Factories](input_factories.ipynb): Generating input files for high-throughput calculations
+* [Structure](structure.html): The crystalline structure
+* [Abinit Input](abinit_input.html): How to create an `AbinitInput`
+* [Input Factories](input_factories.html): Generating input files for high-throughput calculations
 
 +++
 
 ## Output files supported by AbiPy
 
-* [GSR.nc](gsr.ipynb): File with ground-state results produced by SCF/NSCF runs.  
-* [HIST.nc](hist.ipynb): File produced by structural relaxations and MD runs    
-* [FATBANDS.nc](efatbands.ipynb): Plot electronic fatbands and L-projected DOS
-* [DDB](ddb.ipynb): Tools to analyze phonons      
-* [SIGRES.nc](sigres.ipynb): How to analyze the results of $GW$ calculations 
-* [MDF.nc](mdf.ipynb): How to analyze the results of Bethe-Salpeter calculations 
-* [Lobster](lobster.ipynb): How to analyze the output files produced by Lobster
-* [ABIWAN.nc](abiwan.ipynb): How to analyze the Wannier90 wout file and the netcdf file produced by Abinit
+* [GSR.nc](gsr.html): File with ground-state results produced by SCF/NSCF runs.
+* [HIST.nc](hist.html): File produced by structural relaxations and MD runs
+* [FATBANDS.nc](efatbands.html): Plot electronic fatbands and L-projected DOS
+* [DDB](ddb.html): Tools to analyze phonons
+* [SIGRES.nc](sigres.html): How to analyze the results of $GW$ calculations
+* [MDF.nc](mdf.html): How to analyze the results of Bethe-Salpeter calculations
+* [Lobster](lobster.html): How to analyze the output files produced by Lobster
+* [ABIWAN.nc](abiwan.html): How to analyze the Wannier90 wout file and the netcdf file produced by Abinit
 
 +++
 
 ## AbiPy Workflows
 
-* [Flows](flows.ipynb): How to automate calculations with `Flows`, `Works` and `Tasks`
+* [Flows](flows.html): How to automate calculations with `Flows`, `Works` and `Tasks`
 
-This notebook is complemented with the documentation on the 
+This notebook is complemented with the documentation on the
 [TaskManager Configuration](http://abinit.github.io/abipy/workflows/taskmanager.html):
-How to specify options in `manager.yml` and `scheduler.yml`  
+How to specify options in `manager.yml` and `scheduler.yml`
 
 +++
 
 ## Abinit + AbiPy Lessons
 
-This section discusses flows and vizualisation tools for the same topics 
+This section discusses flows and vizualisation tools for the same topics
 as some standard ABINIT tutorials.
-Usually, the corresponding ABINIT tutorial has to be followed first. 
+Usually, the corresponding ABINIT tutorial has to be followed first.
 Sometimes there is also a large overlap with some of the previous AbiPy tutorials.
 
 * [The H<sub>2</sub> molecule](base1/lesson_base1)
@@ -66,6 +66,3 @@ Sometimes there is also a large overlap with some of the previous AbiPy tutorial
 
 +++
 
-## Miscellaneous
-
-* [Useful links](links.ipynb)

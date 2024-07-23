@@ -17,7 +17,7 @@ This notebook explains how to use AbiPy and the DDB file produced by Abinit to a
 
 * Phonon band structures including the LO-TO splitting in polar semiconductors
 * Phonon fatbands, phonon DOS and projected phonon DOS
-* Born effectives charges $Z^*_{\kappa,\alpha\beta}$ and the dielectric tensors 
+* Born effectives charges $Z^*_{\kappa,\alpha\beta}$ and the dielectric tensors
   $\epsilon^{\infty}_{\alpha\beta}$, $\epsilon^{0}_{\alpha\beta}$
 * Thermodynamic properties in the harmonic approximation
 
@@ -183,8 +183,8 @@ The most important parameters to remember are:
 * **ndivsm**: Number of divisions used for the smallest segment of the high-symmetry q-path.
 * **nqsmall**: Defines the q-mesh for the phonon DOS in terms of
      the number of divisions used to sample the smallest reciprocal lattice vector. 0 to disable DOS computation.
-* **lo_to_splitting**: Activate the computation of the frequencies in the $q\rightarrow 0$ limit with the 
-  inclusion of the non-analytical term (requires {{dipdip@anaddb} 1 and DDB with 
+* **lo_to_splitting**: Activate the computation of the frequencies in the $q\rightarrow 0$ limit with the
+  inclusion of the non-analytical term (requires {{dipdip@anaddb} 1 and DDB with
   $Z^*_{\kappa,\alpha\beta}$ and $\epsilon^{\infty}_{\alpha\beta}$).
 
 The high-symmetry q-path is automatically selected assuming the structure
@@ -382,7 +382,7 @@ asr_plotter.combiplotly();
 ```
 
 Now we can perform a similar test for the treatment of the non-analytical term in the $q \rightarrow 0$ limit.
-We compute the phonon band dispersion for {{dipdip_anaddb} in [0, 1] and the compare the 
+We compute the phonon band dispersion for {{dipdip_anaddb} in [0, 1] and the compare the
 results on the same figure with the commands:
 
 ```{code-cell}
@@ -492,7 +492,7 @@ f = phdos.get_free_energy(tstart=10, tstop=100)
 
 ## Macroscopic dielectric tensor and Born effective charges
 
-Let us call anaddb to compute the electronic contribution to the macroscopic dielectric tensor,  
+Let us call anaddb to compute the electronic contribution to the macroscopic dielectric tensor,
 $\epsilon^{\infty}_{\alpha\beta}$, and the Born effective charges $Z^*_{\kappa,\alpha\beta}$:
 
 ```{code-cell}
@@ -634,14 +634,14 @@ r.phbands_plotter.gridplot_with_hue("tsmear", units="Thz");
 Each panel now shows the phonon dispersion computed with different k-point samplings at fixed {{tsmear}}.
 
 The results obtained with the largest broadening (0.04 Ha) seem to be converged
-but remember that the "converged" result are in principle obtained in the limit 
+but remember that the "converged" result are in principle obtained in the limit
 $nkpt \rightarrow +\infty$ and $tsmear\rightarrow 0$
 (well it's not always possible to reach the mathematical limit so we should try to understand what happens
 to our observables when we are **approaching** this limit and if it's possible to find values of ({{nkpt}}, {{tsmear}})
 that are "close enough" to convergence).
 
-The middle panel reveals that there are two branch (6-7, Python indexing) along $\Gamma-A$ that are quite sensitive 
-to the sampling of the Fermi surface and this picture is confirmed by the first panel obtained with the lowest value 
+The middle panel reveals that there are two branch (6-7, Python indexing) along $\Gamma-A$ that are quite sensitive
+to the sampling of the Fermi surface and this picture is confirmed by the first panel obtained with the lowest value
 of the electronic broadening.
 
 This analysis tells us two things:

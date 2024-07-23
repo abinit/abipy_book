@@ -20,7 +20,7 @@ produced by Abinit to interpolate band energies.
 As usual, one can use:
 
     abiopen.py FILE_ABIWAN.nc
-    
+
 with the `--expose` or the `--print` option for a command line interface
 and `--notebook` to generate a jupyter notebook.
 
@@ -37,7 +37,7 @@ Let's start by importing the basic modules needed for this tutorial.
 ```{code-cell} ipython3
 import os
 
-import warnings 
+import warnings
 warnings.filterwarnings("ignore")  # Ignore warnings
 
 from abipy import abilab
@@ -46,13 +46,13 @@ import abipy.data as abidata
 
 # This line configures matplotlib to show figures embedded in the notebook.
 # Replace `inline` with `notebook` in classic notebook
-%matplotlib inline   
+%matplotlib inline
 
 # Option available in jupyterlab. See https://github.com/matplotlib/jupyter-matplotlib
-#%matplotlib widget  
+#%matplotlib widget
 ```
 
-## How to analyze the WOUT file  
+## How to analyze the WOUT file
 
 +++
 
@@ -105,7 +105,7 @@ To plot the matrix elements of the KS Hamiltonian in real space in the Wannier G
 abiwan.hwan.plot(title="Matrix elements in real space");
 ```
 
-To interpolate the KS energies along a high-symmetry k-path and construct 
+To interpolate the KS energies along a high-symmetry k-path and construct
 a new `ElectronBands` object, use:
 
 ```{code-cell} ipython3
@@ -129,12 +129,12 @@ ebands_kpath.plot_with_edos(ebands_kmesh.get_edos(), title="Wannier-interpolated
 ```
 
 We can also compare an ab-initio band structure with the Wannier-interpolated results.
-This is useful to understand if our wannier functions are well localized and if the 
+This is useful to understand if our wannier functions are well localized and if the
 k-mesh used with wannier90 is dense enough.
 
-In this case, it is just a matter of passing the path to the netcdf file 
+In this case, it is just a matter of passing the path to the netcdf file
 containing the ab-initio band structure to the `get_plotter_from_ebands` method of `abiwan`.
-The function interpolates the band energies using the k-path found in the netcdf file 
+The function interpolates the band energies using the k-path found in the netcdf file
 and returns a plotter object:
 
 ```{code-cell} ipython3
@@ -151,7 +151,7 @@ plotter.combiplot();
 ```
 
 As we can see, the interpolated band structures is not completely on top of the ab-initio
-results. To improve the agreement we should try to reduced the spread and/or increase 
+results. To improve the agreement we should try to reduced the spread and/or increase
 the density of the k-mesh used in the wannierization procedure.
 
 +++

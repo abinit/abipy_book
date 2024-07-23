@@ -53,7 +53,7 @@ how to analyze multiple ground-state calculations with the AbiPy robots.
 
 ## Our first AbiPy function
 
-```{code-cell} 
+```{code-cell}
 import numpy as np
 
 import warnings
@@ -77,7 +77,7 @@ in input so that we can customize the output and generate multiple input objects
 Fortunately we already have such a function in the `lesson_base1.py` module.
 Let's import it and look at the code:
 
-```{code-cell} 
+```{code-cell}
 from lesson_base1 import gs_input
 abilab.print_source(gs_input)
 ```
@@ -85,7 +85,7 @@ abilab.print_source(gs_input)
 If the function is called without arguments, the default values (specified in the prototype) are used.
 Let's try:
 
-```{code-cell} 
+```{code-cell}
 gsinp = gs_input()
 print("The value of ecut is:", gsinp["ecut"])
 ```
@@ -93,7 +93,7 @@ print("The value of ecut is:", gsinp["ecut"])
 The `AbinitInput` is a dict-like object whose usage is documented in this [notebook](../abinit_input).
 Inside jupyter, we can get the HTML representation of the input with:
 
-```{code-cell} 
+```{code-cell}
 gsinp
 ```
 
@@ -102,18 +102,18 @@ More importantly, an `AbinitInput` *has* an AbiPy structure (see [Structure note
 a list of pseudopotential objects and provides several methods
 to facilitate the specification of input variables.
 
-```{code-cell} 
+```{code-cell}
 print(gsinp.structure)
 print("The big box volume is:", gsinp.structure.volume)
 ```
 
-```{code-cell} 
+```{code-cell}
 gsinp.structure.plot();
 ```
 
 Let's print some info about our pseudopotentials:
 
-```{code-cell} 
+```{code-cell}
 print(gsinp.pseudos[0])
 ```
 
@@ -125,7 +125,7 @@ At this point, we can use `gs_input` to generate an [Abinit Flow](../flows)
 to compute the total energy and the forces of H-H with different interatomic distances.
 We have already prepared such a function in `build_flow`, let's have a look at the code:
 
-```{code-cell} 
+```{code-cell}
 from lesson_base1 import build_flow
 abilab.print_source(build_flow)
 ```
@@ -133,7 +133,7 @@ abilab.print_source(build_flow)
 Note that we are working at fixed {{ecut}} and {{acell}}, only the H-H distance is modified.
 Let's call the function to build our flow:
 
-```{code-cell} 
+```{code-cell}
 flow = build_flow(options=None)
 flow.get_graphviz()
 ```
@@ -143,7 +143,7 @@ With just three lines of codes and our `gs_input` function, we managed
 to construct an AbiPy flow for the $H_2$ molecule.
 Let's write some python code to check that we really obtained what we had in mind:
 
-```{code-cell} 
+```{code-cell}
 inputs = [task.input for task in flow.iflat_tasks()]
 
 print("ecuts:\n", [inp["ecut"] for inp in inputs])
@@ -178,32 +178,32 @@ First of all, it is always a good idea to check whether the SCF cycle is converg
 Obviously one could open the main output file, find the SCF iterations and look for warnings but
 there is a much faster (and better) way to do that with AbiPy:
 
-```{code-cell} 
+```{code-cell}
 abo = abilab.abiopen("flow_h2/w0/t0/run.abo")
 print(abo)
 ```
 
 To get the list of Warnings/Comments/Errors:
 
-```{code-cell} 
+```{code-cell}
 print(abo.events)
 ```
 
 To plot the SCF cycle, use:
 
-```{code-cell} 
+```{code-cell}
 abo.plot();
 ```
 
 Since this is not a structural relaxation, the initial and final structures must be equal:
 
-```{code-cell} 
+```{code-cell}
 abo.initial_structure == abo.final_structure
 ```
 
 The basic dimensions and parameters of the run can be extracted from the output file with:
 
-```{code-cell} 
+```{code-cell}
 abo.get_dims_spginfo_dataset()
 ```
 
@@ -241,7 +241,7 @@ discussed in the [GSR notebook](../gsr).
 
 Let's have a look at the results produced by the first task:
 
-```{code-cell} 
+```{code-cell}
 with abilab.abiopen("flow_h2/w0/t0/outdata/out_GSR.nc") as gsr:
     print(gsr)
 ```
@@ -281,11 +281,11 @@ lists that can be used to plot $E(d)$ with d the H-H distance.
 This kind of operations are, however, very common and AbiPy provides a high-level interface (`robots`) to
 operate on multiple files and post-process the data.
 
-In the simplest case, one can use the `from_dir` method to tell the  `Robot` to 
+In the simplest case, one can use the `from_dir` method to tell the  `Robot` to
 find all files of a particular type located within a directory tree,
-and store all the data in memory: 
+and store all the data in memory:
 
-```{code-cell} 
+```{code-cell}
 robot = abilab.GsrRobot.from_dir("flow_h2")
 robot
 ```
@@ -293,19 +293,19 @@ robot
 Once we have constructed the robot, we can start to invoke methods to extract/post-process the results.
 For instance, we can construct a pandas Dataframe with:
 
-```{code-cell} 
+```{code-cell}
 table = robot.get_dataframe()
 ```
 
 The table contains several columns:
 
-```{code-cell} 
+```{code-cell}
 table.keys()
 ```
 
 Inside the notebook, we can visualize the table with:
 
-```{code-cell} 
+```{code-cell}
 table
 ```
 
@@ -329,13 +329,13 @@ and **automatically executed** by the framework at runtime.
 
 Let's look at the documentation of `robot.get_dataframe`:
 
-```{code-cell} 
+```{code-cell}
 abilab.print_doc(robot.get_dataframe)
 ```
 
 It seems complicated but the actual implementation of the callback is just three lines of code:
 
-```{code-cell} 
+```{code-cell}
 ---
 code_folding: []
 run_control:
@@ -360,13 +360,13 @@ with abilab.GsrRobot.from_dir("flow_h2") as robot:
 
 As expected, now the table contains a new column with `hh_dist` in Angstrom:
 
-```{code-cell} 
+```{code-cell}
 "hh_dist" in table
 ```
 
 Let's print the two columns with the H-H distance and the total energy:
 
-```{code-cell} 
+```{code-cell}
 table[["hh_dist", "energy"]]
 ```
 
@@ -374,26 +374,26 @@ Note that the energy in our `DataFrame` is given in eV to facilitate the integra
 with `pymatgen` that uses eV for energies and Angstrom for lengths.
 Let's add another column to our table with energies in Hartree:
 
-```{code-cell} 
+```{code-cell}
 table["energy_Ha"] = table["energy"] * abilab.units.eV_to_Ha
 ```
 
 and use the `plot` method of pandas `DataFrames` to plot `energy_Ha` vs `hh_dist`
 
-```{code-cell} 
+```{code-cell}
 table.plot(x="hh_dist", y="energy_Ha", style="-o");
 ```
 
 At this point, it should be clear that to plot the maximum of the forces as a function of the H-H distance
 we just need:
 
-```{code-cell} 
+```{code-cell}
 table.plot(x="hh_dist", y="max_force", style="-o");
 ```
 
 Want to plot the two quantities on the same figure?
 
-```{code-cell} 
+```{code-cell}
 table.plot(x="hh_dist", y=["energy_Ha", "max_force"], subplots=True);
 ```
 
@@ -407,7 +407,7 @@ Need to send data to Windows users?
 
     table.to_excel("'output.xlsx")
 
-Want to copy the dataframe to the system clipboard so that one can easily past the data 
+Want to copy the dataframe to the system clipboard so that one can easily past the data
 into an other applications e.g. Excel?
 
     table.to_clipboard()
@@ -421,7 +421,7 @@ and a `Density` object with $n(r)$ (numpy array `.datar`) and $n(G)$ (`.datag`).
 
 Let's open the file with `abiopen` and print it:
 
-```{code-cell} 
+```{code-cell}
 with abilab.abiopen("flow_h2/w0/t10/outdata/out_DEN.nc") as denfile:
     print(denfile)
     density = denfile.density
@@ -431,7 +431,7 @@ The simplest thing we can do now is to print $n(r)$ along a line passing through
 either in terms of two vectors or two integers defining the site index in our `structure`.
 Let's plot the density along the H-H bond by passing the index of the two atoms:
 
-```{code-cell} 
+```{code-cell}
 density.plot_line(0, 1);
 ```
 
@@ -443,7 +443,7 @@ and AbiPy provides tools to export the data from netcdf to the text format suppo
 
 For example, one can use:
 
-```{code-cell} 
+```{code-cell}
 #density.visualize("vesta")
 ```
 

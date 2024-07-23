@@ -4,6 +4,7 @@ Profile.prof
 abipy/examples/flows/flow_*
 abipy/examples/flows/develop/flow_*
 _debug
+_build
 #__abinb_workdir__
 #abinb_*.ipynb
 $*.pickle

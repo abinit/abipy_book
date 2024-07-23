@@ -148,11 +148,11 @@ flow.get_graphviz()
 In a nutshell:
 
    * we compute the `WFK` file in the `ScfTask` (red circle)
-   * the ground-state wavefunctions are used by the three `DdkTasks` to compute 
+   * the ground-state wavefunctions are used by the three `DdkTasks` to compute
      $\dfrac{\partial u}{\partial{\bf k}}$ for the three different directions.
-   * The `ElasticTasks` needs the `WFK` file to compute the six strain perturbations 
-     (3 for uniaxial and 3 for shear strain) while the `DDK` files are required 
-     to compute the mixed 2nd-order derivatives with respect to strain and electric field 
+   * The `ElasticTasks` needs the `WFK` file to compute the six strain perturbations
+     (3 for uniaxial and 3 for shear strain) while the `DDK` files are required
+     to compute the mixed 2nd-order derivatives with respect to strain and electric field
      needed for the piezoelectric tensor.
 
 Note that, **contrarily to the approach used in the standard tutorial**, the AbiPy `Work` does not use datasets.
@@ -181,7 +181,7 @@ For your convenience the links to the doc of the different variables are listed 
 - {{rfphon}}
 - {{rfatpol}}
 - {{rfdir}}
-- {{rfelfd}} 
+- {{rfelfd}}
 - {{rfstrs}}
 - {{kptopt}}
 ```

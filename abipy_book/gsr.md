@@ -38,7 +38,7 @@ For a quick visualization of the data, use the `--expose` options:
 ```{include} snippets/abiopen_note.md
 ```
 
-```{code-cell} 
+```{code-cell}
 import warnings
 warnings.filterwarnings("ignore")  # Ignore warnings
 
@@ -62,19 +62,19 @@ results produced by SCF or NSCF ground-state calculations
 (band energies, forces, energies, stress tensor).
 To open a `GSR` file, use the `abiopen` function defined in `abilab`:
 
-```{code-cell} 
+```{code-cell}
 gsr = abilab.abiopen(abidata.ref_file("si_scf_GSR.nc"))
 ```
 
 The gsr object has a `Structure`:
 
-```{code-cell} 
+```{code-cell}
 print(gsr.structure)
 ```
 
 and an `ElectronBands` object with the band energies, the occupation factors, the list of k-points:
 
-```{code-cell} 
+```{code-cell}
 print(gsr.ebands)
 ```
 
@@ -86,25 +86,25 @@ AbiPy uses the same convention so be very careful when specifying band, spin or 
 A GSR file produced by a **self-consistent run**, contains the values of the total energy, the forces,
 and the stress tensor at the end of the SCF cycle:
 
-```{code-cell} 
+```{code-cell}
 print("energy:", gsr.energy, "pressure:", gsr.pressure)
 ```
 
 To get a summary of the most important results:
 
-```{code-cell} 
+```{code-cell}
 print(gsr)
 ```
 
 The different contributions to the total energy are stored in a dictionary:
 
-```{code-cell} 
+```{code-cell}
 print(gsr.energy_terms)
 ```
 
 At this point, we don't need this file anymore so we close it with:
 
-```{code-cell} 
+```{code-cell}
 gsr.close()
 ```
 
@@ -128,14 +128,14 @@ Be aware that this might possibly affect the automatic labelling of the boundary
 So, check carefully the k-point labels on the figures that are produced in such case.
 In the present case, the labelling is correct.
 
-```{code-cell} 
+```{code-cell}
 with abilab.abiopen(abidata.ref_file("si_nscf_GSR.nc")) as nscf_gsr:
     ebands_kpath = nscf_gsr.ebands
 ```
 
 Now we can plot the band energies with *matplotlib*:
 
-```{code-cell} 
+```{code-cell}
 # The labels for the k-points are found in an internal database.
 ebands_kpath.plot(with_gaps=True, title="Silicon band structure");
 ```
@@ -143,7 +143,7 @@ ebands_kpath.plot(with_gaps=True, title="Silicon band structure");
 Alternatively, one can use the optional argument `klabels` to define the mapping
 `reduced_coordinates --> name of the k-point` and pass it to the plot method
 
-```{code-cell} 
+```{code-cell}
 klabels = {
     (0.5, 0.0, 0.0): "L",
     (0.0, 0.0, 0.0): "$\Gamma$",
@@ -155,24 +155,24 @@ klabels = {
 
 For the plotly version, use:
 
-```{code-cell} 
+```{code-cell}
 ebands_kpath.plotly(with_gaps=True, title="Silicon band structure with plotly");
 ```
 
-```{code-cell} 
+```{code-cell}
 abilab.abipanel()
 gsr.get_panel()
 ```
 
 Let's have a look at our k-points by calling `kpoints.plot()`
 
-```{code-cell} 
+```{code-cell}
 ebands_kpath.kpoints.plotly();
 ```
 
 and the crystalline structure with:
 
-```{code-cell} 
+```{code-cell}
 ebands_kpath.structure.plot();
 ```
 
@@ -189,7 +189,7 @@ compute the DOS with the Gaussian method.
 The method is called without arguments so we use **default values**
 for the *broadening* and the *step* of the linear mesh.
 
-```{code-cell} 
+```{code-cell}
  with abilab.abiopen(abidata.ref_file("si_scf_GSR.nc")) as scf_gsr:
     ebands_kmesh = scf_gsr.ebands
 
@@ -197,11 +197,11 @@ edos = ebands_kmesh.get_edos()
 print(edos)
 ```
 
-```{code-cell} 
+```{code-cell}
 edos.plotly();
 ```
 
-```{code-cell} 
+```{code-cell}
 print("[ebands_kmesh] is_ibz:", ebands_kmesh.kpoints.is_ibz, "is_kpath:", ebands_kmesh.kpoints.is_path)
 print("[ebands_kpath] is_ibz:", ebands_kpath.kpoints.is_ibz, "is_kpath:", ebands_kpath.kpoints.is_path)
 ```
@@ -213,13 +213,13 @@ to compute the DOS with a k-path.
 
 To plot bands and DOS on the same figure:
 
-```{code-cell} 
+```{code-cell}
 ebands_kpath.plotly_with_edos(edos, with_gaps=True);
 ```
 
 To plot the DOS and the integrated DOS (IDOS), use:
 
-```{code-cell} 
+```{code-cell}
 edos.plotly_dos_idos();
 ```
 
@@ -229,7 +229,7 @@ one should perform an accurate convergence study with respect to the k-point mes
 Here we show how compute the DOS with different values of the gaussian smearing
 for fixed k-point sampling and plot the results:
 
-```{code-cell} 
+```{code-cell}
 # Compute the DOS with the Gaussian method and different values of the broadening
 widths = [0.1, 0.2, 0.3, 0.4]
 
@@ -238,13 +238,13 @@ edos_plotter = ebands_kmesh.compare_gauss_edos(widths, step=0.1)
 
 To plot the results on the same figure, use:
 
-```{code-cell} 
+```{code-cell}
 edos_plotter.combiplot(title="e-DOS as function of the Gaussian broadening");
 ```
 
 while `gridplot` generates a grid of subplots:
 
-```{code-cell} 
+```{code-cell}
 edos_plotter.gridplot();
 ```
 
@@ -253,7 +253,7 @@ edos_plotter.gridplot();
 This example shows how to plot the different contributions to the electronic joint density of states of Silicon.
 Select the valence and conduction bands to be included in the JDOS. Here we include valence bands from 0 to 3 and the first conduction band (4).
 
-```{code-cell} 
+```{code-cell}
 vrange = range(0,4)
 crange = range(4,5)
 
@@ -261,17 +261,17 @@ crange = range(4,5)
 ebands_kmesh.plot_ejdosvc(vrange, crange);
 ```
 
-```{code-cell} 
+```{code-cell}
 ebands_kpath.plot_transitions(omega_ev=3.0);
 ```
 
-```{code-cell} 
+```{code-cell}
 ebands_kmesh.plot_transitions(omega_ev=3.0);
 ```
 
 ## Plotting the Fermi surface
 
-```{code-cell} 
+```{code-cell}
 with abilab.abiopen(abidata.ref_file("mgb2_kmesh181818_FATBANDS.nc")) as fbnc_kmesh:
     mgb2_ebands = fbnc_kmesh.ebands
 
@@ -281,18 +281,18 @@ with abilab.abiopen(abidata.ref_file("mgb2_kmesh181818_FATBANDS.nc")) as fbnc_km
 
 There are three bands crossing the Fermi level of $MgB_2$ (band 2, 3, 4):
 
-```{code-cell} 
+```{code-cell}
 mgb2_ebands.boxplot();
 ```
 
 Let's use matplotlib to plot the isosurfaces corresponding to the Fermi level (default):
 
-```{code-cell} 
+```{code-cell}
 # Warning: requires skimage package, rendering could be slow.
 mgb2_eb3d.plot_isosurfaces();
 ```
 
-```{code-cell} 
+```{code-cell}
 #ebands_kpath.plot_scatter3d(band=3);
 #ebands_kmesh.plot_scatter3d(band=3);
 ```

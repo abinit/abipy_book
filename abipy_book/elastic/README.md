@@ -11,9 +11,9 @@ Use:
 
 to get the list of available options.
 
-    ./lessons_elastic.py 
+    ./lessons_elastic.py
 
-to build the flow 
+to build the flow
 (well, AbiPy will complain because there's already a directory with the same name...)
 
 Use:
@@ -22,7 +22,7 @@ Use:
 
 to interact with the flow and:
 
-    abirun.py --help 
+    abirun.py --help
 
 to access the documentation.
 The debug COMMAND is quite handy if something goes wrong!

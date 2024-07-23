@@ -172,7 +172,7 @@ The `set_structure` method sets the value of the ABINIT variables:
 
 It is always a good idea to set the structure immediately after the creation of an `AbinitInput`
 because several methods use this information to facilitate the specification of other variables.
-For instance, the `set_kpath` method uses the structure to generate the high-symmetry $k$-path 
+For instance, the `set_kpath` method uses the structure to generate the high-symmetry $k$-path
 for band structure calculations.
 
 ```{warning}
@@ -186,7 +186,7 @@ for band structure calculations.
 It is possible to create a structure in different ways.
 
 The most explicit (and verbose) consists in passing a dictionary with ABINIT variables
-provided one uses python lists (or lists or lists) when ABINIT expects a 1D 
+provided one uses python lists (or lists or lists) when ABINIT expects a 1D
 (or a multidimensional array):
 
 
@@ -208,7 +208,7 @@ print(si_struct)
 
 +++
 
-If you already have a string with the Abinit variable, you can use the `from_abistring` class method: 
+If you already have a string with the Abinit variable, you can use the `from_abistring` class method:
 
 ```{code-cell}
 lif_struct = abilab.Structure.from_abistring("""
@@ -228,9 +228,9 @@ print(lif_struct)
 ```
 
 This approach requires less input yet we still need to specify {{ntypat}}, {{znucl}}and {[typat}}.
-Fortunately, *from_abistring* supports another Abinit-specific format in which the 
+Fortunately, *from_abistring* supports another Abinit-specific format in which the
 fractional coordinates and the element symbol are specified via the *xred_symbols* variable.
-In this case {{ntypat}}, {{znucl}} and {{typat}} do not need to be specified as they are automatically 
+In this case {{ntypat}}, {{znucl}} and {{typat}} do not need to be specified as they are automatically
 computed from *xred_symbols*:
 
 

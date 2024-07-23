@@ -11,9 +11,9 @@ Use:
 
 to get the list of available options.
 
-    ./lessons_eph_al.py 
+    ./lessons_eph_al.py
 
-to build the flow 
+to build the flow
 (well, AbiPy will complain because there's already a directory with the same name...)
 
 Use:
@@ -22,7 +22,7 @@ Use:
 
 to interact with the flow and:
 
-    abirun.py --help 
+    abirun.py --help
 
 to access the documentation.
 The debug COMMAND is quite handy if something goes wrong!
@@ -33,7 +33,7 @@ Use:
 
     abiview.py ebands flow_eph_al/w0/t1/outdata/out_GSR.nc
 
-to visualize the electronic properties or, alternatively, open the file inside ipython with 
+to visualize the electronic properties or, alternatively, open the file inside ipython with
 
     abiopen.py flow_eph_al/w0/t1/outdata/out_GSR.nc
 
@@ -44,7 +44,7 @@ Use:
 
     abiview.py ddb flow_eph_al/w1/outdata/out_DDB
 
-to produce plots with the vibrational properties and abiopen.py to open the file 
+to produce plots with the vibrational properties and abiopen.py to open the file
 and access the AbiPy API directly.
 
 To build a GsrRobot from the terminal with all the GSR files produced in w0, use:
@@ -65,7 +65,7 @@ Use:
 
     robot.method?
 
-to get the documentation of method and 
+to get the documentation of method and
 
     robot.method??
 
@@ -98,6 +98,6 @@ To build a A2FRobot with all the A2F.nc files generated in the flow, use:
 
 Use the ipython magic:
 
-    %matplotlib 
+    %matplotlib
 
 and follow the examples given in the jupyter notebook to analyze the data.

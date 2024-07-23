@@ -13,9 +13,9 @@ Use:
 to get the list of available options.
 Run the script without arguments:
 
-    ./lessons_dfpt.py 
+    ./lessons_dfpt.py
 
-to build the flow 
+to build the flow
 (well, AbiPy will complain because there's already a directory with the same name...)
 
 Use:
@@ -24,7 +24,7 @@ Use:
 
 to interact with the flow and:
 
-    abirun.py --help 
+    abirun.py --help
 
 to access the documentation.
 The debug COMMAND is quite handy if something goes wrong!
@@ -53,7 +53,7 @@ Use:
 
     robot.method?
 
-to get the documentation of method and 
+to get the documentation of method and
 
     robot.method??
 

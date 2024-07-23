@@ -99,7 +99,7 @@ def linkcheck(ctx):
     and ensure that they resolve.
     """
     with cd(HERE):
-        ctx.run("jupyter-book build abipy_book/ --builder linkcheck", pty=True)
+        ctx.run("jb build abipy_book --builder linkcheck", pty=True)
 
 
 @task

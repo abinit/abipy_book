@@ -1,5 +1,3 @@
+abipy
 jupyter-book
-matplotlib
-numpy
 ghp-import
-#tree
