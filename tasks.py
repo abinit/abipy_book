@@ -57,7 +57,7 @@ def build(ctx):
 @task
 def build_all(ctx):
     """
-    Build the boo from scratch.
+    Build the book from scratch.
     """
     with cd(HERE):
         ctx.run("jb clean abipy_book", pty=True)
