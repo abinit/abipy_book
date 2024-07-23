@@ -23,7 +23,14 @@ jobs:
       run:
         shell: bash -l {0} # enables conda/mamba env activation by reading bash profile
 
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - os: ubuntu-latest
+            python: '3.11'
+
+    runs-on: ${{ matrix.config.os }}
     #env:
     #  PMG_MAPI_KEY: ${{ secrets.PMG_MAPI_KEY }}
 
@@ -33,40 +40,37 @@ jobs:
       id-token: write
 
     steps:
-    - name: Set up Miniconda
-      uses: conda-incubator/setup-miniconda@v2
-      with:
-          auto-update-conda: true
+      - name: Check out Abipy-book repo
+        uses: actions/checkout@v4
 
-    # Install dependencies
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.11
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+            auto-update-conda: true
 
-    - name: Install Abinit, AbiPy and dependencies
-      run: |
-        conda create -n abipy python=${{ matrix.config.python }} --yes
-        conda activate abipy
-        conda install abinit -c conda-forge --yes
-        mpirun -n 1 abinit --version
-        mpirun -n 1 abinit --build
-        pip install -r requirements.txt
-        mkdir -p $HOME/.abinit/abipy/
-        cp abipy_book/data/managers/gh_manager.yml $HOME/.abinit/abipy/manager.yml
-        cp abipy_book/data/managers/gh_scheduler.yml $HOME/.abinit/abipy/scheduler.yml
+      - name: Installing abinit from conda-forge and abipy with python=${{ matrix.config.python }}
+        run: |
+          conda create -n abipy python=${{ matrix.config.python }} --yes
+          conda activate abipy
+          conda install abinit -c conda-forge --yes
+          mpirun -n 1 abinit --version
+          mpirun -n 1 abinit --build
+          pip install -r requirements.txt
+          mkdir -p $HOME/.abinit/abipy/
+          cp abipy_book/data/managers/gh_manager.yml $HOME/.abinit/abipy/manager.yml
+          cp abipy_book/data/managers/gh_scheduler.yml $HOME/.abinit/abipy/scheduler.yml
 
-    - name: Build book
-      run: |
-        conda activate abipy
-        jupyter-book build abipy_book --builder linkcheck
+      - name: Build book
+        run: |
+          conda activate abipy
+          jupyter-book build abipy_book --builder linkcheck
 
-    - name: Upload the book's HTML as an artifact
-      uses: actions/upload-pages-artifact@v2
-      with:
-        path: "abipy_book/abipy_book/_build/html"
+      - name: Upload the book's HTML as an artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: "abipy_book/abipy_book/_build/html"
 
-    # Deploy the book's HTML to GitHub Pages
-    #- name: Deploy to GitHub Pages
-    #  id: deployment
-    #  uses: actions/deploy-pages@v2
+      # Deploy the book's HTML to GitHub Pages
+      #- name: Deploy to GitHub Pages
+      #  id: deployment
+      #  uses: actions/deploy-pages@v2
