@@ -43,6 +43,7 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: 3.11
+
     - name: Install Abinit, AbiPy and dependencies
       run: |
         conda create -n abipy python=${{ matrix.config.python }} --yes
@@ -50,22 +51,20 @@ jobs:
         conda install abinit -c conda-forge --yes
         mpirun -n 1 abinit --version
         mpirun -n 1 abinit --build
-        pip install -r requirements
+        pip install -r requirements.txt
         mkdir -p $HOME/.abinit/abipy/
         cp abipy_book/data/managers/gh_manager.yml $HOME/.abinit/abipy/manager.yml
         cp abipy_book/data/managers/gh_scheduler.yml $HOME/.abinit/abipy/scheduler.yml
+
+    - name: Build book
+      run: |
+        conda activate abipy
         jupyter-book build abipy_book --builder linkcheck
 
-    # Build the example book
-    #- name: Build book
-    #  run: |
-    #    jupyter-book build my_book/my_book/
-
-    ## Upload the book's HTML as an artifact
-    #- name: Upload artifact
-    #  uses: actions/upload-pages-artifact@v2
-    #  with:
-    #    path: "my_book/my_book/_build/html"
+    - name: Upload the book's HTML as an artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: "abipy_book/abipy_book/_build/html"
 
     # Deploy the book's HTML to GitHub Pages
     #- name: Deploy to GitHub Pages
