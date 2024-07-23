@@ -36,11 +36,9 @@ and then examine the flows notebook.
 * [Lobster](lobster): How to analyze the output files produced by Lobster
 * [ABIWAN.nc](abiwan): How to analyze the Wannier90 wout file and the netcdf file produced by Abinit
 
-+++
-
 ## AbiPy Workflows
 
-* [Flows](/flows.html): How to automate calculations with `Flows`, `Works` and `Tasks`
+* [Flows](flows): How to automate calculations with `Flows`, `Works` and `Tasks`
 
 This notebook is complemented with the documentation on the
 [TaskManager Configuration](https://abinit.github.io/abipy/workflows/taskmanager.html):
@@ -60,9 +58,8 @@ Sometimes there is also a large overlap with some of the previous AbiPy tutorial
 * [Phonons, dielectric tensor and Born effective charges from DFPT](dfpt/lesson_dfpt)
 * [$G_0W_0$ band structure](g0w0/lesson_g0w0)
 * [Bethe-Salpeter equation and excitonic effects](bse/lesson_bse)
-% * [E-PH self-energy and T-dependent band structures](eph_zpr/lesson_eph_zpr)
-% * [Phonon linewidths and Eliashberg function of Al](eph_isotc/lesson_eph_isotc)
+<!--
+* [E-PH self-energy and T-dependent band structures](eph_zpr/lesson_eph_zpr)
+-->
+* [Phonon linewidths and Eliashberg function of Al](eph_isotc/lesson_eph_isotc)
 * [Elastic and piezoelectric properties](elastic/lesson_elastic)
-
-+++
-

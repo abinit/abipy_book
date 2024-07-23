@@ -276,7 +276,7 @@ You might have noticed that each `Task` directory present the same structure:
 
 +++
 
-An Abinit Task *has* an [AbinitInput](abinit_input.ipynb) which in turn has a [Structure](structure.ipynb):
+An Abinit Task *has* an [AbinitInput](abinit_input) which in turn has a [Structure](structure):
 
 ```{code-cell} ipython3
  flow[0][0].input
@@ -670,13 +670,13 @@ are read from the `manager.yml` configuration file, that is usually located in t
 The options for the python scheduler responsible for job submission are given in `scheduler.yml`.
 
 For a more complete description of these configuration options,
-please consult the [TaskManager documentation](http://abinit.github.io/abipy/workflows/taskmanager.html).
+please consult the [TaskManager documentation](https://abinit.github.io/abipy/workflows/taskmanager.html).
 A list of configuration files for different machines and clusters is available
-[here](http://abinit.github.io/abipy/workflows/manager_examples.html)
+[here](https://abinit.github.io/abipy/workflows/manager_examples.html)
 while the [Flows HOWTO](http://abinit.github.io/abipy/flows_howto.html)
 gathers answers to frequently asked questions.
 
 Last but not least, check out our
-[gallery of AbiPy Flows](http://abinit.github.io/abipy/flow_gallery/index.html) for inspiration.
+[gallery of AbiPy Flows](https://abinit.github.io/abipy/flow_gallery/index.html) for inspiration.
 
 +++
