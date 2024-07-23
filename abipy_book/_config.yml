@@ -300,11 +300,13 @@ parse:
       abiview: "[abiview.py](http://abinit.github.io/abipy/scripts/abiview.html)"
       abirun: "[abirun.py](http://abinit.github.io/abipy/scripts/abirun.html)"
       abidoc: "[abidoc.py](http://abinit.github.io/abipy/scripts/abidoc.html)"
+      #abips: "[abidoc.py](http://abinit.github.io/abipy/scripts/abips.html)"
+      #oncv: "[abidoc.py](http://abinit.github.io/abipy/scripts/oncv.html)"
       # Links to websites
       abiconfig: "[abiconfig](https://github.com/abinit/abiconfig)"
       abiflows: "[abiflows](https://github.com/abinit/abiflows)"
       abitutorials: "[abitutorials](https://github.com/abinit/abitutorials)"
-      abipygui: "[AbiPy GUI](https://panel.many2.abinit.org/)"
+      abipygui: "[AbiPy GUI](https://gui.abinit.org/)"
       #abinit-channel: https://anaconda.org/abinit
       pseudodojo: "[pseudo-dojo](http://www.pseudo-dojo.org/)"
       pymatgen: "[pymatgen](http://www.pymatgen.org)"
