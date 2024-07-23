@@ -57,8 +57,8 @@ jobs:
           mpirun -n 1 abinit --build
           pip install -r requirements.txt
           mkdir -p $HOME/.abinit/abipy/
-          cp abipy_book/data/managers/gh_manager.yml $HOME/.abinit/abipy/manager.yml
-          cp abipy_book/data/managers/gh_scheduler.yml $HOME/.abinit/abipy/scheduler.yml
+          cp abipy_book/data/gh_manager.yml $HOME/.abinit/abipy/manager.yml
+          cp abipy_book/data/gh_scheduler.yml $HOME/.abinit/abipy/scheduler.yml
 
       - name: Build book
         run: |
