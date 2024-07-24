@@ -50,6 +50,7 @@ jobs:
 
       - name: Installing abinit from conda-forge and abipy with python=${{ matrix.config.python }}
         run: |
+          pwd
           conda create -n abipy python=${{ matrix.config.python }} --yes
           conda activate abipy
           conda install abinit -c conda-forge --yes

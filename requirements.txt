@@ -2,4 +2,5 @@ invoke
 abipy
 jupyter-book
 graphviz
+scikit-image
 #ghp-import
