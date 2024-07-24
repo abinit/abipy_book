@@ -109,8 +109,8 @@ provided VESTA is already installed on your machine and the binary can be found 
 To get a structure from the [materials project database](https://www.materialsproject.org), use:
 
 ```{code-cell}
-# You can pass the api_key or set the env variable PMG_MAPI_KEY in your ~/.pmgrc.yaml files.
-si2_mp = Structure.from_mpid("mp-149", api_key=None)
+# Remember to set the env variable PMG_MAPI_KEY in your ~/.pmgrc.yaml files.
+si2_mp = Structure.from_mpid("mp-149")
 print(si2_mp)
 ```
 
