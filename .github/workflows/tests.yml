@@ -56,7 +56,7 @@ jobs:
           conda install abinit -c conda-forge --yes
           mpirun -n 1 abinit --version
           mpirun -n 1 abinit --build
-          ../install.sh
+          source ../install.sh
           mkdir -p $HOME/.abinit/abipy/
           cp abipy_book/data/gh_manager.yml $HOME/.abinit/abipy/manager.yml
           cp abipy_book/data/gh_scheduler.yml $HOME/.abinit/abipy/scheduler.yml
