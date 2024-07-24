@@ -188,7 +188,7 @@ The most important parameters to remember are:
   $Z^*_{\kappa,\alpha\beta}$ and $\epsilon^{\infty}_{\alpha\beta}$).
 
 The high-symmetry q-path is automatically selected assuming the structure
-fulfills the conventions introduced by [Setyawan and Curtarolo](https://arxiv.org/abs/1004.2974)
+fulfills the conventions introduced by [Setyawan and Curtarolo](https://doi.org/10.1016/j.commatsci.2010.05.010)
 but you can also specify your own **q**-path if needed.
 
 ## Plotting phonon bands and DOS

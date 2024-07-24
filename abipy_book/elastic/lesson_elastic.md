@@ -252,7 +252,7 @@ The tensors are available as attributes of the `edata` object:
 edata.elastic_relaxed
 ```
 
-These are pymatgen [tensors](https://github.com/materialsproject/pymatgen/blob/master/src/pymatgen/analysis/elasticity/tensors.py),
+These are pymatgen tensors,
 more specifically [ElasticTensor objects](https://github.com/materialsproject/pymatgen/blob/master/src/pymatgen/analysis/elasticity/elastic.py)
 so we have access to several useful methods.
 To get the Voigt bulk modulus, use:

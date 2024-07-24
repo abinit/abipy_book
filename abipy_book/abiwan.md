@@ -29,8 +29,8 @@ Note: The code in this notebook requires abinit >= 8.9 and abipy >= 0.6
 
 ## Table of Contents
 
-- [How to analyze the WOUT file](#How-to-analyze-the-WOUT-file)
-- [Using ABIWAN.nc to interpolate band energies](#Using-ABIWAN.nc-to-interpolate-band-energies)
+- [How to analyze the WOUT file](#how-to-analyze-the-wout-file)
+- [Using ABIWAN.nc to interpolate band energies](#using-abiwan-nc-to-interpolate-band-energies)
 
 Let's start by importing the basic modules needed for this tutorial.
 

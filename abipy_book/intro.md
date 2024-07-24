@@ -2,7 +2,7 @@
 
 Welcome to the AbiPy Jupyter Book!
 This book contains notebook-based documentation for [AbiPy](https://github.com/abinit/abipy).
-This augments our Sphinx-based [documentation](https://abinit.github.io/abipy>) with jupyter notebooks
+This augments our Sphinx-based [documentation](https://abinit.github.io/abipy) with jupyter notebooks
 containing interactive tutorials and examples.
 
 Additional examples are available on the:

@@ -289,7 +289,7 @@ inp.set_structure(abilab.Structure.from_mpid("mp-149"))
 ```
 
 Remember to set the `PMG_MAPI_KEY` in ~/.pmgrc.yaml as described
-[here](http://pymatgen.org/usage.html#setting-the-pmg-mapi-key-in-the-config-file).
+[here](https://pymatgen.org/usage.html#setting-the-pmg-mapi-key-in-the-config-file).
 
 +++
 
