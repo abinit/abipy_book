@@ -15,7 +15,7 @@ kernelspec:
 
 ## ABINIT
 
-* [ABINIT Tutorials](https://doc.abinit.org/tutorial)
+* [ABINIT Tutorials](https://docs.abinit.org/tutorial)
 * [ABINIT Wiki](https://wiki.abinit.org/doku.php)
 * [ABINIT Forum](https://forum.abinit.org)
 * [PseudoDojo](http://www.pseudo-dojo.org): Tables of pseudopotentials
