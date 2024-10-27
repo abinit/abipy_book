@@ -64,7 +64,8 @@ jobs:
       - name: Build book
         run: |
           conda activate abipy
-          jupyter-book build abipy_book --builder linkcheck
+          jupyter-book build abipy_book
+          #jupyter-book build abipy_book --builder linkcheck
 
       - name: Upload the book's HTML as an artifact
         uses: actions/upload-pages-artifact@v2
