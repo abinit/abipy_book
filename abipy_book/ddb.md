@@ -49,7 +49,7 @@ ddb = abilab.DdbFile.from_mpid("mp-1009129")
 <hr>
 
 Remember to set the `PMG_MAPI_KEY` in your ~/.pmgrc.yaml as described
-[here](http://pymatgen.org/usage.html#setting-the-pmg-mapi-key-in-the-config-file).
+[here](https://pymatgen.org/usage.html#setting-the-pmg_mapi_key-in-the-config-file)
 
 ## How to create a DdbFile object
 
@@ -362,15 +362,15 @@ Unfortunately, all the terms that are evaluated on the real-space FFT mesh
 The error depends on several factors: the density of the FFT mesh,
 pseudopotentials with hard model core charges, XC functional, etc.)
 Note that it is not always possible to reduce the error to zero by just increasing the convergence parameters
-but fortunately it is possible to restore the acoustic sum rule via the {{asr_anaddb}} input variable.
+but fortunately it is possible to restore the acoustic sum rule via the {{asr@anaddb}} input variable.
 
-One can easily compare the phonons bands obtained with different values of {{asr_anaddb}} with:
+One can easily compare the phonons bands obtained with different values of {{asr@anaddb}} with:
 
 ```{code-cell}
 asr_plotter = ddb.anacompare_asr()
 ```
 
-This method invokes anaddb with different values of {{asr_anaddb}} and returns a plotter object
+This method invokes anaddb with different values of {{asr@anaddb}} and returns a plotter object
 we can call to compare the phonon band structures:
 
 ```{code-cell}
@@ -382,7 +382,7 @@ asr_plotter.combiplotly();
 ```
 
 Now we can perform a similar test for the treatment of the non-analytical term in the $q \rightarrow 0$ limit.
-We compute the phonon band dispersion for {{dipdip_anaddb} in [0, 1] and the compare the
+We compute the phonon band dispersion for {{dipdip@anaddb} in [0, 1] and the compare the
 results on the same figure with the commands:
 
 ```{code-cell}
@@ -404,7 +404,7 @@ in polar semiconductors.
 The correct description of this long-range term without dipdip = 1
 would require using an extremely dense q-point mesh in the DFPT calculation.
 
-With {{dipdip_anaddb} = 1, on the other hand, we can model this long-range behavior in terms of a dipole-dipole
+With {{dipdip@anaddb} = 1, on the other hand, we can model this long-range behavior in terms of a dipole-dipole
 interaction involving the Born effective charges and the macroscopic dielectric tensor.
 This allows us to decompose the full dynamical matrix into:
 

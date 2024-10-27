@@ -7,6 +7,7 @@
 # Book settings
 title                       : AbiPy Book  # The title of the book. Will be placed in the left navbar.
 author                      : M. Giantomassi and the AbiPy group  # The author of the book
+language: en
 copyright                   : "2024"  # Copyright year to be placed in the footer
 logo                        : "images/abipy_logo.png"  # A path to the book logo
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
@@ -22,6 +23,7 @@ execute:
   #execute_notebooks: cache
   #execute_notebooks: auto
   execute_notebooks: force
+  timeout: 120  # Set the timeout to 120
 
 # Define the name of the latex output file for PDF builds
 latex:

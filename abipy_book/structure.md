@@ -67,7 +67,7 @@ structure = Structure.from_file(abidata.cif_file("si.cif"))
 print(structure)
 ```
 
-```{include} abidata_note.md
+```{include} snippets/abidata_note.md
 ```
 
 To read the structure from an Abinit netcdf file, use:

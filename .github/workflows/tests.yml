@@ -18,7 +18,7 @@ jobs:
   # This job tests that the CC works
   test-and-jb-build:
     # prevent this action from running on forks
-    #if: github.repository == 'abinit/abipy'
+    if: github.repository == 'abinit/abipy_book'
     defaults:
       run:
         shell: bash -l {0} # enables conda/mamba env activation by reading bash profile
@@ -28,11 +28,11 @@ jobs:
       matrix:
         config:
           - os: ubuntu-latest
-            python: '3.11'
+            python: '3.12'
 
     runs-on: ${{ matrix.config.os }}
-    #env:
-    #  PMG_MAPI_KEY: ${{ secrets.PMG_MAPI_KEY }}
+    env:
+      PMG_MAPI_KEY: ${{ secrets.PMG_MAPI_KEY }}
 
     # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
     permissions:
