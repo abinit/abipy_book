@@ -1,7 +1,6 @@
 invoke
-abipy
+#abipy
 jupyter-book
 graphviz
 scikit-image
-mp-api
-#ghp-import
+#mp-api
