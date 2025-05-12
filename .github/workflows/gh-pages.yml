@@ -58,6 +58,7 @@ jobs:
           pwd
           conda create -n abipy python=${{ matrix.config.python }} --yes
           conda activate abipy
+          pip install invoke
           conda install "abinit>10" -c conda-forge --yes
           mpirun -n 1 abinit --version
           mpirun -n 1 abinit --build
@@ -65,6 +66,10 @@ jobs:
           cp abipy_book/data/gh_manager.yml $HOME/.abinit/abipy/manager.yml
           cp abipy_book/data/gh_scheduler.yml $HOME/.abinit/abipy/scheduler.yml
           source install.sh
+
+          # Install abipy from source
+          git clone --depth 1 --branch develop https://github.com/abinit/abipy.git
+          cd abipy && invoke submodules && pip_all.sh && cd -
 
       - name: Build book
         run: |
