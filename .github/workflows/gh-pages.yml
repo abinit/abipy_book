@@ -69,7 +69,7 @@ jobs:
 
           # Install abipy from source
           git clone --depth 1 --branch develop https://github.com/abinit/abipy.git
-          cd abipy && invoke submodules && pip_all.sh && cd -
+          cd abipy && invoke submodules && ./pip_all.sh && cd -
 
       - name: Build book
         run: |
