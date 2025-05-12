@@ -13,8 +13,7 @@ kernelspec:
 
 # Tasks, Workflows and Flow
 
-In this notebook we discuss some of the basic concepts used in AbiPy
-to automate ab-initio calculations.
+In this notebook we discuss some of the basic concepts used in AbiPy to automate ab-initio calculations.
 In particular we will focus on the following three objects:
 
    * `Task`
@@ -24,8 +23,7 @@ In particular we will focus on the following three objects:
 The `Task` represent the most *elementary step* of the automatic workflow.
 Roughly speaking, it corresponds to the execution of a single Abinit calculation **without** multiple datasets.
 
-From the point of view of AbiPy, a calculation consists of a set of `Tasks` that are connected
-by dependencies.
+From the point of view of AbiPy, a calculation consists of a set of `Tasks` that are connected by dependencies.
 Each task has a list of files that are needed to start the calculation,
 and a list of files that are produced at the end of the run.
 
@@ -40,17 +38,16 @@ B_deps = {A: "DEN"}
 
 To clarify this point, let's take a standard KS band structure calculation as an example.
 In this case, we have an initial `ScfTask` that solves the KS equations self-consistently to produce a `DEN` file.
-The density is then used by a second `NscfTask` to compute a band structure on an arbitrary
-set of $k$-points.
+The density is then used by a second `NscfTask` to compute a band structure on an arbitrary set of $k$-points.
 The `NscfTask` thus has a dependency on the `ScfTask` in the sense that it cannot be executed
 until the `ScfTask` is completed and the `DEN` file is produced by the `ScfTask`.
 
 Now that we have clarified the concept of `Task`, we can finally turn to `Works` and `Flow`.
 The `Work` can be seen as a list of `Tasks`, while the `Flow` is essentially a list of `Work` objects.
 Works are usually used to group tasks that are connected to each other.
-Flows are the final objects that are executed. The `Flow` provides an easy-to-use
-interface for performing this execution.
-The `Flow` provides a high-level API to perform common operations like launching the actual jobs, checking the status of the `Tasks`, correcting problems etc.
+Flows are the final objects that are executed.
+The `Flow` provides an easy-to-use  high-level API to perform common operations like launching
+the actual jobs, checking the status of the `Tasks`, correcting problems etc.
 
 AbiPy provides several tools to generate Flows for typical first-principles calculations, so called factory functions.
 This means that you do not need to understand all the technical details of the python implementation.
@@ -62,14 +59,11 @@ that is expected to compute phonons with DFPT!)
 
 All the `Works` and the `Tasks` of a flow are created and executed inside the working directory (`workdir`).
 This is usually specified by the user during the creation of the `Flow` object.
-AbiPy creates the workdir of the different Works/Tasks when the `Flow` is executed
-for the first time.
+AbiPy creates the workdir of the different Works/Tasks when the `Flow` is executed for the first time.
 
-Each `Task` contains a set of input variables that will be used to generate the
-Abinit input file.
+Each `Task` contains a set of input variables that will be used to generate the Abinit input file.
 This input **must** be provided by the user during the creation of the `Task`.
-Fortunately, AbiPy provides an object named `AbinitInput` to facilitate the creation
-of such input.
+Fortunately, AbiPy provides an object named `AbinitInput` to facilitate the creation of such input.
 Once you have an `AbinitInput`, you can create the corresponding `Task` with the (pseudo) code:
 
 ```python
@@ -78,11 +72,12 @@ new_task = Task(abinit_input_object)
 
 The `Task` provides several methods for monitoring the status of the calculation and
 post-processing the results.
-Note that the concept of dependency is not limited to files. All the Tasks in the
-flow are connected and can interact with each other. This allows programmers to implements python
-functions that will be invoked by the framework at run time. For example, one can
-implement a Task that fetches the relaxed structure from a previous Task and
-use this configuration to start a DFPT calculation.
+Note that the concept of dependency is not limited to files.
+All the Tasks in the flow are connected and can interact with each other.
+This allows programmers to implements python
+functions that will be invoked by the framework at run time.
+For example, one can implement a Task that fetches the relaxed structure
+from a previous Task and use this configuration to start a DFPT calculation.
 
 In the next paragraph, we discuss how to construct a `Flow` for band-structure calculations
 with a high-level interface that only requires the specifications of the input files.
@@ -140,8 +135,7 @@ def make_scf_nscf_inputs():
     return scf_input, nscf_input
 ```
 
-Once we have our two input files, we pass them to the
-factory function `bandstructure_flow` that returns our `Flow`.
+Once we have our two input files, we pass them to the factory function `bandstructure_flow` that returns our `Flow`.
 
 ```{code-cell} ipython3
 scf_input, nscf_input = make_scf_nscf_inputs()
@@ -195,7 +189,7 @@ for work in flow:
         print(task)
 ```
 
-`Flows` and `Works` are containers and we can select items in these containers
+`Flows` and `Works` are containers, and we can select items in these containers
 with the syntax: flow[start:stop] or work[start:stop].
 This means that the previous loop is equivalent to the much more verbose version:
 
@@ -246,7 +240,8 @@ flow.build_and_pickle_dump()
 
 This function creates the directories of the `Flow`:
 
-(If you rely on MacOSX, the tree command might not be available. To fix this, see http://osxdaily.com/2016/09/09/view-folder-tree-terminal-mac-os-tree-equivalent/)
+(If you rely on MacOSX, the tree command might not be available.
+To fix this, see http://osxdaily.com/2016/09/09/view-folder-tree-terminal-mac-os-tree-equivalent/)
 
 ```{code-cell} ipython3
 !tree /tmp/hello_bands
@@ -324,8 +319,8 @@ If you read the logs carefully, you will realize that in the first iteration of 
 only the `ScfTask` is executed because the second task depends on it.
 After the initial submission, the scheduler starts to monitor all the tasks in the flow.
 
-When the ScfTask completes, the dependency of the NscfTask is fullfilled and
-a new submission takes place. Once the second task completes, the scheduler calls `flow.finalize`
+When the ScfTask completes, the dependency of the NscfTask is fullfilled and a new submission takes place. 
+Once the second task completes, the scheduler calls `flow.finalize`
 to execute (optional) logic that is supposed to be executed to perform some sort of cleanup or final processing.
 At this point, all the tasks in the flow are completed and the scheduler exits.
 
@@ -352,8 +347,7 @@ Let's call, for instance, the inspect method to plot the self-consistent cycles:
 flow.inspect(tight_layout=True);
 ```
 
-In the other AbiPy tutorials, we have explained how to use abiopen to create
-python objects from netcdf files.
+In the other AbiPy tutorials, we have explained how to use abiopen to create python objects from netcdf files.
 Well, the same code can be reused with the flow.
 It is just a matter of replacing
 
@@ -662,8 +656,7 @@ This brings us to the last and most crucial question.
 How do we configure AbiPy to run Abinit workflows on different architectures ranging from
 standard laptops to high-performance supercomputers?
 
-Unfortunately this notebook is already quite long and these details are best covered
-in a technical documentation.
+Unfortunately this notebook is already quite long and these details are best covered in a technical documentation.
 What should be stressed here is that the behaviour can be customized with two Yaml files.
 All the information related to your environment (Abinit build, modules, resource managers, shell environment)
 are read from the `manager.yml` configuration file, that is usually located in the directory `~/.abinit/abipy/`

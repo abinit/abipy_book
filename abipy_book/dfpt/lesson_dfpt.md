@@ -13,8 +13,7 @@ kernelspec:
 
 # Phonons and Born effective charges
 
-This lesson discusses how to compute phonon band structures, DOS
-and Born effective charges with Abinit and AbiPy.
+This lesson discusses how to compute phonon band structures, DOS and Born effective charges with Abinit and AbiPy.
 The discussion closely follows the [second lesson](https://docs.abinit.org/tutorial/rf2/index.html)
 on DFPT available on the Abinit web site.
 More specifically, we will discuss how to
@@ -85,7 +84,7 @@ print(scf_input.structure)
 scf_input.structure.plot();
 ```
 
-We are using the same pseudopotentials than the official tutorial.
+We are using the same pseudopotentials as in the official tutorial.
 Note that the xc functional is LDA in both pseudos but with a different parametrization.
 This is the reason why we are specifying {{ixc}} in the input file.
 This is not needed if you are using pseudos generated with the same {{ixc}}.
@@ -113,9 +112,9 @@ directories and files and use a script to change the value of {{ecut}} in the in
 Then, of course, one has to run the calculations manually, collect the results and produce nice plots to understand
 what is happening.
 
-This approach is obviously boring and error-prone if you are a human being but it is easy to implement in an algorithm
+This approach is obviously boring and error-prone if you are a human being, but it is easy to implement in an algorithm
 and machines do not complain if they have a lot of repetitive work to do!
-There are also several **technical advantages** in using this **task-based approach vs multi-datasets**
+There are also several **technical advantages** in using this **task-based approach vs multi-datasets**,
 but we discuss this point in more details afterwards.
 
 If the machine could speak, it will tell you: give me an object that represents an input for GS calculations,
@@ -193,8 +192,7 @@ For your convenience the links to the doc of the different variables are listed 
 - {{kptopt}}
 ```
 
-Now we can generate the `flow_alas_ecut` directory with the input files by executing
-the `lesson_dfpt.py` script.
+Now we can generate the `flow_alas_ecut` directory with the input files by executing the `lesson_dfpt.py` script.
 Then use the `abirun.py` script to launch the entire calculation with:
 
     abirun.py flow_alas_ecut_conv scheduler
@@ -252,7 +250,7 @@ print(data_gamma.keys())
 
 where `mode-i` is the frequency in eV of the i-th phonon mode.
 
-We are mainly interested in the convergence of the phonon frequencies versus {{ecut}} so we filter these columns with:
+We are mainly interested in the convergence of the phonon frequencies versus {{ecut}}, so we filter these columns with:
 
 ```{code-cell}
 data_gamma = data_gamma[["ecut"] + [k for k in data_gamma if k.startswith("mode")]]
@@ -423,7 +421,7 @@ See also the discussion in the [second DFPT lesson](https://docs.abinit.org/tuto
 +++
 
 For years, Abinit users had to patch manually the output frequencies to include the LO-TO splitting.
-These days are finally gone and we can plot the LO-TO splitting with AbiPy by just setting
+These days are finally gone, and we can plot the LO-TO splitting with AbiPy by just setting
 lo_to_splitting=True`:
 
 ```{code-cell}
@@ -495,8 +493,7 @@ emacro
 becs
 ```
 
-As explained in the references, the Born effective charges must fulfill
-the charge neutrality sum-rule.
+As explained in the references, the Born effective charges must fulfill the charge neutrality sum-rule.
 This rule is usually broken due to the discretization introduced by the FFT mesh,
 and `anaddb` will enforce it if {{chneut}} is set to 1 (default behaviour).
 Let's check it out!
@@ -529,7 +526,6 @@ expresses in terms of integrals of the DOS.
 C_v = 3nNk_B\int_{0}^{\omega_L}\left(\frac{\hbar\omega}{2k_BT}\right)^2\text{csch}^2\left(\frac{\hbar\omega}{2k_BT}\right)g(\omega)d\omega
 \end{equation}
 
-
 \begin{equation} %\label{eq:entropy}
 S = 3nNk_B\int_{0}^{\omega_L}\left(\frac{\hbar\omega}{2k_BT}\text{coth}\left(\frac{\hbar\omega}{2k_BT}\right) - \text{ln}\left(2\text{sinh}\frac{\hbar\omega}{2k_BT}\right)\right)g(\omega)d\omega,
 \end{equation}
@@ -539,7 +535,7 @@ where $k_B$ is the Boltzmann constant.
 This should represent a reasonable approximation especially in the low temperature
 regime in which anharmonic effects can be neglected.
 
-Let's plot the vibrational contributions thermodynamic properties as function of $T$:
+Let's plot the vibrational contributions to thermodynamic properties as a function of $T$:
 
 ```{code-cell}
 phdos.plotly_harmonic_thermo();

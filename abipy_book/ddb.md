@@ -157,7 +157,7 @@ print(ddb)
 If you are a terminal aficionado, remember that one can use the
 [abiopen.py](http://abinit.github.io/abipy/scripts/abiopen.html) script
 to open the DDB file directly from the shell and generate a jupyter notebook with the `-nb` option.
-For a quick visualization script use [abiview.py](http://abinit.github.io/abipy/scripts/abiview.html).
+For a quick visualization script, use [abiview.py](http://abinit.github.io/abipy/scripts/abiview.html).
 
 ## Invoking Anaddb from the DdbFile object
 
@@ -237,8 +237,8 @@ phbands.plot_colored_matched();
 ```
 
 ```{warning}
-This heuristic method may fail so the results should be analyzed critically (especially
-when there are non-analytic branches crossing $\Gamma$).
+This heuristic method may fail so the results should be analyzed critically 
+(especially when there are non-analytic branches crossing $\Gamma$).
 Besides, the algorithm is sensitive to the k-path resolution
 thus it is recommended to check the results by increasing the number of points per segment.
 ```
@@ -250,7 +250,6 @@ phdos.plot();
 ```
 
 Note how the phonon DOS integrates to $3 * N_{atom} = 6$
-
 
 To plot the phonon bands and the DOS on the same figure use:
 
@@ -271,8 +270,7 @@ obtained by diagonalizing the dynamical matrix $D(q)$.
 D(q) \vec{\epsilon}_{q\nu} = \omega_{q\nu}^2 \vec{\epsilon}_{q\nu}
 \end{equation}
 
-We can therefore use the eigenvectors (or the displacements) to associate
-a width to the different bands (a.k.a. fatbands).
+We can therefore use the eigenvectors (or the displacements) to associate a width to the different bands (a.k.a. fatbands).
 This width gives us a qualitative understanding of the vibrational mode: what are the atomic types involved in
 the vibrations at a given energy, their direction of oscillation and the amplitude (related to the displacement).
 

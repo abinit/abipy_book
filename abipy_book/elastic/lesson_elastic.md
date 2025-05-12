@@ -29,7 +29,7 @@ More specifically, we will discuss how to
    * build a flow to compute all the ingredients needed for elastic and piezoelectric tensors
    * use anaddb and AbiPy to obtain the tensors and compute several important physical properties
      starting from the final DDB file produced by the flow
-   * perform a convergence study with respect to the k-mesh and use the `DdbRobot` to analyze the convergence.
+   * perform a convergence study with respect to the k-mesh, and use the `DdbRobot` to analyze the convergence.
 
 You might find additional material related to the present section
 in the following references (already mentioned in the official tutorial):
@@ -80,8 +80,7 @@ from lesson_elastic import make_scf_input
 abilab.print_source(make_scf_input)
 ```
 
-The function makes some assumptions for important parameters such as
-the crystalline structure and the pseudos.
+The function makes some assumptions for important parameters such as the crystalline structure and the pseudos.
 This is done on purpose to keep the code as simple as possible.
 It should not be so difficult to generalize the implementation to take into account other cases.
 Note how the function accepts an optional argument {{ngkpt}} defining the **k**-mesh so that we can easily
@@ -413,7 +412,7 @@ For more examples on the use of DDB and robots, see the
 Now let's try something a bit more complicated.
 Assume we want to plot the convergence of the individual elements of the tensor as as function of `nkpt`.
 In this case, we have to work a bit more to create a Dataframe with the elements in Voigt notation,
-add the value of `nkpt` associated to this tensor and finally concatenate the results in a single DataFrame:
+add the value of `nkpt` associated to this tensor, and finally concatenate the results in a single DataFrame:
 
 ```{code-cell}
 df_list = []

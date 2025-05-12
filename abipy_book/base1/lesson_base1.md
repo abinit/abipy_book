@@ -28,8 +28,8 @@ kernelspec:
 </div>
 
 This tutorial is a complement to the standard [ABINIT tutorial on H$_2$](https://docs.abinit.org/tutorial/base1).
-Here, powerful flow and visualisation procedures
-will be demonstrated. Still, some basic understanding of the stand-alone working of ABINIT is a prerequisite.
+Here, powerful flow and visualisation procedures will be demonstrated.
+Still, some basic understanding of the stand-alone working of ABINIT is a prerequisite.
 Also, in order to fully benefit from this AbiPy tutorial, other more basic AbiPy tutorials should have been followed,
 as suggested in the [introduction page](../intro).
 
@@ -37,9 +37,9 @@ There are three methodologies to compute the optimal distance between the two Hy
 One could:
 
    * compute the **total energy** for different values of the interatomic distance, make a fit through
-      the different points, and determine the minimum of the fitting function;
+     the different points, and determine the minimum of the fitting function;
    * compute the **forces** for different values of the interatomic distance, make a fit through
-      the different values, and determine the zero of the fitting function;
+     the different values, and determine the zero of the fitting function;
    * use an automatic algorithm for minimizing the energy (or finding the zero of forces).
 
 In this AbiPy notebook, we will be focusing on the first approach.
@@ -219,7 +219,6 @@ to open the file and start the ipython terminal
 
 +++
 
-<!--
 Note that the object returned by `abiopen` has an associated file descriptor that should be closed
 explicitly by the user with `abo.close()`.
 This is the reason why many examples will use the python context manager:
@@ -230,7 +229,6 @@ This is the reason why many examples will use the python context manager:
 ```
 
 that closes the file when we exit the `with` block.
--->
 
 +++
 
@@ -248,11 +246,11 @@ with abilab.abiopen("flow_h2/w0/t0/outdata/out_GSR.nc") as gsr:
 
 As we can see from the previous output, the `GSR` file contains information about
 the crystalline structure, forces, stresses as well as the KS band structure.
-In the jargon of object-oriented programming, one says that a `GSRFile` *has* a `Structure` object:
+In the jargon of object-oriented programming, one says that a `GsrFile` *has* a `Structure` object:
 
     gsr.structure
 
-and it *has* an `ElectronBands` object:
+and *has* an `ElectronBands` object:
 
     gsr.ebands
 
@@ -260,7 +258,7 @@ This means that if you learn how to use the methods provided by `structure` and 
 easily get these objects from the `GSR` file and use this API to post-process the results.
 This is a general philosophy of AbiPy: every netcdf file object returned by `abiopen` contains
 other objects (the structure is always available, while the presence of other objects depend of the particular file).
-Remember this point because we will use it a lot in the other lessons.
+Remember this important point because we will use it a lot in the other lessons.
 
 ```{note}
 To learn about the different methods provided by `structure` and `ebands`, you may want to
@@ -309,12 +307,12 @@ Inside the notebook, we can visualize the table with:
 table
 ```
 
-Great! We managed to get a nice table with lot of useful results with just 3 lines of code and the robot!
+Great! We managed to get a nice table with lot of useful results with just three lines of code and the robot!
 There are however two problems:
 
    - The rows of the table are not ordered by increasing H-H distance (files are sorted alphabetically)
 
-   - Our dataframe contains the energy of the different configurations but we would like to plot the energy
+   - Our dataframe contains the energy of the different configurations, but we would like to plot the energy
      as a function of the H-H distance
 
 Well, robots can do a lot of hard work but they are a little bit stupid so
@@ -471,5 +469,4 @@ If you learn to use these great libraries for your work you can really boost you
 
 +++
 
-A logical next lesson would be the the tutorial about the
-[ground-state properties of silicon](../base3/lesson_base3)
+A logical next lesson would be the the tutorial about the [ground-state properties of silicon](../base3/lesson_base3)

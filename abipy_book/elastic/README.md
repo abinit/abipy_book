@@ -1,4 +1,4 @@
-This file explains how to use the AbiPy command line interface to run the calculation and analyze the results.
+This file explains how to use the AbiPy command line interface to run calculations and analyze the results.
 A web browser is a luxury when running calculations on a cluster while the command line is available everywhere!
 
 I assume you are already familiar with python so I'm just giving hints on how to use the command line interface.
@@ -28,7 +28,6 @@ to access the documentation.
 The debug COMMAND is quite handy if something goes wrong!
 
 ## How to post-process the results
-
 
 Once the calculation is completed, use:
 

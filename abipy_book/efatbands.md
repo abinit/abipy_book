@@ -92,7 +92,7 @@ fbnc_kpath.plot_fatbands_lview(tight_layout=True);
 fbnc_kpath.plotly_fatbands_lview();
 ```
 
-Now we read another FATBANDS.nc file produced on 18x18x18 k-mesh
+Now we read another FATBANDS.nc file produced on the 18x18x18 k-mesh
 
 ```{code-cell}
 fbnc_kmesh = abilab.abiopen(abidata.ref_file("mgb2_kmesh181818_FATBANDS.nc"))

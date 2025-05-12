@@ -28,16 +28,14 @@ This lesson should take about 1 hour and 30 minutes.
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
   </p>
-</div>This tutorial is a complement to the standard [ABINIT tutorial on aluminum](https://docs.abinit.org/tutorial/base4). Here, powerful flow and visualisation procedures
+</div>This tutorial is a complement to the standard [ABINIT tutorial on aluminum](https://docs.abinit.org/tutorial/base4). 
+Here, powerful flow and visualisation procedures
 will be demonstrated. Still, some basic understanding of the stand-alone working of ABINIT is a prerequisite.
 Also, in order to fully benefit from this Abipy tutorial, other more basic Abipy tutorials should have been followed,
 as suggested in the [abitutorials index page](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/index.ipynb).
 
 
 ```{code-cell}
-# Use this at the beginning of your script so that your code will be compatible with python3
-from __future__ import print_function, division, unicode_literals
-
 import numpy as np
 
 import warnings
@@ -53,9 +51,9 @@ abilab.enable_notebook() # This line tells AbiPy we are running inside a noteboo
 ## The convergence study with respect to k points and broadening
 
 Note that there is usually a STRONG cross-convergence effect between the number
-of k points and the value of the broadening, tsmear.
-The right procedure is: for each value of tsmear, to get the convergence with respect
-to the number of k points, then to compare the k-point converged values for different values of tsmear.
+of k-points and the value of the broadening, tsmear.
+The right procedure is: for each value of tsmear, reach convergence with respect
+to the number of k points, then compare the k-point converged values for different values of tsmear.
 
 In what follows, we will restrict ourselves to the grids with nkpt=2, 10 and 28.
 
@@ -71,7 +69,7 @@ abilab.print_source(relax_input)
 
 Now we use `relax_input` to generate multiple inputs with different values of `tsmear` and `nksmall`
 and we pass the input objects to the Flow constructor.
-To keep things as simple as possible, we use independent tasks ...
+To keep things as simple as possible, we use independent tasks:
 
 ```{code-cell}
 from lesson_base4 import build_relax_tsmear_nkpts_convflow
@@ -160,7 +158,8 @@ ebands_w0t11.plot();
 ebands_w0t11.boxplot();
 ```
 
-Now you might ask yourself: "The total energy with nkpt == 2 is clearly not converged wrt tsmear. What are the effects of the smearing on the KS eigenvalues for nkpt == 2?"
+Now you might ask yourself: "The total energy with nkpt == 2 is clearly not converged wrt tsmear. 
+What are the effects of the smearing on the KS eigenvalues for nkpt == 2?"
 The `GsrRobot` can construct an `ElectronBandsPlotter` that allows us to compare multiple band structures
 so it's just a matter of telling the robot that we want a plotter object in which only the
 `GSR` files with only two k-points in the IBZ, then we can use the plotter to visualize the results:

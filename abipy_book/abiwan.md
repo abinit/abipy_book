@@ -105,8 +105,7 @@ To plot the matrix elements of the KS Hamiltonian in real space in the Wannier G
 abiwan.hwan.plot(title="Matrix elements in real space");
 ```
 
-To interpolate the KS energies along a high-symmetry k-path and construct
-a new `ElectronBands` object, use:
+To interpolate the KS energies along a high-symmetry k-path and construct a new `ElectronBands` object, use:
 
 ```{code-cell} ipython3
 ebands_kpath = abiwan.interpolate_ebands()
@@ -150,8 +149,8 @@ Then we call `combiplot` to plot the two band structures on the same figure:
 plotter.combiplot();
 ```
 
-As we can see, the interpolated band structures is not completely on top of the ab-initio
-results. To improve the agreement we should try to reduced the spread and/or increase
+As we can see, the interpolated band structures is not completely on top of the ab-initio results.
+To improve the agreement we should try to reduced the spread and/or increase
 the density of the k-mesh used in the wannierization procedure.
 
 +++

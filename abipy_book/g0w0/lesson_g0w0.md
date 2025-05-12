@@ -13,7 +13,7 @@ kernelspec:
 
 # $G_0W_0$ band structure with star-function interpolation
 
-Standard functionals (LDA and GGA), systematically underestimate band gaps, giving values
+Standard functionals such as LDA or GGA, systematically underestimate band gaps, giving values
 that are about 30-40% smaller than experimental data.
 The inability of standard Kohn-Sham (KS) theory to give band gaps close to experiment is often referred to as the **band-gap problem**.
 
@@ -22,7 +22,8 @@ The band structure of a crystal is rigorously defined as the energies needed to 
 which, in turn, are related to the difference between total energies of **many-body states** differing by one electron.
 
 An alternative, more traditional, approach to the study of exchange-correlation effects in
-many-body systems is provided by Many-Body Perturbation Theory (MBPT) which defines a rigorous approach to the description of excited-state properties, based on the Green's function formalism.
+many-body systems is provided by Many-Body Perturbation Theory (MBPT) which defines a rigorous approach
+to the description of excited-state properties, based on the Green's function formalism.
 In this lesson, we discuss how to use the MBPT part of ABINIT to compute the band-structure of silicon
 within the so-called $G_0W_0$ approximation.
 For a very brief introduction to the many-body formalism, please consult the  [MBPT_notes](https://docs.abinit.org/theory/mbt/)
@@ -114,7 +115,7 @@ scr
 sig
 ```
 
-Now we can use the 4 inputs file produced by `make_inputs` to generate our $GW$ flow.
+Now we can use the four inputs file produced by `make_inputs` to generate our $GW$ flow.
 The tricky part is represented by the connections among the tasks in the $GW$ part.
 
 ```{code-cell}
@@ -138,14 +139,14 @@ flow.get_graphviz()
 #flow.plot_networkx(with_edge_labels=True);
 ```
 
-As you can see, we have 2 works:
+As you can see, we have two works:
 
 ```{code-cell}
 for i, work in enumerate(flow):
     print("[%d] %s" % (i, work))
 ```
 
-As promised, the first work has 3 standard KS tasks:
+As promised, the first work has three standard KS tasks:
 
 ```{code-cell}
 for task in flow[0]:
@@ -163,16 +164,15 @@ for task in flow[1]:
 flow[1].get_graphviz()
 ```
 
-Now you can execute the lesson_g0w0.py script to generate the flow  and then use:
+Now you can execute the `lesson_g0w0.py` script to generate the flow and then use:
 
     abirun.py flow_g0w0 scheduler
 
 ```{warning}
-Please make sure that AbiPy is properly configured by running abicheck --with flow
+Please make sure that AbiPy is properly configured by running `abicheck --with flow~
 ```
 
-Alternatively, one can use the files in the github repository and use AbiPy
-to analyze the data.
+Alternatively, one can use the files in the github repository and use AbiPy to analyze the data.
 
 +++
 
@@ -187,7 +187,7 @@ Let's start with the KS results stored in the `GSR.nc` files:
 You are already an AbiPy guru so it should be clear that to plot the KS band structure with the KS DOS we just need:
 
 ```{code-cell}
- with abilab.abiopen("flow_g0w0/w0/t1/outdata/out_GSR.nc") as gsr:
+with abilab.abiopen("flow_g0w0/w0/t1/outdata/out_GSR.nc") as gsr:
     ks_ebands_kpath = gsr.ebands
 
 with abilab.abiopen("flow_g0w0/w0/t2/outdata/out_GSR.nc") as gsr:
@@ -232,7 +232,8 @@ The `DataFrame` contains $GW$ results as well as input parameters useful for con
 - *ze0*: Renormalization factor computed at $e = e_0$.
 - *qpeme0*: QP correction i.e. $e_{\text{QP}} - e_{0}$
 
-Note that some quantities are complex but since we are not interested in lifetimes (that by the way are not correctly described by the plasmon-pole approximation), we ignored the imaginary part with `ignore_imag`.
+Note that some quantities are complex but since we are not interested in lifetimes 
+(that by the way are not correctly described by the plasmon-pole approximation), we ignored the imaginary part with `ignore_imag`.
 
 Let's print a subset of columns with:
 

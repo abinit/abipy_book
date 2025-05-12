@@ -29,15 +29,14 @@ kernelspec:
 </div>
 
 This tutorial is a complement to the standard [ABINIT tutorial on silicon](https://docs.abinit.org/tutorial/base3).
-Here, powerful flow and visualisation procedures
-will be demonstrated. Still, some basic understanding of the stand-alone working of ABINIT is a prerequisite.
+Here, powerful flow and visualisation procedures will be demonstrated.
+Still, some basic understanding of the stand-alone working of ABINIT is a prerequisite.
 Also, in order to fully benefit from this Abipy tutorial, other more basic Abipy tutorials should have been followed,
 as suggested in the [abitutorials index page](../intro).
 
 +++
 
 ```{code-cell}
-# Use this at the beginning of your script so that your code will be compatible with python3
 import numpy as np
 
 import warnings
@@ -62,8 +61,8 @@ abilab.enable_notebook() # This line tells AbiPy we are running inside a noteboo
 ## Computing the total energy of silicon at fixed number of k-points
 
 Our goal is to study the convergence of the total energy of silicon versus the number of **k**-points.
-So we start by defining a function that generates a `Flow` of SCF calculations
-by looping over a predefined list of {{ngkpt}} values.
+So we start by defining a function that generates a `Flow` of SCF calculations by looping
+over a predefined list of {{ngkpt}} values.
 The crystalline structure is initialized from a CIF file while other parameters
 such as the cutoff energy {{ecut}} are fixed:
 
@@ -291,7 +290,7 @@ hist_robot.combiplot();
 Unfortunately the `HIST.nc` file does not have enough metadata.
 In particular we would like to have information about the k-point sampling
 so that we can analyze the convergence of the optimized lattice parameters wrt {{nkpt}}.
-Fortunately the `GSR.nc` has all the information we need and it is just a matter
+Fortunately the `GSR.nc` has all the information we need, and it is just a matter
 of replacing the `HistRobot` with a `GsrRobot`:
 
 ```{code-cell}
@@ -329,8 +328,8 @@ We will ask for 8 bands (4 valence and 4 conduction).
 
 ## Computing the band structure
 
-A band structure can be computed by solving the Kohn-Sham equation for many different k points,
-along different lines of the Brillouin zone.
+A band structure can be computed by solving the Kohn-Sham equation for several k points,
+along the high-symmetry lines of the Brillouin zone.
 The potential that enters the Kohn-Sham equation must be derived from a previous self-consistent calculation,
 and will not vary during the scan of different k-point lines.
 
@@ -377,7 +376,7 @@ the lowest unoccupied state at X is ~0.5 eV higher than the top of the valence b
 Bulk silicon is described as an indirect band gap material (this is correct), with a band-gap
 of about 0.5 eV (this is quantitatively quite wrong:
 the experimental value is 1.17 eV at 25 degree Celsius, the famous **DFT band-gap problem**).
-The minimum of the conduction band is even slightly displaced with respect to X.
+The minimum of the conduction band is slightly displaced with respect to X.
 
 Unfortunately, it seems that AbiPy does not agree with us:
 
@@ -389,7 +388,7 @@ The reason is that the Fermi energy in `ebands_kpath` is not completely consiste
 The Fermi energy, indeed, has been taken from the previous GS-SCF calculation performed
 on a shifted k-mesh, the $\Gamma$ point was not included and therefore the Fermi energy is underestimated.
 
-To fix this problem we have to change manually the Fermi energy and set it to the maximum of the valence bands:
+To fix this problem we have to change manually the Fermi energy, and set it to the maximum of the valence bands:
 
 ```{code-cell}
 ebands_kpath.set_fermie_to_vbm()
@@ -455,7 +454,7 @@ ebands_kpath.plotly_with_edos(edos, e0=0);
 ```
 
 This figure shows that the bands and the DOS are not perfectly aligned.
-More specifically we would expect the DOS to be zero at the bottom/top of the conduction.
+More specifically, we would expect the DOS to be zero at the bottom/top of the conduction.
 This problems is essentially due to the use of a relatively large gaussian broadening.
 One should therefore compute the DOS with a much denser IBZ mesh and a much smaller broadening
 to solve this *alignment issue*.

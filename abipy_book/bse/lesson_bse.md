@@ -31,12 +31,11 @@ The flowchart of a typical Bethe-Salpeter run is schematically depicted in the d
 
 +++
 
-The WFK file (KSS file in old versions of Abinit) contains the Kohn-Sham (KS) wavefunctions
-and energies and is represented with an ellipsis.
+The WFK file contains the Kohn-Sham (KS) wavefunctions and energies and is represented with an ellipsis.
 The path on the left indicated with blue arrows represents the RPA calculation ({{optdriver}} = 3)
 that produces the SCR file (see also the first lesson of the $GW$ tutorial).
-Once the WFK (KSS) and the SCR file are available, we can finally contruct the BSE Hamiltonian
-and solve the Bethe-Salpeter problem (the green rectangle at the bottom of the flowchart).
+Once the WFK  and the SCR file are available, we can finally contruct the BSE Hamiltonian
+and solve the Bethe-Salpeter equation (the green rectangle at the bottom of the flowchart).
 The construction of the Bethe-Salpeter Hamiltonian represents a significant portion
 of the overall CPU time due to the large number of transitions (bands and in particular $k$-points)
 needed for an accurate description of the frequency-dependence of the polarizability.
@@ -86,8 +85,7 @@ import abipy.flowtk as flowtk
 #%matplotlib widget
 ```
 
-We import from `lesson_bse` the function that builds the 3 input objects we are going
-to use to build the `Flow`:
+We import from `lesson_bse` the function that builds the three input objects we will use to build the `Flow`:
 
 ```{code-cell}
 from lesson_bse import make_scf_nscf_bse_inputs
@@ -159,16 +157,15 @@ Now you can execute the *lesson_bse.py* script to generate the flow  and then us
 ```{include} ../snippets/abicheck_warning.md
 ```
 
-Alternatively, one can use the files in the github repository and use AbiPy
-to analyze the data.
+Alternatively, one can use the files in the github repository and use AbiPy to analyze the data.
 
 +++
 
 ## Analyzing the results
 
-Now we can finally analyze the results. In this case, we are mainly interested in the
-frequency-dependent macroscopic dielectric function, $\epsilon_\infty(\omega)$, produced
-by the `BseTask`
+Now we can finally analyze the results.
+In this case, we are mainly interested in the frequency-dependent macroscopic
+dielectric function, $\epsilon_\infty(\omega)$, produced by the `BseTask`
 
 ```{code-cell}
 # The BseTask is the last task in the first work
@@ -218,7 +215,7 @@ It is worth stressing that:
    in the optical threshold as well as in the amplitude of the first peak.
    This simple analysis tells us that the first peak in the absorption spectrum of silicon
    has a strong excitonic character that is not correctly described within the RPA.
-   Our first BS spectrum is not converged at all and it barely resembles
+   Our first BS spectrum is not converged at all, and it barely resembles
    the experimental result, nevertheless this unconverged calculation is already able
    to capture the most important physics.
 
@@ -241,7 +238,7 @@ to the attractive interaction between electrons and holes (excitonic effects).
 In a metallic system, the dielectric function is large, $W$ is small and excitonic effects are strongly damped.
 
 To understand this point, we can do a test calculation with a very large value of {{mdf_epsinf}}
-so that our BSE Hamiltonian will be constructed with a metallic $W$:
+so that our BSE Hamiltonian will be constructed with a "metallic" $W$:
 
 ```{code-cell}
 from lesson_bse import build_bse_metallicW_flow
@@ -252,7 +249,7 @@ abilab.print_source(build_bse_metallicW_flow)
 metalW_flow = build_bse_metallicW_flow(options=None)
 ```
 
-Let's assume we have already executed the flow and let's have a look at the results:
+Let's assume we have already executed the flow, and let's have a look at the results:
 
 ```{code-cell}
 with abilab.abiopen("flow_bse_metallicW/w0/t2/outdata/out_MDF.nc") as mdf_file:
@@ -261,7 +258,7 @@ with abilab.abiopen("flow_bse_metallicW/w0/t2/outdata/out_MDF.nc") as mdf_file:
 
 As you can see, the EXC curve computed with a metallic $W$
 is similar to the results obtained in GW-RPA.
-In particular the first peak is now shifted towards higher frequencies and its amplitude
+In particular the first peak is now shifted towards higher frequencies, and its amplitude
 is decreased when compared to the previous results.
 
 This behaviour can be easily understood if we consider that
@@ -281,8 +278,7 @@ the generation of new WFK files for each k-mesh
 (the list of $k$-points for the wavefunctions and the set of $q$-points in the screening
 must be consistent with each other).
 
-In the previous section, we have shown how to build a flow for BSE calculation with a fixed
-$k$-points sampling.
+In the previous section, we have shown how to build a flow for BSE calculation with a fixed $k$-points sampling.
 We can thus reuse the same logic to construct a `Flow` made of multiple `BseMdfWorks`,
 each `Work` will have a different $k$-point sampling.
 
