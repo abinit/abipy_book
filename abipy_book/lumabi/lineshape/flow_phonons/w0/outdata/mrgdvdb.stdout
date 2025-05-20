@@ -1,0 +1,394 @@
+
+.Version 9.6.2.38 of MRGDV 
+.(MPI version, prepared for a aarch64_darwin21.6.0_gnu13.1 computer) 
+
+.Copyright (C) 1998-2022 ABINIT group . 
+ MRGDV comes with ABSOLUTELY NO WARRANTY.
+ It is free software, and you are welcome to redistribute it
+ under certain conditions (GNU General Public License,
+ see ~abinit/COPYING or http://www.gnu.org/copyleft/gpl.txt).
+
+ ABINIT is a project of the Universite Catholique de Louvain,
+ Corning Inc. and other collaborators, see ~abinit/doc/developers/contributors.txt .
+ Please read https://docs.abinit.org/theory/acknowledgments for suggested
+ acknowledgments of the ABINIT effort.
+ For more information, see https://www.abinit.org .
+
+.Starting date : Wed 12 Jun 2024.
+- ( at 16h05 )
+  
+->> Enter name of output file: 
+->> Enter total number of DFPT POT files: 
+->> Enter name of POT file 1 : 
+->> Enter name of POT file 2 : 
+->> Enter name of POT file 3 : 
+->> Enter name of POT file 4 : 
+->> Enter name of POT file 5 : 
+->> Enter name of POT file 6 : 
+->> Enter name of POT file 7 : 
+->> Enter name of POT file 8 : 
+->> Enter name of POT file 9 : 
+->> Enter name of POT file 10 : 
+->> Enter name of POT file 11 : 
+->> Enter name of POT file 12 : 
+->> Enter name of POT file 13 : 
+->> Enter name of POT file 14 : 
+->> Enter name of POT file 15 : 
+->> Enter name of POT file 16 : 
+->> Enter name of POT file 17 : 
+->> Enter name of POT file 18 : 
+->> Enter name of POT file 19 : 
+->> Enter name of POT file 20 : 
+->> Enter name of POT file 21 : 
+->> Enter name of POT file 22 : 
+->> Enter name of POT file 23 : 
+->> Enter name of POT file 24 : 
+->> Enter name of POT file 25 : 
+->> Enter name of POT file 26 : 
+->> Enter name of POT file 27 : 
+->> Enter name of POT file 28 : 
+->> Enter name of POT file 29 : 
+->> Enter name of POT file 30 : 
+->> Enter name of POT file 31 : 
+->> Enter name of POT file 32 : 
+->> Enter name of POT file 33 : 
+->> Enter name of POT file 34 : 
+->> Enter name of POT file 35 : 
+->> Enter name of POT file 36 : 
+->> Enter name of POT file 37 : 
+->> Enter name of POT file 38 : 
+->> Enter name of POT file 39 : 
+->> Enter name of POT file 40 : 
+->> Enter name of POT file 41 : 
+->> Enter name of POT file 42 : 
+->> Enter name of POT file 43 : 
+->> Enter name of POT file 44 : 
+->> Enter name of POT file 45 : 
+->> Enter name of POT file 46 : 
+->> Enter name of POT file 47 : 
+->> Enter name of POT file 48 : 
+->> Enter name of POT file 49 : 
+->> Enter name of POT file 50 : 
+->> Enter name of POT file 51 : 
+->> Enter name of POT file 52 : 
+->> Enter name of POT file 53 : 
+->> Enter name of POT file 54 : 
+->> Enter name of POT file 55 : 
+->> Enter name of POT file 56 : 
+->> Enter name of POT file 57 : 
+->> Enter name of POT file 58 : 
+->> Enter name of POT file 59 : 
+->> Enter name of POT file 60 : 
+->> Enter name of POT file 61 : 
+->> Enter name of POT file 62 : 
+->> Enter name of POT file 63 : 
+->> Enter name of POT file 64 : 
+->> Enter name of POT file 65 : 
+->> Enter name of POT file 66 : 
+->> Enter name of POT file 67 : 
+->> Enter name of POT file 68 : 
+->> Enter name of POT file 69 : 
+->> Enter name of POT file 70 : 
+->> Enter name of POT file 71 : 
+->> Enter name of POT file 72 : 
+->> Enter name of POT file 73 : 
+->> Enter name of POT file 74 : 
+->> Enter name of POT file 75 : 
+->> Enter name of POT file 76 : 
+->> Enter name of POT file 77 : 
+->> Enter name of POT file 78 : 
+->> Enter name of POT file 79 : 
+->> Enter name of POT file 80 : 
+->> Enter name of POT file 81 : 
+->> Enter name of POT file 82 : 
+->> Enter name of POT file 83 : 
+->> Enter name of POT file 84 : 
+->> Enter name of POT file 85 : 
+->> Enter name of POT file 86 : 
+->> Enter name of POT file 87 : 
+->> Enter name of POT file 88 : 
+->> Enter name of POT file 89 : 
+->> Enter name of POT file 90 : 
+->> Enter name of POT file 91 : 
+->> Enter name of POT file 92 : 
+->> Enter name of POT file 93 : 
+->> Enter name of POT file 94 : 
+->> Enter name of POT file 95 : 
+->> Enter name of POT file 96 : 
+->> Enter name of POT file 97 : 
+->> Enter name of POT file 98 : 
+->> Enter name of POT file 99 : 
+->> Enter name of POT file 100 : 
+->> Enter name of POT file 101 : 
+->> Enter name of POT file 102 : 
+->> Enter name of POT file 103 : 
+->> Enter name of POT file 104 : 
+->> Enter name of POT file 105 : 
+->> Enter name of POT file 106 : 
+->> Enter name of POT file 107 : 
+->> Enter name of POT file 108 : 
+->> Enter name of POT file 109 : 
+->> Enter name of POT file 110 : 
+->> Enter name of POT file 111 : 
+->> Enter name of POT file 112 : 
+->> Enter name of POT file 113 : 
+->> Enter name of POT file 114 : 
+->> Enter name of POT file 115 : 
+->> Enter name of POT file 116 : 
+->> Enter name of POT file 117 : 
+->> Enter name of POT file 118 : 
+->> Enter name of POT file 119 : 
+->> Enter name of POT file 120 : 
+- Reading header of file [1]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t4/outdata/out_POT1
+- Merging file [1]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t4/outdata/out_POT1
+- Reading header of file [2]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t5/outdata/out_POT2
+- Merging file [2]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t5/outdata/out_POT2
+- Reading header of file [3]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t6/outdata/out_POT3
+- Merging file [3]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t6/outdata/out_POT3
+- Reading header of file [4]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t7/outdata/out_POT7
+- Merging file [4]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t7/outdata/out_POT7
+- Reading header of file [5]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t8/outdata/out_POT8
+- Merging file [5]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t8/outdata/out_POT8
+- Reading header of file [6]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t9/outdata/out_POT9
+- Merging file [6]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t9/outdata/out_POT9
+- Reading header of file [7]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t10/outdata/out_POT19
+- Merging file [7]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t10/outdata/out_POT19
+- Reading header of file [8]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t11/outdata/out_POT20
+- Merging file [8]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t11/outdata/out_POT20
+- Reading header of file [9]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t12/outdata/out_POT21
+- Merging file [9]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t12/outdata/out_POT21
+- Reading header of file [10]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t13/outdata/out_POT31
+- Merging file [10]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t13/outdata/out_POT31
+- Reading header of file [11]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t14/outdata/out_POT32
+- Merging file [11]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t14/outdata/out_POT32
+- Reading header of file [12]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t15/outdata/out_POT33
+- Merging file [12]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t15/outdata/out_POT33
+- Reading header of file [13]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t16/outdata/out_POT43
+- Merging file [13]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t16/outdata/out_POT43
+- Reading header of file [14]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t17/outdata/out_POT44
+- Merging file [14]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t17/outdata/out_POT44
+- Reading header of file [15]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t18/outdata/out_POT45
+- Merging file [15]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t18/outdata/out_POT45
+- Reading header of file [16]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t19/outdata/out_POT1
+- Merging file [16]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t19/outdata/out_POT1
+- Reading header of file [17]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t20/outdata/out_POT2
+- Merging file [17]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t20/outdata/out_POT2
+- Reading header of file [18]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t21/outdata/out_POT3
+- Merging file [18]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t21/outdata/out_POT3
+- Reading header of file [19]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t22/outdata/out_POT4
+- Merging file [19]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t22/outdata/out_POT4
+- Reading header of file [20]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t23/outdata/out_POT5
+- Merging file [20]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t23/outdata/out_POT5
+- Reading header of file [21]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t24/outdata/out_POT6
+- Merging file [21]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t24/outdata/out_POT6
+- Reading header of file [22]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t25/outdata/out_POT7
+- Merging file [22]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t25/outdata/out_POT7
+- Reading header of file [23]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t26/outdata/out_POT8
+- Merging file [23]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t26/outdata/out_POT8
+- Reading header of file [24]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t27/outdata/out_POT9
+- Merging file [24]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t27/outdata/out_POT9
+- Reading header of file [25]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t28/outdata/out_POT13
+- Merging file [25]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t28/outdata/out_POT13
+- Reading header of file [26]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t29/outdata/out_POT14
+- Merging file [26]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t29/outdata/out_POT14
+- Reading header of file [27]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t30/outdata/out_POT15
+- Merging file [27]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t30/outdata/out_POT15
+- Reading header of file [28]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t31/outdata/out_POT19
+- Merging file [28]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t31/outdata/out_POT19
+- Reading header of file [29]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t32/outdata/out_POT20
+- Merging file [29]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t32/outdata/out_POT20
+- Reading header of file [30]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t33/outdata/out_POT21
+- Merging file [30]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t33/outdata/out_POT21
+- Reading header of file [31]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t34/outdata/out_POT25
+- Merging file [31]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t34/outdata/out_POT25
+- Reading header of file [32]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t35/outdata/out_POT26
+- Merging file [32]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t35/outdata/out_POT26
+- Reading header of file [33]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t36/outdata/out_POT27
+- Merging file [33]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t36/outdata/out_POT27
+- Reading header of file [34]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t37/outdata/out_POT31
+- Merging file [34]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t37/outdata/out_POT31
+- Reading header of file [35]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t38/outdata/out_POT32
+- Merging file [35]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t38/outdata/out_POT32
+- Reading header of file [36]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t39/outdata/out_POT33
+- Merging file [36]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t39/outdata/out_POT33
+- Reading header of file [37]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t40/outdata/out_POT37
+- Merging file [37]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t40/outdata/out_POT37
+- Reading header of file [38]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t41/outdata/out_POT38
+- Merging file [38]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t41/outdata/out_POT38
+- Reading header of file [39]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t42/outdata/out_POT39
+- Merging file [39]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t42/outdata/out_POT39
+- Reading header of file [40]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t43/outdata/out_POT43
+- Merging file [40]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t43/outdata/out_POT43
+- Reading header of file [41]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t44/outdata/out_POT44
+- Merging file [41]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t44/outdata/out_POT44
+- Reading header of file [42]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t45/outdata/out_POT45
+- Merging file [42]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t45/outdata/out_POT45
+- Reading header of file [43]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t46/outdata/out_POT49
+- Merging file [43]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t46/outdata/out_POT49
+- Reading header of file [44]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t47/outdata/out_POT50
+- Merging file [44]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t47/outdata/out_POT50
+- Reading header of file [45]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t48/outdata/out_POT51
+- Merging file [45]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t48/outdata/out_POT51
+- Reading header of file [46]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t49/outdata/out_POT1
+- Merging file [46]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t49/outdata/out_POT1
+- Reading header of file [47]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t50/outdata/out_POT2
+- Merging file [47]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t50/outdata/out_POT2
+- Reading header of file [48]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t51/outdata/out_POT3
+- Merging file [48]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t51/outdata/out_POT3
+- Reading header of file [49]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t52/outdata/out_POT7
+- Merging file [49]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t52/outdata/out_POT7
+- Reading header of file [50]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t53/outdata/out_POT8
+- Merging file [50]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t53/outdata/out_POT8
+- Reading header of file [51]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t54/outdata/out_POT9
+- Merging file [51]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t54/outdata/out_POT9
+- Reading header of file [52]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t55/outdata/out_POT19
+- Merging file [52]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t55/outdata/out_POT19
+- Reading header of file [53]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t56/outdata/out_POT20
+- Merging file [53]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t56/outdata/out_POT20
+- Reading header of file [54]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t57/outdata/out_POT21
+- Merging file [54]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t57/outdata/out_POT21
+- Reading header of file [55]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t58/outdata/out_POT31
+- Merging file [55]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t58/outdata/out_POT31
+- Reading header of file [56]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t59/outdata/out_POT32
+- Merging file [56]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t59/outdata/out_POT32
+- Reading header of file [57]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t60/outdata/out_POT33
+- Merging file [57]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t60/outdata/out_POT33
+- Reading header of file [58]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t61/outdata/out_POT43
+- Merging file [58]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t61/outdata/out_POT43
+- Reading header of file [59]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t62/outdata/out_POT44
+- Merging file [59]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t62/outdata/out_POT44
+- Reading header of file [60]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t63/outdata/out_POT45
+- Merging file [60]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t63/outdata/out_POT45
+- Reading header of file [61]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t64/outdata/out_POT1
+- Merging file [61]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t64/outdata/out_POT1
+- Reading header of file [62]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t65/outdata/out_POT2
+- Merging file [62]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t65/outdata/out_POT2
+- Reading header of file [63]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t66/outdata/out_POT3
+- Merging file [63]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t66/outdata/out_POT3
+- Reading header of file [64]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t67/outdata/out_POT7
+- Merging file [64]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t67/outdata/out_POT7
+- Reading header of file [65]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t68/outdata/out_POT8
+- Merging file [65]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t68/outdata/out_POT8
+- Reading header of file [66]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t69/outdata/out_POT9
+- Merging file [66]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t69/outdata/out_POT9
+- Reading header of file [67]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t70/outdata/out_POT19
+- Merging file [67]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t70/outdata/out_POT19
+- Reading header of file [68]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t71/outdata/out_POT20
+- Merging file [68]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t71/outdata/out_POT20
+- Reading header of file [69]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t72/outdata/out_POT21
+- Merging file [69]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t72/outdata/out_POT21
+- Reading header of file [70]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t73/outdata/out_POT31
+- Merging file [70]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t73/outdata/out_POT31
+- Reading header of file [71]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t74/outdata/out_POT32
+- Merging file [71]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t74/outdata/out_POT32
+- Reading header of file [72]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t75/outdata/out_POT33
+- Merging file [72]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t75/outdata/out_POT33
+- Reading header of file [73]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t76/outdata/out_POT43
+- Merging file [73]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t76/outdata/out_POT43
+- Reading header of file [74]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t77/outdata/out_POT44
+- Merging file [74]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t77/outdata/out_POT44
+- Reading header of file [75]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t78/outdata/out_POT45
+- Merging file [75]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t78/outdata/out_POT45
+- Reading header of file [76]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t79/outdata/out_POT1
+- Merging file [76]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t79/outdata/out_POT1
+- Reading header of file [77]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t80/outdata/out_POT2
+- Merging file [77]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t80/outdata/out_POT2
+- Reading header of file [78]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t81/outdata/out_POT3
+- Merging file [78]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t81/outdata/out_POT3
+- Reading header of file [79]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t82/outdata/out_POT4
+- Merging file [79]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t82/outdata/out_POT4
+- Reading header of file [80]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t83/outdata/out_POT5
+- Merging file [80]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t83/outdata/out_POT5
+- Reading header of file [81]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t84/outdata/out_POT6
+- Merging file [81]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t84/outdata/out_POT6
+- Reading header of file [82]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t85/outdata/out_POT7
+- Merging file [82]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t85/outdata/out_POT7
+- Reading header of file [83]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t86/outdata/out_POT8
+- Merging file [83]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t86/outdata/out_POT8
+- Reading header of file [84]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t87/outdata/out_POT9
+- Merging file [84]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t87/outdata/out_POT9
+- Reading header of file [85]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t88/outdata/out_POT13
+- Merging file [85]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t88/outdata/out_POT13
+- Reading header of file [86]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t89/outdata/out_POT14
+- Merging file [86]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t89/outdata/out_POT14
+- Reading header of file [87]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t90/outdata/out_POT15
+- Merging file [87]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t90/outdata/out_POT15
+- Reading header of file [88]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t91/outdata/out_POT19
+- Merging file [88]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t91/outdata/out_POT19
+- Reading header of file [89]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t92/outdata/out_POT20
+- Merging file [89]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t92/outdata/out_POT20
+- Reading header of file [90]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t93/outdata/out_POT21
+- Merging file [90]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t93/outdata/out_POT21
+- Reading header of file [91]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t94/outdata/out_POT25
+- Merging file [91]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t94/outdata/out_POT25
+- Reading header of file [92]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t95/outdata/out_POT26
+- Merging file [92]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t95/outdata/out_POT26
+- Reading header of file [93]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t96/outdata/out_POT27
+- Merging file [93]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t96/outdata/out_POT27
+- Reading header of file [94]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t97/outdata/out_POT31
+- Merging file [94]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t97/outdata/out_POT31
+- Reading header of file [95]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t98/outdata/out_POT32
+- Merging file [95]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t98/outdata/out_POT32
+- Reading header of file [96]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t99/outdata/out_POT33
+- Merging file [96]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t99/outdata/out_POT33
+- Reading header of file [97]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t100/outdata/out_POT37
+- Merging file [97]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t100/outdata/out_POT37
+- Reading header of file [98]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t101/outdata/out_POT38
+- Merging file [98]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t101/outdata/out_POT38
+- Reading header of file [99]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t102/outdata/out_POT39
+- Merging file [99]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t102/outdata/out_POT39
+- Reading header of file [100]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t103/outdata/out_POT43
+- Merging file [100]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t103/outdata/out_POT43
+- Reading header of file [101]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t104/outdata/out_POT44
+- Merging file [101]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t104/outdata/out_POT44
+- Reading header of file [102]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t105/outdata/out_POT45
+- Merging file [102]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t105/outdata/out_POT45
+- Reading header of file [103]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t106/outdata/out_POT49
+- Merging file [103]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t106/outdata/out_POT49
+- Reading header of file [104]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t107/outdata/out_POT50
+- Merging file [104]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t107/outdata/out_POT50
+- Reading header of file [105]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t108/outdata/out_POT51
+- Merging file [105]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t108/outdata/out_POT51
+- Reading header of file [106]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t109/outdata/out_POT1
+- Merging file [106]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t109/outdata/out_POT1
+- Reading header of file [107]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t110/outdata/out_POT2
+- Merging file [107]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t110/outdata/out_POT2
+- Reading header of file [108]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t111/outdata/out_POT3
+- Merging file [108]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t111/outdata/out_POT3
+- Reading header of file [109]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t112/outdata/out_POT7
+- Merging file [109]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t112/outdata/out_POT7
+- Reading header of file [110]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t113/outdata/out_POT8
+- Merging file [110]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t113/outdata/out_POT8
+- Reading header of file [111]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t114/outdata/out_POT9
+- Merging file [111]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t114/outdata/out_POT9
+- Reading header of file [112]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t115/outdata/out_POT19
+- Merging file [112]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t115/outdata/out_POT19
+- Reading header of file [113]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t116/outdata/out_POT20
+- Merging file [113]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t116/outdata/out_POT20
+- Reading header of file [114]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t117/outdata/out_POT21
+- Merging file [114]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t117/outdata/out_POT21
+- Reading header of file [115]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t118/outdata/out_POT31
+- Merging file [115]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t118/outdata/out_POT31
+- Reading header of file [116]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t119/outdata/out_POT32
+- Merging file [116]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t119/outdata/out_POT32
+- Reading header of file [117]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t120/outdata/out_POT33
+- Merging file [117]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t120/outdata/out_POT33
+- Reading header of file [118]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t121/outdata/out_POT43
+- Merging file [118]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t121/outdata/out_POT43
+- Reading header of file [119]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t122/outdata/out_POT44
+- Merging file [119]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t122/outdata/out_POT44
+- Reading header of file [120]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t123/outdata/out_POT45
+- Merging file [120]: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/t123/outdata/out_POT45
+ Merged successfully 120 files
+- Analyzing DVDB file: /Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_phonons/w0/outdata/out_DVDB ...
+
+--- !ERROR
+src_file: m_dvdb.F90
+src_line: 635
+mpi_rank: 0
+message: |
+    PAW not yet supported
+...
+
+
+ abinit_abort: decision taken to exit. Check above messages for more info

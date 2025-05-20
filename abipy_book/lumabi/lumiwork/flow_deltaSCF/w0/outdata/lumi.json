@@ -1,0 +1,9 @@
+{
+    "Ae_gsr_filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_deltaSCF/w0/t5/outdata/out_GSR.nc",
+    "Aestar_gsr_filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_deltaSCF/w0/t4/outdata/out_GSR.nc",
+    "Ag_gsr_filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_deltaSCF/w0/t2/outdata/out_GSR.nc",
+    "Agstar_gsr_filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_deltaSCF/w0/t3/outdata/out_GSR.nc",
+    "ex_relax_filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_deltaSCF/w0/t1/outdata/out_GSR.nc",
+    "gs_relax_filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/flow_deltaSCF/w0/t0/outdata/out_GSR.nc",
+    "meta": null
+}

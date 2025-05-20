@@ -1,0 +1,578 @@
+{
+    "_input": {
+        "@class": "AbinitInput",
+        "@module": "abipy.abio.inputs",
+        "abi_args": [
+            [
+                "ecut",
+                10
+            ],
+            [
+                "pawecutdg",
+                20
+            ],
+            [
+                "diemac",
+                5
+            ],
+            [
+                "nstep",
+                100
+            ],
+            [
+                "nband",
+                60
+            ],
+            [
+                "nbdbuf",
+                10
+            ],
+            [
+                "ngkpt",
+                [
+                    2,
+                    2,
+                    2
+                ]
+            ],
+            [
+                "kptopt",
+                3
+            ],
+            [
+                "nshiftk",
+                1
+            ],
+            [
+                "shiftk",
+                [
+                    [
+                        0.5,
+                        0.5,
+                        0.5
+                    ]
+                ]
+            ],
+            [
+                "rfphon",
+                1
+            ],
+            [
+                "nqpt",
+                1
+            ],
+            [
+                "qpt",
+                [
+                    0.5,
+                    0.5,
+                    0.5
+                ]
+            ],
+            [
+                "rfatpol",
+                [
+                    15,
+                    15
+                ]
+            ],
+            [
+                "rfdir",
+                [
+                    0,
+                    1,
+                    0
+                ]
+            ],
+            [
+                "tolvrs",
+                1e-10
+            ],
+            [
+                "prtwf",
+                -1
+            ],
+            [
+                "irdwfk",
+                1
+            ],
+            [
+                "paral_kgb",
+                1
+            ],
+            [
+                "nppert",
+                1
+            ],
+            [
+                "npkpt",
+                2
+            ]
+        ],
+        "comment": "# Input file for PH calculation with DFPT.",
+        "decorators": [],
+        "enforce_typat": null,
+        "enforce_znucl": null,
+        "pseudos": [
+            {
+                "@class": "PawXmlSetup",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 38,
+                "Z_val": 10.0,
+                "basename": "Sr.xml",
+                "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/Sr.xml",
+                "l_max": null,
+                "md5": "130225d38b459ce10ee0bddbabf010d3",
+                "symbol": "Sr",
+                "type": "PawXmlSetup"
+            },
+            {
+                "@class": "PawXmlSetup",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 3,
+                "Z_val": 3.0,
+                "basename": "Li.xml",
+                "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/Li.xml",
+                "l_max": null,
+                "md5": "7fc6473512a6a2d2db1bb65323c34d8d",
+                "symbol": "Li",
+                "type": "PawXmlSetup"
+            },
+            {
+                "@class": "PawXmlSetup",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 13,
+                "Z_val": 3.0,
+                "basename": "Al.xml",
+                "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/Al.xml",
+                "l_max": null,
+                "md5": "adf23544bafad32f2ef1b59e304c522f",
+                "symbol": "Al",
+                "type": "PawXmlSetup"
+            },
+            {
+                "@class": "PawXmlSetup",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 7,
+                "Z_val": 5.0,
+                "basename": "N.xml",
+                "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/N.xml",
+                "l_max": null,
+                "md5": "d27209a4ef42bde3c02d896aa215ee02",
+                "symbol": "N",
+                "type": "PawXmlSetup"
+            },
+            {
+                "@class": "PawXmlSetup",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 8,
+                "Z_val": 6.0,
+                "basename": "O.xml",
+                "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/O.xml",
+                "l_max": null,
+                "md5": "35bf4d57ada0f14c5fe1e6165c3598e5",
+                "symbol": "O",
+                "type": "PawXmlSetup"
+            }
+        ],
+        "structure": {
+            "@class": "Structure",
+            "@module": "abipy.core.structure",
+            "charge": 0.0,
+            "lattice": {
+                "a": 7.959,
+                "alpha": 90.0,
+                "b": 7.959,
+                "beta": 90.0,
+                "c": 3.184,
+                "gamma": 90.0,
+                "matrix": [
+                    [
+                        7.959,
+                        0.0,
+                        4.873481937206892e-16
+                    ],
+                    [
+                        -4.873481937206892e-16,
+                        7.959,
+                        4.873481937206892e-16
+                    ],
+                    [
+                        0.0,
+                        0.0,
+                        3.184
+                    ]
+                ],
+                "pbc": [
+                    true,
+                    true,
+                    true
+                ],
+                "volume": 201.692648304
+            },
+            "sites": [
+                {
+                    "abc": [
+                        0.5,
+                        0.0,
+                        0.5
+                    ],
+                    "label": "Sr0",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Sr",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        3.9795,
+                        0.0,
+                        1.5920000000000003
+                    ]
+                },
+                {
+                    "abc": [
+                        0.0,
+                        0.5,
+                        0.0
+                    ],
+                    "label": "Sr0",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Sr",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        -2.436740968603446e-16,
+                        3.9795,
+                        2.436740968603446e-16
+                    ]
+                },
+                {
+                    "abc": [
+                        0.131,
+                        0.821,
+                        0.5
+                    ],
+                    "label": "Li2",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Li",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        1.0426289999999996,
+                        6.534338999999999,
+                        1.5920000000000005
+                    ]
+                },
+                {
+                    "abc": [
+                        0.869,
+                        0.179,
+                        0.5
+                    ],
+                    "label": "Li2",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Li",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        6.916371,
+                        1.424661,
+                        1.5920000000000005
+                    ]
+                },
+                {
+                    "abc": [
+                        0.179,
+                        0.131,
+                        0.0
+                    ],
+                    "label": "Li2",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Li",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        1.424661,
+                        1.042629,
+                        1.5107794005341366e-16
+                    ]
+                },
+                {
+                    "abc": [
+                        0.821,
+                        0.869,
+                        0.0
+                    ],
+                    "label": "Li2",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Li",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        6.534338999999999,
+                        6.916371,
+                        8.236184473879647e-16
+                    ]
+                },
+                {
+                    "abc": [
+                        0.3533,
+                        0.6842,
+                        0.0
+                    ],
+                    "label": "Al6",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Al",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        2.8119146999999995,
+                        5.4455478,
+                        5.056237509852151e-16
+                    ]
+                },
+                {
+                    "abc": [
+                        0.6467,
+                        0.3158,
+                        0.0
+                    ],
+                    "label": "Al6",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Al",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        5.1470853000000005,
+                        2.5134522,
+                        4.690726364561634e-16
+                    ]
+                },
+                {
+                    "abc": [
+                        0.3158,
+                        0.3533,
+                        0.5
+                    ],
+                    "label": "Al6",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Al",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        2.5134522,
+                        2.8119147,
+                        1.5920000000000003
+                    ]
+                },
+                {
+                    "abc": [
+                        0.6842,
+                        0.6467,
+                        0.5
+                    ],
+                    "label": "Al6",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Al",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        5.4455478,
+                        5.1470853000000005,
+                        1.5920000000000007
+                    ]
+                },
+                {
+                    "abc": [
+                        0.5855,
+                        0.7299,
+                        0.0
+                    ],
+                    "label": "N10",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "N",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        4.6599945,
+                        5.8092741,
+                        6.410578140201946e-16
+                    ]
+                },
+                {
+                    "abc": [
+                        0.4145,
+                        0.2701,
+                        0.0
+                    ],
+                    "label": "N10",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "N",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        3.2990055,
+                        2.1497259,
+                        3.3363857342118384e-16
+                    ]
+                },
+                {
+                    "abc": [
+                        0.2701,
+                        0.5855,
+                        0.5
+                    ],
+                    "label": "N10",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "N",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        2.1497258999999995,
+                        4.6599945,
+                        1.5920000000000005
+                    ]
+                },
+                {
+                    "abc": [
+                        0.7299,
+                        0.4145,
+                        0.5
+                    ],
+                    "label": "N10",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "N",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        5.8092741,
+                        3.2990055,
+                        1.5920000000000007
+                    ]
+                },
+                {
+                    "abc": [
+                        0.2546,
+                        0.8935,
+                        0.0
+                    ],
+                    "label": "O14",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "O",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        2.0263613999999994,
+                        7.111366499999999,
+                        5.595244612107233e-16
+                    ]
+                },
+                {
+                    "abc": [
+                        0.7454,
+                        0.1065,
+                        0.0
+                    ],
+                    "label": "O14",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "O",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        5.9326386,
+                        0.8476334999999999,
+                        4.151719262306551e-16
+                    ]
+                },
+                {
+                    "abc": [
+                        0.1065,
+                        0.2546,
+                        0.5
+                    ],
+                    "label": "O14",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "O",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        0.8476334999999998,
+                        2.0263614,
+                        1.5920000000000003
+                    ]
+                },
+                {
+                    "abc": [
+                        0.8935,
+                        0.7454,
+                        0.5
+                    ],
+                    "label": "O14",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "O",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        7.111366499999999,
+                        5.9326386,
+                        1.592000000000001
+                    ]
+                }
+            ]
+        },
+        "tags": []
+    }
+}

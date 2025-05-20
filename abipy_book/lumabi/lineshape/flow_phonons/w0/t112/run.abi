@@ -1,0 +1,157 @@
+# # Input file for PH calculation with DFPT.
+##############################################
+####                SECTION: basic
+##############################################
+ ecut 10
+ nstep 100
+ nband 60
+ ngkpt 2 2 2
+ kptopt 3
+ nshiftk 1
+ shiftk    0.5    0.5    0.5
+ tolvrs 1e-10
+##############################################
+####                SECTION: dfpt
+##############################################
+ rfphon 1
+ rfatpol 3 3
+ rfdir 1 0 0
+##############################################
+####                SECTION: files
+##############################################
+ prtwf -1
+ irdwfk 1
+ indata_prefix "indata/in"
+ tmpdata_prefix "tmpdata/tmp"
+ outdata_prefix "outdata/out"
+ pp_dirpath "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos"
+ pseudos 
+    "Sr.xml,
+    Li.xml,
+    Al.xml,
+    N.xml,
+    O.xml"
+##############################################
+####               SECTION: gstate
+##############################################
+ diemac 5
+ nbdbuf 10
+ nqpt 1
+ qpt    0.5000000000000000000000    0.5000000000000000000000    0.5000000000000000000000
+##############################################
+####                SECTION: paral
+##############################################
+ paral_kgb 1
+ nppert 1
+ npkpt 2
+##############################################
+####                 SECTION: paw
+##############################################
+ pawecutdg 20
+##############################################
+####                  STRUCTURE
+##############################################
+ natom 18
+ ntypat 5
+ typat
+ 1 1 2
+ 2 2 2
+ 3 3 3
+ 3 4 4
+ 4 4 5
+ 5 5 5
+ znucl
+ 38 3 13
+ 7 8
+ xred
+    0.5000000000    0.0000000000    0.5000000000
+    0.0000000000    0.5000000000    0.0000000000
+    0.1310000000    0.8210000000    0.5000000000
+    0.8690000000    0.1790000000    0.5000000000
+    0.1790000000    0.1310000000    0.0000000000
+    0.8210000000    0.8690000000    0.0000000000
+    0.3533000000    0.6842000000    0.0000000000
+    0.6467000000    0.3158000000    0.0000000000
+    0.3158000000    0.3533000000    0.5000000000
+    0.6842000000    0.6467000000    0.5000000000
+    0.5855000000    0.7299000000    0.0000000000
+    0.4145000000    0.2701000000    0.0000000000
+    0.2701000000    0.5855000000    0.5000000000
+    0.7299000000    0.4145000000    0.5000000000
+    0.2546000000    0.8935000000    0.0000000000
+    0.7454000000    0.1065000000    0.0000000000
+    0.1065000000    0.2546000000    0.5000000000
+    0.8935000000    0.7454000000    0.5000000000
+ acell    1.0    1.0    1.0
+ rprim
+   15.0403302259    0.0000000000    0.0000000000
+    0.0000000000   15.0403302259    0.0000000000
+    0.0000000000    0.0000000000    6.0168879808
+
+
+#<JSON>
+#{
+#    "pseudos": [
+#        {
+#            "@module": "pymatgen.io.abinit.pseudos",
+#            "@class": "PawXmlSetup",
+#            "basename": "Sr.xml",
+#            "type": "PawXmlSetup",
+#            "symbol": "Sr",
+#            "Z": 38,
+#            "Z_val": 10.0,
+#            "l_max": null,
+#            "md5": "130225d38b459ce10ee0bddbabf010d3",
+#            "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/Sr.xml"
+#        },
+#        {
+#            "@module": "pymatgen.io.abinit.pseudos",
+#            "@class": "PawXmlSetup",
+#            "basename": "Li.xml",
+#            "type": "PawXmlSetup",
+#            "symbol": "Li",
+#            "Z": 3,
+#            "Z_val": 3.0,
+#            "l_max": null,
+#            "md5": "7fc6473512a6a2d2db1bb65323c34d8d",
+#            "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/Li.xml"
+#        },
+#        {
+#            "@module": "pymatgen.io.abinit.pseudos",
+#            "@class": "PawXmlSetup",
+#            "basename": "Al.xml",
+#            "type": "PawXmlSetup",
+#            "symbol": "Al",
+#            "Z": 13,
+#            "Z_val": 3.0,
+#            "l_max": null,
+#            "md5": "adf23544bafad32f2ef1b59e304c522f",
+#            "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/Al.xml"
+#        },
+#        {
+#            "@module": "pymatgen.io.abinit.pseudos",
+#            "@class": "PawXmlSetup",
+#            "basename": "N.xml",
+#            "type": "PawXmlSetup",
+#            "symbol": "N",
+#            "Z": 7,
+#            "Z_val": 5.0,
+#            "l_max": null,
+#            "md5": "d27209a4ef42bde3c02d896aa215ee02",
+#            "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/N.xml"
+#        },
+#        {
+#            "@module": "pymatgen.io.abinit.pseudos",
+#            "@class": "PawXmlSetup",
+#            "basename": "O.xml",
+#            "type": "PawXmlSetup",
+#            "symbol": "O",
+#            "Z": 8,
+#            "Z_val": 6.0,
+#            "l_max": null,
+#            "md5": "35bf4d57ada0f14c5fe1e6165c3598e5",
+#            "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/O.xml"
+#        }
+#    ]
+#}
+#</JSON>

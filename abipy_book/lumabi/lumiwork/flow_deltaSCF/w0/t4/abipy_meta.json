@@ -1,0 +1,998 @@
+{
+    "_input": {
+        "@class": "AbinitInput",
+        "@module": "abipy.abio.inputs",
+        "abi_args": [
+            [
+                "ecut",
+                10
+            ],
+            [
+                "pawecutdg",
+                20
+            ],
+            [
+                "chksymbreak",
+                0
+            ],
+            [
+                "diemac",
+                5
+            ],
+            [
+                "prtwf",
+                -1
+            ],
+            [
+                "nstep",
+                100
+            ],
+            [
+                "toldfe",
+                1e-06
+            ],
+            [
+                "chkprim",
+                0
+            ],
+            [
+                "usepawu",
+                1
+            ],
+            [
+                "lpawu",
+                [
+                    3,
+                    -1,
+                    -1,
+                    -1,
+                    -1,
+                    -1
+                ]
+            ],
+            [
+                "upawu",
+                [
+                    7,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    "eV"
+                ]
+            ],
+            [
+                "jpawu",
+                [
+                    0.7,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    "eV"
+                ]
+            ],
+            [
+                "spinat",
+                "0 0 7 105*0 "
+            ],
+            [
+                "ngkpt",
+                [
+                    1,
+                    1,
+                    1
+                ]
+            ],
+            [
+                "kptopt",
+                1
+            ],
+            [
+                "nshiftk",
+                1
+            ],
+            [
+                "shiftk",
+                [
+                    [
+                        0,
+                        0,
+                        0
+                    ]
+                ]
+            ],
+            [
+                "nspinor",
+                1
+            ],
+            [
+                "nsppol",
+                2
+            ],
+            [
+                "occopt",
+                2
+            ],
+            [
+                "nband",
+                "*115"
+            ],
+            [
+                "occ",
+                "\n88*1 6*1 0 1 19*0\n\n88*1 7*0 20*0\n"
+            ],
+            [
+                "irdden",
+                1
+            ],
+            [
+                "paral_kgb",
+                1
+            ],
+            [
+                "npimage",
+                1
+            ],
+            [
+                "npkpt",
+                2
+            ],
+            [
+                "npspinor",
+                1
+            ],
+            [
+                "npfft",
+                1
+            ],
+            [
+                "npband",
+                1
+            ],
+            [
+                "bandpp",
+                1
+            ]
+        ],
+        "comment": null,
+        "decorators": [],
+        "enforce_typat": null,
+        "enforce_znucl": null,
+        "pseudos": [
+            {
+                "@class": "PawXmlSetup",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 63,
+                "Z_val": 17.0,
+                "basename": "Eu.xml",
+                "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/Eu.xml",
+                "l_max": null,
+                "md5": "457a03f20e9cab7a51dee504a2bb969a",
+                "symbol": "Eu",
+                "type": "PawXmlSetup"
+            },
+            {
+                "@class": "PawXmlSetup",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 38,
+                "Z_val": 10.0,
+                "basename": "Sr.xml",
+                "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/Sr.xml",
+                "l_max": null,
+                "md5": "130225d38b459ce10ee0bddbabf010d3",
+                "symbol": "Sr",
+                "type": "PawXmlSetup"
+            },
+            {
+                "@class": "PawXmlSetup",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 3,
+                "Z_val": 3.0,
+                "basename": "Li.xml",
+                "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/Li.xml",
+                "l_max": null,
+                "md5": "7fc6473512a6a2d2db1bb65323c34d8d",
+                "symbol": "Li",
+                "type": "PawXmlSetup"
+            },
+            {
+                "@class": "PawXmlSetup",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 13,
+                "Z_val": 3.0,
+                "basename": "Al.xml",
+                "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/Al.xml",
+                "l_max": null,
+                "md5": "adf23544bafad32f2ef1b59e304c522f",
+                "symbol": "Al",
+                "type": "PawXmlSetup"
+            },
+            {
+                "@class": "PawXmlSetup",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 7,
+                "Z_val": 5.0,
+                "basename": "N.xml",
+                "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/N.xml",
+                "l_max": null,
+                "md5": "d27209a4ef42bde3c02d896aa215ee02",
+                "symbol": "N",
+                "type": "PawXmlSetup"
+            },
+            {
+                "@class": "PawXmlSetup",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 8,
+                "Z_val": 6.0,
+                "basename": "O.xml",
+                "filepath": "/Users/jbouquiaux/git/lumi_book/lumi_book/lumi/pseudos/O.xml",
+                "l_max": null,
+                "md5": "35bf4d57ada0f14c5fe1e6165c3598e5",
+                "symbol": "O",
+                "type": "PawXmlSetup"
+            }
+        ],
+        "structure": {
+            "@class": "Structure",
+            "@module": "abipy.core.structure",
+            "charge": 0,
+            "lattice": {
+                "a": 7.959000000054767,
+                "alpha": 90.0,
+                "b": 7.959000000054767,
+                "beta": 90.0,
+                "c": 6.368000000202725,
+                "gamma": 90.0,
+                "matrix": [
+                    [
+                        7.959000000054767,
+                        0.0,
+                        0.0
+                    ],
+                    [
+                        0.0,
+                        7.959000000054767,
+                        0.0
+                    ],
+                    [
+                        0.0,
+                        0.0,
+                        6.368000000202725
+                    ]
+                ],
+                "pbc": [
+                    true,
+                    true,
+                    true
+                ],
+                "volume": 403.3852966263933
+            },
+            "sites": [
+                {
+                    "abc": [
+                        0.5,
+                        0.0,
+                        0.25
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Eu",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        3.9795000000273837,
+                        0.0,
+                        1.5920000000506813
+                    ]
+                },
+                {
+                    "abc": [
+                        0.5,
+                        0.0,
+                        0.75
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Sr",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        3.9795000000273837,
+                        0.0,
+                        4.7760000001520435
+                    ]
+                },
+                {
+                    "abc": [
+                        -1.1102230246e-16,
+                        0.5,
+                        0.00061311897832
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Sr",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        -8.836265052852204e-16,
+                        3.9795000000273837,
+                        0.003904341654066055
+                    ]
+                },
+                {
+                    "abc": [
+                        -1.1102230246e-16,
+                        0.5,
+                        0.49938688102
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Sr",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        -8.836265052852204e-16,
+                        3.9795000000273837,
+                        3.1800956584365982
+                    ]
+                },
+                {
+                    "abc": [
+                        0.1260524204,
+                        0.82430014212,
+                        0.25
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Li",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        1.0032512139705037,
+                        6.560604831178225,
+                        1.5920000000506813
+                    ]
+                },
+                {
+                    "abc": [
+                        0.1277762795,
+                        0.82537934936,
+                        0.75
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Li",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        1.0169714085474981,
+                        6.569194241601444,
+                        4.7760000001520435
+                    ]
+                },
+                {
+                    "abc": [
+                        0.8739475796,
+                        0.17569985788,
+                        0.25
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Li",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        6.955748786084264,
+                        1.3983951688765426,
+                        1.5920000000506813
+                    ]
+                },
+                {
+                    "abc": [
+                        0.8722237205,
+                        0.17462065064,
+                        0.75
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Li",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        6.9420285915072695,
+                        1.3898057584533237,
+                        4.7760000001520435
+                    ]
+                },
+                {
+                    "abc": [
+                        0.17539738149,
+                        0.12686404184,
+                        0.00085087708572
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Li",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        1.3959877592885162,
+                        1.009710909011508,
+                        0.0054183852820374545
+                    ]
+                },
+                {
+                    "abc": [
+                        0.17539738149,
+                        0.12686404184,
+                        0.49914912291
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Li",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        1.3959877592885162,
+                        1.009710909011508,
+                        3.1785816147920705
+                    ]
+                },
+                {
+                    "abc": [
+                        0.82460261851,
+                        0.87313595816,
+                        0.00085087708572
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Li",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        6.563012240766252,
+                        6.949289091043259,
+                        0.0054183852820374545
+                    ]
+                },
+                {
+                    "abc": [
+                        0.82460261851,
+                        0.87313595816,
+                        0.49914912291
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Li",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        6.563012240766252,
+                        6.949289091043259,
+                        3.1785816147920705
+                    ]
+                },
+                {
+                    "abc": [
+                        0.35203996209,
+                        0.68291239217,
+                        0.0018886827774
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Al",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        2.80188605829359,
+                        5.435299729318431,
+                        0.012027131926866084
+                    ]
+                },
+                {
+                    "abc": [
+                        0.35203996209,
+                        0.68291239217,
+                        0.49811131722
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Al",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        2.80188605829359,
+                        5.435299729318431,
+                        3.17197286815794
+                    ]
+                },
+                {
+                    "abc": [
+                        0.64796003791,
+                        0.31708760783,
+                        0.0018886827774
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Al",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        5.157113941761177,
+                        2.5237002707363363,
+                        0.012027131926866084
+                    ]
+                },
+                {
+                    "abc": [
+                        0.64796003791,
+                        0.31708760783,
+                        0.49811131722
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Al",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        5.157113941761177,
+                        2.5237002707363363,
+                        3.17197286815794
+                    ]
+                },
+                {
+                    "abc": [
+                        0.31701361745,
+                        0.35010556388,
+                        0.25
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Al",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        2.523111381301912,
+                        2.7864901829400948,
+                        1.5920000000506813
+                    ]
+                },
+                {
+                    "abc": [
+                        0.31900718645,
+                        0.34816669412,
+                        0.75
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Al",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        2.538978196973021,
+                        2.7710587185201483,
+                        4.7760000001520435
+                    ]
+                },
+                {
+                    "abc": [
+                        0.68298638255,
+                        0.64989443612,
+                        0.25
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Al",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        5.4358886187528555,
+                        5.172509817114673,
+                        1.5920000000506813
+                    ]
+                },
+                {
+                    "abc": [
+                        0.68099281355,
+                        0.65183330588,
+                        0.75
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Al",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        5.420021803081746,
+                        5.187941281534619,
+                        4.7760000001520435
+                    ]
+                },
+                {
+                    "abc": [
+                        0.58358556236,
+                        0.73623256922,
+                        0.0026480001006
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "N",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        4.644757490855202,
+                        5.859675018462302,
+                        0.016862464641157617
+                    ]
+                },
+                {
+                    "abc": [
+                        0.58358556236,
+                        0.73623256922,
+                        0.4973519999
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "N",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        4.644757490855202,
+                        5.859675018462302,
+                        3.167137535464026
+                    ]
+                },
+                {
+                    "abc": [
+                        0.41641443764,
+                        0.26376743078,
+                        0.0026480001006
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "N",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        3.314242509199566,
+                        2.0993249815924657,
+                        0.016862464641157617
+                    ]
+                },
+                {
+                    "abc": [
+                        0.41641443764,
+                        0.26376743078,
+                        0.4973519999
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "N",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        3.314242509199566,
+                        2.0993249815924657,
+                        3.167137535464026
+                    ]
+                },
+                {
+                    "abc": [
+                        0.26789216919,
+                        0.58226869811,
+                        0.25
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "N",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        2.1321537745978816,
+                        4.63427656828938,
+                        1.5920000000506813
+                    ]
+                },
+                {
+                    "abc": [
+                        0.27253330697,
+                        0.582799964,
+                        0.75
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "N",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        2.169092590189156,
+                        4.638504913507918,
+                        4.7760000001520435
+                    ]
+                },
+                {
+                    "abc": [
+                        0.73210783081,
+                        0.41773130189,
+                        0.25
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "N",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        5.826846225456886,
+                        3.324723431765388,
+                        1.5920000000506813
+                    ]
+                },
+                {
+                    "abc": [
+                        0.72746669303,
+                        0.417200036,
+                        0.75
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "N",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        5.789907409865611,
+                        3.320495086546849,
+                        4.7760000001520435
+                    ]
+                },
+                {
+                    "abc": [
+                        0.25466758677,
+                        0.88774945866,
+                        0.0067231790718
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "O",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        2.0268993231163774,
+                        7.06559794152356,
+                        0.04281320433058536
+                    ]
+                },
+                {
+                    "abc": [
+                        0.25466758677,
+                        0.88774945866,
+                        0.49327682093
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "O",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        2.0268993231163774,
+                        7.06559794152356,
+                        3.14118679578224
+                    ]
+                },
+                {
+                    "abc": [
+                        0.74533241323,
+                        0.11225054134,
+                        0.0067231790718
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "O",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        5.93210067693839,
+                        0.8934020585312077,
+                        0.04281320433058536
+                    ]
+                },
+                {
+                    "abc": [
+                        0.74533241323,
+                        0.11225054134,
+                        0.49327682093
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "O",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        5.93210067693839,
+                        0.8934020585312077,
+                        3.14118679578224
+                    ]
+                },
+                {
+                    "abc": [
+                        0.11254617834,
+                        0.25249398396,
+                        0.25
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "O",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        0.8957550334142238,
+                        2.0095996183514684,
+                        1.5920000000506813
+                    ]
+                },
+                {
+                    "abc": [
+                        0.11265353959,
+                        0.25200324805,
+                        0.75
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "O",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        0.8966095216029798,
+                        2.005693851243752,
+                        4.7760000001520435
+                    ]
+                },
+                {
+                    "abc": [
+                        0.88745382166,
+                        0.74750601604,
+                        0.25
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "O",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        7.063244966640544,
+                        5.949400381703299,
+                        1.5920000000506813
+                    ]
+                },
+                {
+                    "abc": [
+                        0.88734646041,
+                        0.74799675195,
+                        0.75
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "O",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        7.062390478451787,
+                        5.953306148811016,
+                        4.7760000001520435
+                    ]
+                }
+            ]
+        },
+        "tags": []
+    }
+}
