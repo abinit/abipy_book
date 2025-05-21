@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Multi-Phonon Lineshape
+# Lineshape (multi-phonon)
 
 This tutorial shows how to obtain the luminescence lineshape, following a multi-phonon mode model. 
 
@@ -31,7 +31,7 @@ from abipy.core.kpoints import kmesh_from_mpdivs
 from abipy.lumi.lineshape import Lineshape
 ```
 
-We first load the ab-initio phonons results. The inputs used to generate these calculations are shown in ... . 
+We first load the ab-initio phonons results. The inputs used to generate these calculations are shown in the next [section](../ifc_emb/lesson_ifc_emb.md).
 
 ```{code-cell}
 ddb_pristine=abiopen("flow_phonons/w0/outdata/out_DDB")
@@ -53,7 +53,7 @@ results=DeltaSCF.from_four_points_file(files)
 ```
 
 ## Simplest case, no IFCs embedding 
-We create a lineshape object by combining the DeltaSCF and phonons computations. In this example, the coordinates of the defect are the same in the two supercells used. In other cases, it might not be the case. This is why these values should be provided explicitly. Notice that in this first simple example, the phonon supercell size equals the DeltaSCF supercell size, allowing the use of the displacements or the forces. 
+We create a lineshape object by combining the $\Delta$SCF and phonons computations. In this example, the coordinates of the defect are the same in the two supercells used. It might not be always the case. This is why these values should be provided explicitly. Notice that in this first simple example, the phonon supercell size equals the DeltaSCF supercell size, allowing the use of the displacements or the forces. 
 
 ```{code-cell}
 # get_pmg_structure(ph_defect.supercell) # to inspect the coords of the defect in phonon scell
@@ -86,9 +86,9 @@ print(f"multi phonon Huang-Rhys factor  = {np.round(lineshape.S_tot(),3)}")
 print(f"one  phonon Huang-Rhys factor  = {np.round(results.S_em(),3)}")
 ```
 
-The final luminescence emission spectrum can be plotted with : 
+The final luminescence emission spectrum, computed with the generating function approach, can be plotted with at any temperature : 
 ```{code-cell}
-x,y=lineshape.L_hw(w=5) # w is the width of the gaussian used to smooth the spectrum.
+x,y=lineshape.L_hw(T=300, w=5) # w is the width of the gaussian used to smooth the spectrum.
 fig,ax=plt.subplots(figsize=(6,3))
 ax.plot(x,y)
 ax.set_xlabel("Energy (eV)")
@@ -100,7 +100,7 @@ ax.set_xlim(1.1,1.6)
 ## With IFCs embedding 
 
 
-We need first to create a phonopy object with embedded IFCs. See tutorial ... for more details. 
+We need first to create a phonopy object with embedded IFCs. See the next tutorial for more details. 
 
 This first block of code first interpolates the DDB file on the desired q-mesh (here 2x2x4). It then performs a folding of these phonons from the unit cell on a 2x2x4 q-mesh to the phonons on the corresponding 2x2x4 supercell at $\Gamma$ q-point, and save it to phonopy format. 
 
@@ -158,13 +158,20 @@ lineshape_emb.plot_spectral_function(with_local_ratio=True);
 ```
 
 ```{code-cell}
-x,y=lineshape_emb.L_hw(w=5) # w is the width of the gaussian used to smooth the spectrum.
+x,y=lineshape_emb.L_hw(T=300, w=5) # w is the width of the gaussian used to smooth the spectrum.
 fig,ax=plt.subplots(figsize=(6,3))
 ax.plot(x,y)
 ax.set_xlabel("Energy (eV)")
 ax.set_ylabel("Emission Intensity (a.u.)")
 ax.set_xlim(1.1,1.6)
 ```
+
+Notice how the spectrum broadened because of the increase of the supercell size. This is because the computed Huang-Rhys factor is larger than the one obtained with the smaller supercell, and illustrates the importance of converging the supercell size. The fact that the phonon peaks are less resolved is also due to the increase of the number of phonon modes. You can also play with the smooting parameter `w` (gaussian) and `lamb` (lorentzian) to see how it affects the spectrum. 
+
+```{code-cell}
+print(f"multi phonon Huang-Rhys factor with larger supercell and embedding = {np.round(lineshape_emb.S_tot(),3)}")
+```
+
 
 ## Convergence with respect to the supercell size
 
@@ -232,3 +239,7 @@ for sc_size in sc_sizes:
   axs.legend()
 ```
 
+```{note}
+For an additional example of the use of this module, you can check the tests examples located in
+`abipy/lumi/tests/test_lineshape.py`.
+```

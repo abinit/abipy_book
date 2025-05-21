@@ -12,7 +12,7 @@ kernelspec:
 ---
 
 # Theory
-This chapter presents the theoretical formalism behind the computation of the luminescence properties of point defects in solids. It starts with a section dedicated solely to the theory of luminescence, showing how Fermi's golden rule is approximated to obtain a tractable way of computing the luminescence lineshape, following either an effective phonon mode model or a multi-phonon mode model. Then, the computational methodology used to obtain the parameters entering the lineshape equation is presented. Finally, subtleties regarding the increase of the phonon supercell size are discussed. 
+This chapter presents the theoretical formalism behind the computation of the luminescence properties of point defects in solids. It starts with a section dedicated solely to the theory of luminescence, showing how Fermi's golden rule is approximated to obtain a tractable way of computing the luminescence lineshape, following either an effective phonon mode model or a multi-phonon mode model. Then, the computational methodology used to obtain the parameters entering the lineshape equation is presented. Subtleties regarding the increase of the phonon supercell size thanks to the use of the forces instead of displacements are discussed. Finally, the IFCs embedding approach, that allows to compute the phonon modes of a defect system in large supercells, is presented.
 
 ## From the Fermi's Golden rule to the luminescence lineshape
 Following Fermi's golden rule, the absolute luminescence intensity $I(\hbar\omega)$ (number of photons per unit time per unit energy) associated to one emitting center with two states e and g, is expressed as a function of the photon energy $\hbar\omega$ as
@@ -39,7 +39,7 @@ The vibrational modes of the excited and ground states can be in principle diffe
 
 ### Effective phonon mode model
 
-The simplest model to start with is built when considering that the 3N phonon modes of the system can be reduced to a single effective phonon mode (how to compute this effective phonon is discussed in section ...). Suppose that a single effective mode couples to the electronic transition, the Franck-Condon overlaps will reduce to $|\langle\chi_{e,0}|\chi_{g,n}\rangle|^2$. In the harmonic approximation, the vibrational eigenfunctions $\chi$ are expressed with Hermite polynomials and their overlaps can be computed analytically : 
+The simplest model to start with is built when considering that the 3N phonon modes of the system can be reduced to a single effective phonon mode. Suppose that a single effective mode couples to the electronic transition, the Franck-Condon overlaps will reduce to $|\langle\chi_{e,0}|\chi_{g,n}\rangle|^2$. In the harmonic approximation, the vibrational eigenfunctions $\chi$ are expressed with Hermite polynomials and their overlaps can be computed analytically : 
 
 $$
 |\langle\chi_{e,0}|\chi_{g,n}\rangle|^2=e^{-S}\frac{S^n}{n!},
@@ -56,7 +56,7 @@ $$
 (\Delta Q)^2=\sum_{\kappa i}m_\kappa(R_{\text{e};\kappa i}-R_{\text{g};\kappa i})^2,
 $$ (Delta_Q)
 
-where i labels the cartesian axes, $\kappa$ the atoms, $m_{\kappa}$ atomic masses, $R_{e;\kappa i}$ and $R_{g;\kappa i}$ are respectively atomic positions in the excited and the ground states. 
+where $i$ labels the cartesian axes, $\kappa$ the atoms, $m_{\kappa}$ atomic masses, $R_{e;\kappa i}$ and $R_{g;\kappa i}$ are respectively atomic positions in the excited and the ground states. 
 
 This allows to simplify equation {eq}`second_lum_intensity` to 
 
@@ -101,7 +101,7 @@ are used to compute the partial Huang-Rhys factor $S_\nu=\frac{\omega_\nu\Delta 
 
 $$
 S(\hbar\omega) = \sum_{\nu}S_{\nu}\delta(\hbar\omega-\hbar\omega_{\nu}).
-$$
+$$ (HuangRhys_spectral_function)
 
 When dealing with 3N phonons, a direct evaluation of equation {eq}`second_lum_intensity` is impractical. Instead, the so-called generating function approach is used. The lineshape function $A(\hbar\omega)$ is evaluated as the Fourier transform of the generating function $G(t)$
 
@@ -128,39 +128,41 @@ $$
 \overline{n}_\nu(T)=\frac{1}{e^{\frac{\hbar\omega_\nu}{k_BT}}-1}.
 $$ (bose_einstein)
 
-One can connect the multi-phonon modes methodology to the simpler effective phonon mode model presented in. The total normal coordinate change $\Delta Q$, due to the orthonormality of the phonon eigenvectors is linked through the partial $\Delta Q_{\nu}$ through :
+One can connect the multi-phonon modes methodology to the simpler effective phonon mode model presented in the previous section. The total normal coordinate change $\Delta Q$, due to the orthonormality of the phonon eigenvectors is linked through the partial $\Delta Q_{\nu}$ through :
 
 $$
 (\Delta Q)^2=\sum_{\nu}(\Delta Q_{\nu})^2,
-$$	
+$$ (Delta_Q_total)	
 and allows one to define the weight by which a mode contributes to the total atomic relaxation :
 
 $$
 p_{\nu}=(\Delta Q_{\nu}/\Delta Q)^2.
-$$
+$$ (p_nu)
 It is then possible to define an effective frequency as
 
 $$
 \omega_{\mathrm{eff}}^2=\sum_{\nu}p_{\nu}\omega_{\nu}^2,
-$$
+$$ (omega_eff)
 and the total Huang-Rhys factor as :
 
 $$
 S=\sum_{\nu}S_{\nu}.
-$$
+$$ (HuangRhys_total)
 
 ### Semi-classical approach 
 Within a semi-classical formulation {cite}`henderson2006optical`, one can find formulas for the full width a half maximum of the emission shape:
 
 $$
 W(0)=S_{\mathrm{em}}\hbar\Omega_{\mathrm{g}}\sqrt{8\ln2}/\sqrt{S_{\mathrm{abs}}}.
-$$
+$$ (fwhm_semi_classical)
+
+where $S_{\mathrm{em}}$ and $S_{\mathrm{abs}}$ are the Huang-Rhys factors associated to the emission and absorption processes respectively, and $\Omega_{\mathrm{g}}$ is the effective frequency of the ground state.
 
 Averaging the Bose-Einstein occupations of the initial vibrational states allows one to compute the temperature dependent FWHM : 
 
 $$
 W(T)=W(0)\sqrt{\coth(\hbar\Omega_\mathrm{e}/2k_BT)},
-$$ (fwhm_semi_classical)
+$$ (fwhm_semi_classical_T)
 
 ## Computational methodology 
 
@@ -173,9 +175,56 @@ From the above approximations, we see that the photo-luminescent lineshape of a 
 One way to obtain the first two parameters is to use DFT following the $\Delta SCF$ constrained occupation method. The vibrational modes can be obtained with finite difference or DFPT, or by using the embedding methodology presented in latter in this chapter.
 
 
-### Delta SCF constrained occupation method 
+### $\Delta$SCF constrained occupation method 
 This method refers to the use of DFT with non-Aufbau electronic occupations to mimick the electron-hole interaction. Transition energies are computed by taking the differences between total DFT energies with different occupations. 
-Note that the excited state occupations are specific to the system under study. In the case of Eu$^{2+}$, one of the seven 4f electron of the spin-up channel is promoted to the next spin-up 5d energy state.
+Note that the excited state occupations are specific to the system under study. In the case of Eu$^{2+}$, one of the seven 4f electron of the spin-up channel is promoted to the next spin-up 5d energy state, as shown in {numref}`delta_scf`. This figure also illustrates the connection with the configuration coordinate model.
+
+
+```{figure} delta_scf.pdf
+---
+width: 70%
+name: delta_scf
+---
+Schematic representation of the constrained occupation $\Delta$SCF method, as used in this work for simulating the luminescent properties of Eu$^{2+}$ phosphor.
+```
+
+The procedure is as follows:
+
+- Start with a relaxed ground state (labeled $A_g$) with energy $E_{g}$.
+- Promote an electron to obtain the excited state configuration ($A_g^*$, energy $E_{g}^{*}$). The difference in energy with the $A_g$ state provides an estimate of the semi-classical absorption energy:
+  
+  $$
+  E_{\mathrm{abs}} = E_{g}^{*} - E_{g}
+  $$ (absorption_energy)
+- After structural relaxation in the excited state, obtain the relaxed excited state ($A_e^*$, energy $E_e^*$), which allows computation of the zero-phonon line (ZPL) energy:
+  
+  $$
+  E_{\mathrm{ZPL}} = E_e^* - E_g
+  $$ (ZPL_energy)
+- The Franck-Condon relaxation energy of the excited state is:
+  
+  $$
+  E_{\mathrm{FC,e}} = E_{g}^{*} - E_{e}^{*}
+  $$ (FC_e)
+- De-promoting the electron with the relaxed atomic positions of the excited state yields the ground state with excited geometry ($A_e$, energy $E_e$). The emission energy is:
+  
+  $$
+  E_{\mathrm{em}} = E_e^* - E_e
+  $$ (emission_energy)
+- The Franck-Condon relaxation energy of the ground state is:
+  
+  $$
+  E_{\mathrm{FC,g}} = E_{e} - E_{g}
+  $$ (FC_g)
+
+Assuming harmonicity, the effective frequencies of the ground or excited states can be extracted as
+
+$$
+\omega_{\mathrm{eff},\{g,e\}}^2 = \frac{2 E_{\mathrm{FC},\{g,e\}}}{\Delta Q^2}
+$$ (omega_eff_g_e)
+
+where $\Delta Q$ is the mass-weighted atomic displacement between the ground and excited states, as defined in equation {eq}`Delta_Q`. 
+The corresponding Huang-Rhys factors can be obtained from {eq}`HuangRhys_factor`.
 
 ### Forces vs Displacements, increase of supercell size.  
 For a given phonon mode $\nu$, the corresponding partial Huang-Rhys factor $S_{\nu}=\frac{\omega_{\nu}\Delta Q_{\nu}^2}{2\hbar}$ is computed thanks to the mass-weighted displacement between ground and excited states projected on this phonon mode:
@@ -215,7 +264,7 @@ name: Forces_vs_dis
 
 ```
 
-### IFCs embedding:
+### IFCs embedding
 
 In the computation of the partial Huang-Rhys factors, one would like to obtain the phonons in very large supercells at wave vector $\mathbf{q}\rightarrow(0,0,0)$ ($\Gamma$ point), so that the coupling with long-wavelength phonons is correctly captured. One would also like to include the coupling with (localized) phonons modes introduced by the defect.
 A direct approach, either with DFPT or finite difference, is not computationally attractive. Indeed, DFPT is best used for small pristine primitive cells at dense $\mathbf{q}$-mesh (which corresponds to large pristine supercells after a folding procedure), while finite difference, for which the introduction of defect does not cause problem,  remains costly for large supercells. One way to include both the defect effect (local modes) while converging long-wavelength phonons is to employ the IFCs embedding approach {cite}`alkauskas2014,jin2021photoluminescence`.
@@ -241,13 +290,13 @@ Overall, the whole procedure can break the acoustic sum rule
 
 $$
 C_{\kappa\alpha,\kappa\beta} = - \sum_{\kappa'\ne\kappa}C_{\kappa\alpha,\kappa'\beta}.
-$$
+$$ (acoustic_sum_rule)
 
-To correct for this, we follow the approach proposed in reference~\cite{razinkovas2021vibrational} and we set:
+To correct for this, we set:
 
 $$
 C_{\kappa\alpha,\kappa\alpha}^{\mathrm{emb}}=-\sum_{\kappa'\ne\kappa}C_{\kappa\alpha,\kappa'\alpha}^{\mathrm{emb}}.
-$$
+$$ (acoustic_sum_rule_emb)
 
 For the treatment of the Born effective charges (BECs), if the BEC of the substituted atom was computed in the defect phonon calculation, it is replaced by the BEC of the dopant atom. If not, one can choose to use the most common oxidation state of the dopant atom as its new BEC. The same approach applies to interstitials, but in this case, the dopant atom and its corresponding BEC are simply added. For vacancies, the atom and its BEC are removed.
 
@@ -257,7 +306,9 @@ The localization of the phonon modes can be characterized by computing the inver
 
 $$	
 \mathrm{IPR}_{\nu}=\frac{1}{\sum_{\kappa}|\langle \mathbf{e}_{\nu,\kappa}| \mathbf{e}_{\nu,\kappa} \rangle|^2},
-$$
+$$ (IPR)
+
+where $\mathbf{e}_{\nu,\kappa}$ is the eigenvector of the phonon mode $\nu$ associated to atom $\kappa$. The IPR is a measure of the localization of the phonon mode $\nu$ and is normalized to the number of atoms in the supercell $N$. The IPR can be interpreted as a measure of the number of atoms that participate in a given phonon mode,
 which indicates, roughly speaking, the number of atoms that participate to a phonon mode $\nu$. 
 For example, $\mathrm{IPR}_{\nu}=1$ means that only one atom vibrates and therefore the phonon mode is maximally localized, while $\mathrm{IPR}_{\nu}=N$ means that N atoms vibrates in the supercell with the same amplitude. 
 

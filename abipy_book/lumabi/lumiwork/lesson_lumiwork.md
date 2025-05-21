@@ -11,23 +11,22 @@ kernelspec:
   name: python3
 ---
 
-# $\Delta$SCF constrained-occupations with Abinit and AbiPy
+# LumiWork Workflow
 
 This tutorial aims to show how to perform $\Delta$SCF constrained-occupations computations with Abinit in an automated way. 
-
-```{warning}
-Before starting, it is recommended to first get familiar with the [theory section](../theory/lesson_theory.md) and the [AbiPy environment](https://abinit.github.io/abipy_book/intro.html), in particular the working principle of [AbiPy workflows](https://abinit.github.io/abipy_book/flows.html).
-```
-
 The theory and equations associated to this tutorial can be found in the related [theory section](../theory/lesson_theory.md), and references therein. 
 
 ```{note}
-The examples shown in these tutorials are based on a certain type of defect (Eu substitution), but the $\Delta$SCF constrained-occupations methodology is general and can be applied to numerous kind of defects.  
+Before starting, it is recommended to first get familiar with the [AbiPy environment](https://abinit.github.io/abipy_book/intro.html), in particular the working principle of [AbiPy workflows](https://abinit.github.io/abipy_book/flows.html).
+```
+
+```{note}
+The examples shown in these tutorials are based on a certain type of defect (Eu substitution), but the $\Delta$SCF constrained-occupations methodology can be applied to numerous kind of defects.  
 ```
 
 ## Recap 
 
-Our goal is to compute the photo-luminescent properties of an impurity embedded in a lattice. Here we will take the example of the red phosphor material Sr[Li$_2$Al$_2$O$_2$N$_2$]:Eu$^{2+}$ (nicknamed SALON). 
+Our goal is to compute the photo-luminescent properties of an impurity embedded in a lattice. Here we will take the example of the red phosphor material Sr[Li$_2$Al$_2$O$_2$N$_2$]:Eu$^{2+}$.
 
 We need to compute the four states (energies and structures) highlighted in the figure below :
 
@@ -40,20 +39,17 @@ We need to compute the four states (energies and structures) highlighted in the 
 
 This requires two relaxations (one in the ground and excited state) and four static scf computations (at each state). One could eventually add four nscf computations for the electronic band structures. These 6 (+4) computations are what is automatized in one "LumiWork".
 
-The exicted state configuration is computed following the 
-SCF-constrained occupation method, where the first unoccupied state of the ground state is force to be occupied in the excited state. On Abinit, the variable "occ" reads like :
+The excited state configuration is computed following the $\Delta$SCF-constrained occupation method, where the first unoccupied state of the ground state is force to be occupied in the excited state. In Abinit, the variable "occ" reads like :
 
 * ground state  : occ ... 1 1 1 0 0 0 0 ...
 
 * excited state : occ ... 1 1 0 1 0 0 0 ...
 
-
-```{note}
-The example shown in this tutorial is designed to run in a few minutes on a laptop, meaning that the results are  unconverged (supercell size, different DFT parameters,...). Results of production runs for this kind of system can be found in references {cite}`bouquiaux2021importance` and {cite}`bouquiaux2023first`
-```
-
 ## LumiWork Workflow
 
+```{note}
+The example shown in this tutorial is designed to run in a few minutes on a laptop, meaning that the results are unconverged (supercell size, different DFT parameters,...). Results of production runs for this kind of system can be found in references {cite}`bouquiaux2021importance` and {cite}`bouquiaux2023first`
+```
 The creation of one LumiWork is done with the class method from_scf_inputs() :
 
 ```{code-cell}
@@ -73,7 +69,7 @@ This class method is a container that receives mainly Abinit Input objects and d
 
 
 ```{note}
-The complete workflow was ran separately, before building this jupyter book. You will find the worflow scripts and corresponding folder in the [github of this book](https://github.com/jbouquiaux/lumi_book/tree/main/lumi_book/lumi)
+The complete workflow was ran separately, before building this jupyter book. You will find the worflow scripts and corresponding folder [here](https://github.com/abinit/abipy_book/tree/master/abipy_book)
 ```
 
 A LumiWork (or a serie of LumiWork's) can be created with the run_deltaSCF.py script, as shown below :

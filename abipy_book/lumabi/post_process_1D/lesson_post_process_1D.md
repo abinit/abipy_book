@@ -12,8 +12,8 @@ kernelspec:
 ---
 $\newcommand{\AA}{\unicode{x212B}}$
 
-# 1D Post-Processing
-Now that the LumiWork is complete, it is time to analyze the results. This first section shows how to do that following the so-called "single effective phonon mode model" or "one-dimensional configuration coordinate diagram" (1D-CCM). We recall that, in this model, it is assumed that there exists a fictitious effective phonon mode whose eigenvectors follow exactly the ground-state to excited-state atomic relaxation, with an eigenfrequency computed with equation... of section ...\
+# $\Delta$SCF Post-Processing (1D)
+Now that the LumiWork is complete, it is time to analyze the results. This first section shows how to do that following the so-called "single effective phonon mode model" or "one-dimensional configuration coordinate diagram" (1D-CCM). We recall that, in this model, it is assumed that there exists a fictitious effective phonon mode whose eigenvectors follow exactly the ground-state to excited-state atomic relaxation, with an eigenfrequency computed with equation {eq}`omega_eff_g_e`.
 For this analysis, we use the $\Delta$SCF computations shown in the previous tutorial to instantiate a `DeltaSCF` object :
 
 ```{code-cell}
