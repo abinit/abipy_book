@@ -202,12 +202,12 @@ import phonopy
 import numpy as np
 
 # Load pristine phonons (DFPT, 2x2x2 q-mesh)
-ddb_pristine = abiopen("../lineshape/flow_phonons/w0/outdata/out_DDB")
+ddb_pristine = abiopen("../workflows_data/flow_phonons/w0/outdata/out_DDB")
 
 # Load defect phonons (finite difference, supercell)
 ph_defect = phonopy.load(
-    supercell_filename="../lineshape/flow_phonons_doped/w0/outdata/POSCAR",
-    force_sets_filename="../lineshape/flow_phonons_doped/w0/outdata/FORCE_SETS"
+    supercell_filename="../workflows_data/flow_phonons_doped/w0/outdata/POSCAR",
+    force_sets_filename="../workflows_data/flow_phonons_doped/w0/outdata/FORCE_SETS"
 )
 ```
 

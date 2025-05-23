@@ -34,21 +34,21 @@ from abipy.lumi.lineshape import Lineshape
 We first load the ab-initio phonons results. The inputs used to generate these calculations are shown in the next [section](../ifc_emb/lesson_ifc_emb.md).
 
 ```{code-cell}
-ddb_pristine=abiopen("flow_phonons/w0/outdata/out_DDB")
+ddb_pristine=abiopen("../workflows_data/flow_phonons/w0/outdata/out_DDB")
 # Phonons of the unit cell bulk, computed on a q-mesh (abinit DDB file)
 
-ph_defect=phonopy.load(supercell_filename="flow_phonons_doped/w0/outdata/POSCAR",
-                       force_sets_filename="flow_phonons_doped/w0/outdata/FORCE_SETS")
+ph_defect=phonopy.load(supercell_filename="../workflows_data/flow_phonons_doped/w0/outdata/POSCAR",
+                       force_sets_filename="../workflows_data/flow_phonons_doped/w0/outdata/FORCE_SETS")
 # Phonons obtained with defect supercell of 36 atoms (same than the Delta SCF supercell),
 # obtained with finite difference with Phonopy. 
 ```
 Then we create a DeltaSCF object, obtained from the results of a LumiWork workflow. 
 
 ```{code-cell}
-files=["../lumiwork/flow_deltaSCF/w0/t2/outdata/out_GSR.nc",
-        "../lumiwork/flow_deltaSCF/w0/t3/outdata/out_GSR.nc",
-        "../lumiwork/flow_deltaSCF/w0/t4/outdata/out_GSR.nc",
-        "../lumiwork/flow_deltaSCF/w0/t5/outdata/out_GSR.nc",]
+files=["../workflows_data/flow_deltaSCF/w0/t2/outdata/out_GSR.nc",
+        "../workflows_data/flow_deltaSCF/w0/t3/outdata/out_GSR.nc",
+        "../workflows_data/flow_deltaSCF/w0/t4/outdata/out_GSR.nc",
+        "../workflows_data/flow_deltaSCF/w0/t5/outdata/out_GSR.nc",]
 results=DeltaSCF.from_four_points_file(files) 
 ```
 
