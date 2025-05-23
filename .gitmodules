@@ -1,0 +1,3 @@
+[submodule "abipy_book/lumabi/workflows_data"]
+	path = abipy_book/lumabi/workflows_data
+	url = https://github.com/jbouquiaux/lumabi_workflows_data.git
