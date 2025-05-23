@@ -18,16 +18,16 @@ For this analysis, we use the $\Delta$SCF computations shown in the previous tut
 
 ```{code-cell}
 from abipy.lumi.deltaSCF import DeltaSCF
-scf_files=["../lumiwork/flow_deltaSCF/w0/t2/outdata/out_GSR.nc",
-           "../lumiwork/flow_deltaSCF/w0/t3/outdata/out_GSR.nc",
-           "../lumiwork/flow_deltaSCF/w0/t4/outdata/out_GSR.nc",
-           "../lumiwork/flow_deltaSCF/w0/t5/outdata/out_GSR.nc"]
+scf_files=["../workflows_data/flow_deltaSCF/w0/t2/outdata/out_GSR.nc",
+           "../workflows_data/flow_deltaSCF/w0/t3/outdata/out_GSR.nc",
+           "../workflows_data/flow_deltaSCF/w0/t4/outdata/out_GSR.nc",
+           "../workflows_data/flow_deltaSCF/w0/t5/outdata/out_GSR.nc"]
 results=DeltaSCF.from_four_points_file(scf_files) 
 # or
-# results=DeltaSCF.from_json_file("../lumiwork/flow_deltaSCF/w0/outdata/lumi.json")
+# results=DeltaSCF.from_json_file("../workflows_data/flow_deltaSCF/w0/outdata/lumi.json")
 # or only two relaxations 
-# results=DeltaSCF.from_relax_file(["../lumiwork/flow_deltaSCF/w0/t0/outdata/out_GSR.nc",
-#                                    "../lumiwork/flow_deltaSCF/w0/t1/outdata/out_GSR.nc"])
+# results=DeltaSCF.from_relax_file(["../workflows_data/flow_deltaSCF/w0/t0/outdata/out_GSR.nc",
+#                                    "../workflows_data/flow_deltaSCF/w0/t1/outdata/out_GSR.nc"])
 ```
 ```{note}
 Energy units are given in eV, distance units in $\AA$. 
@@ -45,10 +45,10 @@ results.plot_eigen_energies(scf_files);
 ```
 In the ground state, notice the 7 Eu$_{4f}$ states located in the gap. In the excited state (simulated with constrained occupation, as shown with the (un)filled markers), the created 4f hole lowers the energy of an occupied 5d state, which is now located at the top of the gap. The 6 remaining occupied 4f states are pushed down in the VB. If you have computed the four band structures associated to each point, you can use `results.plot_four_BandStructures(nscf_files)` where `nscf_files` is the list of four band structures .nc files.
 ```{code-cell}
-nscf_files=["../lumiwork/nscf_files/t6/out_GSR.nc",
-           "../lumiwork/nscf_files/t7/out_GSR.nc",
-           "../lumiwork/nscf_files/t8/out_GSR.nc", 
-           "../lumiwork/nscf_files/t9/out_GSR.nc",]
+nscf_files=["../workflows_data/flow_deltaSCF/w0/t6/outdata/out_GSR.nc",
+           "../workflows_data/flow_deltaSCF/w0/t7/outdata/out_GSR.nc",
+           "../workflows_data/flow_deltaSCF/w0/t8/outdata/out_GSR.nc", 
+           "../workflows_data/flow_deltaSCF/w0/t9/outdata/out_GSR.nc",]
 results.plot_four_BandStructures(nscf_files);
 ```
 Notice the strong dispersion of the bands close the CB bottom due to an interaction between Eu$_{5d}$ replica. Increasing the supercell size reduces this dispersion. 

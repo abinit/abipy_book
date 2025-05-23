@@ -11,7 +11,7 @@ def make_scf_input():
     """
     This function constructs the input file for the GS calculation:
     """
-    structure = Structure.from_file("flow_deltaSCF/w0/t0/outdata/out_GSR.nc")
+    structure = Structure.from_file("SALON_doped.cif")
     pseudodir='pseudos'
 
     pseudos = ('Eu.xml',
@@ -28,7 +28,7 @@ def make_scf_input():
                         diemac=5,
                         prtwf=-1,
                         nstep=100,
-                        toldfe=1e-6,
+                        toldfe=1e-5,
                         chkprim=0,
                         )
 

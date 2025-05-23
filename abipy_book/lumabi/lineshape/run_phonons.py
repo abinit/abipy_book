@@ -32,6 +32,7 @@ def make_scf_input():
                     tolvrs=1e-15,
                     nband=60,
 			        nbdbuf=10,
+                    pawxcdev=0,
                         )
 
     gs_inp.set_kmesh(ngkpt=[2,2,2],shiftk=[[0.5,0.5,0.5]])

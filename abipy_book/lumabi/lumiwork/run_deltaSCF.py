@@ -23,7 +23,7 @@ def scf_inp(structure):
                         diemac=5,
                         prtwf=-1,
                         nstep=100,
-                        toldfe=1e-6,
+                        toldfe=1e-5,
                         chkprim=0,
                         )
 
@@ -94,7 +94,7 @@ def build_flow(options):
     for stru in structure_list:
        gs_scf_inp, exc_scf_inp = scf_inp(stru)
        relax_kwargs_gs, relax_kwargs_ex = relax_kwargs()
-       Lumi_work=LumiWork.from_scf_inputs(gs_scf_inp, exc_scf_inp, relax_kwargs_gs, relax_kwargs_ex,ndivsm=0)
+       Lumi_work=LumiWork.from_scf_inputs(gs_scf_inp, exc_scf_inp, relax_kwargs_gs, relax_kwargs_ex,ndivsm=-3, tolwfr=1e-5)
        flow.register_work(Lumi_work)
  
     return flow
