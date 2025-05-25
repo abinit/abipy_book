@@ -59,6 +59,7 @@ jobs:
           conda create -n abipy python=${{ matrix.config.python }} --yes
           conda activate abipy
           pip install invoke
+          invoke submodules
           conda install "abinit>10" -c conda-forge --yes
           mpirun -n 1 abinit --version
           mpirun -n 1 abinit --build

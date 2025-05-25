@@ -17,9 +17,9 @@ This tutorial shows how to obtain the luminescence lineshape, following a multi-
 
 
 ```{code-cell}
-from abipy.lumi.deltaSCF import DeltaSCF
 import warnings
 warnings.filterwarnings('ignore')
+from abipy.lumi.deltaSCF import DeltaSCF
 import matplotlib.pyplot as plt
 import numpy as np
 import phonopy
