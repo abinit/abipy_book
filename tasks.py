@@ -45,6 +45,22 @@ def cd(path):
     finally:
         os.chdir(cwd)
 
+@task
+def pull(ctx):
+    """"Execute `git stash && git pull --recurse-submodules && git stash apply && makemake`"""
+    ctx.run("git stash")
+    ctx.run("git pull --recurse-submodules")
+    ctx.run("git stash apply")
+
+
+@task
+def submodules(ctx):
+    """Update submodules."""
+    with cd(HERE):
+        # https://stackoverflow.com/questions/1030169/easy-way-to-pull-latest-of-all-git-submodules
+        ctx.run("git submodule update --remote --init", pty=True)
+        ctx.run("git submodule update --recursive --remote", pty=True)
+
 
 @task
 def build(ctx):

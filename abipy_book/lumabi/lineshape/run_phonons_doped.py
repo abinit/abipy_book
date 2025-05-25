@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sys
 import os
 import abipy.abilab as abilab
@@ -20,7 +22,7 @@ def make_scf_input():
                'Li.xml',
                'O.xml',
                'N.xml')
- 
+
     gs_scf_inp = abilab.AbinitInput(structure, pseudos=pseudos,pseudo_dir=pseudodir)
     gs_scf_inp.set_vars(ecut=10,
                         pawecutdg=20,
@@ -33,11 +35,11 @@ def make_scf_input():
                         )
 
     # Set DFT+U and spinat parameters according to chemical symbols.
-#    symb2spinat = {"Eu": [0, 0, 7]}
+    # symb2spinat = {"Eu": [0, 0, 7]}
     symb2luj = {"Eu": {"lpawu": 3, "upawu": 7, "jpawu": 0.7}}
 
     gs_scf_inp.set_usepawu(usepawu=1, symb2luj=symb2luj)
-#    gs_scf_inp.set_spinat_from_symbols(symb2spinat, default=(0, 0, 0))
+    # gs_scf_inp.set_spinat_from_symbols(symb2spinat, default=(0, 0, 0))
 
     n_val = gs_scf_inp.num_valence_electrons
     n_cond = round(20)
@@ -52,10 +54,10 @@ def make_scf_input():
 
     # Build SCF input for the ground state configuration.
     gs_scf_inp.set_kmesh_nband_and_occ(ngkpt, shiftk, nsppol, [spin_up_gs, spin_dn])
+
     # Build SCF input for the excited configuration.
     exc_scf_inp = gs_scf_inp.deepcopy()
     exc_scf_inp.set_kmesh_nband_and_occ(ngkpt, shiftk, nsppol, [spin_up_ex, spin_dn])
-
 
     return gs_scf_inp
 
@@ -81,9 +83,7 @@ def build_flow(options):
     work = PhonopyWork.from_gs_input(scf_input, scdims=[1, 1, 1])
     flow.register_work(work)
 
-
     return flow
-
 
 
 @flowtk.flow_main

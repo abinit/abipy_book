@@ -8,14 +8,15 @@ from abipy.core import structure
 
 
 def scf_inp(structure):
-    pseudodir='pseudos'
-    
+    pseudodir = 'pseudos'
+
     pseudos = ('Eu.xml',
                'Sr.xml',
                'Al.xml',
                'Li.xml',
                'O.xml',
                'N.xml')
+
     gs_scf_inp = abilab.AbinitInput(structure=structure, pseudos=pseudos,pseudo_dir=pseudodir)
     gs_scf_inp.set_vars(ecut=10,
                         pawecutdg=20,
@@ -38,7 +39,7 @@ def scf_inp(structure):
     n_cond = round(20)
 
     spin_up_gs = f"\n{int((n_val - 7) / 2)}*1 7*1 {n_cond}*0"
-    spin_up_ex = f"\n{int((n_val - 7) / 2)}*1 6*1 0 1 {n_cond - 1}*0" 
+    spin_up_ex = f"\n{int((n_val - 7) / 2)}*1 6*1 0 1 {n_cond - 1}*0"
     spin_dn = f"\n{int((n_val - 7) / 2)}*1 7*0 {n_cond}*0"
 
     nsppol = 2
@@ -47,6 +48,7 @@ def scf_inp(structure):
 
     # Build SCF input for the ground state configuration.
     gs_scf_inp.set_kmesh_nband_and_occ(ngkpt, shiftk, nsppol, [spin_up_gs, spin_dn])
+
     # Build SCF input for the excited configuration.
     exc_scf_inp = gs_scf_inp.deepcopy()
     exc_scf_inp.set_kmesh_nband_and_occ(ngkpt, shiftk, nsppol, [spin_up_ex, spin_dn])
@@ -83,25 +85,24 @@ def build_flow(options):
 
     flow = flowtk.Flow(options.workdir, manager=options.manager)
 
-    #Construct the structures
+    # Construct the structures
     prim_structure=structure.Structure.from_file('SALON_prim.cif')
     structure_list=prim_structure.make_doped_supercells([1,1,2],'Sr','Eu')
 
     ####### Delta SCF part of the flow #######
-    
+
     from abipy.flowtk.lumi_works import LumiWork
-    
+
     for stru in structure_list:
        gs_scf_inp, exc_scf_inp = scf_inp(stru)
        relax_kwargs_gs, relax_kwargs_ex = relax_kwargs()
        Lumi_work=LumiWork.from_scf_inputs(gs_scf_inp, exc_scf_inp, relax_kwargs_gs, relax_kwargs_ex,ndivsm=-3, tolwfr=1e-5)
        flow.register_work(Lumi_work)
- 
+
     return flow
 
 
 @flowtk.flow_main
-
 def main(options):
     """
     This is our main function that will be invoked by the script.
