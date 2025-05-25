@@ -32,7 +32,15 @@ parts:
   - file: g0w0/lesson_g0w0.md
   - file: bse/lesson_bse.md
   - file: eph_isotc/lesson_eph_isotc.md
-    #- file: eph_zpr/lesson_eph_zpr.md # TODO finalize
+  #- file: eph_zpr/lesson_eph_zpr.md # TODO finalize
+  - file: lumabi/intro/intro.md
+    sections:
+    - file: lumabi/theory/lesson_theory.md
+    - file: lumabi/lumiwork/lesson_lumiwork.md
+    - file: lumabi/post_process_1D/lesson_post_process_1D.md
+    - file: lumabi/lineshape/lesson_multi_phonons.md
+    - file: lumabi/ifc_emb/lesson_ifc_emb.md
+
 - caption: Miscellaneous
   chapters:
   - file: links.md
