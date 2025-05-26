@@ -15,18 +15,19 @@ kernelspec:
 
 This tutorial shows how to obtain the luminescence lineshape, following a multi-phonon mode model.
 
-
 ```{code-cell}
 import warnings
 warnings.filterwarnings('ignore')
-from abipy.lumi.deltaSCF import DeltaSCF
+
 import matplotlib.pyplot as plt
 import numpy as np
 import phonopy
+
+from pymatgen.io.phonopy import get_pmg_structure
 from abipy.abilab import abiopen
 from abipy.dfpt.converters import ddb_ucell_to_phonopy_supercell
 from abipy.embedding.embedding_ifc import Embedded_phonons
-from pymatgen.io.phonopy import get_pmg_structure
+from abipy.lumi.deltaSCF import DeltaSCF
 from abipy.core.kpoints import kmesh_from_mpdivs
 from abipy.lumi.lineshape import Lineshape
 ```
@@ -45,13 +46,16 @@ ph_defect = phonopy.load(supercell_filename="../workflows_data/flow_phonons_dope
 # Phonons obtained with defect supercell of 36 atoms (same than the Delta SCF supercell),
 # obtained with finite difference with Phonopy.
 ```
+
 Then we create a DeltaSCF object, obtained from the results of a LumiWork workflow.
 
 ```{code-cell}
-files = ["../workflows_data/flow_deltaSCF/w0/t2/outdata/out_GSR.nc",
-         "../workflows_data/flow_deltaSCF/w0/t3/outdata/out_GSR.nc",
-         "../workflows_data/flow_deltaSCF/w0/t4/outdata/out_GSR.nc",
-         "../workflows_data/flow_deltaSCF/w0/t5/outdata/out_GSR.nc",]
+files = [
+    "../workflows_data/flow_deltaSCF/w0/t2/outdata/out_GSR.nc",
+    "../workflows_data/flow_deltaSCF/w0/t3/outdata/out_GSR.nc",
+    "../workflows_data/flow_deltaSCF/w0/t4/outdata/out_GSR.nc",
+    "../workflows_data/flow_deltaSCF/w0/t5/outdata/out_GSR.nc",
+]
 
 results = DeltaSCF.from_four_points_file(files)
 ```
@@ -68,14 +72,16 @@ allowing the use of the displacements or the forces.
 ```{code-cell}
 # get_pmg_structure(ph_defect.supercell) # to inspect the coords of the defect in phonon scell
 
-lineshape = Lineshape.from_phonopy_phonons(E_zpl=results.E_zpl(),
-                                          phonopy_ph=ph_defect,
-                                          dSCF_structure=results.structure_gs(),
-                                          use_forces=False, # we choose the displacements.
-                                          dSCF_displacements=results.diff_pos(),
-                                          dSCF_forces=results.forces_gs,
-                                          coords_defect_dSCF=np.array([3.9795, 0.0000, 1.5920]),
-                                          coords_defect_phonons=np.array([3.9795, 0.0000, 1.5920]))
+lineshape = Lineshape.from_phonopy_phonons(
+    E_zpl=results.E_zpl(),
+    phonopy_ph=ph_defect,
+    dSCF_structure=results.structure_gs(),
+    use_forces=False, # we choose the displacements.
+    dSCF_displacements=results.diff_pos(),
+    dSCF_forces=results.forces_gs,
+    coords_defect_dSCF=np.array([3.9795, 0.0000, 1.5920]),
+    coords_defect_phonons=np.array([3.9795, 0.0000, 1.5920])
+)
 
 help(Lineshape.from_phonopy_phonons)
 ```
@@ -101,14 +107,13 @@ print(f"one  phonon Huang-Rhys factor  = {np.round(results.S_em(),3)}")
 The final luminescence emission spectrum, computed with the generating function approach, can be plotted with at any temperature:
 
 ```{code-cell}
-x,y = lineshape.L_hw(T=300, w=5) # w is the width of the gaussian used to smooth the spectrum.
+x, y = lineshape.L_hw(T=300, w=5) # w is the width of the gaussian used to smooth the spectrum.
 fig, ax = plt.subplots(figsize=(6,3))
-ax.plot(x,y)
+ax.plot(x, y)
 ax.set_xlabel("Energy (eV)")
 ax.set_ylabel("Emission Intensity (a.u.)")
 ax.set_xlim(1.1,1.6)
 ```
-
 
 ## With IFCs embedding
 
@@ -126,7 +131,7 @@ ddb_pristine_inter = ddb_pristine.anaget_interpolated_ddb(qpt_list=qpts)
 ph_pristine = ddb_ucell_to_phonopy_supercell(ddb_pristine_inter)
 ```
 
-This block of code prepares the structural informations needed for the mapping.
+This block of code prepares the structural information needed for the mapping.
 
 ```{code-cell}
 # We need first to create the defect structure without relax
@@ -148,27 +153,30 @@ main_defect_coords_in_pristine = get_pmg_structure(ph_pristine.supercell).cart_c
 We now call the embbedding algorithm, which creates a phonopy object containing the embedded phonons.
 
 ```{code-cell}
-emb_ph = Embedded_phonons.from_phonopy_instances(phonopy_pristine=ph_pristine,
-                                                phonopy_defect=ph_defect,
-                                                structure_defect_wo_relax=structure_defect_wo_relax,
-                                                main_defect_coords_in_defect=main_defect_coords_in_defect,
-                                                main_defect_coords_in_pristine=main_defect_coords_in_pristine,
-                                                substitutions_list=[[idefect_pristine_stru,"Eu"]],
-                                                cut_off_mode="auto",verbose=False
-                                               )
+emb_ph = Embedded_phonons.from_phonopy_instances(
+    phonopy_pristine=ph_pristine,
+    phonopy_defect=ph_defect,
+    structure_defect_wo_relax=structure_defect_wo_relax,
+    main_defect_coords_in_defect=main_defect_coords_in_defect,
+    main_defect_coords_in_pristine=main_defect_coords_in_pristine,
+    substitutions_list=[[idefect_pristine_stru,"Eu"]],
+    cut_off_mode="auto",verbose=False
+)
 ```
 
 The lineshape object can be created with these new phonons.
 
 ```{code-cell}
-lineshape_emb = Lineshape.from_phonopy_phonons(E_zpl=results.E_zpl(),
-                                         phonopy_ph=emb_ph,
-                                         dSCF_structure=results.structure_gs(),
-                                         use_forces=True,
-                                         dSCF_displacements=results.diff_pos(),
-                                         dSCF_forces=results.forces_gs,
-                                         coords_defect_dSCF=np.array([3.9795, 0.0000, 1.5920]),
-                                         coords_defect_phonons=np.array([0,0,0])) # note that the defect coords changed!
+lineshape_emb = Lineshape.from_phonopy_phonons(
+    E_zpl=results.E_zpl(),
+    phonopy_ph=emb_ph,
+    dSCF_structure=results.structure_gs(),
+    use_forces=True,
+    dSCF_displacements=results.diff_pos(),
+    dSCF_forces=results.forces_gs,
+    coords_defect_dSCF=np.array([3.9795, 0.0000, 1.5920]),
+    coords_defect_phonons=np.array([0,0,0]), # note that the defect coords changed!
+)
 ```
 
 ```{code-cell}
@@ -177,7 +185,7 @@ lineshape_emb.plot_spectral_function(with_local_ratio=True);
 
 ```{code-cell}
 x, y = lineshape_emb.L_hw(T=300, w=5) # w is the width of the gaussian used to smooth the spectrum.
-fig, ax  =plt.subplots(figsize=(6,3))
+fig, ax = plt.subplots(figsize=(6,3))
 ax.plot(x, y)
 ax.set_xlabel("Energy (eV)")
 ax.set_ylabel("Emission Intensity (a.u.)")
@@ -227,23 +235,26 @@ for sc_size in sc_sizes:
     idefect_pristine_stru = 0
     main_defect_coords_in_pristine = get_pmg_structure(ph_pristine.supercell).cart_coords[idefect_pristine_stru]
 
-    emb_ph = Embedded_phonons.from_phonopy_instances(phonopy_pristine=ph_pristine,
-                                               phonopy_defect=ph_defect,
-                                               structure_defect_wo_relax=structure_defect_wo_relax,
-                                               main_defect_coords_in_defect=main_defect_coords_in_defect,
-                                               main_defect_coords_in_pristine=main_defect_coords_in_pristine,
-                                               substitutions_list=[[idefect_pristine_stru,"Eu"]],
-                                               cut_off_mode="auto",verbose=False
-                                       )
+    emb_ph = Embedded_phonons.from_phonopy_instances(
+        phonopy_pristine=ph_pristine,
+        phonopy_defect=ph_defect,
+        structure_defect_wo_relax=structure_defect_wo_relax,
+        main_defect_coords_in_defect=main_defect_coords_in_defect,
+        main_defect_coords_in_pristine=main_defect_coords_in_pristine,
+        substitutions_list=[[idefect_pristine_stru,"Eu"]],
+        cut_off_mode="auto",verbose=False
+    )
 
-    lineshape_emb = Lineshape.from_phonopy_phonons(E_zpl=results.E_zpl(),
-                                         phonopy_ph=emb_ph,
-                                         dSCF_structure=results.structure_gs(),
-                                         use_forces=True,
-                                         dSCF_displacements=results.diff_pos(),
-                                         dSCF_forces=results.forces_gs,
-                                         coords_defect_dSCF=np.array([3.9795, 0.0000, 1.5920]),
-                                         coords_defect_phonons=np.array([0,0,0])) # note that the defect coords changed!
+    lineshape_emb = Lineshape.from_phonopy_phonons(
+        E_zpl=results.E_zpl(),
+        phonopy_ph=emb_ph,
+        dSCF_structure=results.structure_gs(),
+        use_forces=True,
+        dSCF_displacements=results.diff_pos(),
+        dSCF_forces=results.forces_gs,
+        coords_defect_dSCF=np.array([3.9795, 0.0000, 1.5920]),
+        coords_defect_phonons=np.array([0,0,0])) # note that the defect coords changed!
+
     lineshape_emb_list.append(lineshape_emb)
 ```
 
@@ -252,8 +263,8 @@ for sc_size in sc_sizes:
 
   for i,lineshape in enumerate(lineshape_emb_list):
       x, y = lineshape.S_hbarOmega(broadening=3)
-      legend=f"supercell size: {sc_sizes[i]}, S={np.round(lineshape.S_tot(),2)}"
-      axs.plot(x,y,label=legend)
+      legend = f"supercell size: {sc_sizes[i]}, S={np.round(lineshape.S_tot(),2)}"
+      axs.plot(x, y, label=legend)
 
   axs.legend()
 ```

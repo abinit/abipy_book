@@ -17,12 +17,10 @@ This notebook explains how to use AbiPy and the DDB file produced by Abinit to a
 
 * Phonon band structures including the LO-TO splitting in polar semiconductors
 * Phonon fatbands, phonon DOS and projected phonon DOS
-* Born effectives charges $Z^*_{\kappa,\alpha\beta}$ and the dielectric tensors
-  $\epsilon^{\infty}_{\alpha\beta}$, $\epsilon^{0}_{\alpha\beta}$
+* Born effectives charges $Z^*_{\kappa,\alpha\beta}$ and the dielectric tensors $\epsilon^{\infty}_{\alpha\beta}$, $\epsilon^{0}_{\alpha\beta}$
 * Thermodynamic properties in the harmonic approximation
 
-In the last part, we discuss how to use the `DdbRobot` to analyze multiple DDB
-files and perform typical convergence studies.
+In the last part, we discuss how to use the `DdbRobot` to analyze multiple DDB files and perform typical convergence studies.
 
 ```{include} snippets/plotly_matplotlib_note.md
 ```
@@ -35,7 +33,7 @@ files and perform typical convergence studies.
 ## Integration with the materials project database
 
 AbiPy, [pymatgen](http://pymatgen.org/) and [fireworks](https://materialsproject.github.io/fireworks/)
-have been used by [Petretto et al](https://www.nature.com/articles/sdata201865)
+have been used by [Petretto et al.](https://www.nature.com/articles/sdata201865)
 to compute the vibrational properties of more than 1500 compounds with Abinit.
 The results are available on the [materials project website](https://materialsproject.org/).
 The results for the rocksalt phase of MgO are available at <https://materialsproject.org/materials/mp-1009129/>
@@ -106,8 +104,8 @@ ddb.qpoints.plotly();
 
 Note that the DDB file does not contain any information about the value of ngqpt because
 one can merge an arbitrary list of q-points in the same DDB.
-The algorithms implemented in anaddb, however, need to know the divisions to compute integrals in the full BZ
-(this is indeed one of the variables that must be provided by the user in the anaddb input file).
+The algorithms implemented in anaddb, however, need to know the divisions to compute integrals in the full BZ.
+This is indeed one of the variables that must be provided by the user in the anaddb input file.
 
 AbiPy uses a heuristic method to guess the q-mesh from this scattered list of q-points
 so that you do not need to specify this parameter when calling anaddb:
@@ -159,24 +157,23 @@ If you are a terminal aficionado, remember that one can use the
 to open the DDB file directly from the shell and generate a jupyter notebook with the `-nb` option.
 For a quick visualization script, use [abiview.py](http://abinit.github.io/abipy/scripts/abiview.html).
 
-## Invoking Anaddb from the DdbFile object
+## Invoking anaddb from the DdbFile object
 
 The `DdbFile` object provides specialized methods to invoke anaddb and
-compute important physical properties such as the phonon band structure, the phonon density of states, etc.
-All these methods have a name that begins with the `ana*` prefix followed by a verb (`anaget`, `anacompare`).
+compute important physical properties such as phonon band structures, phonon DOS, etc.
+All these methods have a name that starts with the `ana*` prefix followed by a verb (`anaget`, `anacompare`).
 These specialized methods
 
 - build the anaddb input file
 - run anaddb
-- parse the netcdf files produced by the Fortran code
+- parse the netcdf files produced by anaddb
 - build and return [AbiPy objects](http://abinit.github.io/abipy/api/dfpt_api.html) that can be used to plot/analyze the data.
 
-Note that in order to run anaddb from AbiPy, you need a manager.yml with configuration options.
-For further details, please consult the
-[TaskManager documentation](http://abinit.github.io/abipy/workflows/taskmanager.html).
+```{include} snippets/manager.md
+```
 
 The python API is flexible and exposes several anaddb input variables.
-The majority of the arguments have default values covering the most common cases
+The majority of the arguments have default values covering the most common scenarios
 so that you will need to specify these arguments explicitly only if the default behavior does not suit your needs.
 The most important parameters to remember are:
 
@@ -188,7 +185,7 @@ The most important parameters to remember are:
   $Z^*_{\kappa,\alpha\beta}$ and $\epsilon^{\infty}_{\alpha\beta}$).
 
 The high-symmetry q-path is automatically selected assuming the structure
-fulfills the conventions introduced by [Setyawan and Curtarolo](https://doi.org/10.1016/j.commatsci.2010.05.010)
+fulfills the conventions used by [Setyawan and Curtarolo](https://doi.org/10.1016/j.commatsci.2010.05.010)
 but you can also specify your own **q**-path if needed.
 
 ## Plotting phonon bands and DOS
@@ -226,10 +223,8 @@ In polar semiconductors, indeed, the dynamical matrix is non-analytical for $q \
 Since `lo_to_splitting ` was set to True, AbiPy has activated the calculation of the phonon frequencies
 for all the $q \rightarrow \Gamma$ directions present in the path.
 
-There are several band crossings and anti-crossings hence it's not easy
-to understand how the branches should be connected.
-Fortunately, there is a heuristic method to **estimate** band connection from
-the overlap of the eigenvectors at adjacent q-points.
+There are several band crossings and anti-crossings hence it's not easy to understand how the branches should be connected.
+Fortunately, there is a heuristic method to **estimate** band connection from the overlap of the eigenvectors at adjacent q-points.
 To connect the modes and plot the phonon branches with different colors, use:
 
 ```{code-cell}
@@ -237,7 +232,7 @@ phbands.plot_colored_matched();
 ```
 
 ```{warning}
-This heuristic method may fail so the results should be analyzed critically 
+This heuristic method may fail so the results should be analyzed critically
 (especially when there are non-analytic branches crossing $\Gamma$).
 Besides, the algorithm is sensitive to the k-path resolution
 thus it is recommended to check the results by increasing the number of points per segment.
@@ -313,15 +308,13 @@ but we prefer to stop here and discuss other tools that can be used to analyze i
 ## Visualizing atomic displacements
 
 In you need to visualize the lattice vibrations in 3D to gain a better insight
-about the nature of the phonon modes you may want to use the
-[phononwebsite](http://henriquemiranda.github.io/phononwebsite/).
-One can either convert the out_PHBST.nc produced by anaddb into json format
-and upload it to the phononwebsite server or, alternatively, open the terminal and
-execute the AbiPy script:
+about the nature of the phonon modes you may want to use the [phononwebsite](http://henriquemiranda.github.io/phononwebsite/).
+One can either convert the `out_PHBST.nc` produced by anaddb into json format
+and upload it to the phononwebsite server or, alternatively, open the terminal and execute the AbiPy script:
 
     abiview.py ddb out_DDB --phononwebsite
 
-to automate the entire process (replace out_DDB with the name of your DDB file).
+to automate the entire process (replace `out_DDB` with the name of your DDB file).
 
 Note that there are other AbiPy methods that are quite handy if we need to investigate the nature of the
 phonon modes at a particular q-point without a 3D visualization tool.
@@ -459,14 +452,12 @@ expressed in terms of integrals of the phonon DOS $g(\omega)$ using:
 C_v = 3nNk_B\int_{0}^{\omega_L}\left(\frac{\hbar\omega}{2k_BT}\right)^2\text{csch}^2\left(\frac{\hbar\omega}{2k_BT}\right)g(\omega)d\omega
 \end{equation}
 
-
 \begin{equation} %\label{eq:entropy}
 S = 3nNk_B\int_{0}^{\omega_L}\left(\frac{\hbar\omega}{2k_BT}\text{coth}\left(\frac{\hbar\omega}{2k_BT}\right) - \text{ln}\left(2\text{sinh}\frac{\hbar\omega}{2k_BT}\right)\right)g(\omega)d\omega,
 \end{equation}
 
 where $k_B$ is the Boltzmann constant.
-This should represent a reasonable approximation especially in the low-temperature
-regime in which anharmonic effects can be neglected.
+This should represent a reasonable approximation especially in the low-temperature regime in which anharmonic effects can be neglected.
 
 Let's plot the vibrational contributions to the thermodynamic properties as function of temperature $T$:
 
@@ -654,8 +645,8 @@ If you now dig a bit into the scientific literature, you will find that this is 
 that plays an important role in explaining the superconducting behavior of $MgB_2$.
 
 Let's look in more details at the softening at the $\Gamma$ point.
-We start by calling get_dataframe_at_qpoint to construct a dataframe
-with the phonon frequencies and the parameters of the calculation
+We start by calling `get_dataframe_at_qpoint` to construct a pandas dataframe
+with the phonon frequencies and the parameters of the calculation:
 
 ```{code-cell}
 data = robot.get_dataframe_at_qpoint(qpoint=(0, 0, 0), units="meV", with_geo=False)
@@ -668,9 +659,8 @@ and use [seaborn](https://seaborn.pydata.org/) to produce a scatter plot in whic
 robot.plot_xy_with_hue(data, x="nkpt", y="mode6", hue="tsmear");
 ```
 
-A DDbRobot is essential a dictionary of DdbFiles and we can therefore reuse the DdbFile methods to call anaddb.
-For example, we said that the two degenerate $E_{2g}$ modes at $\Gamma$
-involve in-plane oscillations of the two Mg atoms.
+A DDbRobot is essential a dictionary of DdbFiles, and we can therefore reuse the DdbFile methods to call anaddb.
+For example, we mentioned that the two degenerate $E_{2g}$ modes at $\Gamma$ involve in-plane oscillations of the two Mg atoms.
 Let's check this with:
 
 ```{code-cell}
@@ -684,7 +674,7 @@ phbands_gamma.plot_phdispl_cartdirs(gamma_point);
 ### How to analyze the converge of $\epsilon^0$, $\epsilon^\infty$ and Born effective charges
 
 Let's assume we have computed the dielectric properties and the Born effective charges for a given
-system with different k-meshes and we want to analyze the convergence of the results.
+system with different k-meshes, and we want to analyze the convergence of the results.
 Also in this case, the `DdbRobot` provides methods to automate most of the boring work.
 
 As usual, we start by creating a robot from a list of paths to DDB files.
@@ -694,7 +684,8 @@ Here we use three different files produced with 2x2x2, 4x4x4 and 8x8x8 k-meshes.
 paths = [
     "out_ngkpt222_DDB",
     "out_ngkpt444_DDB",
-    "out_ngkpt888_DDB"]
+    "out_ngkpt888_DDB"
+]
 
 paths = [os.path.join(abidata.dirpath, "refs", "alas_eps_and_becs_vs_ngkpt", f) for f in paths]
 
@@ -732,5 +723,3 @@ The below code, for example, selects the Born effective charges for *As*:
 ```{code-cell}
 r.df[r.df["site_index"] == 1]
 ```
-
-<!--- Click [TODO here]() to visualize the vibrational spectrum of $MgB_2$ with phononwebsite -->

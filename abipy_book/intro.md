@@ -48,8 +48,7 @@ How to specify options in `manager.yml` and `scheduler.yml`
 
 ## Abinit + AbiPy Lessons
 
-This section discusses flows and vizualisation tools for the same topics
-as some standard ABINIT tutorials.
+This section discusses flows and vizualisation tools for the same topics as some standard ABINIT tutorials.
 Usually, the corresponding ABINIT tutorial has to be followed first.
 Sometimes there is also a large overlap with some of the previous AbiPy tutorials.
 

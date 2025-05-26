@@ -13,10 +13,9 @@ kernelspec:
 
 # The SIGRES file (GW)
 
-This notebook explains how to use AbiPy and `matplotlib` to visualize the results produced
-by the GW code.
-The self-energy code (`optdriver` 4) saves the final results in the `SIGRES.nc` file
-while the screening code (`optdriver` 3) stores the inverse dielectric matrix in the `SCR.nc` file.
+This notebook explains how to use AbiPy and `matplotlib` to visualize the results produced by the GW code.
+The self-energy code ({{optdriver}} 4) saves the final results in the `SIGRES.nc` file
+while the screening code ({{optdriver}} 3) stores the inverse dielectric matrix in the `SCR.nc` file.
 
 Let's start by importing the basic modules we will need for this tutorial.
 
@@ -53,7 +52,8 @@ sigres.ebands.plot();
 ```
 
 The SIGRES file contains the KS as well as the QP direct gaps for all the k-points
-included in the calculation (kptgw). To plot the differente QP - KS, use:
+included in the calculation ({{kptgw}}).
+To plot the differente QP - KS, use:
 
 ```{code-cell} ipython3
 sigres.plot_qpgaps();

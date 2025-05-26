@@ -49,7 +49,6 @@ where the first unoccupied state of the ground state is force to be occupied in 
 In Abinit, the variable "occ" reads like:
 
 * ground state  : occ ... 1 1 1 0 0 0 0 ...
-
 * excited state : occ ... 1 1 0 1 0 0 0 ...
 
 ## LumiWork Workflow
@@ -60,7 +59,7 @@ are unconverged (supercell size, different DFT parameters,...).
 Results of production runs for this kind of system can be found in references {cite}`bouquiaux2021importance` and {cite}`bouquiaux2023first`
 ```
 
-The creation of one LumiWork is done with the class method from_scf_inputs():
+The creation of one LumiWork is done with the class method `from_scf_inputs()`:
 
 ```{code-cell}
 from abipy.flowtk.lumi_works import LumiWork
@@ -78,7 +77,6 @@ The `lumi_works.py` script will then use these informations to do the following 
 5. Perform a first quick post-process and store the results in `flow_deltaSCF/w0/outdata/Delta_SCF.json`.
 
 ## Creating a LumiWork
-
 
 ```{note}
 The complete workflow was ran separately, before building this jupyter book.
@@ -205,7 +203,8 @@ if __name__ == '__main__':
     sys.exit(main())
 ```
 
-Let's decompose this script.\
+Let's decompose this script.
+
 We first create the abinit input objects.
 This is achieved by the function `def scf_inp(structure):` that takes as argument a structure object.
 It returns abinit input objects for the ground and excited state.
@@ -267,6 +266,7 @@ def build_flow(options):
 
     return flow
 ```
+
 Where we have use the convenient `make_doped_supercells()` method.
 
 ```{code-cell}
@@ -295,6 +295,7 @@ After completion, you can verify the status of the flow with
 ```command
 abirun.py flow_deltaSCF status
 ```
+
 <img src="workflow.png" width="600">
 
 A first quick post-processing of the results (following a 1D-CCM, see [next section](...))

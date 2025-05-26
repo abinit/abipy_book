@@ -21,11 +21,12 @@ Alteratively, one can use the `abiopen.py` script to open the file inside the sh
 
 This command will start the ipython interpreter so that one can interact directly
 with the `HistFile` object (named `abifile` inside ipython).
+
 To generate a jupyter notebook use:
 
     abiopen.py out_HIST.nc -nb
 
-For a quick visualization of the data, usei the `--expose` option:
+For a quick visualization of the data, use the `--expose` option:
 
     abiopen.py out_HIST.nc -e
 

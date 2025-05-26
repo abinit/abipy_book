@@ -1,4 +1,3 @@
-
 # Documentation Howto
 
 To insert a link to an Abinit variable, use:
@@ -10,7 +9,7 @@ or:
     {{asr_anaddb}}
 
 if you want to refer to the asr variable of the anaddb code
-(note that in abimkdocs one uses asr@anaddb but, unfortunately this syntax is not supported my MyST).
+(note that in abimkdocs one uses asr@anaddb but, unfortunately, this syntax is not supported my MyST).
 
 There are several other replacements defined in _config.yml, mainly for links
 to the abipy documentation, python libraries and other useful websites.

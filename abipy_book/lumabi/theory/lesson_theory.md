@@ -14,7 +14,7 @@ kernelspec:
 # Theory
 
 This chapter presents the theoretical formalism behind the computation of the luminescence properties of point defects in solids.
-It starts with a section dedicated solely to the theory of luminescence, showing how Fermi's golden rule is approximated
+It starts with a section dedicated to the theory of luminescence, showing how Fermi's golden rule is approximated
 to obtain a tractable way of computing the luminescence lineshape, following either an effective phonon mode model or a multi-phonon mode model.
 Then, the computational methodology used to obtain the parameters entering the lineshape equation is presented.
 Subtleties regarding the increase of the phonon supercell size thanks to the use of the forces instead of displacements are discussed.
@@ -272,6 +272,7 @@ The procedure is as follows:
   $$
   E_{\mathrm{abs}} = E_{g}^{*} - E_{g}
   $$ (absorption_energy)
+
 - After structural relaxation in the excited state, obtain the relaxed excited state ($A_e^*$, energy $E_e^*$), which allows computation of the zero-phonon line (ZPL) energy:
 
   $$
@@ -282,11 +283,13 @@ The procedure is as follows:
   $$
   E_{\mathrm{FC,e}} = E_{g}^{*} - E_{e}^{*}
   $$ (FC_e)
+
 - De-promoting the electron with the relaxed atomic positions of the excited state yields the ground state with excited geometry ($A_e$, energy $E_e$). The emission energy is:
 
   $$
   E_{\mathrm{em}} = E_e^* - E_e
   $$ (emission_energy)
+
 - The Franck-Condon relaxation energy of the ground state is:
 
   $$
@@ -302,7 +305,7 @@ $$ (omega_eff_g_e)
 where $\Delta Q$ is the mass-weighted atomic displacement between the ground and excited states, as defined in equation {eq}`Delta_Q`.
 The corresponding Huang-Rhys factors can be obtained from {eq}`HuangRhys_factor`.
 
-### Forces vs Displacements, increase of supercell size.
+### Forces vs Displacements, increase of supercell size
 
 For a given phonon mode $\nu$, the corresponding partial Huang-Rhys factor $S_{\nu}=\frac{\omega_{\nu}\Delta Q_{\nu}^2}{2\hbar}$
 is computed thanks to the mass-weighted displacement between ground and excited states projected on this phonon mode:
@@ -351,7 +354,6 @@ is much faster than the decay of displacements (a).
 (c) Cartoon of a small red supercell containing substitutional defect where the forces are the ones computed with DFT.
 Outside this red supercell, the forces are set to zero because of their short-range decay while the displacements
 are non-zero and are computed with the IFCs computed in this large blue supercell.
-
 ```
 
 ### IFCs embedding

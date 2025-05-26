@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# The GSR file (Ground-State)
+# The GSR file (Ground-State Results)
 
 In this notebook we discuss how to plot the electron band structures and the density of states (DOS)
 using the GSR netcdf files produced by Abinit.
@@ -250,8 +250,9 @@ edos_plotter.gridplot();
 
 ## Joint density of states
 
-This example shows how to plot the different contributions to the electronic joint density of states of Silicon.
-Select the valence and conduction bands to be included in the JDOS. Here we include valence bands from 0 to 3 and the first conduction band (4).
+This example shows how to plot the different contributions to the electronic joint density of states (JDOS) of Silicon.
+Select the valence and conduction bands to be included in the JDOS. 
+Here we include valence bands from 0 to 3 and the first conduction band (4).
 
 ```{code-cell}
 vrange = range(0,4)

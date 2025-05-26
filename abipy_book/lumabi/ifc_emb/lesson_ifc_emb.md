@@ -13,7 +13,7 @@ kernelspec:
 
 # IFCs Embedding
 
-This section explains how to obtain the phonon modes of a defect system using the IFC (Interatomic Force Constant) embedding approach.
+This section explains how to obtain the phonon modes of a defect system using the Interatomic Force Constant (IFC) embedding approach.
 This method enables the calculation of both defect-localized and bulk-like phonon modes within a unified framework.
 We illustrate the process using the Sr[Li$_2$Al$_2$O$_2$N$_2$]:Eu$^{2+}$ example, first computing pristine and defect phonons,
 then performing the embedding.
@@ -33,6 +33,7 @@ import os
 import abipy.abilab as abilab
 import abipy.data as abidata
 import abipy.core.structure as structure
+
 from abipy import flowtk
 
 def make_scf_input():
@@ -47,6 +48,7 @@ def make_scf_input():
                'Li.xml',
                'O.xml',
                'N.xml')
+
     stru = structure.Structure.from_file("SALON_prim.cif")
 
     # Initialize the input
@@ -61,7 +63,7 @@ def make_scf_input():
         tolvrs=1e-15,
         nband=60,
         nbdbuf=10,
-                        )
+    )
 
     gs_inp.set_kmesh(ngkpt=[2,2,2], shiftk=[[0.5,0.5,0.5]])
 
@@ -80,6 +82,7 @@ def build_flow(options):
     flow.register_work(phonon_work)
     return flow
 
+
 @flowtk.flow_main
 def main(options):
     """
@@ -88,6 +91,7 @@ def main(options):
     Command line args are stored in `options`.
     """
     return build_flow(options)
+
 
 if __name__ == "__main__":
     sys.exit(main())
@@ -104,6 +108,7 @@ import sys
 import os
 import abipy.abilab as abilab
 import abipy.data as abidata
+
 from abipy.core.structure import Structure
 from abipy import flowtk
 from abipy.flowtk.abiphonopy import PhonopyWork
@@ -121,6 +126,7 @@ def make_scf_input():
                'N.xml')
 
     gs_scf_inp = abilab.AbinitInput(structure, pseudos=pseudos, pseudo_dir=pseudodir)
+
     gs_scf_inp.set_vars(ecut=10,
                         pawecutdg=20,
                         chksymbreak=0,
@@ -205,13 +211,14 @@ help(Embedded_phonons.from_phonopy_instances)
 First, load the DDB file (pristine phonons) and the phonopy object for the defect system:
 
 ```{code-cell}
-from abipy.dfpt.converters import ddb_ucell_to_phonopy_supercell
-from abipy.embedding.embedding_ifc import Embedded_phonons
-from pymatgen.io.phonopy import get_pmg_structure
-from abipy.core.kpoints import kmesh_from_mpdivs
-from abipy.abilab import abiopen
 import phonopy
 import numpy as np
+
+from pymatgen.io.phonopy import get_pmg_structure
+from abipy.dfpt.converters import ddb_ucell_to_phonopy_supercell
+from abipy.embedding.embedding_ifc import Embedded_phonons
+from abipy.core.kpoints import kmesh_from_mpdivs
+from abipy.abilab import abiopen
 
 # Load pristine phonons (DFPT, 2x2x2 q-mesh)
 ddb_pristine = abiopen("../workflows_data/flow_phonons/w0/outdata/out_DDB")
@@ -219,14 +226,14 @@ ddb_pristine = abiopen("../workflows_data/flow_phonons/w0/outdata/out_DDB")
 # Load defect phonons (finite difference, supercell)
 ph_defect = phonopy.load(
     supercell_filename="../workflows_data/flow_phonons_doped/w0/outdata/POSCAR",
-    force_sets_filename="../workflows_data/flow_phonons_doped/w0/outdata/FORCE_SETS"
+    force_sets_filename="../workflows_data/flow_phonons_doped/w0/outdata/FORCE_SETS",
 )
 ```
 
-### 3.2. Fold Pristine IFCs to Supercell
+### 3.2. Fold pristine IFCs to the supercell
 
-The pristine DDB file is first interpolated using `anaget_interpolated_ddb` and then the folding procedure
-is done with `ddb_ucell_to_phonopy_supercell`:
+The pristine DDB file is first interpolated using `anaget_interpolated_ddb` and then
+the folding procedure is executed by calling `ddb_ucell_to_phonopy_supercell`:
 
 ```{code-cell}
 # Define the large phonon supercell size for the embedding
@@ -310,8 +317,7 @@ or `to_ddb()` to convert the embedded phonons back to an Abinit DDB file.
 Also, you will find in `abipy.embedding.utils_ifc` function to compute the localization ratio of the phonon modes
 as well as helper function to draw phonon eigenvectors with VESTA.
 
-
 ```{note}
 For additional examples of the use of this module, especially for the embedding of different defect types (vacancy, interstitial),
-you can check the tests examples located in `abipy/embedding/tests/test_embedding_ifc.py`.
+please consult the examples located in `abipy/embedding/tests/test_embedding_ifc.py`.
 ```

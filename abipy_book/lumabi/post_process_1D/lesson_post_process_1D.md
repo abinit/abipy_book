@@ -10,6 +10,7 @@ kernelspec:
   language: python
   name: python3
 ---
+
 $\newcommand{\AA}{\unicode{x212B}}$
 
 # $\Delta$SCF Post-Processing (1D)
@@ -27,15 +28,17 @@ import warnings
 warnings.filterwarnings('ignore')
 
 from abipy.lumi.deltaSCF import DeltaSCF
-scf_files=["../workflows_data/flow_deltaSCF/w0/t2/outdata/out_GSR.nc",
-           "../workflows_data/flow_deltaSCF/w0/t3/outdata/out_GSR.nc",
-           "../workflows_data/flow_deltaSCF/w0/t4/outdata/out_GSR.nc",
-           "../workflows_data/flow_deltaSCF/w0/t5/outdata/out_GSR.nc",
+scf_files=[
+    "../workflows_data/flow_deltaSCF/w0/t2/outdata/out_GSR.nc",
+    "../workflows_data/flow_deltaSCF/w0/t3/outdata/out_GSR.nc",
+    "../workflows_data/flow_deltaSCF/w0/t4/outdata/out_GSR.nc",
+    "../workflows_data/flow_deltaSCF/w0/t5/outdata/out_GSR.nc",
 ]
 
 results = DeltaSCF.from_four_points_file(scf_files)
 
 # or
+#
 # results = DeltaSCF.from_json_file("../workflows_data/flow_deltaSCF/w0/outdata/lumi.json")
 #
 # or only two relaxations
@@ -53,7 +56,7 @@ Energy units are given in eV, distances are in $\AA$.
 The energies of the four relevant states are accessible with:
 
 ```{code-cell}
-print(results.ag_energy,results.ag_star_energy,results.ae_energy,results.ag_star_energy)
+print(results.ag_energy,results.ag_star_energy, results.ae_energy, results.ag_star_energy)
 ```
 
 The electronic eigenenergies, if computed at a single k-point, typically $\Gamma$,
@@ -71,10 +74,13 @@ If you have computed the four band structures associated to each point, you can 
 where `nscf_files` is the list of four band structures .nc files.
 
 ```{code-cell}
-nscf_files=["../workflows_data/flow_deltaSCF/w0/t6/outdata/out_GSR.nc",
-           "../workflows_data/flow_deltaSCF/w0/t7/outdata/out_GSR.nc",
-           "../workflows_data/flow_deltaSCF/w0/t8/outdata/out_GSR.nc",
-           "../workflows_data/flow_deltaSCF/w0/t9/outdata/out_GSR.nc",]
+nscf_files = [
+    "../workflows_data/flow_deltaSCF/w0/t6/outdata/out_GSR.nc",
+    "../workflows_data/flow_deltaSCF/w0/t7/outdata/out_GSR.nc",
+    "../workflows_data/flow_deltaSCF/w0/t8/outdata/out_GSR.nc",
+    "../workflows_data/flow_deltaSCF/w0/t9/outdata/out_GSR.nc",
+]
+
 results.plot_four_BandStructures(nscf_files);
 ```
 
@@ -96,7 +102,7 @@ It is sometimes interesting to decompose the gs-ex displacements per specie:
 results.get_dataframe_species()
 ```
 
-or per atom :
+or per atom:
 
 ```{code-cell}
 results.get_dataframe_atoms(defect_symbol="Eu")
@@ -118,6 +124,7 @@ results.plot_delta_F_distance(defect_symbol="Eu");
 ```
 
 In order to visualize these displacements on a VESTA structure, you can follow these steps.
+
 (1) create a cif file with the ground state structure.
 (2) Open the structure with VESTA software and save it in a .vesta format (this should be done manually).
 (3) Use `draw_displacements_vesta()` method.
@@ -149,14 +156,14 @@ One can visualize the 1D-CCM and associated displaced parabolas with
 results.draw_displaced_parabolas();
 ```
 
-Or get a dataframe (or dictionary) with the main 1D-CCM parameters.
+or get a dataframe (or dictionary) with the main 1D-CCM parameters.
 
 ```{code-cell}
 results.get_dataframe()
 #results.get_dict_results()
 ```
 
-Finally, one can plot the luminescence lineshape at 0K:
+Finally, one can plot the luminescence lineshape at 0 K:
 
 ```{code-cell}
 results.plot_lineshape_1D_zero_temp(energy_range=[1,2]);

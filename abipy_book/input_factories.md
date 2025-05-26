@@ -31,9 +31,10 @@ steps. Client code is in charge of connecting the different parts.
 For a command line interface, use the `abinp.py` script.
 
 ```{code-cell}
-import os
 import warnings
 warnings.filterwarnings("ignore") # to get rid of deprecation warnings
+
+import os
 
 import abipy.data as abidata
 import abipy.abilab as abilab

@@ -35,19 +35,19 @@ kernelspec:
 ## Useful Python distributions/packages/tools
 
 * [Anaconda](https://store.continuum.io/cshop/anaconda/)
-Free Python distribution for large-scale data processing, predictive analytics, and scientific computing
+  Free Python distribution for large-scale data processing, predictive analytics, and scientific computing
 * [IPython](http://ipython.org/)
-Powerful interactive shells and much more...
+  Powerful interactive shells and much more...
 * [Numpy](http://www.numpy.org/)
-Fundamental package for scientific computing (arrays, linear algebra, Fourier transform, and random number capabilities)
+  Fundamental package for scientific computing (arrays, linear algebra, Fourier transform, and random number capabilities)
 * [Scipy](http://www.scipy.org/)
-Software for mathematics, science, and engineering
+  Software for mathematics, science, and engineering
 * [Pandas](http://pandas.pydata.org/)
-Easy-to-use data structures and data analysis tools
+  Easy-to-use data structures and data analysis tools
 * [Sympy](http://www.sympy.org/en/index.html)
-Python library for symbolic mathematics
+  Python library for symbolic mathematics
 * [Matplotlib](http://matplotlib.org/)
-python plotting library
+  python plotting library
 
 ## Miscellaneous
 
