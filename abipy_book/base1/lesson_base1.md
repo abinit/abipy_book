@@ -51,6 +51,9 @@ how to analyze multiple ground-state calculations with the AbiPy robots.
 ```{include} ../snippets/plotly_matplotlib_note.md
 ```
 
+```{include} ../snippets/manager_note.md
+```
+
 ## Our first AbiPy function
 
 ```{code-cell}

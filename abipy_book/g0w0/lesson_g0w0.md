@@ -38,7 +38,7 @@ For a very brief introduction to the many-body formalism, please consult the  [M
 * {{ gw_qprange }}
 * all gw** variables
 
-```{include} snippets/plotly_matplotlib_note.md
+```{include} ../snippets/plotly_matplotlib_note.md
 ```
 
 ## Description of the lesson
@@ -232,7 +232,7 @@ The `DataFrame` contains $GW$ results as well as input parameters useful for con
 - *ze0*: Renormalization factor computed at $e = e_0$.
 - *qpeme0*: QP correction i.e. $e_{\text{QP}} - e_{0}$
 
-Note that some quantities are complex but since we are not interested in lifetimes 
+Note that some quantities are complex but since we are not interested in lifetimes
 (that by the way are not correctly described by the plasmon-pole approximation), we ignored the imaginary part with `ignore_imag`.
 
 Let's print a subset of columns with:

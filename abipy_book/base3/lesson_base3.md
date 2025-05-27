@@ -36,6 +36,12 @@ as suggested in the [abitutorials index page](../intro).
 
 +++
 
+```{include} ../snippets/plotly_matplotlib_note.md
+```
+
+```{include} ../snippets/manager_note.md
+```
+
 ```{code-cell}
 import numpy as np
 

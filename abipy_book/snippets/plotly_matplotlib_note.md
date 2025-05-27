@@ -11,5 +11,5 @@ Note that plotly requires a web browser hence the matplotlib version is still va
 visualize results on machines in which only the X-server is available.
 
 In AbiPy versions greater than 0.9, it is possible to try converting matplotlib figures produce by `plot` methods 
-into Plotly figures using the optional argument `plotly=True`, although the result is not guaranteed.
+into Plotly figures using the optional argument `plotly=True`, although the result is not always guaranteed.
 ```

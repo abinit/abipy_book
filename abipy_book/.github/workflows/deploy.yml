@@ -33,6 +33,8 @@ jobs:
 
     # Deploy the book's HTML to gh-pages branch
     - name: GitHub Pages action
+      # This ensures the deploy step only runs on pushes to develop or manual dispatches, but not on pull requests.
+      if: github.event_name != 'pull_request'
       uses: peaceiris/actions-gh-pages@v3.6.1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}

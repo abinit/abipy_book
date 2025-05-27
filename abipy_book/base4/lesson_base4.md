@@ -34,12 +34,17 @@ will be demonstrated. Still, some basic understanding of the stand-alone working
 Also, in order to fully benefit from this Abipy tutorial, other more basic Abipy tutorials should have been followed,
 as suggested in the [abitutorials index page](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/index.ipynb).
 
+```{include} ../snippets/plotly_matplotlib_note.md
+```
+
+```{include} ../snippets/manager_note.md
+```
 
 ```{code-cell}
-import numpy as np
-
 import warnings
 warnings.filterwarnings("ignore")  # Ignore warnings
+
+import numpy as np
 
 from abipy import abilab
 abilab.enable_notebook() # This line tells AbiPy we are running inside a notebook

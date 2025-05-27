@@ -374,6 +374,9 @@ print(ddb)
 The `DdbFile` object provides an easy-to-use interface that invokes `anaddb` to post-process
 the data stored in the DDB file.
 
+```{include} ../snippets/manager_note.md
+```
+
 `anacompare_phdos`, for example, computes the phonon DOS with different $q$-meshes.
 Each mesh is defined by a single integer, `nqsmall`, that gives the number of
 divisions used to sample the smallest reciprocal lattice vector.
