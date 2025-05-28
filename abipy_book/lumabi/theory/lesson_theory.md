@@ -257,7 +257,7 @@ This figure also illustrates the connection with the configuration coordinate mo
 
 ```{figure} delta_scf.png
 ---
-width: 70%
+width: 100%
 name: delta_scf
 ---
 Schematic representation of the constrained occupation $\Delta$SCF method, as used in this work for simulating the luminescent properties of Eu$^{2+}$ phosphor.
