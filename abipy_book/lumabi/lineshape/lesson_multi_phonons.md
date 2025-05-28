@@ -112,7 +112,7 @@ fig, ax = plt.subplots(figsize=(6,3))
 ax.plot(x, y)
 ax.set_xlabel("Energy (eV)")
 ax.set_ylabel("Emission Intensity (a.u.)")
-ax.set_xlim(1.1,1.6)
+ax.set_xlim(1.2,1.8)
 ```
 
 ## With IFCs embedding
@@ -189,7 +189,7 @@ fig, ax = plt.subplots(figsize=(6,3))
 ax.plot(x, y)
 ax.set_xlabel("Energy (eV)")
 ax.set_ylabel("Emission Intensity (a.u.)")
-ax.set_xlim(1.1, 1.6)
+ax.set_xlim(1.2, 1.8)
 ```
 
 Notice how the spectrum broadened because of the increase of the supercell size.
@@ -267,6 +267,8 @@ for sc_size in sc_sizes:
       axs.plot(x, y, label=legend)
 
   axs.legend()
+  axs.set_xlabel("Phonon energy (eV)")
+  axs.set_ylabel(r"$S(\hbar\omega$)")
 ```
 
 ```{note}

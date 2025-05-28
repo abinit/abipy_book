@@ -1,7 +1,10 @@
 # Lumabi: Luminescence Lineshape of Point Defects
 
-![Lumabi Logo](../paper/Lumabi_logo.pdf)
-
+```{figure} ../paper/Lumabi_logo.png
+---
+height: 200px
+---
+```
 These chapters introduces **Lumabi**, a collection of Python modules integrated in the [AbiPy](https://github.com/abinit/abipy)
 framework designed to compute the luminescence lineshape of point defects in solids using [Abinit](https://www.abinit.org/).
 
@@ -13,7 +16,7 @@ These modules are designed to be used together, the output of one module serving
 
 ### 1. LumiWork Module
 
-![The LumiWork module, an AbiPy Workflow that automates ABINIT DFT tasks with $\Delta$SCF constrained occupations.](../paper/LumiWork.pdf)
+![The LumiWork module, an AbiPy Workflow that automates ABINIT DFT tasks with $\Delta$SCF constrained occupations.](../paper/LumiWork.png)
 
 The LumiWork module automates ABINIT DFT tasks with $\Delta$SCF constrained occupations.
 It manages two structural relaxations (ground-state and excite-state), and optional static SCF and NSCF band structure calculations.
@@ -21,14 +24,14 @@ The main results are stored in netcdf files, ready for post-processing.
 
 ### 2. $\Delta$SCF Post-Processing Module
 
-![The $\Delta$SCF module, designed to post-process $\Delta$SCF constrained-occupation calculations using a one-dimensional configuration-coordinate model.](../paper/dSCF_post_process.pdf)
+![The $\Delta$SCF module, designed to post-process $\Delta$SCF constrained-occupation calculations using a one-dimensional configuration-coordinate model.](../paper/dSCF_post_process.png)
 
 This module processes the netcdf output files produced by LumiWork, and analyze them with a one-dimensional configuration coordinate model (1D-CCM).
 It computes transition energies, Huang-Rhys factors, effective phonon frequencies, lineshapes within the 1D-CCM, and helps analyze atomic relaxations.
 
 ### 3. Lineshape Calculation Module
 
-![The lineshape module, allowing to compute the temperature-dependent spectra.](../paper/lineshape.pdf)
+![The lineshape module, allowing to compute the temperature-dependent spectra.](../paper/lineshape.png)
 
 Here, we adopt a multi-phonon approach, or multi-dimensional configuration coordinate model (multi-D CCM).
 The Lineshape module computes the Huang-Rhys spectral function and generates (temperature-dependent) photoluminescence spectra
@@ -38,7 +41,7 @@ It takes in input the zero-phonon line energy, atomic displacements or forces, a
 
 ### 4. IFCs Embedding Module
 
-![The IFCs embedding module, allowing to calculate defect phonons in large supercells.](../paper/IFCs_embedding.pdf)
+![The IFCs embedding module, allowing to calculate defect phonons in large supercells.](../paper/IFCs_embedding.png)
 
 The IFCs Embedding module enables the calculation of defect phonons in large supercells by combining interatomic force constants (IFCs)
 from both pristine and defect systems.

@@ -255,9 +255,9 @@ as shown in {numref}`delta_scf`.
 This figure also illustrates the connection with the configuration coordinate model.
 
 
-```{figure} delta_scf.pdf
+```{figure} delta_scf.png
 ---
-width: 70%
+width: 100%
 name: delta_scf
 ---
 Schematic representation of the constrained occupation $\Delta$SCF method, as used in this work for simulating the luminescent properties of Eu$^{2+}$ phosphor.
@@ -369,7 +369,7 @@ One way to include both the defect effect (local modes) while converging long-wa
 the IFCs embedding approach {cite}`alkauskas2014,jin2021photoluminescence`.
 
 
-```{figure} emb_approach.pdf
+```{figure} emb_approach.png
 ---
 height: 300px
 name: emb_approach
