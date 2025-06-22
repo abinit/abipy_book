@@ -46,14 +46,14 @@ import numpy as np
 
 It is possible to initialize a structure object from different file formats:
 
-   * CIF
-   * POSCAR/CONTCAR
-   * CHGCAR
-   * LOCPOT,
-   * vasprun.xml
-   * CSSR
-   * ABINIT Netcdf files
-   * pymatgen's JSON serialized structures
+* CIF
+* POSCAR/CONTCAR
+* CHGCAR
+* LOCPOT,
+* vasprun.xml
+* CSSR
+* ABINIT Netcdf files
+* pymatgen's JSON serialized structures
 
 Note, in particular, that one can initialize the structure from the netcdf files
 produced by Abinit (`GSR.nc`, `WFK.nc`, etc) as well as output files in text format

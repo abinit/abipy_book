@@ -198,7 +198,6 @@ It is possible to create a structure in different ways.
 The most explicit (and verbose) approach consists in passing a dictionary with ABINIT variables
 provided one uses python lists (or lists or lists) when ABINIT expects a 1D (or a multidimensional array):
 
-
 ```{code-cell}
 si_struct = dict(
     ntypat=1,
@@ -401,7 +400,7 @@ inp.set_autokmesh(nksmall=4)
 
 v = inp.abivalidate()
 if v.retcode != 0:
-    # If there is a mistake in the input, one can acces the log file of the run with the log_file object
+    # If there is a mistake in the input, one can access the log file of the run with the log_file object
     print("".join(v.log_file.readlines()[-10:]))
 ```
 

@@ -24,7 +24,7 @@ In particular, the majority of the factory functions construct input files
 for **spin-polarized calculations** (`nsppol=2`) with a **Fermi-Dirac** occupation scheme and
 a physical temperature of **0.1 eV**.
 It is always possible to change the default behaviour either
-by passing these options to the factory function or by changing the objects returned by the factory.
+by passing these options to the factory function or by changing the object returned by the factory.
 
 Also note that the factory functions do not use `get*` or `ird*` variables to connect the different
 steps. Client code is in charge of connecting the different parts.

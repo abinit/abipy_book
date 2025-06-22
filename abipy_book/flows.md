@@ -87,7 +87,8 @@ This example allows us to discuss the most important methods of the `Flow`.
 
 Let's start by creating a function that produces two input files.
 The first input is a standard self-consistent ground-state run.
-The second input uses the density produced in the first run to perform a non self-consistent band structure calculation.
+The second input uses the density produced in the first run to perform a
+non self-consistent band structure calculation.
 
 ```{code-cell} ipython3
 # This line configures matplotlib to show figures embedded in the notebook.
@@ -315,7 +316,7 @@ If you read the logs carefully, you will realize that in the first iteration of 
 only the `ScfTask` is executed because the second task depends on it.
 After the initial submission, the scheduler starts to monitor all the tasks in the flow.
 
-When the ScfTask completes, the dependency of the NscfTask is fullfilled and a new submission takes place.
+When the ScfTask completes, the dependency of the NscfTask is fulfilled and a new submission takes place.
 Once the second task completes, the scheduler calls `flow.finalize`
 to execute (optional) logic that is supposed to be executed to perform some sort of cleanup or post-processing.
 At this point, all the tasks in the flow are completed and the scheduler exits.
@@ -333,7 +334,7 @@ flow.listext("GSR.nc")
 ```
 
 The nice thing about the flow is that the object knows how to locate and interpret the
-different input/ouput files produced by Abinit.
+different input/output files produced by Abinit.
 As a consequence, it is very easy to expose the AbiPy post-processing tools with a easy-to-use API
 in which only tasks/works/flow plus a very few input arguments are required.
 
@@ -408,7 +409,7 @@ hello_flow.get_graphviz(engine="dot")
 Excellent, we managed to build our first AbiPy flow with inter-dependent tasks in just six lines
 of code (including the three calls to graphviz).
 Now let's assume we want to add a second Nscf calculation (`NscTask`) in which we change one of the input parameters
-e.g. the number of bands and that, for some reason, we really want to re-use the output WFK file
+e.g. the number of bands and that, for some reason, we really want to reuse the output WFK file
 produced by `w0_t1` to initialize the eigenvalue solver (obviously we still need a DEN file).
 How can we express this with AbiPy?
 
@@ -460,7 +461,7 @@ print("b dict:", b)
 print("c dict:", c)
 ```
 
-For a more techical explanation see [here](http://docs.python-guide.org/en/latest/writing/gotchas/)
+For a more technical explanation see [here](http://docs.python-guide.org/en/latest/writing/gotchas/)
 
 To avoid this mistake, we need to *copy* the object before changing it
 
@@ -603,7 +604,7 @@ An example will help clarify this point.
 Restarting jobs is one of the typical problem encountered in ab-initio calculations
 and restarting a `RelaxTask` requires a different logic from e.g. restarting a `ScfTask`.
 In the case of a `ScfTask` we only need to use the output WFK (DEN) of the previous execution
-as input of the restarted job while a `RelaxTask` must also re-use the (unconverged) final structure
+as input of the restarted job while a `RelaxTask` must also reuse the (unconverged) final structure
 of the previous job to be effective and avoid a possibly infinite loop.
 In a nutshell, when you are using a particular `Task/Work` class you are telling AbiPy how to handle possible
 problems at run-time and you are also specifying the actions that should be performed
@@ -621,7 +622,8 @@ flow.make_scheduler().start()
 
 inside a jupyter notebook is handy if you are dealing with small calculations that require few seconds or minutes.
 This approach, however, is unpractical when you have large flows or big calculations requiring hours or days, even on massively parallel machines.
-In this case, indeed, one would like to run the scheduler in a separate process in the backgroud so that the scheduler is not killed when the jupyter server is closed.
+In this case, indeed, one would like to run the scheduler in a separate process in the background so that the scheduler
+is not killed when the jupyter server is closed.
 
 To start the scheduler in a separate process, use the `abirun.py` script.
 The syntax is:

@@ -53,7 +53,7 @@ sigres.ebands.plot();
 
 The SIGRES file contains the KS as well as the QP direct gaps for all the k-points
 included in the calculation ({{kptgw}}).
-To plot the differente QP - KS, use:
+To plot the difference QP - KS, use:
 
 ```{code-cell} ipython3
 sigres.plot_qpgaps();

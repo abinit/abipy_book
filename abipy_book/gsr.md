@@ -21,7 +21,7 @@ The function `abidata.ref_file` returns the absolute path of the reference file.
 In your scripts, you have to replace `data.ref_file("abipy_filename")` with a string giving
 the location of your netcdf file.
 
-Alteratively, one can use the `abiopen.py` script to open the file inside the shell with the syntax:
+Alternatively, one can use the `abiopen.py` script to open the file inside the shell with the syntax:
 
     abiopen.py out_GSR.nc
 
@@ -60,6 +60,7 @@ import abipy.data as abidata
 The `GSR` file (mnemonics: Ground-State Results) is a netcdf file with the
 results produced by SCF or NSCF ground-state calculations
 (band energies, forces, energies, stress tensor).
+
 To open a `GSR` file, use the `abiopen` function defined in `abilab`:
 
 ```{code-cell}
@@ -251,7 +252,7 @@ edos_plotter.gridplot();
 ## Joint density of states
 
 This example shows how to plot the different contributions to the electronic joint density of states (JDOS) of Silicon.
-Select the valence and conduction bands to be included in the JDOS. 
+Select the valence and conduction bands to be included in the JDOS.
 Here we include valence bands from 0 to 3 and the first conduction band (4).
 
 ```{code-cell}
@@ -305,4 +306,3 @@ TODO
 ```{note}
 Robots can also be constructed from the command line with: abicomp.py gsr FILES
 ```
-

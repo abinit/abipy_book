@@ -162,7 +162,7 @@ For a quick visualization script, use [abiview.py](http://abinit.github.io/abipy
 The `DdbFile` object provides specialized methods to invoke anaddb and
 compute important physical properties such as phonon band structures, phonon DOS, etc.
 All these methods have a name that starts with the `ana*` prefix followed by a verb (`anaget`, `anacompare`).
-These specialized methods
+These specialized methods:
 
 - build the anaddb input file
 - run anaddb
