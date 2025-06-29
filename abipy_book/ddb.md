@@ -645,18 +645,17 @@ If you now dig a bit into the scientific literature, you will find that this is 
 that plays an important role in explaining the superconducting behavior of $MgB_2$.
 
 Let's look in more details at the softening at the $\Gamma$ point.
-We start by calling `get_dataframe_at_qpoint` to construct a pandas dataframe
-with the phonon frequencies and the parameters of the calculation:
+We start by calling `get_phdata_at_qpoint` to construct a pandas dataframe
+with the phonon frequencies in meV and the parameters of the calculation:
 
 ```{code-cell}
-data = robot.get_dataframe_at_qpoint(qpoint=(0, 0, 0), units="meV", with_geo=False)
-data
+data = robot.get_phdata_at_qpoint(qpoint=(0, 0, 0), with_geo=False)
 ```
 
 and use [seaborn](https://seaborn.pydata.org/) to produce a scatter plot in which the color of the points depends on tsmear:
 
 ```{code-cell}
-robot.plot_xy_with_hue(data, x="nkpt", y="mode6", hue="tsmear");
+robot.plot_xy_with_hue(data.ph_df, x="nkpt", y="mode6", hue="tsmear");
 ```
 
 A DDbRobot is essential a dictionary of DdbFiles, and we can therefore reuse the DdbFile methods to call anaddb.
@@ -682,15 +681,15 @@ Here we use three different files produced with 2x2x2, 4x4x4 and 8x8x8 k-meshes.
 
 ```{code-cell}
 paths = [
-    "out_ngkpt222_DDB",
-    "out_ngkpt444_DDB",
-    "out_ngkpt888_DDB"
+"AlAs_222k_DDB",
+"AlAs_444k_DDB",
+"AlAs_666k_DDB",
+"AlAs_888k_DDB",
 ]
 
 paths = [os.path.join(abidata.dirpath, "refs", "alas_eps_and_becs_vs_ngkpt", f) for f in paths]
 
 alas_robot = abilab.DdbRobot.from_files(paths)
-alas_robot
 ```
 
 Now we call `anacompare_epsinf` to create a pandas `Dataframe` with the upper triangle
@@ -698,8 +697,12 @@ of the $\epsilon_{ij}^\infty$ dielectric tensor (Voigt notation) and we add the 
 in the IBZ to the table to facilitate the analysis:
 
 ```{code-cell}
-r = alas_robot.anacompare_epsinf(ddb_header_keys="nkpt")
-r.df
+epsinf_data = alas_robot.anacompare_epsinf(ddb_header_keys="nkpt")
+epsinf_data.df
+```
+
+```{code-cell}
+epsinf_data.plot_conv("nkpt", abs_conv=0.1)
 ```
 
 A similar approach can be used to analyze $\epsilon_{ij}^0$
@@ -713,13 +716,37 @@ Analyzing the convergence of the Born effective charges is a bit more complicate
 because now we have a tensor for each atom in the unit cell:
 
 ```{code-cell}
-r = alas_robot.anacompare_becs(ddb_header_keys="nkpt")
-r.df
+becs_data = alas_robot.anacompare_becs(ddb_header_keys="nkpt")
+becs_data.df
 ```
 
-But we can use the pandas API to select a portion of the data.
-The below code, for example, selects the Born effective charges for *As*:
+```{code-cell}
+becs_data.plot_conv("nkpt", abs_conv=0.1);
+```
+
+A similar API can be used to analyze the convergence of the phonon frequencies for a given q-point:
+
 
 ```{code-cell}
-r.df[r.df["site_index"] == 1]
+ph_data = alas_robot.get_phdata_at_qpoint(qpoint=(0, 0, 0))
+ph_data.ph_df
+```
+
+
+```{code-cell}
+ph_data.plot_ph_conv("nkpt", abs_conv=0.1);  # meV units.
+```
+
+If the DDB contains dynamical quadrupoles, a similar dataframe with the tensor
+elements is automatically built and made available in `ph_data.dyn_quad_df`.
+
+
+```{code-cell}
+ph_data.dyn_quad_df
+```
+
+A negative value of `abs_conv` is interpreted as relative convergence.
+
+```{code-cell}
+ph_data.plot_dyn_quad_conv("nkpt", abs_conv=-0.02);
 ```
