@@ -44,12 +44,34 @@ This requires two relaxations (one in the ground and excited state) and four sta
 One could eventually add four nscf computations for the electronic band structures.
 These 6 (+4) computations are what is automatized in one "LumiWork".
 
-The excited state configuration is computed following the $\Delta$SCF-constrained occupation method,
-where the first unoccupied state of the ground state is force to be occupied in the excited state.
-In Abinit, the variable "occ" reads like:
+The excited state configuration is computed following the $\Delta$SCF-constrained occupation method.
 
-* ground state  : occ ... 1 1 1 0 0 0 0 ...
-* excited state : occ ... 1 1 0 1 0 0 0 ...
+A key challenge in $\Delta$SCF calculations is correctly setting up the occupation numbers for both ground and excited states.
+
+### General Principles
+
+For a spin-polarized calculation (`nsppol=2`), you need to specify occupations separately for spin-up and spin-down channels with the `occ` input variable in Abinit.
+
+For instance, it might read like for the ground state : 
+```
+N_occ_el_up*1  N_empty_el_up*0
+N_occ_el_dn*1  N_empty_el_dn*0
+```
+where `N_occ_el_up` and `N_occ_el_dn` are the number of occupied bands for spin-up and spin-down channels, respectively, and `N_empty_el_up` and `N_empty_el_dn` are the number of empty (conduction) bands.
+
+For the excited state, we can create a "hole" in the highest occupied state and promote one electron to the lowest unoccupied state:
+
+```
+(N_occ_el_up-1)*1  0  1  (N_empty_el_up-1)*0
+N_occ_el_dn*1  N_empty_el_dn*0
+
+```
+
+This pattern needs to be adapted based on:
+
+1. The total number of valence electrons in your system
+2. The electronic configuration of your defect
+3. The type of excitation (e.g., d-d, f-d, spin-flip)
 
 ## LumiWork Workflow
 
@@ -209,18 +231,17 @@ We first create the abinit input objects.
 This is achieved by the function `def scf_inp(structure):` that takes as argument a structure object.
 It returns abinit input objects for the ground and excited state.
 It is in this function that all the important abinit variables that are specific to the system under study are located.
-The tricky part is the automatic definition of the occupation number, this is achieved by:
-
+The tricky part is the automatic definition of the occupation numbers. Let's break down the Eu$^{2+}$ example step by step:
 
 ```python
-    n_val = gs_scf_inp.num_valence_electrons
-    n_cond = round(20)  # to be choosen by user
+    n_val = gs_scf_inp.num_valence_electrons  # Total valence electrons in the supercell
+    n_cond = round(20)  # Number of conduction bands to include (user choice)
 
-    #### SPECIFIC to Eu doped!!!! ######
-    spin_up_gs = f"\n{int((n_val - 7) / 2)}*1 7*1 {n_cond}*0"  # ground state occ for spin up
-    spin_up_ex = f"\n{int((n_val - 7) / 2)}*1 6*1 0 1 {n_cond - 1}*0" # exicted state occ for spin up
-    spin_dn = f"\n{int((n_val - 7) / 2)}*1 7*0 {n_cond}*0" # ground/excited state occ for spin down
-    ####################################
+    #### SPECIFIC to Eu2+ doped system (7 electrons in 4f shell) ####
+    spin_up_gs = f"\n{int((n_val - 7) / 2)}*1 7*1 {n_cond}*0"
+    spin_up_ex = f"\n{int((n_val - 7) / 2)}*1 6*1 0 1 {n_cond - 1}*0"
+    spin_dn = f"\n{int((n_val - 7) / 2)}*1 7*0 {n_cond}*0"
+    ####################################################################
 
     nsppol = 2
     shiftk = [0, 0, 0]
@@ -234,8 +255,38 @@ The tricky part is the automatic definition of the occupation number, this is ac
     exc_scf_inp.set_kmesh_nband_and_occ(ngkpt, shiftk, nsppol, [spin_up_ex, spin_dn])
 ```
 
-```{warning}
-These occupations are specific to Eu$^{2+}$ doped system (seven 4f electrons)!
+```{note}
+Eu$^{2+}$ has the electronic configuration [Xe]4f$^7$5d$^0$. In the ground state, the seven 4f electrons are all spin-up (due to Hund's rules).
+The excited state corresponds to a 4f$\rightarrow$5d transition: one 4f electron is promoted to the 5d shell.
+
+Let's decompose the occupation strings:
+
+**`spin_up_gs`**: Ground state, spin-up channel
+
+- `{int((n_val - 7) / 2)}*1`: All "normal" valence electrons (excluding Eu 4f) $\rightarrow$ fully occupied
+- `7*1`: The seven 4f electrons of Eu$^{2+}$ $\rightarrow$ fully occupied
+- `{n_cond}*0`: Empty conduction bands
+
+**`spin_up_ex`**: Excited state, spin-up channel
+
+- `{int((n_val - 7) / 2)}*1`: All "normal" valence electrons $\rightarrow$ still fully occupied
+- `6*1`: Only six 4f electrons remain $\rightarrow$ occupied
+- `0`: One empty 4f state (the "hole")
+- `1`: One electron promoted to 5d $\rightarrow$ occupied
+- `{n_cond - 1}*0`: Remaining conduction bands empty
+
+**`spin_dn`**: Spin-down channel (identical for ground and excited states)
+
+- `{int((n_val - 7) / 2)}*1`: All "normal" valence electrons $\rightarrow$ occupied
+- `7*0`: No spin-down 4f electrons
+- `{n_cond}*0`: Empty conduction bands
+
+**Why $(n_{val} - 7) / 2$?**
+
+This counts all valence electrons *except* the 7 Eu 4f electrons. We divide by 2 because in the spin-polarized calculation,
+these "normal" electrons are equally distributed between spin-up and spin-down channels.
+
+A further example is presented for a spin-flip transition at the the end of this page. 
 ```
 
 The relaxation parameters (that might be different between ground and excited state!) are given in the function `def relax_kwargs():`.
@@ -330,4 +381,66 @@ and register only the first task:
 Lumi_work = LumiWork_relaxations.from_scf_inputs(gs_scf_inp, exc_scf_inp, relax_kwargs_gs, relax_kwargs_ex,ndivsm=0)
 
 flow.register_task(Lumi_work[0]) # notice the register_task and not register_work
+```
+
+## Additional Example: F-center in CaO
+
+### Background
+
+An F-center is a neutral oxygen vacancy with two trapped electrons. Unlike the Eu$^{2+}$ case where we have a 4f$\rightarrow$5d electron promotion, the F-center excited state results from a **spin-flip** transition: one electron flips from spin-down to spin-up, changing from a singlet to a triplet configuration.
+
+**Ground state**: Two electrons with opposite spins in the defect state (singlet, $S=0$)
+- Spin-up: 1 electron in defect state  
+- Spin-down: 1 electron in defect state
+
+**Excited state**: Both electrons have parallel spins (triplet, $S=1$)
+- Spin-up: 2 electrons in defect state (one original + one flipped from spin-down)
+- Spin-down: 0 electrons in defect state
+
+### Occupation Setup 
+
+The key part of the occupation setup for the F-center case:
+
+```python
+def scf_inp_fcenter(structure):
+    # ... (pseudopotentials, basic parameters)
+    
+    n_val = gs_scf_inp.num_valence_electrons
+    n_cond = 4  # Number of conduction bands
+    
+    # For this example: 60 host valence electrons + 2 defect electrons
+    n_host = 60
+    
+    #### SPECIFIC to F-center (2 electrons, spin-flip excitation) ####
+    # Ground state: singlet configuration (one electron per spin channel)
+    spin_up_gs = f"\n{n_host}*1 1 0 {n_cond}*0"  # 60 host + 1 defect electron
+    spin_dn_gs = f"\n{n_host}*1 1 0 {n_cond}*0"  # 60 host + 1 defect electron
+    
+    # Excited state: triplet configuration (both electrons in spin-up)
+    spin_up_ex = f"\n{n_host}*1 1 1 {n_cond-1}*0"  # 60 host + 2 defect electrons
+    spin_dn_ex = f"\n{n_host}*1 0 0 {n_cond}*0"    # 60 host + 0 defect electrons
+    ####################################################################
+    
+    nsppol = 2
+    ngkpt = [1, 1, 1]
+    shiftk = [0, 0, 0]
+    
+    # Build SCF input for ground state
+    gs_scf_inp.set_kmesh_nband_and_occ(ngkpt, shiftk, nsppol, [spin_up_gs, spin_dn_gs])
+    
+    # Build SCF input for excited state
+    exc_scf_inp = gs_scf_inp.deepcopy()
+    exc_scf_inp.set_kmesh_nband_and_occ(ngkpt, shiftk, nsppol, [spin_up_ex, spin_dn_ex])
+    
+    return gs_scf_inp, exc_scf_inp
+```
+
+```{tip}
+When adapting this workflow to your own defect system:
+
+1. Identify the total number of valence electrons: `n_val = gs_scf_inp.num_valence_electrons`
+2. Determine how many electrons are localized on your defect
+3. Understand the nature of the excitation (promotion vs. spin-flip vs. other)
+4. Write appropriate occupation strings for each spin channel
+5. Test with a small calculation to confirm the occupation pattern produces the expected electronic structure
 ```

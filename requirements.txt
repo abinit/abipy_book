@@ -1,7 +1,7 @@
 monty
 invoke
 #abipy
-jupyter-book
+jupyter-book < 2.0
 graphviz
 scikit-image
 #mp-api
