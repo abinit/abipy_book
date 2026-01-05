@@ -119,24 +119,6 @@ Other transitions give the phonon sideband (PSB).
 The intensity of each peak is computed with the overlap between corresponding eigenfunctions.
 ```
 
-In order to visualise the effect of harmonic oscillator frequency or the offset $\Delta Q$ on the luminescence lineshape,
-you can slide the cursors below.
-For the frequency, we assume harmonic oscillators with frequency $\omega=\sqrt{\frac{k}{\mu}}$ with $k$ a force/spring constant,
-and $\mu$ the oscillator mass.
-
-
-```{code-cell}
-from lineshape_slider import get_plotly_lineshape
-%matplotlib inline
-```
-
-```{code-cell}
-get_plotly_lineshape(slider="frequency", num_step=10)
-```
-
-```{code-cell}
-get_plotly_lineshape(slider="Delta_Q", num_step=10)
-```
 
 ### Multi phonon mode model and generating function
 
@@ -413,7 +395,7 @@ $$
 C_{\kappa\alpha,\kappa\beta} = - \sum_{\kappa'\ne\kappa}C_{\kappa\alpha,\kappa'\beta}.
 $$ (acoustic_sum_rule)
 
-To correct for this, we set:
+To correct for this, we follow the same approach that in {cite}`razinkovas2021vibrational,jin2021photoluminescence`:
 
 $$
 C_{\kappa\alpha,\kappa\alpha}^{\mathrm{emb}}=-\sum_{\kappa'\ne\kappa}C_{\kappa\alpha,\kappa'\alpha}^{\mathrm{emb}}.
