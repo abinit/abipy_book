@@ -76,6 +76,9 @@ launch_buttons:
 # Advanced and power-user settings
 
 sphinx:
+  local_extensions:
+    # Make plotly emit text/html so that myst-nb can render the figures.
+    plotly_renderer: _ext/
   extra_extensions:
       - sphinx.ext.intersphinx
       #- sphinx_click.ext
@@ -97,16 +100,16 @@ sphinx:
           - "https://docs.python.org/3.11"
           - null
         numpy:
-          - 'https://docs.scipy.org/doc/numpy/'
+          - 'https://numpy.org/doc/stable/'
           - null
         scipy:
-          - "https://docs.scipy.org/doc/scipy/reference/"
+          - "https://docs.scipy.org/doc/scipy/"
           - null
         pandas:
           - "https://pandas.pydata.org/pandas-docs/stable/"
           - null
         matplotlib:
-          - "https://matplotlib.org/"
+          - "https://matplotlib.org/stable/"
           - null
         monty:
           - "https://pythonhosted.org/monty/"

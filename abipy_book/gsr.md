@@ -160,10 +160,15 @@ For the plotly version, use:
 ebands_kpath.plotly(with_gaps=True, title="Silicon band structure with plotly");
 ```
 
+To build a {{ panel }} GUI exposing the methods of the GSR file, use:
+
 ```{code-cell}
+:tags: [skip-execution]
 abilab.abipanel()
 gsr.get_panel()
 ```
+
+This cell is not executed in the online book, since the GUI requires a live Jupyter notebook.
 
 Let's have a look at our $k$-points by calling `kpoints.plotly()`
 

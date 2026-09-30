@@ -227,6 +227,9 @@ Similar capabilities are also available via the {{ abipygui }} web app.
 To build a panel GUI for a given structure, use:
 
 ```{code-cell}
+:tags: [skip-execution]
 abilab.abipanel()
 structure.get_panel()
 ```
+
+This cell is not executed in the online book, since the GUI requires a live Jupyter notebook.
