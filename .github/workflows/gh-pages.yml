@@ -34,6 +34,9 @@ jobs:
     runs-on: ${{ matrix.config.os }}
     env:
       PMG_MAPI_KEY: ${{ secrets.PMG_MAPI_KEY }}
+      # MPICH from conda-forge uses UCX, which fails to open the runner's network device (mana_0).
+      # All the runs are on a single node, so restrict UCX to the loopback and shared-memory transports.
+      UCX_TLS: self,sm
 
     steps:
       - name: Check out Abipy-book repo
