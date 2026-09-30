@@ -26,10 +26,10 @@ to generate automatically input objects for typical calculations.
 
 See e.g the {{ AbinitInput }}
 
-```{include} ../snippets/plotly_matplotlib_note.md
+```{include} snippets/plotly_matplotlib_note.md
 ```
 
-```{include} ../snippets/manager_note.md
+```{include} snippets/manager_note.md
 ```
 
 ## Creating an AbinitInput object

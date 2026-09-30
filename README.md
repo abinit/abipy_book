@@ -9,7 +9,7 @@ This cookiecutter creates a simple boilerplate for a Jupyter Book.
 If you'd like to develop and/or build the AbiPy Book book, you should:
 
 1. Clone this repository
-2. Run `pip install -r requirements.txt` (it is recommended you do this within a virtual environment)
+2. Run `pip install .` (it is recommended you do this within a virtual environment)
 3. (Optional) Edit the books source files located in the `abipy book/` directory
 4. Run `jupyter-book clean abipy_book/` to remove any existing builds
 5. Run `jupyter-book build abipy_book/`

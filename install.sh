@@ -1,5 +1,5 @@
 #!/bin/bash
 set -e  # exit on first error
 
-pip install -r requirements.txt
+pip install .
 conda install graphviz -c conda-forge --yes

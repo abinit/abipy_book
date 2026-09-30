@@ -169,7 +169,7 @@ These specialized methods:
 - parse the netcdf files produced by anaddb
 - build and return [AbiPy objects](http://abinit.github.io/abipy/api/dfpt_api.html) that can be used to plot/analyze the data.
 
-```{include} snippets/manager.md
+```{include} snippets/manager_note.md
 ```
 
 The python API is flexible and exposes several anaddb input variables.

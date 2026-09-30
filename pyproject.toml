@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "abipy-book"
+version = "0.1.0"
+description = "Jupyter Book with tutorials and examples for AbiPy."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+    "monty",
+    "invoke",
+    "jupyter-book<2.0",
+    "graphviz",
+    "scikit-image",
+]
+
+[project.optional-dependencies]
+# abipy is installed from the develop branch in CI (see .github/workflows/gh-pages.yml).
+abipy = ["abipy"]
+mp = ["mp-api"]
+
+[project.urls]
+Homepage = "https://abinit.github.io/abipy_book/"
+Repository = "https://github.com/abinit/abipy_book"
+
+# The book is not a Python package: only the dependencies are installed.
+[tool.setuptools]
+packages = []

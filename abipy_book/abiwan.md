@@ -49,6 +49,7 @@ import abipy.data as abidata
 #%matplotlib widget
 ```
 
+(how-to-analyze-the-wout-file)=
 ## How to analyze the WOUT file
 
 +++
@@ -81,6 +82,7 @@ or `abiopen.py FILE_MDF.nc -e -sns` to produce matplotlib plots automatically.
 
 +++
 
+(using-abiwan-nc-to-interpolate-band-energies)=
 ## Using ABIWAN.nc to interpolate band energies
 
 `ABIWAN.nc` is a netcdf file produced by Abinit after having called *wannier90* in library mode.
@@ -129,21 +131,14 @@ This is useful to understand if our Wannier functions are well localized, and if
 k-mesh used with wannier90 is dense enough.
 
 In this case, it is just a matter of passing the path to the netcdf file
-containing the ab-initio band structure to the `get_plotter_from_ebands` method of `abiwan`.
+containing the ab-initio band structure to the `plot_with_ebands` method of `abiwan`.
 The function interpolates the band energies using the k-path found in the netcdf file
-and returns a plotter object:
+and plots the two band structures on the same figure:
 
 ```{code-cell} ipython3
-import abipy.data as abidata
 gsr_path = abidata.ref_file("si_nscf_GSR.nc")
 
-plotter = abiwan.get_plotter_from_ebands(gsr_path)
-```
-
-Then we call `combiplot` to plot the two band structures on the same figure:
-
-```{code-cell} ipython3
-plotter.combiplot();
+abiwan.plot_with_ebands(gsr_path);
 ```
 
 As we can see, the interpolated band structures is not completely on top of the ab-initio results.

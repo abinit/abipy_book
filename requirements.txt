@@ -1,7 +1,0 @@
-monty
-invoke
-#abipy
-jupyter-book < 2.0
-graphviz
-scikit-image
-#mp-api
