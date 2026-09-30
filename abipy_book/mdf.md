@@ -38,7 +38,7 @@ import abipy.data as abidata
 
 +++
 
-Use `abiopen` to open the MDF:
+Use `abiopen` to open the MDF file:
 
 ```{code-cell} ipython3
 mdf_file = abilab.abiopen(abidata.ref_file("tbs_4o_DS2_MDF.nc"))
@@ -46,13 +46,13 @@ print(mdf_file)
 ```
 
 To plot the (averaged) imaginary part of the macroscopic dielectric function (MDF)
-between 2 and 5 eV use:
+between 2 and 5 eV, use:
 
 ```{code-cell} ipython3
 mdf_file.plot_mdfs(title="Si absorption spectrum: EXC vs RPA", xlims=(2, 5));
 ```
 
-To select the MDF computed for the first q-point, use
+To select the MDF computed for the first $q$-point, use:
 
 ```{code-cell} ipython3
 mdf_file.plot_mdfs(title="Im(Mdf) at the first q-point", qpoint=0, xlims=(2, 5));
@@ -71,7 +71,7 @@ mdf_file.plot_mdfs(cplx_mode="re", title="Real part of MDF: EXC vs RPA", xlims=(
 ```
 
 <div class="alert alert-info" role="alert">
-Alternatively one can use `abiopen.py FILE_MDF.nc -nb` to generate a jupyter notebook directly from the terminal
+Alternatively, one can use `abiopen.py FILE_MDF.nc -nb` to generate a Jupyter notebook directly from the terminal,
 or `abiopen.py FILE_MDF.nc -e -sns` to produce matplotlib plots automatically.
 </div>
 
@@ -79,7 +79,7 @@ or `abiopen.py FILE_MDF.nc -e -sns` to produce matplotlib plots automatically.
 
 ## Analyzing multiple MDF files with robots
 
-To analyze the converge of the optical spectra, we can use the MdfRobot.
+To analyze the convergence of the optical spectra, we can use the `MdfRobot`.
 Let's build our robot from a list of MDF.nc files:
 
 ```{code-cell} ipython3
@@ -98,7 +98,7 @@ To analyze the convergence of the (averaged) MDFs:
 plotter.plot();
 ```
 
-It is also possible to analyze the converge of the MDF for the different q-directions with:
+It is also possible to analyze the convergence of the MDF for the different $q$-directions with:
 
 ```{code-cell} ipython3
 plotter.plot(qview="all");
@@ -108,4 +108,3 @@ plotter.plot(qview="all");
 Robots can also be constructed from the command line with: `abicomp.py mdf FILES`.
 Use the `--expose` option to generate plots automatically.
 </div>
-

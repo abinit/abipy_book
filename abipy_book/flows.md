@@ -13,22 +13,22 @@ kernelspec:
 
 # Tasks, Workflows and Flow
 
-In this notebook we discuss some of the basic concepts used in AbiPy to automate ab-initio calculations.
-In particular we will focus on the following three objects:
+In this notebook, we discuss some of the basic concepts used in AbiPy to automate ab-initio calculations.
+In particular, we focus on the following three objects:
 
 * `Task`
 * `Work`
 * `Flow`
 
-The `Task` represent the most *elementary step* of the automatic workflow.
+The `Task` represents the most *elementary step* of the automatic workflow.
 Roughly speaking, it corresponds to the execution of a single Abinit calculation **without** multiple datasets.
 
-From the point of view of AbiPy, a calculation consists of a set of `Tasks` that are connected by dependencies.
+From the point of view of AbiPy, a calculation consists of a set of `Tasks` connected by dependencies.
 Each task has a list of files that are needed to start the calculation,
 and a list of files that are produced at the end of the run.
 
 Some of the input files needed by a `Task` must be provided by the user in the form of Abinit input variables
-(e.g. crystalline structure, pseudopotentials), other inputs may be produced by other tasks.
+(e.g. crystalline structure, pseudopotentials), while other inputs may be produced by other tasks.
 When a `Task` **B** requires the output file `DEN` of another task **A**,
 we say that **B** depends on **A** through a `DEN` file, and we express this dependency with the dictionary:
 
@@ -39,31 +39,31 @@ B_deps = {A: "DEN"}
 To clarify this point, let's take a standard KS band structure calculation as an example.
 In this case, we have an initial `ScfTask` that solves the KS equations self-consistently to produce a `DEN` file.
 The density is then used by a second `NscfTask` to compute a band structure on an arbitrary list of $k$-points.
-The `NscfTask` has therefore a dependency on the `ScfTask` in the sense that it cannot be executed
-until the `ScfTask` is completed and the `DEN` file is produced by the `ScfTask`.
+The `NscfTask` therefore depends on the `ScfTask`, in the sense that it cannot be executed
+until the `ScfTask` has completed and produced the `DEN` file.
 
-Now that we have clarified the concept of `Task`, we can finally turn to `Works` and `Flow`.
-The `Work` can be seen as a list of `Tasks`, while the `Flow` is essentially a list of `Work` objects.
-Works are usually used to group tasks that are connected to each other.
-Flows are the final objects that are executed.
-The `Flow` provides an easy-to-use  high-level API to perform common operations like launching
-the actual jobs, checking the status of the `Tasks`, correcting problems etc.
+Now that we have clarified the concept of `Task`, we can finally turn to `Works` and `Flows`.
+A `Work` can be seen as a list of `Tasks`, while a `Flow` is essentially a list of `Work` objects.
+Works are usually used to group tasks that are connected to each other,
+while Flows are the final objects that are executed.
+The `Flow` provides an easy-to-use high-level API to perform common operations such as launching
+the actual jobs, checking the status of the `Tasks`, correcting problems, etc.
 
-AbiPy provides several tools to generate Flows for typical calculations, so called factory functions.
-This means that you do not need to understand all the technical details of the python implementation.
-In many cases, indeed, we already provide some kind of `Work` or `Flow` that automates
+AbiPy provides several tools, the so-called factory functions, to generate Flows for typical calculations.
+This means that you do not need to understand all the technical details of the Python implementation.
+In many cases, indeed, we already provide a `Work` or a `Flow` that automates
 the whole calculation, and you only need to provide the correct list of input files.
-This list, obviously, must be consistent with the kind Flow/Work you are using.
-For instance, you should not pass a list of inputs for performing a band structure calculation to a Work
+Obviously, this list must be consistent with the kind of Flow/Work you are using.
+For instance, you should not pass a list of inputs for a band structure calculation to a Work
 that is expected to compute phonons with DFPT!
 
-All the `Works` and the `Tasks` of a flow are created and executed inside the working directory (`workdir`).
-This is usually specified by the user during the creation of the `Flow` object.
-AbiPy creates the workdir of the different Works/Tasks when the `Flow` is executed for the first time.
+All the `Works` and `Tasks` of a flow are created and executed inside the working directory (`workdir`),
+which is usually specified by the user when creating the `Flow` object.
+AbiPy creates the workdirs of the different Works/Tasks when the `Flow` is executed for the first time.
 
 Each `Task` contains a set of input variables that will be used to generate the Abinit input file.
-This input **must** be provided by the user during the creation of the `Task`.
-Fortunately, AbiPy provides an object named `AbinitInput` to facilitate the creation of such input.
+This input **must** be provided by the user when creating the `Task`.
+Fortunately, AbiPy provides the `AbinitInput` object to facilitate the creation of such input.
 Once you have an `AbinitInput`, you can create the corresponding `Task` with the (pseudo) code:
 
 ```python
@@ -73,12 +73,12 @@ new_task = Task(abinit_input_object)
 The `Task` provides several methods for monitoring the status of the calculation and post-processing the results.
 Note that the concept of dependency is not limited to files.
 All the Tasks in the flow are connected and can interact with each other.
-This allows programmers to implements python functions that will be invoked by the framework at run time.
+This allows programmers to implement Python functions that will be invoked by the framework at run time.
 For example, one can implement a `Task` that fetches the relaxed structure
-from a previous Task and use this configuration to start a DFPT calculation.
+from a previous Task and uses this configuration to start a DFPT calculation.
 
-In the next paragraph, we discuss how to construct a `Flow` for band-structure calculations
-with a high-level interface that only requires the specifications of the input files.
+In the next section, we discuss how to construct a `Flow` for band structure calculations
+with a high-level interface that only requires the input files.
 This example allows us to discuss the most important methods of the `Flow`.
 
 +++
@@ -88,7 +88,7 @@ This example allows us to discuss the most important methods of the `Flow`.
 Let's start by creating a function that produces two input files.
 The first input is a standard self-consistent ground-state run.
 The second input uses the density produced in the first run to perform a
-non self-consistent band structure calculation.
+non-self-consistent band structure calculation.
 
 ```{code-cell} ipython3
 # This line configures matplotlib to show figures embedded in the notebook.
@@ -133,7 +133,7 @@ def make_scf_nscf_inputs():
     return scf_input, nscf_input
 ```
 
-Once we have our two input files, we pass them to the factory function `bandstructure_flow` that returns our `Flow`.
+Once we have our two input files, we pass them to the `bandstructure_flow` factory function, which returns our `Flow`:
 
 ```{code-cell} ipython3
 scf_input, nscf_input = make_scf_nscf_inputs()
@@ -143,21 +143,21 @@ flow = flowtk.bandstructure_flow(workdir, scf_input, nscf_input)
 ```
 
 `bandstructure_flow` took care of creating the correct dependency between the two tasks.
-The `NscfTask`, indeed,  depends on the `ScfTask` in w0/t0, whereas the `ScfTask` has no dependency:
+The `NscfTask`, indeed, depends on the `ScfTask` in w0/t0, whereas the `ScfTask` has no dependency:
 
 ```{code-cell} ipython3
 flow.get_graphviz()
 ```
 
 ```{note}
-Note that we have not used `getden2 = -1` in the second dataset since AbiPy knows how to connect the two Tasks.
-So no need for `get*` or `ird*` variables with Abipy.
-Just specify the correct dependency and python will do the rest!
+Note that we have not used `getden2 = -1` in the second dataset, since AbiPy knows how to connect the two Tasks.
+So there is no need for `get*` or `ird*` variables with AbiPy.
+Just specify the correct dependency and Python will do the rest!
 ```
 
 +++
 
-To have useful information on the status of the flow, one uses:
+To get useful information on the status of the flow, use:
 
 ```{code-cell} ipython3
 flow.show_status()
@@ -165,19 +165,19 @@ flow.show_status()
 
 Meaning of the different columns:
 
-* *Task*: short name of the task (usually *w[index_of_work_in_flow]_t[index_of_task_in_work]*
-* *Status*: Status of the task
+* *Task*: short name of the task (usually *w[index_of_work_in_flow]_t[index_of_task_in_work]*)
+* *Status*: status of the task
 * *Queue*: QueueName@Job identifier returned by the resource manager when the task is submitted
-* *(MPI|Omp|Gb)*: Number of MPI procs, OMP threads, and memory per MPI proc
-* *(Warn|Com)*: Number of Error/Warning/Comment messages found in the ABINIT log
-* *Class*: The class of the `Task`
-* *(Sub|Rest|Corr)*: Number of (submissions/restart/AbiPy corrections) performed
-* *Node_ID* : identifier of the task, used to select tasks or works in python code or `abirun.py`
+* *(MPI|Omp|Gb)*: number of MPI procs, OMP threads, and memory per MPI proc
+* *(Warn|Com)*: number of Error/Warning/Comment messages found in the ABINIT log
+* *Class*: the class of the `Task`
+* *(Sub|Rest|Corr)*: number of submissions/restarts/AbiPy corrections performed
+* *Node_ID*: identifier of the task, used to select tasks or works in Python code or with `abirun.py`
 
 +++
 
 Both `Flow` and `Work` are *iterable*.
-Iterating on a `Flow` gives `Work` objects, whereas
+Iterating over a `Flow` gives `Work` objects, whereas
 iterating over a `Work` gives the `Tasks` inside that particular `Work`.
 
 ```python
@@ -187,23 +187,23 @@ for work in flow:
 ```
 
 `Flows` and `Works` are containers, and we can select items in these containers
-with the syntax: flow[start:stop] or work[start:stop].
+with the syntax `flow[start:stop]` or `work[start:stop]`.
 This means that the previous loop is equivalent to the much more verbose version:
 
 ```python
 for i in range(len(flow)):
     work = flow[i]
-    for t in range(len(work):
+    for t in range(len(work)):
         print(work[t])
 ```
 
-At this point it should not be so difficult to understand that:
+At this point, it should not be difficult to understand that:
 
 ```python
 flow[0][0]
 ```
 
-gives the first task in the first work of the flow while
+gives the first task in the first work of the flow, while
 
 ```python
 flow[-1][-1]
@@ -224,8 +224,8 @@ to iterate over all Tasks in the Flow.
 
 ## How to build and run the Flow
 
-The flow is still in memory and no file has been produced.
-In order to build the workflow, use:
+The flow is still in memory and no file has been produced yet.
+To build the workflow, use:
 
 ```{code-cell} ipython3
 if os.path.isdir("/tmp/hello_bands/"):
@@ -237,23 +237,23 @@ flow.build_and_pickle_dump()
 
 This function creates the directories of the `Flow`:
 
-(If you rely on MacOSX, the tree command might not be available.
+(On macOS, the `tree` command might not be available.
 To fix this, see http://osxdaily.com/2016/09/09/view-folder-tree-terminal-mac-os-tree-equivalent/)
 
 ```{code-cell} ipython3
 !tree /tmp/hello_bands
 ```
 
-Let's have a look at the files/directories associated to the first work (flow[0]):
+Let's have a look at the files/directories associated with the first work (`flow[0]`):
 
 ```{code-cell} ipython3
 flow[0].get_graphviz_dirtree()
 ```
 
-`w0` is the directory containing the input files of the first workflow (well, we have only one workflow in our example).
-`t0` and `t1` contain the input files needed to run the SCF and the NSC run, respectively.
+`w0` is the directory containing the input files of the first work (well, we have only one work in our example).
+`t0` and `t1` contain the input files needed for the SCF and the NSCF run, respectively.
 
-You might have noticed that each `Task` directory present the same structure:
+You might have noticed that all the `Task` directories have the same structure:
 
 * *run.abi*: Input file
 * *run.files*: Files file
@@ -263,12 +263,12 @@ You might have noticed that each `Task` directory present the same structure:
 * *tmpdata*: Directory with temporary files
 
 ```{danger}
-*__AbinitFlow__.pickle* is the pickle file used to save the status of `Flow`. **Don't touch it!**
+*__AbinitFlow__.pickle* is the pickle file used to save the status of the `Flow`. **Don't touch it!**
 ```
 
 +++
 
-An Abinit Task *has* an [AbinitInput](abinit_input) which in turn has a [Structure](structure):
+An Abinit Task *has* an [AbinitInput](abinit_input), which in turn has a [Structure](structure):
 
 ```{code-cell} ipython3
  flow[0][0].input
@@ -283,13 +283,13 @@ for p in flow[0][0].input.pseudos:
     print(p)
 ```
 
-Let's print the value of {{kptopt}} for all tasks in our flow with:
+Let's print the value of {{kptopt}} for all the tasks in our flow with:
 
 ```{code-cell} ipython3
 print([task.input["kptopt"] for task in flow.iflat_tasks()])
 ```
 
-that, in this particular case, gives the same result as:
+which, in this particular case, gives the same result as:
 
 ```{code-cell} ipython3
 print([task.input["kptopt"] for task in flow[0]])
@@ -298,27 +298,27 @@ print([task.input["kptopt"] for task in flow[0]])
 ## Executing a Flow
 
 The `Flow` can be executed with two different approaches: a programmatic interface based
-on `flow.make_scheduler` or the `abirun.py` script.
-In this section, we discuss the first approach because it plays well with the jupyter notebook.
-Note however that `abirun.py` is highly recommended especially when running non-trivial calculations.
+on `flow.make_scheduler`, or the `abirun.py` script.
+In this section, we discuss the first approach because it plays well with Jupyter notebooks.
+Note, however, that `abirun.py` is highly recommended, especially when running non-trivial calculations.
 
 ```{code-cell} ipython3
 flow.make_scheduler().start()
 ```
 
-The flow keeps track of the different actions performed by the python code:
+The flow keeps track of the different actions performed by the Python code:
 
 ```{code-cell} ipython3
 flow.show_history()
 ```
 
 If you read the logs carefully, you will realize that in the first iteration of the scheduler,
-only the `ScfTask` is executed because the second task depends on it.
+only the `ScfTask` is executed, because the second task depends on it.
 After the initial submission, the scheduler starts to monitor all the tasks in the flow.
 
-When the ScfTask completes, the dependency of the NscfTask is fulfilled and a new submission takes place.
+When the `ScfTask` completes, the dependency of the `NscfTask` is fulfilled and a new submission takes place.
 Once the second task completes, the scheduler calls `flow.finalize`
-to execute (optional) logic that is supposed to be executed to perform some sort of cleanup or post-processing.
+to execute (optional) logic that performs some sort of cleanup or post-processing.
 At this point, all the tasks in the flow are completed and the scheduler exits.
 
 Now we can have a look at the different output files produced by the flow with:
@@ -333,20 +333,20 @@ or list only the files with a given extension:
 flow.listext("GSR.nc")
 ```
 
-The nice thing about the flow is that the object knows how to locate and interpret the
+The nice thing about the flow is that it knows how to locate and interpret the
 different input/output files produced by Abinit.
-As a consequence, it is very easy to expose the AbiPy post-processing tools with a easy-to-use API
-in which only tasks/works/flow plus a very few input arguments are required.
+As a consequence, it is very easy to expose the AbiPy post-processing tools through an easy-to-use API
+that only requires tasks/works/flows plus very few input arguments.
 
-Let's call, for instance, the inspect method to plot the self-consistent cycles:
+Let's call, for instance, the `inspect` method to plot the self-consistent cycles:
 
 ```{code-cell} ipython3
 flow.inspect(tight_layout=True);
 ```
 
-In the other AbiPy tutorials, we have explained how to use abiopen to create python objects from netcdf files.
-Well, the same code can be reused with the flow.
-It is just a matter of replacing
+In the other AbiPy tutorials, we have explained how to use `abiopen` to create Python objects from netcdf files.
+Well, the same code can be reused with the flow:
+it is just a matter of replacing
 
 ```python
 with abiopen(filepath) as gsr:
@@ -360,7 +360,7 @@ with task.open_gsr() as gsr:
 
 Note that there is no need to specify the file path when you use the task-based API, because
 the `Task` knows how to locate its `GSR.nc` output.
-Let's do some practice...
+Let's practice a bit:
 
 ```{code-cell} ipython3
 with flow[0][0].open_gsr() as gsr:
@@ -372,16 +372,16 @@ with flow[0][1].open_gsr() as gsr:
 
 ## More on Works, Tasks and dependencies
 
-In the previous example, we have constructed a workflow for band structure calculations
+In the previous example, we constructed a workflow for band structure calculations
 starting from two input files and the magic line
 
 ```python
 flow = flowtk.bandstructure_flow(workdir, scf_input, nscf_input)
 ```
 
-Now it is the right time to explain in more details the syntax and the API used in AbiPy
+Now it is time to explain in more detail the syntax and the API used in AbiPy
 to build a flow with dependencies.
-Let's try to build a `Flow` from scratch and use graphviz after each step to show what's happening.
+Let's build a `Flow` from scratch and use graphviz after each step to show what's happening.
 We start with an empty flow in the `hello_flow` directory:
 
 ```{code-cell} ipython3
@@ -389,7 +389,7 @@ hello_flow = flowtk.Flow(workdir="hello_flow")
 hello_flow.get_graphviz()
 ```
 
-Now we add a new `Task` by just passing an `AbinitInput` for SCF calculations:
+Now we add a new `Task` by simply passing an `AbinitInput` for an SCF calculation:
 
 ```{code-cell} ipython3
 hello_flow.register_scf_task(scf_input, append=True)
@@ -397,9 +397,9 @@ hello_flow.get_graphviz()
 ```
 
 Now the tricky part.
-We want to register a NSCF calculation that should depend on the `scf_task` in `w0_t0` via the DEN file.
-We can use the same API but we **must** specify the dependency between the two steps with the
-```{scf_task: "DEN"}``` dictionary:
+We want to register an NSCF calculation that depends on the `scf_task` in `w0_t0` via the DEN file.
+We can use the same API, but we **must** specify the dependency between the two steps with the
+`{scf_task: "DEN"}` dictionary:
 
 ```{code-cell} ipython3
 hello_flow.register_nscf_task(nscf_input, deps={hello_flow[0][0]: "DEN"}, append=True)
@@ -408,23 +408,23 @@ hello_flow.get_graphviz(engine="dot")
 
 Excellent, we managed to build our first AbiPy flow with inter-dependent tasks in just six lines
 of code (including the three calls to graphviz).
-Now let's assume we want to add a second Nscf calculation (`NscTask`) in which we change one of the input parameters
-e.g. the number of bands and that, for some reason, we really want to reuse the output WFK file
-produced by `w0_t1` to initialize the eigenvalue solver (obviously we still need a DEN file).
+Now let's assume we want to add a second NSCF calculation (`NscfTask`) in which we change one of the input parameters,
+e.g. the number of bands, and that, for some reason, we really want to reuse the output WFK file
+produced by `w0_t1` to initialize the eigenvalue solver (obviously, we still need a DEN file).
 How can we express this with AbiPy?
 
-Well, the syntax for the new deps, it's just:
+Well, the syntax for the new dependencies is just:
 
 ```python
 deps = {hello_flow[0][0]: "DEN", hello_flow[0][1]: "WFK"}
 ```
 
-but we should also change the input variable nband in the `nscf_input` before creating
-the new `NscTask` (remember that building a `Task` requires an `AbinitInput` object
+but we should also change the input variable `nband` in `nscf_input` before creating
+the new `NscfTask` (remember that building a `Task` requires an `AbinitInput` object
 and a list of dependencies, if any).
 
-Now there are two ways to increase nband: the **wrong** way and the **correct** one!
-Let's start from the *wrong* way because it's always useful to learn from our mistakes.
+Now, there are two ways to increase `nband`: the **wrong** way and the **correct** one!
+Let's start with the *wrong* way, because it's always useful to learn from our mistakes.
 Let's print some values just for the record:
 
 ```{code-cell} ipython3
@@ -445,11 +445,11 @@ print("nband in the first NscfTask:", t1.input["nband"])
 print("nband in the new input:", new_input["nband"])
 ```
 
-Tada! Thanks to the trick of our beloved FORTRAN guru, we ended up with *two* NscfTaks with the **same number** of bands (1000!).
+Tada! Thanks to the trick of our beloved FORTRAN guru, we ended up with *two* inputs with the **same number** of bands (1000!).
 Why?
 
-Because `AbinitInput` is implemented internally with a dictionary, python dictionaries are **mutable**
-and python variables are essentially references (they do not store data, actually they store the address of the data).
+Because `AbinitInput` is implemented internally with a dictionary, Python dictionaries are **mutable**,
+and Python variables are essentially references (they do not store the data, but the address of the data).
 
 ```{code-cell} ipython3
 a = {"foo": "bar"}
@@ -461,9 +461,9 @@ print("b dict:", b)
 print("c dict:", c)
 ```
 
-For a more technical explanation see [here](http://docs.python-guide.org/en/latest/writing/gotchas/)
+For a more technical explanation, see [here](http://docs.python-guide.org/en/latest/writing/gotchas/).
 
-To avoid this mistake, we need to *copy* the object before changing it
+To avoid this mistake, we need to *copy* the object before changing it:
 
 ```{code-cell} ipython3
 t1.input["nband"] = 8 # back to the old value
@@ -487,9 +487,9 @@ print([task.input["nband"] for task in hello_flow.iflat_tasks()])
 
 Note that AbiPy dependencies can also be fulfilled with external files that are already available
 when the flow is constructed.
-There is no change in the syntax we've used so far.
-It is just a matter of using the absolute path to the DEN file as keyword of the dictionary instead of a `Task`.
-Let's start with a new `Flow` to avoid confusion and create a `NscfTask` that will start from a pre-computed `DEN` file.
+The syntax is the same as before:
+it is just a matter of using the absolute path to the DEN file as key of the dictionary instead of a `Task`.
+Let's start with a new `Flow` to avoid confusion, and create an `NscfTask` that starts from a pre-computed `DEN` file:
 
 ```{code-cell} ipython3
 flow_with_file = flowtk.Flow(workdir="flow_with_file")
@@ -500,7 +500,7 @@ flow_with_file.register_nscf_task(nscf_input, deps={den_filepath: "DEN"})
 flow_with_file.get_graphviz(engine="dot")
 ```
 
-A call to `new_with_vars` inside a python `for` loop is all we need to add other two `NscfTasks`
+A call to `new_with_vars` inside a Python `for` loop is all we need to add two more `NscfTasks`
 with different `nband`, all starting from the same DEN file:
 
 ```{code-cell} ipython3
@@ -514,10 +514,10 @@ flow_with_file.get_graphviz()
 
 At this point, you may ask why we need `Works` since all the examples presented so far mainly involve the `Flow` object.
 
-The answer is that `Works` allow us to encapsulate reusable logic in magic boxes that can perform lot of useful work.
+The answer is that `Works` allow us to encapsulate reusable logic in magic boxes that can perform a lot of useful work.
 These boxes can then be connected together to generate more complicated workflows.
-We have already encountered the `BandStructureWork` at the beginning of this lesson
-and now it is time to introduce another fancy animal of the AbiPy zoo, the `PhononWork`.
+We have already encountered the `BandStructureWork` at the beginning of this lesson,
+and now it is time to introduce another fancy animal of the AbiPy zoo: the `PhononWork`.
 
 ```{code-cell} ipython3
 abilab.print_doc(flowtk.PhononWork)
@@ -527,9 +527,9 @@ abilab.print_doc(flowtk.PhononWork)
 abilab.print_doc(flowtk.PhononWork.from_scf_task)
 ```
 
-The docstring seems to suggest that if I have a `scf_task`, I can construct a magic box
-to compute phonons but wait, I already have such a task!
-Actually I already have another magic box to compute the electronic band structure
+The docstring suggests that, given an `scf_task`, I can construct a magic box
+to compute phonons. But wait, I already have such a task!
+Actually, I already have another magic box to compute the electronic band structure,
 and it would be really great if I could compute the electronic and vibrational properties in a single flow.
 Let's connect the two boxes together with:
 
@@ -549,12 +549,12 @@ ph_flow.register_work(ph_work)
 ph_flow.get_graphviz()
 ```
 
-Now it turns out that the `PhononWork` merges all the DDB files produced by its `PhononTask`
-and put this final output file in its outdir.
-So from the AbiPy perspective, a `PhononWork` is not that different from a `ScfTask` that produces e.g. a DEN file.
-This means that we can connect other magic boxes to our `PhononWork` e.g. a set of `EPhTasks` that
+Now, it turns out that the `PhononWork` merges all the DDB files produced by its `PhononTasks`
+and puts the final output file in its outdir.
+So, from the AbiPy perspective, a `PhononWork` is not that different from an `ScfTask` that produces e.g. a DEN file.
+This means that we can connect other magic boxes to our `PhononWork`, e.g. a set of `EPhTasks` that
 require a DDB file and another input file with the DFPT potentials
-(DVDB, merged by `PhononWork` similarly to what is done for the DDB).
+(the DVDB, which `PhononWork` merges similarly to what is done for the DDB).
 
 ```{code-cell} ipython3
 # EPH tasks require 3 input files (WFK, DDB, DVDB)
@@ -566,10 +566,10 @@ for i, ecut in enumerate([2, 3, 4]):
 ph_flow.get_graphviz()
 ```
 
-This explains why in AbiPy we have this classification in terms of `Tasks/Works/Flows`.
-As a consequence, we can implement highly specialized `Works/Tasks` to
+This explains why AbiPy uses this classification in terms of `Tasks/Works/Flows`:
+we can implement highly specialized `Works/Tasks` to
 solve specific problems and then connect all these nodes together.
-Just 11 lines of code to get electrons + phonons + (electrons + phononons)!
+Just 11 lines of code to get electrons + phonons + (electrons + phonons)!
 
 But wait, did you see the gorilla?
 
@@ -578,36 +578,36 @@ from IPython.display import YouTubeVideo
 YouTubeVideo("vJG698U2Mvo")
 ```
 
-There's indeed a bug in the last step. The connections among the nodes are OK but we made
+There's indeed a bug in the last step. The connections among the nodes are OK, but we made
 a mistake while creating the `EPhTasks` with:
 
 ```python
 ph_flow.register_eph_task(nscf_input.new_with_vars(ecut=ecut), ...)
 ```
 
-because we passed an input for a standard band structure calculation to something that is supposed to deal with E-PH interaction.
-This essentially to stress that the AbiPy `Flow`, *by design*, does not try to validate your input to make sure
+because we passed an input for a standard band structure calculation to something that is supposed to deal with the E-PH interaction.
+This example stresses that the AbiPy `Flow`, *by design*, does not try to validate your input to make sure
 it is consistent with the workflow logic.
-This is done on purpose for two reasons:
+This is done on purpose, for two reasons:
 
-- Expert users should be able to customize/tune their input files and validating all the possible cases in python is not trivial
-- Only Abinit (and God) knows at run-time if your input file makes sense and we can't reimplement the same logic in python
+- Expert users should be able to customize/tune their input files, and validating all the possible cases in Python is not trivial.
+- Only Abinit (and God) knows at run time whether your input file makes sense, and we can't reimplement the same logic in Python.
 
-At this point, you may wonder why we have so many different Abipy Tasks (`ScfTask`, `NscfTask`, `RelaxTask`, `PhononTask`, `EPHTask` ...)
-if there's no input validation when we create them...
+At this point, you may wonder why we have so many different AbiPy Tasks (`ScfTask`, `NscfTask`, `RelaxTask`, `PhononTask`, `EPHTask`, ...)
+if there's no input validation when we create them.
 
-The answer is that we need all these subclasses to implement extra logic that is specific to that particular calculation. Abipy, indeed, is not just submitting jobs.
-It also monitors the evolution of the calculation
-and execute pre-defined code to fix run-time problems (and these problems are calculation specific).
+The answer is that we need all these subclasses to implement extra logic that is specific to each particular calculation. AbiPy, indeed, does not just submit jobs:
+it also monitors the evolution of the calculation
+and executes predefined code to fix run-time problems (and these problems are calculation-specific).
 An example will help clarify this point.
 
-Restarting jobs is one of the typical problem encountered in ab-initio calculations
-and restarting a `RelaxTask` requires a different logic from e.g. restarting a `ScfTask`.
-In the case of a `ScfTask` we only need to use the output WFK (DEN) of the previous execution
-as input of the restarted job while a `RelaxTask` must also reuse the (unconverged) final structure
+Restarting jobs is one of the typical problems encountered in ab-initio calculations,
+and restarting a `RelaxTask` requires a different logic from e.g. restarting an `ScfTask`.
+For an `ScfTask`, we only need to use the output WFK (DEN) of the previous execution
+as input of the restarted job, while a `RelaxTask` must also reuse the (unconverged) final structure
 of the previous job to be effective and avoid a possibly infinite loop.
-In a nutshell, when you are using a particular `Task/Work` class you are telling AbiPy how to handle possible
-problems at run-time and you are also specifying the actions that should be performed
+In a nutshell, when you use a particular `Task/Work` class, you are telling AbiPy how to handle possible
+problems at run time, and you are also specifying the actions that should be performed
 at the beginning/end of the execution.
 
 +++
@@ -620,10 +620,10 @@ Executing
 flow.make_scheduler().start()
 ```
 
-inside a jupyter notebook is handy if you are dealing with small calculations that require few seconds or minutes.
-This approach, however, is unpractical when you have large flows or big calculations requiring hours or days, even on massively parallel machines.
-In this case, indeed, one would like to run the scheduler in a separate process in the background so that the scheduler
-is not killed when the jupyter server is closed.
+inside a Jupyter notebook is handy if you are dealing with small calculations that take a few seconds or minutes.
+This approach, however, is impractical for large flows or big calculations requiring hours or days, even on massively parallel machines.
+In this case, one would like to run the scheduler in a separate process in the background, so that the scheduler
+is not killed when the Jupyter server is closed.
 
 To start the scheduler in a separate process, use the `abirun.py` script.
 The syntax is:
@@ -631,37 +631,37 @@ The syntax is:
     abirun.py flow_workdir COMMAND
 
 where `flow_workdir` is the directory containing the `Flow`
-(the directory with the pickle file) and `command` selects the operation to be performed.
+(the directory with the pickle file) and `COMMAND` selects the operation to be performed.
 
 Typical examples:
 
     abirun.py /tmp/hello_bands status
 
-checks the status of the `Flow` and print the results to screen while
+checks the status of the `Flow` and prints the results to screen, while
 
     nohup abirun.py /tmp/hello_bands scheduler > sched.log 2> sched.err &
 
-starts the scheduler in the background redirecting the standard output to file `sched.log`
+starts the scheduler in the background, redirecting the standard output to the `sched.log` file.
 
 ```{important}
-`nohup` is a standard Unix tool. The command make the scheduler immune
-to hangups so that you can close the shell session without killing the scheduler.
+`nohup` is a standard Unix tool. The command makes the scheduler immune
+to hangups, so that you can close the shell session without killing the scheduler.
 ```
 
-This brings us to the last and most crucial question.
-How do we configure AbiPy to run Abinit workflows on different architectures ranging from
+This brings us to the last and most crucial question:
+how do we configure AbiPy to run Abinit workflows on different architectures, ranging from
 standard laptops to high-performance supercomputers?
 
-Unfortunately this notebook is already quite long and these details are best covered in a technical documentation.
-What should be stressed here is that the behaviour can be customized with two Yaml files.
+Unfortunately, this notebook is already quite long, and these details are best covered in the technical documentation.
+What should be stressed here is that the behaviour can be customized with two YAML files.
 All the information related to your environment (Abinit build, modules, resource managers, shell environment)
-are read from the `manager.yml` configuration file, that is usually located in the directory `~/.abinit/abipy/`
-The options for the python scheduler responsible for job submission are given in `scheduler.yml`.
+is read from the `manager.yml` configuration file, which is usually located in the `~/.abinit/abipy/` directory.
+The options for the Python scheduler responsible for job submission are given in `scheduler.yml`.
 
 For a more complete description of these configuration options,
 please consult the [TaskManager documentation](https://abinit.github.io/abipy/workflows/taskmanager.html).
 A list of configuration files for different machines and clusters is available
-[here](https://abinit.github.io/abipy/workflows/manager_examples.html)
+[here](https://abinit.github.io/abipy/workflows/manager_examples.html),
 while the [Flows HOWTO](http://abinit.github.io/abipy/flows_howto.html) gathers answers to frequently asked questions.
 
 Last but not least, check out our [gallery of AbiPy Flows](https://abinit.github.io/abipy/flow_gallery/index.html) for inspiration.

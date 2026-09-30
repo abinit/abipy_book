@@ -17,7 +17,7 @@ kernelspec:
   <h1 class="display-3">Third (basic) lesson with Abinit and AbiPy</h1>
   <p class="lead">Crystalline silicon.</p>
   <hr class="my-4">
-  <p>This lesson aims at showing you how to get the following physical properties, for an insulator:</p>
+  <p>This lesson shows how to compute the following physical properties of an insulator:</p>
   <ul>
     <li>the total energy</li>
     <li>the lattice parameter</li>
@@ -28,16 +28,13 @@ kernelspec:
   </p>
 </div>
 
-This tutorial is a complement to the standard [ABINIT tutorial on silicon](https://docs.abinit.org/tutorial/base3).
-Here, powerful flow and visualisation procedures will be demonstrated.
-Still, some basic understanding of the stand-alone working of ABINIT is a prerequisite.
-Also, in order to fully benefit from this Abipy tutorial, other more basic Abipy tutorials should have been followed,
-as suggested in the [abitutorials index page](../intro).
+This tutorial complements the standard [ABINIT tutorial on silicon](https://docs.abinit.org/tutorial/base3).
+Here, we demonstrate powerful flow and visualization procedures.
+Still, some basic understanding of how ABINIT works as a stand-alone code is a prerequisite.
+Also, to fully benefit from this AbiPy tutorial, you should have followed the more basic AbiPy tutorials,
+as suggested in the [introduction page](../intro).
 
 +++
-
-```{include} ../snippets/plotly_matplotlib_note.md
-```
 
 ```{include} ../snippets/manager_note.md
 ```
@@ -66,10 +63,10 @@ abilab.enable_notebook() # This line tells AbiPy we are running inside a noteboo
 
 ## Computing the total energy of silicon at fixed number of k-points
 
-Our goal is to study the convergence of the total energy of silicon versus the number of **k**-points.
+Our goal is to study the convergence of the total energy of silicon with respect to the number of $k$-points.
 So we start by defining a function that generates a `Flow` of SCF calculations by looping
 over a predefined list of {{ngkpt}} values.
-The crystalline structure is initialized from a CIF file while other parameters
+The crystalline structure is initialized from a CIF file, while other parameters
 such as the cutoff energy {{ecut}} are fixed:
 
 ```{code-cell}
@@ -97,14 +94,14 @@ flow[0][0].input
 
 +++
 
-and these are the {{ngkpt}} divisions of the k-mesh for the four different calculations:
+and these are the {{ngkpt}} divisions of the $k$-mesh for the four different calculations:
 
 ```{code-cell}
 for task in flow.iflat_tasks():
     print(task.pos_str, "uses ngkpt:", task.input["ngkpt"])
 ```
 
-but we can achieve the same goal with:
+We can achieve the same goal more concisely with:
 
 ```{code-cell}
 flow.get_vars_dataframe("ngkpt", "ecut")
@@ -125,8 +122,8 @@ inside the terminal.
 
 ## Analysis of the results
 
-We could use the API provided by the flow to extract the total energies from the GSR files.
-Something like:
+We could use the API provided by the flow to extract the total energies from the GSR files,
+with something like:
 
 ```python
 nkpt_list, ene_list = [], []
@@ -142,7 +139,7 @@ plt.plot(nkpt_list, ene_list, marker="o");
 
 +++
 
-but it is much easier to create a `GsrRobot` that will do the work for us:
+but it is much easier to create a `GsrRobot` that does the work for us:
 
 ```{code-cell}
 ---
@@ -156,17 +153,17 @@ robot_enekpt = abilab.GsrRobot.from_dir("flow_base3_ngkpt")
 robot_enekpt
 ```
 
-In the next lines, we are going to generate a pandas `Dataframe` with
-the most important results so that we can show how to use the pandas API to analyze the data:
+Next, we generate a pandas `DataFrame` with
+the most important results, and show how to use the pandas API to analyze the data:
 
 ```{code-cell}
 ene_table = robot_enekpt.get_dataframe()
 ene_table.keys()
 ```
 
-The dataframe contains several columns but
-we are mainly interested in the number of k-points {{nkpt}} and in the `energy` (given in eV).
-Let's massage a bit the data to facilitate the post-processing:
+The dataframe contains several columns, but
+we are mainly interested in the number of $k$-points {{nkpt}} and in the `energy` (given in eV).
+Let's massage the data a bit to facilitate the post-processing:
 
 ```{code-cell}
 # We are gonna plot f(nkpt) so let's sort the rows first.
@@ -195,8 +192,8 @@ So, our converged value for the total energy (at fixed `acell` and `ecut`) is -8
 
 +++
 
-Now that we have learned a bit how to use pandas `Dataframes`, we can finally reveal
-that the AbiPy robots *already* provide methods to perform this kind of convergence studies
+Now that we have learned a bit about pandas `DataFrames`, we can finally reveal
+that the AbiPy robots *already* provide methods to perform this kind of convergence study,
 so that we do not need to manipulate pandas dataframes explicitly.
 For example, we can perform the same analysis with a single line:
 
@@ -204,9 +201,9 @@ For example, we can perform the same analysis with a single line:
 robot_enekpt.plot_gsr_convergence(sortby="nkpt");
 ```
 
-We can also pass a function that will be called by the robot to compute the values along the x-axis
+We can also pass a function that the robot calls to compute the values along the x-axis
 and sort the results.
-The docstring of the function is used as label of the x-axis:
+The docstring of the function is used as the label of the x-axis:
 
 ```{code-cell}
 def inv_nkpt(abifile):
@@ -224,9 +221,9 @@ robot_enekpt.plot_gsr_convergence(sortby=inv_nkpt);
 
 +++
 
-At this point, the original Abinit tutorial proceeds with a convergence study for the optimized
-lattice parameters as function of the k-point sampling.
-In AbiPy, we only need to build different relaxation tasks with a slightly different input
+At this point, the original Abinit tutorial proceeds with a convergence study of the optimized
+lattice parameters as a function of the $k$-point sampling.
+In AbiPy, we only need to build relaxation tasks with slightly different inputs
 in which only {{ngkpt}} is changed.
 
 ```{code-cell}
@@ -240,13 +237,13 @@ relax_flow.get_graphviz()
 ```
 
 ```{important}
-If you want to run the flow from the shell, open lesson_base3.py and change the main function
-so that it calls build_relax_flow instead of build_ngkpt_flow.
+If you want to run the flow from the shell, open *lesson_base3.py* and change the main function
+so that it calls `build_relax_flow` instead of `build_ngkpt_flow`.
 ```
 
 +++
 
-This is our first structural relaxation with AbiPy and this gives us the opportunity to introduce the `HIST.nc` file.
+This is our first structural relaxation with AbiPy, and it gives us the opportunity to introduce the `HIST.nc` file.
 This file stores the history of the relaxation
 (energies, forces, stresses, lattice parameters and atomic positions at the different relaxation steps).
 
@@ -281,7 +278,7 @@ Let's select some of them with:
 hist_table[["alpha", "a", "final_energy", "final_pressure", "num_steps"]]
 ```
 
-and print the evolution of important physical properties extracted from the two files:
+and plot the evolution of important physical properties extracted from the two files:
 
 ```{code-cell}
 hist_robot.gridplot(what_list=["energy", "abc", "pressure", "forces"]);
@@ -293,10 +290,10 @@ We can also compare the two structural relaxations with:
 hist_robot.combiplot();
 ```
 
-Unfortunately the `HIST.nc` file does not have enough metadata.
-In particular we would like to have information about the k-point sampling
-so that we can analyze the convergence of the optimized lattice parameters wrt {{nkpt}}.
-Fortunately the `GSR.nc` has all the information we need, and it is just a matter
+Unfortunately, the `HIST.nc` file does not have enough metadata.
+In particular, we would like to have information about the $k$-point sampling
+so that we can analyze the convergence of the optimized lattice parameters with respect to {{nkpt}}.
+Fortunately, the `GSR.nc` file has all the information we need, and it is just a matter
 of replacing the `HistRobot` with a `GsrRobot`:
 
 ```{code-cell}
@@ -309,7 +306,7 @@ with abilab.GsrRobot.from_dir("flow_base3_relax") as relkpt_robot:
 relax_table[["energy", "a", "pressure", "max_force", "pressure"]]
 ```
 
-Plotting the energy, the lattice parameter `a` in Bohr and the pressure in `GPa` vs `nkpt` is really a piece of cake!
+Plotting the energy, the lattice parameter `a` and the pressure (in GPa) vs `nkpt` is really a piece of cake!
 
 ```{code-cell}
 relax_table.plot(x="nkpt", y=["energy", "a", "pressure"], subplots=True);
@@ -325,24 +322,24 @@ relkpt_robot.plot_gsr_convergence(sortby="nkpt");
 relkpt_robot.plot_lattice_convergence(what_list=["a"], sortby="nkpt");
 ```
 
-We fix the {{acell}} parameters to the theoretical value of 3*10.216,
-and we fix also the grid of k points
-(the 4x4x4 FCC grid, equivalent to a 8x8x8 Monkhorst-pack grid).
+In what follows, we fix the {{acell}} parameters to the theoretical value of 3*10.216,
+as well as the grid of $k$-points
+(the 4x4x4 FCC grid, equivalent to an 8x8x8 Monkhorst-Pack grid).
 We will ask for 8 bands (4 valence and 4 conduction).
 
 +++
 
 ## Computing the band structure
 
-A band structure can be computed by solving the Kohn-Sham equation for several k points,
+A band structure can be computed by solving the Kohn-Sham equation for several $k$-points
 along the high-symmetry lines of the Brillouin zone.
 The potential that enters the Kohn-Sham equation must be derived from a previous self-consistent calculation,
-and will not vary during the scan of different k-point lines.
+and does not vary during the scan of the different $k$-point lines.
 
-This is our first Flow with dependencies in the sense that the band structure calculation **must be
-connected **to a previous SCF run.
-Fortunately AbiPy provides a factory function to generate this kind of workflow.
-We only need to focus on the definition of the two inputs:
+This is our first Flow with dependencies, in the sense that the band structure calculation **must be
+connected** to a previous SCF run.
+Fortunately, AbiPy provides a factory function to generate this kind of workflow,
+so we only need to focus on the definition of the two inputs:
 
 ```{code-cell}
 from lesson_base3 import build_ebands_flow
@@ -350,7 +347,7 @@ abilab.print_source(build_ebands_flow)
 ```
 
 The `Flow` consists of a single `Work` with two `Tasks`
-(`ScfTask` with a **k**-mesh and a `NscfTask` performed on the **k**-path).
+(an `ScfTask` on a $k$-mesh and an `NscfTask` on the $k$-path).
 
 ```{code-cell}
 ebands_flow = build_ebands_flow(options=None)
@@ -377,14 +374,14 @@ and plot it with:
 ebands_kpath.plotly(with_gaps=True);
 ```
 
-Visual inspection reveals that the width of the valence band is ~11.8 eV,
+Visual inspection reveals that the width of the valence band is ~11.8 eV and that
 the lowest unoccupied state at X is ~0.5 eV higher than the top of the valence band at $\Gamma$.
-Bulk silicon is described as an indirect band gap material (this is correct), with a band-gap
+Bulk silicon is described as an indirect band gap material (this is correct), with a band gap
 of about 0.5 eV (this is quantitatively quite wrong:
-the experimental value is 1.17 eV at 25 degree Celsius, the famous **DFT band-gap problem**).
+the experimental value is 1.17 eV at 25 degrees Celsius, the famous **DFT band-gap problem**).
 The minimum of the conduction band is slightly displaced with respect to X.
 
-Unfortunately, it seems that AbiPy does not agree with us:
+Unfortunately, AbiPy does not seem to agree with us:
 
 ```{code-cell}
 print(ebands_kpath)
@@ -392,9 +389,9 @@ print(ebands_kpath)
 
 The reason is that the Fermi energy in `ebands_kpath` is not completely consistent with the band structure.
 The Fermi energy, indeed, has been taken from the previous GS-SCF calculation performed
-on a shifted k-mesh, the $\Gamma$ point was not included and therefore the Fermi energy is underestimated.
+on a shifted $k$-mesh that does not include the $\Gamma$ point, and is therefore underestimated.
 
-To fix this problem we have to change manually the Fermi energy, and set it to the maximum of the valence bands:
+To fix this problem, we have to manually set the Fermi energy to the maximum of the valence bands:
 
 ```{code-cell}
 ebands_kpath.set_fermie_to_vbm()
@@ -412,8 +409,8 @@ ebands_kpath.plot(with_gaps=True);
 #ebands_kpath.kpoints.plotly();
 ```
 
-The `GSR` file produced by the first task contains energies on a homogeneous k-mesh.
-We can therefore compute the DOS by invoking the `get_edos` method:
+The `GSR` file produced by the first task contains energies on a homogeneous $k$-mesh,
+so we can compute the DOS by invoking the `get_edos` method:
 
 ```{code-cell}
 with abilab.abiopen("flow_base3_ebands/w0/t0/outdata/out_GSR.nc") as gsr:
@@ -432,7 +429,7 @@ where the zero of the energy axis is set to the Fermi level $\epsilon_F$ obtaine
 
 $$\int_{-\infty}^{\epsilon_F} g(\epsilon)\,d\epsilon = N$$
 
-for $\epsilon_F$ with $N$ the number of electrons per unit cell.
+for $\epsilon_F$, with $N$ the number of electrons per unit cell.
 Note that the DOS is highly sensitive to the sampling of the IBZ and to the value of the broadening,
 especially in metallic systems.
 
@@ -447,7 +444,7 @@ ebands_kpath.plotly_with_edos(edos);
 ```
 
 It is important to stress that each panel in the above figure is aligned with respect
-to its own Fermi energy and these values are not necessarily equal:
+to its own Fermi energy, and these values are not necessarily equal:
 
 ```{code-cell}
 print(ebands_kpath.fermie, edos.fermie)
@@ -460,8 +457,8 @@ ebands_kpath.plotly_with_edos(edos, e0=0);
 ```
 
 This figure shows that the bands and the DOS are not perfectly aligned.
-More specifically, we would expect the DOS to be zero at the bottom/top of the conduction.
-This problems is essentially due to the use of a relatively large gaussian broadening.
+More specifically, we would expect the DOS to go to zero at the top of the valence band and at the bottom of the conduction band.
+This problem is essentially due to the relatively large Gaussian broadening.
 One should therefore compute the DOS with a much denser IBZ mesh and a much smaller broadening
 to solve this *alignment issue*.
 

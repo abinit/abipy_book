@@ -21,8 +21,8 @@ As usual, one can use:
 
     abiopen.py FILE_ABIWAN.nc
 
-with the `--expose` or the `--print` option for a command line interface
-and `--notebook` to generate a jupyter notebook.
+with the `--expose` or `--print` option for a command-line interface,
+and with `--notebook` to generate a Jupyter notebook.
 
 ## Table of Contents
 
@@ -63,21 +63,21 @@ wout = abilab.abiopen(filepath)
 print(wout)
 ```
 
-To plot the convergence of the wannier cycle use:
+To plot the convergence of the Wannier cycle, use:
 
 ```{code-cell} ipython3
 wout.plot();
 ```
 
-To plot the evolution of the Wannier centers and spread, use:
+To plot the evolution of the Wannier centers and spreads, use:
 
 ```{code-cell} ipython3
 wout.plot_centers_spread();
 ```
 
 <div class="alert alert-info" role="alert">
-Alternatively one can use `abiopen.py FILE_MDF.nc -nb` to generate a jupyter notebook directly from the terminal
-or `abiopen.py FILE_MDF.nc -e -sns` to produce matplotlib plots automatically.
+Alternatively, one can use `abiopen.py FILE.wout -nb` to generate a Jupyter notebook directly from the terminal,
+or `abiopen.py FILE.wout -e -sns` to produce matplotlib plots automatically.
 </div>
 
 +++
@@ -85,9 +85,9 @@ or `abiopen.py FILE_MDF.nc -e -sns` to produce matplotlib plots automatically.
 (using-abiwan-nc-to-interpolate-band-energies)=
 ## Using ABIWAN.nc to interpolate band energies
 
-`ABIWAN.nc` is a netcdf file produced by Abinit after having called *wannier90* in library mode.
-The file contains the unitary transformation and other important parameters associated to the calculations.
-This file can be read by AbiPy and can be used to interpolate band energies with the wannier method.
+`ABIWAN.nc` is a netcdf file produced by Abinit after calling *wannier90* in library mode.
+The file contains the unitary transformation and other important parameters of the calculation.
+AbiPy can read this file and use it to interpolate band energies with the Wannier method.
 
 As usual, use `abiopen` to open the file:
 
@@ -103,7 +103,7 @@ To plot the matrix elements of the KS Hamiltonian in real space in the Wannier g
 abiwan.hwan.plot(title="Matrix elements in real space");
 ```
 
-To interpolate the KS energies along a high-symmetry k-path and construct a new `ElectronBands` object, use:
+To interpolate the KS energies along a high-symmetry $k$-path and construct a new `ElectronBands` object, use:
 
 ```{code-cell} ipython3
 ebands_kpath = abiwan.interpolate_ebands()
@@ -113,13 +113,13 @@ ebands_kpath = abiwan.interpolate_ebands()
 ebands_kpath.plot(title="Wannier-interpolated");
 ```
 
-If you need an IBZ sampling instead of a k-path, for instance a 36x36x36 k-mesh, use:
+If you need an IBZ sampling instead of a $k$-path, for instance a 36x36x36 $k$-mesh, use:
 
 ```{code-cell} ipython3
 ebands_kmesh = abiwan.interpolate_ebands(ngkpt=(36, 36, 36))
 ```
 
-As we are dealing with AbiPy objects, we can easily reuse the AbiPy API to plot bands with DOS:
+Since we are dealing with AbiPy objects, we can easily reuse the AbiPy API to plot the bands together with the DOS:
 
 ```{code-cell} ipython3
 ebands_kpath.plot_with_edos(ebands_kmesh.get_edos(),
@@ -127,12 +127,12 @@ ebands_kpath.plot_with_edos(ebands_kmesh.get_edos(),
 ```
 
 We can also compare an ab-initio band structure with the Wannier-interpolated results.
-This is useful to understand if our Wannier functions are well localized, and if the
-k-mesh used with wannier90 is dense enough.
+This is useful to understand whether our Wannier functions are well localized and whether the
+$k$-mesh used with wannier90 is dense enough.
 
 In this case, it is just a matter of passing the path to the netcdf file
 containing the ab-initio band structure to the `plot_with_ebands` method of `abiwan`.
-The function interpolates the band energies using the k-path found in the netcdf file
+The method interpolates the band energies on the $k$-path found in the netcdf file
 and plots the two band structures on the same figure:
 
 ```{code-cell} ipython3
@@ -141,8 +141,8 @@ gsr_path = abidata.ref_file("si_nscf_GSR.nc")
 abiwan.plot_with_ebands(gsr_path);
 ```
 
-As we can see, the interpolated band structures is not completely on top of the ab-initio results.
-To improve the agreement we should try to reduced the spread and/or increase
-the density of the k-mesh used in the wannierization procedure.
+As we can see, the interpolated band structure does not lie completely on top of the ab-initio results.
+To improve the agreement, we should try to reduce the spread and/or increase
+the density of the $k$-mesh used in the wannierization procedure.
 
 +++

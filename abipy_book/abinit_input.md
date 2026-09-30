@@ -13,18 +13,18 @@ kernelspec:
 
 # AbinitInput object
 
-The creation of the Abinit input file is one of the most repetitive and error-prone operations
+Creating Abinit input files is one of the most repetitive and error-prone operations
 one has to perform before running calculations.
-To facilitate the creation of the input files, AbiPy provides the `AbinitInput` object,
+To simplify this task, AbiPy provides the `AbinitInput` object,
 a dict-like object that stores the Abinit variables and provides easy-to-use methods to automate the definition of other variables.
 
 This notebook discusses how to create an `AbinitInput` and how to define the parameters of the calculation.
-In the last part, we introduce the `MultiDataset` object that is mainly designed for the generation
-of multiple inputs sharing the same structure and the same list of pseudopotentials.
+In the last part, we introduce the `MultiDataset` object, which is mainly designed to generate
+multiple inputs sharing the same structure and the same list of pseudopotentials.
 In another [notebook](./input_factories), we briefly discuss how to use factory functions
-to generate automatically input objects for typical calculations.
+to automatically generate input objects for typical calculations.
 
-See e.g the {{ AbinitInput }}
+See also the {{ AbinitInput }}
 
 ```{include} snippets/plotly_matplotlib_note.md
 ```
@@ -63,15 +63,15 @@ inp = AbinitInput(structure=abidata.cif_file("si.cif"),
                   pseudos="14si.pspnc", pseudo_dir=abidata.pseudo_dir)
 ```
 
-`print(inp)` returns a string with our input.
-In this case, the input is almost empty since only the structure and the pseudos have been specified.
+`print(inp)` prints our input.
+At this point, the input is almost empty since only the structure and the pseudos have been specified.
 
 ```{code-cell}
 print(inp)
 ```
 
-Inside the jupyter notebook, it is possible to visualize the input in HTML format
-with links pointing to the official ABINIT documentation:
+Inside a Jupyter notebook, the input can be displayed in HTML format
+with links to the official ABINIT documentation:
 
 ```{code-cell}
 inp
@@ -90,15 +90,15 @@ for pseudo in inp.pseudos:
     print(pseudo)
 ```
 
-that have been constructed by parsing the pseudopotential files passed to `AbinitInput`.
+built by parsing the pseudopotential files passed to `AbinitInput`.
 
-Use `set_vars` to set the value of several variables with a single call:
+Use `set_vars` to set several variables with a single call:
 
 ```{code-cell}
 inp.set_vars(ecut=8, paral_kgb=0)
 ```
 
-`AbinitInput` is a dict-like object, hence one can test for the presence of a variable in the input:
+Since `AbinitInput` is a dict-like object, we can test whether a variable is present in the input:
 
 ```{code-cell}
 "ecut" in inp
@@ -110,13 +110,13 @@ To list all the variables that have been defined, use:
 list(inp.keys())
 ```
 
-To access the value of a particular variable use the syntax:
+To access the value of a particular variable, use:
 
 ```{code-cell}
 inp["ecut"]
 ```
 
-To iterate over keywords and values:
+To iterate over names and values:
 
 ```{code-cell}
 for varname, varvalue in inp.items():
@@ -141,7 +141,7 @@ inp
 
 +++
 
-If you mistype the name of the variable, `AbinitInput` raises an Exception:
+If you mistype the name of a variable, `AbinitInput` raises an exception:
 
 ```{code-cell}
 try:
@@ -153,9 +153,9 @@ except Exception as exc:
 +++
 
 ```{warning}
-The AbinitInput is a mutable object so changing it will aftect all the references to the object.
+`AbinitInput` is a mutable object, so changing it will affect all the references to the object.
 See [this page](http://docs.python-guide.org/en/latest/writing/gotchas/) for further info.
-````
+```
 
 ```{code-cell}
 a = {"foo": "bar"}
@@ -170,7 +170,7 @@ print("c dict:", c)
 
 +++
 
-The `set_structure` method sets the value of the ABINIT variables:
+The `set_structure` method sets the values of the ABINIT variables:
 
 * {{ acell }}
 * {{ rprim }}
@@ -180,23 +180,23 @@ The `set_structure` method sets the value of the ABINIT variables:
 * {{ znucl }}
 * {{ xred }}
 
-It is always a good idea to set the structure immediately after the creation of an `AbinitInput`
-because several methods use this piece of information to facilitate the specification of other variables.
+It is always a good idea to set the structure immediately after creating an `AbinitInput`,
+because several methods use this information to facilitate the specification of other variables.
 For instance, the `set_kpath` method uses the structure to generate the high-symmetry $k$-path
 for band structure calculations.
 
 ```{warning}
-{{ typat }} must be consistent with the list of pseudopotentials passed to `AbinitInput`
+{{ typat }} must be consistent with the list of pseudopotentials passed to `AbinitInput`.
 ```
 
 +++
 
 ### Creating a structure from Abinit variables
 
-It is possible to create a structure in different ways.
+A structure can be created in different ways.
 
-The most explicit (and verbose) approach consists in passing a dictionary with ABINIT variables
-provided one uses python lists (or lists or lists) when ABINIT expects a 1D (or a multidimensional array):
+The most explicit (and verbose) approach consists in passing a dictionary with ABINIT variables,
+using Python lists (or lists of lists) when ABINIT expects a 1D (or a multidimensional) array:
 
 ```{code-cell}
 si_struct = dict(
@@ -217,7 +217,7 @@ print(si_struct)
 
 +++
 
-If you already have a string with the Abinit variable, you can use the `from_abistring` class method:
+If you already have a string with the Abinit variables, you can use the `from_abistring` class method:
 
 ```{code-cell}
 lif_struct = abilab.Structure.from_abistring("""
@@ -236,10 +236,10 @@ xred       0.0000000000    0.0000000000    0.0000000000
 print(lif_struct)
 ```
 
-This approach requires less input, yet we still need to specify {{ntypat}}, {{znucl}} and {{typat}}.
+This approach requires less typing, yet we still need to specify {{ntypat}}, {{znucl}} and {{typat}}.
 Fortunately, *from_abistring* supports another Abinit-specific format in which the
-fractional coordinates and the element symbol are specified via the *xred_symbols* variable.
-In this case {{ntypat}}, {{znucl}} and {{typat}} do not need to be specified as they are automatically
+fractional coordinates and the element symbols are specified via the *xred_symbols* variable.
+In this case, {{ntypat}}, {{znucl}} and {{typat}} do not need to be specified, as they are automatically
 computed from *xred_symbols*:
 
 ```{code-cell}
@@ -270,7 +270,7 @@ From a CIF file:
 inp.set_structure(abidata.cif_file("si.cif"))
 ```
 
-From one of the Netcdf files produced by ABINIT:
+From one of the netcdf files produced by ABINIT:
 
 ```{code-cell}
 inp.set_structure(abidata.ref_file("si_scf_GSR.nc"))
@@ -289,19 +289,19 @@ Supported formats include:
 
 +++
 
-### From the Materials Project database:
+### From the Materials Project database
 
 ```{code-cell}
 # https://www.materialsproject.org/materials/mp-149/
 inp.set_structure(abilab.Structure.from_mpid("mp-149"))
 ```
 
-Remember to set the `PMG_MAPI_KEY` in ~/.pmgrc.yaml as described
-[here](https://pymatgen.org/usage.html#setting-the-pmg_mapi_key-in-the-config-file)
+Remember to set `PMG_MAPI_KEY` in ~/.pmgrc.yaml as described
+[here](https://pymatgen.org/usage.html#setting-the-pmg_mapi_key-in-the-config-file).
 
 +++
 
-Note that you can avoid the call to `set_structure` if the `structure` argument is passed to `AbiniInput`:
+Note that you can skip the call to `set_structure` if the `structure` argument is passed to `AbinitInput`:
 
 ```{code-cell}
 AbinitInput(structure=abidata.cif_file("si.cif"), pseudos=abidata.pseudos("14si.pspnc"))
@@ -311,15 +311,15 @@ AbinitInput(structure=abidata.cif_file("si.cif"), pseudos=abidata.pseudos("14si.
 
 ## Brillouin zone sampling
 
-There are two different types of sampling of the BZ: homogeneous and high-symmetry k-path.
-The later is mainly used for band structure calculations and requires the specification of:
+There are two types of BZ sampling: homogeneous meshes and high-symmetry $k$-paths.
+The latter is mainly used for band structure calculations and requires the specification of:
 
 * {{kptopt}}
 * {{kptbounds}}
 * {{ndivsm}}
 
-whereas the homogeneous sampling is needed for all the calculations in which
-one has to compute integrals in the Brillouin zone e.g. total energy, DOS, etc.
+whereas the homogeneous sampling is needed for all calculations that
+require integrals over the Brillouin zone, e.g. total energy, DOS, etc.
 The $k$-mesh is usually specified via:
 
 * {{ngkpt}}
@@ -362,13 +362,13 @@ inp.set_kpath(ndivsm=10)
 
 ## Utilities
 
-Once the structure has been defined, one can compute the number of valence electrons with:
+Once the structure has been defined, the number of valence electrons can be computed with:
 
 ```{code-cell}
 print("The number of valence electrons is: ", inp.num_valence_electrons)
 ```
 
-If we need to change a particular (scalar) variable to generate inputs for convergence studies:
+To generate inputs for convergence studies in which a particular (scalar) variable is changed, use:
 
 ```{code-cell}
 # When using a non-integer step, such as 0.1, the results will often not
@@ -389,8 +389,8 @@ print([i["tsmear"] for i in tsmear_inps])
 
 Once you have an `AbinitInput`, you can call Abinit to get useful information
 or simply to validate the input file before running the calculation.
-All the method that invoke Abinit starts with the `abi` prefix
-followed by a verb e.g. `abiget` or `abivalidate`.
+All the methods that invoke Abinit start with the `abi` prefix
+followed by a verb, e.g. `abiget` or `abivalidate`.
 
 ```{code-cell}
 inp = AbinitInput(structure=abidata.cif_file("si.cif"), pseudos=abidata.pseudos("14si.pspnc"))
@@ -404,7 +404,7 @@ if v.retcode != 0:
     print("".join(v.log_file.readlines()[-10:]))
 ```
 
-Let's fix the problem with the negative {{ecut}} and rerun abivalidate!
+Let's fix the negative {{ecut}} and rerun `abivalidate`:
 
 ```{code-cell}
 inp["ecut"] = 2
@@ -418,7 +418,7 @@ else:
     print(v)
 ```
 
-At this point, we have a valid input file and we can get the k-points in the irreducible zone with:
+Now that we have a valid input file, we can get the $k$-points in the irreducible zone with:
 
 ```{code-cell}
 ibz = inp.abiget_ibz()
@@ -435,7 +435,7 @@ abistruct = inp.abiget_spacegroup()
 print("spacegroup found by Abinit:", abistruct.abi_spacegroup)
 ```
 
-To get the list of possible parallel configurations for this input up to 5 {{max_ncpus}}
+To get the list of possible parallel configurations for this input with up to 5 CPUs ({{max_ncpus}}):
 
 ```{code-cell}
 inp["paral_kgb"] = 1
@@ -447,7 +447,7 @@ print("best efficiency:\n", pconfs.sort_by_efficiency()[0])
 print("best speedup:\n", pconfs.sort_by_speedup()[0])
 ```
 
-To get the list of irreducible phonon perturbations at Gamma (Abinit notation)
+To get the list of irreducible phonon perturbations at $\Gamma$ (Abinit notation):
 
 ```{code-cell}
 inp.abiget_irred_phperts(qpt=(0, 0, 0))
@@ -455,11 +455,11 @@ inp.abiget_irred_phperts(qpt=(0, 0, 0))
 
 ## Multiple datasets
 
-Multiple datasets are handy when you have to generate several input files sharing several common
-variables e.g. the crystalline structure, the value of {{ecut}} etc.
-In this case, one can use the `MultiDataset` object that is essentially
+Multiple datasets are handy when you have to generate several input files sharing common
+variables, e.g. the crystalline structure, the value of {{ecut}}, etc.
+In this case, one can use the `MultiDataset` object, which is essentially
 a list of `AbinitInput` objects.
-Note however that `Abipy` workflows do not support input files with more than one dataset.
+Note, however, that AbiPy workflows do not support input files with more than one dataset.
 
 ```{code-cell}
 # A MultiDataset object with two datasets (a.k.a. AbinitInput)
@@ -499,12 +499,12 @@ multi
 ```
 
 ```{warning}
-Remember that in python we start to count from zero hence the first dataset has index 0.
+Remember that Python counts from zero, hence the first dataset has index 0.
 ```
 
 +++
 
-Calling *set_structure* on `MultiDataset` will set the structure of the inputs:
+Calling *set_structure* on a `MultiDataset` sets the structure of all the inputs:
 
 ```{code-cell}
 multi.set_structure(abidata.cif_file("si.cif"))
@@ -514,7 +514,7 @@ multi.set_structure(abidata.cif_file("si.cif"))
 print(multi.structure)
 ```
 
-The function `split_datasets` return the list of `AbinitInput` stored in MultiDataset
+The `split_datasets` method returns the list of `AbinitInput` objects stored in the `MultiDataset`:
 
 ```{code-cell}
 inp0, inp1 = multi.split_datasets()
@@ -522,10 +522,10 @@ inp0
 ```
 
 ```{note}
-You can use `MultiDataset` to build your input files but remember that
-`Abipy` workflows will never support input files with more than one dataset.
+You can use `MultiDataset` to build your input files, but remember that
+AbiPy workflows will never support input files with more than one dataset.
 As a consequence, you should always pass an `AbinitInput` to the
-AbiPy functions that are building `Tasks`, `Works` or `Flows`.
+AbiPy functions that build `Tasks`, `Works` or `Flows`.
 ```
 
 ```{code-cell}

@@ -13,22 +13,22 @@ kernelspec:
 
 # Factory functions
 
-Abipy provides factory functions to build input files for typical calculations.
+AbiPy provides factory functions to build input files for typical calculations.
 These functions return `AbinitInput` or `MultiDataset` objects, depending
 on the number of steps required by the calculation.
 
-One can use the factories to generate automatically input files or
-call these functions inside python code to build workflows for high-throughput applications.
+The factories can be used to automatically generate input files, or they can be
+called inside Python code to build workflows for high-throughput applications.
 Note that the default values do not always correspond to the default behaviour of Abinit.
-In particular, the majority of the factory functions construct input files
+In particular, most of the factory functions build input files
 for **spin-polarized calculations** (`nsppol=2`) with a **Fermi-Dirac** occupation scheme and
 a physical temperature of **0.1 eV**.
-It is always possible to change the default behaviour either
-by passing these options to the factory function or by changing the object returned by the factory.
+The default behaviour can always be changed, either
+by passing these options to the factory function or by modifying the object returned by the factory.
 
 Also note that the factory functions do not use `get*` or `ird*` variables to connect the different
-steps. Client code is in charge of connecting the different parts.
-For a command line interface, use the `abinp.py` script.
+steps: client code is in charge of connecting the different parts.
+For a command-line interface, use the `abinp.py` script.
 
 ```{code-cell}
 import warnings
@@ -44,8 +44,8 @@ from abipy.abilab import AbinitInput
 
 ## Ground-state calculation
 
-Let us generate an input file for a standard GS calculation for silicon in which
-the structure is read from an external CIF file:
+Let us generate an input file for a standard GS calculation of silicon, with
+the structure read from an external CIF file:
 
 ```{code-cell}
 si_cif = abidata.cif_file("si.cif")
@@ -62,7 +62,7 @@ gs_inp.set_mnemonics(True)
 gs_inp
 ```
 
-## Input variables for band structure calculation + DOS
+## Input variables for band structure and DOS calculations
 
 A slightly more complicated example:
 

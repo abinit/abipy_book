@@ -23,7 +23,7 @@ We start with a very brief discussion of the basic equations and some technical 
 by these calculations.
 </p>
 <p>
-In the second part, we use the AbiPy objects to analyze the results. We start from the simplest case of a single  calculation whose most important results are stored in the A2F.nc netcdf file. Then we show how to use the A2fRobot to handle multiple netcdf files and perform convergence studies.
+In the second part, we use the AbiPy objects to analyze the results. We start from the simplest case of a single calculation, whose most important results are stored in the A2F.nc netcdf file. Then we show how to use the A2fRobot to handle multiple netcdf files and perform convergence studies.
 </p>
 </div>
 
@@ -44,14 +44,14 @@ $\newcommand{\ee}{\epsilon}$
 $\newcommand{\dd}{{\,\text{d}}}$
 
 
-The phonon linewidths are proportional to the electron phonon coupling, and depend on the phonon wavevector $q$
-and the branch index $\nu$:
+The phonon linewidths are proportional to the electron-phonon coupling, and depend on the phonon wavevector $q$
+and on the branch index $\nu$:
 
 \begin{equation}
     \gamma_{\qq\nu} = 2\pi \omega_{\qq\nu} \sum_{mn\kk} |g_{mn\nu}(\kk, \qq)|^2 \delta(\ee_{\kpq m}) \delta(\ee_{\kk n})
 \end{equation}
 
-Throughout these notes we shall use Hartree atomic units ($e = \hbar = m_e = 1$), the Fermi level is set to zero.
+Throughout these notes, we use Hartree atomic units ($e = \hbar = m_e = 1$), and the Fermi level is set to zero.
 
 The electron-phonon matrix elements are defined by:
 
@@ -59,25 +59,25 @@ The electron-phonon matrix elements are defined by:
     g_{mn}^{\nu}(\kk,\qq) = \dfrac{1}{\sqrt{2\omega_{\qq\nu}}} \<\psi_{m \kpq} | \Delta_{\qq\nu} V^\KS |\psi_{n\kk}\>
 \end{equation}
 
-For further details about $\Delta_{\qq\nu} V^\KS$ and their Fourier interpolation
+For further details about $\Delta_{\qq\nu} V^\KS$ and its Fourier interpolation,
 see the [previous lesson](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/sigeph/lesson_sigeph.ipynb)
 on the EPH self-energy and [Phys. Rev. B 78, 045124](https://dx.doi.org/10.1103/PhysRevB.78.045124).
 
-The Eliashberg function, $\alpha^2F(\omega)$, is similar to the density of states of the phonons, $F(\omega)$,
-but is weighted according to the coupling of the phonons to the electrons:
+The Eliashberg function, $\alpha^2F(\omega)$, is similar to the phonon density of states, $F(\omega)$,
+but is weighted by the coupling of the phonons to the electrons:
 
 \begin{equation}
     \alpha^2F(\omega) = -\dfrac{1}{N_F} \sum_{\qq\nu} \dfrac{\gamma_{\qq\nu}}{\omega_{\qq\nu}} \delta(\ww - \ww_{\qq \nu})
 \end{equation}
 
 <!--
-From a physical point of view, this function gives the *strenght* by which a phonon of frequency $\omega$
+From a physical point of view, this function gives the *strength* by which a phonon of frequency $\omega$
 scatters an electronic states on the Fermi surface
 For spin unpolarized systems:
 -->
 
 The first inverse moment of $\alpha^2F(\omega)$ gives the total coupling strength,
-or mass renormalization factor, $\lambda$.
+or mass renormalization factor, $\lambda$:
 
 \begin{equation}
     \lambda = \int \dfrac{\alpha^2F(\omega)}{\omega}\dd\omega = \sum_{\qq\nu} \lambda_{\qq\nu}
@@ -89,7 +89,7 @@ or mass renormalization factor, $\lambda$.
 
 From $\lambda$, using the [McMillan formula](https://doi.org/10.1103/PhysRev.167.331)
 as modified by Allen and Dynes in [Phys. Rev. B 12 905](https://dx.doi.org/10.1103/PhysRevB.12.905),
-one can estimate the superconducting critical temperature $T_c$ in the **isotropic** case.
+one can estimate the superconducting critical temperature $T_c$ in the **isotropic** case:
 
 \begin{equation}
     T_c = \dfrac{\omega_{log}}{1.2} \exp \Biggl [
@@ -105,22 +105,22 @@ where the logarithmic moment, $\omega_{log}$, is defined by:
     ]
 \end{equation}
 
-The formula contains the $\mu^*$ parameter which approximates the effect of the Coulomb interaction.
+The formula contains the $\mu^*$ parameter, which approximates the effect of the Coulomb interaction.
 It is common to treat $\mu^*$ as an *adjustable parameter* to reproduce (explain) the experimental $T_c$
-from the ab-initio computed $\lambda$.
+from the ab-initio $\lambda$.
 
 It is worth noting that, if we assume constant e-ph matrix elements in the BZ, the phonon linewidths
-become proportional to the so-called *nesting* function defined by:
+become proportional to the so-called *nesting* function, defined by:
 
 \begin{equation}
     N(\qq) = \sum_{mn\kk} \delta(\ee_{\kpq m}) \delta(\ee_{\kk n})
 \end{equation}
 
-Roughly speaking, there are two factors entering into play in the equation for the phonon linewidths:
-the behaviour in (k, q) space of the matrix elements and the *geometrical* contribution related
+Roughly speaking, two factors come into play in the equation for the phonon linewidths:
+the behaviour of the matrix elements in (k, q) space, and the *geometrical* contribution related
 to the shape of the Fermi surface (described by the nesting term).
 
-### Implementation details:
+### Implementation details
 
 The input variables *optdriver = 7* and *eph_task = 1* activate the computation of:
 
@@ -128,17 +128,17 @@ The input variables *optdriver = 7* and *eph_task = 1* activate the computation 
     \gamma_{\qq\nu} = 2\pi \omega_{\qq\nu} \sum_{pp'} d_{\qq p}^* \tilde\gamma_{p p'}(\qq) d_{\qq p'}^*
 \end{equation}
 
-for all q-points in the IBZ as determined by the `ddb_ngqpt` input variable.
-In the above equation, $p$ is a short-hand notation for atom index and direction,
-$\vec d$ is the phonon displacement and $\tilde\gamma_{p p'}(\qq)$ is given by:
+for all the $q$-points in the IBZ, as determined by the `ddb_ngqpt` input variable.
+In the above equation, $p$ is a shorthand notation for atom index and direction,
+$\vec d$ is the phonon displacement, and $\tilde\gamma_{p p'}(\qq)$ is given by:
 
 \begin{equation}
     \tilde\gamma_{p p'}(\qq) =
     \sum_{mn\kk} g_{mn,p}(\kk, \qq)^*  g_{mn,p'}(\kk, \qq)  \delta(\ee_{\kpq m}) \delta(\ee_{\kk n}).
 \end{equation}
 
-The $\tilde\gamma_{p p'}(\qq)$ matrix has the same symmetries as the dynamical matrix
-and the elements in the *full* BZ can be obtained by *rotating* the initial set of q-points in the IBZ.
+The $\tilde\gamma_{p p'}(\qq)$ matrix has the same symmetries as the dynamical matrix,
+and the elements in the *full* BZ can be obtained by *rotating* the initial set of $q$-points in the IBZ.
 
 Once $\tilde\gamma(\qq)$ is known in the *full* BZ, one can Fourier transform to real space with:
 
@@ -156,16 +156,16 @@ if symdynmat == 1 so that degeneracies at high-symmetry q-points are correctly r
 -->
 
 Thanks to the relatively inexpensive Fourier interpolation, one can obtain the phonon linewidths along
-an arbitrary q-path and evaluate the Eliashberg function on a q-mesh (specified by *ph_ngqpt*)
-that can be made **much denser** than the initial ab-initio DDB sampling (specified by *ddb_ngqpt*) and
-even denser than the `eph_ngqpt_fine` q-mesh used to interpolate the DFPT potentials.
+an arbitrary $q$-path and evaluate the Eliashberg function on a $q$-mesh (specified by *ph_ngqpt*)
+that can be made **much denser** than the initial ab-initio DDB sampling (specified by *ddb_ngqpt*), and
+even denser than the `eph_ngqpt_fine` $q$-mesh used to interpolate the DFPT potentials.
 
 Note that the calculation of phonon linewidths in metals is made difficult
 by the slow convergence of the double-delta integral over the Fermi surface.
-It is therefore convenient to use a coarse k-mesh to calculate phonons with DFPT on a suitable q-grid
-and then use a denser k-mesh to perform the integration over the Fermi surface.
-The resolution in q-space can be improved by interpolating the DFPT potentials via the
-`eph_ngqpt_fine` input variable as discussed in the
+It is therefore convenient to use a coarse $k$-mesh to compute phonons with DFPT on a suitable $q$-grid,
+and then use a denser $k$-mesh to perform the integration over the Fermi surface.
+The resolution in $q$-space can be improved by interpolating the DFPT potentials via the
+`eph_ngqpt_fine` input variable, as discussed in the
 [previous EPH lesson](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/sigeph/lesson_sigeph.ipynb).
 
 
@@ -174,7 +174,7 @@ The resolution in q-space can be improved by interpolating the DFPT potentials v
 The general theory of electron-phonon coupling and Eliashberg superconductivity is reviewed
 by P.B. Allen and B. Mitrovic
 in [Theory of Superconducting Tc](https://doi.org/10.1016/S0081-1947(08)60665-7).
-The first implementations similar to that in Abinit are those in
+The first implementations similar to the one in Abinit are those of
 [Savrasov](https://doi.org/10.1103/PhysRevB.54.16487) and [Liu](https://doi.org/10.1103/PhysRevB.53.R7575).
 
 +++
@@ -184,39 +184,39 @@ The first implementations similar to that in Abinit are those in
 From the previous discussion, it should be clear that a typical calculation of phonon linewidths requires:
 
 1. An initial set of KS wavefunctions and eigenvalues.
-2. The knowledge of the dynamical matrix $D(\qq)$ from which one
+2. The dynamical matrix $D(\qq)$, from which one
    can obtain frequencies and displacements everywhere in the BZ via Fourier interpolation.
-3. A set of DFPT potentials given in the IBZ
+3. A set of DFPT potentials in the IBZ.
 
-Thanks to these three ingredients, the code can compute the EPH matrix elements
+With these three ingredients, the code can compute the EPH matrix elements
 and perform the integration over the Fermi surface.
-A schematic representation of a typical workflow with Abinit is given in the figure below:
+A schematic representation of a typical Abinit workflow is given in the figure below:
 
 <img src="https://raw.githubusercontent.com/abinit/abipy_assets/master/eph_workflow.png" width="600" height="600">
 
-The `mrgddb` and `mrgdv` are Fortran executables whose main goal is to produce the final files
-required in the EPH code.
+`mrgddb` and `mrgdv` are Fortran executables whose main goal is to produce the final files
+required by the EPH code.
 
 Note, in particular, how the computation of the WFK file and the DFPT part of the graph are now decoupled.
 This is the approach we are going to implement with AbiPy to converge the phonon linewidths in Al:
 
-1. Compute DFPT phonons on a 4x4x4 q-mesh with a coarse 8x8x8 k-sampling
+1. Compute DFPT phonons on a 4x4x4 $q$-mesh with a coarse 8x8x8 $k$-sampling.
 
-2. Generate 3 WFK files on a much denser k-mesh (x16, x24, x32)
+2. Generate 3 WFK files on much denser $k$-meshes (x16, x24, x32).
 
 3. Run the EPH code with
 
-  - one of the WFK files generated in point 2.
-  - interpolated DFPT potentials (from the initial 4x4x4 to a 8x8x8 q-mesh)
+  - one of the WFK files generated in point 2;
+  - interpolated DFPT potentials (from the initial 4x4x4 to an 8x8x8 $q$-mesh).
 
 4. Compute the Eliashberg function on the `ph_ngqpt` mesh via Fourier interpolation.
-5. Analyze the convergence of the results wrt `nkpt`.
+5. Analyze the convergence of the results with respect to `nkpt`.
 
 +++
 
 ## Building the Flow
 
-Before starting, we need to import the python modules used in this notebook:
+Before starting, we need to import the Python modules used in this notebook:
 
 ```{code-cell} ipython3
 import numpy as np
@@ -235,7 +235,7 @@ import abipy.flowtk as flowtk
 #%matplotlib widget
 ```
 
-and a function from the `lesson_eph_isotc` module to build our AbiPy flow.
+and a function from the `lesson_eph_isotc` module to build our AbiPy flow:
 
 ```{code-cell} ipython3
 from lesson_eph_isotc import build_flow
@@ -243,7 +243,7 @@ from lesson_eph_isotc import build_flow
 
 ```{note}
 Please read the code carefully, in particular the comments.
-Don't worry if the meaning of some input variables is not immediately clear
+Don't worry if the meaning of some input variables is not immediately clear,
 as we will try to clarify the most technical parts in the rest of this notebook.
 ```
 
@@ -251,19 +251,19 @@ as we will try to clarify the most technical parts in the rest of this notebook.
 abilab.print_source(build_flow)
 ```
 
-OK the function is a little bit long but it is normal as we are computing
-in a single workflow the *electronic* properties, the *vibrational* spectrum
-and the *phonon linewidths* with different k-point samplings.
+OK, the function is a little bit long, but this is normal, as we are computing
+the *electronic* properties, the *vibrational* spectrum
+and the *phonon linewidths* with different $k$-point samplings in a single workflow.
 
 Note that we have already encountered similar flows in the previous AbiPy lessons.
 The calculation of electronic band structures is discussed in
-[lesson_base3](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/base3/lesson_base3.ipynb)
+[lesson_base3](../base3/lesson_base3),
 while an example of `Flow` for phonon calculations is given in
-[lesson_dfpt](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/dfpt/lesson_dfpt.ipynb).
+[lesson_dfpt](../dfpt/lesson_dfpt).
 
-The novelty is represented by the generation of the `EphTasks`
+The novelty is the generation of the `EphTasks`,
 in which we have to specify several variables related to phonons and the EPH self-energy.
-For your convenience, we have grouped the variables used in the `EphTask` in sub-groups:
+For your convenience, we have grouped the variables used in the `EphTask` into sub-groups:
 
 <img src="https://github.com/abinit/abipy_assets/blob/master/eph_variables.png?raw=true">
 
@@ -275,12 +275,12 @@ flow.show_info()
 ```
 
 We then print the input of the last `EphTask`.
-Please read carefully the documentation of the variables, in particular
+Please read the documentation of the variables carefully, in particular
 those in the `dfpt` and `eph` sections.
 
-In a nutshell: we read a WKF on a 32x32x32 k-mesh and a DDB on a 4x4x4 q-mesh,
-activate the computation of phonon linewidths with `optdriver` and `eph_task`,
-interpolate the potentials onto a 8x8x8 q-mesh with `eph_ngqpt_fine` and set other variables
+In a nutshell: we read a WFK file on a 32x32x32 $k$-mesh and a DDB on a 4x4x4 $q$-mesh,
+activate the computation of the phonon linewidths with `optdriver` and `eph_task`,
+interpolate the potentials onto an 8x8x8 $q$-mesh with `eph_ngqpt_fine`, and set other variables
 for the computation of the phonon linewidths around the Fermi surface.
 
 ```{code-cell} ipython3
@@ -297,7 +297,7 @@ variables at runtime and create symbolic links to connect this task to its paren
 
 As usual, it is much easier to understand what is happening if we plot a graph
 with the individual tasks and their connections.
-Since there are several nodes in our graph, we mainly focus on the EPH part.
+Since our graph has many nodes, we mainly focus on the EPH part.
 
 Let's have a look at the parents of the last `EphTask` with:
 
@@ -305,8 +305,8 @@ Let's have a look at the parents of the last `EphTask` with:
 flow[-1][-1].get_graphviz()
 ```
 
-We do not repeat here the detailed description of the Flow because it is very similar in spirit
-to what has been already done in the [previous EPH lesson](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/sigeph/lesson_sigeph.ipynb).
+We do not repeat the detailed description of the Flow here, because it is very similar in spirit
+to what has already been done in the [previous EPH lesson](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/sigeph/lesson_sigeph.ipynb).
 Hopefully, you are already familiar with the AbiPy philosophy.
 
 ```{code-cell} ipython3
@@ -324,13 +324,13 @@ flow.get_graphviz()
 ```
 
 ```{note}
-You may wonder why we have so many tasks especially if you are used to the multi-dataset philosophy of Abinit.
-Indeed if you are a `ndtset` master, it should not be so difficult for you
+You may wonder why we have so many tasks, especially if you are used to the multi-dataset philosophy of Abinit.
+Indeed, if you are an `ndtset` master, it should not be difficult for you
 to write a *single input file* that performs the same kind of convergence study.
-Still you have to consider that the multi-dataset approach does not scale well:
+Still, you have to consider that the multi-dataset approach does not scale well:
 this kind of calculation has several independent steps
-that could be executed in parallel whereas abinit datasets are executed sequentially.
-This makes a huge difference when running on clusters with hundreds or thousands of CPUs because
+that could be executed in parallel, whereas Abinit datasets are executed sequentially.
+This makes a huge difference when running on clusters with hundreds or thousands of CPUs, because
 the *time to solution* can be considerably reduced with this kind of parallelism.
 ```
 
@@ -359,25 +359,25 @@ and then use the `abirun.py` script to launch the entire calculation:
     abirun.py flow_eph_isotc scheduler
 
 You may want to run this example in the terminal if you've already installed and configured AbiPy and Abinit on your machine. The calculation requires ~12 minutes on a poor 1.7 GHz Intel Core i5 (50% of the time
-is spent in the last task to compute the phonon linewidths with the 32x32x32 k-mesh)
+is spent in the last task, which computes the phonon linewidths with the 32x32x32 $k$-mesh).
 
-If you prefer to skip this part, jump to next section in which we focus on the post-processing of the results.
-Note that most of the output files are already available in the [github repository](https://github.com/abinit/abitutorials)
-so it is possible to try the AbiPy post-processing tools without having to run the flow.
-Some DVDB, DDB, PHDOS, and PBSTS files are missing, but their absence will not prevent running the present tutorial to the end.
-In particular, one can use the command line and the commands:
+If you prefer to skip this part, jump to the next section, in which we focus on the post-processing of the results.
+Note that most of the output files are already available in the [GitHub repository](https://github.com/abinit/abitutorials),
+so you can try the AbiPy post-processing tools without having to run the flow.
+Some DVDB, DDB, PHDOS, and PBSTS files are missing, but their absence will not prevent you from completing this tutorial.
+In particular, you can use the command line with:
 
     abiopen.py FILE
 
-to open the file inside ipython,
+to open a file inside IPython,
 
-    abiopen.py ut_A2F.nc --expose
+    abiopen.py out_A2F.nc --expose
 
-to visualize the EPH results and finally,
+to visualize the EPH results and, finally,
 
-    abicomp.py a2f flow_ep_al/
+    abicomp.py a2f flow_eph_isotc/
 
-to compare multiple `A2F.nc` files with the robot and ipython.
+to compare multiple `A2F.nc` files with the robot and IPython.
 
 +++
 
@@ -389,7 +389,7 @@ Let's focus on the electronic properties first.
 !find flow_eph_isotc/ -name "out_GSR.nc"
 ```
 
-The task `w0/t0` computed the electronic band structure on a high-symmetry k-path.
+The task `w0/t1` computed the electronic band structure on a high-symmetry $k$-path.
 Let's plot the bands with:
 
 ```{code-cell} ipython3
@@ -410,10 +410,10 @@ To better understand what’s happening at $\ee_F$, we can plot the bandwidths w
 ebands_kpath.boxplot();
 ```
 
-There is only one band **index** crossing the Fermi level if we exclude a tiny portion with band index 2 (see the region close to the W point).
-As phonon lifetimes are very sensitive to the Fermi surface sampling,
+Only one band **index** crosses the Fermi level, if we exclude a tiny portion with band index 2 (see the region close to the W point).
+Since phonon lifetimes are very sensitive to the Fermi surface sampling,
 it is a good idea to analyze the convergence of the electronic DOS,
-in particular the behavior in the region around $\ee_F$.
+in particular its behavior in the region around $\ee_F$.
 
 Let's use the `GsrRobot` to load all the `GSR` files produced by the `w0` work:
 
@@ -422,51 +422,51 @@ gsr_robot = abilab.GsrRobot.from_dir_glob("flow_eph_isotc/w0/t*/")
 gsr_robot
 ```
 
-In total, we have 5 `GSR` files but `w0/t1` computed the energies along the k-path and the
+In total, we have 5 `GSR` files, but `w0/t1` computed the energies along the $k$-path, while the
 DOS **requires** a homogeneous sampling.
-Let's remove the file for which this is not the case from the robot with:
+Let's remove this file from the robot with:
 
 ```{code-cell} ipython3
 gsr_robot.pop_label("flow_eph_isotc/w0/t1/outdata/out_GSR.nc")
 gsr_robot
 ```
 
-and use a small lambda function to change the labels associated to the files
-so that we have the number of k-points in the IBZ:
+and use a small lambda function to change the labels associated with the files,
+so that they show the number of $k$-points in the IBZ:
 
 ```{code-cell} ipython3
 gsr_robot.remap_labels(lambda gsr: "nkpt: %d" % gsr.nkpt)
 ```
 
-Now we can finally compare the electronic DOS obtained with the different k-meshes:
+Now we can finally compare the electronic DOS obtained with the different $k$-meshes:
 
 ```{code-cell} ipython3
 gsr_robot.combiplot_edos(xlims=[-15, +5]);
 ```
 
-Clearly, the 8x8x8 k-mesh used to compute the density is not enough to converge the DOS at $\ee_F$.
-Remember, however, that we have decided to use a minimalistic sampling in the GS/DFPT run
+Clearly, the 8x8x8 $k$-mesh used to compute the density is not enough to converge the DOS at $\ee_F$.
+Remember, however, that we decided to use a minimalistic sampling in the GS/DFPT run
 to keep the calculation manageable.
-In real life, one should use a much denser k-sampling for the GS/DFPT and this is particularly
+In real life, one should use a much denser $k$-sampling for the GS/DFPT, and this is particularly
 true if we are trying to relax the structure.
-Let's forget about this technical point and focus on the DOS obtained with the other two k-meshes.
+Let's forget about this technical point and focus on the DOS obtained with the other $k$-meshes.
 
-As you can see, even if 145 k-points in the IBZ are not enough, the DOS is becoming *smoother*
-and starts to resemble the one of the free-electron gas (as a matter of fact the band dispersion of Al is not
-that different from the ideal free-electron model provided that BZ folding is taken into account).
+As you can see, even though 145 $k$-points in the IBZ are not enough, the DOS becomes *smoother*
+and starts to resemble that of the free-electron gas (as a matter of fact, the band dispersion of Al is not
+that different from the ideal free-electron model, provided that BZ folding is taken into account).
 
-Visual inspection suggests that the k-sampling becomes *acceptable* at and beyond 24x24x24 (413 nkpt).
+Visual inspection suggests that the $k$-sampling becomes *acceptable* at and beyond 24x24x24 (413 nkpt).
 
 ```{note}
-The convergence of the DOS at the Fermi level does not necessarly imply convergence in the final EPH results.
-This is something that should be checked explicitly by looking at the behaviour of the final observables
+The convergence of the DOS at the Fermi level does not necessarily imply convergence of the final EPH results.
+This should be checked explicitly by looking at the behaviour of the final observables
 as a function of the input parameters.
 ```
 
 +++ {"run_control": {"marked": true}}
 
-In the introduction, we mentioned that there are two factors governing the strengh of the E-PH coupling in metals:
-the behaviour in (k, q)-space of the matrix elements and the *geometrical* contribution due to the Fermi surface.
+In the introduction, we mentioned that two factors govern the strength of the E-PH coupling in metals:
+the behaviour of the matrix elements in (k, q)-space, and the *geometrical* contribution due to the Fermi surface.
 
 \begin{equation}
     N(\qq) = \sum_{mn\kk} \delta(\ee_{\kpq m}) \delta(\ee_{\kk n})
@@ -474,7 +474,7 @@ the behaviour in (k, q)-space of the matrix elements and the *geometrical* contr
 
 To understand the *geometrical* contribution, it is useful to visualize the Fermi surface.
 Unfortunately, graphical applications usually require KS eigenvalues on a
-$\Gamma-$centered k-mesh in the *full* BZ whereas ab-initio codes usually work with KS states
+$\Gamma$-centered $k$-mesh in the *full* BZ, whereas ab-initio codes usually work with KS states
 in the *irreducible* wedge.
 
 Fortunately, we can use AbiPy to reconstruct the KS eigenvalues in the full BZ:
@@ -490,10 +490,10 @@ and then use matplotlib to visualize the Fermi energy isosurfaces:
 eb3d.plot_isosurfaces();
 ```
 
-Note that, at present, the matplotlib version is only able to display isosurfaces
+Note that, at present, the matplotlib version can only display isosurfaces
 in the unit cell of the reciprocal lattice.
 To visualize isosurfaces in the first BZ, one can export the data
-into BXSF format and then call [xcrysden](http://www.xcrysden.org/) with:
+in BXSF format and then call [xcrysden](http://www.xcrysden.org/) with:
 
 ```{code-cell} ipython3
 #eb3d.xcrysden_view()
@@ -518,7 +518,7 @@ AbiPy has already merged all the independent atomic perturbations in `flow_eph_i
 !cat flow_eph_isotc/w1/outdata/mrgddb.stdin
 ```
 
-In the same directory, we have the `DVDB` file containing the independent DFPT potentials
+In the same directory, we have the `DVDB` file containing the independent DFPT potentials:
 
 ```{code-cell} ipython3
 !find flow_eph_isotc/ -name "out_DVDB"
@@ -528,7 +528,7 @@ In the same directory, we have the `DVDB` file containing the independent DFPT p
 #!cat flow_eph_isotc//w1/outdata/mrgdvdb.stdin
 ```
 
-Let's open the `DDB` file computed on the 4x4x4 q-mesh with:
+Let's open the `DDB` file computed on the 4x4x4 $q$-mesh with:
 
 ```{code-cell} ipython3
 ddb = abilab.abiopen("flow_eph_isotc/w1/outdata/out_DDB")
@@ -547,9 +547,9 @@ Finally we plot the results with:
 phbst.phbands.plot_with_phdos(phdos);
 ```
 
-The vibrational spectrum seems OK but remember that we are *enforcing* the acoustic sum rule
+The vibrational spectrum seems OK, but remember that we are *enforcing* the acoustic sum rule
 with `asr`.
-Since our input parameters are underconverged, its a good idea to compare the spectrum with/without `asr`:
+Since our input parameters are underconverged, it's a good idea to compare the spectrum with/without `asr`:
 
 ```{code-cell} ipython3
 ph_plotter = ddb.anacompare_asr()
@@ -561,10 +561,10 @@ ph_plotter.combiplot(units="cm-1");
 
 ```{warning}
 Not so good! The breaking of the ASR is quite large.
-This is mainly due to the use of a too small value for `ecut`.
-In real life, we should increase `ecut` and rerun the DFPT part but since this is a tutorial
-aiming at showing how to perform EPH calculations, we ignore this convergence issue
-keeping in mind that we should redo all our calculations with larger ecut before submitting the final
+This is mainly due to the use of a too-small value for `ecut`.
+In real life, we should increase `ecut` and rerun the DFPT part but, since this tutorial
+aims at showing how to perform EPH calculations, we ignore this convergence issue,
+keeping in mind that we should redo all our calculations with a larger `ecut` before submitting the final
 version of the paper!
 ```
 
@@ -574,11 +574,11 @@ We can now finally turn our attention to the phonon linewidths and the Eliashber
 
 ## Phonon linewidths and Eliashberg function
 
-We have generated a pair of `DDB`-`DVDB` files on a 4x4x4 q-mesh
-and **three** `WFK` files with a much denser k-sampling (x16, x24, x32).
-In total we have three EPH calculations done with different k-meshes to analyze.
+We have generated a pair of `DDB`-`DVDB` files on a 4x4x4 $q$-mesh
+and **three** `WFK` files with much denser $k$-samplings (x16, x24, x32).
+In total, we have three EPH calculations with different $k$-meshes to analyze.
 
-Let's focus on the output files produced with the 16x16x16 k-mesh by the first `EphTask` in `w2/t0`:
+Let's focus on the output files produced with the 16x16x16 $k$-mesh by the first `EphTask` in `w2/t0`:
 
 ```{code-cell} ipython3
 !ls flow_eph_isotc/w2/t0/outdata
@@ -588,10 +588,10 @@ The most important results are stored in:
 
 * *out_A2F.nc*: main results in netcdf format
 * *out_PHDOS.nc*: phonon DOS and projections over atoms and directions
-* *out_PBSTS.nc*: phonon band structure along the q-path
+* *out_PBSTS.nc*: phonon band structure along the $q$-path
 
 ```{note}
-There is also a bunch of text files with the same results in text format if you are a gnuplot/xmgrace aficionado...
+There is also a bunch of text files with the same results, in case you are a gnuplot/xmgrace aficionado...
 ```
 
 +++
@@ -603,27 +603,26 @@ a2fnc = abilab.abiopen("flow_eph_isotc/w2/t0/outdata/out_A2F.nc")
 print(a2fnc)
 ```
 
-In the `E-PH calculation` we have the value of $\lambda$ and $\omega_{log}$ computed
-with a 16x16x16 k-mesh for electrons and two q-meshes.
-...
+In the `E-PH calculation` section, we have the values of $\lambda$ and $\omega_{log}$ computed
+with a 16x16x16 $k$-mesh for electrons and two $q$-meshes.
 
-The value of $\lambda$ is smaller (almost a factor 2) with respect to other values
-reported in the literature, likely due to the coarse 12x12x12 k-sampling.
+The value of $\lambda$ is smaller (by almost a factor of 2) than other values
+reported in the literature, likely due to the coarse 16x16x16 $k$-sampling.
 We will investigate this problem in the next section.
 For the time being, we prefer to focus on the visualization of the results with AbiPy.
 
-Let's use matplotlib to plot the Eliashberg function obtained with the two q-meshes:
+Let's use matplotlib to plot the Eliashberg function obtained with the two $q$-meshes:
 
 ```{code-cell} ipython3
 a2fnc.plot_a2f_interpol();
 ```
 
-This Eliashberg function obtained on the [24, 24, 24] q-mesh looks nicer, in particular
+The Eliashberg function obtained on the [24, 24, 24] $q$-mesh looks nicer; in particular,
 we see the appearance of Van Hove singularities.
-As expected, the integral $\lambda(\omega)$ is less sensitive to the interpolation in q-space.
-We conclude that the fact that our $\lambda$ is too small when compared with other ab-initio calculations ($\lambda \approx 0.4$)
-is not related to the q-sampling but to the *quality* of our phonon linewidths that in turn is related
-to the description of the FS.
+As expected, the integral $\lambda(\omega)$ is less sensitive to the interpolation in $q$-space.
+We conclude that the fact that our $\lambda$ is too small compared with other ab-initio calculations ($\lambda \approx 0.4$)
+is not related to the $q$-sampling but to the *quality* of our phonon linewidths, which in turn is related
+to the description of the Fermi surface.
 
 +++
 
@@ -659,7 +658,7 @@ In principle, the linewidth of the acoustic modes should go to zero for $q \righ
 
 The notation $\alpha^2 F(\omega)$ was introduced because the Eliashberg function
 is usually proportional to the phonon DOS $F(\omega)$.
-There are, however, exceptions so it is useful to plot $\alpha^2F(\omega)$, $F(\omega)$ and their ratio $\alpha^2$.
+There are, however, exceptions, so it is useful to plot $\alpha^2F(\omega)$, $F(\omega)$ and their ratio $\alpha^2$.
 
 It is just a matter of passing the phonon DOS computed from the `DDB` file in the previous section
 to the `plot_a2` method:
@@ -668,36 +667,36 @@ to the `plot_a2` method:
 a2fnc.a2f_qcoarse.plot_a2(phdos=phdos);
 ```
 
-To conclude this section: our results for $\lambda$ and $\alpha^2F(\omega)$ look reasonable
+To conclude this section: our results for $\lambda$ and $\alpha^2F(\omega)$ look reasonable,
 but we are still far from the results reported in previous works.
-Perhaps we are not completely converged and we should analyze in more detail
-what happens if we increase the k-point sampling.
-Fortunately we have already computed these results in our Flow so it is just a matter of using
+Perhaps we are not completely converged, and we should analyze in more detail
+what happens if we increase the $k$-point sampling.
+Fortunately, we have already computed these results in our Flow, so it is just a matter of using
 AbiPy to compare multiple calculations.
 
 +++
 
-## Using the A2FRobot for convergence studies
+## Using the A2fRobot for convergence studies
 
 
 In this section, we use the `A2fRobot` to analyze the convergence behaviour of our results
-with respect to the k-point sampling in the double-delta integral.
+with respect to the $k$-point sampling in the double-delta integral.
 
-Let's ask our robot to open all the `A2F` files  located within the `flow_eph_isotc/` directory.
+Let's ask our robot to open all the `A2F` files located within the `flow_eph_isotc/` directory:
 
 ```{code-cell} ipython3
 robot = abilab.A2fRobot.from_dir("flow_eph_isotc/")
 robot
 ```
 
-We know that all these calculations have been done with different values of `nkpt`.
-Let's change the labels of the files by replacing file paths with more informative strings:
+We know that these calculations have been done with different values of `nkpt`.
+Let's change the labels of the files by replacing the file paths with more informative strings:
 
 ```{code-cell} ipython3
 robot.remap_labels(lambda ncfile: "nkpt: %d" % ncfile.nkpt)
 ```
 
-and print a pandas `DataFrame` with the parameters of the calculation can help to understand the data:
+A pandas `DataFrame` with the parameters of the calculations can help us understand the data:
 
 ```{code-cell} ipython3
 robot.get_params_dataframe()
@@ -705,13 +704,13 @@ robot.get_params_dataframe()
 
 As usual, it is much easier to analyze the convergence of scalar quantities.
 Since we are mainly interested in $T_c$-related properties, it makes sense
-to print a table with the value of $\lambda$ and $\omega_{log}$ extracted from the different calculations:
+to print a table with the values of $\lambda$ and $\omega_{log}$ extracted from the different calculations:
 
 ```{code-cell} ipython3
 robot.get_dataframe(with_params=False)
 ```
 
-This table gives the values integrated on the `eph_ngqpt` mesh as well as the values obtained
+This table gives the values integrated on the `eph_ngqpt` mesh, as well as the values obtained
 by Fourier interpolating the results on the `ph_ngqpt` mesh.
 Note the **big jump** in $\lambda$ when we go from the 18x18x18 k-mesh to the 36x36x36 k-mesh (~0.2 --> ~0.4).
 This clearly shows that our initial estimate for $\lambda$ obtained with a 18x18x18 k-mesh was really bad!
@@ -723,8 +722,8 @@ If you prefer figures instead of tables with numbers, just use:
 robot.plot_a2fdata_convergence(sortby="nkpt");
 ```
 
-When converging with respect to the number of k-points, it is common to plot the
-physical results as function of $\frac{1}{N_{kpt}}$.
+When converging with respect to the number of $k$-points, it is common to plot the
+physical results as a function of $\frac{1}{N_{kpt}}$.
 Let's define a small function that tells our robot how to sort the results:
 
 ```{code-cell} ipython3
@@ -735,15 +734,15 @@ def inv_nkpt(a2f_file):
 robot.plot_a2fdata_convergence(sortby=inv_nkpt); #, hue="eph_fsmear");
 ```
 
-At this point, our estimate for $\lambda$ should be somewhere in [0.39, 0.42]
-that compares much better with the value of 0.44 reported by Savrasov.
-__Most importantly__, our results started to converge (although slowly).
+At this point, our estimate for $\lambda$ should be somewhere in [0.39, 0.42],
+which compares much better with the value of 0.44 reported by Savrasov.
+__Most importantly__, our results have started to converge (although slowly).
 Now we know that a serious calculation of the phonon linewidths of Al
-would require something around 32x32x32 k-points (this is indeed the mesh used by Savrasov in their paper).
+would require something around 32x32x32 $k$-points (this is indeed the mesh used by Savrasov in their paper).
 
 +++
 
-So far, we have been focusing on $\lambda$ but what about the convergence of $\alpha^2F(\omega)$?
+So far, we have been focusing on $\lambda$, but what about the convergence of $\alpha^2F(\omega)$?
 
 ```{code-cell} ipython3
 robot.plot_a2f_convergence();

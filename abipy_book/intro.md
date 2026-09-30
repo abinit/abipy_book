@@ -2,18 +2,18 @@
 
 Welcome to the AbiPy Jupyter Book!
 This book contains notebook-based documentation for [AbiPy](https://github.com/abinit/abipy).
-This augments our Sphinx-based [documentation](https://abinit.github.io/abipy) with jupyter notebooks
+It complements our Sphinx-based [documentation](https://abinit.github.io/abipy) with Jupyter notebooks
 containing interactive tutorials and examples.
 
-Additional examples are available on the:
+Additional examples are available in the:
 
 * [AbiPy plot gallery](https://abinit.github.io/abipy/gallery/index.html)
 * [AbiPy flow gallery](https://abinit.github.io/abipy/flow_gallery/index.html)
 * [Matgenb website](https://matgenb.materialsvirtuallab.org)
 
-Beginners should typically start with the three notebooks on Abipy objects,
-continue with the notebook on the GSR.nc output file (and possibly some of those focusing on other output files),
-and then examine the flows notebook.
+Beginners should start with the three notebooks on AbiPy objects,
+continue with the notebook on the GSR.nc output file (and possibly with those on the other output files),
+and then move on to the flows notebook.
 
 +++
 
@@ -40,17 +40,17 @@ and then examine the flows notebook.
 
 * [Flows](flows): How to automate calculations with `Flows`, `Works` and `Tasks`
 
-This notebook is complemented with the documentation on the
-[TaskManager Configuration](https://abinit.github.io/abipy/workflows/taskmanager.html):
-How to specify options in `manager.yml` and `scheduler.yml`
+This notebook is complemented by the documentation on the
+[TaskManager Configuration](https://abinit.github.io/abipy/workflows/taskmanager.html),
+which explains how to specify options in `manager.yml` and `scheduler.yml`.
 
 +++
 
 ## Abinit + AbiPy Lessons
 
-This section discusses flows and vizualisation tools for the same topics as some standard ABINIT tutorials.
-Usually, the corresponding ABINIT tutorial has to be followed first.
-Sometimes there is also a large overlap with some of the previous AbiPy tutorials.
+This section presents flows and visualization tools for some of the topics covered by the standard ABINIT tutorials.
+Usually, the corresponding ABINIT tutorial should be followed first.
+Some lessons also overlap significantly with the previous AbiPy tutorials.
 
 * [The H<sub>2</sub> molecule](base1/lesson_base1)
 * [Crystalline silicon](base3/lesson_base3)

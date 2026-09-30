@@ -13,10 +13,10 @@ kernelspec:
 
 # IFCs Embedding
 
-This section explains how to obtain the phonon modes of a defect system using the Interatomic Force Constant (IFC) embedding approach.
+This section explains how to obtain the phonon modes of a defect system with the Interatomic Force Constant (IFC) embedding approach.
 This method enables the calculation of both defect-localized and bulk-like phonon modes within a unified framework.
-We illustrate the process using the Sr[Li$_2$Al$_2$O$_2$N$_2$]:Eu$^{2+}$ example, first computing pristine and defect phonons,
-then performing the embedding.
+We illustrate the process with the Sr[Li$_2$Al$_2$O$_2$N$_2$]:Eu$^{2+}$ example: we first compute the pristine and defect phonons,
+and then perform the embedding.
 
 ```{note}
 The simulation parameters below are for demonstration only and are not converged.
@@ -24,8 +24,8 @@ The simulation parameters below are for demonstration only and are not converged
 
 ## 1. Pristine Phonons
 
-The following script creates an AbiPy workflow to compute the phonons of the pristine system using DFPT.
-It uses the primitive structure of Sr[Li$_2$Al$_2$O$_2$N$_2$] and computes phonons on a 2x2x2 q-mesh.
+The following script creates an AbiPy workflow to compute the phonons of the pristine system with DFPT.
+It uses the primitive structure of Sr[Li$_2$Al$_2$O$_2$N$_2$] and computes the phonons on a 2x2x2 $q$-mesh.
 
 ```python
 import sys
@@ -99,9 +99,9 @@ if __name__ == "__main__":
 
 ## 2. Defect Phonons
 
-This script computes the phonons of the defect system using finite differences.
-It uses the supercell defect structure from the $\Delta$SCF calculation and then uses a phonopy workflow.
-The supercell size is set to [1,1,1], which is equivalent to a $\Gamma$ point calculation.
+This script computes the phonons of the defect system with finite differences.
+It takes the defect supercell structure from the $\Delta$SCF calculation and then runs a phonopy workflow.
+The supercell size is set to [1,1,1], which is equivalent to a $\Gamma$-point calculation.
 
 ```python
 import sys
@@ -232,7 +232,7 @@ ph_defect = phonopy.load(
 
 ### 3.2. Fold pristine IFCs to the supercell
 
-The pristine DDB file is first interpolated using `anaget_interpolated_ddb` and then
+The pristine DDB file is first interpolated with `anaget_interpolated_ddb`, and then
 the folding procedure is executed by calling `ddb_ucell_to_phonopy_supercell`:
 
 ```{code-cell}
@@ -276,13 +276,13 @@ main_defect_coords_in_pristine = get_pmg_structure(ph_pristine.supercell).cart_c
 The `Embedded_phonons.from_phonopy_instances` method combines the pristine and defect phonon data.
 The algorithm:
 
-- Maps atoms between the pristine and defect supercells (crucial step)
-- Extracts IFCs from both systems
-- Replaces pristine IFCs with defect IFCs within a cutoff radius around the defect
-- Retains pristine IFCs elsewhere
+- Maps the atoms between the pristine and defect supercells (crucial step)
+- Extracts the IFCs from both systems
+- Replaces the pristine IFCs with the defect IFCs within a cutoff radius around the defect
+- Retains the pristine IFCs elsewhere
 - Enforces the Acoustic Sum Rule (ASR)
 
-You can print details of the modifications by setting `verbose=True`.
+You can print the details of the modifications by setting `verbose=True`.
 
 ```{code-cell}
 emb_ph = Embedded_phonons.from_phonopy_instances(
@@ -296,7 +296,7 @@ emb_ph = Embedded_phonons.from_phonopy_instances(
 )
 ```
 
-If the structure mapping fails (e.g., due to mismatched coordinates), the code will notify you:
+If the structure mapping fails (e.g., due to mismatched coordinates), the code notifies you:
 
 ```{code-cell}
 emb_ph_failed = Embedded_phonons.from_phonopy_instances(
@@ -314,10 +314,10 @@ emb_ph_failed = Embedded_phonons.from_phonopy_instances(
 Finally, note that the `Embedded_phonons` class provides methods for further analysis and data export.
 You can use `get_gamma_freq_with_vec_abipy_fmt()` to compute the $\Gamma$-point phonon frequencies and eigenvectors in AbiPy format,
 or `to_ddb()` to convert the embedded phonons back to an Abinit DDB file.
-Also, you will find in `abipy.embedding.utils_ifc` function to compute the localization ratio of the phonon modes
-as well as helper function to draw phonon eigenvectors with VESTA.
+In `abipy.embedding.utils_ifc`, you will also find a function to compute the localization ratio of the phonon modes,
+as well as helper functions to draw phonon eigenvectors with VESTA.
 
 ```{note}
-For additional examples of the use of this module, especially for the embedding of different defect types (vacancy, interstitial),
-please consult the examples located in `abipy/embedding/tests/test_embedding_ifc.py`.
+For additional examples of the use of this module, in particular for the embedding of other defect types (vacancies, interstitials),
+please consult the examples in `abipy/embedding/tests/test_embedding_ifc.py`.
 ```

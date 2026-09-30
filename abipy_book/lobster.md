@@ -14,16 +14,16 @@ kernelspec:
 # Lobster output files
 
 This example shows how to analyze the output files
-produced by [Lobster](http://schmeling.ac.rwth-aachen.de/cohp)
+produced by [Lobster](http://schmeling.ac.rwth-aachen.de/cohp).
 
 Use
 
     abiopen.py FILE
 
-with the `--expose` or `--print` for a command line interface
-and `--notebook` to generate a jupyter notebook from a lobster `FILE`.
+with the `--expose` or `--print` option for a command-line interface,
+and with `--notebook` to generate a Jupyter notebook from a Lobster `FILE`.
 
-Note: The code in this notebook requires abipy >= 0.6
+Note: The code in this notebook requires AbiPy >= 0.6.
 
 Let's start by importing the basic modules needed for this tutorial.
 
@@ -56,7 +56,7 @@ cohp_file = abilab.abiopen(filename)
 print(cohp_file)
 ```
 
-To plot the COHP averaged over all atom pairs specified:
+To plot the COHP averaged over all the specified atom pairs:
 
 ```{code-cell} ipython3
 cohp_file.plot(title="GaAs COHP");
@@ -68,13 +68,13 @@ To plot the integrated COHP averaged over all atom pairs:
 cohp_file.plot(what="i", title="GaAs integrated COHP");
 ```
 
-To plot the total overlap for all sites listed in `from_site_index`
+To plot the total overlap for all the sites listed in `from_site_index`:
 
 ```{code-cell} ipython3
 cohp_file.plot_site_pairs_total(from_site_index=[0, 1], title="COHP total overlap for site index 0");
 ```
 
-To plot partial crystal orbital projections for all sites listed in `from_site_index`:
+To plot the partial crystal orbital projections for all the sites listed in `from_site_index`:
 
 ```{code-cell} ipython3
 cohp_file.plot_site_pairs_partial(from_site_index=[0, 1],
@@ -85,8 +85,6 @@ cohp_file.plot_site_pairs_partial(from_site_index=[0, 1],
 ```{code-cell} ipython3
 #cohp_file.plot_average_pairs(with_site_index=[0]);
 ```
-
-Use `abiopen` to open the MDF:
 
 +++
 
@@ -123,10 +121,10 @@ doscar.plot_pdos_site(site_index=[0, 1]);
 
 ## Analyzing all Lobster output files with LobsterAnalyzer
 
-Let's assume we have a directory with lobster output files
-for COOP, COHP, DOS and we need to produce plots showing all these results altogether.
+Let's assume we have a directory with the Lobster output files
+for COOP, COHP and DOS, and we need to produce plots showing all these results together.
 In this case, one can use the `LobsterAnalyzer` object and initialize it from the directory
-containing the output files.
+containing the output files:
 
 ```{code-cell} ipython3
 dirpath = os.path.join(abidata.dirpath, "refs", "lobster_gaas")
@@ -143,7 +141,7 @@ To plot COOP + COHP + DOS, use:
 lobana.plot(title="COOP + COHP + DOS");
 ```
 
-To plot COHP for all sites in from_site_index and Lobster DOS:
+To plot the COHP for all the sites in `from_site_index` together with the Lobster DOS:
 
 ```{code-cell} ipython3
 lobana.plot_coxp_with_dos(from_site_index=[0, 1]);
@@ -159,6 +157,6 @@ lobana.plot_coxp_with_dos(from_site_index=[0], with_orbitals=True);
 ```
 
 <div class="alert alert-info" role="alert">
-For a command line interface, use: `abiview.py lobster .`.
+For a command-line interface, use `abiview.py lobster .`.
 Use the `--expose` option to generate plots automatically.
 </div>

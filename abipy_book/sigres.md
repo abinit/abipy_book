@@ -14,7 +14,7 @@ kernelspec:
 # The SIGRES file (GW)
 
 This notebook explains how to use AbiPy and `matplotlib` to visualize the results produced by the GW code.
-The self-energy code ({{optdriver}} 4) saves the final results in the `SIGRES.nc` file
+The self-energy code ({{optdriver}} 4) saves the final results in the `SIGRES.nc` file,
 while the screening code ({{optdriver}} 3) stores the inverse dielectric matrix in the `SCR.nc` file.
 
 Let's start by importing the basic modules we will need for this tutorial.
@@ -37,7 +37,7 @@ import abipy.data as abidata
 
 ## How to visualize QP corrections
 
-As usual, we start by opening the netcdf file with abiopen:
+As usual, we start by opening the netcdf file with `abiopen`:
 
 ```{code-cell} ipython3
 sigres = abilab.abiopen(abidata.ref_file("tgw1_9o_DS4_SIGRES.nc"))
@@ -51,9 +51,9 @@ and the $G_0W_0$ self-energy:
 sigres.ebands.plot();
 ```
 
-The SIGRES file contains the KS as well as the QP direct gaps for all the k-points
+The SIGRES file contains both the KS and the QP direct gaps for all the $k$-points
 included in the calculation ({{kptgw}}).
-To plot the difference QP - KS, use:
+To plot the QP - KS difference, use:
 
 ```{code-cell} ipython3
 sigres.plot_qpgaps();
@@ -90,22 +90,22 @@ and whose direction gives the sign of the correction:
 sigres.plot_ksbands_with_qpmarkers(fact=1000);
 ```
 
-We can also plot the $<\Psi^{KS}_{mk}\,|\,\Psi^{QP}_{nk}>$ coefficients for given spin and k-point:
+We can also plot the $<\Psi^{KS}_{mk}\,|\,\Psi^{QP}_{nk}>$ coefficients for a given spin and $k$-point:
 
 ```{code-cell} ipython3
 sigres.plot_eigvec_qp(spin=0, kpoint=0);
 ```
 
-In this case, we have a diagonal matrix because the wavefunctions are not updated ($G_0W_0$).
-The scenario is completely different if you start to perform self-consistent calculations with update
-of the QP amplitudes.
+In this case, the matrix is diagonal because the wavefunctions are not updated ($G_0W_0$).
+The scenario is completely different in self-consistent calculations in which
+the QP amplitudes are updated.
 
 +++
 
 ## Plotting the spectral function
 
 This example shows how to plot the $G_0W_0$ spectral functions $A(\omega)$
-at the $\Gamma$ point. See also lesson tgw2_4
+at the $\Gamma$ point. See also the tgw2_4 test of the Abinit tutorial.
 
 ```{code-cell} ipython3
 with abilab.abiopen(abidata.ref_file("al_g0w0_sigmaw_SIGRES.nc")) as al_sigres:
@@ -115,8 +115,8 @@ with abilab.abiopen(abidata.ref_file("al_g0w0_sigmaw_SIGRES.nc")) as al_sigres:
 
 ## Analyzing multiple SIGRES files with robots
 
-To analyze the convergence of the QP results, we can use the SigresRobot.
-Let's build our robot from a list of SIGRES files.
+To analyze the convergence of the QP results, we can use the `SigresRobot`.
+Let's build our robot from a list of SIGRES files:
 
 ```{code-cell} ipython3
 # List of SIGRES files computed with different values of nband.
@@ -132,14 +132,14 @@ robot = abilab.SigresRobot.from_files(filepaths)
 ```
 
 Then we plot the convergence of the QP direct gap as a function of the number of bands
-in the self-energy for all the k-points available in the netcdf files:
+in the self-energy for all the $k$-points available in the netcdf files:
 
 ```{code-cell} ipython3
 robot.plot_qpgaps_convergence(sortby="sigma_nband", sharey=False);
 ```
 
-If we are interested in the convergence of the real/imaginary part of the self-energy
-and of the renormalization factor ...
+To analyze the convergence of the real/imaginary part of the self-energy
+and of the renormalization factor for a given spin, $k$-point and band, use:
 
 ```{code-cell} ipython3
 robot.plot_qpdata_conv_skb(spin=0, kpoint=(0, 0, 0), band=3, sortby="sigma_nband");
@@ -156,5 +156,5 @@ robot.plot_qpfield_vs_e0("qpeme0", sortby="sigma_nband");
 ```
 
 <div class="alert alert-info" role="alert">
-Robots can also be constructed from the command line with: abicomp.py sigres FILES
+Robots can also be constructed from the command line with `abicomp.py sigres FILES`.
 </div>

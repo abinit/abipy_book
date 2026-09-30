@@ -15,31 +15,31 @@ kernelspec:
 
 This lesson discusses how to compute phonon band structures, DOS and Born effective charges with Abinit and AbiPy.
 The discussion closely follows the [second lesson](https://docs.abinit.org/tutorial/rf2/index.html)
-on DFPT available on the Abinit web site.
-More specifically, we will discuss how to
+on DFPT available on the Abinit website.
+More specifically, we discuss how to:
 
-   * Perform a convergence study for the phonon frequencies at $\Gamma$ as function of `ecut`
-   * Compute the full phonon band structure of `AlAs` with the inclusion of LO-TO splitting
+   * Perform a convergence study of the phonon frequencies at $\Gamma$ as a function of `ecut`
+   * Compute the full phonon band structure of AlAs, including the LO-TO splitting
    * Obtain thermodynamic properties within the harmonic approximation
 
 We assume that you have read the references mentioned in the
 [first Abinit lesson](https://docs.abinit.org/tutorial/rf1/index.html) on DFPT.
-You might find additional material, related to the present section, in the following references:
+You may find additional material related to the present section in the following references:
 
 * [Dynamical matrices, Born effective charges, dielectric permittivity tensors, and interatomic force constants from density-functional perturbation theory](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.55.10355)
 * [Phonons and related crystal properties from density-functional perturbation theory](https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.73.515)
 
-If you are already familiar with python and AbiPy-Abinit are already installed and configured,
-you may want to use directly the command line interface.
-See the README.md file in the directory of this lesson explaining how to analyze the data from the shell
-using ipython and matplotlib.
+If you are already familiar with Python, and AbiPy and Abinit are already installed and configured,
+you may want to use the command-line interface directly.
+See the README.md file in the directory of this lesson, which explains how to analyze the data from the shell
+using IPython and matplotlib.
 
 ```{include} ../snippets/plotly_matplotlib_note.md
 ```
 
 ## Phonon frequencies at $\Gamma$ as function of ecut
 
-Before starting, we need to import the python modules and the functions we will need in the notebook:
+Before starting, we need to import the Python modules and the functions we will need in the notebook:
 
 ```{code-cell}
 import numpy as np
@@ -59,17 +59,17 @@ import abipy.flowtk as flowtk
 #%matplotlib widget
 ```
 
-and an useful function from the `lesson_dfpt` module that will be used to generate our DFPT flows:
+and a useful function from the `lesson_dfpt` module that will be used to generate our DFPT flows:
 
 ```{code-cell}
 from lesson_dfpt import make_scf_input
 abilab.print_source(make_scf_input)
 ```
 
-The function makes some assumptions for important parameters such as the crystalline structure and the pseudos.
-This is done on purpose to keep the code as simple as possible.
-It should not be so difficult to generalize the implementation to take into account other cases.
-Let's start to play with our new function:
+The function makes some assumptions about important parameters such as the crystalline structure and the pseudos.
+This is done on purpose, to keep the code as simple as possible.
+It should not be difficult to generalize the implementation to other cases.
+Let's start playing with our new function:
 
 ```{code-cell}
 scf_input = make_scf_input()
@@ -85,8 +85,8 @@ scf_input.structure.plot();
 ```
 
 We are using the same pseudopotentials as in the official tutorial.
-Note that the xc functional is LDA in both pseudos but with a different parametrization.
-This is the reason why we are specifying {{ixc}} in the input file.
+Note that the XC functional is LDA in both pseudos, but with different parametrizations.
+This is why we specify {{ixc}} in the input file.
 This is not needed if you are using pseudos generated with the same {{ixc}}.
 
 ```{code-cell}
@@ -94,31 +94,31 @@ for pseudo in scf_input.pseudos:
     print(pseudo, "\n")
 ```
 
-As you can see, we essentially have a standard input to perform a GS calculation.
-This object will represent the **building block** for our DFPT calculation with AbiPy.
+As you can see, we essentially have a standard input for a GS calculation.
+This object will be the **building block** of our DFPT calculation with AbiPy.
 
-It this is not your first time you use the DFPT part of Abinit, you already know that phonon calculations
-require an initial GS run to produce the `WFK` file
+If this is not your first time using the DFPT part of Abinit, you already know that phonon calculations
+require an initial GS run to produce the `WFK` file,
 followed by a DFPT run that reads the `WFK` file and solves the Sternheimer equations for $N_{\text{irred}}(q)$
-atomic perturbations where $N_{\text{irred}}$ is the number of independent atomic displacements
-(assuming $q$ belongs to the k-mesh).
+atomic perturbations, where $N_{\text{irred}}$ is the number of independent atomic displacements
+(assuming $q$ belongs to the $k$-mesh).
 
-If you try to do a convergence study wrt {{ecut}} **without multi-datasets**, you will likely start
+If you try to do a convergence study with respect to {{ecut}} **without multi-datasets**, you will likely start
 from an initial GS input file with a given value of `ecut`, use it as a template to
 generate the DFPT input files, create symbolic
-links to the `WFK` file produced in the first GS step and then instruct Abinit to read this file with {{irdwfk}}.
-Once you have a set of input files that work for a particular {{ecut}}, one can simply replicate the set of
-directories and files and use a script to change the value of {{ecut}} in the input files.
-Then, of course, one has to run the calculations manually, collect the results and produce nice plots to understand
+links to the `WFK` file produced in the first GS step, and then instruct Abinit to read this file with {{irdwfk}}.
+Once you have a set of input files that work for a particular {{ecut}}, you can simply replicate the set of
+directories and files, and use a script to change the value of {{ecut}} in the input files.
+Then, of course, you have to run the calculations manually, collect the results and produce nice plots to understand
 what is happening.
 
-This approach is obviously boring and error-prone if you are a human being, but it is easy to implement in an algorithm
+This approach is obviously boring and error-prone for a human being, but it is easy to implement in an algorithm,
 and machines do not complain if they have a lot of repetitive work to do!
 There are also several **technical advantages** in using this **task-based approach vs multi-datasets**,
-but we discuss this point in more details afterwards.
+but we will discuss this point in more detail later.
 
-If the machine could speak, it will tell you: give me an object that represents an input for GS calculations,
-give me the list of **q**-points you want to compute as well as the parameters that must be changed in the initial input
+If the machine could speak, it would tell you: give me an object that represents an input for GS calculations,
+give me the list of $q$-points you want to compute as well as the parameters that must be changed in the initial input,
 and I will generate a `Flow` for DFPT calculations.
 This logic appears so frequently that we decided to encapsulate it in the `flowtk.phonon_conv_flow` factory function:
 
@@ -146,7 +146,7 @@ flow.get_graphviz()
 #flow.plot_networkx(with_edge_labels=True);
 ```
 
-The flow contains three independent groups of tasks, one group per each value of {{ecut}} specified in `params`.
+The flow contains three independent groups of tasks, one for each value of {{ecut}} specified in `params`.
 
 ```{code-cell}
 for work in flow:
@@ -158,32 +158,32 @@ for work in flow:
 flow.get_vars_dataframe("ecut")
 ```
 
-Each group represents a `Workflow` and consists of one `ScfTask`(red circle) that solves
-the `KS` equations self-consistently producing a `WFK` file that will be used
-by the two children (`PhononTasks` - blue circles)
+Each group represents a `Work` and consists of one `ScfTask` (red circle) that solves
+the KS equations self-consistently, producing a `WFK` file that is used
+by the two children (`PhononTasks`, blue circles)
 to compute the first-order change of the wavefunctions due to one of the *irreducible* atomic perturbations.
 
 Note that `phonon_conv_flow` invokes Abinit under the hood to get the list of irreducible perturbations
 and uses this information to build the flow.
-This explains why we have two `PhononTasks` per **q**-point instead of the total number of phonon modes that
-equals $3*N_{atom}=6$.
+This explains why we have two `PhononTasks` per $q$-point instead of one per phonon mode
+($3 N_{atom}=6$ in total).
 
-Perhaps a table with the values of the input variables associated to the DFPT perturbation will help.
+Perhaps a table with the values of the input variables associated with the DFPT perturbations will help.
 `None` means that the variable is not defined in that particular input.
 
 ```{code-cell}
 flow.get_vars_dataframe("rfphon", "rfatpol", "rfdir", "qpt", "kptopt")
 ```
 
-If the meaning of these variables is not clear, you can consult the [Abinit documentation](https://docs.abinit.org)
-e.g. the documentation of the {{rfatpol}} input variable or access the documentation directly from python with:
+If the meaning of these variables is not clear, you can consult the [Abinit documentation](https://docs.abinit.org),
+e.g. the documentation of the {{rfatpol}} input variable, or access the documentation directly from Python with:
 
 ```{code-cell}
 abilab.docvar("rfatpol")
 ```
 
 ```{note}
-For your convenience the links to the doc of the different variables are listed below:
+For your convenience, the links to the documentation of the different variables are listed below:
 
 - {{qpt}}
 - {{rfphon}}
@@ -192,19 +192,19 @@ For your convenience the links to the doc of the different variables are listed 
 - {{kptopt}}
 ```
 
-Now we can generate the `flow_alas_ecut` directory with the input files by executing the `lesson_dfpt.py` script.
+Now we can generate the `flow_alas_ecut_conv` directory with the input files by executing the `lesson_dfpt.py` script.
 Then use the `abirun.py` script to launch the entire calculation with:
 
     abirun.py flow_alas_ecut_conv scheduler
 
-You will see that all `PhononTasks` will be executed in parallel on your machine.
+You will see that all the `PhononTasks` are executed in parallel on your machine.
 
 ```{warning}
-Please make sure that AbiPy is properly configured by running abicheck --with flow
+Please make sure that AbiPy is properly configured by running `abicheck.py --with-flow`.
 ```
 
-If you prefer to skip this part, you may want to jump to the next section, that presents the post-processing of the results.
-Note that the output files are already available in the repository so it is also possible to try
+If you prefer to skip this part, you can jump to the next section, which presents the post-processing of the results.
+Note that the output files are already available in the repository, so you can also try
 the AbiPy post-processing tools without having to run the flow.
 
 +++
@@ -218,12 +218,12 @@ There are several output files located inside the `outdata` directories:
 ```
 
 Remember that our goal is to analyze the convergence of the phonon frequencies at $\Gamma$
-as function of {{ecut}}.
+as a function of {{ecut}}.
 So we are mainly interested in the DDB files located in the `outdata` directories
 of the `PhononWorks` (`w0/outdata`, `w1/outdata`, `w2/outdata`).
-These are indeed the DDB files with all the information needed to reconstruct the
+These DDB files contain all the information needed to reconstruct the
 dynamical matrix at $\Gamma$ and to compute the phonon frequencies (AbiPy calls `mrgddb`
-to merge the DDB files when all the perturbations in the `PhononWork` have been computed).
+to merge the DDB files once all the perturbations in the `PhononWork` have been computed).
 
 The code below tells our robot that we would like to analyze all the DDB files
 located in the output directories of the works:
@@ -233,25 +233,25 @@ robot = abilab.DdbRobot.from_dir_glob("./flow_alas_ecut_conv/w*/outdata/")
 robot
 ```
 
-For more examples on the use of DDB and robots, see the
-[DDB notebook](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/ddb.ipynb).
-Now we ask the robot to call `anaddb` to compute the phonon frequencies at $\Gamma$ for all DDBs.
-The results are returned in a `PhqData` object and the `ph_df` attribute gives a pandas `DataFrame`:
+For more examples on the use of DDB files and robots, see the
+[DDB notebook](../ddb).
+Now we ask the robot to call `anaddb` to compute the phonon frequencies at $\Gamma$ for all the DDBs.
+The results are returned in a `PhqData` object, whose `ph_df` attribute is a pandas `DataFrame`:
 
 ```{code-cell}
 ph_data = robot.get_phdata_at_qpoint((0, 0, 0))
 data_gamma = ph_data.ph_df
 ```
 
-The `DataFrame` is a dict-like object whose keys are the name of the columns in the table
+The `DataFrame` is a dict-like object whose keys are the names of the columns in the table:
 
 ```{code-cell}
 print(data_gamma.keys())
 ```
 
-where `mode-i` is the frequency in meV of the i-th phonon mode.
+where `mode{i}` is the frequency in meV of the i-th phonon mode.
 
-We are mainly interested in the convergence of the phonon frequencies versus {{ecut}}, so we filter these columns with:
+We are mainly interested in the convergence of the phonon frequencies with respect to {{ecut}}, so we select these columns with:
 
 ```{code-cell}
 data_gamma = data_gamma[["ecut"] + [k for k in data_gamma if k.startswith("mode")]]
@@ -264,9 +264,9 @@ and we get some statistics about our data with:
 data_gamma.describe()
 ```
 
-Pandas tables are extremely powerful and the `describe` method already gives some useful info
+Pandas tables are extremely powerful, and the `describe` method already gives some useful info
 about the convergence of the phonon modes.
-Sometimes, however, we would like to visualize the data to have a better understanding of what's happening:
+Sometimes, however, we would like to visualize the data to better understand what's happening:
 
 ```{code-cell}
 data_gamma.plot(x="ecut", y="mode3", style="-o");
@@ -278,14 +278,14 @@ Let's plot all the modes in different subplots with:
 data_gamma.plot(x="ecut", y=[k for k in data_gamma if k.startswith("mode")], subplots=True, style="-o");
 ```
 
-This convergence study at $\Gamma$ thus reveals that our pseudos require
+This convergence study thus reveals that our pseudos require
 {{ecut}} >= 6 Ha to get reasonably converged phonon frequencies at $\Gamma$.
-In what follows, we assume that also the modes at the other $q$-points present a similar
-convergence behaviour and we use {{ecut}} = 6 Ha to keep the computational cost low.
+In what follows, we assume that the modes at the other $q$-points have a similar
+convergence behaviour, and we use {{ecut}} = 6 Ha to keep the computational cost low.
 
 +++
 
-For a quick introduction to Pandas, see:
+For a quick introduction to pandas, see:
 
 * [Pandas cookbook](https://github.com/jvns/pandas-cookbook)
 * [Pandas cookbook Chapter 1 Reading data from a csv file](https://nbviewer.jupyter.org/github/jvns/pandas-cookbook/blob/master/cookbook/Chapter%201%20-%20Reading%20from%20a%20CSV.ipynb)
@@ -294,23 +294,23 @@ For a quick introduction to Pandas, see:
 
 ## Phonon band structure of AlAs
 
-Now we are finally ready for the calculation of the vibrational spectrum of $AlAs$.
-We already managed to run DFPT calculations at $\Gamma$ with different values of {{ecut}} and the
+Now we are finally ready to compute the vibrational spectrum of AlAs.
+We have already run DFPT calculations at $\Gamma$ with different values of {{ecut}}, and the
 steps required to get a full band structure are not that different, provided that
 the following differences are taken into account:
 
-- we need the dynamical matrix $D(q)$ on a homogeneous mesh so that it is possible to calculate $D(R)$
-  in anaddb via Fourier transform and then phonon frequencies for arbitrary q-points via Fourier interpolation
+- we need the dynamical matrix $D(q)$ on a homogeneous mesh, so that anaddb can compute $D(R)$
+  via Fourier transform and then the phonon frequencies at arbitrary $q$-points via Fourier interpolation;
 
-- $AlAs$ is a polar semiconductor so we need to include the LO-TO splitting for $q \rightarrow 0$ that, in turns,
+- AlAs is a polar semiconductor, so we need to include the LO-TO splitting for $q \rightarrow 0$, which, in turn,
   requires the DFPT computation of the Born effective charges and of the dielectric constant.
 
 
-In AbiPy, these concepts are translated in an easy-to-use API in which you pass an initial `AbinitInput` object,
-you specify the q-mesh for phonons in terms of `ph_nqpt` and activate the computation of the
+In AbiPy, these concepts are translated into an easy-to-use API in which you pass an initial `AbinitInput` object,
+specify the $q$-mesh for phonons with `ph_ngqpt`, and activate the computation of the
 Born effective charges with the boolean flag `with_becs`.
 
-Let's have a look at the code (as usual there are more comments than lines of code):
+Let's have a look at the code (as usual, there are more comments than lines of code):
 
 ```{code-cell}
 from lesson_dfpt import build_flow_alas_phonons
@@ -330,30 +330,30 @@ flow_phbands.get_graphviz()
 #flow_phbands.plot_networkx();
 ```
 
-Note that there are a lot of things happening under the hood here.
+Note that a lot of things are happening under the hood here.
 
 First of all, AbiPy generates `PhononTasks` only for the $q$-points in the
 irreducible wedge of the Brillouin zone corresponding to `ph_ngqpt`.
-Moreover, for a given $q$-point, only the irreducible atomic perturbations are explicitly computed
+Moreover, for a given $q$-point, only the irreducible atomic perturbations are explicitly computed,
 since the other atomic perturbations can be reconstructed by symmetry.
-Fortunately you do not have to care about all these technical details as AbiPy and Abinit
-will automate the whole procedure.
+Fortunately, you do not have to care about all these technical details, as AbiPy and Abinit
+automate the whole procedure.
 
-Remember that the $q$-point mesh cannot be chosen arbitrarily
-since all $q$ wavevectors should connect two $k$ points of the grid used for the electrons.
+Remember that the $q$-point mesh cannot be chosen arbitrarily,
+since all the $q$ wavevectors should connect two $k$-points of the grid used for the electrons.
 
-It is also worth stressing that the computational cost of the DFPT run depends on the q-point
-since only those symmetries that preserve the q-point as well as the direction of the perturbation
-can be employed (calculations at $\Gamma$ are therefore much faster than other q-points).
+It is also worth stressing that the computational cost of the DFPT run depends on the $q$-point,
+since only the symmetries that preserve the $q$-point as well as the direction of the perturbation
+can be employed (calculations at $\Gamma$ are therefore much faster than at other $q$-points).
 
 ```{code-cell}
 flow_phbands.get_vars_dataframe("rfphon", "rfatpol", "rfdir", "qpt", "kptopt")
 ```
 
 Now we can generate the directories and the input files of the `Flow`.
-Change lesson_dfpt.py so that the build_flow_alas_phonons function is called in main
-instead of build_flow_alas_ecut_conv.
-Run the script to generate the directory with the flow.
+Change *lesson_dfpt.py* so that `build_flow_alas_phonons` is called in the main function
+instead of `build_flow_alas_ecut_conv`, and
+run the script to generate the directory with the flow.
 Finally, use
 
     abirun.py flow_alas_phonons scheduler
@@ -364,7 +364,7 @@ to launch the entire calculation.
 
 ## Post-processing the results
 
-Our flow is completed and we have the final DDB file with all the $q$-points and all the independent atomic perturbations.
+Our flow has completed, and we have the final DDB file with all the $q$-points and all the independent atomic perturbations.
 Let's open this DDB file with:
 
 ```{code-cell}
@@ -381,7 +381,7 @@ the data stored in the DDB file.
 `anacompare_phdos`, for example, computes the phonon DOS with different $q$-meshes.
 Each mesh is defined by a single integer, `nqsmall`, that gives the number of
 divisions used to sample the smallest reciprocal lattice vector.
-The number of divisions along the other directions are chosen so that proportions are preserved:
+The numbers of divisions along the other directions are chosen so that proportions are preserved:
 
 ```{code-cell}
 c = ddb.anacompare_phdos(nqsmalls=[8, 10, 12, 14, 16])
@@ -395,7 +395,7 @@ A 16x16x16 $q$-mesh with the tetrahedron method gives a well converged phonon DO
 
 +++
 
-To function `anaget_phbst_and_phdos_files` allows one to compute the phonon band structure on
+The `anaget_phbst_and_phdos_files` method computes the phonon band structure on
 an automatically defined $q$-path as well as the phonon DOS:
 
 ```{code-cell}
@@ -406,27 +406,27 @@ phbands = phbst_file.phbands
 phdos = phdos_file.phdos
 ```
 
-Let's plot the phonon bands with plot:
+Let's plot the phonon bands:
 
 ```{code-cell}
 phbands.plotly(template="plotly_dark");
 ```
 
-as well as the high-symmetry **q**-path:
+as well as the high-symmetry $q$-path:
 
 ```{code-cell}
 phbands.qpoints.plotly();
 ```
 
-Do you see the two strange dips for the highest phonon band, at the $\Gamma$ point?
-They are due to the lack of LO-TO splitting for the ANADDB treatment of the first list of vector.
+Do you see the two strange dips of the highest phonon band at the $\Gamma$ point?
+They are due to the lack of LO-TO splitting in the anaddb treatment of the first list of vectors.
 See also the discussion in the [second DFPT lesson](https://docs.abinit.org/tutorial/rf2/index.html).
 
 +++
 
-For years, Abinit users had to patch manually the output frequencies to include the LO-TO splitting.
+For years, Abinit users had to manually patch the output frequencies to include the LO-TO splitting.
 These days are finally gone, and we can plot the LO-TO splitting with AbiPy by just setting
-lo_to_splitting=True`:
+`lo_to_splitting=True`:
 
 ```{code-cell}
 phbst_file, phdos_file = ddb.anaget_phbst_and_phdos_files(ndivsm=10, nqsmall=16, lo_to_splitting=True)
@@ -447,8 +447,8 @@ phbands.plotly();
 ```
 
 ```{warning}
-`lo_to_splitting=True` works only when the DDB contains the Born effective charges
-and the dielectric constant, that must be computed in the Abinit run.
+`lo_to_splitting=True` works only if the DDB contains the Born effective charges
+and the dielectric constant, which must be computed in the Abinit run.
 ```
 
 +++
@@ -459,9 +459,9 @@ To plot bands and DOS on the same figure:
 phbands.plotly_with_phdos(phdos);
 ```
 
-The `PhdosFile` contains the phonon frequencies, the displacement vectors
-as well as the decomposition of the total DOS in terms of the contributions due to
-the different types of atom in the unit cell.
+The `PhdosFile` contains the phonon frequencies and the displacement vectors,
+as well as the decomposition of the total DOS into the contributions of
+the different types of atoms in the unit cell.
 This means that one can plot the type-projected phonon DOS with:
 
 ```{code-cell}
@@ -474,14 +474,14 @@ and it is even possible to plot fatbands and type-projected DOS on the same figu
 phbands.plotly_fatbands(phdos_file=phdos_file);
 ```
 
-The highest frequency modes have a strong Al-character while the low frequency modes originate from As.
-This behaviour is somehow expected. Could you explain it in terms of a simple physical model?
+The highest-frequency modes have a strong Al character, while the low-frequency modes originate from As.
+This behaviour is somewhat expected. Could you explain it in terms of a simple physical model?
 
 +++
 
 ## Macroscopic dielectric tensor and Born effective charges
 
-Our calculations includes the response of the system to an external electric field.
+Our calculation includes the response of the system to an external electric field.
 The code below extracts the macroscopic dielectric tensor (`emacro`)
 and the Born effective charges (`becs`) from the DDB file:
 
@@ -497,16 +497,16 @@ emacro
 becs
 ```
 
-As explained in the references, the Born effective charges must fulfill the charge neutrality sum-rule.
-This rule is usually broken due to the discretization introduced by the FFT mesh,
-and `anaddb` will enforce it if {{chneut}} is set to 1 (default behaviour).
+As explained in the references, the Born effective charges must fulfill the charge neutrality sum rule.
+This rule is usually broken by the discretization introduced by the FFT mesh,
+and `anaddb` enforces it if {{chneut}} is set to 1 (default behaviour).
 Let's check it out!
 
 ```{code-cell}
 print(becs)
 ```
 
-Let's repeat the same calculation but without enforcing the sum-rule:
+Let's repeat the same calculation without enforcing the sum rule:
 
 ```{code-cell}
 emacro, becs_chneut0 = ddb.anaget_epsinf_and_becs(chneut=0)
@@ -516,7 +516,7 @@ print(becs_chneut0)
 ## Thermodynamic properties within the harmonic approximation
 
 The thermodynamic properties of an ensemble of non-interacting phonons can be
-expresses in terms of integrals of the DOS.
+expressed in terms of integrals of the DOS:
 
 \begin{equation} %\label{eq:helmholtz}
 \Delta F = 3nNk_BT\int_{0}^{\omega_L}\text{ln}\left(2\text{sinh}\frac{\hbar\omega}{2k_BT}\right)g(\omega)d\omega
@@ -536,10 +536,10 @@ S = 3nNk_B\int_{0}^{\omega_L}\left(\frac{\hbar\omega}{2k_BT}\text{coth}\left(\fr
 
 where $k_B$ is the Boltzmann constant.
 
-This should represent a reasonable approximation especially in the low temperature
-regime in which anharmonic effects can be neglected.
+This is a reasonable approximation, especially in the low-temperature
+regime, where anharmonic effects can be neglected.
 
-Let's plot the vibrational contributions to thermodynamic properties as a function of $T$:
+Let's plot the vibrational contributions to the thermodynamic properties as a function of $T$:
 
 ```{code-cell}
 phdos.plotly_harmonic_thermo();
@@ -552,6 +552,6 @@ phdos.plotly_harmonic_thermo();
   You may try to increase the density of $k$-points/$q$-points
   to see if this change affects the final results.
 
-* Why do you get an error from AbiPy if you try `ngkpt` = (4, 4, 4,) and `ngqpt` = (3, 3, 3)?
+* Why do you get an error from AbiPy if you try `ngkpt` = (4, 4, 4) and `ngqpt` = (3, 3, 3)?
 
 +++

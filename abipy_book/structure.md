@@ -13,8 +13,8 @@ kernelspec:
 
 # Structure object
 
-The `AbiPy` structure inherits from the `pymatgen` structure.
-One has therefore access to all the methods and tools already available in `pymatgen`.
+The `AbiPy` structure inherits from the `pymatgen` structure,
+so all the methods and tools already available in `pymatgen` can be used.
 In this notebook, we mainly focus on the extensions added by `AbiPy`.
 For the features provided by pymatgen, please consult the
 [official pymatgen documentation](http://pymatgen.org/usage.html#structures-and-molecules).
@@ -44,22 +44,22 @@ import numpy as np
 
 ## Reading a structure from file
 
-It is possible to initialize a structure object from different file formats:
+A structure object can be initialized from several file formats:
 
 * CIF
 * POSCAR/CONTCAR
 * CHGCAR
-* LOCPOT,
+* LOCPOT
 * vasprun.xml
 * CSSR
-* ABINIT Netcdf files
+* ABINIT netcdf files
 * pymatgen's JSON serialized structures
 
-Note, in particular, that one can initialize the structure from the netcdf files
-produced by Abinit (`GSR.nc`, `WFK.nc`, etc) as well as output files in text format
+Note, in particular, that the structure can be initialized from the netcdf files
+produced by Abinit (`GSR.nc`, `WFK.nc`, etc.) as well as from text files
 such as the Abinit input/output files or even the DDB file.
 
-To initialize the structure from a CIF file use the `from_file` method:
+To initialize the structure from a CIF file, use the `from_file` method:
 
 ```{code-cell}
 
@@ -78,7 +78,7 @@ structure = Structure.from_file(abidata.ref_file("si_nscf_GSR.nc"))
 print(structure.to_string(verbose=1))  # Use to_string with verbose > 0 to get more info
 ```
 
-Use `to_abivars` to get a python dictionary with the list of Abinit variables.
+Use `to_abivars` to get a Python dictionary with the Abinit variables:
 
 ```{code-cell}
 structure.to_abivars()
@@ -96,17 +96,17 @@ To visualize the structure with matplotlib, use:
 structure.plot();
 ```
 
-The matplotlib version is minimalistic but it plays well with jupyter notebooks.
-For a more advanced visualization we suggest using a specialized graphical applications.
-Fortunately, one can invoke external applications directly from AbiPy with e.g.
+The matplotlib version is minimalistic, but it plays well with Jupyter notebooks.
+For more advanced visualization, we suggest using a specialized graphical application.
+Fortunately, external applications can be invoked directly from AbiPy with e.g.
 
 ```{code-cell}
 # structure.visualize("vesta")
 ```
 
-provided VESTA is already installed on your machine and the binary can be found in  **$PATH**.
+provided VESTA is installed on your machine and the executable can be found in **$PATH**.
 
-To get a structure from the [materials project database](https://www.materialsproject.org), use:
+To get a structure from the [Materials Project database](https://www.materialsproject.org), use:
 
 ```{code-cell}
 # Remember to set the env variable PMG_MAPI_KEY in your ~/.pmgrc.yaml files.
@@ -114,8 +114,8 @@ si2_mp = Structure.from_mpid("mp-149")
 print(si2_mp)
 ```
 
-In some cases, we have multiple structures and we need to compare the lattice parameters.
-Use `dataframes_from_structures` to build a pandas DataFrame:
+When we have multiple structures and need to compare their lattice parameters,
+we can use `dataframes_from_structures` to build pandas DataFrames:
 
 ```{code-cell}
 dfs = abilab.dataframes_from_structures([structure, si2_mp], index=["CIF", "MP"])
@@ -127,8 +127,8 @@ then we can compare the lattice parameters with:
 dfs.lattice
 ```
 
-Note that all AbiPy robots have this feature built-in.
-Sometimes it is much easier to build a robot directly from files
+Note that all AbiPy robots have this feature built in.
+It is often easier to build a robot directly from files
 and then compare the structures with e.g. `robot.get_lattice_dataframe()`.
 
 
@@ -157,21 +157,21 @@ structure.reciprocal_lattice.matrix.T @ structure.lattice.matrix / (2 * np.pi)
 print(structure.hsym_kpoints)
 ```
 
-The method `calc_ksampling` allows one to get an efficient sampling of the Brillouin zone
-by just specifying the number of divisions to be used for the smallest lattice vector of the reciprocal lattice:
+The `calc_ksampling` method returns an efficient sampling of the Brillouin zone
+given the number of divisions to be used for the smallest vector of the reciprocal lattice:
 
 ```{code-cell}
 pprint(structure.calc_ksampling(nksmall=10))
 ```
 
-To get the recommended high symmetry $k$-path in reduced coordinates:
+To get the recommended high-symmetry $k$-path in reduced coordinates:
 
 ```{code-cell}
 structure.calc_kptbounds()
 ```
 
-The high-symmetry **q**-path is automatically selected assuming
-the structure fulfills the convention described in [Setyawan2010](https://doi.org/10.1016/j.commatsci.2010.05.010)
+The high-symmetry $k$-path is automatically selected assuming
+the structure fulfills the convention described in [Setyawan2010](https://doi.org/10.1016/j.commatsci.2010.05.010).
 
 +++
 
@@ -197,7 +197,7 @@ To get the number of valence electrons for a given set of pseudopotentials:
 structure.num_valence_electrons(pseudos=abidata.pseudos("14si.pspnc"))
 ```
 
-To visualize the X-ray diffraction plot with pymatgen XRDCalculator, use:
+To plot the X-ray diffraction pattern with the pymatgen `XRDCalculator`, use:
 
 ```{code-cell}
 structure.plot_xrd();
@@ -207,10 +207,10 @@ structure.plot_xrd();
 
 ## The `abistruct.py` script
 
-The {{ abistruct }} script provides a handy command line
-interface to operate on structure objects constructed from external files.
-There are several options available as well an interface to the {{ materials_project }}
-and the {{ COD }} database.
+The {{ abistruct }} script provides a handy command-line
+interface to operate on structures read from external files.
+Several options are available, as well as an interface to the {{ materials_project }}
+and the {{ COD }} databases.
 
 To obtain the list of available commands, use:
 
@@ -224,7 +224,7 @@ Several AbiPy objects provide a `get_panel` method that allows one to create a {
 exposing some of the underlying AbiPy methods.
 Similar capabilities are also available via the {{ abipygui }} web app.
 
-To build a panel GUI for a given structure use:
+To build a panel GUI for a given structure, use:
 
 ```{code-cell}
 abilab.abipanel()

@@ -13,25 +13,25 @@ kernelspec:
 
 # The GSR file (Ground-State Results)
 
-In this notebook we discuss how to plot the electron band structures and the density of states (DOS)
+In this notebook, we discuss how to plot electronic band structures and densities of states (DOS)
 using the GSR netcdf files produced by Abinit.
 
-For the tutorial, we will use the netcdf files shipped with AbiPy.
-The function `abidata.ref_file` returns the absolute path of the reference file.
-In your scripts, you have to replace `data.ref_file("abipy_filename")` with a string giving
+In this tutorial, we use the netcdf files shipped with AbiPy.
+The function `abidata.ref_file` returns the absolute path of a reference file.
+In your scripts, you should replace `abidata.ref_file("abipy_filename")` with a string giving
 the location of your netcdf file.
 
-Alternatively, one can use the `abiopen.py` script to open the file inside the shell with the syntax:
+Alternatively, you can use the `abiopen.py` script to open the file from the shell with:
 
     abiopen.py out_GSR.nc
 
-This command will start the ipython interpreter so that one can interact directly
-with the `GsrFile` object (named `abifile` inside ipython).
-To generate a jupyter notebook use:
+This command starts the IPython interpreter so that you can interact directly
+with the `GsrFile` object (named `abifile` inside IPython).
+To generate a Jupyter notebook, use:
 
     abiopen.py out_GSR.nc -nb
 
-For a quick visualization of the data, use the `--expose` options:
+For a quick visualization of the data, use the `--expose` option:
 
     abiopen.py out_GSR.nc -e
 
@@ -57,9 +57,9 @@ import abipy.data as abidata
 
 ## The GSR File
 
-The `GSR` file (mnemonics: Ground-State Results) is a netcdf file with the
+The `GSR` file (mnemonic: Ground-State Results) is a netcdf file with the
 results produced by SCF or NSCF ground-state calculations
-(band energies, forces, energies, stress tensor).
+(band energies, forces, total energy, stress tensor).
 
 To open a `GSR` file, use the `abiopen` function defined in `abilab`:
 
@@ -67,24 +67,24 @@ To open a `GSR` file, use the `abiopen` function defined in `abilab`:
 gsr = abilab.abiopen(abidata.ref_file("si_scf_GSR.nc"))
 ```
 
-The gsr object has a `Structure`:
+The `gsr` object has a `Structure`:
 
 ```{code-cell}
 print(gsr.structure)
 ```
 
-and an `ElectronBands` object with the band energies, the occupation factors, the list of k-points:
+and an `ElectronBands` object with the band energies, the occupation factors and the list of $k$-points:
 
 ```{code-cell}
 print(gsr.ebands)
 ```
 
 ```{important}
-In python we start to count from zero, thus the first band has index 0 and the first spin is 0
-AbiPy uses the same convention so be very careful when specifying band, spin or k-point indices.
+Python counts from zero, thus the first band has index 0 and the first spin is 0.
+AbiPy uses the same convention, so be very careful when specifying band, spin or $k$-point indices.
 ```
 
-A GSR file produced by a **self-consistent run**, contains the values of the total energy, the forces,
+A GSR file produced by a **self-consistent run** contains the values of the total energy, the forces,
 and the stress tensor at the end of the SCF cycle:
 
 ```{code-cell}
@@ -103,30 +103,30 @@ The different contributions to the total energy are stored in a dictionary:
 print(gsr.energy_terms)
 ```
 
-At this point, we don't need this file anymore so we close it with:
+At this point, we don't need this file anymore, so we close it with:
 
 ```{code-cell}
 gsr.close()
 ```
 
 ```{warning}
-The gsr maintains a reference to the underlying netcdf file hence one should
-call `gsr.close()` to release the resource when we don't need it anymore.
-Python will do it automatically if you use `abiopen` and the `with` context manager.
+The `gsr` object keeps a reference to the underlying netcdf file, hence one should
+call `gsr.close()` to release the resource when the file is no longer needed.
+Python does this automatically if you use `abiopen` with the `with` context manager.
 
-Note that we don't always follow this rule inside the jupyter notebook to maintain the
-code readable but you should definitively close all your files, especially when
-writing code that may be running for hours or even more.
+Note that we don't always follow this rule inside Jupyter notebooks, to keep the
+code readable, but you should definitely close all your files, especially when
+writing code that may run for hours or even longer.
 ```
 
 ## Plotting band structures
 
-Let's open the GSR file produced by a NSCF calculation done on a high-symmetry k-path
+Let's open the GSR file produced by an NSCF calculation on a high-symmetry $k$-path
 and extract the electronic band structure.
 
-A warning is issued by pymatgen about the structure not being standard.
-Be aware that this might possibly affect the automatic labelling of the boundary k-points on the k-path.
-So, check carefully the k-point labels on the figures that are produced in such case.
+Pymatgen issues a warning about the structure not being standard.
+Be aware that this might affect the automatic labelling of the boundary $k$-points on the path,
+so carefully check the $k$-point labels in the figures produced in such cases.
 In the present case, the labelling is correct.
 
 ```{code-cell}
@@ -142,7 +142,7 @@ ebands_kpath.plot(with_gaps=True, title="Silicon band structure");
 ```
 
 Alternatively, one can use the optional argument `klabels` to define the mapping
-`reduced_coordinates --> name of the k-point` and pass it to the plot method
+`reduced_coordinates --> name of the k-point` and pass it to the plot method:
 
 ```{code-cell}
 klabels = {
@@ -165,7 +165,7 @@ abilab.abipanel()
 gsr.get_panel()
 ```
 
-Let's have a look at our k-points by calling `kpoints.plot()`
+Let's have a look at our $k$-points by calling `kpoints.plotly()`
 
 ```{code-cell}
 ebands_kpath.kpoints.plotly();
@@ -178,16 +178,16 @@ ebands_kpath.structure.plot();
 ```
 
 ```{note}
-The same piece of code works if you replace the `GSR.nc` file with e.g. a `WFK.nc` file in netcdf format
-(actually any netcdf file with an ebands object).
+The same piece of code works if you replace the `GSR.nc` file with e.g. a `WFK.nc` file
+(actually, with any netcdf file containing an ebands object).
 The main advantage of the `GSR` file is that it is lightweight (no wavefunctions).
 ```
 
 ## DOS with the Gaussian technique
 
-Let's use the eigenvalues and the k-point weights stored in `gs_ebands` to
+Let's use the eigenvalues and the $k$-point weights stored in `ebands_kmesh` to
 compute the DOS with the Gaussian method.
-The method is called without arguments so we use **default values**
+The method is called without arguments, so **default values** are used
 for the *broadening* and the *step* of the linear mesh.
 
 ```{code-cell}
@@ -208,8 +208,8 @@ print("[ebands_kpath] is_ibz:", ebands_kpath.kpoints.is_ibz, "is_kpath:", ebands
 ```
 
 ```{warning}
-The DOS requires a homogeneous $k$-sampling of the BZ. Abipy will raise an exception if you try
-to compute the DOS with a k-path.
+The DOS requires a homogeneous $k$-sampling of the BZ. AbiPy raises an exception if you try
+to compute the DOS with a $k$-path.
 ```
 
 To plot bands and DOS on the same figure:
@@ -224,11 +224,11 @@ To plot the DOS and the integrated DOS (IDOS), use:
 edos.plotly_dos_idos();
 ```
 
-The gaussian broadening can significantly change the overall shape of the DOS.
+The Gaussian broadening can significantly change the overall shape of the DOS.
 If accurate values are needed (e.g. the DOS at the Fermi level in metals),
-one should perform an accurate convergence study with respect to the k-point mesh.
-Here we show how compute the DOS with different values of the gaussian smearing
-for fixed k-point sampling and plot the results:
+one should perform a careful convergence study with respect to the $k$-point mesh.
+Here we show how to compute the DOS with different values of the Gaussian smearing
+for a fixed $k$-point sampling, and how to plot the results:
 
 ```{code-cell}
 # Compute the DOS with the Gaussian method and different values of the broadening
@@ -251,9 +251,9 @@ edos_plotter.gridplot();
 
 ## Joint density of states
 
-This example shows how to plot the different contributions to the electronic joint density of states (JDOS) of Silicon.
-Select the valence and conduction bands to be included in the JDOS.
-Here we include valence bands from 0 to 3 and the first conduction band (4).
+This example shows how to plot the different contributions to the electronic joint density of states (JDOS) of silicon.
+First, we select the valence and conduction bands to be included in the JDOS.
+Here we include the valence bands from 0 to 3 and the first conduction band (4).
 
 ```{code-cell}
 vrange = range(0,4)
@@ -281,13 +281,13 @@ with abilab.abiopen(abidata.ref_file("mgb2_kmesh181818_FATBANDS.nc")) as fbnc_km
     mgb2_eb3d = mgb2_ebands.get_ebands3d()
 ```
 
-There are three bands crossing the Fermi level of $MgB_2$ (band 2, 3, 4):
+In MgB$_2$, three bands cross the Fermi level (bands 2, 3 and 4):
 
 ```{code-cell}
 mgb2_ebands.boxplot();
 ```
 
-Let's use matplotlib to plot the isosurfaces corresponding to the Fermi level (default):
+Let's use matplotlib to plot the isosurfaces at the Fermi level (default):
 
 ```{code-cell}
 # Warning: requires skimage package, rendering could be slow.
@@ -304,5 +304,5 @@ mgb2_eb3d.plot_isosurfaces();
 TODO
 
 ```{note}
-Robots can also be constructed from the command line with: abicomp.py gsr FILES
+Robots can also be constructed from the command line with `abicomp.py gsr FILES`.
 ```

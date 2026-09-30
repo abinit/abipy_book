@@ -22,11 +22,11 @@ kernelspec:
 ## Python programming
 
 * [Python for Beginners](https://www.python.org/about/gettingstarted/)
-* [The Python tutorial](https://docs.python.org/2/tutorial/)
+* [The Python tutorial](https://docs.python.org/3/tutorial/)
 * [DiveIntoPython3](http://www.diveintopython3.net/)
 
 
-## Ipython Notebooks
+## IPython Notebooks
 
 * [Introducing IPython Notebook](http://opentechschool.github.io/python-data-intro/core/notebook.html)
 * [Shortcuts and helpful tips for working in IPython](https://damontallen.github.io/IPython-quick-ref-sheets)
@@ -47,7 +47,7 @@ kernelspec:
 * [Sympy](http://www.sympy.org/en/index.html)
   Python library for symbolic mathematics
 * [Matplotlib](http://matplotlib.org/)
-  python plotting library
+  Python plotting library
 
 ## Miscellaneous
 
@@ -59,7 +59,7 @@ kernelspec:
 * [Scientific-Computing-with-Python](http://nbviewer.ipython.org/github/chenleo/scientific-python-lectures/blob/master/Lecture-0-Scientific-Computing-with-Python.ipynb)
 * [matplotlib - 2D and 3D plotting in Python](http://nbviewer.ipython.org/github/jrjohansson/scientific-python-lectures/blob/master/Lecture-4-Matplotlib.ipynb)
 * [Introducing IPython](https://ipython.readthedocs.io/en/stable/interactive/tutorial.html)
-* [Pandas cookbook](https://github.com/jvns/pandas-cookbook): [Chapter 1 Reading from CVS](http://nbviewer.jupyter.org/github/jvns/pandas-cookbook/blob/master/cookbook/Chapter%201%20-%20Reading%20from%20a%20CSV.ipynb)
+* [Pandas cookbook](https://github.com/jvns/pandas-cookbook): [Chapter 1 Reading from CSV](http://nbviewer.jupyter.org/github/jvns/pandas-cookbook/blob/master/cookbook/Chapter%201%20-%20Reading%20from%20a%20CSV.ipynb)
 
 
 ## Articles

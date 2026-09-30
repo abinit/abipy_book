@@ -13,23 +13,23 @@ kernelspec:
 
 # LumiWork Workflow
 
-This tutorial aims to show how to perform $\Delta$SCF constrained-occupations computations with Abinit in an automated way.
-The theory and equations associated to this tutorial can be found in the related [theory section](../theory/lesson_theory.md), and references therein.
+This tutorial shows how to perform $\Delta$SCF constrained-occupation calculations with Abinit in an automated way.
+The theory and equations associated with this tutorial can be found in the related [theory section](../theory/lesson_theory.md) and in the references therein.
 
 ```{note}
-Before starting, it is recommended to first get familiar with the [AbiPy environment](https://abinit.github.io/abipy_book/intro.html),
-in particular the working principle of [AbiPy workflows](https://abinit.github.io/abipy_book/flows.html).
+Before starting, we recommend getting familiar with the [AbiPy environment](https://abinit.github.io/abipy_book/intro.html),
+in particular with the working principles of [AbiPy workflows](https://abinit.github.io/abipy_book/flows.html).
 ```
 
 ```{note}
-The examples shown in these tutorials are based on a certain type of defect (Eu substitution),
-but the $\Delta$SCF constrained-occupations methodology can be applied to numerous kind of defects.
+The examples shown in these tutorials are based on a specific type of defect (Eu substitution),
+but the $\Delta$SCF constrained-occupation methodology can be applied to many kinds of defects.
 ```
 
 ## Recap
 
-Our goal is to compute the photo-luminescent properties of an impurity embedded in a lattice.
-Here we will take the example of the red phosphor material Sr[Li$_2$Al$_2$O$_2$N$_2$]:Eu$^{2+}$.
+Our goal is to compute the photoluminescence properties of an impurity embedded in a lattice.
+Here we take the example of the red phosphor Sr[Li$_2$Al$_2$O$_2$N$_2$]:Eu$^{2+}$.
 
 We need to compute the four states (energies and structures) highlighted in the figure below:
 
@@ -40,24 +40,24 @@ We need to compute the four states (energies and structures) highlighted in the 
 
 <img src="CCM.png" width="600">
 
-This requires two relaxations (one in the ground and excited state) and four static scf computations (at each state).
-One could eventually add four nscf computations for the electronic band structures.
-These 6 (+4) computations are what is automated in one "LumiWork".
+This requires two relaxations (one in the ground state and one in the excited state) and four static SCF calculations (one for each state).
+Optionally, one can add four NSCF calculations for the electronic band structures.
+These 6 (+4) calculations are what is automated in one "LumiWork".
 
-The excited state configuration is computed following the $\Delta$SCF-constrained occupation method.
+The excited-state configuration is computed with the $\Delta$SCF constrained-occupation method.
 
-A key challenge in $\Delta$SCF calculations is correctly setting up the occupation numbers for both ground and excited states.
+A key challenge in $\Delta$SCF calculations is setting up the occupation numbers correctly for both the ground and excited states.
 
 ### General Principles
 
-For a spin-polarized calculation (`nsppol=2`), you need to specify occupations separately for spin-up and spin-down channels with the `occ` input variable in Abinit.
+For a spin-polarized calculation (`nsppol=2`), you need to specify the occupations separately for the spin-up and spin-down channels with the `occ` input variable in Abinit.
 
-For instance, it might read like for the ground state :
+For instance, for the ground state, it might read:
 ```
 N_occ_el_up*1  N_empty_el_up*0
 N_occ_el_dn*1  N_empty_el_dn*0
 ```
-where `N_occ_el_up` and `N_occ_el_dn` are the number of occupied bands for spin-up and spin-down channels, respectively, and `N_empty_el_up` and `N_empty_el_dn` are the number of empty (conduction) bands.
+where `N_occ_el_up` and `N_occ_el_dn` are the numbers of occupied bands in the spin-up and spin-down channels, respectively, and `N_empty_el_up` and `N_empty_el_dn` are the numbers of empty (conduction) bands.
 
 For the excited state, we can create a "hole" in the highest occupied state and promote one electron to the lowest unoccupied state:
 
@@ -67,7 +67,7 @@ N_occ_el_dn*1  N_empty_el_dn*0
 
 ```
 
-This pattern needs to be adapted based on:
+This pattern needs to be adapted depending on:
 
 1. The total number of valence electrons in your system
 2. The electronic configuration of your defect
@@ -76,36 +76,36 @@ This pattern needs to be adapted based on:
 ## LumiWork Workflow
 
 ```{note}
-The example shown in this tutorial is designed to run in a few minutes on a laptop, meaning that the results
-are unconverged (supercell size, different DFT parameters,...).
-Results of production runs for this kind of system can be found in references {cite}`bouquiaux2021importance` and {cite}`bouquiaux2023first`
+The example shown in this tutorial is designed to run in a few minutes on a laptop, which means that the results
+are not converged (supercell size, DFT parameters, ...).
+Results of production runs for this kind of system can be found in references {cite}`bouquiaux2021importance` and {cite}`bouquiaux2023first`.
 ```
 
-The creation of one LumiWork is done with the class method `from_scf_inputs()`:
+A LumiWork is created with the `from_scf_inputs()` class method:
 
 ```{code-cell}
 from abipy.flowtk.lumi_works import LumiWork
 help(LumiWork.from_scf_inputs)
 ```
 
-This class method is a container that receives mainly Abinit Input objects and dictionaries of Abinit variables.
-The `lumi_works.py` script will then use this information to do the following tasks:
+This class method mainly receives `AbinitInput` objects and dictionaries of Abinit variables.
+The `lumi_works.py` module then uses this information to perform the following tasks:
 
-1. Launch a first structural relaxation in the ground state (task t0), save the ground-state relaxed structure.
+1. Launch a first structural relaxation in the ground state (task t0) and save the relaxed ground-state structure.
 2. Use the previous structure as the starting point for a second structural relaxation in the excited state (task t1),
-   save the excited-state relaxed  structure.
-3. Launch the four static scf tasks simultaneously (tasks t2, t3, t4 and t5 in the order shown in the recap section)
-4. Launch optionally the four NSCF tasks (tasks t6, t7, t8 and t9 in the same order)
-5. Perform a first quick post-process and store the results in `flow_deltaSCF/w0/outdata/Delta_SCF.json`.
+   and save the relaxed excited-state structure.
+3. Launch the four static SCF tasks simultaneously (tasks t2, t3, t4 and t5, in the order shown in the recap section).
+4. Optionally, launch the four NSCF tasks (tasks t6, t7, t8 and t9, in the same order).
+5. Perform a first quick post-processing and store the results in `flow_deltaSCF/w0/outdata/Delta_SCF.json`.
 
 ## Creating a LumiWork
 
 ```{note}
-The complete workflow was ran separately, before building this jupyter book.
-You will find the workflow scripts and corresponding folder [here](https://github.com/abinit/abipy_book/tree/master/abipy_book).
+The complete workflow was run separately, before building this Jupyter Book.
+You will find the workflow scripts and the corresponding folder [here](https://github.com/abinit/abipy_book/tree/master/abipy_book).
 ```
 
-A LumiWork (or a series of LumiWork's) can be created with the `run_deltaSCF.py` script, as shown below:
+A LumiWork (or a series of LumiWorks) can be created with the `run_deltaSCF.py` script, as shown below:
 
 ```python
 #!/usr/bin/env python
@@ -225,13 +225,13 @@ if __name__ == '__main__':
     sys.exit(main())
 ```
 
-Let's decompose this script.
+Let's break this script down.
 
-We first create the abinit input objects.
-This is achieved by the function `def scf_inp(structure):` that takes as argument a structure object.
-It returns abinit input objects for the ground and excited state.
-It is in this function that all the important abinit variables that are specific to the system under study are located.
-The tricky part is the automatic definition of the occupation numbers. Let's break down the Eu$^{2+}$ example step by step:
+We first create the Abinit input objects.
+This is done by the `scf_inp(structure)` function, which takes a structure object as argument
+and returns the Abinit input objects for the ground and excited states.
+This function contains all the important Abinit variables that are specific to the system under study.
+The tricky part is the automatic definition of the occupation numbers. Let's go through the Eu$^{2+}$ example step by step:
 
 ```python
     n_val = gs_scf_inp.num_valence_electrons  # Total valence electrons in the supercell
@@ -259,7 +259,7 @@ The tricky part is the automatic definition of the occupation numbers. Let's bre
 Eu$^{2+}$ has the electronic configuration [Xe]4f$^7$5d$^0$. In the ground state, the seven 4f electrons are all spin-up (due to Hund's rules).
 The excited state corresponds to a 4f$\rightarrow$5d transition: one 4f electron is promoted to the 5d shell.
 
-Let's decompose the occupation strings:
+Let's break down the occupation strings:
 
 **`spin_up_gs`**: Ground state, spin-up channel
 
@@ -283,14 +283,14 @@ Let's decompose the occupation strings:
 
 **Why $(n_{val} - 7) / 2$?**
 
-This counts all valence electrons *except* the 7 Eu 4f electrons. We divide by 2 because in the spin-polarized calculation,
-these "normal" electrons are equally distributed between spin-up and spin-down channels.
+This counts all the valence electrons *except* the 7 Eu 4f electrons. We divide by 2 because, in the spin-polarized calculation,
+these "normal" electrons are equally distributed between the spin-up and spin-down channels.
 
 A further example is presented for a spin-flip transition at the end of this page.
 ```
 
-The relaxation parameters (that might be different between ground and excited state!) are given in the function `def relax_kwargs():`.
-Finally, we are now able to create the workflow with:
+The relaxation parameters (which might differ between the ground and excited states!) are given in the `relax_kwargs()` function.
+Finally, we can create the workflow with:
 
 ```python
 def build_flow(options):
@@ -318,7 +318,7 @@ def build_flow(options):
     return flow
 ```
 
-Where we have use the convenient `make_doped_supercells()` method.
+where we have used the convenient `make_doped_supercells()` method:
 
 ```{code-cell}
 from abipy.core.structure import Structure
@@ -326,22 +326,22 @@ help(Structure.make_doped_supercells)
 ```
 
 ## Running a LumiWork
-Let us run see what running the code in practice looks like. In your terminal, create the workflow with
+Let us see what running the code looks like in practice. In your terminal, create the workflow with
 
 ```bash
 python run_deltaSCF.py
 ```
 
-A new `/flow_deltaSCF` folder should be created.
-We observe that at this time, only one task is created in `/flow_deltaSCF/w0/t0`, the first ground state relaxation.
-This is normal since the rest of the workflow will be created at run-time, when the ground state relaxed structure will be extracted.
+A new `flow_deltaSCF` folder should be created.
+Note that, at this point, only one task has been created in `flow_deltaSCF/w0/t0`: the first ground-state relaxation.
+This is normal, since the rest of the workflow is created at run time, once the relaxed ground-state structure has been extracted.
 We launch the flow with the command:
 
 ```bash
 nohup abirun.py flow_deltaSCF scheduler > log 2> err &
 ```
 
-After completion, you can verify the status of the flow with
+After completion, you can check the status of the flow with
 
 ```bash
 abirun.py flow_deltaSCF status
@@ -349,13 +349,13 @@ abirun.py flow_deltaSCF status
 
 <img src="workflow.png" width="600">
 
-A first quick post-processing of the results (following a 1D-CCM, see [next section](../post_process_1D/lesson_post_process_1D.md))
-can be found in `/flow_deltaSCF/w0/Delta_SCF.json` file.
+A first quick post-processing of the results (within a 1D-CCM, see the [next section](../post_process_1D/lesson_post_process_1D.md))
+can be found in the `flow_deltaSCF/w0/outdata/Delta_SCF.json` file.
 
 ## Relaxations only?
 
-In some cases, it might be interesting to perform the two relaxations only, or the 4 static computations only.
-This flexibility is allowed thanks to the `LumiWork_relaxations()` class
+In some cases, it might be useful to perform only the two relaxations, or only the four static calculations.
+This flexibility is provided by the `LumiWork_relaxations` class
 
 ```{code-cell}
 from abipy.flowtk.lumi_works import LumiWork_relaxations
@@ -373,8 +373,8 @@ print(LumiWorkFromRelax.__doc__)
 help(LumiWorkFromRelax.from_scf_inputs)
 ```
 
-Running only one computation is also feasible by changing the end of the `run_DeltaSCF.py` script.
-For example, if you only need the ground state relaxation, you might use `LumiWork_relaxations.from_scf_inputs()`
+Running a single calculation is also possible by changing the end of the `run_deltaSCF.py` script.
+For example, if you only need the ground-state relaxation, you can use `LumiWork_relaxations.from_scf_inputs()`
 and register only the first task:
 
 ```python
@@ -387,7 +387,7 @@ flow.register_task(Lumi_work[0]) # notice the register_task and not register_wor
 
 ### Background
 
-An F-center is a neutral oxygen vacancy with two trapped electrons. Unlike the Eu$^{2+}$ case where we have a 4f$\rightarrow$5d electron promotion, the F-center excited state results from a **spin-flip** transition: one electron flips from spin-down to spin-up, changing from a singlet to a triplet configuration.
+An F-center is a neutral oxygen vacancy with two trapped electrons. Unlike the Eu$^{2+}$ case, where we have a 4f$\rightarrow$5d electron promotion, the F-center excited state results from a **spin-flip** transition: one electron flips from spin-down to spin-up, changing the configuration from singlet to triplet.
 
 **Ground state**: Two electrons with opposite spins in the defect state (singlet, $S=0$)
 - Spin-up: 1 electron in defect state
@@ -441,6 +441,6 @@ When adapting this workflow to your own defect system:
 1. Identify the total number of valence electrons: `n_val = gs_scf_inp.num_valence_electrons`
 2. Determine how many electrons are localized on your defect
 3. Understand the nature of the excitation (promotion vs. spin-flip vs. other)
-4. Write appropriate occupation strings for each spin channel
-5. Test with a small calculation to confirm the occupation pattern produces the expected electronic structure
+4. Write the appropriate occupation strings for each spin channel
+5. Run a small test calculation to confirm that the occupation pattern produces the expected electronic structure
 ```

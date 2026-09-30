@@ -15,11 +15,11 @@ kernelspec:
 
 This lesson discusses how to calculate the macroscopic dielectric function, $\epsilon_\infty(\omega)$,
 including excitonic effects within the Bethe-Salpeter equation (BSE).
-Crystalline silicon is used as test case.
+Crystalline silicon is used as a test case.
 
 For a more detailed description of the Abinit implementation, see the official Abinit
 [BSE tutorial](https://docs.abinit.org/tutorial/bse/).
-A brief description of the formalism can be found in the [BSE_notes](https://docs.abinit.org/theory/bse/).
+A brief description of the formalism can be found in the [BSE notes](https://docs.abinit.org/theory/bse/).
 
 ## Typical BSE flowchart
 
@@ -31,36 +31,36 @@ The flowchart of a typical Bethe-Salpeter run is schematically depicted in the d
 
 +++
 
-The WFK file contains the Kohn-Sham (KS) wavefunctions and energies and is represented with an ellipsis.
-The path on the left indicated with blue arrows represents the RPA calculation ({{optdriver}} = 3)
+The WFK file contains the Kohn-Sham (KS) wavefunctions and energies and is represented by an ellipse.
+The path on the left, indicated with blue arrows, represents the RPA calculation ({{optdriver}} = 3)
 that produces the SCR file (see also the first lesson of the $GW$ tutorial).
-Once the WFK  and the SCR file are available, we can finally contruct the BSE Hamiltonian
+Once the WFK and the SCR files are available, we can finally construct the BSE Hamiltonian
 and solve the Bethe-Salpeter equation (the green rectangle at the bottom of the flowchart).
-The construction of the Bethe-Salpeter Hamiltonian represents a significant portion
-of the overall CPU time due to the large number of transitions (bands and in particular $k$-points)
-needed for an accurate description of the frequency-dependence of the polarizability.
+The construction of the Bethe-Salpeter Hamiltonian accounts for a significant portion
+of the overall CPU time, due to the large number of transitions (bands and, in particular, $k$-points)
+needed for an accurate description of the frequency dependence of the polarizability.
 
 For BSE computations, it is common practice to simulate the self-energy corrections
-by employing the scissors operator whose value can be obtained either from experiments
+with a scissors operator, whose value can be obtained either from experiments
 or from *ab-initio* calculations.
-The scissors operator allows one to avoid a costly $GW$ calculation that should performed
+The scissors operator allows one to avoid a costly $GW$ calculation that would have to be performed
 for all the $k$-points and bands included in the transition space
-(the optional path on the right indicated with yellow arrows that corresponds to ({{optdriver}} = 4).
+(the optional path on the right, indicated with yellow arrows, which corresponds to {{optdriver}} = 4).
 
-For this reason, in this lesson, we will employ two commonly used approximations that will
-reduce considerably the computational cost of the BSE flowchart while giving reasonably accurate results:
+For this reason, in this lesson we employ two commonly used approximations that
+considerably reduce the computational cost of the BSE flowchart while giving reasonably accurate results:
 
    * The *ab-initio* $W$ is replaced by a model dielectric function
-     that is constructed from the GS density $n(r)$ and the additional variable {{mdf_epsinf}}
-     that gives the value of the static limit $\epsilon_\infty(\omega=0)$.
-     This approximation allows us to bypass the blue boxes in the diagram above ({{optdriver}} = 3)
+     constructed from the GS density $n(r)$ and the additional variable {{mdf_epsinf}},
+     which gives the value of the static limit $\epsilon_\infty(\omega=0)$.
+     This approximation allows us to bypass the blue boxes in the diagram above ({{optdriver}} = 3).
 
    * The modifications introduced by the $GW$ self-energy on the initial KS band structure
-     are approximated with a scissor operator {{mbpt_sciss}}.
-     This approximation allows us to bypass the yellow boxes in the diagram above (`optdriver=4`).
+     are approximated with a scissors operator ({{mbpt_sciss}}).
+     This approximation allows us to bypass the yellow boxes in the diagram above ({{optdriver}} = 4).
 
-Under these assumptions, the BSE flowchart reduces to a simple GS-SCF run to get $n(r)$ plus
-a NSCF calculation of the band structure on a dense $k$-mesh and, finally, the solution
+Under these assumptions, the BSE flowchart reduces to a simple GS-SCF run to get $n(r)$, followed by
+an NSCF calculation of the band structure on a dense $k$-mesh and, finally, the solution
 of the BSE problem (the green box).
 
 +++
@@ -99,17 +99,17 @@ scf_inp, nscf_inp, bse_inp = make_scf_nscf_bse_inputs(ngkpt=(4, 4, 4), ecut=6, e
 The function `make_scf_nscf_bse_inputs` returns three `AbinitInput` objects:
 
    * The first input (`scf_inp`) solves the KS equations on a Monkhorst-Pack mesh
-     to obtain the groud-state density $n(r)$.
+     to obtain the ground-state density $n(r)$.
 
    * The second input (`nscf_inp`) uses the density produced by `scf_inp` to compute
-     the KS band structure on a **randomly-shifted** $k$-mesh in order to accelerate
+     the KS band structure on a **randomly shifted** $k$-mesh, in order to accelerate
      the convergence of the optical properties with respect to the $k$-sampling.
 
    * Finally, the third input (`bse_inp`) uses the `WFK` file produced in the previous step
-     to solve an approximated BSE equation in which the ab-initio
-     screened interation $W$ is approximated
-     by a model dielectric function that depends only on $n(r)$ and the input variable {{mdf_epsinf}}
-     that gives the value of $\epsilon_\infty(0)$
+     to solve an approximated BSE, in which the ab-initio
+     screened interaction $W$ is approximated
+     by a model dielectric function that depends only on $n(r)$ and on the input variable {{mdf_epsinf}},
+     which gives the value of $\epsilon_\infty(0)$.
 
 +++
 
@@ -120,7 +120,7 @@ bse_inp
 ```
 
 Once we have our three input objects, we can create a flow to automate the calculation.
-Note that AbiPy already provides the `BseMdfWork` class that is explicitly designed for this kind of calculation:
+Note that AbiPy already provides the `BseMdfWork` class, which is explicitly designed for this kind of calculation:
 
 ```{code-cell}
 from lesson_bse import build_bse_flow
@@ -133,8 +133,8 @@ Let's build the flow:
 flow = build_bse_flow(options=None)
 ```
 
-The graphical representation of the flow reveals that the `BseTask` depends on the `NscfTask` that
-in turns depends on the initial `ScfTask`.
+The graphical representation of the flow reveals that the `BseTask` depends on the `NscfTask`, which
+in turn depends on the initial `ScfTask`:
 
 ```{code-cell}
 flow.get_graphviz()
@@ -144,20 +144,20 @@ flow.get_graphviz()
 #flow.plot_networkx(with_edge_labels=True);
 ```
 
-If you are working with python, you can build the directories of the Flow with:
+If you are working with Python, you can build the directories of the Flow with:
 
     flow.build_and_pickle_dump()
 
 +++
 
-Now you can execute the *lesson_bse.py* script to generate the flow  and then use:
+Now you can execute the *lesson_bse.py* script to generate the flow and then use:
 
     abirun.py flow_bse scheduler
 
 ```{include} ../snippets/abicheck_warning.md
 ```
 
-Alternatively, one can use the files in the github repository and use AbiPy to analyze the data.
+Alternatively, one can use AbiPy to analyze the output files available in the GitHub repository.
 
 +++
 
@@ -165,7 +165,7 @@ Alternatively, one can use the files in the github repository and use AbiPy to a
 
 Now we can finally analyze the results.
 In this case, we are mainly interested in the frequency-dependent macroscopic
-dielectric function, $\epsilon_\infty(\omega)$, produced by the `BseTask`
+dielectric function, $\epsilon_\infty(\omega)$, produced by the `BseTask`:
 
 ```{code-cell}
 # The BseTask is the last task in the first work
@@ -186,7 +186,7 @@ mdf_file = abilab.abiopen("flow_bse/w0/t2/outdata/out_MDF.nc")
 print(mdf_file)
 ```
 
-and use `matplotlib` to plot the imaginary part of $\epsilon_\infty(\omega)$
+and use `matplotlib` to plot the imaginary part of $\epsilon_\infty(\omega)$:
 
 ```{code-cell}
 mdf_file.plot_mdfs();
@@ -194,29 +194,29 @@ mdf_file.plot_mdfs();
 
 Meaning of the three curves:
 
-   * EXC is $\epsilon_\infty(\omega)$ computed from the BSE with excitonic effects included
-   * KS-RPA is the analogous quantity computed within the RPA and the KS band structure
-   * GW-RPA corresponds to the RPA expression but computed with modified band energies obtained
-     by "opening" the KS eigenvalues with a constant scissor operator that tries to mimic
-     the $GW$ corrections (`soenergy` variable)
+   * EXC is $\epsilon_\infty(\omega)$ computed from the BSE with excitonic effects included.
+   * KS-RPA is the analogous quantity computed within the RPA with the KS band structure.
+   * GW-RPA corresponds to the RPA expression computed with modified band energies, obtained
+     by "opening" the KS eigenvalues with a constant scissors operator that mimics
+     the $GW$ corrections (`soenergy` variable).
 
 It is worth stressing that:
 
-1) The RPA-KS spectrum underestimates the experimental optical threshold
-   due to the well-know band-gap problem of DFT.
+1) The KS-RPA spectrum underestimates the experimental optical threshold
+   due to the well-known band-gap problem of DFT.
    Most importantly, the amplitude of the first peak is underestimated.
 
-2) The RPA-GW results with QP corrections simulated with `soenergy` does not show
-   any significant improvement over RPA-KS: the RPA-GW spectrum is just shifted towards
-   higher frequencies due to opening of the gap, but the shape of the two spectra
-   is very similar, in particular the amplitude of the first peak is still underestimated.
+2) The GW-RPA results, with QP corrections simulated with `soenergy`, do not show
+   any significant improvement over KS-RPA: the GW-RPA spectrum is just shifted towards
+   higher frequencies due to the opening of the gap, but the shape of the two spectra
+   is very similar; in particular, the amplitude of the first peak is still underestimated.
 
 3) On the contrary, the inclusion of the BSE kernel leads to important changes both
-   in the optical threshold as well as in the amplitude of the first peak.
+   in the optical threshold and in the amplitude of the first peak.
    This simple analysis tells us that the first peak in the absorption spectrum of silicon
    has a strong excitonic character that is not correctly described within the RPA.
-   Our first BS spectrum is not converged at all, and it barely resembles
-   the experimental result, nevertheless this unconverged calculation is already able
+   Our first BSE spectrum is not converged at all, and it barely resembles
+   the experimental result; nevertheless, this unconverged calculation is already able
    to capture the most important physics.
 
 The difference among the three approaches is schematically depicted in the figure below:
@@ -227,7 +227,7 @@ The difference among the three approaches is schematically depicted in the figur
 
 +++
 
-To plot the real part of $\epsilon_\infty(\omega)$
+To plot the real part of $\epsilon_\infty(\omega)$, use:
 
 ```{code-cell}
 mdf_file.plot_mdfs(cplx_mode="re");
@@ -235,10 +235,10 @@ mdf_file.plot_mdfs(cplx_mode="re");
 
 It should be stressed that the screened interaction $W$ is the fundamental ingredient that leads
 to the attractive interaction between electrons and holes (excitonic effects).
-In a metallic system, the dielectric function is large, $W$ is small and excitonic effects are strongly damped.
+In a metallic system, the dielectric function is large, $W$ is small, and excitonic effects are strongly damped.
 
-To understand this point, we can do a test calculation with a very large value of {{mdf_epsinf}}
-so that our BSE Hamiltonian will be constructed with a "metallic" $W$:
+To understand this point, we can do a test calculation with a very large value of {{mdf_epsinf}},
+so that our BSE Hamiltonian is constructed with a "metallic" $W$:
 
 ```{code-cell}
 from lesson_bse import build_bse_metallicW_flow
@@ -257,14 +257,14 @@ with abilab.abiopen("flow_bse_metallicW/w0/t2/outdata/out_MDF.nc") as mdf_file:
 ```
 
 As you can see, the EXC curve computed with a metallic $W$
-is similar to the results obtained in GW-RPA.
-In particular the first peak is now shifted towards higher frequencies, and its amplitude
-is decreased when compared to the previous results.
+is similar to the GW-RPA results.
+In particular, the first peak is now shifted towards higher frequencies, and its amplitude
+is smaller than in the previous results.
 
 This behaviour can be easily understood if we consider that
-the BSE formalism reduces to the RPA if $W$ tends to 0.
-The EXC curve is still shifted towards higher frequencies when compared with KS-RPA
-but this effect is mainly due to the scissor operator that opens the KS gap.
+the BSE formalism reduces to the RPA when $W$ tends to 0.
+The EXC curve is still shifted towards higher frequencies compared with KS-RPA,
+but this effect is mainly due to the scissors operator that opens the KS gap.
 A similar calculation done with `soenergy=0` would give an EXC curve similar to KS-RPA.
 This test is left as an optional exercise.
 
@@ -273,17 +273,17 @@ This test is left as an optional exercise.
 ## Convergence study with respect to the $k$-point sampling
 
 The most important parameter that should be checked for convergence is the number of $k$-points.
-This convergence study represents the most tedious and difficult part since it requires
-the generation of new WFK files for each k-mesh
+This convergence study is the most tedious and difficult part, since it requires
+the generation of new WFK files for each $k$-mesh
 (the list of $k$-points for the wavefunctions and the set of $q$-points in the screening
 must be consistent with each other).
 
-In the previous section, we have shown how to build a flow for BSE calculation with a fixed $k$-points sampling.
+In the previous section, we have shown how to build a flow for a BSE calculation with a fixed $k$-point sampling.
 We can thus reuse the same logic to construct a `Flow` made of multiple `BseMdfWorks`,
-each `Work` will have a different $k$-point sampling.
+each `Work` with a different $k$-point sampling.
 
-Let's create, for example, a `Flow` that solves that BSE equation on
-a `4x4x4`, `6x6x6` and a `8x8x8` $k$-mesh:
+Let's create, for example, a `Flow` that solves the BSE on
+a `4x4x4`, a `6x6x6` and an `8x8x8` $k$-mesh:
 
 ```{code-cell}
 from lesson_bse import build_bse_kconv_flow
@@ -302,16 +302,16 @@ flow_kconv.get_graphviz()
 #flow_kconv.plot_networkx();
 ```
 
-Change the *lesson_bse.py* script so that `build_bse_kconv_flow` is called in main instead of `build_bse_flow`.
-Run the script and submit the calculation with abirun.py FLOWDIR scheduler as usual.
+Change the *lesson_bse.py* script so that `build_bse_kconv_flow` is called in the main function instead of `build_bse_flow`.
+Run the script and submit the calculation with `abirun.py FLOWDIR scheduler` as usual.
 
 +++
 
 Our `Flow` has three `BseTasks` and therefore three different `MDF.nc` files containing $\epsilon_\infty(\omega)$.
-The MDF files are available in the github repository.
+The MDF files are available in the GitHub repository.
 
-In order to plot the three $\epsilon_\infty(\omega)$ on the same graph, we have use the `MdfRobot`
-that will gather the results for us:
+To plot the three $\epsilon_\infty(\omega)$ on the same graph, we use the `MdfRobot`,
+which gathers the results for us:
 
 ```{code-cell}
 robot = abilab.MdfRobot.from_dir("flow_bse_kconv")
@@ -332,7 +332,7 @@ plotter.plot();
 
 Use `make_scf_nscf_bse_inputs` and `BseMdfWork` to perform the following convergence studies:
 
-   * Convergence with respect to the number of planewaves in the screening {{ecuteps}}
+   * Convergence with respect to the number of plane waves in the screening ({{ecuteps}})
    * Convergence with respect to the number of $k$-points
 
-See also the discussion reported in the official [BSE tutorial](https://docs.abinit.org/tutorial/bse/)
+See also the discussion in the official [BSE tutorial](https://docs.abinit.org/tutorial/bse/).

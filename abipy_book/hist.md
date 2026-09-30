@@ -14,15 +14,15 @@ kernelspec:
 # The HIST.nc file (relaxation/MD)
 
 The `HIST.nc` file contains the history of structural relaxations or molecular dynamics calculations.
-One can use the `abiopen` function provide by `abilab` to open the file and generate an instance of `HistFile`.
-Alteratively, one can use the `abiopen.py` script to open the file inside the shell with the syntax:
+One can use the `abiopen` function provided by `abilab` to open the file and generate an instance of `HistFile`.
+Alternatively, one can use the `abiopen.py` script to open the file from the shell with:
 
     abiopen.py out_HIST.nc
 
-This command will start the ipython interpreter so that one can interact directly
-with the `HistFile` object (named `abifile` inside ipython).
+This command starts the IPython interpreter so that one can interact directly
+with the `HistFile` object (named `abifile` inside IPython).
 
-To generate a jupyter notebook use:
+To generate a Jupyter notebook, use:
 
     abiopen.py out_HIST.nc -nb
 
@@ -51,8 +51,8 @@ hist = abilab.abiopen(abidata.ref_file("sic_relax_HIST.nc"))
 print("Number of iterations performed:", hist.num_steps)
 ```
 
-`hist.structures` is the list of structure objects at the different iteration steps.
-`hist.etotals` is a numpy array with the total energies in eV associated to the different steps.
+`hist.structures` is the list of structures at the different iteration steps, while
+`hist.etotals` is a numpy array with the corresponding total energies in eV.
 
 ```{code-cell}
 for struct, etot in zip(hist.structures, hist.etotals):
@@ -75,7 +75,7 @@ hist.plot(tight_layout=True);
 hist.plotly();
 ```
 
-To plot the total energies at the different iterations steps:
+To plot the total energies at the different iteration steps:
 
 ```{code-cell}
 hist.plot_energies();
@@ -87,11 +87,10 @@ hist.plotly_energies();
 
 ## Converting to other formats
 
-Use `to_xdatcar` to get a XDATCAR pymatgen object (useful to interface AbiPy with other pymatgen tools)
+Use `to_xdatcar` to get a pymatgen `Xdatcar` object (useful to interface AbiPy with other pymatgen tools):
 
 ```{code-cell}
 # hist.write_xdatcar writes a XDATCAR file
 xdatcar = hist.to_xdatcar()
 print(xdatcar)
 ```
-
