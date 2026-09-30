@@ -296,9 +296,11 @@ emb_ph = Embedded_phonons.from_phonopy_instances(
 )
 ```
 
-If the structure mapping fails (e.g., due to mismatched coordinates), the code notifies you:
+If the structure mapping fails (e.g., due to mismatched coordinates), the code reports how many atoms
+could be mapped and then stops with an error:
 
 ```{code-cell}
+:tags: [raises-exception]
 emb_ph_failed = Embedded_phonons.from_phonopy_instances(
     phonopy_pristine=ph_pristine,
     phonopy_defect=ph_defect,
