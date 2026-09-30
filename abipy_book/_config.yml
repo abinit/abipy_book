@@ -124,8 +124,8 @@ sphinx:
     #mathjax_config:
     mathjax3_config:
           # Use same Macros as the ones used in the Abinit website. See ~abinit/abinit_theme/main.html
-          TeX:
-           Macros:
+          tex:
+           macros:
                 "*": "{\\dagger}"
                 "ra": "{\\rangle}"
                 "la": "{\\langle}"
