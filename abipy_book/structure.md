@@ -209,7 +209,7 @@ structure.plot_xrd();
 
 The {{ abistruct }} script provides a handy command line
 interface to operate on structure objects constructed from external files.
-There are several options available as well an interface to the {{ materials project }}
+There are several options available as well an interface to the {{ materials_project }}
 and the {{ COD }} database.
 
 To obtain the list of available commands, use:

@@ -235,20 +235,21 @@ robot
 
 For more examples on the use of DDB and robots, see the
 [DDB notebook](https://nbviewer.jupyter.org/github/abinit/abitutorials/blob/master/abitutorials/ddb.ipynb).
-Now we ask the robot to call `anaddb` to compute the phonon frequencies at $\Gamma$ for all DDBs
-and return a pandas `DataFrame`:
+Now we ask the robot to call `anaddb` to compute the phonon frequencies at $\Gamma$ for all DDBs.
+The results are returned in a `PhqData` object and the `ph_df` attribute gives a pandas `DataFrame`:
 
 ```{code-cell}
-data_gamma = robot.get_dataframe_at_qpoint((0, 0, 0))
+ph_data = robot.get_phdata_at_qpoint((0, 0, 0))
+data_gamma = ph_data.ph_df
 ```
 
-The `DataFrame` is a dict-like object whose keys are the name of the colums in the table
+The `DataFrame` is a dict-like object whose keys are the name of the columns in the table
 
 ```{code-cell}
 print(data_gamma.keys())
 ```
 
-where `mode-i` is the frequency in eV of the i-th phonon mode.
+where `mode-i` is the frequency in meV of the i-th phonon mode.
 
 We are mainly interested in the convergence of the phonon frequencies versus {{ecut}}, so we filter these columns with:
 

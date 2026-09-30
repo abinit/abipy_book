@@ -191,7 +191,7 @@ The method is called without arguments so we use **default values**
 for the *broadening* and the *step* of the linear mesh.
 
 ```{code-cell}
- with abilab.abiopen(abidata.ref_file("si_scf_GSR.nc")) as scf_gsr:
+with abilab.abiopen(abidata.ref_file("si_scf_GSR.nc")) as scf_gsr:
     ebands_kmesh = scf_gsr.ebands
 
 edos = ebands_kmesh.get_edos()
